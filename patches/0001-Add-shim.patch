@@ -1,0 +1,24 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Matthew Jeffryes <mjeffryes@pulumi.com>
+Date: Mon, 6 May 2024 16:50:17 -0700
+Subject: [PATCH] Add shim
+
+
+diff --git a/cloudngfwaws/shim.go b/cloudngfwaws/shim.go
+new file mode 100644
+index 0000000..5a709e3
+--- /dev/null
++++ b/cloudngfwaws/shim.go
+@@ -0,0 +1,12 @@
++package cloudngfwaws
++
++import (
++       "github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
++       cloudngfwaws "github.com/paloaltonetworks/terraform-provider-cloudngfwaws/internal/provider"
++)
++
++const version = "dev"
++
++func Provider() *schema.Provider {
++       return cloudngfwaws.New(version)()
++}

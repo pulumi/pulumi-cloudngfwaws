@@ -1,0 +1,362 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "cloudngfwaws_account": {
+                "current": "cloudngfwaws:index/account:Account"
+            },
+            "cloudngfwaws_account_onboarding": {
+                "current": "cloudngfwaws:index/accountOnboarding:AccountOnboarding"
+            },
+            "cloudngfwaws_account_onboarding_stack": {
+                "current": "cloudngfwaws:index/accountOnboardingStack:AccountOnboardingStack"
+            },
+            "cloudngfwaws_certificate": {
+                "current": "cloudngfwaws:index/certificate:Certificate"
+            },
+            "cloudngfwaws_commit_rulestack": {
+                "current": "cloudngfwaws:index/commitRulestack:CommitRulestack",
+                "fields": {
+                    "commit_errors": {
+                        "maxItemsOne": false
+                    },
+                    "validation_errors": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_custom_url_category": {
+                "current": "cloudngfwaws:index/customUrlCategory:CustomUrlCategory",
+                "fields": {
+                    "url_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_fqdn_list": {
+                "current": "cloudngfwaws:index/fqdnList:FqdnList",
+                "fields": {
+                    "fqdn_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_intelligent_feed": {
+                "current": "cloudngfwaws:index/intelligentFeed:IntelligentFeed"
+            },
+            "cloudngfwaws_ngfw": {
+                "current": "cloudngfwaws:index/ngfw:Ngfw",
+                "fields": {
+                    "status": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "attachment": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "subnet_mapping": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_ngfw_log_profile": {
+                "current": "cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile",
+                "fields": {
+                    "cloudwatch_metric_fields": {
+                        "maxItemsOne": false
+                    },
+                    "log_destination": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_predefined_url_category_override": {
+                "current": "cloudngfwaws:index/predefinedUrlCategoryOverride:PredefinedUrlCategoryOverride"
+            },
+            "cloudngfwaws_prefix_list": {
+                "current": "cloudngfwaws:index/prefixList:PrefixList",
+                "fields": {
+                    "prefix_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_rulestack": {
+                "current": "cloudngfwaws:index/rulestack:Rulestack",
+                "fields": {
+                    "profile_config": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "cloudngfwaws_security_rule": {
+                "current": "cloudngfwaws:index/securityRule:SecurityRule",
+                "fields": {
+                    "applications": {
+                        "maxItemsOne": false
+                    },
+                    "category": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "feeds": {
+                                    "maxItemsOne": false
+                                },
+                                "url_category_names": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "destination": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "cidrs": {
+                                    "maxItemsOne": false
+                                },
+                                "countries": {
+                                    "maxItemsOne": false
+                                },
+                                "feeds": {
+                                    "maxItemsOne": false
+                                },
+                                "fqdn_lists": {
+                                    "maxItemsOne": false
+                                },
+                                "prefix_lists": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "prot_port_list": {
+                        "maxItemsOne": false
+                    },
+                    "source": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "cidrs": {
+                                    "maxItemsOne": false
+                                },
+                                "countries": {
+                                    "maxItemsOne": false
+                                },
+                                "feeds": {
+                                    "maxItemsOne": false
+                                },
+                                "prefix_lists": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "datasources": {
+            "cloudngfwaws_account": {
+                "current": "cloudngfwaws:index/getAccount:getAccount"
+            },
+            "cloudngfwaws_accounts": {
+                "current": "cloudngfwaws:index/getAccounts:getAccounts",
+                "fields": {
+                    "account_details": {
+                        "maxItemsOne": false
+                    },
+                    "account_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_app_id_version": {
+                "current": "cloudngfwaws:index/getAppIdVersion:getAppIdVersion",
+                "fields": {
+                    "applications": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_app_id_versions": {
+                "current": "cloudngfwaws:index/getAppIdVersions:getAppIdVersions",
+                "fields": {
+                    "versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_certificate": {
+                "current": "cloudngfwaws:index/getCertificate:getCertificate"
+            },
+            "cloudngfwaws_country": {
+                "current": "cloudngfwaws:index/getCountry:getCountry"
+            },
+            "cloudngfwaws_custom_url_category": {
+                "current": "cloudngfwaws:index/getCustomUrlCategory:getCustomUrlCategory",
+                "fields": {
+                    "url_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_fqdn_list": {
+                "current": "cloudngfwaws:index/getFqdnList:getFqdnList",
+                "fields": {
+                    "fqdn_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_intelligent_feed": {
+                "current": "cloudngfwaws:index/getIntelligentFeed:getIntelligentFeed"
+            },
+            "cloudngfwaws_ngfw": {
+                "current": "cloudngfwaws:index/getNgfw:getNgfw",
+                "fields": {
+                    "status": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "attachment": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "subnet_mapping": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_ngfw_log_profile": {
+                "current": "cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile",
+                "fields": {
+                    "cloudwatch_metric_fields": {
+                        "maxItemsOne": false
+                    },
+                    "log_destination": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_ngfws": {
+                "current": "cloudngfwaws:index/getNgfws:getNgfws",
+                "fields": {
+                    "instances": {
+                        "maxItemsOne": false
+                    },
+                    "vpc_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_predefined_url_categories": {
+                "current": "cloudngfwaws:index/getPredefinedUrlCategories:getPredefinedUrlCategories",
+                "fields": {
+                    "categories": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_predefined_url_category_override": {
+                "current": "cloudngfwaws:index/getPredefinedUrlCategoryOverride:getPredefinedUrlCategoryOverride"
+            },
+            "cloudngfwaws_prefix_list": {
+                "current": "cloudngfwaws:index/getPrefixList:getPrefixList",
+                "fields": {
+                    "prefix_list": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_rulestack": {
+                "current": "cloudngfwaws:index/getRulestack:getRulestack",
+                "fields": {
+                    "profile_config": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudngfwaws_security_rule": {
+                "current": "cloudngfwaws:index/getSecurityRule:getSecurityRule",
+                "fields": {
+                    "applications": {
+                        "maxItemsOne": false
+                    },
+                    "category": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "feeds": {
+                                    "maxItemsOne": false
+                                },
+                                "url_category_names": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "destination": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "cidrs": {
+                                    "maxItemsOne": false
+                                },
+                                "countries": {
+                                    "maxItemsOne": false
+                                },
+                                "feeds": {
+                                    "maxItemsOne": false
+                                },
+                                "fqdn_lists": {
+                                    "maxItemsOne": false
+                                },
+                                "prefix_lists": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "prot_port_list": {
+                        "maxItemsOne": false
+                    },
+                    "source": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "cidrs": {
+                                    "maxItemsOne": false
+                                },
+                                "countries": {
+                                    "maxItemsOne": false
+                                },
+                                "feeds": {
+                                    "maxItemsOne": false
+                                },
+                                "prefix_lists": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "cloudngfwaws_validate_rulestack": {
+                "current": "cloudngfwaws:index/getValidateRulestack:getValidateRulestack",
+                "fields": {
+                    "commit_errors": {
+                        "maxItemsOne": false
+                    },
+                    "validation_errors": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        }
+    },
+    "auto-settings": {}
+}

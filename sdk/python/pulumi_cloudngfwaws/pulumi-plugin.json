@@ -1,0 +1,6 @@
+{
+  "resource": true,
+  "name": "cloudngfwaws",
+  "version": "0.0.0-alpha.0+dev",
+  "server": "github://api.github.com/pulumi/pulumi-cloudngfwaws"
+}
