@@ -1,17 +1,17 @@
 ---
-title: Cloudngfwaws Provider
-meta_desc: Provides an overview on how to configure the Pulumi Cloudngfwaws provider.
+title: Palo Alto Networks Cloud NGFW For AWS Provider
+meta_desc: Provides an overview on how to configure the Palo Alto Networks Cloud NGFW For AWS provider.
 layout: package
 ---
 ## Installation
 
-The cloudngfwaws provider is available as a package in all Pulumi languages:
-
+The Palo Alto Networks Cloud NGFW for AWS provider is available as a package in all Pulumi languages:
 * JavaScript/TypeScript: [`@pulumi/cloudngfwaws`](https://www.npmjs.com/package/@pulumi/cloudngfwaws)
 * Python: [`pulumi-cloudngfwaws`](https://pypi.org/project/pulumi-cloudngfwaws/)
 * Go: [`github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws`](https://github.com/pulumi/pulumi-cloudngfwaws)
 * .NET: [`Pulumi.Cloudngfwaws`](https://www.nuget.org/packages/Pulumi.Cloudngfwaws)
 * Java: [`com.pulumi/cloudngfwaws`](https://central.sonatype.com/artifact/com.pulumi/cloudngfwaws)
+
 ## Overview
 
 The cloudngfwaws provider provides resources to manage your Palo Alto Networks Cloud Next-Gen Firewalls for AWS.
@@ -99,3 +99,4 @@ ezrulestack module allows for faster and simpler workflow to create rulestacks, 
 ## Support
 
 The software and templates in this repo are released under the official support policy of Palo Alto Networks through the support options that you've purchased, for example Premium Support, support teams, or ASC (Authorized Support Centers) partners and Premium Partner Support options. The support scope is restricted to troubleshooting for the stated/intended use cases and product versions specified in the project documentation and does not cover customization of the scripts or templates.
+
