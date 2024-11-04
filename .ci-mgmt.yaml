@@ -15,5 +15,6 @@ actions:
 
 # Use `pulumi convert` for translating examples from TF to Pulumi.
 pulumiConvert: 1
-registryDocs: true
+# TODO: reenable this once https://github.com/pulumi/pulumi-terraform-bridge/issues/2586 is fixed
+registryDocs: false
 
