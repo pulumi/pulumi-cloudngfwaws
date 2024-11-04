@@ -22,11 +22,13 @@ import (
 	_ "embed" // to embed bridge metadata
 
 	cloudngfwaws "github.com/paloaltonetworks/terraform-provider-cloudngfwaws/cloudngfwaws"
-	"github.com/pulumi/pulumi-cloudngfwaws/provider/pkg/version"
+
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+
+	"github.com/pulumi/pulumi-cloudngfwaws/provider/pkg/version"
 )
 
 //go:embed cmd/pulumi-resource-cloudngfwaws/bridge-metadata.json
@@ -39,7 +41,7 @@ const (
 )
 
 // Provider returns additional overlaid schema and metadata associated with the provider
-func Provider(ctx context.Context) tfbridge.ProviderInfo {
+func Provider(_ context.Context) tfbridge.ProviderInfo {
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:                 shimv2.NewProvider(cloudngfwaws.Provider()),
