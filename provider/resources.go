@@ -57,7 +57,7 @@ func Provider(_ context.Context) tfbridge.ProviderInfo {
 		Version:           version.Version,
 		LogoURL:           "https://avatars.githubusercontent.com/u/4855743?s=200&v=4",
 		MetadataInfo:      tfbridge.NewProviderMetadata(bridgeMetadata),
-		//DocRules:          &tfbridge.DocRuleInfo{EditRules: editRules},
+		// DocRules:          &tfbridge.DocRuleInfo{EditRules: editRules},
 
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"cloudngfwaws_ngfw_log_profile": {ComputeID: missingID},
