@@ -21,7 +21,7 @@ import (
 
 	_ "embed" // to embed schema-embed.json
 
-	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 
 	cloudngfwaws "github.com/pulumi/pulumi-cloudngfwaws/provider"
 )
