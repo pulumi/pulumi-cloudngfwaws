@@ -17,7 +17,7 @@ package main
 import (
 	"context"
 
-	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfgen"
 
 	cloudngfwaws "github.com/pulumi/pulumi-cloudngfwaws/provider"
 )
