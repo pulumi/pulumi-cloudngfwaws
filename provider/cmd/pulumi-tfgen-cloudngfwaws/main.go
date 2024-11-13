@@ -17,12 +17,13 @@ package main
 import (
 	"context"
 
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 
 	cloudngfwaws "github.com/pulumi/pulumi-cloudngfwaws/provider"
+	"github.com/pulumi/pulumi-cloudngfwaws/provider/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("cloudngfwaws", cloudngfwaws.Provider(context.Background()))
+	tfgen.Main("cloudngfwaws", version.Version, cloudngfwaws.Provider(context.Background()))
 }
