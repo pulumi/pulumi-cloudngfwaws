@@ -148,9 +148,3 @@ There are multiple ways to specify the provider's parameters.  If overlapping va
 - `syncMode` (Boolean) Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `syncMode`.
 - `timeout` (Number) The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
 - `resourceTimeout` (Number) The timeout for pulumi resource create/update/delete operations (default: `7200s`). Environment variable: `CLOUDNGFWAWS_RESOURCE_TIMEOUT`. JSON conf file variable: `resourceTimeout`.
-## ezrulestack Module
-
-ezrulestack module allows for faster and simpler workflow to create rulestacks, by defining the dependencies between security objects, rules, rulestack and commit resources implicitly. User can specify the resources and ezrulestack module will resolve the dependencies and create the resources in the necessary order. Follow the example here for creating a rulestack using ezrulestack module. Documentation for ezrulestack module can be found here
-## Support
-
-The software and templates in this repo are released under the official support policy of Palo Alto Networks through the support options that you've purchased, for example Premium Support, support teams, or ASC (Authorized Support Centers) partners and Premium Partner Support options. The support scope is restricted to troubleshooting for the stated/intended use cases and product versions specified in the project documentation and does not cover customization of the scripts or templates.

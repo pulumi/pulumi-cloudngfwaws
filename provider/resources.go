@@ -18,6 +18,7 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
+	"regexp"
 
 	_ "embed" // to embed bridge metadata
 
@@ -25,6 +26,7 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
@@ -57,7 +59,7 @@ func Provider(_ context.Context) tfbridge.ProviderInfo {
 		Version:           version.Version,
 		LogoURL:           "https://avatars.githubusercontent.com/u/4855743?s=200&v=4",
 		MetadataInfo:      tfbridge.NewProviderMetadata(bridgeMetadata),
-		// DocRules:          &tfbridge.DocRuleInfo{EditRules: editRules},
+		DocRules:          &tfbridge.DocRuleInfo{EditRules: docEditRules},
 
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"cloudngfwaws_ngfw_log_profile": {ComputeID: missingID},
@@ -127,6 +129,38 @@ func Provider(_ context.Context) tfbridge.ProviderInfo {
 	prov.SetAutonaming(255, "-")
 
 	return prov
+}
+
+var sectionRegexps = []*regexp.Regexp{
+	regexp.MustCompile(`ezrulestack`),
+	regexp.MustCompile(`Support`),
+}
+
+func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+	return append(
+		defaults,
+		skipSections()...,
+	)
+}
+
+// Removes sections meant to address the TF maintainer community, see sectionRegexps
+func skipSections() []tfbridge.DocsEdit {
+	var edits []tfbridge.DocsEdit
+	for _, sectionRegexp := range sectionRegexps {
+		edits = append(
+			edits,
+			tfbridge.DocsEdit{
+				Path: "index.md",
+				Edit: func(_ string, content []byte) ([]byte, error) {
+					return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+						return sectionRegexp.Match([]byte(headerText))
+					})
+				},
+			},
+		)
+	}
+
+	return edits
 }
 
 func missingID(context.Context, resource.PropertyMap) (resource.ID, error) {
