@@ -162,7 +162,7 @@ def get_ngfw_log_profile(account_id: Optional[str] = None,
         ngfw=pulumi.get(__ret__, 'ngfw'))
 def get_ngfw_log_profile_output(account_id: Optional[pulumi.Input[str]] = None,
                                 ngfw: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNgfwLogProfileResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNgfwLogProfileResult]:
     """
     Data source for retrieving log profile information.
 
@@ -187,7 +187,7 @@ def get_ngfw_log_profile_output(account_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['ngfw'] = ngfw
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile', __args__, opts=opts, typ=GetNgfwLogProfileResult)
     return __ret__.apply(lambda __response__: GetNgfwLogProfileResult(
         account_id=pulumi.get(__response__, 'account_id'),

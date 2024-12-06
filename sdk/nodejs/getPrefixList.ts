@@ -135,7 +135,7 @@ export interface GetPrefixListResult {
  * });
  * ```
  */
-export function getPrefixListOutput(args: GetPrefixListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrefixListResult> {
+export function getPrefixListOutput(args: GetPrefixListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrefixListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getPrefixList:getPrefixList", {
         "configType": args.configType,

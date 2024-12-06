@@ -71,7 +71,7 @@ export interface GetAccountsResult {
  * * `Rulestack` (for `scope="Local"`)
  * * `Global Rulestack` (for `scope="Global"`)
  */
-export function getAccountsOutput(args?: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
+export function getAccountsOutput(args?: GetAccountsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getAccounts:getAccounts", {

@@ -314,7 +314,7 @@ def get_ngfw(account_id: Optional[str] = None,
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
 def get_ngfw_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                     name: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNgfwResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNgfwResult]:
     """
     Data source for retrieving NGFW information.
 
@@ -338,7 +338,7 @@ def get_ngfw_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getNgfw:getNgfw', __args__, opts=opts, typ=GetNgfwResult)
     return __ret__.apply(lambda __response__: GetNgfwResult(
         account_id=pulumi.get(__response__, 'account_id'),

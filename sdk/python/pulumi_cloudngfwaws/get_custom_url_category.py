@@ -217,7 +217,7 @@ def get_custom_url_category_output(config_type: Optional[pulumi.Input[Optional[s
                                    name: Optional[pulumi.Input[str]] = None,
                                    rulestack: Optional[pulumi.Input[str]] = None,
                                    scope: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCustomUrlCategoryResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomUrlCategoryResult]:
     """
     Data source for retrieving custom url category information.
 
@@ -255,7 +255,7 @@ def get_custom_url_category_output(config_type: Optional[pulumi.Input[Optional[s
     __args__['name'] = name
     __args__['rulestack'] = rulestack
     __args__['scope'] = scope
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getCustomUrlCategory:getCustomUrlCategory', __args__, opts=opts, typ=GetCustomUrlCategoryResult)
     return __ret__.apply(lambda __response__: GetCustomUrlCategoryResult(
         action=pulumi.get(__response__, 'action'),
