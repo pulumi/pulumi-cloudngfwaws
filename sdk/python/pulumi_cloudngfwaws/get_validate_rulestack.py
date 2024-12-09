@@ -165,7 +165,7 @@ def get_validate_rulestack(rulestack: Optional[str] = None,
         validation_status=pulumi.get(__ret__, 'validation_status'))
 def get_validate_rulestack_output(rulestack: Optional[pulumi.Input[str]] = None,
                                   scope: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetValidateRulestackResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetValidateRulestackResult]:
     """
     Data source to validate the rulestack config.
 
@@ -181,7 +181,7 @@ def get_validate_rulestack_output(rulestack: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['rulestack'] = rulestack
     __args__['scope'] = scope
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getValidateRulestack:getValidateRulestack', __args__, opts=opts, typ=GetValidateRulestackResult)
     return __ret__.apply(lambda __response__: GetValidateRulestackResult(
         commit_errors=pulumi.get(__response__, 'commit_errors'),

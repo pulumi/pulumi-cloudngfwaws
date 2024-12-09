@@ -373,7 +373,7 @@ def get_security_rule_output(config_type: Optional[pulumi.Input[Optional[str]]] 
                              rule_list: Optional[pulumi.Input[Optional[str]]] = None,
                              rulestack: Optional[pulumi.Input[str]] = None,
                              scope: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecurityRuleResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityRuleResult]:
     """
     Data source for retrieving security rule information.
 
@@ -395,7 +395,7 @@ def get_security_rule_output(config_type: Optional[pulumi.Input[Optional[str]]] 
     __args__['ruleList'] = rule_list
     __args__['rulestack'] = rulestack
     __args__['scope'] = scope
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getSecurityRule:getSecurityRule', __args__, opts=opts, typ=GetSecurityRuleResult)
     return __ret__.apply(lambda __response__: GetSecurityRuleResult(
         action=pulumi.get(__response__, 'action'),

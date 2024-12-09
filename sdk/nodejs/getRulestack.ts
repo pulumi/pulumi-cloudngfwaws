@@ -121,7 +121,7 @@ export interface GetRulestackResult {
  * });
  * ```
  */
-export function getRulestackOutput(args: GetRulestackOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulestackResult> {
+export function getRulestackOutput(args: GetRulestackOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRulestackResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getRulestack:getRulestack", {
         "configType": args.configType,

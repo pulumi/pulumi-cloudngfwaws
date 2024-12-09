@@ -139,7 +139,7 @@ export interface GetCustomUrlCategoryResult {
  * });
  * ```
  */
-export function getCustomUrlCategoryOutput(args: GetCustomUrlCategoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomUrlCategoryResult> {
+export function getCustomUrlCategoryOutput(args: GetCustomUrlCategoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomUrlCategoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getCustomUrlCategory:getCustomUrlCategory", {
         "configType": args.configType,

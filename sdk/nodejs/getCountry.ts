@@ -84,7 +84,7 @@ export interface GetCountryResult {
  * const example = cloudngfwaws.getCountry({});
  * ```
  */
-export function getCountryOutput(args?: GetCountryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCountryResult> {
+export function getCountryOutput(args?: GetCountryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCountryResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getCountry:getCountry", {
