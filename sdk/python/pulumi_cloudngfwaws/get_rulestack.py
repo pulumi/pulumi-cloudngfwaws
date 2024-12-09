@@ -228,7 +228,7 @@ def get_rulestack(config_type: Optional[str] = None,
 def get_rulestack_output(config_type: Optional[pulumi.Input[Optional[str]]] = None,
                          name: Optional[pulumi.Input[str]] = None,
                          scope: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRulestackResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRulestackResult]:
     """
     Data source for retrieving rulestack information.
 
@@ -255,7 +255,7 @@ def get_rulestack_output(config_type: Optional[pulumi.Input[Optional[str]]] = No
     __args__['configType'] = config_type
     __args__['name'] = name
     __args__['scope'] = scope
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getRulestack:getRulestack', __args__, opts=opts, typ=GetRulestackResult)
     return __ret__.apply(lambda __response__: GetRulestackResult(
         account_group=pulumi.get(__response__, 'account_group'),

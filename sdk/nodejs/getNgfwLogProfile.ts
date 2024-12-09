@@ -99,7 +99,7 @@ export interface GetNgfwLogProfileResult {
  * });
  * ```
  */
-export function getNgfwLogProfileOutput(args: GetNgfwLogProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNgfwLogProfileResult> {
+export function getNgfwLogProfileOutput(args: GetNgfwLogProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNgfwLogProfileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile", {
         "accountId": args.accountId,

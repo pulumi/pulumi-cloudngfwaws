@@ -84,7 +84,7 @@ export interface GetAppIdVersionsResult {
  * const example = cloudngfwaws.getAppIdVersions({});
  * ```
  */
-export function getAppIdVersionsOutput(args?: GetAppIdVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppIdVersionsResult> {
+export function getAppIdVersionsOutput(args?: GetAppIdVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppIdVersionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getAppIdVersions:getAppIdVersions", {

@@ -135,7 +135,7 @@ export interface GetFqdnListResult {
  * });
  * ```
  */
-export function getFqdnListOutput(args: GetFqdnListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFqdnListResult> {
+export function getFqdnListOutput(args: GetFqdnListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFqdnListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getFqdnList:getFqdnList", {
         "configType": args.configType,

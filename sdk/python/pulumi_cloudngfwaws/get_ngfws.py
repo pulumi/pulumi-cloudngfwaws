@@ -122,7 +122,7 @@ def get_ngfws(rulestack: Optional[str] = None,
         vpc_ids=pulumi.get(__ret__, 'vpc_ids'))
 def get_ngfws_output(rulestack: Optional[pulumi.Input[Optional[str]]] = None,
                      vpc_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNgfwsResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNgfwsResult]:
     """
     Data source get a list of NGFWs.
 
@@ -146,7 +146,7 @@ def get_ngfws_output(rulestack: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['rulestack'] = rulestack
     __args__['vpcIds'] = vpc_ids
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getNgfws:getNgfws', __args__, opts=opts, typ=GetNgfwsResult)
     return __ret__.apply(lambda __response__: GetNgfwsResult(
         id=pulumi.get(__response__, 'id'),

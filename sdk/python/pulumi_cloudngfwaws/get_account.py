@@ -215,7 +215,7 @@ def get_account_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                        service_account_id: Optional[pulumi.Input[Optional[str]]] = None,
                        sns_topic_arn: Optional[pulumi.Input[Optional[str]]] = None,
                        trusted_account: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountResult]:
     """
     Data source for retrieving account information.
 
@@ -243,7 +243,7 @@ def get_account_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['serviceAccountId'] = service_account_id
     __args__['snsTopicArn'] = sns_topic_arn
     __args__['trustedAccount'] = trusted_account
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult)
     return __ret__.apply(lambda __response__: GetAccountResult(
         account_id=pulumi.get(__response__, 'account_id'),
