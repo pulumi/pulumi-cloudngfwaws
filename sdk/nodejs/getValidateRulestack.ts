@@ -79,7 +79,7 @@ export interface GetValidateRulestackResult {
  * * `Rulestack` (for `scope="Local"`)
  * * `Global Rulestack` (for `scope="Global"`)
  */
-export function getValidateRulestackOutput(args: GetValidateRulestackOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetValidateRulestackResult> {
+export function getValidateRulestackOutput(args: GetValidateRulestackOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetValidateRulestackResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getValidateRulestack:getValidateRulestack", {
         "rulestack": args.rulestack,

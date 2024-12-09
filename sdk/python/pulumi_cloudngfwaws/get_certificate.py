@@ -217,7 +217,7 @@ def get_certificate_output(config_type: Optional[pulumi.Input[Optional[str]]] = 
                            name: Optional[pulumi.Input[str]] = None,
                            rulestack: Optional[pulumi.Input[str]] = None,
                            scope: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificateResult]:
     """
     Data source for retrieving certificate information.
 
@@ -255,7 +255,7 @@ def get_certificate_output(config_type: Optional[pulumi.Input[Optional[str]]] = 
     __args__['name'] = name
     __args__['rulestack'] = rulestack
     __args__['scope'] = scope
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getCertificate:getCertificate', __args__, opts=opts, typ=GetCertificateResult)
     return __ret__.apply(lambda __response__: GetCertificateResult(
         audit_comment=pulumi.get(__response__, 'audit_comment'),

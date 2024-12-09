@@ -82,7 +82,7 @@ export interface GetNgfwsResult {
  * const example = cloudngfwaws.getNgfws({});
  * ```
  */
-export function getNgfwsOutput(args?: GetNgfwsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNgfwsResult> {
+export function getNgfwsOutput(args?: GetNgfwsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNgfwsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getNgfws:getNgfws", {

@@ -122,7 +122,7 @@ export interface GetPredefinedUrlCategoryOverrideResult {
  * });
  * ```
  */
-export function getPredefinedUrlCategoryOverrideOutput(args: GetPredefinedUrlCategoryOverrideOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPredefinedUrlCategoryOverrideResult> {
+export function getPredefinedUrlCategoryOverrideOutput(args: GetPredefinedUrlCategoryOverrideOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPredefinedUrlCategoryOverrideResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getPredefinedUrlCategoryOverride:getPredefinedUrlCategoryOverride", {
         "configType": args.configType,

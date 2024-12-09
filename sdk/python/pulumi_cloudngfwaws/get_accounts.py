@@ -119,7 +119,7 @@ def get_accounts(account_details: Optional[Sequence[Union['GetAccountsAccountDet
 def get_accounts_output(account_details: Optional[pulumi.Input[Optional[Sequence[Union['GetAccountsAccountDetailArgs', 'GetAccountsAccountDetailArgsDict']]]]] = None,
                         account_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         describe: Optional[pulumi.Input[Optional[bool]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountsResult]:
     """
     Data source get a list of Accounts.
 
@@ -137,7 +137,7 @@ def get_accounts_output(account_details: Optional[pulumi.Input[Optional[Sequence
     __args__['accountDetails'] = account_details
     __args__['accountIds'] = account_ids
     __args__['describe'] = describe
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult)
     return __ret__.apply(lambda __response__: GetAccountsResult(
         account_details=pulumi.get(__response__, 'account_details'),

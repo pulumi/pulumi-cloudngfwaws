@@ -142,7 +142,7 @@ export interface GetNgfwResult {
  * });
  * ```
  */
-export function getNgfwOutput(args: GetNgfwOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNgfwResult> {
+export function getNgfwOutput(args: GetNgfwOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNgfwResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getNgfw:getNgfw", {
         "accountId": args.accountId,

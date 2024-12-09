@@ -134,7 +134,7 @@ def get_country(max_results: Optional[int] = None,
         token=pulumi.get(__ret__, 'token'))
 def get_country_output(max_results: Optional[pulumi.Input[Optional[int]]] = None,
                        token: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCountryResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCountryResult]:
     """
     Data source get a list of countries and their country codes.
 
@@ -158,7 +158,7 @@ def get_country_output(max_results: Optional[pulumi.Input[Optional[int]]] = None
     __args__ = dict()
     __args__['maxResults'] = max_results
     __args__['token'] = token
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getCountry:getCountry', __args__, opts=opts, typ=GetCountryResult)
     return __ret__.apply(lambda __response__: GetCountryResult(
         codes=pulumi.get(__response__, 'codes'),
