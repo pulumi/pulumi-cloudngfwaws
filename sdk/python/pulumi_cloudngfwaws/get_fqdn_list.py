@@ -204,7 +204,7 @@ def get_fqdn_list_output(config_type: Optional[pulumi.Input[Optional[str]]] = No
                          name: Optional[pulumi.Input[str]] = None,
                          rulestack: Optional[pulumi.Input[str]] = None,
                          scope: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFqdnListResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFqdnListResult]:
     """
     Data source for retrieving fqdn list information.
 
@@ -242,7 +242,7 @@ def get_fqdn_list_output(config_type: Optional[pulumi.Input[Optional[str]]] = No
     __args__['name'] = name
     __args__['rulestack'] = rulestack
     __args__['scope'] = scope
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getFqdnList:getFqdnList', __args__, opts=opts, typ=GetFqdnListResult)
     return __ret__.apply(lambda __response__: GetFqdnListResult(
         audit_comment=pulumi.get(__response__, 'audit_comment'),

@@ -151,7 +151,7 @@ def get_app_id_version(max_results: Optional[int] = None,
 def get_app_id_version_output(max_results: Optional[pulumi.Input[Optional[int]]] = None,
                               token: Optional[pulumi.Input[Optional[str]]] = None,
                               version: Optional[pulumi.Input[str]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppIdVersionResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppIdVersionResult]:
     """
     Data source to retrieve information on a given AppId version.
 
@@ -177,7 +177,7 @@ def get_app_id_version_output(max_results: Optional[pulumi.Input[Optional[int]]]
     __args__['maxResults'] = max_results
     __args__['token'] = token
     __args__['version'] = version
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getAppIdVersion:getAppIdVersion', __args__, opts=opts, typ=GetAppIdVersionResult)
     return __ret__.apply(lambda __response__: GetAppIdVersionResult(
         applications=pulumi.get(__response__, 'applications'),

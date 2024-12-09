@@ -135,7 +135,7 @@ def get_predefined_url_categories(max_results: Optional[int] = None,
         token=pulumi.get(__ret__, 'token'))
 def get_predefined_url_categories_output(max_results: Optional[pulumi.Input[Optional[int]]] = None,
                                          token: Optional[pulumi.Input[Optional[str]]] = None,
-                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPredefinedUrlCategoriesResult]:
+                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPredefinedUrlCategoriesResult]:
     """
     Data source for retrieving the predefined URL categories.
 
@@ -160,7 +160,7 @@ def get_predefined_url_categories_output(max_results: Optional[pulumi.Input[Opti
     __args__ = dict()
     __args__['maxResults'] = max_results
     __args__['token'] = token
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getPredefinedUrlCategories:getPredefinedUrlCategories', __args__, opts=opts, typ=GetPredefinedUrlCategoriesResult)
     return __ret__.apply(lambda __response__: GetPredefinedUrlCategoriesResult(
         categories=pulumi.get(__response__, 'categories'),
