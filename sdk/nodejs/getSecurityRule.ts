@@ -156,7 +156,7 @@ export interface GetSecurityRuleResult {
  * * `Rulestack` (for `scope="Local"`)
  * * `Global Rulestack` (for `scope="Global"`)
  */
-export function getSecurityRuleOutput(args: GetSecurityRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityRuleResult> {
+export function getSecurityRuleOutput(args: GetSecurityRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecurityRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getSecurityRule:getSecurityRule", {
         "configType": args.configType,

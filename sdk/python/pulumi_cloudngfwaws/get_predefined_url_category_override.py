@@ -174,7 +174,7 @@ def get_predefined_url_category_override(config_type: Optional[str] = None,
 def get_predefined_url_category_override_output(config_type: Optional[pulumi.Input[Optional[str]]] = None,
                                                 name: Optional[pulumi.Input[str]] = None,
                                                 rulestack: Optional[pulumi.Input[str]] = None,
-                                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPredefinedUrlCategoryOverrideResult]:
+                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPredefinedUrlCategoryOverrideResult]:
     """
     Data source for retrieving a predefined URL category override.
 
@@ -210,7 +210,7 @@ def get_predefined_url_category_override_output(config_type: Optional[pulumi.Inp
     __args__['configType'] = config_type
     __args__['name'] = name
     __args__['rulestack'] = rulestack
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getPredefinedUrlCategoryOverride:getPredefinedUrlCategoryOverride', __args__, opts=opts, typ=GetPredefinedUrlCategoryOverrideResult)
     return __ret__.apply(lambda __response__: GetPredefinedUrlCategoryOverrideResult(
         action=pulumi.get(__response__, 'action'),

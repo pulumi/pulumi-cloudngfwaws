@@ -86,7 +86,7 @@ export interface GetPredefinedUrlCategoriesResult {
  * const example = cloudngfwaws.getPredefinedUrlCategories({});
  * ```
  */
-export function getPredefinedUrlCategoriesOutput(args?: GetPredefinedUrlCategoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPredefinedUrlCategoriesResult> {
+export function getPredefinedUrlCategoriesOutput(args?: GetPredefinedUrlCategoriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPredefinedUrlCategoriesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getPredefinedUrlCategories:getPredefinedUrlCategories", {

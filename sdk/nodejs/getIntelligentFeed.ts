@@ -151,7 +151,7 @@ export interface GetIntelligentFeedResult {
  * });
  * ```
  */
-export function getIntelligentFeedOutput(args: GetIntelligentFeedOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntelligentFeedResult> {
+export function getIntelligentFeedOutput(args: GetIntelligentFeedOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIntelligentFeedResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getIntelligentFeed:getIntelligentFeed", {
         "configType": args.configType,
