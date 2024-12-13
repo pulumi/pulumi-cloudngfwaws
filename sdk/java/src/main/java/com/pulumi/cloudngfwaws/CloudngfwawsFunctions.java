@@ -62,6 +62,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import java.util.concurrent.CompletableFuture;
 
 public final class CloudngfwawsFunctions {
@@ -134,6 +135,18 @@ public final class CloudngfwawsFunctions {
      * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
      * 
      */
+    public static Output<GetAccountResult> getAccount(GetAccountArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving account information.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Rulestack` (for `scope=&#34;Local&#34;`)
+     * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
+     * 
+     */
     public static CompletableFuture<GetAccountResult> getAccountPlain(GetAccountPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudngfwaws:index/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
     }
@@ -195,6 +208,18 @@ public final class CloudngfwawsFunctions {
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source get a list of Accounts.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Rulestack` (for `scope=&#34;Local&#34;`)
+     * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
+     * 
+     */
+    public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -345,6 +370,52 @@ public final class CloudngfwawsFunctions {
      * 
      */
     public static Output<GetAppIdVersionResult> getAppIdVersion(GetAppIdVersionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getAppIdVersion:getAppIdVersion", TypeShape.of(GetAppIdVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve information on a given AppId version.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Rulestack`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetAppIdVersionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getAppIdVersion(GetAppIdVersionArgs.builder()
+     *             .version("123-456")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAppIdVersionResult> getAppIdVersion(GetAppIdVersionArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getAppIdVersion:getAppIdVersion", TypeShape.of(GetAppIdVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -654,6 +725,50 @@ public final class CloudngfwawsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAppIdVersionsResult> getAppIdVersions(GetAppIdVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getAppIdVersions:getAppIdVersions", TypeShape.of(GetAppIdVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source get a list of AppId versions.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Rulestack`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetAppIdVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getAppIdVersions();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAppIdVersionsResult> getAppIdVersionsPlain(GetAppIdVersionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudngfwaws:index/getAppIdVersions:getAppIdVersions", TypeShape.of(GetAppIdVersionsResult.class), args, Utilities.withVersion(options));
     }
@@ -838,6 +953,67 @@ public final class CloudngfwawsFunctions {
      * 
      */
     public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getCertificate:getCertificate", TypeShape.of(GetCertificateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving certificate information.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Rulestack` (for `scope=&#34;Local&#34;`)
+     * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.Rulestack;
+     * import com.pulumi.cloudngfwaws.RulestackArgs;
+     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .name("my-rulestack")
+     *             .scope("Local")
+     *             .accountId("12345")
+     *             .description("Made by Pulumi")
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var example = CloudngfwawsFunctions.getCertificate(GetCertificateArgs.builder()
+     *             .rulestack(r.name())
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getCertificate:getCertificate", TypeShape.of(GetCertificateResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1162,6 +1338,50 @@ public final class CloudngfwawsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCountryResult> getCountry(GetCountryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getCountry:getCountry", TypeShape.of(GetCountryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source get a list of countries and their country codes.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Rulestack`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetCountryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getCountry();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCountryResult> getCountryPlain(GetCountryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudngfwaws:index/getCountry:getCountry", TypeShape.of(GetCountryResult.class), args, Utilities.withVersion(options));
     }
@@ -1346,6 +1566,67 @@ public final class CloudngfwawsFunctions {
      * 
      */
     public static Output<GetCustomUrlCategoryResult> getCustomUrlCategory(GetCustomUrlCategoryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getCustomUrlCategory:getCustomUrlCategory", TypeShape.of(GetCustomUrlCategoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving custom url category information.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Rulestack` (for `scope=&#34;Local&#34;`)
+     * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.Rulestack;
+     * import com.pulumi.cloudngfwaws.RulestackArgs;
+     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetCustomUrlCategoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .name("my-rulestack")
+     *             .scope("Local")
+     *             .accountId("12345")
+     *             .description("Made by Pulumi")
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var example = CloudngfwawsFunctions.getCustomUrlCategory(GetCustomUrlCategoryArgs.builder()
+     *             .rulestack(r.name())
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCustomUrlCategoryResult> getCustomUrlCategory(GetCustomUrlCategoryArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getCustomUrlCategory:getCustomUrlCategory", TypeShape.of(GetCustomUrlCategoryResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1650,6 +1931,67 @@ public final class CloudngfwawsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetFqdnListResult> getFqdnList(GetFqdnListArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getFqdnList:getFqdnList", TypeShape.of(GetFqdnListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving fqdn list information.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Rulestack` (for `scope=&#34;Local&#34;`)
+     * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.Rulestack;
+     * import com.pulumi.cloudngfwaws.RulestackArgs;
+     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetFqdnListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .name("my-rulestack")
+     *             .scope("Local")
+     *             .accountId("12345")
+     *             .description("Made by Pulumi")
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var example = CloudngfwawsFunctions.getFqdnList(GetFqdnListArgs.builder()
+     *             .rulestack(r.name())
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFqdnListResult> getFqdnListPlain(GetFqdnListPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudngfwaws:index/getFqdnList:getFqdnList", TypeShape.of(GetFqdnListResult.class), args, Utilities.withVersion(options));
     }
@@ -1894,6 +2236,67 @@ public final class CloudngfwawsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetIntelligentFeedResult> getIntelligentFeed(GetIntelligentFeedArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getIntelligentFeed:getIntelligentFeed", TypeShape.of(GetIntelligentFeedResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving intelligent feed information.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Rulestack` (for `scope=&#34;Local&#34;`)
+     * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.Rulestack;
+     * import com.pulumi.cloudngfwaws.RulestackArgs;
+     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetIntelligentFeedArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .name("my-rulestack")
+     *             .scope("Local")
+     *             .accountId("12345")
+     *             .description("Made by Pulumi")
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var example = CloudngfwawsFunctions.getIntelligentFeed(GetIntelligentFeedArgs.builder()
+     *             .rulestack(r.name())
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetIntelligentFeedResult> getIntelligentFeedPlain(GetIntelligentFeedPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudngfwaws:index/getIntelligentFeed:getIntelligentFeed", TypeShape.of(GetIntelligentFeedResult.class), args, Utilities.withVersion(options));
     }
@@ -2033,6 +2436,52 @@ public final class CloudngfwawsFunctions {
      * 
      */
     public static Output<GetNgfwResult> getNgfw(GetNgfwArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getNgfw:getNgfw", TypeShape.of(GetNgfwResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving NGFW information.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Firewall`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getNgfw(GetNgfwArgs.builder()
+     *             .name("example-instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNgfwResult> getNgfw(GetNgfwArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getNgfw:getNgfw", TypeShape.of(GetNgfwResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2220,6 +2669,53 @@ public final class CloudngfwawsFunctions {
      * 
      */
     public static Output<GetNgfwLogProfileResult> getNgfwLogProfile(GetNgfwLogProfileArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile", TypeShape.of(GetNgfwLogProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving log profile information.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Firewall`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetNgfwLogProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getNgfwLogProfile(GetNgfwLogProfileArgs.builder()
+     *             .ngfw("example-instance")
+     *             .accountId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNgfwLogProfileResult> getNgfwLogProfile(GetNgfwLogProfileArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile", TypeShape.of(GetNgfwLogProfileResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2487,6 +2983,50 @@ public final class CloudngfwawsFunctions {
      * 
      */
     public static Output<GetNgfwsResult> getNgfws(GetNgfwsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getNgfws:getNgfws", TypeShape.of(GetNgfwsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source get a list of NGFWs.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Firewall`
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetNgfwsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getNgfws();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNgfwsResult> getNgfws(GetNgfwsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getNgfws:getNgfws", TypeShape.of(GetNgfwsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2800,6 +3340,51 @@ public final class CloudngfwawsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPredefinedUrlCategoriesResult> getPredefinedUrlCategories(GetPredefinedUrlCategoriesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getPredefinedUrlCategories:getPredefinedUrlCategories", TypeShape.of(GetPredefinedUrlCategoriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving the predefined URL categories.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Rulestack` (for `scope=&#34;Local&#34;`)
+     * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetPredefinedUrlCategoriesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategories();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPredefinedUrlCategoriesResult> getPredefinedUrlCategoriesPlain(GetPredefinedUrlCategoriesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudngfwaws:index/getPredefinedUrlCategories:getPredefinedUrlCategories", TypeShape.of(GetPredefinedUrlCategoriesResult.class), args, Utilities.withVersion(options));
     }
@@ -2984,6 +3569,67 @@ public final class CloudngfwawsFunctions {
      * 
      */
     public static Output<GetPredefinedUrlCategoryOverrideResult> getPredefinedUrlCategoryOverride(GetPredefinedUrlCategoryOverrideArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getPredefinedUrlCategoryOverride:getPredefinedUrlCategoryOverride", TypeShape.of(GetPredefinedUrlCategoryOverrideResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a predefined URL category override.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Rulestack` (for `scope=&#34;Local&#34;`)
+     * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.Rulestack;
+     * import com.pulumi.cloudngfwaws.RulestackArgs;
+     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetPredefinedUrlCategoryOverrideArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .name("my-rulestack")
+     *             .scope("Local")
+     *             .accountId("12345")
+     *             .description("Made by Pulumi")
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategoryOverride(GetPredefinedUrlCategoryOverrideArgs.builder()
+     *             .rulestack(r.name())
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPredefinedUrlCategoryOverrideResult> getPredefinedUrlCategoryOverride(GetPredefinedUrlCategoryOverrideArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getPredefinedUrlCategoryOverride:getPredefinedUrlCategoryOverride", TypeShape.of(GetPredefinedUrlCategoryOverrideResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3288,6 +3934,67 @@ public final class CloudngfwawsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPrefixListResult> getPrefixList(GetPrefixListArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getPrefixList:getPrefixList", TypeShape.of(GetPrefixListResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving prefix list information.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Rulestack` (for `scope=&#34;Local&#34;`)
+     * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.Rulestack;
+     * import com.pulumi.cloudngfwaws.RulestackArgs;
+     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetPrefixListArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .name("my-rulestack")
+     *             .scope("Local")
+     *             .accountId("12345")
+     *             .description("Made by Pulumi")
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var example = CloudngfwawsFunctions.getPrefixList(GetPrefixListArgs.builder()
+     *             .rulestack(r.name())
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPrefixListResult> getPrefixListPlain(GetPrefixListPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudngfwaws:index/getPrefixList:getPrefixList", TypeShape.of(GetPrefixListResult.class), args, Utilities.withVersion(options));
     }
@@ -3430,6 +4137,53 @@ public final class CloudngfwawsFunctions {
      * 
      */
     public static Output<GetRulestackResult> getRulestack(GetRulestackArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getRulestack:getRulestack", TypeShape.of(GetRulestackResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving rulestack information.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Rulestack` (for `scope=&#34;Local&#34;`)
+     * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetRulestackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getRulestack(GetRulestackArgs.builder()
+     *             .name("my-rulestack-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRulestackResult> getRulestack(GetRulestackArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getRulestack:getRulestack", TypeShape.of(GetRulestackResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3720,6 +4474,67 @@ public final class CloudngfwawsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSecurityRuleResult> getSecurityRule(GetSecurityRuleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getSecurityRule:getSecurityRule", TypeShape.of(GetSecurityRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving security rule information.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Rulestack` (for `scope=&#34;Local&#34;`)
+     * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.Rulestack;
+     * import com.pulumi.cloudngfwaws.RulestackArgs;
+     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetSecurityRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .name("my-rulestack")
+     *             .scope("Local")
+     *             .accountId("12345")
+     *             .description("Made by Pulumi")
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
+     *             .build());
+     * 
+     *         final var example = CloudngfwawsFunctions.getSecurityRule(GetSecurityRuleArgs.builder()
+     *             .rulestack(r.name())
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSecurityRuleResult> getSecurityRulePlain(GetSecurityRulePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudngfwaws:index/getSecurityRule:getSecurityRule", TypeShape.of(GetSecurityRuleResult.class), args, Utilities.withVersion(options));
     }
@@ -3757,6 +4572,18 @@ public final class CloudngfwawsFunctions {
      * 
      */
     public static Output<GetValidateRulestackResult> getValidateRulestack(GetValidateRulestackArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudngfwaws:index/getValidateRulestack:getValidateRulestack", TypeShape.of(GetValidateRulestackResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to validate the rulestack config.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Rulestack` (for `scope=&#34;Local&#34;`)
+     * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
+     * 
+     */
+    public static Output<GetValidateRulestackResult> getValidateRulestack(GetValidateRulestackArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getValidateRulestack:getValidateRulestack", TypeShape.of(GetValidateRulestackResult.class), args, Utilities.withVersion(options));
     }
     /**

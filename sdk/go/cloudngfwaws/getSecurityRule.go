@@ -92,21 +92,11 @@ type LookupSecurityRuleResult struct {
 }
 
 func LookupSecurityRuleOutput(ctx *pulumi.Context, args LookupSecurityRuleOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSecurityRuleResultOutput, error) {
 			args := v.(LookupSecurityRuleArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupSecurityRuleResult
-			secret, err := ctx.InvokePackageRaw("cloudngfwaws:index/getSecurityRule:getSecurityRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSecurityRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSecurityRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSecurityRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudngfwaws:index/getSecurityRule:getSecurityRule", args, LookupSecurityRuleResultOutput{}, options).(LookupSecurityRuleResultOutput), nil
 		}).(LookupSecurityRuleResultOutput)
 }
 

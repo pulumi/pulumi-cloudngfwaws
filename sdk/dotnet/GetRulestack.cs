@@ -72,6 +72,37 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public static Output<GetRulestackResult> Invoke(GetRulestackInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRulestackResult>("cloudngfwaws:index/getRulestack:getRulestack", args ?? new GetRulestackInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving rulestack information.
+        /// 
+        /// 
+        /// ## Admin Permission Type
+        /// 
+        /// * `Rulestack` (for `scope="Local"`)
+        /// * `Global Rulestack` (for `scope="Global"`)
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = CloudNgfwAws.GetRulestack.Invoke(new()
+        ///     {
+        ///         Name = "my-rulestack-name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRulestackResult> Invoke(GetRulestackInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRulestackResult>("cloudngfwaws:index/getRulestack:getRulestack", args ?? new GetRulestackInvokeArgs(), options.WithDefaults());
     }
 
 

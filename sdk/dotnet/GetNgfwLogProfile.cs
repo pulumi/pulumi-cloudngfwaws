@@ -72,6 +72,37 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public static Output<GetNgfwLogProfileResult> Invoke(GetNgfwLogProfileInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNgfwLogProfileResult>("cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile", args ?? new GetNgfwLogProfileInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving log profile information.
+        /// 
+        /// 
+        /// ## Admin Permission Type
+        /// 
+        /// * `Firewall`
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = CloudNgfwAws.GetNgfwLogProfile.Invoke(new()
+        ///     {
+        ///         Ngfw = "example-instance",
+        ///         AccountId = "123456789",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNgfwLogProfileResult> Invoke(GetNgfwLogProfileInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNgfwLogProfileResult>("cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile", args ?? new GetNgfwLogProfileInvokeArgs(), options.WithDefaults());
     }
 
 

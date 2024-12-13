@@ -64,6 +64,33 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public static Output<GetCountryResult> Invoke(GetCountryInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCountryResult>("cloudngfwaws:index/getCountry:getCountry", args ?? new GetCountryInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source get a list of countries and their country codes.
+        /// 
+        /// 
+        /// ## Admin Permission Type
+        /// 
+        /// * `Rulestack`
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = CloudNgfwAws.GetCountry.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCountryResult> Invoke(GetCountryInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCountryResult>("cloudngfwaws:index/getCountry:getCountry", args ?? new GetCountryInvokeArgs(), options.WithDefaults());
     }
 
 

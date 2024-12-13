@@ -80,21 +80,11 @@ type LookupNgfwLogProfileResult struct {
 }
 
 func LookupNgfwLogProfileOutput(ctx *pulumi.Context, args LookupNgfwLogProfileOutputArgs, opts ...pulumi.InvokeOption) LookupNgfwLogProfileResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNgfwLogProfileResultOutput, error) {
 			args := v.(LookupNgfwLogProfileArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupNgfwLogProfileResult
-			secret, err := ctx.InvokePackageRaw("cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNgfwLogProfileResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNgfwLogProfileResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNgfwLogProfileResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile", args, LookupNgfwLogProfileResultOutput{}, options).(LookupNgfwLogProfileResultOutput), nil
 		}).(LookupNgfwLogProfileResultOutput)
 }
 
