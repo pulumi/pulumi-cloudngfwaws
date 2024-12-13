@@ -102,21 +102,11 @@ type LookupNgfwResult struct {
 }
 
 func LookupNgfwOutput(ctx *pulumi.Context, args LookupNgfwOutputArgs, opts ...pulumi.InvokeOption) LookupNgfwResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNgfwResultOutput, error) {
 			args := v.(LookupNgfwArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupNgfwResult
-			secret, err := ctx.InvokePackageRaw("cloudngfwaws:index/getNgfw:getNgfw", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNgfwResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNgfwResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNgfwResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudngfwaws:index/getNgfw:getNgfw", args, LookupNgfwResultOutput{}, options).(LookupNgfwResultOutput), nil
 		}).(LookupNgfwResultOutput)
 }
 

@@ -98,6 +98,50 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public static Output<GetCertificateResult> Invoke(GetCertificateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCertificateResult>("cloudngfwaws:index/getCertificate:getCertificate", args ?? new GetCertificateInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving certificate information.
+        /// 
+        /// 
+        /// ## Admin Permission Type
+        /// 
+        /// * `Rulestack` (for `scope="Local"`)
+        /// * `Global Rulestack` (for `scope="Global"`)
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var r = new CloudNgfwAws.Rulestack("r", new()
+        ///     {
+        ///         Name = "my-rulestack",
+        ///         Scope = "Local",
+        ///         AccountId = "12345",
+        ///         Description = "Made by Pulumi",
+        ///         ProfileConfig = new CloudNgfwAws.Inputs.RulestackProfileConfigArgs
+        ///         {
+        ///             AntiSpyware = "BestPractice",
+        ///         },
+        ///     });
+        /// 
+        ///     var example = CloudNgfwAws.GetCertificate.Invoke(new()
+        ///     {
+        ///         Rulestack = r.Name,
+        ///         Name = "foobar",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCertificateResult> Invoke(GetCertificateInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCertificateResult>("cloudngfwaws:index/getCertificate:getCertificate", args ?? new GetCertificateInvokeArgs(), options.WithDefaults());
     }
 
 

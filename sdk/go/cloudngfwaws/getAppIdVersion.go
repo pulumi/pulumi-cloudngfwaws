@@ -79,21 +79,11 @@ type GetAppIdVersionResult struct {
 }
 
 func GetAppIdVersionOutput(ctx *pulumi.Context, args GetAppIdVersionOutputArgs, opts ...pulumi.InvokeOption) GetAppIdVersionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAppIdVersionResultOutput, error) {
 			args := v.(GetAppIdVersionArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAppIdVersionResult
-			secret, err := ctx.InvokePackageRaw("cloudngfwaws:index/getAppIdVersion:getAppIdVersion", args, &rv, "", opts...)
-			if err != nil {
-				return GetAppIdVersionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAppIdVersionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAppIdVersionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudngfwaws:index/getAppIdVersion:getAppIdVersion", args, GetAppIdVersionResultOutput{}, options).(GetAppIdVersionResultOutput), nil
 		}).(GetAppIdVersionResultOutput)
 }
 

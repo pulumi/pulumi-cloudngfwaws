@@ -66,6 +66,34 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public static Output<GetPredefinedUrlCategoriesResult> Invoke(GetPredefinedUrlCategoriesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPredefinedUrlCategoriesResult>("cloudngfwaws:index/getPredefinedUrlCategories:getPredefinedUrlCategories", args ?? new GetPredefinedUrlCategoriesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving the predefined URL categories.
+        /// 
+        /// 
+        /// ## Admin Permission Type
+        /// 
+        /// * `Rulestack` (for `scope="Local"`)
+        /// * `Global Rulestack` (for `scope="Global"`)
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = CloudNgfwAws.GetPredefinedUrlCategories.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPredefinedUrlCategoriesResult> Invoke(GetPredefinedUrlCategoriesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPredefinedUrlCategoriesResult>("cloudngfwaws:index/getPredefinedUrlCategories:getPredefinedUrlCategories", args ?? new GetPredefinedUrlCategoriesInvokeArgs(), options.WithDefaults());
     }
 
 

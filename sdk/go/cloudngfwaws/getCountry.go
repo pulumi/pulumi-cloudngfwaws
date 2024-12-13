@@ -73,21 +73,11 @@ type GetCountryResult struct {
 }
 
 func GetCountryOutput(ctx *pulumi.Context, args GetCountryOutputArgs, opts ...pulumi.InvokeOption) GetCountryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCountryResultOutput, error) {
 			args := v.(GetCountryArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetCountryResult
-			secret, err := ctx.InvokePackageRaw("cloudngfwaws:index/getCountry:getCountry", args, &rv, "", opts...)
-			if err != nil {
-				return GetCountryResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetCountryResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetCountryResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudngfwaws:index/getCountry:getCountry", args, GetCountryResultOutput{}, options).(GetCountryResultOutput), nil
 		}).(GetCountryResultOutput)
 }
 
