@@ -64,6 +64,33 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public static Output<GetNgfwsResult> Invoke(GetNgfwsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNgfwsResult>("cloudngfwaws:index/getNgfws:getNgfws", args ?? new GetNgfwsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source get a list of NGFWs.
+        /// 
+        /// 
+        /// ## Admin Permission Type
+        /// 
+        /// * `Firewall`
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = CloudNgfwAws.GetNgfws.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNgfwsResult> Invoke(GetNgfwsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNgfwsResult>("cloudngfwaws:index/getNgfws:getNgfws", args ?? new GetNgfwsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -34,6 +34,18 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public static Output<GetValidateRulestackResult> Invoke(GetValidateRulestackInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetValidateRulestackResult>("cloudngfwaws:index/getValidateRulestack:getValidateRulestack", args ?? new GetValidateRulestackInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source to validate the rulestack config.
+        /// 
+        /// 
+        /// ## Admin Permission Type
+        /// 
+        /// * `Rulestack` (for `scope="Local"`)
+        /// * `Global Rulestack` (for `scope="Global"`)
+        /// </summary>
+        public static Output<GetValidateRulestackResult> Invoke(GetValidateRulestackInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetValidateRulestackResult>("cloudngfwaws:index/getValidateRulestack:getValidateRulestack", args ?? new GetValidateRulestackInvokeArgs(), options.WithDefaults());
     }
 
 

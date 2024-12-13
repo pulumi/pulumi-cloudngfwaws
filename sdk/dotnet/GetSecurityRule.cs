@@ -34,6 +34,18 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public static Output<GetSecurityRuleResult> Invoke(GetSecurityRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecurityRuleResult>("cloudngfwaws:index/getSecurityRule:getSecurityRule", args ?? new GetSecurityRuleInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving security rule information.
+        /// 
+        /// 
+        /// ## Admin Permission Type
+        /// 
+        /// * `Rulestack` (for `scope="Local"`)
+        /// * `Global Rulestack` (for `scope="Global"`)
+        /// </summary>
+        public static Output<GetSecurityRuleResult> Invoke(GetSecurityRuleInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecurityRuleResult>("cloudngfwaws:index/getSecurityRule:getSecurityRule", args ?? new GetSecurityRuleInvokeArgs(), options.WithDefaults());
     }
 
 

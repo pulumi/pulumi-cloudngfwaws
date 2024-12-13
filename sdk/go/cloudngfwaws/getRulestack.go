@@ -91,21 +91,11 @@ type LookupRulestackResult struct {
 }
 
 func LookupRulestackOutput(ctx *pulumi.Context, args LookupRulestackOutputArgs, opts ...pulumi.InvokeOption) LookupRulestackResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRulestackResultOutput, error) {
 			args := v.(LookupRulestackArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRulestackResult
-			secret, err := ctx.InvokePackageRaw("cloudngfwaws:index/getRulestack:getRulestack", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRulestackResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRulestackResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRulestackResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("cloudngfwaws:index/getRulestack:getRulestack", args, LookupRulestackResultOutput{}, options).(LookupRulestackResultOutput), nil
 		}).(LookupRulestackResultOutput)
 }
 

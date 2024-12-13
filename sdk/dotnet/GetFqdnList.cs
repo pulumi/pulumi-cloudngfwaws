@@ -98,6 +98,50 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public static Output<GetFqdnListResult> Invoke(GetFqdnListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFqdnListResult>("cloudngfwaws:index/getFqdnList:getFqdnList", args ?? new GetFqdnListInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source for retrieving fqdn list information.
+        /// 
+        /// 
+        /// ## Admin Permission Type
+        /// 
+        /// * `Rulestack` (for `scope="Local"`)
+        /// * `Global Rulestack` (for `scope="Global"`)
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var r = new CloudNgfwAws.Rulestack("r", new()
+        ///     {
+        ///         Name = "my-rulestack",
+        ///         Scope = "Local",
+        ///         AccountId = "12345",
+        ///         Description = "Made by Pulumi",
+        ///         ProfileConfig = new CloudNgfwAws.Inputs.RulestackProfileConfigArgs
+        ///         {
+        ///             AntiSpyware = "BestPractice",
+        ///         },
+        ///     });
+        /// 
+        ///     var example = CloudNgfwAws.GetFqdnList.Invoke(new()
+        ///     {
+        ///         Rulestack = r.Name,
+        ///         Name = "foobar",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFqdnListResult> Invoke(GetFqdnListInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFqdnListResult>("cloudngfwaws:index/getFqdnList:getFqdnList", args ?? new GetFqdnListInvokeArgs(), options.WithDefaults());
     }
 
 

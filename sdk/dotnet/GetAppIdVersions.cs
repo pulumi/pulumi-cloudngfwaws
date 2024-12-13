@@ -64,6 +64,33 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public static Output<GetAppIdVersionsResult> Invoke(GetAppIdVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppIdVersionsResult>("cloudngfwaws:index/getAppIdVersions:getAppIdVersions", args ?? new GetAppIdVersionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Data source get a list of AppId versions.
+        /// 
+        /// 
+        /// ## Admin Permission Type
+        /// 
+        /// * `Rulestack`
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = CloudNgfwAws.GetAppIdVersions.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAppIdVersionsResult> Invoke(GetAppIdVersionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppIdVersionsResult>("cloudngfwaws:index/getAppIdVersions:getAppIdVersions", args ?? new GetAppIdVersionsInvokeArgs(), options.WithDefaults());
     }
 
 
