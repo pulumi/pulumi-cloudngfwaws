@@ -6,7 +6,7 @@ toolchain go1.22.10
 
 require (
 	github.com/paloaltonetworks/terraform-provider-cloudngfwaws v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.98.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.99.0
 	github.com/pulumi/pulumi/sdk/v3 v3.143.0
 )
 
