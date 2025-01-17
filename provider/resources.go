@@ -114,6 +114,7 @@ func Provider(_ context.Context) tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 		},
+		EnableAccurateBridgePreview: true,
 	}
 
 	prov.MustComputeTokens(
