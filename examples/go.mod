@@ -5,8 +5,8 @@ go 1.22
 toolchain go1.22.11
 
 require (
-	github.com/pulumi/pulumi/pkg/v3 v3.148.0
-	github.com/pulumi/pulumi/sdk/v3 v3.148.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.153.0
+	github.com/pulumi/pulumi/sdk/v3 v3.153.0 // indirect
 )
 
 require (
