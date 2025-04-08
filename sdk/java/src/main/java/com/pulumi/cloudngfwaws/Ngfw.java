@@ -33,9 +33,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudngfwaws.CommitRulestack;
  * import com.pulumi.cloudngfwaws.CommitRulestackArgs;
  * import com.pulumi.aws.vpc;
- * import com.pulumi.aws.VpcArgs;
+ * import com.pulumi.aws.vpcArgs;
  * import com.pulumi.aws.subnet;
- * import com.pulumi.aws.SubnetArgs;
+ * import com.pulumi.aws.subnetArgs;
  * import com.pulumi.cloudngfwaws.Ngfw;
  * import com.pulumi.cloudngfwaws.NgfwArgs;
  * import com.pulumi.cloudngfwaws.inputs.NgfwSubnetMappingArgs;
@@ -58,21 +58,21 @@ import javax.annotation.Nullable;
  * 
  *         var exampleVpc = new Vpc("exampleVpc", VpcArgs.builder()
  *             .cidrBlock("172.16.0.0/16")
- *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .tags(Map.of("name", "tf-example"))
  *             .build());
  * 
  *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
  *             .vpcId(myVpc.id())
  *             .cidrBlock("172.16.10.0/24")
  *             .availabilityZone("us-west-2a")
- *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .tags(Map.of("name", "tf-example"))
  *             .build());
  * 
  *         var subnet2 = new Subnet("subnet2", SubnetArgs.builder()
  *             .vpcId(myVpc.id())
  *             .cidrBlock("172.16.20.0/24")
  *             .availabilityZone("us-west-2b")
- *             .tags(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .tags(Map.of("name", "tf-example"))
  *             .build());
  * 
  *         var example = new Ngfw("example", NgfwArgs.builder()
