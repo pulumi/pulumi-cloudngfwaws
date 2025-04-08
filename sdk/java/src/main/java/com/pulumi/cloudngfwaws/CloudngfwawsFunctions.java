@@ -496,7 +496,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getAppIdVersions();
+     *         final var example = CloudngfwawsFunctions.getAppIdVersions(GetAppIdVersionsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -540,7 +541,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getAppIdVersions();
+     *         final var example = CloudngfwawsFunctions.getAppIdVersions(GetAppIdVersionsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -584,7 +586,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getAppIdVersions();
+     *         final var example = CloudngfwawsFunctions.getAppIdVersions(GetAppIdVersionsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -628,7 +631,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getAppIdVersions();
+     *         final var example = CloudngfwawsFunctions.getAppIdVersions(GetAppIdVersionsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -672,7 +676,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getAppIdVersions();
+     *         final var example = CloudngfwawsFunctions.getAppIdVersions(GetAppIdVersionsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -716,7 +721,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getAppIdVersions();
+     *         final var example = CloudngfwawsFunctions.getAppIdVersions(GetAppIdVersionsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -760,7 +766,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getAppIdVersions();
+     *         final var example = CloudngfwawsFunctions.getAppIdVersions(GetAppIdVersionsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1109,7 +1116,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getCountry();
+     *         final var example = CloudngfwawsFunctions.getCountry(GetCountryArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1153,7 +1161,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getCountry();
+     *         final var example = CloudngfwawsFunctions.getCountry(GetCountryArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1197,7 +1206,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getCountry();
+     *         final var example = CloudngfwawsFunctions.getCountry(GetCountryArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1241,7 +1251,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getCountry();
+     *         final var example = CloudngfwawsFunctions.getCountry(GetCountryArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1285,7 +1296,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getCountry();
+     *         final var example = CloudngfwawsFunctions.getCountry(GetCountryArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1329,7 +1341,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getCountry();
+     *         final var example = CloudngfwawsFunctions.getCountry(GetCountryArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1373,7 +1386,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getCountry();
+     *         final var example = CloudngfwawsFunctions.getCountry(GetCountryArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2797,7 +2811,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getNgfws();
+     *         final var example = CloudngfwawsFunctions.getNgfws(GetNgfwsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2841,7 +2856,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getNgfws();
+     *         final var example = CloudngfwawsFunctions.getNgfws(GetNgfwsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2885,7 +2901,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getNgfws();
+     *         final var example = CloudngfwawsFunctions.getNgfws(GetNgfwsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2929,7 +2946,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getNgfws();
+     *         final var example = CloudngfwawsFunctions.getNgfws(GetNgfwsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2973,7 +2991,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getNgfws();
+     *         final var example = CloudngfwawsFunctions.getNgfws(GetNgfwsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3017,7 +3036,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getNgfws();
+     *         final var example = CloudngfwawsFunctions.getNgfws(GetNgfwsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3061,7 +3081,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getNgfws();
+     *         final var example = CloudngfwawsFunctions.getNgfws(GetNgfwsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3106,7 +3127,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategories();
+     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategories(GetPredefinedUrlCategoriesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3151,7 +3173,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategories();
+     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategories(GetPredefinedUrlCategoriesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3196,7 +3219,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategories();
+     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategories(GetPredefinedUrlCategoriesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3241,7 +3265,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategories();
+     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategories(GetPredefinedUrlCategoriesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3286,7 +3311,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategories();
+     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategories(GetPredefinedUrlCategoriesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3331,7 +3357,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategories();
+     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategories(GetPredefinedUrlCategoriesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -3376,7 +3403,8 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategories();
+     *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategories(GetPredefinedUrlCategoriesArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -4244,50 +4272,6 @@ public final class CloudngfwawsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudngfwaws.Rulestack;
-     * import com.pulumi.cloudngfwaws.RulestackArgs;
-     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
-     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
-     * import com.pulumi.cloudngfwaws.inputs.GetSecurityRuleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var r = new Rulestack("r", RulestackArgs.builder()
-     *             .name("my-rulestack")
-     *             .scope("Local")
-     *             .accountId("12345")
-     *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
-     *             .build());
-     * 
-     *         final var example = CloudngfwawsFunctions.getSecurityRule(GetSecurityRuleArgs.builder()
-     *             .rulestack(r.name())
-     *             .name("foobar")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4305,50 +4289,6 @@ public final class CloudngfwawsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudngfwaws.Rulestack;
-     * import com.pulumi.cloudngfwaws.RulestackArgs;
-     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
-     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
-     * import com.pulumi.cloudngfwaws.inputs.GetSecurityRuleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var r = new Rulestack("r", RulestackArgs.builder()
-     *             .name("my-rulestack")
-     *             .scope("Local")
-     *             .accountId("12345")
-     *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
-     *             .build());
-     * 
-     *         final var example = CloudngfwawsFunctions.getSecurityRule(GetSecurityRuleArgs.builder()
-     *             .rulestack(r.name())
-     *             .name("foobar")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4366,50 +4306,6 @@ public final class CloudngfwawsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudngfwaws.Rulestack;
-     * import com.pulumi.cloudngfwaws.RulestackArgs;
-     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
-     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
-     * import com.pulumi.cloudngfwaws.inputs.GetSecurityRuleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var r = new Rulestack("r", RulestackArgs.builder()
-     *             .name("my-rulestack")
-     *             .scope("Local")
-     *             .accountId("12345")
-     *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
-     *             .build());
-     * 
-     *         final var example = CloudngfwawsFunctions.getSecurityRule(GetSecurityRuleArgs.builder()
-     *             .rulestack(r.name())
-     *             .name("foobar")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4427,50 +4323,6 @@ public final class CloudngfwawsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudngfwaws.Rulestack;
-     * import com.pulumi.cloudngfwaws.RulestackArgs;
-     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
-     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
-     * import com.pulumi.cloudngfwaws.inputs.GetSecurityRuleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var r = new Rulestack("r", RulestackArgs.builder()
-     *             .name("my-rulestack")
-     *             .scope("Local")
-     *             .accountId("12345")
-     *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
-     *             .build());
-     * 
-     *         final var example = CloudngfwawsFunctions.getSecurityRule(GetSecurityRuleArgs.builder()
-     *             .rulestack(r.name())
-     *             .name("foobar")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4488,50 +4340,6 @@ public final class CloudngfwawsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudngfwaws.Rulestack;
-     * import com.pulumi.cloudngfwaws.RulestackArgs;
-     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
-     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
-     * import com.pulumi.cloudngfwaws.inputs.GetSecurityRuleArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         var r = new Rulestack("r", RulestackArgs.builder()
-     *             .name("my-rulestack")
-     *             .scope("Local")
-     *             .accountId("12345")
-     *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
-     *             .build());
-     * 
-     *         final var example = CloudngfwawsFunctions.getSecurityRule(GetSecurityRuleArgs.builder()
-     *             .rulestack(r.name())
-     *             .name("foobar")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
