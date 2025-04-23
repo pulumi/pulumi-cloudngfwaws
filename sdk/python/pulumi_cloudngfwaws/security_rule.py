@@ -685,6 +685,9 @@ class _SecurityRuleState:
 
 
 class SecurityRule(pulumi.CustomResource):
+
+    pulumi_type = "cloudngfwaws:index/securityRule:SecurityRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
