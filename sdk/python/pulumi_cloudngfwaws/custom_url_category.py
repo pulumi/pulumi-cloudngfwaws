@@ -272,6 +272,9 @@ class _CustomUrlCategoryState:
 
 
 class CustomUrlCategory(pulumi.CustomResource):
+
+    pulumi_type = "cloudngfwaws:index/customUrlCategory:CustomUrlCategory"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

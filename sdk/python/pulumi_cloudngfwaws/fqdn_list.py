@@ -240,6 +240,9 @@ class _FqdnListState:
 
 
 class FqdnList(pulumi.CustomResource):
+
+    pulumi_type = "cloudngfwaws:index/fqdnList:FqdnList"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
