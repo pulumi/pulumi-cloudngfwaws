@@ -520,6 +520,9 @@ class _AccountOnboardingStackState:
 
 
 class AccountOnboardingStack(pulumi.CustomResource):
+
+    pulumi_type = "cloudngfwaws:index/accountOnboardingStack:AccountOnboardingStack"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

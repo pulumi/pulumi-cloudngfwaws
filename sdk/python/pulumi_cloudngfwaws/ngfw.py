@@ -525,6 +525,9 @@ class _NgfwState:
 
 
 class Ngfw(pulumi.CustomResource):
+
+    pulumi_type = "cloudngfwaws:index/ngfw:Ngfw"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
