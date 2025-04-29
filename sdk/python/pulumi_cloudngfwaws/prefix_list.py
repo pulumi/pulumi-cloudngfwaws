@@ -240,6 +240,9 @@ class _PrefixListState:
 
 
 class PrefixList(pulumi.CustomResource):
+
+    pulumi_type = "cloudngfwaws:index/prefixList:PrefixList"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

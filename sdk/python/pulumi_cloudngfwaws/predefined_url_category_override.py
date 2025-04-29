@@ -177,6 +177,9 @@ class _PredefinedUrlCategoryOverrideState:
 
 
 class PredefinedUrlCategoryOverride(pulumi.CustomResource):
+
+    pulumi_type = "cloudngfwaws:index/predefinedUrlCategoryOverride:PredefinedUrlCategoryOverride"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
