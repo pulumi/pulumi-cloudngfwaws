@@ -239,10 +239,8 @@ class _FqdnListState:
         pulumi.set(self, "update_token", value)
 
 
+@pulumi.type_token("cloudngfwaws:index/fqdnList:FqdnList")
 class FqdnList(pulumi.CustomResource):
-
-    pulumi_type = "cloudngfwaws:index/fqdnList:FqdnList"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

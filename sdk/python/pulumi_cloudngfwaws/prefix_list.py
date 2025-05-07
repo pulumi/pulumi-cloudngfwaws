@@ -239,10 +239,8 @@ class _PrefixListState:
         pulumi.set(self, "update_token", value)
 
 
+@pulumi.type_token("cloudngfwaws:index/prefixList:PrefixList")
 class PrefixList(pulumi.CustomResource):
-
-    pulumi_type = "cloudngfwaws:index/prefixList:PrefixList"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

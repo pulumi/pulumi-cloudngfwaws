@@ -524,10 +524,8 @@ class _NgfwState:
         pulumi.set(self, "vpc_id", value)
 
 
+@pulumi.type_token("cloudngfwaws:index/ngfw:Ngfw")
 class Ngfw(pulumi.CustomResource):
-
-    pulumi_type = "cloudngfwaws:index/ngfw:Ngfw"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

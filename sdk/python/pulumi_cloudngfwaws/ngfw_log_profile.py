@@ -224,10 +224,8 @@ class _NgfwLogProfileState:
         pulumi.set(self, "ngfw", value)
 
 
+@pulumi.type_token("cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile")
 class NgfwLogProfile(pulumi.CustomResource):
-
-    pulumi_type = "cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

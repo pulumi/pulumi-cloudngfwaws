@@ -192,10 +192,8 @@ class _CommitRulestackState:
         pulumi.set(self, "validation_status", value)
 
 
+@pulumi.type_token("cloudngfwaws:index/commitRulestack:CommitRulestack")
 class CommitRulestack(pulumi.CustomResource):
-
-    pulumi_type = "cloudngfwaws:index/commitRulestack:CommitRulestack"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
