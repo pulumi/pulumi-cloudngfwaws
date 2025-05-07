@@ -897,6 +897,9 @@
                 "type": "integer",
                 "description": "The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file\nvariable: `timeout`.\n"
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:cloudngfwaws/terraformConfig"
         }
     },
     "resources": {
@@ -4477,6 +4480,35 @@
                     "validationErrors",
                     "validationStatus",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:cloudngfwaws/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:cloudngfwaws"
+                    }
+                },
+                "type": "pulumi:providers:cloudngfwaws/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
                 ],
                 "type": "object"
             }
