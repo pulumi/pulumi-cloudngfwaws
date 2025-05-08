@@ -367,10 +367,8 @@ class _IntelligentFeedState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("cloudngfwaws:index/intelligentFeed:IntelligentFeed")
 class IntelligentFeed(pulumi.CustomResource):
-
-    pulumi_type = "cloudngfwaws:index/intelligentFeed:IntelligentFeed"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

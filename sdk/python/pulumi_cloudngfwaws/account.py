@@ -305,10 +305,8 @@ class _AccountState:
         pulumi.set(self, "update_token", value)
 
 
+@pulumi.type_token("cloudngfwaws:index/account:Account")
 class Account(pulumi.CustomResource):
-
-    pulumi_type = "cloudngfwaws:index/account:Account"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

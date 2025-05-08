@@ -155,10 +155,8 @@ export type PrefixList = import("./prefixList").PrefixList;
 export const PrefixList: typeof import("./prefixList").PrefixList = null as any;
 utilities.lazyLoad(exports, ["PrefixList"], () => require("./prefixList"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { RulestackArgs, RulestackState } from "./rulestack";
 export type Rulestack = import("./rulestack").Rulestack;

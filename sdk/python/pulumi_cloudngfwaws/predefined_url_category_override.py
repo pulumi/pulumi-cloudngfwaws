@@ -176,10 +176,8 @@ class _PredefinedUrlCategoryOverrideState:
         pulumi.set(self, "update_token", value)
 
 
+@pulumi.type_token("cloudngfwaws:index/predefinedUrlCategoryOverride:PredefinedUrlCategoryOverride")
 class PredefinedUrlCategoryOverride(pulumi.CustomResource):
-
-    pulumi_type = "cloudngfwaws:index/predefinedUrlCategoryOverride:PredefinedUrlCategoryOverride"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

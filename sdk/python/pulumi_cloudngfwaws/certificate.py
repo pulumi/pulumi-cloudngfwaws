@@ -272,10 +272,8 @@ class _CertificateState:
         pulumi.set(self, "update_token", value)
 
 
+@pulumi.type_token("cloudngfwaws:index/certificate:Certificate")
 class Certificate(pulumi.CustomResource):
-
-    pulumi_type = "cloudngfwaws:index/certificate:Certificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

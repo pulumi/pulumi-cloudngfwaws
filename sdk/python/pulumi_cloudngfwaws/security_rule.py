@@ -684,10 +684,8 @@ class _SecurityRuleState:
         pulumi.set(self, "update_token", value)
 
 
+@pulumi.type_token("cloudngfwaws:index/securityRule:SecurityRule")
 class SecurityRule(pulumi.CustomResource):
-
-    pulumi_type = "cloudngfwaws:index/securityRule:SecurityRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
