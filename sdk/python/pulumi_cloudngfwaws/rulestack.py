@@ -330,10 +330,8 @@ class _RulestackState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("cloudngfwaws:index/rulestack:Rulestack")
 class Rulestack(pulumi.CustomResource):
-
-    pulumi_type = "cloudngfwaws:index/rulestack:Rulestack"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

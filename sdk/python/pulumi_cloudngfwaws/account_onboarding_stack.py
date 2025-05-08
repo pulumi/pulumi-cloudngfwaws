@@ -519,10 +519,8 @@ class _AccountOnboardingStackState:
         pulumi.set(self, "trusted_account", value)
 
 
+@pulumi.type_token("cloudngfwaws:index/accountOnboardingStack:AccountOnboardingStack")
 class AccountOnboardingStack(pulumi.CustomResource):
-
-    pulumi_type = "cloudngfwaws:index/accountOnboardingStack:AccountOnboardingStack"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

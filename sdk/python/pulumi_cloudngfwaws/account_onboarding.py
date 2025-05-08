@@ -96,10 +96,8 @@ class _AccountOnboardingState:
         pulumi.set(self, "onboarding_status", value)
 
 
+@pulumi.type_token("cloudngfwaws:index/accountOnboarding:AccountOnboarding")
 class AccountOnboarding(pulumi.CustomResource):
-
-    pulumi_type = "cloudngfwaws:index/accountOnboarding:AccountOnboarding"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
