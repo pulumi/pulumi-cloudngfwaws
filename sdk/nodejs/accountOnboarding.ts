@@ -43,11 +43,11 @@ export class AccountOnboarding extends pulumi.CustomResource {
     /**
      * The account IDs
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Onboarding status of the account
      */
-    public readonly onboardingStatus!: pulumi.Output<string>;
+    declare public readonly onboardingStatus: pulumi.Output<string>;
 
     /**
      * Create a AccountOnboarding resource with the given unique name, arguments, and options.
@@ -62,15 +62,15 @@ export class AccountOnboarding extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountOnboardingState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["onboardingStatus"] = state ? state.onboardingStatus : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["onboardingStatus"] = state?.onboardingStatus;
         } else {
             const args = argsOrState as AccountOnboardingArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["onboardingStatus"] = args ? args.onboardingStatus : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["onboardingStatus"] = args?.onboardingStatus;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccountOnboarding.__pulumiType, name, resourceInputs, opts);

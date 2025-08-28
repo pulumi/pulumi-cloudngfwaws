@@ -78,47 +78,47 @@ export class IntelligentFeed extends pulumi.CustomResource {
     /**
      * The audit comment.
      */
-    public readonly auditComment!: pulumi.Output<string | undefined>;
+    declare public readonly auditComment: pulumi.Output<string | undefined>;
     /**
      * The certificate profile.
      */
-    public readonly certificate!: pulumi.Output<string | undefined>;
+    declare public readonly certificate: pulumi.Output<string | undefined>;
     /**
      * The description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Update frequency. Valid values are `HOURLY` or `DAILY`. Defaults to `HOURLY`.
      */
-    public readonly frequency!: pulumi.Output<string | undefined>;
+    declare public readonly frequency: pulumi.Output<string | undefined>;
     /**
      * The name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The rulestack.
      */
-    public readonly rulestack!: pulumi.Output<string>;
+    declare public readonly rulestack: pulumi.Output<string>;
     /**
      * The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
      */
-    public readonly scope!: pulumi.Output<string | undefined>;
+    declare public readonly scope: pulumi.Output<string | undefined>;
     /**
      * The time to poll for updates if frequency is daily. The number must be between [0, 23] incluside.
      */
-    public readonly time!: pulumi.Output<number | undefined>;
+    declare public readonly time: pulumi.Output<number | undefined>;
     /**
      * The intelligent feed type. Valid values are `IP_LIST` or `URL_LIST`. Defaults to `IP_LIST`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * The update token.
      */
-    public /*out*/ readonly updateToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateToken: pulumi.Output<string>;
     /**
      * The intelligent feed source.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a IntelligentFeed resource with the given unique name, arguments, and options.
@@ -133,35 +133,35 @@ export class IntelligentFeed extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntelligentFeedState | undefined;
-            resourceInputs["auditComment"] = state ? state.auditComment : undefined;
-            resourceInputs["certificate"] = state ? state.certificate : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["frequency"] = state ? state.frequency : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["rulestack"] = state ? state.rulestack : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["time"] = state ? state.time : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updateToken"] = state ? state.updateToken : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["auditComment"] = state?.auditComment;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["frequency"] = state?.frequency;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["rulestack"] = state?.rulestack;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["time"] = state?.time;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updateToken"] = state?.updateToken;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as IntelligentFeedArgs | undefined;
-            if ((!args || args.rulestack === undefined) && !opts.urn) {
+            if (args?.rulestack === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rulestack'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["auditComment"] = args ? args.auditComment : undefined;
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["frequency"] = args ? args.frequency : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["rulestack"] = args ? args.rulestack : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["time"] = args ? args.time : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["auditComment"] = args?.auditComment;
+            resourceInputs["certificate"] = args?.certificate;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["frequency"] = args?.frequency;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["rulestack"] = args?.rulestack;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["time"] = args?.time;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["url"] = args?.url;
             resourceInputs["updateToken"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

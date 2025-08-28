@@ -54,31 +54,31 @@ export class CommitRulestack extends pulumi.CustomResource {
     /**
      * Commit error messages.
      */
-    public /*out*/ readonly commitErrors!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly commitErrors: pulumi.Output<string[]>;
     /**
      * The commit status.
      */
-    public /*out*/ readonly commitStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly commitStatus: pulumi.Output<string>;
     /**
      * The rulestack.
      */
-    public readonly rulestack!: pulumi.Output<string>;
+    declare public readonly rulestack: pulumi.Output<string>;
     /**
      * The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
      */
-    public readonly scope!: pulumi.Output<string | undefined>;
+    declare public readonly scope: pulumi.Output<string | undefined>;
     /**
      * The rulestack state. This can only be the default value. Defaults to `Running`.
      */
-    public readonly state!: pulumi.Output<string | undefined>;
+    declare public readonly state: pulumi.Output<string | undefined>;
     /**
      * Validation error messages.
      */
-    public /*out*/ readonly validationErrors!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly validationErrors: pulumi.Output<string[]>;
     /**
      * The validation status.
      */
-    public /*out*/ readonly validationStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly validationStatus: pulumi.Output<string>;
 
     /**
      * Create a CommitRulestack resource with the given unique name, arguments, and options.
@@ -93,21 +93,21 @@ export class CommitRulestack extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CommitRulestackState | undefined;
-            resourceInputs["commitErrors"] = state ? state.commitErrors : undefined;
-            resourceInputs["commitStatus"] = state ? state.commitStatus : undefined;
-            resourceInputs["rulestack"] = state ? state.rulestack : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["validationErrors"] = state ? state.validationErrors : undefined;
-            resourceInputs["validationStatus"] = state ? state.validationStatus : undefined;
+            resourceInputs["commitErrors"] = state?.commitErrors;
+            resourceInputs["commitStatus"] = state?.commitStatus;
+            resourceInputs["rulestack"] = state?.rulestack;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["validationErrors"] = state?.validationErrors;
+            resourceInputs["validationStatus"] = state?.validationStatus;
         } else {
             const args = argsOrState as CommitRulestackArgs | undefined;
-            if ((!args || args.rulestack === undefined) && !opts.urn) {
+            if (args?.rulestack === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rulestack'");
             }
-            resourceInputs["rulestack"] = args ? args.rulestack : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["rulestack"] = args?.rulestack;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["state"] = args?.state;
             resourceInputs["commitErrors"] = undefined /*out*/;
             resourceInputs["commitStatus"] = undefined /*out*/;
             resourceInputs["validationErrors"] = undefined /*out*/;

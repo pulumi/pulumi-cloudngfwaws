@@ -23,84 +23,70 @@ import javax.annotation.Nullable;
 @ResourceType(type="pulumi:providers:cloudngfwaws")
 public class Provider extends com.pulumi.resources.ProviderResource {
     /**
-     * (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file
-     * variable: `access-key`.
+     * (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file variable: `access-key`.
      * 
      */
     @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessKey;
 
     /**
-     * @return (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file
-     * variable: `access-key`.
+     * @return (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file variable: `access-key`.
      * 
      */
     public Output<Optional<String>> accessKey() {
         return Codegen.optional(this.accessKey);
     }
     /**
-     * The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file
-     * variable: `account-admin-arn`.
+     * The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file variable: `account-admin-arn`.
      * 
      */
     @Export(name="accountAdminArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountAdminArn;
 
     /**
-     * @return The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file
-     * variable: `account-admin-arn`.
+     * @return The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file variable: `account-admin-arn`.
      * 
      */
     public Output<Optional<String>> accountAdminArn() {
         return Codegen.optional(this.accountAdminArn);
     }
     /**
-     * The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be
-     * enabled only if the AWS account is onboarded by AWS Firewall Manager. Use &#39;lfa_arn&#39; and &#39;lra_arn&#39; if you want to enable
-     * only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
+     * The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. Use &#39;lfa_arn&#39; and &#39;lra_arn&#39; if you want to enable only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
      * 
      */
     @Export(name="arn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> arn;
 
     /**
-     * @return The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be
-     * enabled only if the AWS account is onboarded by AWS Firewall Manager. Use &#39;lfa_arn&#39; and &#39;lra_arn&#39; if you want to enable
-     * only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
+     * @return The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. Use &#39;lfa_arn&#39; and &#39;lra_arn&#39; if you want to enable only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
      * 
      */
     public Output<Optional<String>> arn() {
         return Codegen.optional(this.arn);
     }
     /**
-     * The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS
-     * account is onboarded by AWS Firewall Manager. &#39;gra_arn&#39; is preferentially used over the `arn` param if both are
-     * specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
+     * The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. &#39;gra_arn&#39; is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
      * 
      */
     @Export(name="graArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> graArn;
 
     /**
-     * @return The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS
-     * account is onboarded by AWS Firewall Manager. &#39;gra_arn&#39; is preferentially used over the `arn` param if both are
-     * specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
+     * @return The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. &#39;gra_arn&#39; is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
      * 
      */
     public Output<Optional<String>> graArn() {
         return Codegen.optional(this.graArn);
     }
     /**
-     * The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable:
-     * `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
+     * The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
      * 
      */
     @Export(name="host", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> host;
 
     /**
-     * @return The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable:
-     * `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
+     * @return The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
      * 
      */
     public Output<Optional<String>> host() {
@@ -121,32 +107,28 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.jsonConfigFile);
     }
     /**
-     * The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified.
-     * Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
+     * The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
      * 
      */
     @Export(name="lfaArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lfaArn;
 
     /**
-     * @return The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified.
-     * Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
+     * @return The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
      * 
      */
     public Output<Optional<String>> lfaArn() {
         return Codegen.optional(this.lfaArn);
     }
     /**
-     * The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified.
-     * Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
+     * The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
      * 
      */
     @Export(name="lraArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lraArn;
 
     /**
-     * @return The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified.
-     * Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
+     * @return The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
      * 
      */
     public Output<Optional<String>> lraArn() {
@@ -167,48 +149,42 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.mpRegion);
     }
     /**
-     * AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable:
-     * `mp_region_host`.
+     * AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
      * 
      */
     @Export(name="mpRegionHost", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mpRegionHost;
 
     /**
-     * @return AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable:
-     * `mp_region_host`.
+     * @return AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
      * 
      */
     public Output<Optional<String>> mpRegionHost() {
         return Codegen.optional(this.mpRegionHost);
     }
     /**
-     * (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file
-     * variable: `profile`.
+     * (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file variable: `profile`.
      * 
      */
     @Export(name="profile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> profile;
 
     /**
-     * @return (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file
-     * variable: `profile`.
+     * @return (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file variable: `profile`.
      * 
      */
     public Output<Optional<String>> profile() {
         return Codegen.optional(this.profile);
     }
     /**
-     * The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`.
-     * Valid values are `https` or `http`.
+     * The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`.
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> protocol;
 
     /**
-     * @return The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`.
-     * Valid values are `https` or `http`.
+     * @return The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`.
      * 
      */
     public Output<Optional<String>> protocol() {
@@ -229,16 +205,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.region);
     }
     /**
-     * (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file
-     * variable: `secret-key`.
+     * (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
      * 
      */
     @Export(name="secretKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secretKey;
 
     /**
-     * @return (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file
-     * variable: `secret-key`.
+     * @return (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
      * 
      */
     public Output<Optional<String>> secretKey() {
