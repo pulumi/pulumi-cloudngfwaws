@@ -62,88 +62,88 @@
         "variables": {
             "accessKey": {
                 "type": "string",
-                "description": "(Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file\nvariable: `access-key`.\n"
+                "description": "(Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file variable: `access-key`."
             },
             "accountAdminArn": {
                 "type": "string",
-                "description": "The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file\nvariable: `account-admin-arn`.\n"
+                "description": "The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file variable: `account-admin-arn`."
             },
             "arn": {
                 "type": "string",
-                "description": "The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be\nenabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable\nonly firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.\n"
+                "description": "The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`."
             },
             "graArn": {
                 "type": "string",
-                "description": "The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS\naccount is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are\nspecified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.\n"
+                "description": "The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`."
             },
             "headers": {
                 "type": "object",
                 "additionalProperties": {
                     "type": "string"
                 },
-                "description": "Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable:\n`headers`.\n"
+                "description": "Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable: `headers`."
             },
             "host": {
                 "type": "string",
-                "description": "The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable:\n`CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.\n"
+                "description": "The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`."
             },
             "jsonConfigFile": {
                 "type": "string",
-                "description": "Retrieve provider configuration from this JSON file.\n"
+                "description": "Retrieve provider configuration from this JSON file."
             },
             "lfaArn": {
                 "type": "string",
-                "description": "The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified.\nEnvironment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.\n"
+                "description": "The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`."
             },
             "loggings": {
                 "type": "array",
                 "items": {
                     "type": "string"
                 },
-                "description": "The logging options for the provider. Environment variable: `CLOUDNGFWAWS_LOGGING`. JSON conf file variable: `logging`.\n"
+                "description": "The logging options for the provider. Environment variable: `CLOUDNGFWAWS_LOGGING`. JSON conf file variable: `logging`."
             },
             "lraArn": {
                 "type": "string",
-                "description": "The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified.\nEnvironment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.\n"
+                "description": "The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`."
             },
             "mpRegion": {
                 "type": "string",
-                "description": "AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`.\n"
+                "description": "AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`."
             },
             "mpRegionHost": {
                 "type": "string",
-                "description": "AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable:\n`mp_region_host`.\n"
+                "description": "AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`."
             },
             "profile": {
                 "type": "string",
-                "description": "(Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file\nvariable: `profile`.\n"
+                "description": "(Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file variable: `profile`."
             },
             "protocol": {
                 "type": "string",
-                "description": "The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`.\nValid values are `https` or `http`.\n"
+                "description": "The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`."
             },
             "region": {
                 "type": "string",
-                "description": "AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`.\n"
+                "description": "AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`."
             },
             "resourceTimeout": {
                 "type": "integer"
             },
             "secretKey": {
                 "type": "string",
-                "description": "(Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file\nvariable: `secret-key`.\n"
+                "description": "(Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`."
             },
             "skipVerifyCertificate": {
                 "type": "boolean",
-                "description": "Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file\nvariable: `skip-verify-certificate`.\n"
+                "description": "Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file variable: `skip-verify-certificate`."
             },
             "syncMode": {
                 "type": "boolean",
-                "description": "Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file\nvariable: `sync_mode`.\n"
+                "description": "Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `sync_mode`."
             },
             "timeout": {
                 "type": "integer",
-                "description": "The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file\nvariable: `timeout`.\n"
+                "description": "The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`."
             }
         }
     },
@@ -727,175 +727,175 @@
         "properties": {
             "accessKey": {
                 "type": "string",
-                "description": "(Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file\nvariable: `access-key`.\n"
+                "description": "(Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file variable: `access-key`."
             },
             "accountAdminArn": {
                 "type": "string",
-                "description": "The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file\nvariable: `account-admin-arn`.\n"
+                "description": "The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file variable: `account-admin-arn`."
             },
             "arn": {
                 "type": "string",
-                "description": "The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be\nenabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable\nonly firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.\n"
+                "description": "The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`."
             },
             "graArn": {
                 "type": "string",
-                "description": "The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS\naccount is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are\nspecified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.\n"
+                "description": "The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`."
             },
             "headers": {
                 "type": "object",
                 "additionalProperties": {
                     "type": "string"
                 },
-                "description": "Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable:\n`headers`.\n"
+                "description": "Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable: `headers`."
             },
             "host": {
                 "type": "string",
-                "description": "The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable:\n`CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.\n"
+                "description": "The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`."
             },
             "jsonConfigFile": {
                 "type": "string",
-                "description": "Retrieve provider configuration from this JSON file.\n"
+                "description": "Retrieve provider configuration from this JSON file."
             },
             "lfaArn": {
                 "type": "string",
-                "description": "The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified.\nEnvironment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.\n"
+                "description": "The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`."
             },
             "loggings": {
                 "type": "array",
                 "items": {
                     "type": "string"
                 },
-                "description": "The logging options for the provider. Environment variable: `CLOUDNGFWAWS_LOGGING`. JSON conf file variable: `logging`.\n"
+                "description": "The logging options for the provider. Environment variable: `CLOUDNGFWAWS_LOGGING`. JSON conf file variable: `logging`."
             },
             "lraArn": {
                 "type": "string",
-                "description": "The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified.\nEnvironment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.\n"
+                "description": "The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`."
             },
             "mpRegion": {
                 "type": "string",
-                "description": "AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`.\n"
+                "description": "AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`."
             },
             "mpRegionHost": {
                 "type": "string",
-                "description": "AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable:\n`mp_region_host`.\n"
+                "description": "AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`."
             },
             "profile": {
                 "type": "string",
-                "description": "(Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file\nvariable: `profile`.\n"
+                "description": "(Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file variable: `profile`."
             },
             "protocol": {
                 "type": "string",
-                "description": "The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`.\nValid values are `https` or `http`.\n"
+                "description": "The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`."
             },
             "region": {
                 "type": "string",
-                "description": "AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`.\n"
+                "description": "AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`."
             },
             "resourceTimeout": {
                 "type": "integer"
             },
             "secretKey": {
                 "type": "string",
-                "description": "(Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file\nvariable: `secret-key`.\n"
+                "description": "(Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`."
             },
             "skipVerifyCertificate": {
                 "type": "boolean",
-                "description": "Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file\nvariable: `skip-verify-certificate`.\n"
+                "description": "Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file variable: `skip-verify-certificate`."
             },
             "syncMode": {
                 "type": "boolean",
-                "description": "Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file\nvariable: `sync_mode`.\n"
+                "description": "Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `sync_mode`."
             },
             "timeout": {
                 "type": "integer",
-                "description": "The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file\nvariable: `timeout`.\n"
+                "description": "The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`."
             }
         },
         "inputProperties": {
             "accessKey": {
                 "type": "string",
-                "description": "(Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file\nvariable: `access-key`.\n"
+                "description": "(Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file variable: `access-key`."
             },
             "accountAdminArn": {
                 "type": "string",
-                "description": "The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file\nvariable: `account-admin-arn`.\n"
+                "description": "The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file variable: `account-admin-arn`."
             },
             "arn": {
                 "type": "string",
-                "description": "The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be\nenabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable\nonly firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.\n"
+                "description": "The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`."
             },
             "graArn": {
                 "type": "string",
-                "description": "The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS\naccount is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are\nspecified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.\n"
+                "description": "The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`."
             },
             "headers": {
                 "type": "object",
                 "additionalProperties": {
                     "type": "string"
                 },
-                "description": "Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable:\n`headers`.\n"
+                "description": "Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable: `headers`."
             },
             "host": {
                 "type": "string",
-                "description": "The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable:\n`CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.\n"
+                "description": "The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`."
             },
             "jsonConfigFile": {
                 "type": "string",
-                "description": "Retrieve provider configuration from this JSON file.\n"
+                "description": "Retrieve provider configuration from this JSON file."
             },
             "lfaArn": {
                 "type": "string",
-                "description": "The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified.\nEnvironment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.\n"
+                "description": "The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`."
             },
             "loggings": {
                 "type": "array",
                 "items": {
                     "type": "string"
                 },
-                "description": "The logging options for the provider. Environment variable: `CLOUDNGFWAWS_LOGGING`. JSON conf file variable: `logging`.\n"
+                "description": "The logging options for the provider. Environment variable: `CLOUDNGFWAWS_LOGGING`. JSON conf file variable: `logging`."
             },
             "lraArn": {
                 "type": "string",
-                "description": "The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified.\nEnvironment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.\n"
+                "description": "The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`."
             },
             "mpRegion": {
                 "type": "string",
-                "description": "AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`.\n"
+                "description": "AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`."
             },
             "mpRegionHost": {
                 "type": "string",
-                "description": "AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable:\n`mp_region_host`.\n"
+                "description": "AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`."
             },
             "profile": {
                 "type": "string",
-                "description": "(Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file\nvariable: `profile`.\n"
+                "description": "(Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file variable: `profile`."
             },
             "protocol": {
                 "type": "string",
-                "description": "The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`.\nValid values are `https` or `http`.\n"
+                "description": "The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`."
             },
             "region": {
                 "type": "string",
-                "description": "AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`.\n"
+                "description": "AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`."
             },
             "resourceTimeout": {
                 "type": "integer"
             },
             "secretKey": {
                 "type": "string",
-                "description": "(Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file\nvariable: `secret-key`.\n"
+                "description": "(Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`."
             },
             "skipVerifyCertificate": {
                 "type": "boolean",
-                "description": "Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file\nvariable: `skip-verify-certificate`.\n"
+                "description": "Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file variable: `skip-verify-certificate`."
             },
             "syncMode": {
                 "type": "boolean",
-                "description": "Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file\nvariable: `sync_mode`.\n"
+                "description": "Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `sync_mode`."
             },
             "timeout": {
                 "type": "integer",
-                "description": "The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file\nvariable: `timeout`.\n"
+                "description": "The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`."
             }
         },
         "methods": {
@@ -3042,7 +3042,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "onboardingStatus": {
@@ -3132,7 +3132,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     }
                 },
@@ -3178,7 +3178,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maxResults": {
@@ -3227,7 +3227,7 @@
                 "description": "A collection of values returned by getAppIdVersions.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maxResults": {
@@ -3305,7 +3305,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -3373,7 +3373,7 @@
                         "type": "object"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maxResults": {
@@ -3448,7 +3448,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -3542,7 +3542,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -3629,7 +3629,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -3734,7 +3734,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "linkId": {
@@ -3853,7 +3853,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "logDestinations": {
@@ -3903,7 +3903,7 @@
                 "description": "A collection of values returned by getNgfws.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "instances": {
@@ -3959,7 +3959,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maxResults": {
@@ -4024,7 +4024,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -4098,7 +4098,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -4182,7 +4182,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "lookupXForwardedFor": {
@@ -4319,7 +4319,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "logging": {
@@ -4445,7 +4445,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "rulestack": {
