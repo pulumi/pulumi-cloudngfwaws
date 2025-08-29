@@ -41,42 +41,25 @@ class ProviderArgs:
                  timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[_builtins.str] access_key: (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file
-               variable: `access-key`.
-        :param pulumi.Input[_builtins.str] account_admin_arn: The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file
-               variable: `account-admin-arn`.
-        :param pulumi.Input[_builtins.str] arn: The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be
-               enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable
-               only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
-        :param pulumi.Input[_builtins.str] gra_arn: The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS
-               account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are
-               specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable:
-               `headers`.
-        :param pulumi.Input[_builtins.str] host: The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable:
-               `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
+        :param pulumi.Input[_builtins.str] access_key: (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file variable: `access-key`.
+        :param pulumi.Input[_builtins.str] account_admin_arn: The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file variable: `account-admin-arn`.
+        :param pulumi.Input[_builtins.str] arn: The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
+        :param pulumi.Input[_builtins.str] gra_arn: The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable: `headers`.
+        :param pulumi.Input[_builtins.str] host: The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
         :param pulumi.Input[_builtins.str] json_config_file: Retrieve provider configuration from this JSON file.
-        :param pulumi.Input[_builtins.str] lfa_arn: The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified.
-               Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
+        :param pulumi.Input[_builtins.str] lfa_arn: The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] loggings: The logging options for the provider. Environment variable: `CLOUDNGFWAWS_LOGGING`. JSON conf file variable: `logging`.
-        :param pulumi.Input[_builtins.str] lra_arn: The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified.
-               Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
+        :param pulumi.Input[_builtins.str] lra_arn: The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
         :param pulumi.Input[_builtins.str] mp_region: AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`.
-        :param pulumi.Input[_builtins.str] mp_region_host: AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable:
-               `mp_region_host`.
-        :param pulumi.Input[_builtins.str] profile: (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file
-               variable: `profile`.
-        :param pulumi.Input[_builtins.str] protocol: The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`.
-               Valid values are `https` or `http`.
+        :param pulumi.Input[_builtins.str] mp_region_host: AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
+        :param pulumi.Input[_builtins.str] profile: (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file variable: `profile`.
+        :param pulumi.Input[_builtins.str] protocol: The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`.
         :param pulumi.Input[_builtins.str] region: AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`.
-        :param pulumi.Input[_builtins.str] secret_key: (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file
-               variable: `secret-key`.
-        :param pulumi.Input[_builtins.bool] skip_verify_certificate: Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file
-               variable: `skip-verify-certificate`.
-        :param pulumi.Input[_builtins.bool] sync_mode: Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file
-               variable: `sync_mode`.
-        :param pulumi.Input[_builtins.int] timeout: The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file
-               variable: `timeout`.
+        :param pulumi.Input[_builtins.str] secret_key: (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
+        :param pulumi.Input[_builtins.bool] skip_verify_certificate: Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file variable: `skip-verify-certificate`.
+        :param pulumi.Input[_builtins.bool] sync_mode: Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `sync_mode`.
+        :param pulumi.Input[_builtins.int] timeout: The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -123,8 +106,7 @@ class ProviderArgs:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file
-        variable: `access-key`.
+        (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file variable: `access-key`.
         """
         return pulumi.get(self, "access_key")
 
@@ -136,8 +118,7 @@ class ProviderArgs:
     @pulumi.getter(name="accountAdminArn")
     def account_admin_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file
-        variable: `account-admin-arn`.
+        The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file variable: `account-admin-arn`.
         """
         return pulumi.get(self, "account_admin_arn")
 
@@ -149,9 +130,7 @@ class ProviderArgs:
     @pulumi.getter
     def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be
-        enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable
-        only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
+        The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
         """
         return pulumi.get(self, "arn")
 
@@ -163,9 +142,7 @@ class ProviderArgs:
     @pulumi.getter(name="graArn")
     def gra_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS
-        account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are
-        specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
+        The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
         """
         return pulumi.get(self, "gra_arn")
 
@@ -177,8 +154,7 @@ class ProviderArgs:
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable:
-        `headers`.
+        Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable: `headers`.
         """
         return pulumi.get(self, "headers")
 
@@ -190,8 +166,7 @@ class ProviderArgs:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable:
-        `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
+        The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
         """
         return pulumi.get(self, "host")
 
@@ -215,8 +190,7 @@ class ProviderArgs:
     @pulumi.getter(name="lfaArn")
     def lfa_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified.
-        Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
+        The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
         """
         return pulumi.get(self, "lfa_arn")
 
@@ -240,8 +214,7 @@ class ProviderArgs:
     @pulumi.getter(name="lraArn")
     def lra_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified.
-        Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
+        The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
         """
         return pulumi.get(self, "lra_arn")
 
@@ -265,8 +238,7 @@ class ProviderArgs:
     @pulumi.getter(name="mpRegionHost")
     def mp_region_host(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable:
-        `mp_region_host`.
+        AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
         """
         return pulumi.get(self, "mp_region_host")
 
@@ -278,8 +250,7 @@ class ProviderArgs:
     @pulumi.getter
     def profile(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file
-        variable: `profile`.
+        (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file variable: `profile`.
         """
         return pulumi.get(self, "profile")
 
@@ -291,8 +262,7 @@ class ProviderArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`.
-        Valid values are `https` or `http`.
+        The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`.
         """
         return pulumi.get(self, "protocol")
 
@@ -325,8 +295,7 @@ class ProviderArgs:
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file
-        variable: `secret-key`.
+        (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
         """
         return pulumi.get(self, "secret_key")
 
@@ -338,8 +307,7 @@ class ProviderArgs:
     @pulumi.getter(name="skipVerifyCertificate")
     def skip_verify_certificate(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file
-        variable: `skip-verify-certificate`.
+        Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file variable: `skip-verify-certificate`.
         """
         return pulumi.get(self, "skip_verify_certificate")
 
@@ -351,8 +319,7 @@ class ProviderArgs:
     @pulumi.getter(name="syncMode")
     def sync_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file
-        variable: `sync_mode`.
+        Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `sync_mode`.
         """
         return pulumi.get(self, "sync_mode")
 
@@ -364,8 +331,7 @@ class ProviderArgs:
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file
-        variable: `timeout`.
+        The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
         """
         return pulumi.get(self, "timeout")
 
@@ -409,42 +375,25 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_key: (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file
-               variable: `access-key`.
-        :param pulumi.Input[_builtins.str] account_admin_arn: The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file
-               variable: `account-admin-arn`.
-        :param pulumi.Input[_builtins.str] arn: The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be
-               enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable
-               only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
-        :param pulumi.Input[_builtins.str] gra_arn: The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS
-               account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are
-               specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable:
-               `headers`.
-        :param pulumi.Input[_builtins.str] host: The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable:
-               `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
+        :param pulumi.Input[_builtins.str] access_key: (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file variable: `access-key`.
+        :param pulumi.Input[_builtins.str] account_admin_arn: The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file variable: `account-admin-arn`.
+        :param pulumi.Input[_builtins.str] arn: The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
+        :param pulumi.Input[_builtins.str] gra_arn: The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable: `headers`.
+        :param pulumi.Input[_builtins.str] host: The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
         :param pulumi.Input[_builtins.str] json_config_file: Retrieve provider configuration from this JSON file.
-        :param pulumi.Input[_builtins.str] lfa_arn: The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified.
-               Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
+        :param pulumi.Input[_builtins.str] lfa_arn: The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] loggings: The logging options for the provider. Environment variable: `CLOUDNGFWAWS_LOGGING`. JSON conf file variable: `logging`.
-        :param pulumi.Input[_builtins.str] lra_arn: The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified.
-               Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
+        :param pulumi.Input[_builtins.str] lra_arn: The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
         :param pulumi.Input[_builtins.str] mp_region: AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`.
-        :param pulumi.Input[_builtins.str] mp_region_host: AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable:
-               `mp_region_host`.
-        :param pulumi.Input[_builtins.str] profile: (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file
-               variable: `profile`.
-        :param pulumi.Input[_builtins.str] protocol: The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`.
-               Valid values are `https` or `http`.
+        :param pulumi.Input[_builtins.str] mp_region_host: AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
+        :param pulumi.Input[_builtins.str] profile: (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file variable: `profile`.
+        :param pulumi.Input[_builtins.str] protocol: The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`.
         :param pulumi.Input[_builtins.str] region: AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`.
-        :param pulumi.Input[_builtins.str] secret_key: (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file
-               variable: `secret-key`.
-        :param pulumi.Input[_builtins.bool] skip_verify_certificate: Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file
-               variable: `skip-verify-certificate`.
-        :param pulumi.Input[_builtins.bool] sync_mode: Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file
-               variable: `sync_mode`.
-        :param pulumi.Input[_builtins.int] timeout: The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file
-               variable: `timeout`.
+        :param pulumi.Input[_builtins.str] secret_key: (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
+        :param pulumi.Input[_builtins.bool] skip_verify_certificate: Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file variable: `skip-verify-certificate`.
+        :param pulumi.Input[_builtins.bool] sync_mode: Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `sync_mode`.
+        :param pulumi.Input[_builtins.int] timeout: The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
         """
         ...
     @overload
@@ -532,8 +481,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file
-        variable: `access-key`.
+        (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file variable: `access-key`.
         """
         return pulumi.get(self, "access_key")
 
@@ -541,8 +489,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="accountAdminArn")
     def account_admin_arn(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file
-        variable: `account-admin-arn`.
+        The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file variable: `account-admin-arn`.
         """
         return pulumi.get(self, "account_admin_arn")
 
@@ -550,9 +497,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def arn(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be
-        enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable
-        only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
+        The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
         """
         return pulumi.get(self, "arn")
 
@@ -560,9 +505,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="graArn")
     def gra_arn(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS
-        account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are
-        specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
+        The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
         """
         return pulumi.get(self, "gra_arn")
 
@@ -570,8 +513,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def host(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable:
-        `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
+        The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
         """
         return pulumi.get(self, "host")
 
@@ -587,8 +529,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="lfaArn")
     def lfa_arn(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified.
-        Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
+        The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
         """
         return pulumi.get(self, "lfa_arn")
 
@@ -596,8 +537,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="lraArn")
     def lra_arn(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified.
-        Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
+        The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
         """
         return pulumi.get(self, "lra_arn")
 
@@ -613,8 +553,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="mpRegionHost")
     def mp_region_host(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable:
-        `mp_region_host`.
+        AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
         """
         return pulumi.get(self, "mp_region_host")
 
@@ -622,8 +561,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def profile(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file
-        variable: `profile`.
+        (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file variable: `profile`.
         """
         return pulumi.get(self, "profile")
 
@@ -631,8 +569,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def protocol(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`.
-        Valid values are `https` or `http`.
+        The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`.
         """
         return pulumi.get(self, "protocol")
 
@@ -648,8 +585,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file
-        variable: `secret-key`.
+        (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
         """
         return pulumi.get(self, "secret_key")
 

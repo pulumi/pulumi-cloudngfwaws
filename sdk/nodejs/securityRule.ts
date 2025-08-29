@@ -89,87 +89,87 @@ export class SecurityRule extends pulumi.CustomResource {
     /**
      * The action to take. Valid values are `Allow`, `DenySilent`, `DenyResetServer`, or `DenyResetBoth`.
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * The list of applications.
      */
-    public readonly applications!: pulumi.Output<string[]>;
+    declare public readonly applications: pulumi.Output<string[]>;
     /**
      * The audit comment.
      */
-    public readonly auditComment!: pulumi.Output<string | undefined>;
+    declare public readonly auditComment: pulumi.Output<string | undefined>;
     /**
      * The category spec.
      */
-    public readonly category!: pulumi.Output<outputs.SecurityRuleCategory>;
+    declare public readonly category: pulumi.Output<outputs.SecurityRuleCategory>;
     /**
      * Decryption rule type. Valid values are ``or`SSLOutboundInspection`.
      */
-    public readonly decryptionRuleType!: pulumi.Output<string | undefined>;
+    declare public readonly decryptionRuleType: pulumi.Output<string | undefined>;
     /**
      * The description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The destination spec.
      */
-    public readonly destination!: pulumi.Output<outputs.SecurityRuleDestination>;
+    declare public readonly destination: pulumi.Output<outputs.SecurityRuleDestination>;
     /**
      * Set to false to disable this rule. Defaults to `true`.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Enable logging at end. Defaults to `true`.
      */
-    public readonly logging!: pulumi.Output<boolean | undefined>;
+    declare public readonly logging: pulumi.Output<boolean | undefined>;
     /**
      * The name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Negate the destination definition.
      */
-    public readonly negateDestination!: pulumi.Output<boolean | undefined>;
+    declare public readonly negateDestination: pulumi.Output<boolean | undefined>;
     /**
      * Negate the source definition.
      */
-    public readonly negateSource!: pulumi.Output<boolean | undefined>;
+    declare public readonly negateSource: pulumi.Output<boolean | undefined>;
     /**
      * The rule priority.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * Protocol port list.
      */
-    public readonly protPortLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly protPortLists: pulumi.Output<string[] | undefined>;
     /**
      * The protocol.
      */
-    public readonly protocol!: pulumi.Output<string | undefined>;
+    declare public readonly protocol: pulumi.Output<string | undefined>;
     /**
      * The rulebase. Valid values are `PreRule`, `PostRule`, or `LocalRule`. Defaults to `PreRule`.
      */
-    public readonly ruleList!: pulumi.Output<string | undefined>;
+    declare public readonly ruleList: pulumi.Output<string | undefined>;
     /**
      * The rulestack.
      */
-    public readonly rulestack!: pulumi.Output<string>;
+    declare public readonly rulestack: pulumi.Output<string>;
     /**
      * The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
      */
-    public readonly scope!: pulumi.Output<string | undefined>;
+    declare public readonly scope: pulumi.Output<string | undefined>;
     /**
      * The source spec.
      */
-    public readonly source!: pulumi.Output<outputs.SecurityRuleSource>;
+    declare public readonly source: pulumi.Output<outputs.SecurityRuleSource>;
     /**
      * The tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The update token.
      */
-    public /*out*/ readonly updateToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateToken: pulumi.Output<string>;
 
     /**
      * Create a SecurityRule resource with the given unique name, arguments, and options.
@@ -184,70 +184,70 @@ export class SecurityRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityRuleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["applications"] = state ? state.applications : undefined;
-            resourceInputs["auditComment"] = state ? state.auditComment : undefined;
-            resourceInputs["category"] = state ? state.category : undefined;
-            resourceInputs["decryptionRuleType"] = state ? state.decryptionRuleType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destination"] = state ? state.destination : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["logging"] = state ? state.logging : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["negateDestination"] = state ? state.negateDestination : undefined;
-            resourceInputs["negateSource"] = state ? state.negateSource : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["protPortLists"] = state ? state.protPortLists : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["ruleList"] = state ? state.ruleList : undefined;
-            resourceInputs["rulestack"] = state ? state.rulestack : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updateToken"] = state ? state.updateToken : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["applications"] = state?.applications;
+            resourceInputs["auditComment"] = state?.auditComment;
+            resourceInputs["category"] = state?.category;
+            resourceInputs["decryptionRuleType"] = state?.decryptionRuleType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destination"] = state?.destination;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["logging"] = state?.logging;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["negateDestination"] = state?.negateDestination;
+            resourceInputs["negateSource"] = state?.negateSource;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["protPortLists"] = state?.protPortLists;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["ruleList"] = state?.ruleList;
+            resourceInputs["rulestack"] = state?.rulestack;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updateToken"] = state?.updateToken;
         } else {
             const args = argsOrState as SecurityRuleArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.applications === undefined) && !opts.urn) {
+            if (args?.applications === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applications'");
             }
-            if ((!args || args.category === undefined) && !opts.urn) {
+            if (args?.category === undefined && !opts.urn) {
                 throw new Error("Missing required property 'category'");
             }
-            if ((!args || args.destination === undefined) && !opts.urn) {
+            if (args?.destination === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            if ((!args || args.rulestack === undefined) && !opts.urn) {
+            if (args?.rulestack === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rulestack'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
+            if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["applications"] = args ? args.applications : undefined;
-            resourceInputs["auditComment"] = args ? args.auditComment : undefined;
-            resourceInputs["category"] = args ? args.category : undefined;
-            resourceInputs["decryptionRuleType"] = args ? args.decryptionRuleType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destination"] = args ? args.destination : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["logging"] = args ? args.logging : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["negateDestination"] = args ? args.negateDestination : undefined;
-            resourceInputs["negateSource"] = args ? args.negateSource : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["protPortLists"] = args ? args.protPortLists : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["ruleList"] = args ? args.ruleList : undefined;
-            resourceInputs["rulestack"] = args ? args.rulestack : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["applications"] = args?.applications;
+            resourceInputs["auditComment"] = args?.auditComment;
+            resourceInputs["category"] = args?.category;
+            resourceInputs["decryptionRuleType"] = args?.decryptionRuleType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destination"] = args?.destination;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["logging"] = args?.logging;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["negateDestination"] = args?.negateDestination;
+            resourceInputs["negateSource"] = args?.negateSource;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["protPortLists"] = args?.protPortLists;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["ruleList"] = args?.ruleList;
+            resourceInputs["rulestack"] = args?.rulestack;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["updateToken"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

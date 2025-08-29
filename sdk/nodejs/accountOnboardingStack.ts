@@ -43,66 +43,66 @@ export class AccountOnboardingStack extends pulumi.CustomResource {
     /**
      * The account IDs
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Audit Log Group Name
      */
-    public readonly auditlogGroup!: pulumi.Output<string | undefined>;
+    declare public readonly auditlogGroup: pulumi.Output<string | undefined>;
     /**
      * Role name to run the account onboarding CFT in each account to be onboarded.
      */
-    public readonly cftRoleName!: pulumi.Output<string>;
+    declare public readonly cftRoleName: pulumi.Output<string>;
     /**
      * Cloudwatch Log Group
      */
-    public readonly cloudwatchLogGroup!: pulumi.Output<string | undefined>;
+    declare public readonly cloudwatchLogGroup: pulumi.Output<string | undefined>;
     /**
      * Cloudwatch Namespace
      */
-    public readonly cloudwatchNamespace!: pulumi.Output<string | undefined>;
+    declare public readonly cloudwatchNamespace: pulumi.Output<string | undefined>;
     /**
      * The CloudNGFW can decrypt inbound and outbound traffic by providing a
      * 					  certificate stored in secret Manager.
      * 		 			  The role allows the service to access a certificate configured in the rulestack.
      * 		 			  Only certificated tagged with PaloAltoCloudNGFW can be accessed
      */
-    public readonly decryptionCert!: pulumi.Output<string | undefined>;
+    declare public readonly decryptionCert: pulumi.Output<string | undefined>;
     /**
      * Controls whether cloud NGFW will create firewall endpoints automatitically in customer subnets
      */
-    public readonly endpointMode!: pulumi.Output<string | undefined>;
+    declare public readonly endpointMode: pulumi.Output<string | undefined>;
     /**
      * External Id of the onboarded account
      */
-    public readonly externalId!: pulumi.Output<string>;
+    declare public readonly externalId: pulumi.Output<string>;
     /**
      * Kinesis Firehose for logging
      */
-    public readonly kinesisFirehose!: pulumi.Output<string | undefined>;
+    declare public readonly kinesisFirehose: pulumi.Output<string | undefined>;
     /**
      * Role name to run the account onboarding CFT in each account to be onboarded.
      */
-    public readonly onboardingCft!: pulumi.Output<string>;
+    declare public readonly onboardingCft: pulumi.Output<string>;
     /**
      * S3 Bucket Name for Logging. Logging roles provide access to create log contents in this bucket.
      */
-    public readonly s3Bucket!: pulumi.Output<string | undefined>;
+    declare public readonly s3Bucket: pulumi.Output<string | undefined>;
     /**
      * SNS topic ARN to publish the role ARNs
      */
-    public readonly snsTopicArn!: pulumi.Output<string>;
+    declare public readonly snsTopicArn: pulumi.Output<string>;
     /**
      * ID of the account onboarding CFT stack
      */
-    public readonly stackId!: pulumi.Output<string>;
+    declare public readonly stackId: pulumi.Output<string>;
     /**
      * Status of the account onboarding CFT stack.
      */
-    public readonly stackStatus!: pulumi.Output<string>;
+    declare public readonly stackStatus: pulumi.Output<string>;
     /**
      * PANW Cloud NGFW trusted account Id
      */
-    public readonly trustedAccount!: pulumi.Output<string>;
+    declare public readonly trustedAccount: pulumi.Output<string>;
 
     /**
      * Create a AccountOnboardingStack resource with the given unique name, arguments, and options.
@@ -117,56 +117,56 @@ export class AccountOnboardingStack extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountOnboardingStackState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["auditlogGroup"] = state ? state.auditlogGroup : undefined;
-            resourceInputs["cftRoleName"] = state ? state.cftRoleName : undefined;
-            resourceInputs["cloudwatchLogGroup"] = state ? state.cloudwatchLogGroup : undefined;
-            resourceInputs["cloudwatchNamespace"] = state ? state.cloudwatchNamespace : undefined;
-            resourceInputs["decryptionCert"] = state ? state.decryptionCert : undefined;
-            resourceInputs["endpointMode"] = state ? state.endpointMode : undefined;
-            resourceInputs["externalId"] = state ? state.externalId : undefined;
-            resourceInputs["kinesisFirehose"] = state ? state.kinesisFirehose : undefined;
-            resourceInputs["onboardingCft"] = state ? state.onboardingCft : undefined;
-            resourceInputs["s3Bucket"] = state ? state.s3Bucket : undefined;
-            resourceInputs["snsTopicArn"] = state ? state.snsTopicArn : undefined;
-            resourceInputs["stackId"] = state ? state.stackId : undefined;
-            resourceInputs["stackStatus"] = state ? state.stackStatus : undefined;
-            resourceInputs["trustedAccount"] = state ? state.trustedAccount : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["auditlogGroup"] = state?.auditlogGroup;
+            resourceInputs["cftRoleName"] = state?.cftRoleName;
+            resourceInputs["cloudwatchLogGroup"] = state?.cloudwatchLogGroup;
+            resourceInputs["cloudwatchNamespace"] = state?.cloudwatchNamespace;
+            resourceInputs["decryptionCert"] = state?.decryptionCert;
+            resourceInputs["endpointMode"] = state?.endpointMode;
+            resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["kinesisFirehose"] = state?.kinesisFirehose;
+            resourceInputs["onboardingCft"] = state?.onboardingCft;
+            resourceInputs["s3Bucket"] = state?.s3Bucket;
+            resourceInputs["snsTopicArn"] = state?.snsTopicArn;
+            resourceInputs["stackId"] = state?.stackId;
+            resourceInputs["stackStatus"] = state?.stackStatus;
+            resourceInputs["trustedAccount"] = state?.trustedAccount;
         } else {
             const args = argsOrState as AccountOnboardingStackArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.cftRoleName === undefined) && !opts.urn) {
+            if (args?.cftRoleName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cftRoleName'");
             }
-            if ((!args || args.externalId === undefined) && !opts.urn) {
+            if (args?.externalId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'externalId'");
             }
-            if ((!args || args.onboardingCft === undefined) && !opts.urn) {
+            if (args?.onboardingCft === undefined && !opts.urn) {
                 throw new Error("Missing required property 'onboardingCft'");
             }
-            if ((!args || args.snsTopicArn === undefined) && !opts.urn) {
+            if (args?.snsTopicArn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'snsTopicArn'");
             }
-            if ((!args || args.trustedAccount === undefined) && !opts.urn) {
+            if (args?.trustedAccount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'trustedAccount'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["auditlogGroup"] = args ? args.auditlogGroup : undefined;
-            resourceInputs["cftRoleName"] = args ? args.cftRoleName : undefined;
-            resourceInputs["cloudwatchLogGroup"] = args ? args.cloudwatchLogGroup : undefined;
-            resourceInputs["cloudwatchNamespace"] = args ? args.cloudwatchNamespace : undefined;
-            resourceInputs["decryptionCert"] = args ? args.decryptionCert : undefined;
-            resourceInputs["endpointMode"] = args ? args.endpointMode : undefined;
-            resourceInputs["externalId"] = args ? args.externalId : undefined;
-            resourceInputs["kinesisFirehose"] = args ? args.kinesisFirehose : undefined;
-            resourceInputs["onboardingCft"] = args ? args.onboardingCft : undefined;
-            resourceInputs["s3Bucket"] = args ? args.s3Bucket : undefined;
-            resourceInputs["snsTopicArn"] = args ? args.snsTopicArn : undefined;
-            resourceInputs["stackId"] = args ? args.stackId : undefined;
-            resourceInputs["stackStatus"] = args ? args.stackStatus : undefined;
-            resourceInputs["trustedAccount"] = args ? args.trustedAccount : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["auditlogGroup"] = args?.auditlogGroup;
+            resourceInputs["cftRoleName"] = args?.cftRoleName;
+            resourceInputs["cloudwatchLogGroup"] = args?.cloudwatchLogGroup;
+            resourceInputs["cloudwatchNamespace"] = args?.cloudwatchNamespace;
+            resourceInputs["decryptionCert"] = args?.decryptionCert;
+            resourceInputs["endpointMode"] = args?.endpointMode;
+            resourceInputs["externalId"] = args?.externalId;
+            resourceInputs["kinesisFirehose"] = args?.kinesisFirehose;
+            resourceInputs["onboardingCft"] = args?.onboardingCft;
+            resourceInputs["s3Bucket"] = args?.s3Bucket;
+            resourceInputs["snsTopicArn"] = args?.snsTopicArn;
+            resourceInputs["stackId"] = args?.stackId;
+            resourceInputs["stackStatus"] = args?.stackStatus;
+            resourceInputs["trustedAccount"] = args?.trustedAccount;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccountOnboardingStack.__pulumiType, name, resourceInputs, opts);

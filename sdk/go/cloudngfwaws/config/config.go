@@ -11,40 +11,32 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file
-// variable: `access-key`.
+// (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file variable: `access-key`.
 func GetAccessKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:accessKey")
 }
 
-// The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file
-// variable: `account-admin-arn`.
+// The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file variable: `account-admin-arn`.
 func GetAccountAdminArn(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:accountAdminArn")
 }
 
-// The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be
-// enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable
-// only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
+// The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
 func GetArn(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:arn")
 }
 
-// The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS
-// account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are
-// specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
+// The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
 func GetGraArn(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:graArn")
 }
 
-// Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable:
-// `headers`.
+// Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable: `headers`.
 func GetHeaders(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:headers")
 }
 
-// The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable:
-// `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
+// The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
 func GetHost(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:host")
 }
@@ -54,8 +46,7 @@ func GetJsonConfigFile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:jsonConfigFile")
 }
 
-// The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified.
-// Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
+// The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
 func GetLfaArn(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:lfaArn")
 }
@@ -65,8 +56,7 @@ func GetLoggings(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:loggings")
 }
 
-// The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified.
-// Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
+// The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
 func GetLraArn(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:lraArn")
 }
@@ -76,20 +66,17 @@ func GetMpRegion(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:mpRegion")
 }
 
-// AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable:
-// `mpRegionHost`.
+// AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mpRegionHost`.
 func GetMpRegionHost(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:mpRegionHost")
 }
 
-// (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file
-// variable: `profile`.
+// (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file variable: `profile`.
 func GetProfile(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:profile")
 }
 
-// The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`.
-// Valid values are `https` or `http`.
+// The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`.
 func GetProtocol(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:protocol")
 }
@@ -102,26 +89,22 @@ func GetResourceTimeout(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "cloudngfwaws:resourceTimeout")
 }
 
-// (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file
-// variable: `secret-key`.
+// (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
 func GetSecretKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:secretKey")
 }
 
-// Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file
-// variable: `skip-verify-certificate`.
+// Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file variable: `skip-verify-certificate`.
 func GetSkipVerifyCertificate(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "cloudngfwaws:skipVerifyCertificate")
 }
 
-// Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file
-// variable: `syncMode`.
+// Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `syncMode`.
 func GetSyncMode(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "cloudngfwaws:syncMode")
 }
 
-// The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file
-// variable: `timeout`.
+// The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
 func GetTimeout(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "cloudngfwaws:timeout")
 }

@@ -43,39 +43,39 @@ export class Account extends pulumi.CustomResource {
     /**
      * The account ID
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The CFT URL.
      */
-    public readonly cftUrl!: pulumi.Output<string>;
+    declare public readonly cftUrl: pulumi.Output<string>;
     /**
      * The external ID of the account
      */
-    public readonly externalId!: pulumi.Output<string>;
+    declare public readonly externalId: pulumi.Output<string>;
     /**
      * The Account onboarding status
      */
-    public readonly onboardingStatus!: pulumi.Output<string>;
+    declare public readonly onboardingStatus: pulumi.Output<string>;
     /**
      * Origin of account onboarding
      */
-    public readonly origin!: pulumi.Output<string>;
+    declare public readonly origin: pulumi.Output<string>;
     /**
      * The account ID of cloud NGFW service
      */
-    public readonly serviceAccountId!: pulumi.Output<string>;
+    declare public readonly serviceAccountId: pulumi.Output<string>;
     /**
      * The SNS topic ARN
      */
-    public readonly snsTopicArn!: pulumi.Output<string>;
+    declare public readonly snsTopicArn: pulumi.Output<string>;
     /**
      * The trusted account ID
      */
-    public readonly trustedAccount!: pulumi.Output<string>;
+    declare public readonly trustedAccount: pulumi.Output<string>;
     /**
      * The update token.
      */
-    public /*out*/ readonly updateToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateToken: pulumi.Output<string>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -90,25 +90,25 @@ export class Account extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["cftUrl"] = state ? state.cftUrl : undefined;
-            resourceInputs["externalId"] = state ? state.externalId : undefined;
-            resourceInputs["onboardingStatus"] = state ? state.onboardingStatus : undefined;
-            resourceInputs["origin"] = state ? state.origin : undefined;
-            resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
-            resourceInputs["snsTopicArn"] = state ? state.snsTopicArn : undefined;
-            resourceInputs["trustedAccount"] = state ? state.trustedAccount : undefined;
-            resourceInputs["updateToken"] = state ? state.updateToken : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["cftUrl"] = state?.cftUrl;
+            resourceInputs["externalId"] = state?.externalId;
+            resourceInputs["onboardingStatus"] = state?.onboardingStatus;
+            resourceInputs["origin"] = state?.origin;
+            resourceInputs["serviceAccountId"] = state?.serviceAccountId;
+            resourceInputs["snsTopicArn"] = state?.snsTopicArn;
+            resourceInputs["trustedAccount"] = state?.trustedAccount;
+            resourceInputs["updateToken"] = state?.updateToken;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["cftUrl"] = args ? args.cftUrl : undefined;
-            resourceInputs["externalId"] = args ? args.externalId : undefined;
-            resourceInputs["onboardingStatus"] = args ? args.onboardingStatus : undefined;
-            resourceInputs["origin"] = args ? args.origin : undefined;
-            resourceInputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
-            resourceInputs["snsTopicArn"] = args ? args.snsTopicArn : undefined;
-            resourceInputs["trustedAccount"] = args ? args.trustedAccount : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["cftUrl"] = args?.cftUrl;
+            resourceInputs["externalId"] = args?.externalId;
+            resourceInputs["onboardingStatus"] = args?.onboardingStatus;
+            resourceInputs["origin"] = args?.origin;
+            resourceInputs["serviceAccountId"] = args?.serviceAccountId;
+            resourceInputs["snsTopicArn"] = args?.snsTopicArn;
+            resourceInputs["trustedAccount"] = args?.trustedAccount;
             resourceInputs["updateToken"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
