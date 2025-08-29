@@ -8,8 +8,7 @@ declare var exports: any;
 const __config = new pulumi.Config("cloudngfwaws");
 
 /**
- * (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file
- * variable: `access-key`.
+ * (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file variable: `access-key`.
  */
 export declare const accessKey: string | undefined;
 Object.defineProperty(exports, "accessKey", {
@@ -20,8 +19,7 @@ Object.defineProperty(exports, "accessKey", {
 });
 
 /**
- * The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file
- * variable: `account-admin-arn`.
+ * The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file variable: `account-admin-arn`.
  */
 export declare const accountAdminArn: string | undefined;
 Object.defineProperty(exports, "accountAdminArn", {
@@ -32,9 +30,7 @@ Object.defineProperty(exports, "accountAdminArn", {
 });
 
 /**
- * The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be
- * enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable
- * only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
+ * The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
  */
 export declare const arn: string | undefined;
 Object.defineProperty(exports, "arn", {
@@ -45,9 +41,7 @@ Object.defineProperty(exports, "arn", {
 });
 
 /**
- * The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS
- * account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are
- * specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
+ * The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
  */
 export declare const graArn: string | undefined;
 Object.defineProperty(exports, "graArn", {
@@ -58,8 +52,7 @@ Object.defineProperty(exports, "graArn", {
 });
 
 /**
- * Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable:
- * `headers`.
+ * Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable: `headers`.
  */
 export declare const headers: {[key: string]: string} | undefined;
 Object.defineProperty(exports, "headers", {
@@ -70,8 +63,7 @@ Object.defineProperty(exports, "headers", {
 });
 
 /**
- * The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable:
- * `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
+ * The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
  */
 export declare const host: string | undefined;
 Object.defineProperty(exports, "host", {
@@ -93,8 +85,7 @@ Object.defineProperty(exports, "jsonConfigFile", {
 });
 
 /**
- * The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified.
- * Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
+ * The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
  */
 export declare const lfaArn: string | undefined;
 Object.defineProperty(exports, "lfaArn", {
@@ -116,8 +107,7 @@ Object.defineProperty(exports, "loggings", {
 });
 
 /**
- * The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified.
- * Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
+ * The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
  */
 export declare const lraArn: string | undefined;
 Object.defineProperty(exports, "lraArn", {
@@ -139,8 +129,7 @@ Object.defineProperty(exports, "mpRegion", {
 });
 
 /**
- * AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable:
- * `mpRegionHost`.
+ * AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mpRegionHost`.
  */
 export declare const mpRegionHost: string | undefined;
 Object.defineProperty(exports, "mpRegionHost", {
@@ -151,8 +140,7 @@ Object.defineProperty(exports, "mpRegionHost", {
 });
 
 /**
- * (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file
- * variable: `profile`.
+ * (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file variable: `profile`.
  */
 export declare const profile: string | undefined;
 Object.defineProperty(exports, "profile", {
@@ -163,8 +151,7 @@ Object.defineProperty(exports, "profile", {
 });
 
 /**
- * The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`.
- * Valid values are `https` or `http`.
+ * The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`.
  */
 export declare const protocol: string | undefined;
 Object.defineProperty(exports, "protocol", {
@@ -194,8 +181,7 @@ Object.defineProperty(exports, "resourceTimeout", {
 });
 
 /**
- * (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file
- * variable: `secret-key`.
+ * (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
  */
 export declare const secretKey: string | undefined;
 Object.defineProperty(exports, "secretKey", {
@@ -206,8 +192,7 @@ Object.defineProperty(exports, "secretKey", {
 });
 
 /**
- * Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file
- * variable: `skip-verify-certificate`.
+ * Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file variable: `skip-verify-certificate`.
  */
 export declare const skipVerifyCertificate: boolean | undefined;
 Object.defineProperty(exports, "skipVerifyCertificate", {
@@ -218,8 +203,7 @@ Object.defineProperty(exports, "skipVerifyCertificate", {
 });
 
 /**
- * Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file
- * variable: `syncMode`.
+ * Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `syncMode`.
  */
 export declare const syncMode: boolean | undefined;
 Object.defineProperty(exports, "syncMode", {
@@ -230,8 +214,7 @@ Object.defineProperty(exports, "syncMode", {
 });
 
 /**
- * The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file
- * variable: `timeout`.
+ * The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
  */
 export declare const timeout: number | undefined;
 Object.defineProperty(exports, "timeout", {

@@ -79,35 +79,35 @@ export class CustomUrlCategory extends pulumi.CustomResource {
     /**
      * The action to take. Valid values are `none`, `alert`, `allow`, `block`, `continue`, or `override`. Defaults to `none`.
      */
-    public readonly action!: pulumi.Output<string | undefined>;
+    declare public readonly action: pulumi.Output<string | undefined>;
     /**
      * The audit comment.
      */
-    public readonly auditComment!: pulumi.Output<string | undefined>;
+    declare public readonly auditComment: pulumi.Output<string | undefined>;
     /**
      * The description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The rulestack.
      */
-    public readonly rulestack!: pulumi.Output<string>;
+    declare public readonly rulestack: pulumi.Output<string>;
     /**
      * The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
      */
-    public readonly scope!: pulumi.Output<string | undefined>;
+    declare public readonly scope: pulumi.Output<string | undefined>;
     /**
      * The update token.
      */
-    public /*out*/ readonly updateToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateToken: pulumi.Output<string>;
     /**
      * The URL list for this custom URL category.
      */
-    public readonly urlLists!: pulumi.Output<string[]>;
+    declare public readonly urlLists: pulumi.Output<string[]>;
 
     /**
      * Create a CustomUrlCategory resource with the given unique name, arguments, and options.
@@ -122,29 +122,29 @@ export class CustomUrlCategory extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomUrlCategoryState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["auditComment"] = state ? state.auditComment : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["rulestack"] = state ? state.rulestack : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["updateToken"] = state ? state.updateToken : undefined;
-            resourceInputs["urlLists"] = state ? state.urlLists : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["auditComment"] = state?.auditComment;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["rulestack"] = state?.rulestack;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["updateToken"] = state?.updateToken;
+            resourceInputs["urlLists"] = state?.urlLists;
         } else {
             const args = argsOrState as CustomUrlCategoryArgs | undefined;
-            if ((!args || args.rulestack === undefined) && !opts.urn) {
+            if (args?.rulestack === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rulestack'");
             }
-            if ((!args || args.urlLists === undefined) && !opts.urn) {
+            if (args?.urlLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'urlLists'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["auditComment"] = args ? args.auditComment : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["rulestack"] = args ? args.rulestack : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["urlLists"] = args ? args.urlLists : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["auditComment"] = args?.auditComment;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["rulestack"] = args?.rulestack;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["urlLists"] = args?.urlLists;
             resourceInputs["updateToken"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

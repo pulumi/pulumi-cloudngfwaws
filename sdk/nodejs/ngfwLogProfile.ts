@@ -118,27 +118,27 @@ export class NgfwLogProfile extends pulumi.CustomResource {
     /**
      * The unique ID of the account.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string>;
     /**
      * Enable advanced threat logging.
      */
-    public readonly advancedThreatLog!: pulumi.Output<boolean | undefined>;
+    declare public readonly advancedThreatLog: pulumi.Output<boolean | undefined>;
     /**
      * The CloudWatch metric namespace.
      */
-    public readonly cloudWatchMetricNamespace!: pulumi.Output<string | undefined>;
+    declare public readonly cloudWatchMetricNamespace: pulumi.Output<string | undefined>;
     /**
      * Cloudwatch metric fields.
      */
-    public readonly cloudwatchMetricFields!: pulumi.Output<string[] | undefined>;
+    declare public readonly cloudwatchMetricFields: pulumi.Output<string[] | undefined>;
     /**
      * List of log destinations.
      */
-    public readonly logDestinations!: pulumi.Output<outputs.NgfwLogProfileLogDestination[]>;
+    declare public readonly logDestinations: pulumi.Output<outputs.NgfwLogProfileLogDestination[]>;
     /**
      * The name of the NGFW.
      */
-    public readonly ngfw!: pulumi.Output<string>;
+    declare public readonly ngfw: pulumi.Output<string>;
 
     /**
      * Create a NgfwLogProfile resource with the given unique name, arguments, and options.
@@ -153,29 +153,29 @@ export class NgfwLogProfile extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NgfwLogProfileState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["advancedThreatLog"] = state ? state.advancedThreatLog : undefined;
-            resourceInputs["cloudWatchMetricNamespace"] = state ? state.cloudWatchMetricNamespace : undefined;
-            resourceInputs["cloudwatchMetricFields"] = state ? state.cloudwatchMetricFields : undefined;
-            resourceInputs["logDestinations"] = state ? state.logDestinations : undefined;
-            resourceInputs["ngfw"] = state ? state.ngfw : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["advancedThreatLog"] = state?.advancedThreatLog;
+            resourceInputs["cloudWatchMetricNamespace"] = state?.cloudWatchMetricNamespace;
+            resourceInputs["cloudwatchMetricFields"] = state?.cloudwatchMetricFields;
+            resourceInputs["logDestinations"] = state?.logDestinations;
+            resourceInputs["ngfw"] = state?.ngfw;
         } else {
             const args = argsOrState as NgfwLogProfileArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
+            if (args?.accountId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.logDestinations === undefined) && !opts.urn) {
+            if (args?.logDestinations === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logDestinations'");
             }
-            if ((!args || args.ngfw === undefined) && !opts.urn) {
+            if (args?.ngfw === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ngfw'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["advancedThreatLog"] = args ? args.advancedThreatLog : undefined;
-            resourceInputs["cloudWatchMetricNamespace"] = args ? args.cloudWatchMetricNamespace : undefined;
-            resourceInputs["cloudwatchMetricFields"] = args ? args.cloudwatchMetricFields : undefined;
-            resourceInputs["logDestinations"] = args ? args.logDestinations : undefined;
-            resourceInputs["ngfw"] = args ? args.ngfw : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["advancedThreatLog"] = args?.advancedThreatLog;
+            resourceInputs["cloudWatchMetricNamespace"] = args?.cloudWatchMetricNamespace;
+            resourceInputs["cloudwatchMetricFields"] = args?.cloudwatchMetricFields;
+            resourceInputs["logDestinations"] = args?.logDestinations;
+            resourceInputs["ngfw"] = args?.ngfw;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NgfwLogProfile.__pulumiType, name, resourceInputs, opts);

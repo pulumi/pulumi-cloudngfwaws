@@ -70,40 +70,40 @@ export class Rulestack extends pulumi.CustomResource {
     /**
      * Account group.
      */
-    public readonly accountGroup!: pulumi.Output<string | undefined>;
+    declare public readonly accountGroup: pulumi.Output<string | undefined>;
     /**
      * The account ID.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * The description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Lookup x forwarded for.
      */
-    public readonly lookupXForwardedFor!: pulumi.Output<string>;
+    declare public readonly lookupXForwardedFor: pulumi.Output<string>;
     /**
      * Minimum App-ID version number.
      */
-    public readonly minimumAppIdVersion!: pulumi.Output<string>;
+    declare public readonly minimumAppIdVersion: pulumi.Output<string>;
     /**
      * The name.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly profileConfig!: pulumi.Output<outputs.RulestackProfileConfig>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly profileConfig: pulumi.Output<outputs.RulestackProfileConfig>;
     /**
      * The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
      */
-    public readonly scope!: pulumi.Output<string | undefined>;
+    declare public readonly scope: pulumi.Output<string | undefined>;
     /**
      * The rulestack state.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Rulestack resource with the given unique name, arguments, and options.
@@ -118,30 +118,30 @@ export class Rulestack extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RulestackState | undefined;
-            resourceInputs["accountGroup"] = state ? state.accountGroup : undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["lookupXForwardedFor"] = state ? state.lookupXForwardedFor : undefined;
-            resourceInputs["minimumAppIdVersion"] = state ? state.minimumAppIdVersion : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["profileConfig"] = state ? state.profileConfig : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["accountGroup"] = state?.accountGroup;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["lookupXForwardedFor"] = state?.lookupXForwardedFor;
+            resourceInputs["minimumAppIdVersion"] = state?.minimumAppIdVersion;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["profileConfig"] = state?.profileConfig;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as RulestackArgs | undefined;
-            if ((!args || args.profileConfig === undefined) && !opts.urn) {
+            if (args?.profileConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'profileConfig'");
             }
-            resourceInputs["accountGroup"] = args ? args.accountGroup : undefined;
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["lookupXForwardedFor"] = args ? args.lookupXForwardedFor : undefined;
-            resourceInputs["minimumAppIdVersion"] = args ? args.minimumAppIdVersion : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["profileConfig"] = args ? args.profileConfig : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["accountGroup"] = args?.accountGroup;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["lookupXForwardedFor"] = args?.lookupXForwardedFor;
+            resourceInputs["minimumAppIdVersion"] = args?.minimumAppIdVersion;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["profileConfig"] = args?.profileConfig;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

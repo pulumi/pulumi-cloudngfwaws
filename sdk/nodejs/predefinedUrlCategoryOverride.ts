@@ -73,23 +73,23 @@ export class PredefinedUrlCategoryOverride extends pulumi.CustomResource {
     /**
      * The action to take. Valid values are `none`, `allow`, `alert`, or `block`. Defaults to `none`.
      */
-    public readonly action!: pulumi.Output<string | undefined>;
+    declare public readonly action: pulumi.Output<string | undefined>;
     /**
      * The audit comment.
      */
-    public readonly auditComment!: pulumi.Output<string | undefined>;
+    declare public readonly auditComment: pulumi.Output<string | undefined>;
     /**
      * The name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The rulestack.
      */
-    public readonly rulestack!: pulumi.Output<string>;
+    declare public readonly rulestack: pulumi.Output<string>;
     /**
      * Update token.
      */
-    public /*out*/ readonly updateToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateToken: pulumi.Output<string>;
 
     /**
      * Create a PredefinedUrlCategoryOverride resource with the given unique name, arguments, and options.
@@ -104,20 +104,20 @@ export class PredefinedUrlCategoryOverride extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PredefinedUrlCategoryOverrideState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["auditComment"] = state ? state.auditComment : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["rulestack"] = state ? state.rulestack : undefined;
-            resourceInputs["updateToken"] = state ? state.updateToken : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["auditComment"] = state?.auditComment;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["rulestack"] = state?.rulestack;
+            resourceInputs["updateToken"] = state?.updateToken;
         } else {
             const args = argsOrState as PredefinedUrlCategoryOverrideArgs | undefined;
-            if ((!args || args.rulestack === undefined) && !opts.urn) {
+            if (args?.rulestack === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rulestack'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["auditComment"] = args ? args.auditComment : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["rulestack"] = args ? args.rulestack : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["auditComment"] = args?.auditComment;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["rulestack"] = args?.rulestack;
             resourceInputs["updateToken"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -75,35 +75,35 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * The audit comment.
      */
-    public readonly auditComment!: pulumi.Output<string | undefined>;
+    declare public readonly auditComment: pulumi.Output<string | undefined>;
     /**
      * The description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The rulestack.
      */
-    public readonly rulestack!: pulumi.Output<string>;
+    declare public readonly rulestack: pulumi.Output<string>;
     /**
      * The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
      */
-    public readonly scope!: pulumi.Output<string | undefined>;
+    declare public readonly scope: pulumi.Output<string | undefined>;
     /**
      * Set to true if certificate is self-signed.
      */
-    public readonly selfSigned!: pulumi.Output<boolean | undefined>;
+    declare public readonly selfSigned: pulumi.Output<boolean | undefined>;
     /**
      * The certificate signer ARN.
      */
-    public readonly signerArn!: pulumi.Output<string | undefined>;
+    declare public readonly signerArn: pulumi.Output<string | undefined>;
     /**
      * The update token.
      */
-    public /*out*/ readonly updateToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateToken: pulumi.Output<string>;
 
     /**
      * Create a Certificate resource with the given unique name, arguments, and options.
@@ -118,26 +118,26 @@ export class Certificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateState | undefined;
-            resourceInputs["auditComment"] = state ? state.auditComment : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["rulestack"] = state ? state.rulestack : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["selfSigned"] = state ? state.selfSigned : undefined;
-            resourceInputs["signerArn"] = state ? state.signerArn : undefined;
-            resourceInputs["updateToken"] = state ? state.updateToken : undefined;
+            resourceInputs["auditComment"] = state?.auditComment;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["rulestack"] = state?.rulestack;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["selfSigned"] = state?.selfSigned;
+            resourceInputs["signerArn"] = state?.signerArn;
+            resourceInputs["updateToken"] = state?.updateToken;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
-            if ((!args || args.rulestack === undefined) && !opts.urn) {
+            if (args?.rulestack === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rulestack'");
             }
-            resourceInputs["auditComment"] = args ? args.auditComment : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["rulestack"] = args ? args.rulestack : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["selfSigned"] = args ? args.selfSigned : undefined;
-            resourceInputs["signerArn"] = args ? args.signerArn : undefined;
+            resourceInputs["auditComment"] = args?.auditComment;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["rulestack"] = args?.rulestack;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["selfSigned"] = args?.selfSigned;
+            resourceInputs["signerArn"] = args?.signerArn;
             resourceInputs["updateToken"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

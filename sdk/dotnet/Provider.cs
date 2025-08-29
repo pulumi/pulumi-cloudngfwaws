@@ -19,38 +19,31 @@ namespace Pulumi.CloudNgfwAws
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file
-        /// variable: `access-key`.
+        /// (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file variable: `access-key`.
         /// </summary>
         [Output("accessKey")]
         public Output<string?> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file
-        /// variable: `account-admin-arn`.
+        /// The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file variable: `account-admin-arn`.
         /// </summary>
         [Output("accountAdminArn")]
         public Output<string?> AccountAdminArn { get; private set; } = null!;
 
         /// <summary>
-        /// The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be
-        /// enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable
-        /// only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
+        /// The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
         /// </summary>
         [Output("arn")]
         public Output<string?> Arn { get; private set; } = null!;
 
         /// <summary>
-        /// The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS
-        /// account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are
-        /// specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
+        /// The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
         /// </summary>
         [Output("graArn")]
         public Output<string?> GraArn { get; private set; } = null!;
 
         /// <summary>
-        /// The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable:
-        /// `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
+        /// The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
         /// </summary>
         [Output("host")]
         public Output<string?> Host { get; private set; } = null!;
@@ -62,15 +55,13 @@ namespace Pulumi.CloudNgfwAws
         public Output<string?> JsonConfigFile { get; private set; } = null!;
 
         /// <summary>
-        /// The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified.
-        /// Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
+        /// The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
         /// </summary>
         [Output("lfaArn")]
         public Output<string?> LfaArn { get; private set; } = null!;
 
         /// <summary>
-        /// The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified.
-        /// Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
+        /// The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
         /// </summary>
         [Output("lraArn")]
         public Output<string?> LraArn { get; private set; } = null!;
@@ -82,22 +73,19 @@ namespace Pulumi.CloudNgfwAws
         public Output<string?> MpRegion { get; private set; } = null!;
 
         /// <summary>
-        /// AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable:
-        /// `mp_region_host`.
+        /// AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
         /// </summary>
         [Output("mpRegionHost")]
         public Output<string?> MpRegionHost { get; private set; } = null!;
 
         /// <summary>
-        /// (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file
-        /// variable: `profile`.
+        /// (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file variable: `profile`.
         /// </summary>
         [Output("profile")]
         public Output<string?> Profile { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`.
-        /// Valid values are `https` or `http`.
+        /// The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`.
         /// </summary>
         [Output("protocol")]
         public Output<string?> Protocol { get; private set; } = null!;
@@ -109,8 +97,7 @@ namespace Pulumi.CloudNgfwAws
         public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
-        /// (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file
-        /// variable: `secret-key`.
+        /// (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
         /// </summary>
         [Output("secretKey")]
         public Output<string?> SecretKey { get; private set; } = null!;
@@ -151,31 +138,25 @@ namespace Pulumi.CloudNgfwAws
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file
-        /// variable: `access-key`.
+        /// (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file variable: `access-key`.
         /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
 
         /// <summary>
-        /// The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file
-        /// variable: `account-admin-arn`.
+        /// The ARN allowing account admin permissions. Environment variable: `CLOUDNGFWAWS_ACCT_ADMIN_ARN`. JSON conf file variable: `account-admin-arn`.
         /// </summary>
         [Input("accountAdminArn")]
         public Input<string>? AccountAdminArn { get; set; }
 
         /// <summary>
-        /// The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be
-        /// enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable
-        /// only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
+        /// The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
         /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
         /// <summary>
-        /// The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS
-        /// account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are
-        /// specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
+        /// The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
         /// </summary>
         [Input("graArn")]
         public Input<string>? GraArn { get; set; }
@@ -184,8 +165,7 @@ namespace Pulumi.CloudNgfwAws
         private InputMap<string>? _headers;
 
         /// <summary>
-        /// Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable:
-        /// `headers`.
+        /// Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable: `headers`.
         /// </summary>
         public InputMap<string> Headers
         {
@@ -194,8 +174,7 @@ namespace Pulumi.CloudNgfwAws
         }
 
         /// <summary>
-        /// The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable:
-        /// `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
+        /// The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
@@ -207,8 +186,7 @@ namespace Pulumi.CloudNgfwAws
         public Input<string>? JsonConfigFile { get; set; }
 
         /// <summary>
-        /// The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified.
-        /// Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
+        /// The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
         /// </summary>
         [Input("lfaArn")]
         public Input<string>? LfaArn { get; set; }
@@ -226,8 +204,7 @@ namespace Pulumi.CloudNgfwAws
         }
 
         /// <summary>
-        /// The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified.
-        /// Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
+        /// The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
         /// </summary>
         [Input("lraArn")]
         public Input<string>? LraArn { get; set; }
@@ -239,22 +216,19 @@ namespace Pulumi.CloudNgfwAws
         public Input<string>? MpRegion { get; set; }
 
         /// <summary>
-        /// AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable:
-        /// `mp_region_host`.
+        /// AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
         /// </summary>
         [Input("mpRegionHost")]
         public Input<string>? MpRegionHost { get; set; }
 
         /// <summary>
-        /// (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file
-        /// variable: `profile`.
+        /// (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file variable: `profile`.
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }
 
         /// <summary>
-        /// The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`.
-        /// Valid values are `https` or `http`.
+        /// The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -269,29 +243,25 @@ namespace Pulumi.CloudNgfwAws
         public Input<int>? ResourceTimeout { get; set; }
 
         /// <summary>
-        /// (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file
-        /// variable: `secret-key`.
+        /// (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
         /// </summary>
         [Input("secretKey")]
         public Input<string>? SecretKey { get; set; }
 
         /// <summary>
-        /// Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file
-        /// variable: `skip-verify-certificate`.
+        /// Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file variable: `skip-verify-certificate`.
         /// </summary>
         [Input("skipVerifyCertificate", json: true)]
         public Input<bool>? SkipVerifyCertificate { get; set; }
 
         /// <summary>
-        /// Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file
-        /// variable: `sync_mode`.
+        /// Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `sync_mode`.
         /// </summary>
         [Input("syncMode", json: true)]
         public Input<bool>? SyncMode { get; set; }
 
         /// <summary>
-        /// The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file
-        /// variable: `timeout`.
+        /// The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
         /// </summary>
         [Input("timeout", json: true)]
         public Input<int>? Timeout { get; set; }

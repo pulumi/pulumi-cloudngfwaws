@@ -98,72 +98,72 @@ export class Ngfw extends pulumi.CustomResource {
     /**
      * The account ID. This field is mandatory if using multiple accounts.
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * App-ID version number.
      */
-    public readonly appIdVersion!: pulumi.Output<string>;
+    declare public readonly appIdVersion: pulumi.Output<string>;
     /**
      * Automatic App-ID upgrade version number. Defaults to `true`.
      */
-    public readonly automaticUpgradeAppIdVersion!: pulumi.Output<boolean | undefined>;
+    declare public readonly automaticUpgradeAppIdVersion: pulumi.Output<boolean | undefined>;
     /**
      * The description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
      */
-    public readonly endpointMode!: pulumi.Output<string>;
+    declare public readonly endpointMode: pulumi.Output<string>;
     /**
      * The endpoint service name.
      */
-    public /*out*/ readonly endpointServiceName!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpointServiceName: pulumi.Output<string>;
     /**
      * The Id of the NGFW.
      */
-    public /*out*/ readonly firewallId!: pulumi.Output<string>;
+    declare public /*out*/ readonly firewallId: pulumi.Output<string>;
     /**
      * The global rulestack for this NGFW.
      */
-    public readonly globalRulestack!: pulumi.Output<string | undefined>;
+    declare public readonly globalRulestack: pulumi.Output<string | undefined>;
     /**
      * A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
      */
-    public readonly linkId!: pulumi.Output<string>;
+    declare public readonly linkId: pulumi.Output<string>;
     /**
      * The link status.
      */
-    public /*out*/ readonly linkStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly linkStatus: pulumi.Output<string>;
     /**
      * Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
      */
-    public readonly multiVpc!: pulumi.Output<boolean>;
+    declare public readonly multiVpc: pulumi.Output<boolean>;
     /**
      * The NGFW name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The rulestack for this NGFW.
      */
-    public readonly rulestack!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly statuses!: pulumi.Output<outputs.NgfwStatus[]>;
+    declare public readonly rulestack: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly statuses: pulumi.Output<outputs.NgfwStatus[]>;
     /**
      * Subnet mappings.
      */
-    public readonly subnetMappings!: pulumi.Output<outputs.NgfwSubnetMapping[]>;
+    declare public readonly subnetMappings: pulumi.Output<outputs.NgfwSubnetMapping[]>;
     /**
      * The tags.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The update token.
      */
-    public /*out*/ readonly updateToken!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateToken: pulumi.Output<string>;
     /**
      * The vpc id.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a Ngfw resource with the given unique name, arguments, and options.
@@ -178,48 +178,48 @@ export class Ngfw extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NgfwState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["appIdVersion"] = state ? state.appIdVersion : undefined;
-            resourceInputs["automaticUpgradeAppIdVersion"] = state ? state.automaticUpgradeAppIdVersion : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endpointMode"] = state ? state.endpointMode : undefined;
-            resourceInputs["endpointServiceName"] = state ? state.endpointServiceName : undefined;
-            resourceInputs["firewallId"] = state ? state.firewallId : undefined;
-            resourceInputs["globalRulestack"] = state ? state.globalRulestack : undefined;
-            resourceInputs["linkId"] = state ? state.linkId : undefined;
-            resourceInputs["linkStatus"] = state ? state.linkStatus : undefined;
-            resourceInputs["multiVpc"] = state ? state.multiVpc : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["rulestack"] = state ? state.rulestack : undefined;
-            resourceInputs["statuses"] = state ? state.statuses : undefined;
-            resourceInputs["subnetMappings"] = state ? state.subnetMappings : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updateToken"] = state ? state.updateToken : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["appIdVersion"] = state?.appIdVersion;
+            resourceInputs["automaticUpgradeAppIdVersion"] = state?.automaticUpgradeAppIdVersion;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endpointMode"] = state?.endpointMode;
+            resourceInputs["endpointServiceName"] = state?.endpointServiceName;
+            resourceInputs["firewallId"] = state?.firewallId;
+            resourceInputs["globalRulestack"] = state?.globalRulestack;
+            resourceInputs["linkId"] = state?.linkId;
+            resourceInputs["linkStatus"] = state?.linkStatus;
+            resourceInputs["multiVpc"] = state?.multiVpc;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["rulestack"] = state?.rulestack;
+            resourceInputs["statuses"] = state?.statuses;
+            resourceInputs["subnetMappings"] = state?.subnetMappings;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updateToken"] = state?.updateToken;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as NgfwArgs | undefined;
-            if ((!args || args.endpointMode === undefined) && !opts.urn) {
+            if (args?.endpointMode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointMode'");
             }
-            if ((!args || args.subnetMappings === undefined) && !opts.urn) {
+            if (args?.subnetMappings === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetMappings'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["appIdVersion"] = args ? args.appIdVersion : undefined;
-            resourceInputs["automaticUpgradeAppIdVersion"] = args ? args.automaticUpgradeAppIdVersion : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["endpointMode"] = args ? args.endpointMode : undefined;
-            resourceInputs["globalRulestack"] = args ? args.globalRulestack : undefined;
-            resourceInputs["linkId"] = args ? args.linkId : undefined;
-            resourceInputs["multiVpc"] = args ? args.multiVpc : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["rulestack"] = args ? args.rulestack : undefined;
-            resourceInputs["subnetMappings"] = args ? args.subnetMappings : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["appIdVersion"] = args?.appIdVersion;
+            resourceInputs["automaticUpgradeAppIdVersion"] = args?.automaticUpgradeAppIdVersion;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["endpointMode"] = args?.endpointMode;
+            resourceInputs["globalRulestack"] = args?.globalRulestack;
+            resourceInputs["linkId"] = args?.linkId;
+            resourceInputs["multiVpc"] = args?.multiVpc;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["rulestack"] = args?.rulestack;
+            resourceInputs["subnetMappings"] = args?.subnetMappings;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["endpointServiceName"] = undefined /*out*/;
             resourceInputs["firewallId"] = undefined /*out*/;
             resourceInputs["linkStatus"] = undefined /*out*/;
