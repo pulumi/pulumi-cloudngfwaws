@@ -7,7 +7,6 @@ PROVIDER_PATH := provider
 VERSION_PATH := $(PROVIDER_PATH)/pkg/version.Version
 CODEGEN := pulumi-tfgen-$(PACK)
 PROVIDER := pulumi-resource-$(PACK)
-JAVA_GEN := pulumi-java-gen
 TESTPARALLELISM := 10
 GOTESTARGS := ""
 WORKING_DIR := $(shell pwd)
@@ -50,8 +49,8 @@ only_build: build
 prepare_local_workspace: install_plugins upstream
 # Creates all generated files which need to be committed
 generate: generate_sdks schema build_registry_docs
-generate_sdks: generate_nodejs generate_python generate_dotnet generate_go generate_java
-build_sdks: build_nodejs build_python build_dotnet build_go build_java
+generate_sdks: generate_nodejs generate_python generate_dotnet generate_go generate_java build_registry_docs
+build_sdks: build_nodejs build_python build_dotnet build_go build_java build_registry_docs
 install_sdks: install_nodejs_sdk install_python_sdk install_dotnet_sdk install_go_sdk install_java_sdk
 .PHONY: development only_build build generate generate_sdks build_sdks install_sdks
 
@@ -125,8 +124,8 @@ generate_java: .make/generate_java
 build_java: .make/build_java
 .make/generate_java: export PATH := $(WORKING_DIR)/.pulumi/bin:$(PATH)
 .make/generate_java: PACKAGE_VERSION := $(PROVIDER_VERSION)
-.make/generate_java: .make/install_plugins bin/pulumi-java-gen .make/schema
-	PULUMI_HOME=$(GEN_PULUMI_HOME) PULUMI_CONVERT_EXAMPLES_CACHE_DIR=$(GEN_PULUMI_CONVERT_EXAMPLES_CACHE_DIR) bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
+.make/generate_java: .make/install_plugins bin/$(CODEGEN)
+	$(GEN_ENVS) $(WORKING_DIR)/bin/$(CODEGEN) java --out sdk/java/
 	printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n" > sdk/java/go.mod
 	@touch $@
 .make/build_java: PACKAGE_VERSION := $(PROVIDER_VERSION)
