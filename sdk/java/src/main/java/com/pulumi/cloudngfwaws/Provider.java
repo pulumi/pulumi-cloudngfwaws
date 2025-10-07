@@ -135,28 +135,28 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.lraArn);
     }
     /**
-     * AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`.
+     * AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mpRegion`.
      * 
      */
     @Export(name="mpRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mpRegion;
 
     /**
-     * @return AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`.
+     * @return AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mpRegion`.
      * 
      */
     public Output<Optional<String>> mpRegion() {
         return Codegen.optional(this.mpRegion);
     }
     /**
-     * AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
+     * AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mpRegionHost`.
      * 
      */
     @Export(name="mpRegionHost", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mpRegionHost;
 
     /**
-     * @return AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
+     * @return AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mpRegionHost`.
      * 
      */
     public Output<Optional<String>> mpRegionHost() {

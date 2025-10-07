@@ -126,14 +126,14 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
+     * Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
      * 
      */
     @Import(name="multiVpc")
     private @Nullable Output<Boolean> multiVpc;
 
     /**
-     * @return Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
+     * @return Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
      * 
      */
     public Optional<Output<Boolean>> multiVpc() {
@@ -399,7 +399,7 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multiVpc Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
+         * @param multiVpc Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multiVpc Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
+         * @param multiVpc Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
          * 
          * @return builder
          * 

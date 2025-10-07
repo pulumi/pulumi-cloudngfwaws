@@ -76,7 +76,7 @@ namespace Pulumi.CloudNgfwAws
         }
 
         /// <summary>
-        /// Flag to include account details while listing accounts. Defaults to `false`.
+        /// Flag to include account details while listing accounts. Defaults to `False`.
         /// </summary>
         [Input("describe")]
         public bool? Describe { get; set; }
@@ -114,7 +114,7 @@ namespace Pulumi.CloudNgfwAws
         }
 
         /// <summary>
-        /// Flag to include account details while listing accounts. Defaults to `false`.
+        /// Flag to include account details while listing accounts. Defaults to `False`.
         /// </summary>
         [Input("describe")]
         public Input<bool>? Describe { get; set; }
@@ -138,7 +138,7 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public readonly ImmutableArray<string> AccountIds;
         /// <summary>
-        /// Flag to include account details while listing accounts. Defaults to `false`.
+        /// Flag to include account details while listing accounts. Defaults to `False`.
         /// </summary>
         public readonly bool? Describe;
         /// <summary>

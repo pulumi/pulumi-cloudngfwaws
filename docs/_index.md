@@ -4,6 +4,7 @@ title: Palo Alto Networks Cloud NGFW for AWS Provider
 meta_desc: Provides an overview on how to configure the Pulumi Palo Alto Networks Cloud NGFW for AWS provider.
 layout: package
 ---
+
 ## Installation
 
 The Palo Alto Networks Cloud NGFW for AWS provider is available as a package in all Pulumi languages:
@@ -13,6 +14,7 @@ The Palo Alto Networks Cloud NGFW for AWS provider is available as a package in 
 * Go: [`github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws`](https://github.com/pulumi/pulumi-cloudngfwaws)
 * .NET: [`Pulumi.Cloudngfwaws`](https://www.nuget.org/packages/Pulumi.Cloudngfwaws)
 * Java: [`com.pulumi/cloudngfwaws`](https://central.sonatype.com/artifact/com.pulumi/cloudngfwaws)
+
 ## Overview
 
 The cloudngfwaws provider provides resources to manage your Palo Alto Networks Cloud Next-Gen Firewalls for AWS.
@@ -46,7 +48,10 @@ config:
         value: ~/.cloudngfwaws_creds.json
 
 ```
+```typescript
+import * as pulumi from "@pulumi/pulumi";
 
+```
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -58,7 +63,10 @@ config:
         value: ~/.cloudngfwaws_creds.json
 
 ```
+```python
+import pulumi
 
+```
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -70,7 +78,16 @@ config:
         value: ~/.cloudngfwaws_creds.json
 
 ```
+```csharp
+using System.Collections.Generic;
+using System.Linq;
+using Pulumi;
 
+return await Deployment.RunAsync(() =>
+{
+});
+
+```
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -82,7 +99,19 @@ config:
         value: ~/.cloudngfwaws_creds.json
 
 ```
+```go
+package main
 
+import (
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+)
+
+func main() {
+	pulumi.Run(func(ctx *pulumi.Context) error {
+		return nil
+	})
+}
+```
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -94,7 +123,9 @@ config:
         value: ~/.cloudngfwaws_creds.json
 
 ```
-
+```yaml
+{}
+```
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -106,7 +137,28 @@ config:
         value: ~/.cloudngfwaws_creds.json
 
 ```
+```java
+package generated_program;
 
+import com.pulumi.Context;
+import com.pulumi.Pulumi;
+import com.pulumi.core.Output;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class App {
+    public static void main(String[] args) {
+        Pulumi.run(App::stack);
+    }
+
+    public static void stack(Context ctx) {
+    }
+}
+```
 {{% /choosable %}}
 {{< /chooser >}}
 

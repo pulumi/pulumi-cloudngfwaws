@@ -4113,6 +4113,8 @@ public final class CloudngfwawsFunctions {
      * * `Rulestack` (for `scope=&#34;Local&#34;`)
      * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetSecurityRuleResult> getSecurityRule(GetSecurityRuleArgs args) {
         return getSecurityRule(args, InvokeOptions.Empty);
@@ -4124,6 +4126,8 @@ public final class CloudngfwawsFunctions {
      * 
      * * `Rulestack` (for `scope=&#34;Local&#34;`)
      * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetSecurityRuleResult> getSecurityRulePlain(GetSecurityRulePlainArgs args) {
@@ -4137,6 +4141,8 @@ public final class CloudngfwawsFunctions {
      * * `Rulestack` (for `scope=&#34;Local&#34;`)
      * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetSecurityRuleResult> getSecurityRule(GetSecurityRuleArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getSecurityRule:getSecurityRule", TypeShape.of(GetSecurityRuleResult.class), args, Utilities.withVersion(options));
@@ -4149,6 +4155,8 @@ public final class CloudngfwawsFunctions {
      * * `Rulestack` (for `scope=&#34;Local&#34;`)
      * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetSecurityRuleResult> getSecurityRule(GetSecurityRuleArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getSecurityRule:getSecurityRule", TypeShape.of(GetSecurityRuleResult.class), args, Utilities.withVersion(options));
@@ -4160,6 +4168,8 @@ public final class CloudngfwawsFunctions {
      * 
      * * `Rulestack` (for `scope=&#34;Local&#34;`)
      * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetSecurityRuleResult> getSecurityRulePlain(GetSecurityRulePlainArgs args, InvokeOptions options) {

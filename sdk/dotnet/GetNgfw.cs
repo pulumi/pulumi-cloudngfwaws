@@ -192,7 +192,7 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public readonly string LinkStatus;
         /// <summary>
-        /// Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
+        /// Share NGFW with Multiple VPCs. This feature can be enabled only if the EndpointMode is CustomerManaged.
         /// </summary>
         public readonly bool MultiVpc;
         /// <summary>

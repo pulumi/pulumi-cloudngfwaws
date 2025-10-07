@@ -73,7 +73,7 @@ public final class GetNgfwResult {
      */
     private String linkStatus;
     /**
-     * @return Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
+     * @return Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
      * 
      */
     private Boolean multiVpc;
@@ -188,7 +188,7 @@ public final class GetNgfwResult {
         return this.linkStatus;
     }
     /**
-     * @return Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
+     * @return Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
      * 
      */
     public Boolean multiVpc() {

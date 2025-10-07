@@ -249,14 +249,14 @@ public class Ngfw extends com.pulumi.resources.CustomResource {
         return this.linkStatus;
     }
     /**
-     * Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
+     * Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
      * 
      */
     @Export(name="multiVpc", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> multiVpc;
 
     /**
-     * @return Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
+     * @return Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
      * 
      */
     public Output<Boolean> multiVpc() {
