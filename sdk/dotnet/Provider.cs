@@ -102,6 +102,12 @@ namespace Pulumi.CloudNgfwAws
         [Output("secretKey")]
         public Output<string?> SecretKey { get; private set; } = null!;
 
+        /// <summary>
+        /// The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+        /// </summary>
+        [Output("v2Host")]
+        public Output<string?> V2Host { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
@@ -239,9 +245,6 @@ namespace Pulumi.CloudNgfwAws
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        [Input("resourceTimeout", json: true)]
-        public Input<int>? ResourceTimeout { get; set; }
-
         /// <summary>
         /// (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
         /// </summary>
@@ -265,6 +268,12 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         [Input("timeout", json: true)]
         public Input<int>? Timeout { get; set; }
+
+        /// <summary>
+        /// The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+        /// </summary>
+        [Input("v2Host")]
+        public Input<string>? V2Host { get; set; }
 
         public ProviderArgs()
         {

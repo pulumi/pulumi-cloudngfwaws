@@ -13,6 +13,791 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type NgfwEgressNat struct {
+	// Enable egress NAT
+	Enabled  bool                   `pulumi:"enabled"`
+	Settings []NgfwEgressNatSetting `pulumi:"settings"`
+}
+
+// NgfwEgressNatInput is an input type that accepts NgfwEgressNatArgs and NgfwEgressNatOutput values.
+// You can construct a concrete instance of `NgfwEgressNatInput` via:
+//
+//	NgfwEgressNatArgs{...}
+type NgfwEgressNatInput interface {
+	pulumi.Input
+
+	ToNgfwEgressNatOutput() NgfwEgressNatOutput
+	ToNgfwEgressNatOutputWithContext(context.Context) NgfwEgressNatOutput
+}
+
+type NgfwEgressNatArgs struct {
+	// Enable egress NAT
+	Enabled  pulumi.BoolInput               `pulumi:"enabled"`
+	Settings NgfwEgressNatSettingArrayInput `pulumi:"settings"`
+}
+
+func (NgfwEgressNatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwEgressNat)(nil)).Elem()
+}
+
+func (i NgfwEgressNatArgs) ToNgfwEgressNatOutput() NgfwEgressNatOutput {
+	return i.ToNgfwEgressNatOutputWithContext(context.Background())
+}
+
+func (i NgfwEgressNatArgs) ToNgfwEgressNatOutputWithContext(ctx context.Context) NgfwEgressNatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwEgressNatOutput)
+}
+
+// NgfwEgressNatArrayInput is an input type that accepts NgfwEgressNatArray and NgfwEgressNatArrayOutput values.
+// You can construct a concrete instance of `NgfwEgressNatArrayInput` via:
+//
+//	NgfwEgressNatArray{ NgfwEgressNatArgs{...} }
+type NgfwEgressNatArrayInput interface {
+	pulumi.Input
+
+	ToNgfwEgressNatArrayOutput() NgfwEgressNatArrayOutput
+	ToNgfwEgressNatArrayOutputWithContext(context.Context) NgfwEgressNatArrayOutput
+}
+
+type NgfwEgressNatArray []NgfwEgressNatInput
+
+func (NgfwEgressNatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwEgressNat)(nil)).Elem()
+}
+
+func (i NgfwEgressNatArray) ToNgfwEgressNatArrayOutput() NgfwEgressNatArrayOutput {
+	return i.ToNgfwEgressNatArrayOutputWithContext(context.Background())
+}
+
+func (i NgfwEgressNatArray) ToNgfwEgressNatArrayOutputWithContext(ctx context.Context) NgfwEgressNatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwEgressNatArrayOutput)
+}
+
+type NgfwEgressNatOutput struct{ *pulumi.OutputState }
+
+func (NgfwEgressNatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwEgressNat)(nil)).Elem()
+}
+
+func (o NgfwEgressNatOutput) ToNgfwEgressNatOutput() NgfwEgressNatOutput {
+	return o
+}
+
+func (o NgfwEgressNatOutput) ToNgfwEgressNatOutputWithContext(ctx context.Context) NgfwEgressNatOutput {
+	return o
+}
+
+// Enable egress NAT
+func (o NgfwEgressNatOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NgfwEgressNat) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o NgfwEgressNatOutput) Settings() NgfwEgressNatSettingArrayOutput {
+	return o.ApplyT(func(v NgfwEgressNat) []NgfwEgressNatSetting { return v.Settings }).(NgfwEgressNatSettingArrayOutput)
+}
+
+type NgfwEgressNatArrayOutput struct{ *pulumi.OutputState }
+
+func (NgfwEgressNatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwEgressNat)(nil)).Elem()
+}
+
+func (o NgfwEgressNatArrayOutput) ToNgfwEgressNatArrayOutput() NgfwEgressNatArrayOutput {
+	return o
+}
+
+func (o NgfwEgressNatArrayOutput) ToNgfwEgressNatArrayOutputWithContext(ctx context.Context) NgfwEgressNatArrayOutput {
+	return o
+}
+
+func (o NgfwEgressNatArrayOutput) Index(i pulumi.IntInput) NgfwEgressNatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwEgressNat {
+		return vs[0].([]NgfwEgressNat)[vs[1].(int)]
+	}).(NgfwEgressNatOutput)
+}
+
+type NgfwEgressNatSetting struct {
+	// Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.
+	IpPoolType *string `pulumi:"ipPoolType"`
+	// The IP pool ID
+	IpamPoolId *string `pulumi:"ipamPoolId"`
+}
+
+// NgfwEgressNatSettingInput is an input type that accepts NgfwEgressNatSettingArgs and NgfwEgressNatSettingOutput values.
+// You can construct a concrete instance of `NgfwEgressNatSettingInput` via:
+//
+//	NgfwEgressNatSettingArgs{...}
+type NgfwEgressNatSettingInput interface {
+	pulumi.Input
+
+	ToNgfwEgressNatSettingOutput() NgfwEgressNatSettingOutput
+	ToNgfwEgressNatSettingOutputWithContext(context.Context) NgfwEgressNatSettingOutput
+}
+
+type NgfwEgressNatSettingArgs struct {
+	// Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.
+	IpPoolType pulumi.StringPtrInput `pulumi:"ipPoolType"`
+	// The IP pool ID
+	IpamPoolId pulumi.StringPtrInput `pulumi:"ipamPoolId"`
+}
+
+func (NgfwEgressNatSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwEgressNatSetting)(nil)).Elem()
+}
+
+func (i NgfwEgressNatSettingArgs) ToNgfwEgressNatSettingOutput() NgfwEgressNatSettingOutput {
+	return i.ToNgfwEgressNatSettingOutputWithContext(context.Background())
+}
+
+func (i NgfwEgressNatSettingArgs) ToNgfwEgressNatSettingOutputWithContext(ctx context.Context) NgfwEgressNatSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwEgressNatSettingOutput)
+}
+
+// NgfwEgressNatSettingArrayInput is an input type that accepts NgfwEgressNatSettingArray and NgfwEgressNatSettingArrayOutput values.
+// You can construct a concrete instance of `NgfwEgressNatSettingArrayInput` via:
+//
+//	NgfwEgressNatSettingArray{ NgfwEgressNatSettingArgs{...} }
+type NgfwEgressNatSettingArrayInput interface {
+	pulumi.Input
+
+	ToNgfwEgressNatSettingArrayOutput() NgfwEgressNatSettingArrayOutput
+	ToNgfwEgressNatSettingArrayOutputWithContext(context.Context) NgfwEgressNatSettingArrayOutput
+}
+
+type NgfwEgressNatSettingArray []NgfwEgressNatSettingInput
+
+func (NgfwEgressNatSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwEgressNatSetting)(nil)).Elem()
+}
+
+func (i NgfwEgressNatSettingArray) ToNgfwEgressNatSettingArrayOutput() NgfwEgressNatSettingArrayOutput {
+	return i.ToNgfwEgressNatSettingArrayOutputWithContext(context.Background())
+}
+
+func (i NgfwEgressNatSettingArray) ToNgfwEgressNatSettingArrayOutputWithContext(ctx context.Context) NgfwEgressNatSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwEgressNatSettingArrayOutput)
+}
+
+type NgfwEgressNatSettingOutput struct{ *pulumi.OutputState }
+
+func (NgfwEgressNatSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwEgressNatSetting)(nil)).Elem()
+}
+
+func (o NgfwEgressNatSettingOutput) ToNgfwEgressNatSettingOutput() NgfwEgressNatSettingOutput {
+	return o
+}
+
+func (o NgfwEgressNatSettingOutput) ToNgfwEgressNatSettingOutputWithContext(ctx context.Context) NgfwEgressNatSettingOutput {
+	return o
+}
+
+// Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.
+func (o NgfwEgressNatSettingOutput) IpPoolType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwEgressNatSetting) *string { return v.IpPoolType }).(pulumi.StringPtrOutput)
+}
+
+// The IP pool ID
+func (o NgfwEgressNatSettingOutput) IpamPoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwEgressNatSetting) *string { return v.IpamPoolId }).(pulumi.StringPtrOutput)
+}
+
+type NgfwEgressNatSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (NgfwEgressNatSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwEgressNatSetting)(nil)).Elem()
+}
+
+func (o NgfwEgressNatSettingArrayOutput) ToNgfwEgressNatSettingArrayOutput() NgfwEgressNatSettingArrayOutput {
+	return o
+}
+
+func (o NgfwEgressNatSettingArrayOutput) ToNgfwEgressNatSettingArrayOutputWithContext(ctx context.Context) NgfwEgressNatSettingArrayOutput {
+	return o
+}
+
+func (o NgfwEgressNatSettingArrayOutput) Index(i pulumi.IntInput) NgfwEgressNatSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwEgressNatSetting {
+		return vs[0].([]NgfwEgressNatSetting)[vs[1].(int)]
+	}).(NgfwEgressNatSettingOutput)
+}
+
+type NgfwEndpoint struct {
+	// The account id.
+	AccountId *string `pulumi:"accountId"`
+	// Enable egress NAT
+	EgressNatEnabled *bool `pulumi:"egressNatEnabled"`
+	// Endpoint ID of the security zone
+	EndpointId *string `pulumi:"endpointId"`
+	// The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+	Mode     string               `pulumi:"mode"`
+	Prefixes []NgfwEndpointPrefix `pulumi:"prefixes"`
+	// The rejected reason.
+	RejectedReason *string `pulumi:"rejectedReason"`
+	// The attachment status.
+	Status *string `pulumi:"status"`
+	// The subnet id.
+	SubnetId *string `pulumi:"subnetId"`
+	// The vpc id.
+	VpcId *string `pulumi:"vpcId"`
+	// The AZ id.
+	ZoneId *string `pulumi:"zoneId"`
+}
+
+// NgfwEndpointInput is an input type that accepts NgfwEndpointArgs and NgfwEndpointOutput values.
+// You can construct a concrete instance of `NgfwEndpointInput` via:
+//
+//	NgfwEndpointArgs{...}
+type NgfwEndpointInput interface {
+	pulumi.Input
+
+	ToNgfwEndpointOutput() NgfwEndpointOutput
+	ToNgfwEndpointOutputWithContext(context.Context) NgfwEndpointOutput
+}
+
+type NgfwEndpointArgs struct {
+	// The account id.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// Enable egress NAT
+	EgressNatEnabled pulumi.BoolPtrInput `pulumi:"egressNatEnabled"`
+	// Endpoint ID of the security zone
+	EndpointId pulumi.StringPtrInput `pulumi:"endpointId"`
+	// The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+	Mode     pulumi.StringInput           `pulumi:"mode"`
+	Prefixes NgfwEndpointPrefixArrayInput `pulumi:"prefixes"`
+	// The rejected reason.
+	RejectedReason pulumi.StringPtrInput `pulumi:"rejectedReason"`
+	// The attachment status.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The subnet id.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+	// The vpc id.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// The AZ id.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (NgfwEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwEndpoint)(nil)).Elem()
+}
+
+func (i NgfwEndpointArgs) ToNgfwEndpointOutput() NgfwEndpointOutput {
+	return i.ToNgfwEndpointOutputWithContext(context.Background())
+}
+
+func (i NgfwEndpointArgs) ToNgfwEndpointOutputWithContext(ctx context.Context) NgfwEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwEndpointOutput)
+}
+
+// NgfwEndpointArrayInput is an input type that accepts NgfwEndpointArray and NgfwEndpointArrayOutput values.
+// You can construct a concrete instance of `NgfwEndpointArrayInput` via:
+//
+//	NgfwEndpointArray{ NgfwEndpointArgs{...} }
+type NgfwEndpointArrayInput interface {
+	pulumi.Input
+
+	ToNgfwEndpointArrayOutput() NgfwEndpointArrayOutput
+	ToNgfwEndpointArrayOutputWithContext(context.Context) NgfwEndpointArrayOutput
+}
+
+type NgfwEndpointArray []NgfwEndpointInput
+
+func (NgfwEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwEndpoint)(nil)).Elem()
+}
+
+func (i NgfwEndpointArray) ToNgfwEndpointArrayOutput() NgfwEndpointArrayOutput {
+	return i.ToNgfwEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i NgfwEndpointArray) ToNgfwEndpointArrayOutputWithContext(ctx context.Context) NgfwEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwEndpointArrayOutput)
+}
+
+type NgfwEndpointOutput struct{ *pulumi.OutputState }
+
+func (NgfwEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwEndpoint)(nil)).Elem()
+}
+
+func (o NgfwEndpointOutput) ToNgfwEndpointOutput() NgfwEndpointOutput {
+	return o
+}
+
+func (o NgfwEndpointOutput) ToNgfwEndpointOutputWithContext(ctx context.Context) NgfwEndpointOutput {
+	return o
+}
+
+// The account id.
+func (o NgfwEndpointOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwEndpoint) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Enable egress NAT
+func (o NgfwEndpointOutput) EgressNatEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NgfwEndpoint) *bool { return v.EgressNatEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Endpoint ID of the security zone
+func (o NgfwEndpointOutput) EndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwEndpoint) *string { return v.EndpointId }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+func (o NgfwEndpointOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v NgfwEndpoint) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+func (o NgfwEndpointOutput) Prefixes() NgfwEndpointPrefixArrayOutput {
+	return o.ApplyT(func(v NgfwEndpoint) []NgfwEndpointPrefix { return v.Prefixes }).(NgfwEndpointPrefixArrayOutput)
+}
+
+// The rejected reason.
+func (o NgfwEndpointOutput) RejectedReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwEndpoint) *string { return v.RejectedReason }).(pulumi.StringPtrOutput)
+}
+
+// The attachment status.
+func (o NgfwEndpointOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwEndpoint) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The subnet id.
+func (o NgfwEndpointOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwEndpoint) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+// The vpc id.
+func (o NgfwEndpointOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwEndpoint) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// The AZ id.
+func (o NgfwEndpointOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwEndpoint) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type NgfwEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (NgfwEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwEndpoint)(nil)).Elem()
+}
+
+func (o NgfwEndpointArrayOutput) ToNgfwEndpointArrayOutput() NgfwEndpointArrayOutput {
+	return o
+}
+
+func (o NgfwEndpointArrayOutput) ToNgfwEndpointArrayOutputWithContext(ctx context.Context) NgfwEndpointArrayOutput {
+	return o
+}
+
+func (o NgfwEndpointArrayOutput) Index(i pulumi.IntInput) NgfwEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwEndpoint {
+		return vs[0].([]NgfwEndpoint)[vs[1].(int)]
+	}).(NgfwEndpointOutput)
+}
+
+type NgfwEndpointPrefix struct {
+	PrivatePrefixes []NgfwEndpointPrefixPrivatePrefix `pulumi:"privatePrefixes"`
+}
+
+// NgfwEndpointPrefixInput is an input type that accepts NgfwEndpointPrefixArgs and NgfwEndpointPrefixOutput values.
+// You can construct a concrete instance of `NgfwEndpointPrefixInput` via:
+//
+//	NgfwEndpointPrefixArgs{...}
+type NgfwEndpointPrefixInput interface {
+	pulumi.Input
+
+	ToNgfwEndpointPrefixOutput() NgfwEndpointPrefixOutput
+	ToNgfwEndpointPrefixOutputWithContext(context.Context) NgfwEndpointPrefixOutput
+}
+
+type NgfwEndpointPrefixArgs struct {
+	PrivatePrefixes NgfwEndpointPrefixPrivatePrefixArrayInput `pulumi:"privatePrefixes"`
+}
+
+func (NgfwEndpointPrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwEndpointPrefix)(nil)).Elem()
+}
+
+func (i NgfwEndpointPrefixArgs) ToNgfwEndpointPrefixOutput() NgfwEndpointPrefixOutput {
+	return i.ToNgfwEndpointPrefixOutputWithContext(context.Background())
+}
+
+func (i NgfwEndpointPrefixArgs) ToNgfwEndpointPrefixOutputWithContext(ctx context.Context) NgfwEndpointPrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwEndpointPrefixOutput)
+}
+
+// NgfwEndpointPrefixArrayInput is an input type that accepts NgfwEndpointPrefixArray and NgfwEndpointPrefixArrayOutput values.
+// You can construct a concrete instance of `NgfwEndpointPrefixArrayInput` via:
+//
+//	NgfwEndpointPrefixArray{ NgfwEndpointPrefixArgs{...} }
+type NgfwEndpointPrefixArrayInput interface {
+	pulumi.Input
+
+	ToNgfwEndpointPrefixArrayOutput() NgfwEndpointPrefixArrayOutput
+	ToNgfwEndpointPrefixArrayOutputWithContext(context.Context) NgfwEndpointPrefixArrayOutput
+}
+
+type NgfwEndpointPrefixArray []NgfwEndpointPrefixInput
+
+func (NgfwEndpointPrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwEndpointPrefix)(nil)).Elem()
+}
+
+func (i NgfwEndpointPrefixArray) ToNgfwEndpointPrefixArrayOutput() NgfwEndpointPrefixArrayOutput {
+	return i.ToNgfwEndpointPrefixArrayOutputWithContext(context.Background())
+}
+
+func (i NgfwEndpointPrefixArray) ToNgfwEndpointPrefixArrayOutputWithContext(ctx context.Context) NgfwEndpointPrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwEndpointPrefixArrayOutput)
+}
+
+type NgfwEndpointPrefixOutput struct{ *pulumi.OutputState }
+
+func (NgfwEndpointPrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwEndpointPrefix)(nil)).Elem()
+}
+
+func (o NgfwEndpointPrefixOutput) ToNgfwEndpointPrefixOutput() NgfwEndpointPrefixOutput {
+	return o
+}
+
+func (o NgfwEndpointPrefixOutput) ToNgfwEndpointPrefixOutputWithContext(ctx context.Context) NgfwEndpointPrefixOutput {
+	return o
+}
+
+func (o NgfwEndpointPrefixOutput) PrivatePrefixes() NgfwEndpointPrefixPrivatePrefixArrayOutput {
+	return o.ApplyT(func(v NgfwEndpointPrefix) []NgfwEndpointPrefixPrivatePrefix { return v.PrivatePrefixes }).(NgfwEndpointPrefixPrivatePrefixArrayOutput)
+}
+
+type NgfwEndpointPrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (NgfwEndpointPrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwEndpointPrefix)(nil)).Elem()
+}
+
+func (o NgfwEndpointPrefixArrayOutput) ToNgfwEndpointPrefixArrayOutput() NgfwEndpointPrefixArrayOutput {
+	return o
+}
+
+func (o NgfwEndpointPrefixArrayOutput) ToNgfwEndpointPrefixArrayOutputWithContext(ctx context.Context) NgfwEndpointPrefixArrayOutput {
+	return o
+}
+
+func (o NgfwEndpointPrefixArrayOutput) Index(i pulumi.IntInput) NgfwEndpointPrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwEndpointPrefix {
+		return vs[0].([]NgfwEndpointPrefix)[vs[1].(int)]
+	}).(NgfwEndpointPrefixOutput)
+}
+
+type NgfwEndpointPrefixPrivatePrefix struct {
+	Cidrs []string `pulumi:"cidrs"`
+}
+
+// NgfwEndpointPrefixPrivatePrefixInput is an input type that accepts NgfwEndpointPrefixPrivatePrefixArgs and NgfwEndpointPrefixPrivatePrefixOutput values.
+// You can construct a concrete instance of `NgfwEndpointPrefixPrivatePrefixInput` via:
+//
+//	NgfwEndpointPrefixPrivatePrefixArgs{...}
+type NgfwEndpointPrefixPrivatePrefixInput interface {
+	pulumi.Input
+
+	ToNgfwEndpointPrefixPrivatePrefixOutput() NgfwEndpointPrefixPrivatePrefixOutput
+	ToNgfwEndpointPrefixPrivatePrefixOutputWithContext(context.Context) NgfwEndpointPrefixPrivatePrefixOutput
+}
+
+type NgfwEndpointPrefixPrivatePrefixArgs struct {
+	Cidrs pulumi.StringArrayInput `pulumi:"cidrs"`
+}
+
+func (NgfwEndpointPrefixPrivatePrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwEndpointPrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (i NgfwEndpointPrefixPrivatePrefixArgs) ToNgfwEndpointPrefixPrivatePrefixOutput() NgfwEndpointPrefixPrivatePrefixOutput {
+	return i.ToNgfwEndpointPrefixPrivatePrefixOutputWithContext(context.Background())
+}
+
+func (i NgfwEndpointPrefixPrivatePrefixArgs) ToNgfwEndpointPrefixPrivatePrefixOutputWithContext(ctx context.Context) NgfwEndpointPrefixPrivatePrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwEndpointPrefixPrivatePrefixOutput)
+}
+
+// NgfwEndpointPrefixPrivatePrefixArrayInput is an input type that accepts NgfwEndpointPrefixPrivatePrefixArray and NgfwEndpointPrefixPrivatePrefixArrayOutput values.
+// You can construct a concrete instance of `NgfwEndpointPrefixPrivatePrefixArrayInput` via:
+//
+//	NgfwEndpointPrefixPrivatePrefixArray{ NgfwEndpointPrefixPrivatePrefixArgs{...} }
+type NgfwEndpointPrefixPrivatePrefixArrayInput interface {
+	pulumi.Input
+
+	ToNgfwEndpointPrefixPrivatePrefixArrayOutput() NgfwEndpointPrefixPrivatePrefixArrayOutput
+	ToNgfwEndpointPrefixPrivatePrefixArrayOutputWithContext(context.Context) NgfwEndpointPrefixPrivatePrefixArrayOutput
+}
+
+type NgfwEndpointPrefixPrivatePrefixArray []NgfwEndpointPrefixPrivatePrefixInput
+
+func (NgfwEndpointPrefixPrivatePrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwEndpointPrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (i NgfwEndpointPrefixPrivatePrefixArray) ToNgfwEndpointPrefixPrivatePrefixArrayOutput() NgfwEndpointPrefixPrivatePrefixArrayOutput {
+	return i.ToNgfwEndpointPrefixPrivatePrefixArrayOutputWithContext(context.Background())
+}
+
+func (i NgfwEndpointPrefixPrivatePrefixArray) ToNgfwEndpointPrefixPrivatePrefixArrayOutputWithContext(ctx context.Context) NgfwEndpointPrefixPrivatePrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwEndpointPrefixPrivatePrefixArrayOutput)
+}
+
+type NgfwEndpointPrefixPrivatePrefixOutput struct{ *pulumi.OutputState }
+
+func (NgfwEndpointPrefixPrivatePrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwEndpointPrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (o NgfwEndpointPrefixPrivatePrefixOutput) ToNgfwEndpointPrefixPrivatePrefixOutput() NgfwEndpointPrefixPrivatePrefixOutput {
+	return o
+}
+
+func (o NgfwEndpointPrefixPrivatePrefixOutput) ToNgfwEndpointPrefixPrivatePrefixOutputWithContext(ctx context.Context) NgfwEndpointPrefixPrivatePrefixOutput {
+	return o
+}
+
+func (o NgfwEndpointPrefixPrivatePrefixOutput) Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NgfwEndpointPrefixPrivatePrefix) []string { return v.Cidrs }).(pulumi.StringArrayOutput)
+}
+
+type NgfwEndpointPrefixPrivatePrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (NgfwEndpointPrefixPrivatePrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwEndpointPrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (o NgfwEndpointPrefixPrivatePrefixArrayOutput) ToNgfwEndpointPrefixPrivatePrefixArrayOutput() NgfwEndpointPrefixPrivatePrefixArrayOutput {
+	return o
+}
+
+func (o NgfwEndpointPrefixPrivatePrefixArrayOutput) ToNgfwEndpointPrefixPrivatePrefixArrayOutputWithContext(ctx context.Context) NgfwEndpointPrefixPrivatePrefixArrayOutput {
+	return o
+}
+
+func (o NgfwEndpointPrefixPrivatePrefixArrayOutput) Index(i pulumi.IntInput) NgfwEndpointPrefixPrivatePrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwEndpointPrefixPrivatePrefix {
+		return vs[0].([]NgfwEndpointPrefixPrivatePrefix)[vs[1].(int)]
+	}).(NgfwEndpointPrefixPrivatePrefixOutput)
+}
+
+type NgfwLogProfileLogConfig struct {
+	// Type of Role for log configuration
+	AccountId *string `pulumi:"accountId"`
+	// The log destination details.
+	LogDestination string `pulumi:"logDestination"`
+	// The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
+	LogDestinationType string `pulumi:"logDestinationType"`
+	// The list of different log types that are wanted
+	LogTypes []string `pulumi:"logTypes"`
+	// Type of Role for log configuration
+	RoleType *string `pulumi:"roleType"`
+}
+
+// NgfwLogProfileLogConfigInput is an input type that accepts NgfwLogProfileLogConfigArgs and NgfwLogProfileLogConfigOutput values.
+// You can construct a concrete instance of `NgfwLogProfileLogConfigInput` via:
+//
+//	NgfwLogProfileLogConfigArgs{...}
+type NgfwLogProfileLogConfigInput interface {
+	pulumi.Input
+
+	ToNgfwLogProfileLogConfigOutput() NgfwLogProfileLogConfigOutput
+	ToNgfwLogProfileLogConfigOutputWithContext(context.Context) NgfwLogProfileLogConfigOutput
+}
+
+type NgfwLogProfileLogConfigArgs struct {
+	// Type of Role for log configuration
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// The log destination details.
+	LogDestination pulumi.StringInput `pulumi:"logDestination"`
+	// The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
+	LogDestinationType pulumi.StringInput `pulumi:"logDestinationType"`
+	// The list of different log types that are wanted
+	LogTypes pulumi.StringArrayInput `pulumi:"logTypes"`
+	// Type of Role for log configuration
+	RoleType pulumi.StringPtrInput `pulumi:"roleType"`
+}
+
+func (NgfwLogProfileLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwLogProfileLogConfig)(nil)).Elem()
+}
+
+func (i NgfwLogProfileLogConfigArgs) ToNgfwLogProfileLogConfigOutput() NgfwLogProfileLogConfigOutput {
+	return i.ToNgfwLogProfileLogConfigOutputWithContext(context.Background())
+}
+
+func (i NgfwLogProfileLogConfigArgs) ToNgfwLogProfileLogConfigOutputWithContext(ctx context.Context) NgfwLogProfileLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwLogProfileLogConfigOutput)
+}
+
+func (i NgfwLogProfileLogConfigArgs) ToNgfwLogProfileLogConfigPtrOutput() NgfwLogProfileLogConfigPtrOutput {
+	return i.ToNgfwLogProfileLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NgfwLogProfileLogConfigArgs) ToNgfwLogProfileLogConfigPtrOutputWithContext(ctx context.Context) NgfwLogProfileLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwLogProfileLogConfigOutput).ToNgfwLogProfileLogConfigPtrOutputWithContext(ctx)
+}
+
+// NgfwLogProfileLogConfigPtrInput is an input type that accepts NgfwLogProfileLogConfigArgs, NgfwLogProfileLogConfigPtr and NgfwLogProfileLogConfigPtrOutput values.
+// You can construct a concrete instance of `NgfwLogProfileLogConfigPtrInput` via:
+//
+//	        NgfwLogProfileLogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NgfwLogProfileLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToNgfwLogProfileLogConfigPtrOutput() NgfwLogProfileLogConfigPtrOutput
+	ToNgfwLogProfileLogConfigPtrOutputWithContext(context.Context) NgfwLogProfileLogConfigPtrOutput
+}
+
+type ngfwLogProfileLogConfigPtrType NgfwLogProfileLogConfigArgs
+
+func NgfwLogProfileLogConfigPtr(v *NgfwLogProfileLogConfigArgs) NgfwLogProfileLogConfigPtrInput {
+	return (*ngfwLogProfileLogConfigPtrType)(v)
+}
+
+func (*ngfwLogProfileLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NgfwLogProfileLogConfig)(nil)).Elem()
+}
+
+func (i *ngfwLogProfileLogConfigPtrType) ToNgfwLogProfileLogConfigPtrOutput() NgfwLogProfileLogConfigPtrOutput {
+	return i.ToNgfwLogProfileLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ngfwLogProfileLogConfigPtrType) ToNgfwLogProfileLogConfigPtrOutputWithContext(ctx context.Context) NgfwLogProfileLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwLogProfileLogConfigPtrOutput)
+}
+
+type NgfwLogProfileLogConfigOutput struct{ *pulumi.OutputState }
+
+func (NgfwLogProfileLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwLogProfileLogConfig)(nil)).Elem()
+}
+
+func (o NgfwLogProfileLogConfigOutput) ToNgfwLogProfileLogConfigOutput() NgfwLogProfileLogConfigOutput {
+	return o
+}
+
+func (o NgfwLogProfileLogConfigOutput) ToNgfwLogProfileLogConfigOutputWithContext(ctx context.Context) NgfwLogProfileLogConfigOutput {
+	return o
+}
+
+func (o NgfwLogProfileLogConfigOutput) ToNgfwLogProfileLogConfigPtrOutput() NgfwLogProfileLogConfigPtrOutput {
+	return o.ToNgfwLogProfileLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NgfwLogProfileLogConfigOutput) ToNgfwLogProfileLogConfigPtrOutputWithContext(ctx context.Context) NgfwLogProfileLogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NgfwLogProfileLogConfig) *NgfwLogProfileLogConfig {
+		return &v
+	}).(NgfwLogProfileLogConfigPtrOutput)
+}
+
+// Type of Role for log configuration
+func (o NgfwLogProfileLogConfigOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwLogProfileLogConfig) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// The log destination details.
+func (o NgfwLogProfileLogConfigOutput) LogDestination() pulumi.StringOutput {
+	return o.ApplyT(func(v NgfwLogProfileLogConfig) string { return v.LogDestination }).(pulumi.StringOutput)
+}
+
+// The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
+func (o NgfwLogProfileLogConfigOutput) LogDestinationType() pulumi.StringOutput {
+	return o.ApplyT(func(v NgfwLogProfileLogConfig) string { return v.LogDestinationType }).(pulumi.StringOutput)
+}
+
+// The list of different log types that are wanted
+func (o NgfwLogProfileLogConfigOutput) LogTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NgfwLogProfileLogConfig) []string { return v.LogTypes }).(pulumi.StringArrayOutput)
+}
+
+// Type of Role for log configuration
+func (o NgfwLogProfileLogConfigOutput) RoleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwLogProfileLogConfig) *string { return v.RoleType }).(pulumi.StringPtrOutput)
+}
+
+type NgfwLogProfileLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NgfwLogProfileLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NgfwLogProfileLogConfig)(nil)).Elem()
+}
+
+func (o NgfwLogProfileLogConfigPtrOutput) ToNgfwLogProfileLogConfigPtrOutput() NgfwLogProfileLogConfigPtrOutput {
+	return o
+}
+
+func (o NgfwLogProfileLogConfigPtrOutput) ToNgfwLogProfileLogConfigPtrOutputWithContext(ctx context.Context) NgfwLogProfileLogConfigPtrOutput {
+	return o
+}
+
+func (o NgfwLogProfileLogConfigPtrOutput) Elem() NgfwLogProfileLogConfigOutput {
+	return o.ApplyT(func(v *NgfwLogProfileLogConfig) NgfwLogProfileLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NgfwLogProfileLogConfig
+		return ret
+	}).(NgfwLogProfileLogConfigOutput)
+}
+
+// Type of Role for log configuration
+func (o NgfwLogProfileLogConfigPtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NgfwLogProfileLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The log destination details.
+func (o NgfwLogProfileLogConfigPtrOutput) LogDestination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NgfwLogProfileLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LogDestination
+	}).(pulumi.StringPtrOutput)
+}
+
+// The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
+func (o NgfwLogProfileLogConfigPtrOutput) LogDestinationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NgfwLogProfileLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LogDestinationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of different log types that are wanted
+func (o NgfwLogProfileLogConfigPtrOutput) LogTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NgfwLogProfileLogConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LogTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Type of Role for log configuration
+func (o NgfwLogProfileLogConfigPtrOutput) RoleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NgfwLogProfileLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleType
+	}).(pulumi.StringPtrOutput)
+}
+
 type NgfwLogProfileLogDestination struct {
 	// The log destination details.
 	Destination *string `pulumi:"destination"`
@@ -128,9 +913,115 @@ func (o NgfwLogProfileLogDestinationArrayOutput) Index(i pulumi.IntInput) NgfwLo
 	}).(NgfwLogProfileLogDestinationOutput)
 }
 
+type NgfwPrivateAccess struct {
+	// AWS ResourceID
+	ResourceId string `pulumi:"resourceId"`
+	// Type of Private Access
+	Type string `pulumi:"type"`
+}
+
+// NgfwPrivateAccessInput is an input type that accepts NgfwPrivateAccessArgs and NgfwPrivateAccessOutput values.
+// You can construct a concrete instance of `NgfwPrivateAccessInput` via:
+//
+//	NgfwPrivateAccessArgs{...}
+type NgfwPrivateAccessInput interface {
+	pulumi.Input
+
+	ToNgfwPrivateAccessOutput() NgfwPrivateAccessOutput
+	ToNgfwPrivateAccessOutputWithContext(context.Context) NgfwPrivateAccessOutput
+}
+
+type NgfwPrivateAccessArgs struct {
+	// AWS ResourceID
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// Type of Private Access
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (NgfwPrivateAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwPrivateAccess)(nil)).Elem()
+}
+
+func (i NgfwPrivateAccessArgs) ToNgfwPrivateAccessOutput() NgfwPrivateAccessOutput {
+	return i.ToNgfwPrivateAccessOutputWithContext(context.Background())
+}
+
+func (i NgfwPrivateAccessArgs) ToNgfwPrivateAccessOutputWithContext(ctx context.Context) NgfwPrivateAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwPrivateAccessOutput)
+}
+
+// NgfwPrivateAccessArrayInput is an input type that accepts NgfwPrivateAccessArray and NgfwPrivateAccessArrayOutput values.
+// You can construct a concrete instance of `NgfwPrivateAccessArrayInput` via:
+//
+//	NgfwPrivateAccessArray{ NgfwPrivateAccessArgs{...} }
+type NgfwPrivateAccessArrayInput interface {
+	pulumi.Input
+
+	ToNgfwPrivateAccessArrayOutput() NgfwPrivateAccessArrayOutput
+	ToNgfwPrivateAccessArrayOutputWithContext(context.Context) NgfwPrivateAccessArrayOutput
+}
+
+type NgfwPrivateAccessArray []NgfwPrivateAccessInput
+
+func (NgfwPrivateAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwPrivateAccess)(nil)).Elem()
+}
+
+func (i NgfwPrivateAccessArray) ToNgfwPrivateAccessArrayOutput() NgfwPrivateAccessArrayOutput {
+	return i.ToNgfwPrivateAccessArrayOutputWithContext(context.Background())
+}
+
+func (i NgfwPrivateAccessArray) ToNgfwPrivateAccessArrayOutputWithContext(ctx context.Context) NgfwPrivateAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwPrivateAccessArrayOutput)
+}
+
+type NgfwPrivateAccessOutput struct{ *pulumi.OutputState }
+
+func (NgfwPrivateAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwPrivateAccess)(nil)).Elem()
+}
+
+func (o NgfwPrivateAccessOutput) ToNgfwPrivateAccessOutput() NgfwPrivateAccessOutput {
+	return o
+}
+
+func (o NgfwPrivateAccessOutput) ToNgfwPrivateAccessOutputWithContext(ctx context.Context) NgfwPrivateAccessOutput {
+	return o
+}
+
+// AWS ResourceID
+func (o NgfwPrivateAccessOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v NgfwPrivateAccess) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// Type of Private Access
+func (o NgfwPrivateAccessOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v NgfwPrivateAccess) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type NgfwPrivateAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (NgfwPrivateAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwPrivateAccess)(nil)).Elem()
+}
+
+func (o NgfwPrivateAccessArrayOutput) ToNgfwPrivateAccessArrayOutput() NgfwPrivateAccessArrayOutput {
+	return o
+}
+
+func (o NgfwPrivateAccessArrayOutput) ToNgfwPrivateAccessArrayOutputWithContext(ctx context.Context) NgfwPrivateAccessArrayOutput {
+	return o
+}
+
+func (o NgfwPrivateAccessArrayOutput) Index(i pulumi.IntInput) NgfwPrivateAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwPrivateAccess {
+		return vs[0].([]NgfwPrivateAccess)[vs[1].(int)]
+	}).(NgfwPrivateAccessOutput)
+}
+
 type NgfwStatus struct {
-	// The firewall attachments.
-	Attachments []NgfwStatusAttachment `pulumi:"attachments"`
+	// The device rulestack commit status.
+	DeviceRulestackCommitStatus *string `pulumi:"deviceRulestackCommitStatus"`
 	// The firewall failure reason.
 	FailureReason *string `pulumi:"failureReason"`
 	// The firewall status.
@@ -151,8 +1042,8 @@ type NgfwStatusInput interface {
 }
 
 type NgfwStatusArgs struct {
-	// The firewall attachments.
-	Attachments NgfwStatusAttachmentArrayInput `pulumi:"attachments"`
+	// The device rulestack commit status.
+	DeviceRulestackCommitStatus pulumi.StringPtrInput `pulumi:"deviceRulestackCommitStatus"`
 	// The firewall failure reason.
 	FailureReason pulumi.StringPtrInput `pulumi:"failureReason"`
 	// The firewall status.
@@ -212,9 +1103,9 @@ func (o NgfwStatusOutput) ToNgfwStatusOutputWithContext(ctx context.Context) Ngf
 	return o
 }
 
-// The firewall attachments.
-func (o NgfwStatusOutput) Attachments() NgfwStatusAttachmentArrayOutput {
-	return o.ApplyT(func(v NgfwStatus) []NgfwStatusAttachment { return v.Attachments }).(NgfwStatusAttachmentArrayOutput)
+// The device rulestack commit status.
+func (o NgfwStatusOutput) DeviceRulestackCommitStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwStatus) *string { return v.DeviceRulestackCommitStatus }).(pulumi.StringPtrOutput)
 }
 
 // The firewall failure reason.
@@ -250,130 +1141,6 @@ func (o NgfwStatusArrayOutput) Index(i pulumi.IntInput) NgfwStatusOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwStatus {
 		return vs[0].([]NgfwStatus)[vs[1].(int)]
 	}).(NgfwStatusOutput)
-}
-
-type NgfwStatusAttachment struct {
-	// The endpoint id.
-	EndpointId *string `pulumi:"endpointId"`
-	// The reject reason.
-	RejectedReason *string `pulumi:"rejectedReason"`
-	// The attachment status.
-	Status *string `pulumi:"status"`
-	// The subnet id.
-	SubnetId *string `pulumi:"subnetId"`
-}
-
-// NgfwStatusAttachmentInput is an input type that accepts NgfwStatusAttachmentArgs and NgfwStatusAttachmentOutput values.
-// You can construct a concrete instance of `NgfwStatusAttachmentInput` via:
-//
-//	NgfwStatusAttachmentArgs{...}
-type NgfwStatusAttachmentInput interface {
-	pulumi.Input
-
-	ToNgfwStatusAttachmentOutput() NgfwStatusAttachmentOutput
-	ToNgfwStatusAttachmentOutputWithContext(context.Context) NgfwStatusAttachmentOutput
-}
-
-type NgfwStatusAttachmentArgs struct {
-	// The endpoint id.
-	EndpointId pulumi.StringPtrInput `pulumi:"endpointId"`
-	// The reject reason.
-	RejectedReason pulumi.StringPtrInput `pulumi:"rejectedReason"`
-	// The attachment status.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The subnet id.
-	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
-}
-
-func (NgfwStatusAttachmentArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NgfwStatusAttachment)(nil)).Elem()
-}
-
-func (i NgfwStatusAttachmentArgs) ToNgfwStatusAttachmentOutput() NgfwStatusAttachmentOutput {
-	return i.ToNgfwStatusAttachmentOutputWithContext(context.Background())
-}
-
-func (i NgfwStatusAttachmentArgs) ToNgfwStatusAttachmentOutputWithContext(ctx context.Context) NgfwStatusAttachmentOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NgfwStatusAttachmentOutput)
-}
-
-// NgfwStatusAttachmentArrayInput is an input type that accepts NgfwStatusAttachmentArray and NgfwStatusAttachmentArrayOutput values.
-// You can construct a concrete instance of `NgfwStatusAttachmentArrayInput` via:
-//
-//	NgfwStatusAttachmentArray{ NgfwStatusAttachmentArgs{...} }
-type NgfwStatusAttachmentArrayInput interface {
-	pulumi.Input
-
-	ToNgfwStatusAttachmentArrayOutput() NgfwStatusAttachmentArrayOutput
-	ToNgfwStatusAttachmentArrayOutputWithContext(context.Context) NgfwStatusAttachmentArrayOutput
-}
-
-type NgfwStatusAttachmentArray []NgfwStatusAttachmentInput
-
-func (NgfwStatusAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NgfwStatusAttachment)(nil)).Elem()
-}
-
-func (i NgfwStatusAttachmentArray) ToNgfwStatusAttachmentArrayOutput() NgfwStatusAttachmentArrayOutput {
-	return i.ToNgfwStatusAttachmentArrayOutputWithContext(context.Background())
-}
-
-func (i NgfwStatusAttachmentArray) ToNgfwStatusAttachmentArrayOutputWithContext(ctx context.Context) NgfwStatusAttachmentArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NgfwStatusAttachmentArrayOutput)
-}
-
-type NgfwStatusAttachmentOutput struct{ *pulumi.OutputState }
-
-func (NgfwStatusAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NgfwStatusAttachment)(nil)).Elem()
-}
-
-func (o NgfwStatusAttachmentOutput) ToNgfwStatusAttachmentOutput() NgfwStatusAttachmentOutput {
-	return o
-}
-
-func (o NgfwStatusAttachmentOutput) ToNgfwStatusAttachmentOutputWithContext(ctx context.Context) NgfwStatusAttachmentOutput {
-	return o
-}
-
-// The endpoint id.
-func (o NgfwStatusAttachmentOutput) EndpointId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NgfwStatusAttachment) *string { return v.EndpointId }).(pulumi.StringPtrOutput)
-}
-
-// The reject reason.
-func (o NgfwStatusAttachmentOutput) RejectedReason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NgfwStatusAttachment) *string { return v.RejectedReason }).(pulumi.StringPtrOutput)
-}
-
-// The attachment status.
-func (o NgfwStatusAttachmentOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NgfwStatusAttachment) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// The subnet id.
-func (o NgfwStatusAttachmentOutput) SubnetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NgfwStatusAttachment) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
-}
-
-type NgfwStatusAttachmentArrayOutput struct{ *pulumi.OutputState }
-
-func (NgfwStatusAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NgfwStatusAttachment)(nil)).Elem()
-}
-
-func (o NgfwStatusAttachmentArrayOutput) ToNgfwStatusAttachmentArrayOutput() NgfwStatusAttachmentArrayOutput {
-	return o
-}
-
-func (o NgfwStatusAttachmentArrayOutput) ToNgfwStatusAttachmentArrayOutputWithContext(ctx context.Context) NgfwStatusAttachmentArrayOutput {
-	return o
-}
-
-func (o NgfwStatusAttachmentArrayOutput) Index(i pulumi.IntInput) NgfwStatusAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwStatusAttachment {
-		return vs[0].([]NgfwStatusAttachment)[vs[1].(int)]
-	}).(NgfwStatusAttachmentOutput)
 }
 
 type NgfwSubnetMapping struct {
@@ -489,6 +1256,281 @@ func (o NgfwSubnetMappingArrayOutput) Index(i pulumi.IntInput) NgfwSubnetMapping
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwSubnetMapping {
 		return vs[0].([]NgfwSubnetMapping)[vs[1].(int)]
 	}).(NgfwSubnetMappingOutput)
+}
+
+type NgfwUserId struct {
+	// Agent Name for UserID
+	AgentName *string `pulumi:"agentName"`
+	// The Collector Name
+	CollectorName *string `pulumi:"collectorName"`
+	// List of Custom Include Exclude Networks
+	CustomIncludeExcludeNetworks []NgfwUserIdCustomIncludeExcludeNetwork `pulumi:"customIncludeExcludeNetworks"`
+	// Enable UserID Config
+	Enabled bool `pulumi:"enabled"`
+	// The Port
+	Port int `pulumi:"port"`
+	// AWS Secret Key ARN
+	SecretKeyArn *string `pulumi:"secretKeyArn"`
+	// Status and State of UserID Configuration
+	UserIdStatus *string `pulumi:"userIdStatus"`
+}
+
+// NgfwUserIdInput is an input type that accepts NgfwUserIdArgs and NgfwUserIdOutput values.
+// You can construct a concrete instance of `NgfwUserIdInput` via:
+//
+//	NgfwUserIdArgs{...}
+type NgfwUserIdInput interface {
+	pulumi.Input
+
+	ToNgfwUserIdOutput() NgfwUserIdOutput
+	ToNgfwUserIdOutputWithContext(context.Context) NgfwUserIdOutput
+}
+
+type NgfwUserIdArgs struct {
+	// Agent Name for UserID
+	AgentName pulumi.StringPtrInput `pulumi:"agentName"`
+	// The Collector Name
+	CollectorName pulumi.StringPtrInput `pulumi:"collectorName"`
+	// List of Custom Include Exclude Networks
+	CustomIncludeExcludeNetworks NgfwUserIdCustomIncludeExcludeNetworkArrayInput `pulumi:"customIncludeExcludeNetworks"`
+	// Enable UserID Config
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The Port
+	Port pulumi.IntInput `pulumi:"port"`
+	// AWS Secret Key ARN
+	SecretKeyArn pulumi.StringPtrInput `pulumi:"secretKeyArn"`
+	// Status and State of UserID Configuration
+	UserIdStatus pulumi.StringPtrInput `pulumi:"userIdStatus"`
+}
+
+func (NgfwUserIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwUserId)(nil)).Elem()
+}
+
+func (i NgfwUserIdArgs) ToNgfwUserIdOutput() NgfwUserIdOutput {
+	return i.ToNgfwUserIdOutputWithContext(context.Background())
+}
+
+func (i NgfwUserIdArgs) ToNgfwUserIdOutputWithContext(ctx context.Context) NgfwUserIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwUserIdOutput)
+}
+
+// NgfwUserIdArrayInput is an input type that accepts NgfwUserIdArray and NgfwUserIdArrayOutput values.
+// You can construct a concrete instance of `NgfwUserIdArrayInput` via:
+//
+//	NgfwUserIdArray{ NgfwUserIdArgs{...} }
+type NgfwUserIdArrayInput interface {
+	pulumi.Input
+
+	ToNgfwUserIdArrayOutput() NgfwUserIdArrayOutput
+	ToNgfwUserIdArrayOutputWithContext(context.Context) NgfwUserIdArrayOutput
+}
+
+type NgfwUserIdArray []NgfwUserIdInput
+
+func (NgfwUserIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwUserId)(nil)).Elem()
+}
+
+func (i NgfwUserIdArray) ToNgfwUserIdArrayOutput() NgfwUserIdArrayOutput {
+	return i.ToNgfwUserIdArrayOutputWithContext(context.Background())
+}
+
+func (i NgfwUserIdArray) ToNgfwUserIdArrayOutputWithContext(ctx context.Context) NgfwUserIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwUserIdArrayOutput)
+}
+
+type NgfwUserIdOutput struct{ *pulumi.OutputState }
+
+func (NgfwUserIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwUserId)(nil)).Elem()
+}
+
+func (o NgfwUserIdOutput) ToNgfwUserIdOutput() NgfwUserIdOutput {
+	return o
+}
+
+func (o NgfwUserIdOutput) ToNgfwUserIdOutputWithContext(ctx context.Context) NgfwUserIdOutput {
+	return o
+}
+
+// Agent Name for UserID
+func (o NgfwUserIdOutput) AgentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwUserId) *string { return v.AgentName }).(pulumi.StringPtrOutput)
+}
+
+// The Collector Name
+func (o NgfwUserIdOutput) CollectorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwUserId) *string { return v.CollectorName }).(pulumi.StringPtrOutput)
+}
+
+// List of Custom Include Exclude Networks
+func (o NgfwUserIdOutput) CustomIncludeExcludeNetworks() NgfwUserIdCustomIncludeExcludeNetworkArrayOutput {
+	return o.ApplyT(func(v NgfwUserId) []NgfwUserIdCustomIncludeExcludeNetwork { return v.CustomIncludeExcludeNetworks }).(NgfwUserIdCustomIncludeExcludeNetworkArrayOutput)
+}
+
+// Enable UserID Config
+func (o NgfwUserIdOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NgfwUserId) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The Port
+func (o NgfwUserIdOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v NgfwUserId) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// AWS Secret Key ARN
+func (o NgfwUserIdOutput) SecretKeyArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwUserId) *string { return v.SecretKeyArn }).(pulumi.StringPtrOutput)
+}
+
+// Status and State of UserID Configuration
+func (o NgfwUserIdOutput) UserIdStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwUserId) *string { return v.UserIdStatus }).(pulumi.StringPtrOutput)
+}
+
+type NgfwUserIdArrayOutput struct{ *pulumi.OutputState }
+
+func (NgfwUserIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwUserId)(nil)).Elem()
+}
+
+func (o NgfwUserIdArrayOutput) ToNgfwUserIdArrayOutput() NgfwUserIdArrayOutput {
+	return o
+}
+
+func (o NgfwUserIdArrayOutput) ToNgfwUserIdArrayOutputWithContext(ctx context.Context) NgfwUserIdArrayOutput {
+	return o
+}
+
+func (o NgfwUserIdArrayOutput) Index(i pulumi.IntInput) NgfwUserIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwUserId {
+		return vs[0].([]NgfwUserId)[vs[1].(int)]
+	}).(NgfwUserIdOutput)
+}
+
+type NgfwUserIdCustomIncludeExcludeNetwork struct {
+	// Include or exclude this subnet from user-id configuration
+	DiscoveryInclude bool `pulumi:"discoveryInclude"`
+	// Enable this specific custom include/exclude network
+	Enabled bool `pulumi:"enabled"`
+	// Name of subnet filter
+	Name string `pulumi:"name"`
+	// Network IP address of the subnet filter
+	NetworkAddress string `pulumi:"networkAddress"`
+}
+
+// NgfwUserIdCustomIncludeExcludeNetworkInput is an input type that accepts NgfwUserIdCustomIncludeExcludeNetworkArgs and NgfwUserIdCustomIncludeExcludeNetworkOutput values.
+// You can construct a concrete instance of `NgfwUserIdCustomIncludeExcludeNetworkInput` via:
+//
+//	NgfwUserIdCustomIncludeExcludeNetworkArgs{...}
+type NgfwUserIdCustomIncludeExcludeNetworkInput interface {
+	pulumi.Input
+
+	ToNgfwUserIdCustomIncludeExcludeNetworkOutput() NgfwUserIdCustomIncludeExcludeNetworkOutput
+	ToNgfwUserIdCustomIncludeExcludeNetworkOutputWithContext(context.Context) NgfwUserIdCustomIncludeExcludeNetworkOutput
+}
+
+type NgfwUserIdCustomIncludeExcludeNetworkArgs struct {
+	// Include or exclude this subnet from user-id configuration
+	DiscoveryInclude pulumi.BoolInput `pulumi:"discoveryInclude"`
+	// Enable this specific custom include/exclude network
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Name of subnet filter
+	Name pulumi.StringInput `pulumi:"name"`
+	// Network IP address of the subnet filter
+	NetworkAddress pulumi.StringInput `pulumi:"networkAddress"`
+}
+
+func (NgfwUserIdCustomIncludeExcludeNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwUserIdCustomIncludeExcludeNetwork)(nil)).Elem()
+}
+
+func (i NgfwUserIdCustomIncludeExcludeNetworkArgs) ToNgfwUserIdCustomIncludeExcludeNetworkOutput() NgfwUserIdCustomIncludeExcludeNetworkOutput {
+	return i.ToNgfwUserIdCustomIncludeExcludeNetworkOutputWithContext(context.Background())
+}
+
+func (i NgfwUserIdCustomIncludeExcludeNetworkArgs) ToNgfwUserIdCustomIncludeExcludeNetworkOutputWithContext(ctx context.Context) NgfwUserIdCustomIncludeExcludeNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwUserIdCustomIncludeExcludeNetworkOutput)
+}
+
+// NgfwUserIdCustomIncludeExcludeNetworkArrayInput is an input type that accepts NgfwUserIdCustomIncludeExcludeNetworkArray and NgfwUserIdCustomIncludeExcludeNetworkArrayOutput values.
+// You can construct a concrete instance of `NgfwUserIdCustomIncludeExcludeNetworkArrayInput` via:
+//
+//	NgfwUserIdCustomIncludeExcludeNetworkArray{ NgfwUserIdCustomIncludeExcludeNetworkArgs{...} }
+type NgfwUserIdCustomIncludeExcludeNetworkArrayInput interface {
+	pulumi.Input
+
+	ToNgfwUserIdCustomIncludeExcludeNetworkArrayOutput() NgfwUserIdCustomIncludeExcludeNetworkArrayOutput
+	ToNgfwUserIdCustomIncludeExcludeNetworkArrayOutputWithContext(context.Context) NgfwUserIdCustomIncludeExcludeNetworkArrayOutput
+}
+
+type NgfwUserIdCustomIncludeExcludeNetworkArray []NgfwUserIdCustomIncludeExcludeNetworkInput
+
+func (NgfwUserIdCustomIncludeExcludeNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwUserIdCustomIncludeExcludeNetwork)(nil)).Elem()
+}
+
+func (i NgfwUserIdCustomIncludeExcludeNetworkArray) ToNgfwUserIdCustomIncludeExcludeNetworkArrayOutput() NgfwUserIdCustomIncludeExcludeNetworkArrayOutput {
+	return i.ToNgfwUserIdCustomIncludeExcludeNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i NgfwUserIdCustomIncludeExcludeNetworkArray) ToNgfwUserIdCustomIncludeExcludeNetworkArrayOutputWithContext(ctx context.Context) NgfwUserIdCustomIncludeExcludeNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwUserIdCustomIncludeExcludeNetworkArrayOutput)
+}
+
+type NgfwUserIdCustomIncludeExcludeNetworkOutput struct{ *pulumi.OutputState }
+
+func (NgfwUserIdCustomIncludeExcludeNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwUserIdCustomIncludeExcludeNetwork)(nil)).Elem()
+}
+
+func (o NgfwUserIdCustomIncludeExcludeNetworkOutput) ToNgfwUserIdCustomIncludeExcludeNetworkOutput() NgfwUserIdCustomIncludeExcludeNetworkOutput {
+	return o
+}
+
+func (o NgfwUserIdCustomIncludeExcludeNetworkOutput) ToNgfwUserIdCustomIncludeExcludeNetworkOutputWithContext(ctx context.Context) NgfwUserIdCustomIncludeExcludeNetworkOutput {
+	return o
+}
+
+// Include or exclude this subnet from user-id configuration
+func (o NgfwUserIdCustomIncludeExcludeNetworkOutput) DiscoveryInclude() pulumi.BoolOutput {
+	return o.ApplyT(func(v NgfwUserIdCustomIncludeExcludeNetwork) bool { return v.DiscoveryInclude }).(pulumi.BoolOutput)
+}
+
+// Enable this specific custom include/exclude network
+func (o NgfwUserIdCustomIncludeExcludeNetworkOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NgfwUserIdCustomIncludeExcludeNetwork) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Name of subnet filter
+func (o NgfwUserIdCustomIncludeExcludeNetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NgfwUserIdCustomIncludeExcludeNetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network IP address of the subnet filter
+func (o NgfwUserIdCustomIncludeExcludeNetworkOutput) NetworkAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v NgfwUserIdCustomIncludeExcludeNetwork) string { return v.NetworkAddress }).(pulumi.StringOutput)
+}
+
+type NgfwUserIdCustomIncludeExcludeNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (NgfwUserIdCustomIncludeExcludeNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwUserIdCustomIncludeExcludeNetwork)(nil)).Elem()
+}
+
+func (o NgfwUserIdCustomIncludeExcludeNetworkArrayOutput) ToNgfwUserIdCustomIncludeExcludeNetworkArrayOutput() NgfwUserIdCustomIncludeExcludeNetworkArrayOutput {
+	return o
+}
+
+func (o NgfwUserIdCustomIncludeExcludeNetworkArrayOutput) ToNgfwUserIdCustomIncludeExcludeNetworkArrayOutputWithContext(ctx context.Context) NgfwUserIdCustomIncludeExcludeNetworkArrayOutput {
+	return o
+}
+
+func (o NgfwUserIdCustomIncludeExcludeNetworkArrayOutput) Index(i pulumi.IntInput) NgfwUserIdCustomIncludeExcludeNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwUserIdCustomIncludeExcludeNetwork {
+		return vs[0].([]NgfwUserIdCustomIncludeExcludeNetwork)[vs[1].(int)]
+	}).(NgfwUserIdCustomIncludeExcludeNetworkOutput)
 }
 
 type RulestackProfileConfig struct {
@@ -1420,6 +2462,711 @@ func (o GetAccountsAccountDetailArrayOutput) Index(i pulumi.IntInput) GetAccount
 	}).(GetAccountsAccountDetailOutput)
 }
 
+type GetNgfwEgressNat struct {
+	// Enable egress NAT
+	Enabled  bool                      `pulumi:"enabled"`
+	Settings []GetNgfwEgressNatSetting `pulumi:"settings"`
+}
+
+// GetNgfwEgressNatInput is an input type that accepts GetNgfwEgressNatArgs and GetNgfwEgressNatOutput values.
+// You can construct a concrete instance of `GetNgfwEgressNatInput` via:
+//
+//	GetNgfwEgressNatArgs{...}
+type GetNgfwEgressNatInput interface {
+	pulumi.Input
+
+	ToGetNgfwEgressNatOutput() GetNgfwEgressNatOutput
+	ToGetNgfwEgressNatOutputWithContext(context.Context) GetNgfwEgressNatOutput
+}
+
+type GetNgfwEgressNatArgs struct {
+	// Enable egress NAT
+	Enabled  pulumi.BoolInput                  `pulumi:"enabled"`
+	Settings GetNgfwEgressNatSettingArrayInput `pulumi:"settings"`
+}
+
+func (GetNgfwEgressNatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwEgressNat)(nil)).Elem()
+}
+
+func (i GetNgfwEgressNatArgs) ToGetNgfwEgressNatOutput() GetNgfwEgressNatOutput {
+	return i.ToGetNgfwEgressNatOutputWithContext(context.Background())
+}
+
+func (i GetNgfwEgressNatArgs) ToGetNgfwEgressNatOutputWithContext(ctx context.Context) GetNgfwEgressNatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwEgressNatOutput)
+}
+
+// GetNgfwEgressNatArrayInput is an input type that accepts GetNgfwEgressNatArray and GetNgfwEgressNatArrayOutput values.
+// You can construct a concrete instance of `GetNgfwEgressNatArrayInput` via:
+//
+//	GetNgfwEgressNatArray{ GetNgfwEgressNatArgs{...} }
+type GetNgfwEgressNatArrayInput interface {
+	pulumi.Input
+
+	ToGetNgfwEgressNatArrayOutput() GetNgfwEgressNatArrayOutput
+	ToGetNgfwEgressNatArrayOutputWithContext(context.Context) GetNgfwEgressNatArrayOutput
+}
+
+type GetNgfwEgressNatArray []GetNgfwEgressNatInput
+
+func (GetNgfwEgressNatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwEgressNat)(nil)).Elem()
+}
+
+func (i GetNgfwEgressNatArray) ToGetNgfwEgressNatArrayOutput() GetNgfwEgressNatArrayOutput {
+	return i.ToGetNgfwEgressNatArrayOutputWithContext(context.Background())
+}
+
+func (i GetNgfwEgressNatArray) ToGetNgfwEgressNatArrayOutputWithContext(ctx context.Context) GetNgfwEgressNatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwEgressNatArrayOutput)
+}
+
+type GetNgfwEgressNatOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwEgressNatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwEgressNat)(nil)).Elem()
+}
+
+func (o GetNgfwEgressNatOutput) ToGetNgfwEgressNatOutput() GetNgfwEgressNatOutput {
+	return o
+}
+
+func (o GetNgfwEgressNatOutput) ToGetNgfwEgressNatOutputWithContext(ctx context.Context) GetNgfwEgressNatOutput {
+	return o
+}
+
+// Enable egress NAT
+func (o GetNgfwEgressNatOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNgfwEgressNat) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetNgfwEgressNatOutput) Settings() GetNgfwEgressNatSettingArrayOutput {
+	return o.ApplyT(func(v GetNgfwEgressNat) []GetNgfwEgressNatSetting { return v.Settings }).(GetNgfwEgressNatSettingArrayOutput)
+}
+
+type GetNgfwEgressNatArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwEgressNatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwEgressNat)(nil)).Elem()
+}
+
+func (o GetNgfwEgressNatArrayOutput) ToGetNgfwEgressNatArrayOutput() GetNgfwEgressNatArrayOutput {
+	return o
+}
+
+func (o GetNgfwEgressNatArrayOutput) ToGetNgfwEgressNatArrayOutputWithContext(ctx context.Context) GetNgfwEgressNatArrayOutput {
+	return o
+}
+
+func (o GetNgfwEgressNatArrayOutput) Index(i pulumi.IntInput) GetNgfwEgressNatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwEgressNat {
+		return vs[0].([]GetNgfwEgressNat)[vs[1].(int)]
+	}).(GetNgfwEgressNatOutput)
+}
+
+type GetNgfwEgressNatSetting struct {
+	// Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.
+	IpPoolType string `pulumi:"ipPoolType"`
+	// The IP pool ID
+	IpamPoolId string `pulumi:"ipamPoolId"`
+}
+
+// GetNgfwEgressNatSettingInput is an input type that accepts GetNgfwEgressNatSettingArgs and GetNgfwEgressNatSettingOutput values.
+// You can construct a concrete instance of `GetNgfwEgressNatSettingInput` via:
+//
+//	GetNgfwEgressNatSettingArgs{...}
+type GetNgfwEgressNatSettingInput interface {
+	pulumi.Input
+
+	ToGetNgfwEgressNatSettingOutput() GetNgfwEgressNatSettingOutput
+	ToGetNgfwEgressNatSettingOutputWithContext(context.Context) GetNgfwEgressNatSettingOutput
+}
+
+type GetNgfwEgressNatSettingArgs struct {
+	// Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.
+	IpPoolType pulumi.StringInput `pulumi:"ipPoolType"`
+	// The IP pool ID
+	IpamPoolId pulumi.StringInput `pulumi:"ipamPoolId"`
+}
+
+func (GetNgfwEgressNatSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwEgressNatSetting)(nil)).Elem()
+}
+
+func (i GetNgfwEgressNatSettingArgs) ToGetNgfwEgressNatSettingOutput() GetNgfwEgressNatSettingOutput {
+	return i.ToGetNgfwEgressNatSettingOutputWithContext(context.Background())
+}
+
+func (i GetNgfwEgressNatSettingArgs) ToGetNgfwEgressNatSettingOutputWithContext(ctx context.Context) GetNgfwEgressNatSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwEgressNatSettingOutput)
+}
+
+// GetNgfwEgressNatSettingArrayInput is an input type that accepts GetNgfwEgressNatSettingArray and GetNgfwEgressNatSettingArrayOutput values.
+// You can construct a concrete instance of `GetNgfwEgressNatSettingArrayInput` via:
+//
+//	GetNgfwEgressNatSettingArray{ GetNgfwEgressNatSettingArgs{...} }
+type GetNgfwEgressNatSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetNgfwEgressNatSettingArrayOutput() GetNgfwEgressNatSettingArrayOutput
+	ToGetNgfwEgressNatSettingArrayOutputWithContext(context.Context) GetNgfwEgressNatSettingArrayOutput
+}
+
+type GetNgfwEgressNatSettingArray []GetNgfwEgressNatSettingInput
+
+func (GetNgfwEgressNatSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwEgressNatSetting)(nil)).Elem()
+}
+
+func (i GetNgfwEgressNatSettingArray) ToGetNgfwEgressNatSettingArrayOutput() GetNgfwEgressNatSettingArrayOutput {
+	return i.ToGetNgfwEgressNatSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetNgfwEgressNatSettingArray) ToGetNgfwEgressNatSettingArrayOutputWithContext(ctx context.Context) GetNgfwEgressNatSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwEgressNatSettingArrayOutput)
+}
+
+type GetNgfwEgressNatSettingOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwEgressNatSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwEgressNatSetting)(nil)).Elem()
+}
+
+func (o GetNgfwEgressNatSettingOutput) ToGetNgfwEgressNatSettingOutput() GetNgfwEgressNatSettingOutput {
+	return o
+}
+
+func (o GetNgfwEgressNatSettingOutput) ToGetNgfwEgressNatSettingOutputWithContext(ctx context.Context) GetNgfwEgressNatSettingOutput {
+	return o
+}
+
+// Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.
+func (o GetNgfwEgressNatSettingOutput) IpPoolType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwEgressNatSetting) string { return v.IpPoolType }).(pulumi.StringOutput)
+}
+
+// The IP pool ID
+func (o GetNgfwEgressNatSettingOutput) IpamPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwEgressNatSetting) string { return v.IpamPoolId }).(pulumi.StringOutput)
+}
+
+type GetNgfwEgressNatSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwEgressNatSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwEgressNatSetting)(nil)).Elem()
+}
+
+func (o GetNgfwEgressNatSettingArrayOutput) ToGetNgfwEgressNatSettingArrayOutput() GetNgfwEgressNatSettingArrayOutput {
+	return o
+}
+
+func (o GetNgfwEgressNatSettingArrayOutput) ToGetNgfwEgressNatSettingArrayOutputWithContext(ctx context.Context) GetNgfwEgressNatSettingArrayOutput {
+	return o
+}
+
+func (o GetNgfwEgressNatSettingArrayOutput) Index(i pulumi.IntInput) GetNgfwEgressNatSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwEgressNatSetting {
+		return vs[0].([]GetNgfwEgressNatSetting)[vs[1].(int)]
+	}).(GetNgfwEgressNatSettingOutput)
+}
+
+type GetNgfwEndpoint struct {
+	// The account id.
+	AccountId string `pulumi:"accountId"`
+	// Enable egress NAT
+	EgressNatEnabled bool `pulumi:"egressNatEnabled"`
+	// Endpoint ID of the security zone
+	EndpointId string `pulumi:"endpointId"`
+	// The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+	Mode     string                  `pulumi:"mode"`
+	Prefixes []GetNgfwEndpointPrefix `pulumi:"prefixes"`
+	// The rejected reason.
+	RejectedReason string `pulumi:"rejectedReason"`
+	// The attachment status.
+	Status string `pulumi:"status"`
+	// The subnet id.
+	SubnetId string `pulumi:"subnetId"`
+	// The vpc id.
+	VpcId string `pulumi:"vpcId"`
+	// The AZ id.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetNgfwEndpointInput is an input type that accepts GetNgfwEndpointArgs and GetNgfwEndpointOutput values.
+// You can construct a concrete instance of `GetNgfwEndpointInput` via:
+//
+//	GetNgfwEndpointArgs{...}
+type GetNgfwEndpointInput interface {
+	pulumi.Input
+
+	ToGetNgfwEndpointOutput() GetNgfwEndpointOutput
+	ToGetNgfwEndpointOutputWithContext(context.Context) GetNgfwEndpointOutput
+}
+
+type GetNgfwEndpointArgs struct {
+	// The account id.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Enable egress NAT
+	EgressNatEnabled pulumi.BoolInput `pulumi:"egressNatEnabled"`
+	// Endpoint ID of the security zone
+	EndpointId pulumi.StringInput `pulumi:"endpointId"`
+	// The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+	Mode     pulumi.StringInput              `pulumi:"mode"`
+	Prefixes GetNgfwEndpointPrefixArrayInput `pulumi:"prefixes"`
+	// The rejected reason.
+	RejectedReason pulumi.StringInput `pulumi:"rejectedReason"`
+	// The attachment status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The subnet id.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+	// The vpc id.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The AZ id.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetNgfwEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwEndpoint)(nil)).Elem()
+}
+
+func (i GetNgfwEndpointArgs) ToGetNgfwEndpointOutput() GetNgfwEndpointOutput {
+	return i.ToGetNgfwEndpointOutputWithContext(context.Background())
+}
+
+func (i GetNgfwEndpointArgs) ToGetNgfwEndpointOutputWithContext(ctx context.Context) GetNgfwEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwEndpointOutput)
+}
+
+// GetNgfwEndpointArrayInput is an input type that accepts GetNgfwEndpointArray and GetNgfwEndpointArrayOutput values.
+// You can construct a concrete instance of `GetNgfwEndpointArrayInput` via:
+//
+//	GetNgfwEndpointArray{ GetNgfwEndpointArgs{...} }
+type GetNgfwEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetNgfwEndpointArrayOutput() GetNgfwEndpointArrayOutput
+	ToGetNgfwEndpointArrayOutputWithContext(context.Context) GetNgfwEndpointArrayOutput
+}
+
+type GetNgfwEndpointArray []GetNgfwEndpointInput
+
+func (GetNgfwEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwEndpoint)(nil)).Elem()
+}
+
+func (i GetNgfwEndpointArray) ToGetNgfwEndpointArrayOutput() GetNgfwEndpointArrayOutput {
+	return i.ToGetNgfwEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetNgfwEndpointArray) ToGetNgfwEndpointArrayOutputWithContext(ctx context.Context) GetNgfwEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwEndpointArrayOutput)
+}
+
+type GetNgfwEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwEndpoint)(nil)).Elem()
+}
+
+func (o GetNgfwEndpointOutput) ToGetNgfwEndpointOutput() GetNgfwEndpointOutput {
+	return o
+}
+
+func (o GetNgfwEndpointOutput) ToGetNgfwEndpointOutputWithContext(ctx context.Context) GetNgfwEndpointOutput {
+	return o
+}
+
+// The account id.
+func (o GetNgfwEndpointOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwEndpoint) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Enable egress NAT
+func (o GetNgfwEndpointOutput) EgressNatEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNgfwEndpoint) bool { return v.EgressNatEnabled }).(pulumi.BoolOutput)
+}
+
+// Endpoint ID of the security zone
+func (o GetNgfwEndpointOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwEndpoint) string { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+func (o GetNgfwEndpointOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwEndpoint) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+func (o GetNgfwEndpointOutput) Prefixes() GetNgfwEndpointPrefixArrayOutput {
+	return o.ApplyT(func(v GetNgfwEndpoint) []GetNgfwEndpointPrefix { return v.Prefixes }).(GetNgfwEndpointPrefixArrayOutput)
+}
+
+// The rejected reason.
+func (o GetNgfwEndpointOutput) RejectedReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwEndpoint) string { return v.RejectedReason }).(pulumi.StringOutput)
+}
+
+// The attachment status.
+func (o GetNgfwEndpointOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwEndpoint) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The subnet id.
+func (o GetNgfwEndpointOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwEndpoint) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// The vpc id.
+func (o GetNgfwEndpointOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwEndpoint) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The AZ id.
+func (o GetNgfwEndpointOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwEndpoint) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetNgfwEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwEndpoint)(nil)).Elem()
+}
+
+func (o GetNgfwEndpointArrayOutput) ToGetNgfwEndpointArrayOutput() GetNgfwEndpointArrayOutput {
+	return o
+}
+
+func (o GetNgfwEndpointArrayOutput) ToGetNgfwEndpointArrayOutputWithContext(ctx context.Context) GetNgfwEndpointArrayOutput {
+	return o
+}
+
+func (o GetNgfwEndpointArrayOutput) Index(i pulumi.IntInput) GetNgfwEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwEndpoint {
+		return vs[0].([]GetNgfwEndpoint)[vs[1].(int)]
+	}).(GetNgfwEndpointOutput)
+}
+
+type GetNgfwEndpointPrefix struct {
+	PrivatePrefixes []GetNgfwEndpointPrefixPrivatePrefix `pulumi:"privatePrefixes"`
+}
+
+// GetNgfwEndpointPrefixInput is an input type that accepts GetNgfwEndpointPrefixArgs and GetNgfwEndpointPrefixOutput values.
+// You can construct a concrete instance of `GetNgfwEndpointPrefixInput` via:
+//
+//	GetNgfwEndpointPrefixArgs{...}
+type GetNgfwEndpointPrefixInput interface {
+	pulumi.Input
+
+	ToGetNgfwEndpointPrefixOutput() GetNgfwEndpointPrefixOutput
+	ToGetNgfwEndpointPrefixOutputWithContext(context.Context) GetNgfwEndpointPrefixOutput
+}
+
+type GetNgfwEndpointPrefixArgs struct {
+	PrivatePrefixes GetNgfwEndpointPrefixPrivatePrefixArrayInput `pulumi:"privatePrefixes"`
+}
+
+func (GetNgfwEndpointPrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwEndpointPrefix)(nil)).Elem()
+}
+
+func (i GetNgfwEndpointPrefixArgs) ToGetNgfwEndpointPrefixOutput() GetNgfwEndpointPrefixOutput {
+	return i.ToGetNgfwEndpointPrefixOutputWithContext(context.Background())
+}
+
+func (i GetNgfwEndpointPrefixArgs) ToGetNgfwEndpointPrefixOutputWithContext(ctx context.Context) GetNgfwEndpointPrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwEndpointPrefixOutput)
+}
+
+// GetNgfwEndpointPrefixArrayInput is an input type that accepts GetNgfwEndpointPrefixArray and GetNgfwEndpointPrefixArrayOutput values.
+// You can construct a concrete instance of `GetNgfwEndpointPrefixArrayInput` via:
+//
+//	GetNgfwEndpointPrefixArray{ GetNgfwEndpointPrefixArgs{...} }
+type GetNgfwEndpointPrefixArrayInput interface {
+	pulumi.Input
+
+	ToGetNgfwEndpointPrefixArrayOutput() GetNgfwEndpointPrefixArrayOutput
+	ToGetNgfwEndpointPrefixArrayOutputWithContext(context.Context) GetNgfwEndpointPrefixArrayOutput
+}
+
+type GetNgfwEndpointPrefixArray []GetNgfwEndpointPrefixInput
+
+func (GetNgfwEndpointPrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwEndpointPrefix)(nil)).Elem()
+}
+
+func (i GetNgfwEndpointPrefixArray) ToGetNgfwEndpointPrefixArrayOutput() GetNgfwEndpointPrefixArrayOutput {
+	return i.ToGetNgfwEndpointPrefixArrayOutputWithContext(context.Background())
+}
+
+func (i GetNgfwEndpointPrefixArray) ToGetNgfwEndpointPrefixArrayOutputWithContext(ctx context.Context) GetNgfwEndpointPrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwEndpointPrefixArrayOutput)
+}
+
+type GetNgfwEndpointPrefixOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwEndpointPrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwEndpointPrefix)(nil)).Elem()
+}
+
+func (o GetNgfwEndpointPrefixOutput) ToGetNgfwEndpointPrefixOutput() GetNgfwEndpointPrefixOutput {
+	return o
+}
+
+func (o GetNgfwEndpointPrefixOutput) ToGetNgfwEndpointPrefixOutputWithContext(ctx context.Context) GetNgfwEndpointPrefixOutput {
+	return o
+}
+
+func (o GetNgfwEndpointPrefixOutput) PrivatePrefixes() GetNgfwEndpointPrefixPrivatePrefixArrayOutput {
+	return o.ApplyT(func(v GetNgfwEndpointPrefix) []GetNgfwEndpointPrefixPrivatePrefix { return v.PrivatePrefixes }).(GetNgfwEndpointPrefixPrivatePrefixArrayOutput)
+}
+
+type GetNgfwEndpointPrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwEndpointPrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwEndpointPrefix)(nil)).Elem()
+}
+
+func (o GetNgfwEndpointPrefixArrayOutput) ToGetNgfwEndpointPrefixArrayOutput() GetNgfwEndpointPrefixArrayOutput {
+	return o
+}
+
+func (o GetNgfwEndpointPrefixArrayOutput) ToGetNgfwEndpointPrefixArrayOutputWithContext(ctx context.Context) GetNgfwEndpointPrefixArrayOutput {
+	return o
+}
+
+func (o GetNgfwEndpointPrefixArrayOutput) Index(i pulumi.IntInput) GetNgfwEndpointPrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwEndpointPrefix {
+		return vs[0].([]GetNgfwEndpointPrefix)[vs[1].(int)]
+	}).(GetNgfwEndpointPrefixOutput)
+}
+
+type GetNgfwEndpointPrefixPrivatePrefix struct {
+	Cidrs []string `pulumi:"cidrs"`
+}
+
+// GetNgfwEndpointPrefixPrivatePrefixInput is an input type that accepts GetNgfwEndpointPrefixPrivatePrefixArgs and GetNgfwEndpointPrefixPrivatePrefixOutput values.
+// You can construct a concrete instance of `GetNgfwEndpointPrefixPrivatePrefixInput` via:
+//
+//	GetNgfwEndpointPrefixPrivatePrefixArgs{...}
+type GetNgfwEndpointPrefixPrivatePrefixInput interface {
+	pulumi.Input
+
+	ToGetNgfwEndpointPrefixPrivatePrefixOutput() GetNgfwEndpointPrefixPrivatePrefixOutput
+	ToGetNgfwEndpointPrefixPrivatePrefixOutputWithContext(context.Context) GetNgfwEndpointPrefixPrivatePrefixOutput
+}
+
+type GetNgfwEndpointPrefixPrivatePrefixArgs struct {
+	Cidrs pulumi.StringArrayInput `pulumi:"cidrs"`
+}
+
+func (GetNgfwEndpointPrefixPrivatePrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwEndpointPrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (i GetNgfwEndpointPrefixPrivatePrefixArgs) ToGetNgfwEndpointPrefixPrivatePrefixOutput() GetNgfwEndpointPrefixPrivatePrefixOutput {
+	return i.ToGetNgfwEndpointPrefixPrivatePrefixOutputWithContext(context.Background())
+}
+
+func (i GetNgfwEndpointPrefixPrivatePrefixArgs) ToGetNgfwEndpointPrefixPrivatePrefixOutputWithContext(ctx context.Context) GetNgfwEndpointPrefixPrivatePrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwEndpointPrefixPrivatePrefixOutput)
+}
+
+// GetNgfwEndpointPrefixPrivatePrefixArrayInput is an input type that accepts GetNgfwEndpointPrefixPrivatePrefixArray and GetNgfwEndpointPrefixPrivatePrefixArrayOutput values.
+// You can construct a concrete instance of `GetNgfwEndpointPrefixPrivatePrefixArrayInput` via:
+//
+//	GetNgfwEndpointPrefixPrivatePrefixArray{ GetNgfwEndpointPrefixPrivatePrefixArgs{...} }
+type GetNgfwEndpointPrefixPrivatePrefixArrayInput interface {
+	pulumi.Input
+
+	ToGetNgfwEndpointPrefixPrivatePrefixArrayOutput() GetNgfwEndpointPrefixPrivatePrefixArrayOutput
+	ToGetNgfwEndpointPrefixPrivatePrefixArrayOutputWithContext(context.Context) GetNgfwEndpointPrefixPrivatePrefixArrayOutput
+}
+
+type GetNgfwEndpointPrefixPrivatePrefixArray []GetNgfwEndpointPrefixPrivatePrefixInput
+
+func (GetNgfwEndpointPrefixPrivatePrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwEndpointPrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (i GetNgfwEndpointPrefixPrivatePrefixArray) ToGetNgfwEndpointPrefixPrivatePrefixArrayOutput() GetNgfwEndpointPrefixPrivatePrefixArrayOutput {
+	return i.ToGetNgfwEndpointPrefixPrivatePrefixArrayOutputWithContext(context.Background())
+}
+
+func (i GetNgfwEndpointPrefixPrivatePrefixArray) ToGetNgfwEndpointPrefixPrivatePrefixArrayOutputWithContext(ctx context.Context) GetNgfwEndpointPrefixPrivatePrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwEndpointPrefixPrivatePrefixArrayOutput)
+}
+
+type GetNgfwEndpointPrefixPrivatePrefixOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwEndpointPrefixPrivatePrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwEndpointPrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (o GetNgfwEndpointPrefixPrivatePrefixOutput) ToGetNgfwEndpointPrefixPrivatePrefixOutput() GetNgfwEndpointPrefixPrivatePrefixOutput {
+	return o
+}
+
+func (o GetNgfwEndpointPrefixPrivatePrefixOutput) ToGetNgfwEndpointPrefixPrivatePrefixOutputWithContext(ctx context.Context) GetNgfwEndpointPrefixPrivatePrefixOutput {
+	return o
+}
+
+func (o GetNgfwEndpointPrefixPrivatePrefixOutput) Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNgfwEndpointPrefixPrivatePrefix) []string { return v.Cidrs }).(pulumi.StringArrayOutput)
+}
+
+type GetNgfwEndpointPrefixPrivatePrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwEndpointPrefixPrivatePrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwEndpointPrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (o GetNgfwEndpointPrefixPrivatePrefixArrayOutput) ToGetNgfwEndpointPrefixPrivatePrefixArrayOutput() GetNgfwEndpointPrefixPrivatePrefixArrayOutput {
+	return o
+}
+
+func (o GetNgfwEndpointPrefixPrivatePrefixArrayOutput) ToGetNgfwEndpointPrefixPrivatePrefixArrayOutputWithContext(ctx context.Context) GetNgfwEndpointPrefixPrivatePrefixArrayOutput {
+	return o
+}
+
+func (o GetNgfwEndpointPrefixPrivatePrefixArrayOutput) Index(i pulumi.IntInput) GetNgfwEndpointPrefixPrivatePrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwEndpointPrefixPrivatePrefix {
+		return vs[0].([]GetNgfwEndpointPrefixPrivatePrefix)[vs[1].(int)]
+	}).(GetNgfwEndpointPrefixPrivatePrefixOutput)
+}
+
+type GetNgfwLogProfileLogConfig struct {
+	// Type of Role for log configuration
+	AccountId string `pulumi:"accountId"`
+	// The log destination details.
+	LogDestination string `pulumi:"logDestination"`
+	// The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
+	LogDestinationType string `pulumi:"logDestinationType"`
+	// The list of different log types that are wanted
+	LogTypes []string `pulumi:"logTypes"`
+	// Type of Role for log configuration
+	RoleType string `pulumi:"roleType"`
+}
+
+// GetNgfwLogProfileLogConfigInput is an input type that accepts GetNgfwLogProfileLogConfigArgs and GetNgfwLogProfileLogConfigOutput values.
+// You can construct a concrete instance of `GetNgfwLogProfileLogConfigInput` via:
+//
+//	GetNgfwLogProfileLogConfigArgs{...}
+type GetNgfwLogProfileLogConfigInput interface {
+	pulumi.Input
+
+	ToGetNgfwLogProfileLogConfigOutput() GetNgfwLogProfileLogConfigOutput
+	ToGetNgfwLogProfileLogConfigOutputWithContext(context.Context) GetNgfwLogProfileLogConfigOutput
+}
+
+type GetNgfwLogProfileLogConfigArgs struct {
+	// Type of Role for log configuration
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// The log destination details.
+	LogDestination pulumi.StringInput `pulumi:"logDestination"`
+	// The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
+	LogDestinationType pulumi.StringInput `pulumi:"logDestinationType"`
+	// The list of different log types that are wanted
+	LogTypes pulumi.StringArrayInput `pulumi:"logTypes"`
+	// Type of Role for log configuration
+	RoleType pulumi.StringInput `pulumi:"roleType"`
+}
+
+func (GetNgfwLogProfileLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwLogProfileLogConfig)(nil)).Elem()
+}
+
+func (i GetNgfwLogProfileLogConfigArgs) ToGetNgfwLogProfileLogConfigOutput() GetNgfwLogProfileLogConfigOutput {
+	return i.ToGetNgfwLogProfileLogConfigOutputWithContext(context.Background())
+}
+
+func (i GetNgfwLogProfileLogConfigArgs) ToGetNgfwLogProfileLogConfigOutputWithContext(ctx context.Context) GetNgfwLogProfileLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwLogProfileLogConfigOutput)
+}
+
+// GetNgfwLogProfileLogConfigArrayInput is an input type that accepts GetNgfwLogProfileLogConfigArray and GetNgfwLogProfileLogConfigArrayOutput values.
+// You can construct a concrete instance of `GetNgfwLogProfileLogConfigArrayInput` via:
+//
+//	GetNgfwLogProfileLogConfigArray{ GetNgfwLogProfileLogConfigArgs{...} }
+type GetNgfwLogProfileLogConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetNgfwLogProfileLogConfigArrayOutput() GetNgfwLogProfileLogConfigArrayOutput
+	ToGetNgfwLogProfileLogConfigArrayOutputWithContext(context.Context) GetNgfwLogProfileLogConfigArrayOutput
+}
+
+type GetNgfwLogProfileLogConfigArray []GetNgfwLogProfileLogConfigInput
+
+func (GetNgfwLogProfileLogConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwLogProfileLogConfig)(nil)).Elem()
+}
+
+func (i GetNgfwLogProfileLogConfigArray) ToGetNgfwLogProfileLogConfigArrayOutput() GetNgfwLogProfileLogConfigArrayOutput {
+	return i.ToGetNgfwLogProfileLogConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetNgfwLogProfileLogConfigArray) ToGetNgfwLogProfileLogConfigArrayOutputWithContext(ctx context.Context) GetNgfwLogProfileLogConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwLogProfileLogConfigArrayOutput)
+}
+
+type GetNgfwLogProfileLogConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwLogProfileLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwLogProfileLogConfig)(nil)).Elem()
+}
+
+func (o GetNgfwLogProfileLogConfigOutput) ToGetNgfwLogProfileLogConfigOutput() GetNgfwLogProfileLogConfigOutput {
+	return o
+}
+
+func (o GetNgfwLogProfileLogConfigOutput) ToGetNgfwLogProfileLogConfigOutputWithContext(ctx context.Context) GetNgfwLogProfileLogConfigOutput {
+	return o
+}
+
+// Type of Role for log configuration
+func (o GetNgfwLogProfileLogConfigOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwLogProfileLogConfig) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The log destination details.
+func (o GetNgfwLogProfileLogConfigOutput) LogDestination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwLogProfileLogConfig) string { return v.LogDestination }).(pulumi.StringOutput)
+}
+
+// The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
+func (o GetNgfwLogProfileLogConfigOutput) LogDestinationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwLogProfileLogConfig) string { return v.LogDestinationType }).(pulumi.StringOutput)
+}
+
+// The list of different log types that are wanted
+func (o GetNgfwLogProfileLogConfigOutput) LogTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNgfwLogProfileLogConfig) []string { return v.LogTypes }).(pulumi.StringArrayOutput)
+}
+
+// Type of Role for log configuration
+func (o GetNgfwLogProfileLogConfigOutput) RoleType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwLogProfileLogConfig) string { return v.RoleType }).(pulumi.StringOutput)
+}
+
+type GetNgfwLogProfileLogConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwLogProfileLogConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwLogProfileLogConfig)(nil)).Elem()
+}
+
+func (o GetNgfwLogProfileLogConfigArrayOutput) ToGetNgfwLogProfileLogConfigArrayOutput() GetNgfwLogProfileLogConfigArrayOutput {
+	return o
+}
+
+func (o GetNgfwLogProfileLogConfigArrayOutput) ToGetNgfwLogProfileLogConfigArrayOutputWithContext(ctx context.Context) GetNgfwLogProfileLogConfigArrayOutput {
+	return o
+}
+
+func (o GetNgfwLogProfileLogConfigArrayOutput) Index(i pulumi.IntInput) GetNgfwLogProfileLogConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwLogProfileLogConfig {
+		return vs[0].([]GetNgfwLogProfileLogConfig)[vs[1].(int)]
+	}).(GetNgfwLogProfileLogConfigOutput)
+}
+
 type GetNgfwLogProfileLogDestination struct {
 	// The log destination details.
 	Destination string `pulumi:"destination"`
@@ -1535,9 +3282,115 @@ func (o GetNgfwLogProfileLogDestinationArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetNgfwLogProfileLogDestinationOutput)
 }
 
+type GetNgfwPrivateAccess struct {
+	// AWS ResourceID
+	ResourceId string `pulumi:"resourceId"`
+	// Type of Private Access
+	Type string `pulumi:"type"`
+}
+
+// GetNgfwPrivateAccessInput is an input type that accepts GetNgfwPrivateAccessArgs and GetNgfwPrivateAccessOutput values.
+// You can construct a concrete instance of `GetNgfwPrivateAccessInput` via:
+//
+//	GetNgfwPrivateAccessArgs{...}
+type GetNgfwPrivateAccessInput interface {
+	pulumi.Input
+
+	ToGetNgfwPrivateAccessOutput() GetNgfwPrivateAccessOutput
+	ToGetNgfwPrivateAccessOutputWithContext(context.Context) GetNgfwPrivateAccessOutput
+}
+
+type GetNgfwPrivateAccessArgs struct {
+	// AWS ResourceID
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// Type of Private Access
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetNgfwPrivateAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwPrivateAccess)(nil)).Elem()
+}
+
+func (i GetNgfwPrivateAccessArgs) ToGetNgfwPrivateAccessOutput() GetNgfwPrivateAccessOutput {
+	return i.ToGetNgfwPrivateAccessOutputWithContext(context.Background())
+}
+
+func (i GetNgfwPrivateAccessArgs) ToGetNgfwPrivateAccessOutputWithContext(ctx context.Context) GetNgfwPrivateAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwPrivateAccessOutput)
+}
+
+// GetNgfwPrivateAccessArrayInput is an input type that accepts GetNgfwPrivateAccessArray and GetNgfwPrivateAccessArrayOutput values.
+// You can construct a concrete instance of `GetNgfwPrivateAccessArrayInput` via:
+//
+//	GetNgfwPrivateAccessArray{ GetNgfwPrivateAccessArgs{...} }
+type GetNgfwPrivateAccessArrayInput interface {
+	pulumi.Input
+
+	ToGetNgfwPrivateAccessArrayOutput() GetNgfwPrivateAccessArrayOutput
+	ToGetNgfwPrivateAccessArrayOutputWithContext(context.Context) GetNgfwPrivateAccessArrayOutput
+}
+
+type GetNgfwPrivateAccessArray []GetNgfwPrivateAccessInput
+
+func (GetNgfwPrivateAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwPrivateAccess)(nil)).Elem()
+}
+
+func (i GetNgfwPrivateAccessArray) ToGetNgfwPrivateAccessArrayOutput() GetNgfwPrivateAccessArrayOutput {
+	return i.ToGetNgfwPrivateAccessArrayOutputWithContext(context.Background())
+}
+
+func (i GetNgfwPrivateAccessArray) ToGetNgfwPrivateAccessArrayOutputWithContext(ctx context.Context) GetNgfwPrivateAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwPrivateAccessArrayOutput)
+}
+
+type GetNgfwPrivateAccessOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwPrivateAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwPrivateAccess)(nil)).Elem()
+}
+
+func (o GetNgfwPrivateAccessOutput) ToGetNgfwPrivateAccessOutput() GetNgfwPrivateAccessOutput {
+	return o
+}
+
+func (o GetNgfwPrivateAccessOutput) ToGetNgfwPrivateAccessOutputWithContext(ctx context.Context) GetNgfwPrivateAccessOutput {
+	return o
+}
+
+// AWS ResourceID
+func (o GetNgfwPrivateAccessOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwPrivateAccess) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// Type of Private Access
+func (o GetNgfwPrivateAccessOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwPrivateAccess) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetNgfwPrivateAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwPrivateAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwPrivateAccess)(nil)).Elem()
+}
+
+func (o GetNgfwPrivateAccessArrayOutput) ToGetNgfwPrivateAccessArrayOutput() GetNgfwPrivateAccessArrayOutput {
+	return o
+}
+
+func (o GetNgfwPrivateAccessArrayOutput) ToGetNgfwPrivateAccessArrayOutputWithContext(ctx context.Context) GetNgfwPrivateAccessArrayOutput {
+	return o
+}
+
+func (o GetNgfwPrivateAccessArrayOutput) Index(i pulumi.IntInput) GetNgfwPrivateAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwPrivateAccess {
+		return vs[0].([]GetNgfwPrivateAccess)[vs[1].(int)]
+	}).(GetNgfwPrivateAccessOutput)
+}
+
 type GetNgfwStatus struct {
-	// The firewall attachments.
-	Attachments []GetNgfwStatusAttachment `pulumi:"attachments"`
+	// The device rulestack commit status.
+	DeviceRulestackCommitStatus string `pulumi:"deviceRulestackCommitStatus"`
 	// The firewall failure reason.
 	FailureReason string `pulumi:"failureReason"`
 	// The firewall status.
@@ -1558,8 +3411,8 @@ type GetNgfwStatusInput interface {
 }
 
 type GetNgfwStatusArgs struct {
-	// The firewall attachments.
-	Attachments GetNgfwStatusAttachmentArrayInput `pulumi:"attachments"`
+	// The device rulestack commit status.
+	DeviceRulestackCommitStatus pulumi.StringInput `pulumi:"deviceRulestackCommitStatus"`
 	// The firewall failure reason.
 	FailureReason pulumi.StringInput `pulumi:"failureReason"`
 	// The firewall status.
@@ -1619,9 +3472,9 @@ func (o GetNgfwStatusOutput) ToGetNgfwStatusOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The firewall attachments.
-func (o GetNgfwStatusOutput) Attachments() GetNgfwStatusAttachmentArrayOutput {
-	return o.ApplyT(func(v GetNgfwStatus) []GetNgfwStatusAttachment { return v.Attachments }).(GetNgfwStatusAttachmentArrayOutput)
+// The device rulestack commit status.
+func (o GetNgfwStatusOutput) DeviceRulestackCommitStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwStatus) string { return v.DeviceRulestackCommitStatus }).(pulumi.StringOutput)
 }
 
 // The firewall failure reason.
@@ -1657,130 +3510,6 @@ func (o GetNgfwStatusArrayOutput) Index(i pulumi.IntInput) GetNgfwStatusOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwStatus {
 		return vs[0].([]GetNgfwStatus)[vs[1].(int)]
 	}).(GetNgfwStatusOutput)
-}
-
-type GetNgfwStatusAttachment struct {
-	// The endpoint id.
-	EndpointId string `pulumi:"endpointId"`
-	// The reject reason.
-	RejectedReason string `pulumi:"rejectedReason"`
-	// The attachment status.
-	Status string `pulumi:"status"`
-	// The subnet id.
-	SubnetId string `pulumi:"subnetId"`
-}
-
-// GetNgfwStatusAttachmentInput is an input type that accepts GetNgfwStatusAttachmentArgs and GetNgfwStatusAttachmentOutput values.
-// You can construct a concrete instance of `GetNgfwStatusAttachmentInput` via:
-//
-//	GetNgfwStatusAttachmentArgs{...}
-type GetNgfwStatusAttachmentInput interface {
-	pulumi.Input
-
-	ToGetNgfwStatusAttachmentOutput() GetNgfwStatusAttachmentOutput
-	ToGetNgfwStatusAttachmentOutputWithContext(context.Context) GetNgfwStatusAttachmentOutput
-}
-
-type GetNgfwStatusAttachmentArgs struct {
-	// The endpoint id.
-	EndpointId pulumi.StringInput `pulumi:"endpointId"`
-	// The reject reason.
-	RejectedReason pulumi.StringInput `pulumi:"rejectedReason"`
-	// The attachment status.
-	Status pulumi.StringInput `pulumi:"status"`
-	// The subnet id.
-	SubnetId pulumi.StringInput `pulumi:"subnetId"`
-}
-
-func (GetNgfwStatusAttachmentArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNgfwStatusAttachment)(nil)).Elem()
-}
-
-func (i GetNgfwStatusAttachmentArgs) ToGetNgfwStatusAttachmentOutput() GetNgfwStatusAttachmentOutput {
-	return i.ToGetNgfwStatusAttachmentOutputWithContext(context.Background())
-}
-
-func (i GetNgfwStatusAttachmentArgs) ToGetNgfwStatusAttachmentOutputWithContext(ctx context.Context) GetNgfwStatusAttachmentOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwStatusAttachmentOutput)
-}
-
-// GetNgfwStatusAttachmentArrayInput is an input type that accepts GetNgfwStatusAttachmentArray and GetNgfwStatusAttachmentArrayOutput values.
-// You can construct a concrete instance of `GetNgfwStatusAttachmentArrayInput` via:
-//
-//	GetNgfwStatusAttachmentArray{ GetNgfwStatusAttachmentArgs{...} }
-type GetNgfwStatusAttachmentArrayInput interface {
-	pulumi.Input
-
-	ToGetNgfwStatusAttachmentArrayOutput() GetNgfwStatusAttachmentArrayOutput
-	ToGetNgfwStatusAttachmentArrayOutputWithContext(context.Context) GetNgfwStatusAttachmentArrayOutput
-}
-
-type GetNgfwStatusAttachmentArray []GetNgfwStatusAttachmentInput
-
-func (GetNgfwStatusAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNgfwStatusAttachment)(nil)).Elem()
-}
-
-func (i GetNgfwStatusAttachmentArray) ToGetNgfwStatusAttachmentArrayOutput() GetNgfwStatusAttachmentArrayOutput {
-	return i.ToGetNgfwStatusAttachmentArrayOutputWithContext(context.Background())
-}
-
-func (i GetNgfwStatusAttachmentArray) ToGetNgfwStatusAttachmentArrayOutputWithContext(ctx context.Context) GetNgfwStatusAttachmentArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwStatusAttachmentArrayOutput)
-}
-
-type GetNgfwStatusAttachmentOutput struct{ *pulumi.OutputState }
-
-func (GetNgfwStatusAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNgfwStatusAttachment)(nil)).Elem()
-}
-
-func (o GetNgfwStatusAttachmentOutput) ToGetNgfwStatusAttachmentOutput() GetNgfwStatusAttachmentOutput {
-	return o
-}
-
-func (o GetNgfwStatusAttachmentOutput) ToGetNgfwStatusAttachmentOutputWithContext(ctx context.Context) GetNgfwStatusAttachmentOutput {
-	return o
-}
-
-// The endpoint id.
-func (o GetNgfwStatusAttachmentOutput) EndpointId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNgfwStatusAttachment) string { return v.EndpointId }).(pulumi.StringOutput)
-}
-
-// The reject reason.
-func (o GetNgfwStatusAttachmentOutput) RejectedReason() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNgfwStatusAttachment) string { return v.RejectedReason }).(pulumi.StringOutput)
-}
-
-// The attachment status.
-func (o GetNgfwStatusAttachmentOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNgfwStatusAttachment) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// The subnet id.
-func (o GetNgfwStatusAttachmentOutput) SubnetId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNgfwStatusAttachment) string { return v.SubnetId }).(pulumi.StringOutput)
-}
-
-type GetNgfwStatusAttachmentArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNgfwStatusAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNgfwStatusAttachment)(nil)).Elem()
-}
-
-func (o GetNgfwStatusAttachmentArrayOutput) ToGetNgfwStatusAttachmentArrayOutput() GetNgfwStatusAttachmentArrayOutput {
-	return o
-}
-
-func (o GetNgfwStatusAttachmentArrayOutput) ToGetNgfwStatusAttachmentArrayOutputWithContext(ctx context.Context) GetNgfwStatusAttachmentArrayOutput {
-	return o
-}
-
-func (o GetNgfwStatusAttachmentArrayOutput) Index(i pulumi.IntInput) GetNgfwStatusAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwStatusAttachment {
-		return vs[0].([]GetNgfwStatusAttachment)[vs[1].(int)]
-	}).(GetNgfwStatusAttachmentOutput)
 }
 
 type GetNgfwSubnetMapping struct {
@@ -1898,11 +3627,288 @@ func (o GetNgfwSubnetMappingArrayOutput) Index(i pulumi.IntInput) GetNgfwSubnetM
 	}).(GetNgfwSubnetMappingOutput)
 }
 
-type GetNgfwsInstance struct {
-	// The account id.
-	AccountId string `pulumi:"accountId"`
-	// The NGFW name.
+type GetNgfwUserId struct {
+	// Agent Name for UserID
+	AgentName string `pulumi:"agentName"`
+	// The Collector Name
+	CollectorName string `pulumi:"collectorName"`
+	// List of Custom Include Exclude Networks
+	CustomIncludeExcludeNetworks []GetNgfwUserIdCustomIncludeExcludeNetwork `pulumi:"customIncludeExcludeNetworks"`
+	// Enable UserID Config
+	Enabled bool `pulumi:"enabled"`
+	// The Port
+	Port int `pulumi:"port"`
+	// AWS Secret Key ARN
+	SecretKeyArn string `pulumi:"secretKeyArn"`
+	// Status and State of UserID Configuration
+	UserIdStatus string `pulumi:"userIdStatus"`
+}
+
+// GetNgfwUserIdInput is an input type that accepts GetNgfwUserIdArgs and GetNgfwUserIdOutput values.
+// You can construct a concrete instance of `GetNgfwUserIdInput` via:
+//
+//	GetNgfwUserIdArgs{...}
+type GetNgfwUserIdInput interface {
+	pulumi.Input
+
+	ToGetNgfwUserIdOutput() GetNgfwUserIdOutput
+	ToGetNgfwUserIdOutputWithContext(context.Context) GetNgfwUserIdOutput
+}
+
+type GetNgfwUserIdArgs struct {
+	// Agent Name for UserID
+	AgentName pulumi.StringInput `pulumi:"agentName"`
+	// The Collector Name
+	CollectorName pulumi.StringInput `pulumi:"collectorName"`
+	// List of Custom Include Exclude Networks
+	CustomIncludeExcludeNetworks GetNgfwUserIdCustomIncludeExcludeNetworkArrayInput `pulumi:"customIncludeExcludeNetworks"`
+	// Enable UserID Config
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The Port
+	Port pulumi.IntInput `pulumi:"port"`
+	// AWS Secret Key ARN
+	SecretKeyArn pulumi.StringInput `pulumi:"secretKeyArn"`
+	// Status and State of UserID Configuration
+	UserIdStatus pulumi.StringInput `pulumi:"userIdStatus"`
+}
+
+func (GetNgfwUserIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwUserId)(nil)).Elem()
+}
+
+func (i GetNgfwUserIdArgs) ToGetNgfwUserIdOutput() GetNgfwUserIdOutput {
+	return i.ToGetNgfwUserIdOutputWithContext(context.Background())
+}
+
+func (i GetNgfwUserIdArgs) ToGetNgfwUserIdOutputWithContext(ctx context.Context) GetNgfwUserIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwUserIdOutput)
+}
+
+// GetNgfwUserIdArrayInput is an input type that accepts GetNgfwUserIdArray and GetNgfwUserIdArrayOutput values.
+// You can construct a concrete instance of `GetNgfwUserIdArrayInput` via:
+//
+//	GetNgfwUserIdArray{ GetNgfwUserIdArgs{...} }
+type GetNgfwUserIdArrayInput interface {
+	pulumi.Input
+
+	ToGetNgfwUserIdArrayOutput() GetNgfwUserIdArrayOutput
+	ToGetNgfwUserIdArrayOutputWithContext(context.Context) GetNgfwUserIdArrayOutput
+}
+
+type GetNgfwUserIdArray []GetNgfwUserIdInput
+
+func (GetNgfwUserIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwUserId)(nil)).Elem()
+}
+
+func (i GetNgfwUserIdArray) ToGetNgfwUserIdArrayOutput() GetNgfwUserIdArrayOutput {
+	return i.ToGetNgfwUserIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetNgfwUserIdArray) ToGetNgfwUserIdArrayOutputWithContext(ctx context.Context) GetNgfwUserIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwUserIdArrayOutput)
+}
+
+type GetNgfwUserIdOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwUserIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwUserId)(nil)).Elem()
+}
+
+func (o GetNgfwUserIdOutput) ToGetNgfwUserIdOutput() GetNgfwUserIdOutput {
+	return o
+}
+
+func (o GetNgfwUserIdOutput) ToGetNgfwUserIdOutputWithContext(ctx context.Context) GetNgfwUserIdOutput {
+	return o
+}
+
+// Agent Name for UserID
+func (o GetNgfwUserIdOutput) AgentName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwUserId) string { return v.AgentName }).(pulumi.StringOutput)
+}
+
+// The Collector Name
+func (o GetNgfwUserIdOutput) CollectorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwUserId) string { return v.CollectorName }).(pulumi.StringOutput)
+}
+
+// List of Custom Include Exclude Networks
+func (o GetNgfwUserIdOutput) CustomIncludeExcludeNetworks() GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput {
+	return o.ApplyT(func(v GetNgfwUserId) []GetNgfwUserIdCustomIncludeExcludeNetwork {
+		return v.CustomIncludeExcludeNetworks
+	}).(GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput)
+}
+
+// Enable UserID Config
+func (o GetNgfwUserIdOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNgfwUserId) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The Port
+func (o GetNgfwUserIdOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNgfwUserId) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// AWS Secret Key ARN
+func (o GetNgfwUserIdOutput) SecretKeyArn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwUserId) string { return v.SecretKeyArn }).(pulumi.StringOutput)
+}
+
+// Status and State of UserID Configuration
+func (o GetNgfwUserIdOutput) UserIdStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwUserId) string { return v.UserIdStatus }).(pulumi.StringOutput)
+}
+
+type GetNgfwUserIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwUserIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwUserId)(nil)).Elem()
+}
+
+func (o GetNgfwUserIdArrayOutput) ToGetNgfwUserIdArrayOutput() GetNgfwUserIdArrayOutput {
+	return o
+}
+
+func (o GetNgfwUserIdArrayOutput) ToGetNgfwUserIdArrayOutputWithContext(ctx context.Context) GetNgfwUserIdArrayOutput {
+	return o
+}
+
+func (o GetNgfwUserIdArrayOutput) Index(i pulumi.IntInput) GetNgfwUserIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwUserId {
+		return vs[0].([]GetNgfwUserId)[vs[1].(int)]
+	}).(GetNgfwUserIdOutput)
+}
+
+type GetNgfwUserIdCustomIncludeExcludeNetwork struct {
+	// Include or exclude this subnet from user-id configuration
+	DiscoveryInclude bool `pulumi:"discoveryInclude"`
+	// Enable this specific custom include/exclude network
+	Enabled bool `pulumi:"enabled"`
+	// Name of subnet filter
 	Name string `pulumi:"name"`
+	// Network IP address of the subnet filter
+	NetworkAddress string `pulumi:"networkAddress"`
+}
+
+// GetNgfwUserIdCustomIncludeExcludeNetworkInput is an input type that accepts GetNgfwUserIdCustomIncludeExcludeNetworkArgs and GetNgfwUserIdCustomIncludeExcludeNetworkOutput values.
+// You can construct a concrete instance of `GetNgfwUserIdCustomIncludeExcludeNetworkInput` via:
+//
+//	GetNgfwUserIdCustomIncludeExcludeNetworkArgs{...}
+type GetNgfwUserIdCustomIncludeExcludeNetworkInput interface {
+	pulumi.Input
+
+	ToGetNgfwUserIdCustomIncludeExcludeNetworkOutput() GetNgfwUserIdCustomIncludeExcludeNetworkOutput
+	ToGetNgfwUserIdCustomIncludeExcludeNetworkOutputWithContext(context.Context) GetNgfwUserIdCustomIncludeExcludeNetworkOutput
+}
+
+type GetNgfwUserIdCustomIncludeExcludeNetworkArgs struct {
+	// Include or exclude this subnet from user-id configuration
+	DiscoveryInclude pulumi.BoolInput `pulumi:"discoveryInclude"`
+	// Enable this specific custom include/exclude network
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Name of subnet filter
+	Name pulumi.StringInput `pulumi:"name"`
+	// Network IP address of the subnet filter
+	NetworkAddress pulumi.StringInput `pulumi:"networkAddress"`
+}
+
+func (GetNgfwUserIdCustomIncludeExcludeNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwUserIdCustomIncludeExcludeNetwork)(nil)).Elem()
+}
+
+func (i GetNgfwUserIdCustomIncludeExcludeNetworkArgs) ToGetNgfwUserIdCustomIncludeExcludeNetworkOutput() GetNgfwUserIdCustomIncludeExcludeNetworkOutput {
+	return i.ToGetNgfwUserIdCustomIncludeExcludeNetworkOutputWithContext(context.Background())
+}
+
+func (i GetNgfwUserIdCustomIncludeExcludeNetworkArgs) ToGetNgfwUserIdCustomIncludeExcludeNetworkOutputWithContext(ctx context.Context) GetNgfwUserIdCustomIncludeExcludeNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwUserIdCustomIncludeExcludeNetworkOutput)
+}
+
+// GetNgfwUserIdCustomIncludeExcludeNetworkArrayInput is an input type that accepts GetNgfwUserIdCustomIncludeExcludeNetworkArray and GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput values.
+// You can construct a concrete instance of `GetNgfwUserIdCustomIncludeExcludeNetworkArrayInput` via:
+//
+//	GetNgfwUserIdCustomIncludeExcludeNetworkArray{ GetNgfwUserIdCustomIncludeExcludeNetworkArgs{...} }
+type GetNgfwUserIdCustomIncludeExcludeNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput() GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput
+	ToGetNgfwUserIdCustomIncludeExcludeNetworkArrayOutputWithContext(context.Context) GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput
+}
+
+type GetNgfwUserIdCustomIncludeExcludeNetworkArray []GetNgfwUserIdCustomIncludeExcludeNetworkInput
+
+func (GetNgfwUserIdCustomIncludeExcludeNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwUserIdCustomIncludeExcludeNetwork)(nil)).Elem()
+}
+
+func (i GetNgfwUserIdCustomIncludeExcludeNetworkArray) ToGetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput() GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput {
+	return i.ToGetNgfwUserIdCustomIncludeExcludeNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetNgfwUserIdCustomIncludeExcludeNetworkArray) ToGetNgfwUserIdCustomIncludeExcludeNetworkArrayOutputWithContext(ctx context.Context) GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput)
+}
+
+type GetNgfwUserIdCustomIncludeExcludeNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwUserIdCustomIncludeExcludeNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwUserIdCustomIncludeExcludeNetwork)(nil)).Elem()
+}
+
+func (o GetNgfwUserIdCustomIncludeExcludeNetworkOutput) ToGetNgfwUserIdCustomIncludeExcludeNetworkOutput() GetNgfwUserIdCustomIncludeExcludeNetworkOutput {
+	return o
+}
+
+func (o GetNgfwUserIdCustomIncludeExcludeNetworkOutput) ToGetNgfwUserIdCustomIncludeExcludeNetworkOutputWithContext(ctx context.Context) GetNgfwUserIdCustomIncludeExcludeNetworkOutput {
+	return o
+}
+
+// Include or exclude this subnet from user-id configuration
+func (o GetNgfwUserIdCustomIncludeExcludeNetworkOutput) DiscoveryInclude() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNgfwUserIdCustomIncludeExcludeNetwork) bool { return v.DiscoveryInclude }).(pulumi.BoolOutput)
+}
+
+// Enable this specific custom include/exclude network
+func (o GetNgfwUserIdCustomIncludeExcludeNetworkOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNgfwUserIdCustomIncludeExcludeNetwork) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Name of subnet filter
+func (o GetNgfwUserIdCustomIncludeExcludeNetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwUserIdCustomIncludeExcludeNetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network IP address of the subnet filter
+func (o GetNgfwUserIdCustomIncludeExcludeNetworkOutput) NetworkAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwUserIdCustomIncludeExcludeNetwork) string { return v.NetworkAddress }).(pulumi.StringOutput)
+}
+
+type GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwUserIdCustomIncludeExcludeNetwork)(nil)).Elem()
+}
+
+func (o GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput) ToGetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput() GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput {
+	return o
+}
+
+func (o GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput) ToGetNgfwUserIdCustomIncludeExcludeNetworkArrayOutputWithContext(ctx context.Context) GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput {
+	return o
+}
+
+func (o GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput) Index(i pulumi.IntInput) GetNgfwUserIdCustomIncludeExcludeNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwUserIdCustomIncludeExcludeNetwork {
+		return vs[0].([]GetNgfwUserIdCustomIncludeExcludeNetwork)[vs[1].(int)]
+	}).(GetNgfwUserIdCustomIncludeExcludeNetworkOutput)
+}
+
+type GetNgfwsInstance struct {
+	// The NGFW ID.
+	FirewallId string `pulumi:"firewallId"`
+	// The region the NGFW is in.
+	Region string `pulumi:"region"`
 }
 
 // GetNgfwsInstanceInput is an input type that accepts GetNgfwsInstanceArgs and GetNgfwsInstanceOutput values.
@@ -1917,10 +3923,10 @@ type GetNgfwsInstanceInput interface {
 }
 
 type GetNgfwsInstanceArgs struct {
-	// The account id.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// The NGFW name.
-	Name pulumi.StringInput `pulumi:"name"`
+	// The NGFW ID.
+	FirewallId pulumi.StringInput `pulumi:"firewallId"`
+	// The region the NGFW is in.
+	Region pulumi.StringInput `pulumi:"region"`
 }
 
 func (GetNgfwsInstanceArgs) ElementType() reflect.Type {
@@ -1974,14 +3980,14 @@ func (o GetNgfwsInstanceOutput) ToGetNgfwsInstanceOutputWithContext(ctx context.
 	return o
 }
 
-// The account id.
-func (o GetNgfwsInstanceOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNgfwsInstance) string { return v.AccountId }).(pulumi.StringOutput)
+// The NGFW ID.
+func (o GetNgfwsInstanceOutput) FirewallId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwsInstance) string { return v.FirewallId }).(pulumi.StringOutput)
 }
 
-// The NGFW name.
-func (o GetNgfwsInstanceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNgfwsInstance) string { return v.Name }).(pulumi.StringOutput)
+// The region the NGFW is in.
+func (o GetNgfwsInstanceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwsInstance) string { return v.Region }).(pulumi.StringOutput)
 }
 
 type GetNgfwsInstanceArrayOutput struct{ *pulumi.OutputState }
@@ -2519,14 +4525,30 @@ func (o GetSecurityRuleSourceArrayOutput) Index(i pulumi.IntInput) GetSecurityRu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwEgressNatInput)(nil)).Elem(), NgfwEgressNatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwEgressNatArrayInput)(nil)).Elem(), NgfwEgressNatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwEgressNatSettingInput)(nil)).Elem(), NgfwEgressNatSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwEgressNatSettingArrayInput)(nil)).Elem(), NgfwEgressNatSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwEndpointInput)(nil)).Elem(), NgfwEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwEndpointArrayInput)(nil)).Elem(), NgfwEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwEndpointPrefixInput)(nil)).Elem(), NgfwEndpointPrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwEndpointPrefixArrayInput)(nil)).Elem(), NgfwEndpointPrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwEndpointPrefixPrivatePrefixInput)(nil)).Elem(), NgfwEndpointPrefixPrivatePrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwEndpointPrefixPrivatePrefixArrayInput)(nil)).Elem(), NgfwEndpointPrefixPrivatePrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwLogProfileLogConfigInput)(nil)).Elem(), NgfwLogProfileLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwLogProfileLogConfigPtrInput)(nil)).Elem(), NgfwLogProfileLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NgfwLogProfileLogDestinationInput)(nil)).Elem(), NgfwLogProfileLogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NgfwLogProfileLogDestinationArrayInput)(nil)).Elem(), NgfwLogProfileLogDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwPrivateAccessInput)(nil)).Elem(), NgfwPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwPrivateAccessArrayInput)(nil)).Elem(), NgfwPrivateAccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NgfwStatusInput)(nil)).Elem(), NgfwStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NgfwStatusArrayInput)(nil)).Elem(), NgfwStatusArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NgfwStatusAttachmentInput)(nil)).Elem(), NgfwStatusAttachmentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NgfwStatusAttachmentArrayInput)(nil)).Elem(), NgfwStatusAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NgfwSubnetMappingInput)(nil)).Elem(), NgfwSubnetMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NgfwSubnetMappingArrayInput)(nil)).Elem(), NgfwSubnetMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwUserIdInput)(nil)).Elem(), NgfwUserIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwUserIdArrayInput)(nil)).Elem(), NgfwUserIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwUserIdCustomIncludeExcludeNetworkInput)(nil)).Elem(), NgfwUserIdCustomIncludeExcludeNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwUserIdCustomIncludeExcludeNetworkArrayInput)(nil)).Elem(), NgfwUserIdCustomIncludeExcludeNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulestackProfileConfigInput)(nil)).Elem(), RulestackProfileConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulestackProfileConfigPtrInput)(nil)).Elem(), RulestackProfileConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityRuleCategoryInput)(nil)).Elem(), SecurityRuleCategoryArgs{})
@@ -2537,14 +4559,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityRuleSourcePtrInput)(nil)).Elem(), SecurityRuleSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountDetailInput)(nil)).Elem(), GetAccountsAccountDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountDetailArrayInput)(nil)).Elem(), GetAccountsAccountDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwEgressNatInput)(nil)).Elem(), GetNgfwEgressNatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwEgressNatArrayInput)(nil)).Elem(), GetNgfwEgressNatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwEgressNatSettingInput)(nil)).Elem(), GetNgfwEgressNatSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwEgressNatSettingArrayInput)(nil)).Elem(), GetNgfwEgressNatSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwEndpointInput)(nil)).Elem(), GetNgfwEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwEndpointArrayInput)(nil)).Elem(), GetNgfwEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwEndpointPrefixInput)(nil)).Elem(), GetNgfwEndpointPrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwEndpointPrefixArrayInput)(nil)).Elem(), GetNgfwEndpointPrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwEndpointPrefixPrivatePrefixInput)(nil)).Elem(), GetNgfwEndpointPrefixPrivatePrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwEndpointPrefixPrivatePrefixArrayInput)(nil)).Elem(), GetNgfwEndpointPrefixPrivatePrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwLogProfileLogConfigInput)(nil)).Elem(), GetNgfwLogProfileLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwLogProfileLogConfigArrayInput)(nil)).Elem(), GetNgfwLogProfileLogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwLogProfileLogDestinationInput)(nil)).Elem(), GetNgfwLogProfileLogDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwLogProfileLogDestinationArrayInput)(nil)).Elem(), GetNgfwLogProfileLogDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwPrivateAccessInput)(nil)).Elem(), GetNgfwPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwPrivateAccessArrayInput)(nil)).Elem(), GetNgfwPrivateAccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwStatusInput)(nil)).Elem(), GetNgfwStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwStatusArrayInput)(nil)).Elem(), GetNgfwStatusArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwStatusAttachmentInput)(nil)).Elem(), GetNgfwStatusAttachmentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwStatusAttachmentArrayInput)(nil)).Elem(), GetNgfwStatusAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwSubnetMappingInput)(nil)).Elem(), GetNgfwSubnetMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwSubnetMappingArrayInput)(nil)).Elem(), GetNgfwSubnetMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwUserIdInput)(nil)).Elem(), GetNgfwUserIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwUserIdArrayInput)(nil)).Elem(), GetNgfwUserIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwUserIdCustomIncludeExcludeNetworkInput)(nil)).Elem(), GetNgfwUserIdCustomIncludeExcludeNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwUserIdCustomIncludeExcludeNetworkArrayInput)(nil)).Elem(), GetNgfwUserIdCustomIncludeExcludeNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwsInstanceInput)(nil)).Elem(), GetNgfwsInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwsInstanceArrayInput)(nil)).Elem(), GetNgfwsInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulestackProfileConfigInput)(nil)).Elem(), GetRulestackProfileConfigArgs{})
@@ -2555,14 +4593,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityRuleDestinationArrayInput)(nil)).Elem(), GetSecurityRuleDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityRuleSourceInput)(nil)).Elem(), GetSecurityRuleSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityRuleSourceArrayInput)(nil)).Elem(), GetSecurityRuleSourceArray{})
+	pulumi.RegisterOutputType(NgfwEgressNatOutput{})
+	pulumi.RegisterOutputType(NgfwEgressNatArrayOutput{})
+	pulumi.RegisterOutputType(NgfwEgressNatSettingOutput{})
+	pulumi.RegisterOutputType(NgfwEgressNatSettingArrayOutput{})
+	pulumi.RegisterOutputType(NgfwEndpointOutput{})
+	pulumi.RegisterOutputType(NgfwEndpointArrayOutput{})
+	pulumi.RegisterOutputType(NgfwEndpointPrefixOutput{})
+	pulumi.RegisterOutputType(NgfwEndpointPrefixArrayOutput{})
+	pulumi.RegisterOutputType(NgfwEndpointPrefixPrivatePrefixOutput{})
+	pulumi.RegisterOutputType(NgfwEndpointPrefixPrivatePrefixArrayOutput{})
+	pulumi.RegisterOutputType(NgfwLogProfileLogConfigOutput{})
+	pulumi.RegisterOutputType(NgfwLogProfileLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(NgfwLogProfileLogDestinationOutput{})
 	pulumi.RegisterOutputType(NgfwLogProfileLogDestinationArrayOutput{})
+	pulumi.RegisterOutputType(NgfwPrivateAccessOutput{})
+	pulumi.RegisterOutputType(NgfwPrivateAccessArrayOutput{})
 	pulumi.RegisterOutputType(NgfwStatusOutput{})
 	pulumi.RegisterOutputType(NgfwStatusArrayOutput{})
-	pulumi.RegisterOutputType(NgfwStatusAttachmentOutput{})
-	pulumi.RegisterOutputType(NgfwStatusAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(NgfwSubnetMappingOutput{})
 	pulumi.RegisterOutputType(NgfwSubnetMappingArrayOutput{})
+	pulumi.RegisterOutputType(NgfwUserIdOutput{})
+	pulumi.RegisterOutputType(NgfwUserIdArrayOutput{})
+	pulumi.RegisterOutputType(NgfwUserIdCustomIncludeExcludeNetworkOutput{})
+	pulumi.RegisterOutputType(NgfwUserIdCustomIncludeExcludeNetworkArrayOutput{})
 	pulumi.RegisterOutputType(RulestackProfileConfigOutput{})
 	pulumi.RegisterOutputType(RulestackProfileConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityRuleCategoryOutput{})
@@ -2573,14 +4627,30 @@ func init() {
 	pulumi.RegisterOutputType(SecurityRuleSourcePtrOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountDetailOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountDetailArrayOutput{})
+	pulumi.RegisterOutputType(GetNgfwEgressNatOutput{})
+	pulumi.RegisterOutputType(GetNgfwEgressNatArrayOutput{})
+	pulumi.RegisterOutputType(GetNgfwEgressNatSettingOutput{})
+	pulumi.RegisterOutputType(GetNgfwEgressNatSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetNgfwEndpointOutput{})
+	pulumi.RegisterOutputType(GetNgfwEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetNgfwEndpointPrefixOutput{})
+	pulumi.RegisterOutputType(GetNgfwEndpointPrefixArrayOutput{})
+	pulumi.RegisterOutputType(GetNgfwEndpointPrefixPrivatePrefixOutput{})
+	pulumi.RegisterOutputType(GetNgfwEndpointPrefixPrivatePrefixArrayOutput{})
+	pulumi.RegisterOutputType(GetNgfwLogProfileLogConfigOutput{})
+	pulumi.RegisterOutputType(GetNgfwLogProfileLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetNgfwLogProfileLogDestinationOutput{})
 	pulumi.RegisterOutputType(GetNgfwLogProfileLogDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetNgfwPrivateAccessOutput{})
+	pulumi.RegisterOutputType(GetNgfwPrivateAccessArrayOutput{})
 	pulumi.RegisterOutputType(GetNgfwStatusOutput{})
 	pulumi.RegisterOutputType(GetNgfwStatusArrayOutput{})
-	pulumi.RegisterOutputType(GetNgfwStatusAttachmentOutput{})
-	pulumi.RegisterOutputType(GetNgfwStatusAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(GetNgfwSubnetMappingOutput{})
 	pulumi.RegisterOutputType(GetNgfwSubnetMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetNgfwUserIdOutput{})
+	pulumi.RegisterOutputType(GetNgfwUserIdArrayOutput{})
+	pulumi.RegisterOutputType(GetNgfwUserIdCustomIncludeExcludeNetworkOutput{})
+	pulumi.RegisterOutputType(GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput{})
 	pulumi.RegisterOutputType(GetNgfwsInstanceOutput{})
 	pulumi.RegisterOutputType(GetNgfwsInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetRulestackProfileConfigOutput{})

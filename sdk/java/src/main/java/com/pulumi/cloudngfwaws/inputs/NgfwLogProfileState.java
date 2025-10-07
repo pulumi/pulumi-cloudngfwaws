@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudngfwaws.inputs;
 
+import com.pulumi.cloudngfwaws.inputs.NgfwLogProfileLogConfigArgs;
 import com.pulumi.cloudngfwaws.inputs.NgfwLogProfileLogDestinationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -79,6 +80,36 @@ public final class NgfwLogProfileState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The Firewall Id for the NGFW.
+     * 
+     */
+    @Import(name="firewallId")
+    private @Nullable Output<String> firewallId;
+
+    /**
+     * @return The Firewall Id for the NGFW.
+     * 
+     */
+    public Optional<Output<String>> firewallId() {
+        return Optional.ofNullable(this.firewallId);
+    }
+
+    /**
+     * Log configuration details.
+     * 
+     */
+    @Import(name="logConfig")
+    private @Nullable Output<NgfwLogProfileLogConfigArgs> logConfig;
+
+    /**
+     * @return Log configuration details.
+     * 
+     */
+    public Optional<Output<NgfwLogProfileLogConfigArgs>> logConfig() {
+        return Optional.ofNullable(this.logConfig);
+    }
+
+    /**
      * List of log destinations.
      * 
      */
@@ -108,6 +139,36 @@ public final class NgfwLogProfileState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.ngfw);
     }
 
+    /**
+     * The region of the NGFW.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The region of the NGFW.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
+     * The update token.
+     * 
+     */
+    @Import(name="updateToken")
+    private @Nullable Output<String> updateToken;
+
+    /**
+     * @return The update token.
+     * 
+     */
+    public Optional<Output<String>> updateToken() {
+        return Optional.ofNullable(this.updateToken);
+    }
+
     private NgfwLogProfileState() {}
 
     private NgfwLogProfileState(NgfwLogProfileState $) {
@@ -115,8 +176,12 @@ public final class NgfwLogProfileState extends com.pulumi.resources.ResourceArgs
         this.advancedThreatLog = $.advancedThreatLog;
         this.cloudWatchMetricNamespace = $.cloudWatchMetricNamespace;
         this.cloudwatchMetricFields = $.cloudwatchMetricFields;
+        this.firewallId = $.firewallId;
+        this.logConfig = $.logConfig;
         this.logDestinations = $.logDestinations;
         this.ngfw = $.ngfw;
+        this.region = $.region;
+        this.updateToken = $.updateToken;
     }
 
     public static Builder builder() {
@@ -232,6 +297,48 @@ public final class NgfwLogProfileState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param firewallId The Firewall Id for the NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(@Nullable Output<String> firewallId) {
+            $.firewallId = firewallId;
+            return this;
+        }
+
+        /**
+         * @param firewallId The Firewall Id for the NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(String firewallId) {
+            return firewallId(Output.of(firewallId));
+        }
+
+        /**
+         * @param logConfig Log configuration details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logConfig(@Nullable Output<NgfwLogProfileLogConfigArgs> logConfig) {
+            $.logConfig = logConfig;
+            return this;
+        }
+
+        /**
+         * @param logConfig Log configuration details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logConfig(NgfwLogProfileLogConfigArgs logConfig) {
+            return logConfig(Output.of(logConfig));
+        }
+
+        /**
          * @param logDestinations List of log destinations.
          * 
          * @return builder
@@ -281,6 +388,48 @@ public final class NgfwLogProfileState extends com.pulumi.resources.ResourceArgs
          */
         public Builder ngfw(String ngfw) {
             return ngfw(Output.of(ngfw));
+        }
+
+        /**
+         * @param region The region of the NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The region of the NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
+        }
+
+        /**
+         * @param updateToken The update token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateToken(@Nullable Output<String> updateToken) {
+            $.updateToken = updateToken;
+            return this;
+        }
+
+        /**
+         * @param updateToken The update token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateToken(String updateToken) {
+            return updateToken(Output.of(updateToken));
         }
 
         public NgfwLogProfileState build() {

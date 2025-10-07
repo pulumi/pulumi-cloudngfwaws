@@ -18,25 +18,6 @@ namespace Pulumi.CloudNgfwAws
         /// ## Admin Permission Type
         /// 
         /// * `Firewall`
-        /// 
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = CloudNgfwAws.GetNgfw.Invoke(new()
-        ///     {
-        ///         Name = "example-instance",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetNgfwResult> InvokeAsync(GetNgfwArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNgfwResult>("cloudngfwaws:index/getNgfw:getNgfw", args ?? new GetNgfwArgs(), options.WithDefaults());
@@ -48,25 +29,6 @@ namespace Pulumi.CloudNgfwAws
         /// ## Admin Permission Type
         /// 
         /// * `Firewall`
-        /// 
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = CloudNgfwAws.GetNgfw.Invoke(new()
-        ///     {
-        ///         Name = "example-instance",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetNgfwResult> Invoke(GetNgfwInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNgfwResult>("cloudngfwaws:index/getNgfw:getNgfw", args ?? new GetNgfwInvokeArgs(), options.WithDefaults());
@@ -78,25 +40,6 @@ namespace Pulumi.CloudNgfwAws
         /// ## Admin Permission Type
         /// 
         /// * `Firewall`
-        /// 
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = CloudNgfwAws.GetNgfw.Invoke(new()
-        ///     {
-        ///         Name = "example-instance",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetNgfwResult> Invoke(GetNgfwInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNgfwResult>("cloudngfwaws:index/getNgfw:getNgfw", args ?? new GetNgfwInvokeArgs(), options.WithDefaults());
@@ -106,16 +49,10 @@ namespace Pulumi.CloudNgfwAws
     public sealed class GetNgfwArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account ID. This field is mandatory if using multiple accounts.
+        /// The Firewall ID.
         /// </summary>
-        [Input("accountId")]
-        public string? AccountId { get; set; }
-
-        /// <summary>
-        /// The NGFW name.
-        /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("firewallId", required: true)]
+        public string FirewallId { get; set; } = null!;
 
         public GetNgfwArgs()
         {
@@ -126,16 +63,10 @@ namespace Pulumi.CloudNgfwAws
     public sealed class GetNgfwInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The account ID. This field is mandatory if using multiple accounts.
+        /// The Firewall ID.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
-
-        /// <summary>
-        /// The NGFW name.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("firewallId", required: true)]
+        public Input<string> FirewallId { get; set; } = null!;
 
         public GetNgfwInvokeArgs()
         {
@@ -148,9 +79,13 @@ namespace Pulumi.CloudNgfwAws
     public sealed class GetNgfwResult
     {
         /// <summary>
-        /// The account ID. This field is mandatory if using multiple accounts.
+        /// The description.
         /// </summary>
-        public readonly string? AccountId;
+        public readonly string AccountId;
+        /// <summary>
+        /// The list of allowed accounts for this NGFW.
+        /// </summary>
+        public readonly ImmutableArray<string> AllowlistAccounts;
         /// <summary>
         /// App-ID version number.
         /// </summary>
@@ -160,9 +95,22 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public readonly bool AutomaticUpgradeAppIdVersion;
         /// <summary>
-        /// The description.
+        /// The list of availability zones for this NGFW.
+        /// </summary>
+        public readonly ImmutableArray<string> AzLists;
+        /// <summary>
+        /// Enables or disables change protection for the NGFW.
+        /// </summary>
+        public readonly ImmutableArray<string> ChangeProtections;
+        /// <summary>
+        /// The update token.
+        /// </summary>
+        public readonly string DeploymentUpdateToken;
+        /// <summary>
+        /// The NGFW description.
         /// </summary>
         public readonly string Description;
+        public readonly ImmutableArray<Outputs.GetNgfwEgressNatResult> EgressNats;
         /// <summary>
         /// Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
         /// </summary>
@@ -171,8 +119,9 @@ namespace Pulumi.CloudNgfwAws
         /// The endpoint service name.
         /// </summary>
         public readonly string EndpointServiceName;
+        public readonly ImmutableArray<Outputs.GetNgfwEndpointResult> Endpoints;
         /// <summary>
-        /// The Id of the NGFW.
+        /// The Firewall ID.
         /// </summary>
         public readonly string FirewallId;
         /// <summary>
@@ -199,6 +148,7 @@ namespace Pulumi.CloudNgfwAws
         /// The NGFW name.
         /// </summary>
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetNgfwPrivateAccessResult> PrivateAccesses;
         /// <summary>
         /// The rulestack for this NGFW.
         /// </summary>
@@ -216,24 +166,37 @@ namespace Pulumi.CloudNgfwAws
         /// The update token.
         /// </summary>
         public readonly string UpdateToken;
+        public readonly ImmutableArray<Outputs.GetNgfwUserIdResult> UserIds;
         /// <summary>
-        /// The vpc id.
+        /// The VPC ID for the NGFW.
         /// </summary>
         public readonly string VpcId;
 
         [OutputConstructor]
         private GetNgfwResult(
-            string? accountId,
+            string accountId,
+
+            ImmutableArray<string> allowlistAccounts,
 
             string appIdVersion,
 
             bool automaticUpgradeAppIdVersion,
 
+            ImmutableArray<string> azLists,
+
+            ImmutableArray<string> changeProtections,
+
+            string deploymentUpdateToken,
+
             string description,
+
+            ImmutableArray<Outputs.GetNgfwEgressNatResult> egressNats,
 
             string endpointMode,
 
             string endpointServiceName,
+
+            ImmutableArray<Outputs.GetNgfwEndpointResult> endpoints,
 
             string firewallId,
 
@@ -249,6 +212,8 @@ namespace Pulumi.CloudNgfwAws
 
             string name,
 
+            ImmutableArray<Outputs.GetNgfwPrivateAccessResult> privateAccesses,
+
             string rulestack,
 
             ImmutableArray<Outputs.GetNgfwStatusResult> statuses,
@@ -259,14 +224,22 @@ namespace Pulumi.CloudNgfwAws
 
             string updateToken,
 
+            ImmutableArray<Outputs.GetNgfwUserIdResult> userIds,
+
             string vpcId)
         {
             AccountId = accountId;
+            AllowlistAccounts = allowlistAccounts;
             AppIdVersion = appIdVersion;
             AutomaticUpgradeAppIdVersion = automaticUpgradeAppIdVersion;
+            AzLists = azLists;
+            ChangeProtections = changeProtections;
+            DeploymentUpdateToken = deploymentUpdateToken;
             Description = description;
+            EgressNats = egressNats;
             EndpointMode = endpointMode;
             EndpointServiceName = endpointServiceName;
+            Endpoints = endpoints;
             FirewallId = firewallId;
             GlobalRulestack = globalRulestack;
             Id = id;
@@ -274,11 +247,13 @@ namespace Pulumi.CloudNgfwAws
             LinkStatus = linkStatus;
             MultiVpc = multiVpc;
             Name = name;
+            PrivateAccesses = privateAccesses;
             Rulestack = rulestack;
             Statuses = statuses;
             SubnetMappings = subnetMappings;
             Tags = tags;
             UpdateToken = updateToken;
+            UserIds = userIds;
             VpcId = vpcId;
         }
     }

@@ -35,6 +35,96 @@ export interface GetAccountsAccountDetailArgs {
     onboardingStatus?: pulumi.Input<string>;
 }
 
+export interface NgfwEgressNat {
+    /**
+     * Enable egress NAT
+     */
+    enabled: pulumi.Input<boolean>;
+    settings?: pulumi.Input<pulumi.Input<inputs.NgfwEgressNatSetting>[]>;
+}
+
+export interface NgfwEgressNatSetting {
+    /**
+     * Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.
+     */
+    ipPoolType?: pulumi.Input<string>;
+    /**
+     * The IP pool ID
+     */
+    ipamPoolId?: pulumi.Input<string>;
+}
+
+export interface NgfwEndpoint {
+    /**
+     * The account id.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * Enable egress NAT
+     */
+    egressNatEnabled?: pulumi.Input<boolean>;
+    /**
+     * Endpoint ID of the security zone
+     */
+    endpointId?: pulumi.Input<string>;
+    /**
+     * The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+     */
+    mode: pulumi.Input<string>;
+    prefixes?: pulumi.Input<pulumi.Input<inputs.NgfwEndpointPrefix>[]>;
+    /**
+     * The rejected reason.
+     */
+    rejectedReason?: pulumi.Input<string>;
+    /**
+     * The attachment status.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The subnet id.
+     */
+    subnetId?: pulumi.Input<string>;
+    /**
+     * The vpc id.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The AZ id.
+     */
+    zoneId?: pulumi.Input<string>;
+}
+
+export interface NgfwEndpointPrefix {
+    privatePrefixes?: pulumi.Input<pulumi.Input<inputs.NgfwEndpointPrefixPrivatePrefix>[]>;
+}
+
+export interface NgfwEndpointPrefixPrivatePrefix {
+    cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface NgfwLogProfileLogConfig {
+    /**
+     * Type of Role for log configuration
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * The log destination details.
+     */
+    logDestination: pulumi.Input<string>;
+    /**
+     * The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
+     */
+    logDestinationType: pulumi.Input<string>;
+    /**
+     * The list of different log types that are wanted
+     */
+    logTypes: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Type of Role for log configuration
+     */
+    roleType?: pulumi.Input<string>;
+}
+
 export interface NgfwLogProfileLogDestination {
     /**
      * The log destination details.
@@ -50,11 +140,22 @@ export interface NgfwLogProfileLogDestination {
     logType?: pulumi.Input<string>;
 }
 
+export interface NgfwPrivateAccess {
+    /**
+     * AWS ResourceID
+     */
+    resourceId: pulumi.Input<string>;
+    /**
+     * Type of Private Access
+     */
+    type: pulumi.Input<string>;
+}
+
 export interface NgfwStatus {
     /**
-     * The firewall attachments.
+     * The device rulestack commit status.
      */
-    attachments?: pulumi.Input<pulumi.Input<inputs.NgfwStatusAttachment>[]>;
+    deviceRulestackCommitStatus?: pulumi.Input<string>;
     /**
      * The firewall failure reason.
      */
@@ -67,25 +168,6 @@ export interface NgfwStatus {
      * The rulestack status.
      */
     rulestackStatus?: pulumi.Input<string>;
-}
-
-export interface NgfwStatusAttachment {
-    /**
-     * The endpoint id.
-     */
-    endpointId?: pulumi.Input<string>;
-    /**
-     * The reject reason.
-     */
-    rejectedReason?: pulumi.Input<string>;
-    /**
-     * The attachment status.
-     */
-    status?: pulumi.Input<string>;
-    /**
-     * The subnet id.
-     */
-    subnetId?: pulumi.Input<string>;
 }
 
 export interface NgfwSubnetMapping {
@@ -101,6 +183,56 @@ export interface NgfwSubnetMapping {
      * The subnet id, for when the endpoint mode is service managed.
      */
     subnetId?: pulumi.Input<string>;
+}
+
+export interface NgfwUserId {
+    /**
+     * Agent Name for UserID
+     */
+    agentName?: pulumi.Input<string>;
+    /**
+     * The Collector Name
+     */
+    collectorName?: pulumi.Input<string>;
+    /**
+     * List of Custom Include Exclude Networks
+     */
+    customIncludeExcludeNetworks?: pulumi.Input<pulumi.Input<inputs.NgfwUserIdCustomIncludeExcludeNetwork>[]>;
+    /**
+     * Enable UserID Config
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * The Port
+     */
+    port: pulumi.Input<number>;
+    /**
+     * AWS Secret Key ARN
+     */
+    secretKeyArn?: pulumi.Input<string>;
+    /**
+     * Status and State of UserID Configuration
+     */
+    userIdStatus?: pulumi.Input<string>;
+}
+
+export interface NgfwUserIdCustomIncludeExcludeNetwork {
+    /**
+     * Include or exclude this subnet from user-id configuration
+     */
+    discoveryInclude: pulumi.Input<boolean>;
+    /**
+     * Enable this specific custom include/exclude network
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Name of subnet filter
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Network IP address of the subnet filter
+     */
+    networkAddress: pulumi.Input<string>;
 }
 
 export interface RulestackProfileConfig {

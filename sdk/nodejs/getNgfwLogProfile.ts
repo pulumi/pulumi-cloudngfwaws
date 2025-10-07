@@ -25,7 +25,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getNgfwLogProfile(args: GetNgfwLogProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetNgfwLogProfileResult> {
+export function getNgfwLogProfile(args?: GetNgfwLogProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetNgfwLogProfileResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile", {
         "accountId": args.accountId,
@@ -40,11 +41,11 @@ export interface GetNgfwLogProfileArgs {
     /**
      * The unique ID of the account.
      */
-    accountId: string;
+    accountId?: string;
     /**
      * The name of the NGFW.
      */
-    ngfw: string;
+    ngfw?: string;
 }
 
 /**
@@ -54,7 +55,7 @@ export interface GetNgfwLogProfileResult {
     /**
      * The unique ID of the account.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * Enable advanced threat logging.
      */
@@ -68,9 +69,17 @@ export interface GetNgfwLogProfileResult {
      */
     readonly cloudwatchMetricFields: string[];
     /**
+     * The Firewall Id for the NGFW.
+     */
+    readonly firewallId: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Log configuration details.
+     */
+    readonly logConfigs: outputs.GetNgfwLogProfileLogConfig[];
     /**
      * List of log destinations.
      */
@@ -78,7 +87,15 @@ export interface GetNgfwLogProfileResult {
     /**
      * The name of the NGFW.
      */
-    readonly ngfw: string;
+    readonly ngfw?: string;
+    /**
+     * The region of the NGFW.
+     */
+    readonly region: string;
+    /**
+     * The update token.
+     */
+    readonly updateToken: string;
 }
 /**
  * Data source for retrieving log profile information.
@@ -99,7 +116,8 @@ export interface GetNgfwLogProfileResult {
  * });
  * ```
  */
-export function getNgfwLogProfileOutput(args: GetNgfwLogProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNgfwLogProfileResult> {
+export function getNgfwLogProfileOutput(args?: GetNgfwLogProfileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNgfwLogProfileResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile", {
         "accountId": args.accountId,
@@ -114,9 +132,9 @@ export interface GetNgfwLogProfileOutputArgs {
     /**
      * The unique ID of the account.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The name of the NGFW.
      */
-    ngfw: pulumi.Input<string>;
+    ngfw?: pulumi.Input<string>;
 }

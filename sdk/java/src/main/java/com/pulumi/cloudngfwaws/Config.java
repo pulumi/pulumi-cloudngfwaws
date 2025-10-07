@@ -120,9 +120,6 @@ public final class Config {
     public Optional<String> region() {
         return Codegen.stringProp("region").config(config).get();
     }
-    public Optional<Integer> resourceTimeout() {
-        return Codegen.integerProp("resourceTimeout").config(config).get();
-    }
 /**
  * (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
  * 
@@ -150,5 +147,12 @@ public final class Config {
  */
     public Optional<Integer> timeout() {
         return Codegen.integerProp("timeout").config(config).get();
+    }
+/**
+ * The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+ * 
+ */
+    public Optional<String> v2Host() {
+        return Codegen.stringProp("v2Host").config(config).get();
     }
 }

@@ -2243,39 +2243,6 @@ public final class CloudngfwawsFunctions {
      * 
      * * `Firewall`
      * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
-     * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getNgfw(GetNgfwArgs.builder()
-     *             .name("example-instance")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
      */
     public static Output<GetNgfwResult> getNgfw(GetNgfwArgs args) {
         return getNgfw(args, InvokeOptions.Empty);
@@ -2286,39 +2253,6 @@ public final class CloudngfwawsFunctions {
      * ## Admin Permission Type
      * 
      * * `Firewall`
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
-     * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getNgfw(GetNgfwArgs.builder()
-     *             .name("example-instance")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     public static CompletableFuture<GetNgfwResult> getNgfwPlain(GetNgfwPlainArgs args) {
@@ -2331,39 +2265,6 @@ public final class CloudngfwawsFunctions {
      * 
      * * `Firewall`
      * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
-     * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getNgfw(GetNgfwArgs.builder()
-     *             .name("example-instance")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
      */
     public static Output<GetNgfwResult> getNgfw(GetNgfwArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getNgfw:getNgfw", TypeShape.of(GetNgfwResult.class), args, Utilities.withVersion(options));
@@ -2374,39 +2275,6 @@ public final class CloudngfwawsFunctions {
      * ## Admin Permission Type
      * 
      * * `Firewall`
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
-     * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getNgfw(GetNgfwArgs.builder()
-     *             .name("example-instance")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * 
      */
     public static Output<GetNgfwResult> getNgfw(GetNgfwArgs args, InvokeOutputOptions options) {
@@ -2419,6 +2287,17 @@ public final class CloudngfwawsFunctions {
      * 
      * * `Firewall`
      * 
+     */
+    public static CompletableFuture<GetNgfwResult> getNgfwPlain(GetNgfwPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudngfwaws:index/getNgfw:getNgfw", TypeShape.of(GetNgfwResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving log profile information.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Firewall`
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -2429,7 +2308,7 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
-     * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
+     * import com.pulumi.cloudngfwaws.inputs.GetNgfwLogProfileArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -2443,8 +2322,9 @@ public final class CloudngfwawsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = CloudngfwawsFunctions.getNgfw(GetNgfwArgs.builder()
-     *             .name("example-instance")
+     *         final var example = CloudngfwawsFunctions.getNgfwLogProfile(GetNgfwLogProfileArgs.builder()
+     *             .ngfw("example-instance")
+     *             .accountId("123456789")
      *             .build());
      * 
      *     }
@@ -2453,8 +2333,53 @@ public final class CloudngfwawsFunctions {
      * </pre>
      * 
      */
-    public static CompletableFuture<GetNgfwResult> getNgfwPlain(GetNgfwPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("cloudngfwaws:index/getNgfw:getNgfw", TypeShape.of(GetNgfwResult.class), args, Utilities.withVersion(options));
+    public static Output<GetNgfwLogProfileResult> getNgfwLogProfile() {
+        return getNgfwLogProfile(GetNgfwLogProfileArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving log profile information.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Firewall`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetNgfwLogProfileArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getNgfwLogProfile(GetNgfwLogProfileArgs.builder()
+     *             .ngfw("example-instance")
+     *             .accountId("123456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNgfwLogProfileResult> getNgfwLogProfilePlain() {
+        return getNgfwLogProfilePlain(GetNgfwLogProfilePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Data source for retrieving log profile information.

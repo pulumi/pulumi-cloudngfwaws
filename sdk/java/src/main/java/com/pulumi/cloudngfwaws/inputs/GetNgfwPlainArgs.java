@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetNgfwPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -16,40 +14,24 @@ public final class GetNgfwPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetNgfwPlainArgs Empty = new GetNgfwPlainArgs();
 
     /**
-     * The account ID. This field is mandatory if using multiple accounts.
+     * The Firewall ID.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable String accountId;
+    @Import(name="firewallId", required=true)
+    private String firewallId;
 
     /**
-     * @return The account ID. This field is mandatory if using multiple accounts.
+     * @return The Firewall ID.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
-    }
-
-    /**
-     * The NGFW name.
-     * 
-     */
-    @Import(name="name", required=true)
-    private String name;
-
-    /**
-     * @return The NGFW name.
-     * 
-     */
-    public String name() {
-        return this.name;
+    public String firewallId() {
+        return this.firewallId;
     }
 
     private GetNgfwPlainArgs() {}
 
     private GetNgfwPlainArgs(GetNgfwPlainArgs $) {
-        this.accountId = $.accountId;
-        this.name = $.name;
+        this.firewallId = $.firewallId;
     }
 
     public static Builder builder() {
@@ -71,30 +53,19 @@ public final class GetNgfwPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The account ID. This field is mandatory if using multiple accounts.
+         * @param firewallId The Firewall ID.
          * 
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable String accountId) {
-            $.accountId = accountId;
-            return this;
-        }
-
-        /**
-         * @param name The NGFW name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(String name) {
-            $.name = name;
+        public Builder firewallId(String firewallId) {
+            $.firewallId = firewallId;
             return this;
         }
 
         public GetNgfwPlainArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetNgfwPlainArgs", "name");
+            if ($.firewallId == null) {
+                throw new MissingRequiredPropertyException("GetNgfwPlainArgs", "firewallId");
             }
             return $;
         }

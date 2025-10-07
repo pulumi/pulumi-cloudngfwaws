@@ -81,6 +81,10 @@ export class Provider extends pulumi.ProviderResource {
      * (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
      */
     declare public readonly secretKey: pulumi.Output<string | undefined>;
+    /**
+     * The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2Host`.
+     */
+    declare public readonly v2Host: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -108,11 +112,11 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["profile"] = args?.profile;
             resourceInputs["protocol"] = args?.protocol;
             resourceInputs["region"] = args?.region;
-            resourceInputs["resourceTimeout"] = pulumi.output(args?.resourceTimeout).apply(JSON.stringify);
             resourceInputs["secretKey"] = args?.secretKey;
             resourceInputs["skipVerifyCertificate"] = pulumi.output(args?.skipVerifyCertificate).apply(JSON.stringify);
             resourceInputs["syncMode"] = pulumi.output(args?.syncMode).apply(JSON.stringify);
             resourceInputs["timeout"] = pulumi.output(args?.timeout).apply(JSON.stringify);
+            resourceInputs["v2Host"] = args?.v2Host;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -192,7 +196,6 @@ export interface ProviderArgs {
      * AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`.
      */
     region?: pulumi.Input<string>;
-    resourceTimeout?: pulumi.Input<number>;
     /**
      * (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
      */
@@ -209,6 +212,10 @@ export interface ProviderArgs {
      * The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
      */
     timeout?: pulumi.Input<number>;
+    /**
+     * The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2Host`.
+     */
+    v2Host?: pulumi.Input<string>;
 }
 
 export namespace Provider {

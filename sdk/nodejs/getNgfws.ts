@@ -26,6 +26,7 @@ export function getNgfws(args?: GetNgfwsArgs, opts?: pulumi.InvokeOptions): Prom
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudngfwaws:index/getNgfws:getNgfws", {
+        "region": args.region,
         "rulestack": args.rulestack,
         "vpcIds": args.vpcIds,
     }, opts);
@@ -35,6 +36,10 @@ export function getNgfws(args?: GetNgfwsArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getNgfws.
  */
 export interface GetNgfwsArgs {
+    /**
+     * The region to filter on.
+     */
+    region?: string;
     /**
      * The rulestack to filter on.
      */
@@ -57,6 +62,10 @@ export interface GetNgfwsResult {
      * List of NGFWs.
      */
     readonly instances: outputs.GetNgfwsInstance[];
+    /**
+     * The region to filter on.
+     */
+    readonly region?: string;
     /**
      * The rulestack to filter on.
      */
@@ -86,6 +95,7 @@ export function getNgfwsOutput(args?: GetNgfwsOutputArgs, opts?: pulumi.InvokeOu
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getNgfws:getNgfws", {
+        "region": args.region,
         "rulestack": args.rulestack,
         "vpcIds": args.vpcIds,
     }, opts);
@@ -95,6 +105,10 @@ export function getNgfwsOutput(args?: GetNgfwsOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getNgfws.
  */
 export interface GetNgfwsOutputArgs {
+    /**
+     * The region to filter on.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The rulestack to filter on.
      */

@@ -14,9 +14,9 @@ namespace Pulumi.CloudNgfwAws.Outputs
     public sealed class GetNgfwStatusResult
     {
         /// <summary>
-        /// The firewall attachments.
+        /// The device rulestack commit status.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetNgfwStatusAttachmentResult> Attachments;
+        public readonly string DeviceRulestackCommitStatus;
         /// <summary>
         /// The firewall failure reason.
         /// </summary>
@@ -32,7 +32,7 @@ namespace Pulumi.CloudNgfwAws.Outputs
 
         [OutputConstructor]
         private GetNgfwStatusResult(
-            ImmutableArray<Outputs.GetNgfwStatusAttachmentResult> attachments,
+            string deviceRulestackCommitStatus,
 
             string failureReason,
 
@@ -40,7 +40,7 @@ namespace Pulumi.CloudNgfwAws.Outputs
 
             string rulestackStatus)
         {
-            Attachments = attachments;
+            DeviceRulestackCommitStatus = deviceRulestackCommitStatus;
             FailureReason = failureReason;
             FirewallStatus = firewallStatus;
             RulestackStatus = rulestackStatus;

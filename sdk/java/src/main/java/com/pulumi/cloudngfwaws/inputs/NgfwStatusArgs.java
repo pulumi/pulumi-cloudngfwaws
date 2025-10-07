@@ -3,11 +3,9 @@
 
 package com.pulumi.cloudngfwaws.inputs;
 
-import com.pulumi.cloudngfwaws.inputs.NgfwStatusAttachmentArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,18 +16,18 @@ public final class NgfwStatusArgs extends com.pulumi.resources.ResourceArgs {
     public static final NgfwStatusArgs Empty = new NgfwStatusArgs();
 
     /**
-     * The firewall attachments.
+     * The device rulestack commit status.
      * 
      */
-    @Import(name="attachments")
-    private @Nullable Output<List<NgfwStatusAttachmentArgs>> attachments;
+    @Import(name="deviceRulestackCommitStatus")
+    private @Nullable Output<String> deviceRulestackCommitStatus;
 
     /**
-     * @return The firewall attachments.
+     * @return The device rulestack commit status.
      * 
      */
-    public Optional<Output<List<NgfwStatusAttachmentArgs>>> attachments() {
-        return Optional.ofNullable(this.attachments);
+    public Optional<Output<String>> deviceRulestackCommitStatus() {
+        return Optional.ofNullable(this.deviceRulestackCommitStatus);
     }
 
     /**
@@ -80,7 +78,7 @@ public final class NgfwStatusArgs extends com.pulumi.resources.ResourceArgs {
     private NgfwStatusArgs() {}
 
     private NgfwStatusArgs(NgfwStatusArgs $) {
-        this.attachments = $.attachments;
+        this.deviceRulestackCommitStatus = $.deviceRulestackCommitStatus;
         this.failureReason = $.failureReason;
         this.firewallStatus = $.firewallStatus;
         this.rulestackStatus = $.rulestackStatus;
@@ -105,34 +103,24 @@ public final class NgfwStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param attachments The firewall attachments.
+         * @param deviceRulestackCommitStatus The device rulestack commit status.
          * 
          * @return builder
          * 
          */
-        public Builder attachments(@Nullable Output<List<NgfwStatusAttachmentArgs>> attachments) {
-            $.attachments = attachments;
+        public Builder deviceRulestackCommitStatus(@Nullable Output<String> deviceRulestackCommitStatus) {
+            $.deviceRulestackCommitStatus = deviceRulestackCommitStatus;
             return this;
         }
 
         /**
-         * @param attachments The firewall attachments.
+         * @param deviceRulestackCommitStatus The device rulestack commit status.
          * 
          * @return builder
          * 
          */
-        public Builder attachments(List<NgfwStatusAttachmentArgs> attachments) {
-            return attachments(Output.of(attachments));
-        }
-
-        /**
-         * @param attachments The firewall attachments.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder attachments(NgfwStatusAttachmentArgs... attachments) {
-            return attachments(List.of(attachments));
+        public Builder deviceRulestackCommitStatus(String deviceRulestackCommitStatus) {
+            return deviceRulestackCommitStatus(Output.of(deviceRulestackCommitStatus));
         }
 
         /**

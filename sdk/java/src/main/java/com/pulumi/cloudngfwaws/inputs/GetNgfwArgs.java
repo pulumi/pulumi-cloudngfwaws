@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetNgfwArgs extends com.pulumi.resources.InvokeArgs {
@@ -17,40 +15,24 @@ public final class GetNgfwArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetNgfwArgs Empty = new GetNgfwArgs();
 
     /**
-     * The account ID. This field is mandatory if using multiple accounts.
+     * The Firewall ID.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="firewallId", required=true)
+    private Output<String> firewallId;
 
     /**
-     * @return The account ID. This field is mandatory if using multiple accounts.
+     * @return The Firewall ID.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
-    }
-
-    /**
-     * The NGFW name.
-     * 
-     */
-    @Import(name="name", required=true)
-    private Output<String> name;
-
-    /**
-     * @return The NGFW name.
-     * 
-     */
-    public Output<String> name() {
-        return this.name;
+    public Output<String> firewallId() {
+        return this.firewallId;
     }
 
     private GetNgfwArgs() {}
 
     private GetNgfwArgs(GetNgfwArgs $) {
-        this.accountId = $.accountId;
-        this.name = $.name;
+        this.firewallId = $.firewallId;
     }
 
     public static Builder builder() {
@@ -72,50 +54,29 @@ public final class GetNgfwArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId The account ID. This field is mandatory if using multiple accounts.
+         * @param firewallId The Firewall ID.
          * 
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
-            $.accountId = accountId;
+        public Builder firewallId(Output<String> firewallId) {
+            $.firewallId = firewallId;
             return this;
         }
 
         /**
-         * @param accountId The account ID. This field is mandatory if using multiple accounts.
+         * @param firewallId The Firewall ID.
          * 
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
-            return accountId(Output.of(accountId));
-        }
-
-        /**
-         * @param name The NGFW name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(Output<String> name) {
-            $.name = name;
-            return this;
-        }
-
-        /**
-         * @param name The NGFW name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(String name) {
-            return name(Output.of(name));
+        public Builder firewallId(String firewallId) {
+            return firewallId(Output.of(firewallId));
         }
 
         public GetNgfwArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetNgfwArgs", "name");
+            if ($.firewallId == null) {
+                throw new MissingRequiredPropertyException("GetNgfwArgs", "firewallId");
             }
             return $;
         }

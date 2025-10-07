@@ -172,14 +172,6 @@ Object.defineProperty(exports, "region", {
     enumerable: true,
 });
 
-export declare const resourceTimeout: number | undefined;
-Object.defineProperty(exports, "resourceTimeout", {
-    get() {
-        return __config.getObject<number>("resourceTimeout");
-    },
-    enumerable: true,
-});
-
 /**
  * (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
  */
@@ -220,6 +212,17 @@ export declare const timeout: number | undefined;
 Object.defineProperty(exports, "timeout", {
     get() {
         return __config.getObject<number>("timeout");
+    },
+    enumerable: true,
+});
+
+/**
+ * The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2Host`.
+ */
+export declare const v2Host: string | undefined;
+Object.defineProperty(exports, "v2Host", {
+    get() {
+        return __config.get("v2Host");
     },
     enumerable: true,
 });

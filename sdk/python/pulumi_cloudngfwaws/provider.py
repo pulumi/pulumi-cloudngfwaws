@@ -34,11 +34,11 @@ class ProviderArgs:
                  profile: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  secret_key: Optional[pulumi.Input[_builtins.str]] = None,
                  skip_verify_certificate: Optional[pulumi.Input[_builtins.bool]] = None,
                  sync_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 v2_host: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[_builtins.str] access_key: (Used for the initial `sts assume role`) AWS access key. Environment variable: `CLOUDNGFWAWS_ACCESS_KEY`. JSON conf file variable: `access-key`.
@@ -60,6 +60,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.bool] skip_verify_certificate: Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file variable: `skip-verify-certificate`.
         :param pulumi.Input[_builtins.bool] sync_mode: Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `sync_mode`.
         :param pulumi.Input[_builtins.int] timeout: The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
+        :param pulumi.Input[_builtins.str] v2_host: The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -91,8 +92,6 @@ class ProviderArgs:
             pulumi.set(__self__, "protocol", protocol)
         if region is not None:
             pulumi.set(__self__, "region", region)
-        if resource_timeout is not None:
-            pulumi.set(__self__, "resource_timeout", resource_timeout)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
         if skip_verify_certificate is not None:
@@ -101,6 +100,8 @@ class ProviderArgs:
             pulumi.set(__self__, "sync_mode", sync_mode)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
+        if v2_host is not None:
+            pulumi.set(__self__, "v2_host", v2_host)
 
     @_builtins.property
     @pulumi.getter(name="accessKey")
@@ -283,15 +284,6 @@ class ProviderArgs:
         pulumi.set(self, "region", value)
 
     @_builtins.property
-    @pulumi.getter(name="resourceTimeout")
-    def resource_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        return pulumi.get(self, "resource_timeout")
-
-    @resource_timeout.setter
-    def resource_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "resource_timeout", value)
-
-    @_builtins.property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -339,6 +331,18 @@ class ProviderArgs:
     def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
+    @_builtins.property
+    @pulumi.getter(name="v2Host")
+    def v2_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+        """
+        return pulumi.get(self, "v2_host")
+
+    @v2_host.setter
+    def v2_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "v2_host", value)
+
 
 @pulumi.type_token("pulumi:providers:cloudngfwaws")
 class Provider(pulumi.ProviderResource):
@@ -361,11 +365,11 @@ class Provider(pulumi.ProviderResource):
                  profile: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  secret_key: Optional[pulumi.Input[_builtins.str]] = None,
                  skip_verify_certificate: Optional[pulumi.Input[_builtins.bool]] = None,
                  sync_mode: Optional[pulumi.Input[_builtins.bool]] = None,
                  timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 v2_host: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the cloudngfwaws package. By default, resources use package-wide configuration
@@ -394,6 +398,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.bool] skip_verify_certificate: Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file variable: `skip-verify-certificate`.
         :param pulumi.Input[_builtins.bool] sync_mode: Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `sync_mode`.
         :param pulumi.Input[_builtins.int] timeout: The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
+        :param pulumi.Input[_builtins.str] v2_host: The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
         """
         ...
     @overload
@@ -437,11 +442,11 @@ class Provider(pulumi.ProviderResource):
                  profile: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  secret_key: Optional[pulumi.Input[_builtins.str]] = None,
                  skip_verify_certificate: Optional[pulumi.Input[_builtins.bool]] = None,
                  sync_mode: Optional[pulumi.Input[_builtins.bool]] = None,
                  timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 v2_host: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -466,11 +471,11 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["profile"] = profile
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["region"] = region
-            __props__.__dict__["resource_timeout"] = pulumi.Output.from_input(resource_timeout).apply(pulumi.runtime.to_json) if resource_timeout is not None else None
             __props__.__dict__["secret_key"] = secret_key
             __props__.__dict__["skip_verify_certificate"] = pulumi.Output.from_input(skip_verify_certificate).apply(pulumi.runtime.to_json) if skip_verify_certificate is not None else None
             __props__.__dict__["sync_mode"] = pulumi.Output.from_input(sync_mode).apply(pulumi.runtime.to_json) if sync_mode is not None else None
             __props__.__dict__["timeout"] = pulumi.Output.from_input(timeout).apply(pulumi.runtime.to_json) if timeout is not None else None
+            __props__.__dict__["v2_host"] = v2_host
         super(Provider, __self__).__init__(
             'cloudngfwaws',
             resource_name,
@@ -588,6 +593,14 @@ class Provider(pulumi.ProviderResource):
         (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
         """
         return pulumi.get(self, "secret_key")
+
+    @_builtins.property
+    @pulumi.getter(name="v2Host")
+    def v2_host(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+        """
+        return pulumi.get(self, "v2_host")
 
     @pulumi.output_type
     class TerraformConfigResult:

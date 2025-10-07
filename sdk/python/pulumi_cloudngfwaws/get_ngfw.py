@@ -27,25 +27,43 @@ class GetNgfwResult:
     """
     A collection of values returned by getNgfw.
     """
-    def __init__(__self__, account_id=None, app_id_version=None, automatic_upgrade_app_id_version=None, description=None, endpoint_mode=None, endpoint_service_name=None, firewall_id=None, global_rulestack=None, id=None, link_id=None, link_status=None, multi_vpc=None, name=None, rulestack=None, statuses=None, subnet_mappings=None, tags=None, update_token=None, vpc_id=None):
+    def __init__(__self__, account_id=None, allowlist_accounts=None, app_id_version=None, automatic_upgrade_app_id_version=None, az_lists=None, change_protections=None, deployment_update_token=None, description=None, egress_nats=None, endpoint_mode=None, endpoint_service_name=None, endpoints=None, firewall_id=None, global_rulestack=None, id=None, link_id=None, link_status=None, multi_vpc=None, name=None, private_accesses=None, rulestack=None, statuses=None, subnet_mappings=None, tags=None, update_token=None, user_ids=None, vpc_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if allowlist_accounts and not isinstance(allowlist_accounts, list):
+            raise TypeError("Expected argument 'allowlist_accounts' to be a list")
+        pulumi.set(__self__, "allowlist_accounts", allowlist_accounts)
         if app_id_version and not isinstance(app_id_version, str):
             raise TypeError("Expected argument 'app_id_version' to be a str")
         pulumi.set(__self__, "app_id_version", app_id_version)
         if automatic_upgrade_app_id_version and not isinstance(automatic_upgrade_app_id_version, bool):
             raise TypeError("Expected argument 'automatic_upgrade_app_id_version' to be a bool")
         pulumi.set(__self__, "automatic_upgrade_app_id_version", automatic_upgrade_app_id_version)
+        if az_lists and not isinstance(az_lists, list):
+            raise TypeError("Expected argument 'az_lists' to be a list")
+        pulumi.set(__self__, "az_lists", az_lists)
+        if change_protections and not isinstance(change_protections, list):
+            raise TypeError("Expected argument 'change_protections' to be a list")
+        pulumi.set(__self__, "change_protections", change_protections)
+        if deployment_update_token and not isinstance(deployment_update_token, str):
+            raise TypeError("Expected argument 'deployment_update_token' to be a str")
+        pulumi.set(__self__, "deployment_update_token", deployment_update_token)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if egress_nats and not isinstance(egress_nats, list):
+            raise TypeError("Expected argument 'egress_nats' to be a list")
+        pulumi.set(__self__, "egress_nats", egress_nats)
         if endpoint_mode and not isinstance(endpoint_mode, str):
             raise TypeError("Expected argument 'endpoint_mode' to be a str")
         pulumi.set(__self__, "endpoint_mode", endpoint_mode)
         if endpoint_service_name and not isinstance(endpoint_service_name, str):
             raise TypeError("Expected argument 'endpoint_service_name' to be a str")
         pulumi.set(__self__, "endpoint_service_name", endpoint_service_name)
+        if endpoints and not isinstance(endpoints, list):
+            raise TypeError("Expected argument 'endpoints' to be a list")
+        pulumi.set(__self__, "endpoints", endpoints)
         if firewall_id and not isinstance(firewall_id, str):
             raise TypeError("Expected argument 'firewall_id' to be a str")
         pulumi.set(__self__, "firewall_id", firewall_id)
@@ -67,6 +85,9 @@ class GetNgfwResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if private_accesses and not isinstance(private_accesses, list):
+            raise TypeError("Expected argument 'private_accesses' to be a list")
+        pulumi.set(__self__, "private_accesses", private_accesses)
         if rulestack and not isinstance(rulestack, str):
             raise TypeError("Expected argument 'rulestack' to be a str")
         pulumi.set(__self__, "rulestack", rulestack)
@@ -82,17 +103,28 @@ class GetNgfwResult:
         if update_token and not isinstance(update_token, str):
             raise TypeError("Expected argument 'update_token' to be a str")
         pulumi.set(__self__, "update_token", update_token)
+        if user_ids and not isinstance(user_ids, list):
+            raise TypeError("Expected argument 'user_ids' to be a list")
+        pulumi.set(__self__, "user_ids", user_ids)
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         pulumi.set(__self__, "vpc_id", vpc_id)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[_builtins.str]:
+    def account_id(self) -> _builtins.str:
         """
-        The account ID. This field is mandatory if using multiple accounts.
+        The description.
         """
         return pulumi.get(self, "account_id")
+
+    @_builtins.property
+    @pulumi.getter(name="allowlistAccounts")
+    def allowlist_accounts(self) -> Sequence[_builtins.str]:
+        """
+        The list of allowed accounts for this NGFW.
+        """
+        return pulumi.get(self, "allowlist_accounts")
 
     @_builtins.property
     @pulumi.getter(name="appIdVersion")
@@ -111,12 +143,41 @@ class GetNgfwResult:
         return pulumi.get(self, "automatic_upgrade_app_id_version")
 
     @_builtins.property
+    @pulumi.getter(name="azLists")
+    def az_lists(self) -> Sequence[_builtins.str]:
+        """
+        The list of availability zones for this NGFW.
+        """
+        return pulumi.get(self, "az_lists")
+
+    @_builtins.property
+    @pulumi.getter(name="changeProtections")
+    def change_protections(self) -> Sequence[_builtins.str]:
+        """
+        Enables or disables change protection for the NGFW.
+        """
+        return pulumi.get(self, "change_protections")
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentUpdateToken")
+    def deployment_update_token(self) -> _builtins.str:
+        """
+        The update token.
+        """
+        return pulumi.get(self, "deployment_update_token")
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description.
+        The NGFW description.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="egressNats")
+    def egress_nats(self) -> Sequence['outputs.GetNgfwEgressNatResult']:
+        return pulumi.get(self, "egress_nats")
 
     @_builtins.property
     @pulumi.getter(name="endpointMode")
@@ -135,10 +196,15 @@ class GetNgfwResult:
         return pulumi.get(self, "endpoint_service_name")
 
     @_builtins.property
+    @pulumi.getter
+    def endpoints(self) -> Sequence['outputs.GetNgfwEndpointResult']:
+        return pulumi.get(self, "endpoints")
+
+    @_builtins.property
     @pulumi.getter(name="firewallId")
     def firewall_id(self) -> _builtins.str:
         """
-        The Id of the NGFW.
+        The Firewall ID.
         """
         return pulumi.get(self, "firewall_id")
 
@@ -191,6 +257,11 @@ class GetNgfwResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="privateAccesses")
+    def private_accesses(self) -> Sequence['outputs.GetNgfwPrivateAccessResult']:
+        return pulumi.get(self, "private_accesses")
+
+    @_builtins.property
     @pulumi.getter
     def rulestack(self) -> _builtins.str:
         """
@@ -228,10 +299,15 @@ class GetNgfwResult:
         return pulumi.get(self, "update_token")
 
     @_builtins.property
+    @pulumi.getter(name="userIds")
+    def user_ids(self) -> Sequence['outputs.GetNgfwUserIdResult']:
+        return pulumi.get(self, "user_ids")
+
+    @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.str:
         """
-        The vpc id.
+        The VPC ID for the NGFW.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -243,11 +319,17 @@ class AwaitableGetNgfwResult(GetNgfwResult):
             yield self
         return GetNgfwResult(
             account_id=self.account_id,
+            allowlist_accounts=self.allowlist_accounts,
             app_id_version=self.app_id_version,
             automatic_upgrade_app_id_version=self.automatic_upgrade_app_id_version,
+            az_lists=self.az_lists,
+            change_protections=self.change_protections,
+            deployment_update_token=self.deployment_update_token,
             description=self.description,
+            egress_nats=self.egress_nats,
             endpoint_mode=self.endpoint_mode,
             endpoint_service_name=self.endpoint_service_name,
+            endpoints=self.endpoints,
             firewall_id=self.firewall_id,
             global_rulestack=self.global_rulestack,
             id=self.id,
@@ -255,16 +337,17 @@ class AwaitableGetNgfwResult(GetNgfwResult):
             link_status=self.link_status,
             multi_vpc=self.multi_vpc,
             name=self.name,
+            private_accesses=self.private_accesses,
             rulestack=self.rulestack,
             statuses=self.statuses,
             subnet_mappings=self.subnet_mappings,
             tags=self.tags,
             update_token=self.update_token,
+            user_ids=self.user_ids,
             vpc_id=self.vpc_id)
 
 
-def get_ngfw(account_id: Optional[_builtins.str] = None,
-             name: Optional[_builtins.str] = None,
+def get_ngfw(firewall_id: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNgfwResult:
     """
     Data source for retrieving NGFW information.
@@ -273,32 +356,27 @@ def get_ngfw(account_id: Optional[_builtins.str] = None,
 
     * `Firewall`
 
-    ## Example Usage
 
-    ```python
-    import pulumi
-    import pulumi_cloudngfwaws as cloudngfwaws
-
-    example = cloudngfwaws.get_ngfw(name="example-instance")
-    ```
-
-
-    :param _builtins.str account_id: The account ID. This field is mandatory if using multiple accounts.
-    :param _builtins.str name: The NGFW name.
+    :param _builtins.str firewall_id: The Firewall ID.
     """
     __args__ = dict()
-    __args__['accountId'] = account_id
-    __args__['name'] = name
+    __args__['firewallId'] = firewall_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudngfwaws:index/getNgfw:getNgfw', __args__, opts=opts, typ=GetNgfwResult).value
 
     return AwaitableGetNgfwResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        allowlist_accounts=pulumi.get(__ret__, 'allowlist_accounts'),
         app_id_version=pulumi.get(__ret__, 'app_id_version'),
         automatic_upgrade_app_id_version=pulumi.get(__ret__, 'automatic_upgrade_app_id_version'),
+        az_lists=pulumi.get(__ret__, 'az_lists'),
+        change_protections=pulumi.get(__ret__, 'change_protections'),
+        deployment_update_token=pulumi.get(__ret__, 'deployment_update_token'),
         description=pulumi.get(__ret__, 'description'),
+        egress_nats=pulumi.get(__ret__, 'egress_nats'),
         endpoint_mode=pulumi.get(__ret__, 'endpoint_mode'),
         endpoint_service_name=pulumi.get(__ret__, 'endpoint_service_name'),
+        endpoints=pulumi.get(__ret__, 'endpoints'),
         firewall_id=pulumi.get(__ret__, 'firewall_id'),
         global_rulestack=pulumi.get(__ret__, 'global_rulestack'),
         id=pulumi.get(__ret__, 'id'),
@@ -306,14 +384,15 @@ def get_ngfw(account_id: Optional[_builtins.str] = None,
         link_status=pulumi.get(__ret__, 'link_status'),
         multi_vpc=pulumi.get(__ret__, 'multi_vpc'),
         name=pulumi.get(__ret__, 'name'),
+        private_accesses=pulumi.get(__ret__, 'private_accesses'),
         rulestack=pulumi.get(__ret__, 'rulestack'),
         statuses=pulumi.get(__ret__, 'statuses'),
         subnet_mappings=pulumi.get(__ret__, 'subnet_mappings'),
         tags=pulumi.get(__ret__, 'tags'),
         update_token=pulumi.get(__ret__, 'update_token'),
+        user_ids=pulumi.get(__ret__, 'user_ids'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-def get_ngfw_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ngfw_output(firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNgfwResult]:
     """
     Data source for retrieving NGFW information.
@@ -322,31 +401,26 @@ def get_ngfw_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] 
 
     * `Firewall`
 
-    ## Example Usage
 
-    ```python
-    import pulumi
-    import pulumi_cloudngfwaws as cloudngfwaws
-
-    example = cloudngfwaws.get_ngfw(name="example-instance")
-    ```
-
-
-    :param _builtins.str account_id: The account ID. This field is mandatory if using multiple accounts.
-    :param _builtins.str name: The NGFW name.
+    :param _builtins.str firewall_id: The Firewall ID.
     """
     __args__ = dict()
-    __args__['accountId'] = account_id
-    __args__['name'] = name
+    __args__['firewallId'] = firewall_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getNgfw:getNgfw', __args__, opts=opts, typ=GetNgfwResult)
     return __ret__.apply(lambda __response__: GetNgfwResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        allowlist_accounts=pulumi.get(__response__, 'allowlist_accounts'),
         app_id_version=pulumi.get(__response__, 'app_id_version'),
         automatic_upgrade_app_id_version=pulumi.get(__response__, 'automatic_upgrade_app_id_version'),
+        az_lists=pulumi.get(__response__, 'az_lists'),
+        change_protections=pulumi.get(__response__, 'change_protections'),
+        deployment_update_token=pulumi.get(__response__, 'deployment_update_token'),
         description=pulumi.get(__response__, 'description'),
+        egress_nats=pulumi.get(__response__, 'egress_nats'),
         endpoint_mode=pulumi.get(__response__, 'endpoint_mode'),
         endpoint_service_name=pulumi.get(__response__, 'endpoint_service_name'),
+        endpoints=pulumi.get(__response__, 'endpoints'),
         firewall_id=pulumi.get(__response__, 'firewall_id'),
         global_rulestack=pulumi.get(__response__, 'global_rulestack'),
         id=pulumi.get(__response__, 'id'),
@@ -354,9 +428,11 @@ def get_ngfw_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] 
         link_status=pulumi.get(__response__, 'link_status'),
         multi_vpc=pulumi.get(__response__, 'multi_vpc'),
         name=pulumi.get(__response__, 'name'),
+        private_accesses=pulumi.get(__response__, 'private_accesses'),
         rulestack=pulumi.get(__response__, 'rulestack'),
         statuses=pulumi.get(__response__, 'statuses'),
         subnet_mappings=pulumi.get(__response__, 'subnet_mappings'),
         tags=pulumi.get(__response__, 'tags'),
         update_token=pulumi.get(__response__, 'update_token'),
+        user_ids=pulumi.get(__response__, 'user_ids'),
         vpc_id=pulumi.get(__response__, 'vpc_id')))

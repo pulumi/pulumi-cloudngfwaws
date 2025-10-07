@@ -85,9 +85,6 @@ func GetProtocol(ctx *pulumi.Context) string {
 func GetRegion(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudngfwaws:region")
 }
-func GetResourceTimeout(ctx *pulumi.Context) int {
-	return config.GetInt(ctx, "cloudngfwaws:resourceTimeout")
-}
 
 // (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
 func GetSecretKey(ctx *pulumi.Context) string {
@@ -107,4 +104,9 @@ func GetSyncMode(ctx *pulumi.Context) bool {
 // The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
 func GetTimeout(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "cloudngfwaws:timeout")
+}
+
+// The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2Host`.
+func GetV2Host(ctx *pulumi.Context) string {
+	return config.Get(ctx, "cloudngfwaws:v2Host")
 }
