@@ -2115,8 +2115,8 @@ github.com/opentracing/opentracing-go v1.1.0/go.mod h1:UkNAQd3GIcIGf0SeVgPpRdFSt
 github.com/opentracing/opentracing-go v1.2.0 h1:uEJPy/1a5RIPAJ0Ov+OIO8OxWu77jEv+1B0VhjKrZUs=
 github.com/opentracing/opentracing-go v1.2.0/go.mod h1:GxEUsuufX4nBwe+T+Wl9TAgYrxe9dPLANfrWvHYVTgc=
 github.com/orisano/pixelmatch v0.0.0-20220722002657-fb0b55479cde/go.mod h1:nZgzbfBr3hhjoZnS66nKrHmduYNpc34ny7RK4z5/HM0=
-github.com/paloaltonetworks/cloud-ngfw-aws-go v1.0.8 h1:h6yN5DJivQy9pebNDLwuqizjRY3rA/C81morWgFPAOk=
-github.com/paloaltonetworks/cloud-ngfw-aws-go v1.0.8/go.mod h1:K7l99F0euqi1IXc20j0AXKBVElI77RGD5U5+LU8FYVQ=
+github.com/paloaltonetworks/cloud-ngfw-aws-go/v2 v2.0.1 h1:zRqEJeJYMsQtjVVLx5nMyTB1bauxMdMNnJRzUPK/6hA=
+github.com/paloaltonetworks/cloud-ngfw-aws-go/v2 v2.0.1/go.mod h1:4/51bWiQv3q+37AY6XHJj8qbSNgpwbTj/fY0e3p1OTw=
 github.com/pgavlin/fx v0.1.6 h1:r9jEg69DhNoCd3Xh0+5mIbdbS3PqWrVWujkY76MFRTU=
 github.com/pgavlin/fx v0.1.6/go.mod h1:KWZJ6fqBBSh8GxHYqwYCf3rYE7Gp2p0N8tJp8xv9u9M=
 github.com/pgavlin/fx/v2 v2.0.3 h1:ZBVklTFjxcWvBVPE+ti5qwnmTIQ0Gq6nuj3J5RKDtKk=

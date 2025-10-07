@@ -46,18 +46,67 @@
             "cloudngfwaws_ngfw": {
                 "current": "cloudngfwaws:index/ngfw:Ngfw",
                 "fields": {
-                    "status": {
+                    "allowlist_accounts": {
+                        "maxItemsOne": false
+                    },
+                    "az_list": {
+                        "maxItemsOne": false
+                    },
+                    "change_protection": {
+                        "maxItemsOne": false
+                    },
+                    "egress_nat": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
-                                "attachment": {
+                                "settings": {
                                     "maxItemsOne": false
                                 }
                             }
                         }
                     },
+                    "endpoints": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "prefixes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "private_prefix": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "cidrs": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "private_access": {
+                        "maxItemsOne": false
+                    },
+                    "status": {
+                        "maxItemsOne": false
+                    },
                     "subnet_mapping": {
                         "maxItemsOne": false
+                    },
+                    "user_id": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_include_exclude_network": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -66,6 +115,16 @@
                 "fields": {
                     "cloudwatch_metric_fields": {
                         "maxItemsOne": false
+                    },
+                    "log_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "log_type": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "log_destination": {
                         "maxItemsOne": false
@@ -216,18 +275,67 @@
             "cloudngfwaws_ngfw": {
                 "current": "cloudngfwaws:index/getNgfw:getNgfw",
                 "fields": {
-                    "status": {
+                    "allowlist_accounts": {
+                        "maxItemsOne": false
+                    },
+                    "az_list": {
+                        "maxItemsOne": false
+                    },
+                    "change_protection": {
+                        "maxItemsOne": false
+                    },
+                    "egress_nat": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
-                                "attachment": {
+                                "settings": {
                                     "maxItemsOne": false
                                 }
                             }
                         }
                     },
+                    "endpoints": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "prefixes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "private_prefix": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "cidrs": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "private_access": {
+                        "maxItemsOne": false
+                    },
+                    "status": {
+                        "maxItemsOne": false
+                    },
                     "subnet_mapping": {
                         "maxItemsOne": false
+                    },
+                    "user_id": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_include_exclude_network": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -236,6 +344,16 @@
                 "fields": {
                     "cloudwatch_metric_fields": {
                         "maxItemsOne": false
+                    },
+                    "log_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "log_type": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "log_destination": {
                         "maxItemsOne": false
