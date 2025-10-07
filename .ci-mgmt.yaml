@@ -1,5 +1,5 @@
 provider: cloudngfwaws
-major-version: 0
+major-version: 1
 makeTemplate: bridged
 providerDefaultBranch: main
 plugins:
