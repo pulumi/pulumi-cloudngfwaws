@@ -126,9 +126,6 @@
                 "type": "string",
                 "description": "AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`."
             },
-            "resourceTimeout": {
-                "type": "integer"
-            },
             "secretKey": {
                 "type": "string",
                 "description": "(Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`."
@@ -144,10 +141,177 @@
             "timeout": {
                 "type": "integer",
                 "description": "The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`."
+            },
+            "v2Host": {
+                "type": "string",
+                "description": "The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`."
             }
         }
     },
     "types": {
+        "cloudngfwaws:index/NgfwEgressNat:NgfwEgressNat": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable egress NAT\n"
+                },
+                "settings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/NgfwEgressNatSetting:NgfwEgressNatSetting"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
+        },
+        "cloudngfwaws:index/NgfwEgressNatSetting:NgfwEgressNatSetting": {
+            "properties": {
+                "ipPoolType": {
+                    "type": "string",
+                    "description": "Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.\n"
+                },
+                "ipamPoolId": {
+                    "type": "string",
+                    "description": "The IP pool ID\n"
+                }
+            },
+            "type": "object"
+        },
+        "cloudngfwaws:index/NgfwEndpoint:NgfwEndpoint": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account id.\n"
+                },
+                "egressNatEnabled": {
+                    "type": "boolean",
+                    "description": "Enable egress NAT\n"
+                },
+                "endpointId": {
+                    "type": "string",
+                    "description": "Endpoint ID of the security zone\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.\n"
+                },
+                "prefixes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/NgfwEndpointPrefix:NgfwEndpointPrefix"
+                    }
+                },
+                "rejectedReason": {
+                    "type": "string",
+                    "description": "The rejected reason.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The attachment status.\n"
+                },
+                "subnetId": {
+                    "type": "string",
+                    "description": "The subnet id.\n"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The vpc id.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The AZ id.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "egressNatEnabled",
+                        "endpointId",
+                        "mode",
+                        "prefixes",
+                        "rejectedReason",
+                        "status",
+                        "zoneId"
+                    ]
+                }
+            }
+        },
+        "cloudngfwaws:index/NgfwEndpointPrefix:NgfwEndpointPrefix": {
+            "properties": {
+                "privatePrefixes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/NgfwEndpointPrefixPrivatePrefix:NgfwEndpointPrefixPrivatePrefix"
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "privatePrefixes"
+                    ]
+                }
+            }
+        },
+        "cloudngfwaws:index/NgfwEndpointPrefixPrivatePrefix:NgfwEndpointPrefixPrivatePrefix": {
+            "properties": {
+                "cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cidrs"
+                    ]
+                }
+            }
+        },
+        "cloudngfwaws:index/NgfwLogProfileLogConfig:NgfwLogProfileLogConfig": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "Type of Role for log configuration\n"
+                },
+                "logDestination": {
+                    "type": "string",
+                    "description": "The log destination details.\n"
+                },
+                "logDestinationType": {
+                    "type": "string",
+                    "description": "The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.\n"
+                },
+                "logTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of different log types that are wanted\n"
+                },
+                "roleType": {
+                    "type": "string",
+                    "description": "Type of Role for log configuration\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "logDestination",
+                "logDestinationType",
+                "logTypes"
+            ]
+        },
         "cloudngfwaws:index/NgfwLogProfileLogDestination:NgfwLogProfileLogDestination": {
             "properties": {
                 "destination": {
@@ -165,14 +329,28 @@
             },
             "type": "object"
         },
+        "cloudngfwaws:index/NgfwPrivateAccess:NgfwPrivateAccess": {
+            "properties": {
+                "resourceId": {
+                    "type": "string",
+                    "description": "AWS ResourceID\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of Private Access\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "resourceId",
+                "type"
+            ]
+        },
         "cloudngfwaws:index/NgfwStatus:NgfwStatus": {
             "properties": {
-                "attachments": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/cloudngfwaws:index/NgfwStatusAttachment:NgfwStatusAttachment"
-                    },
-                    "description": "The firewall attachments.\n"
+                "deviceRulestackCommitStatus": {
+                    "type": "string",
+                    "description": "The device rulestack commit status.\n"
                 },
                 "failureReason": {
                     "type": "string",
@@ -191,41 +369,10 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "attachments",
+                        "deviceRulestackCommitStatus",
                         "failureReason",
                         "firewallStatus",
                         "rulestackStatus"
-                    ]
-                }
-            }
-        },
-        "cloudngfwaws:index/NgfwStatusAttachment:NgfwStatusAttachment": {
-            "properties": {
-                "endpointId": {
-                    "type": "string",
-                    "description": "The endpoint id.\n"
-                },
-                "rejectedReason": {
-                    "type": "string",
-                    "description": "The reject reason.\n"
-                },
-                "status": {
-                    "type": "string",
-                    "description": "The attachment status.\n"
-                },
-                "subnetId": {
-                    "type": "string",
-                    "description": "The subnet id.\n"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "endpointId",
-                        "rejectedReason",
-                        "status",
-                        "subnetId"
                     ]
                 }
             }
@@ -254,6 +401,82 @@
                     ]
                 }
             }
+        },
+        "cloudngfwaws:index/NgfwUserId:NgfwUserId": {
+            "properties": {
+                "agentName": {
+                    "type": "string",
+                    "description": "Agent Name for UserID\n"
+                },
+                "collectorName": {
+                    "type": "string",
+                    "description": "The Collector Name\n"
+                },
+                "customIncludeExcludeNetworks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/NgfwUserIdCustomIncludeExcludeNetwork:NgfwUserIdCustomIncludeExcludeNetwork"
+                    },
+                    "description": "List of Custom Include Exclude Networks\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable UserID Config\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The Port\n"
+                },
+                "secretKeyArn": {
+                    "type": "string",
+                    "description": "AWS Secret Key ARN\n"
+                },
+                "userIdStatus": {
+                    "type": "string",
+                    "description": "Status and State of UserID Configuration\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "port"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled",
+                        "port",
+                        "userIdStatus"
+                    ]
+                }
+            }
+        },
+        "cloudngfwaws:index/NgfwUserIdCustomIncludeExcludeNetwork:NgfwUserIdCustomIncludeExcludeNetwork": {
+            "properties": {
+                "discoveryInclude": {
+                    "type": "boolean",
+                    "description": "Include or exclude this subnet from user-id configuration\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable this specific custom include/exclude network\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of subnet filter\n"
+                },
+                "networkAddress": {
+                    "type": "string",
+                    "description": "Network IP address of the subnet filter\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "discoveryInclude",
+                "enabled",
+                "name",
+                "networkAddress"
+            ]
         },
         "cloudngfwaws:index/RulestackProfileConfig:RulestackProfileConfig": {
             "properties": {
@@ -407,6 +630,194 @@
                 }
             }
         },
+        "cloudngfwaws:index/getNgfwEgressNat:getNgfwEgressNat": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable egress NAT\n"
+                },
+                "settings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/getNgfwEgressNatSetting:getNgfwEgressNatSetting"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "settings"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudngfwaws:index/getNgfwEgressNatSetting:getNgfwEgressNatSetting": {
+            "properties": {
+                "ipPoolType": {
+                    "type": "string",
+                    "description": "Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.\n"
+                },
+                "ipamPoolId": {
+                    "type": "string",
+                    "description": "The IP pool ID\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ipPoolType",
+                "ipamPoolId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudngfwaws:index/getNgfwEndpoint:getNgfwEndpoint": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account id.\n"
+                },
+                "egressNatEnabled": {
+                    "type": "boolean",
+                    "description": "Enable egress NAT\n"
+                },
+                "endpointId": {
+                    "type": "string",
+                    "description": "Endpoint ID of the security zone\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.\n"
+                },
+                "prefixes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/getNgfwEndpointPrefix:getNgfwEndpointPrefix"
+                    }
+                },
+                "rejectedReason": {
+                    "type": "string",
+                    "description": "The rejected reason.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The attachment status.\n"
+                },
+                "subnetId": {
+                    "type": "string",
+                    "description": "The subnet id.\n"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The vpc id.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The AZ id.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountId",
+                "egressNatEnabled",
+                "endpointId",
+                "mode",
+                "prefixes",
+                "rejectedReason",
+                "status",
+                "subnetId",
+                "vpcId",
+                "zoneId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudngfwaws:index/getNgfwEndpointPrefix:getNgfwEndpointPrefix": {
+            "properties": {
+                "privatePrefixes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/getNgfwEndpointPrefixPrivatePrefix:getNgfwEndpointPrefixPrivatePrefix"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "privatePrefixes"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudngfwaws:index/getNgfwEndpointPrefixPrivatePrefix:getNgfwEndpointPrefixPrivatePrefix": {
+            "properties": {
+                "cidrs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "cidrs"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudngfwaws:index/getNgfwLogProfileLogConfig:getNgfwLogProfileLogConfig": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "Type of Role for log configuration\n"
+                },
+                "logDestination": {
+                    "type": "string",
+                    "description": "The log destination details.\n"
+                },
+                "logDestinationType": {
+                    "type": "string",
+                    "description": "The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.\n"
+                },
+                "logTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of different log types that are wanted\n"
+                },
+                "roleType": {
+                    "type": "string",
+                    "description": "Type of Role for log configuration\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountId",
+                "logDestination",
+                "logDestinationType",
+                "logTypes",
+                "roleType"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "cloudngfwaws:index/getNgfwLogProfileLogDestination:getNgfwLogProfileLogDestination": {
             "properties": {
                 "destination": {
@@ -434,14 +845,33 @@
                 }
             }
         },
+        "cloudngfwaws:index/getNgfwPrivateAccess:getNgfwPrivateAccess": {
+            "properties": {
+                "resourceId": {
+                    "type": "string",
+                    "description": "AWS ResourceID\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of Private Access\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "resourceId",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "cloudngfwaws:index/getNgfwStatus:getNgfwStatus": {
             "properties": {
-                "attachments": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/cloudngfwaws:index/getNgfwStatusAttachment:getNgfwStatusAttachment"
-                    },
-                    "description": "The firewall attachments.\n"
+                "deviceRulestackCommitStatus": {
+                    "type": "string",
+                    "description": "The device rulestack commit status.\n"
                 },
                 "failureReason": {
                     "type": "string",
@@ -458,42 +888,10 @@
             },
             "type": "object",
             "required": [
-                "attachments",
+                "deviceRulestackCommitStatus",
                 "failureReason",
                 "firewallStatus",
                 "rulestackStatus"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
-        },
-        "cloudngfwaws:index/getNgfwStatusAttachment:getNgfwStatusAttachment": {
-            "properties": {
-                "endpointId": {
-                    "type": "string",
-                    "description": "The endpoint id.\n"
-                },
-                "rejectedReason": {
-                    "type": "string",
-                    "description": "The reject reason.\n"
-                },
-                "status": {
-                    "type": "string",
-                    "description": "The attachment status.\n"
-                },
-                "subnetId": {
-                    "type": "string",
-                    "description": "The subnet id.\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "endpointId",
-                "rejectedReason",
-                "status",
-                "subnetId"
             ],
             "language": {
                 "nodejs": {
@@ -528,21 +926,103 @@
                 }
             }
         },
-        "cloudngfwaws:index/getNgfwsInstance:getNgfwsInstance": {
+        "cloudngfwaws:index/getNgfwUserId:getNgfwUserId": {
             "properties": {
-                "accountId": {
+                "agentName": {
                     "type": "string",
-                    "description": "The account id.\n"
+                    "description": "Agent Name for UserID\n"
                 },
-                "name": {
+                "collectorName": {
                     "type": "string",
-                    "description": "The NGFW name.\n"
+                    "description": "The Collector Name\n"
+                },
+                "customIncludeExcludeNetworks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/getNgfwUserIdCustomIncludeExcludeNetwork:getNgfwUserIdCustomIncludeExcludeNetwork"
+                    },
+                    "description": "List of Custom Include Exclude Networks\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable UserID Config\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The Port\n"
+                },
+                "secretKeyArn": {
+                    "type": "string",
+                    "description": "AWS Secret Key ARN\n"
+                },
+                "userIdStatus": {
+                    "type": "string",
+                    "description": "Status and State of UserID Configuration\n"
                 }
             },
             "type": "object",
             "required": [
-                "accountId",
-                "name"
+                "agentName",
+                "collectorName",
+                "customIncludeExcludeNetworks",
+                "enabled",
+                "port",
+                "secretKeyArn",
+                "userIdStatus"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudngfwaws:index/getNgfwUserIdCustomIncludeExcludeNetwork:getNgfwUserIdCustomIncludeExcludeNetwork": {
+            "properties": {
+                "discoveryInclude": {
+                    "type": "boolean",
+                    "description": "Include or exclude this subnet from user-id configuration\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable this specific custom include/exclude network\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of subnet filter\n"
+                },
+                "networkAddress": {
+                    "type": "string",
+                    "description": "Network IP address of the subnet filter\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "discoveryInclude",
+                "enabled",
+                "name",
+                "networkAddress"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudngfwaws:index/getNgfwsInstance:getNgfwsInstance": {
+            "properties": {
+                "firewallId": {
+                    "type": "string",
+                    "description": "The NGFW ID.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region the NGFW is in.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "firewallId",
+                "region"
             ],
             "language": {
                 "nodejs": {
@@ -791,9 +1271,6 @@
                 "type": "string",
                 "description": "AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`."
             },
-            "resourceTimeout": {
-                "type": "integer"
-            },
             "secretKey": {
                 "type": "string",
                 "description": "(Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`."
@@ -809,6 +1286,10 @@
             "timeout": {
                 "type": "integer",
                 "description": "The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`."
+            },
+            "v2Host": {
+                "type": "string",
+                "description": "The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`."
             }
         },
         "inputProperties": {
@@ -878,9 +1359,6 @@
                 "type": "string",
                 "description": "AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`."
             },
-            "resourceTimeout": {
-                "type": "integer"
-            },
             "secretKey": {
                 "type": "string",
                 "description": "(Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`."
@@ -896,6 +1374,10 @@
             "timeout": {
                 "type": "integer",
                 "description": "The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`."
+            },
+            "v2Host": {
+                "type": "string",
+                "description": "The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`."
             }
         },
         "methods": {
@@ -1947,11 +2429,18 @@
             }
         },
         "cloudngfwaws:index/ngfw:Ngfw": {
-            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as cloudngfwaws from \"@pulumi/cloudngfwaws\";\n\nconst rs = new cloudngfwaws.CommitRulestack(\"rs\", {rulestack: \"my-rulestack\"});\nconst exampleVpc = new aws.index.Vpc(\"example\", {\n    cidrBlock: \"172.16.0.0/16\",\n    tags: {\n        name: \"tf-example\",\n    },\n});\nconst subnet1 = new aws.index.Subnet(\"subnet1\", {\n    vpcId: myVpc.id,\n    cidrBlock: \"172.16.10.0/24\",\n    availabilityZone: \"us-west-2a\",\n    tags: {\n        name: \"tf-example\",\n    },\n});\nconst subnet2 = new aws.index.Subnet(\"subnet2\", {\n    vpcId: myVpc.id,\n    cidrBlock: \"172.16.20.0/24\",\n    availabilityZone: \"us-west-2b\",\n    tags: {\n        name: \"tf-example\",\n    },\n});\nconst example = new cloudngfwaws.Ngfw(\"example\", {\n    name: \"example-instance\",\n    vpcId: exampleVpc.id,\n    accountId: \"12345678\",\n    description: \"Example description\",\n    linkId: \"Link-81e80ccc-357a-4e4e-8325-1ed1d830cba5\",\n    endpointMode: \"ServiceManaged\",\n    subnetMappings: [\n        {\n            subnetId: subnet1.id,\n        },\n        {\n            subnetId: subnet2.id,\n        },\n    ],\n    rulestack: rs.rulestack,\n    tags: {\n        Foo: \"bar\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_cloudngfwaws as cloudngfwaws\n\nrs = cloudngfwaws.CommitRulestack(\"rs\", rulestack=\"my-rulestack\")\nexample_vpc = aws.index.Vpc(\"example\",\n    cidr_block=172.16.0.0/16,\n    tags={\n        name: tf-example,\n    })\nsubnet1 = aws.index.Subnet(\"subnet1\",\n    vpc_id=my_vpc.id,\n    cidr_block=172.16.10.0/24,\n    availability_zone=us-west-2a,\n    tags={\n        name: tf-example,\n    })\nsubnet2 = aws.index.Subnet(\"subnet2\",\n    vpc_id=my_vpc.id,\n    cidr_block=172.16.20.0/24,\n    availability_zone=us-west-2b,\n    tags={\n        name: tf-example,\n    })\nexample = cloudngfwaws.Ngfw(\"example\",\n    name=\"example-instance\",\n    vpc_id=example_vpc[\"id\"],\n    account_id=\"12345678\",\n    description=\"Example description\",\n    link_id=\"Link-81e80ccc-357a-4e4e-8325-1ed1d830cba5\",\n    endpoint_mode=\"ServiceManaged\",\n    subnet_mappings=[\n        {\n            \"subnet_id\": subnet1[\"id\"],\n        },\n        {\n            \"subnet_id\": subnet2[\"id\"],\n        },\n    ],\n    rulestack=rs.rulestack,\n    tags={\n        \"Foo\": \"bar\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing CloudNgfwAws = Pulumi.CloudNgfwAws;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var rs = new CloudNgfwAws.CommitRulestack(\"rs\", new()\n    {\n        Rulestack = \"my-rulestack\",\n    });\n\n    var exampleVpc = new Aws.Index.Vpc(\"example\", new()\n    {\n        CidrBlock = \"172.16.0.0/16\",\n        Tags = \n        {\n            { \"name\", \"tf-example\" },\n        },\n    });\n\n    var subnet1 = new Aws.Index.Subnet(\"subnet1\", new()\n    {\n        VpcId = myVpc.Id,\n        CidrBlock = \"172.16.10.0/24\",\n        AvailabilityZone = \"us-west-2a\",\n        Tags = \n        {\n            { \"name\", \"tf-example\" },\n        },\n    });\n\n    var subnet2 = new Aws.Index.Subnet(\"subnet2\", new()\n    {\n        VpcId = myVpc.Id,\n        CidrBlock = \"172.16.20.0/24\",\n        AvailabilityZone = \"us-west-2b\",\n        Tags = \n        {\n            { \"name\", \"tf-example\" },\n        },\n    });\n\n    var example = new CloudNgfwAws.Ngfw(\"example\", new()\n    {\n        Name = \"example-instance\",\n        VpcId = exampleVpc.Id,\n        AccountId = \"12345678\",\n        Description = \"Example description\",\n        LinkId = \"Link-81e80ccc-357a-4e4e-8325-1ed1d830cba5\",\n        EndpointMode = \"ServiceManaged\",\n        SubnetMappings = new[]\n        {\n            new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs\n            {\n                SubnetId = subnet1.Id,\n            },\n            new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs\n            {\n                SubnetId = subnet2.Id,\n            },\n        },\n        Rulestack = rs.Rulestack,\n        Tags = \n        {\n            { \"Foo\", \"bar\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aws/sdk/go/aws\"\n\t\"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\trs, err := cloudngfwaws.NewCommitRulestack(ctx, \"rs\", \u0026cloudngfwaws.CommitRulestackArgs{\n\t\t\tRulestack: pulumi.String(\"my-rulestack\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleVpc, err := aws.NewVpc(ctx, \"example\", \u0026aws.VpcArgs{\n\t\t\tCidrBlock: \"172.16.0.0/16\",\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"name\": \"tf-example\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsubnet1, err := aws.NewSubnet(ctx, \"subnet1\", \u0026aws.SubnetArgs{\n\t\t\tVpcId:            myVpc.Id,\n\t\t\tCidrBlock:        \"172.16.10.0/24\",\n\t\t\tAvailabilityZone: \"us-west-2a\",\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"name\": \"tf-example\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsubnet2, err := aws.NewSubnet(ctx, \"subnet2\", \u0026aws.SubnetArgs{\n\t\t\tVpcId:            myVpc.Id,\n\t\t\tCidrBlock:        \"172.16.20.0/24\",\n\t\t\tAvailabilityZone: \"us-west-2b\",\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"name\": \"tf-example\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudngfwaws.NewNgfw(ctx, \"example\", \u0026cloudngfwaws.NgfwArgs{\n\t\t\tName:         pulumi.String(\"example-instance\"),\n\t\t\tVpcId:        exampleVpc.Id,\n\t\t\tAccountId:    pulumi.String(\"12345678\"),\n\t\t\tDescription:  pulumi.String(\"Example description\"),\n\t\t\tLinkId:       pulumi.String(\"Link-81e80ccc-357a-4e4e-8325-1ed1d830cba5\"),\n\t\t\tEndpointMode: pulumi.String(\"ServiceManaged\"),\n\t\t\tSubnetMappings: cloudngfwaws.NgfwSubnetMappingArray{\n\t\t\t\t\u0026cloudngfwaws.NgfwSubnetMappingArgs{\n\t\t\t\t\tSubnetId: subnet1.Id,\n\t\t\t\t},\n\t\t\t\t\u0026cloudngfwaws.NgfwSubnetMappingArgs{\n\t\t\t\t\tSubnetId: subnet2.Id,\n\t\t\t\t},\n\t\t\t},\n\t\t\tRulestack: rs.Rulestack,\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"Foo\": pulumi.String(\"bar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudngfwaws.CommitRulestack;\nimport com.pulumi.cloudngfwaws.CommitRulestackArgs;\nimport com.pulumi.aws.vpc;\nimport com.pulumi.aws.vpcArgs;\nimport com.pulumi.aws.subnet;\nimport com.pulumi.aws.subnetArgs;\nimport com.pulumi.cloudngfwaws.Ngfw;\nimport com.pulumi.cloudngfwaws.NgfwArgs;\nimport com.pulumi.cloudngfwaws.inputs.NgfwSubnetMappingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var rs = new CommitRulestack(\"rs\", CommitRulestackArgs.builder()\n            .rulestack(\"my-rulestack\")\n            .build());\n\n        var exampleVpc = new Vpc(\"exampleVpc\", VpcArgs.builder()\n            .cidrBlock(\"172.16.0.0/16\")\n            .tags(Map.of(\"name\", \"tf-example\"))\n            .build());\n\n        var subnet1 = new Subnet(\"subnet1\", SubnetArgs.builder()\n            .vpcId(myVpc.id())\n            .cidrBlock(\"172.16.10.0/24\")\n            .availabilityZone(\"us-west-2a\")\n            .tags(Map.of(\"name\", \"tf-example\"))\n            .build());\n\n        var subnet2 = new Subnet(\"subnet2\", SubnetArgs.builder()\n            .vpcId(myVpc.id())\n            .cidrBlock(\"172.16.20.0/24\")\n            .availabilityZone(\"us-west-2b\")\n            .tags(Map.of(\"name\", \"tf-example\"))\n            .build());\n\n        var example = new Ngfw(\"example\", NgfwArgs.builder()\n            .name(\"example-instance\")\n            .vpcId(exampleVpc.id())\n            .accountId(\"12345678\")\n            .description(\"Example description\")\n            .linkId(\"Link-81e80ccc-357a-4e4e-8325-1ed1d830cba5\")\n            .endpointMode(\"ServiceManaged\")\n            .subnetMappings(            \n                NgfwSubnetMappingArgs.builder()\n                    .subnetId(subnet1.id())\n                    .build(),\n                NgfwSubnetMappingArgs.builder()\n                    .subnetId(subnet2.id())\n                    .build())\n            .rulestack(rs.rulestack())\n            .tags(Map.of(\"Foo\", \"bar\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudngfwaws:Ngfw\n    properties:\n      name: example-instance\n      vpcId: ${exampleVpc.id}\n      accountId: '12345678'\n      description: Example description\n      linkId: Link-81e80ccc-357a-4e4e-8325-1ed1d830cba5\n      endpointMode: ServiceManaged\n      subnetMappings:\n        - subnetId: ${subnet1.id}\n        - subnetId: ${subnet2.id}\n      rulestack: ${rs.rulestack}\n      tags:\n        Foo: bar\n  rs:\n    type: cloudngfwaws:CommitRulestack\n    properties:\n      rulestack: my-rulestack\n  exampleVpc:\n    type: aws:vpc\n    name: example\n    properties:\n      cidrBlock: 172.16.0.0/16\n      tags:\n        name: tf-example\n  subnet1:\n    type: aws:subnet\n    properties:\n      vpcId: ${myVpc.id}\n      cidrBlock: 172.16.10.0/24\n      availabilityZone: us-west-2a\n      tags:\n        name: tf-example\n  subnet2:\n    type: aws:subnet\n    properties:\n      vpcId: ${myVpc.id}\n      cidrBlock: 172.16.20.0/24\n      availabilityZone: us-west-2b\n      tags:\n        name: tf-example\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nimport name is \u003caccount_id\u003e:\u003cname\u003e\n\n```sh\n$ pulumi import cloudngfwaws:index/ngfw:Ngfw example 12345678:example-instance\n```\n\n",
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as cloudngfwaws from \"@pulumi/cloudngfwaws\";\n\nconst rs = new cloudngfwaws.CommitRulestack(\"rs\", {rulestack: \"my-rulestack\"});\nconst exampleVpc = new aws.index.Vpc(\"example\", {\n    cidrBlock: \"172.16.0.0/16\",\n    tags: {\n        name: \"tf-example\",\n    },\n});\nconst subnet1 = new aws.index.Subnet(\"subnet1\", {\n    vpcId: myVpc.id,\n    cidrBlock: \"172.16.10.0/24\",\n    availabilityZone: \"us-west-2a\",\n    tags: {\n        name: \"tf-example\",\n    },\n});\nconst example = new cloudngfwaws.Ngfw(\"example\", {\n    name: \"example-instance\",\n    description: \"Example description\",\n    endpoints: [{\n        subnetId: subnet1.id,\n        mode: \"ServiceManaged\",\n        vpcId: exampleVpc.id,\n        accountId: \"12345678\",\n    }],\n    rulestack: rs.rulestack,\n    tags: {\n        Foo: \"bar\",\n    },\n});\nconst subnet2 = new aws.index.Subnet(\"subnet2\", {\n    vpcId: myVpc.id,\n    cidrBlock: \"172.16.20.0/24\",\n    availabilityZone: \"us-west-2b\",\n    tags: {\n        name: \"tf-example\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_cloudngfwaws as cloudngfwaws\n\nrs = cloudngfwaws.CommitRulestack(\"rs\", rulestack=\"my-rulestack\")\nexample_vpc = aws.index.Vpc(\"example\",\n    cidr_block=172.16.0.0/16,\n    tags={\n        name: tf-example,\n    })\nsubnet1 = aws.index.Subnet(\"subnet1\",\n    vpc_id=my_vpc.id,\n    cidr_block=172.16.10.0/24,\n    availability_zone=us-west-2a,\n    tags={\n        name: tf-example,\n    })\nexample = cloudngfwaws.Ngfw(\"example\",\n    name=\"example-instance\",\n    description=\"Example description\",\n    endpoints=[{\n        \"subnet_id\": subnet1[\"id\"],\n        \"mode\": \"ServiceManaged\",\n        \"vpc_id\": example_vpc[\"id\"],\n        \"account_id\": \"12345678\",\n    }],\n    rulestack=rs.rulestack,\n    tags={\n        \"Foo\": \"bar\",\n    })\nsubnet2 = aws.index.Subnet(\"subnet2\",\n    vpc_id=my_vpc.id,\n    cidr_block=172.16.20.0/24,\n    availability_zone=us-west-2b,\n    tags={\n        name: tf-example,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing CloudNgfwAws = Pulumi.CloudNgfwAws;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var rs = new CloudNgfwAws.CommitRulestack(\"rs\", new()\n    {\n        Rulestack = \"my-rulestack\",\n    });\n\n    var exampleVpc = new Aws.Index.Vpc(\"example\", new()\n    {\n        CidrBlock = \"172.16.0.0/16\",\n        Tags = \n        {\n            { \"name\", \"tf-example\" },\n        },\n    });\n\n    var subnet1 = new Aws.Index.Subnet(\"subnet1\", new()\n    {\n        VpcId = myVpc.Id,\n        CidrBlock = \"172.16.10.0/24\",\n        AvailabilityZone = \"us-west-2a\",\n        Tags = \n        {\n            { \"name\", \"tf-example\" },\n        },\n    });\n\n    var example = new CloudNgfwAws.Ngfw(\"example\", new()\n    {\n        Name = \"example-instance\",\n        Description = \"Example description\",\n        Endpoints = new[]\n        {\n            new CloudNgfwAws.Inputs.NgfwEndpointArgs\n            {\n                SubnetId = subnet1.Id,\n                Mode = \"ServiceManaged\",\n                VpcId = exampleVpc.Id,\n                AccountId = \"12345678\",\n            },\n        },\n        Rulestack = rs.Rulestack,\n        Tags = \n        {\n            { \"Foo\", \"bar\" },\n        },\n    });\n\n    var subnet2 = new Aws.Index.Subnet(\"subnet2\", new()\n    {\n        VpcId = myVpc.Id,\n        CidrBlock = \"172.16.20.0/24\",\n        AvailabilityZone = \"us-west-2b\",\n        Tags = \n        {\n            { \"name\", \"tf-example\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aws/sdk/go/aws\"\n\t\"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\trs, err := cloudngfwaws.NewCommitRulestack(ctx, \"rs\", \u0026cloudngfwaws.CommitRulestackArgs{\n\t\t\tRulestack: pulumi.String(\"my-rulestack\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleVpc, err := aws.NewVpc(ctx, \"example\", \u0026aws.VpcArgs{\n\t\t\tCidrBlock: \"172.16.0.0/16\",\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"name\": \"tf-example\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsubnet1, err := aws.NewSubnet(ctx, \"subnet1\", \u0026aws.SubnetArgs{\n\t\t\tVpcId:            myVpc.Id,\n\t\t\tCidrBlock:        \"172.16.10.0/24\",\n\t\t\tAvailabilityZone: \"us-west-2a\",\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"name\": \"tf-example\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudngfwaws.NewNgfw(ctx, \"example\", \u0026cloudngfwaws.NgfwArgs{\n\t\t\tName:        pulumi.String(\"example-instance\"),\n\t\t\tDescription: pulumi.String(\"Example description\"),\n\t\t\tEndpoints: cloudngfwaws.NgfwEndpointArray{\n\t\t\t\t\u0026cloudngfwaws.NgfwEndpointArgs{\n\t\t\t\t\tSubnetId:  subnet1.Id,\n\t\t\t\t\tMode:      pulumi.String(\"ServiceManaged\"),\n\t\t\t\t\tVpcId:     exampleVpc.Id,\n\t\t\t\t\tAccountId: pulumi.String(\"12345678\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRulestack: rs.Rulestack,\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"Foo\": pulumi.String(\"bar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aws.NewSubnet(ctx, \"subnet2\", \u0026aws.SubnetArgs{\n\t\t\tVpcId:            myVpc.Id,\n\t\t\tCidrBlock:        \"172.16.20.0/24\",\n\t\t\tAvailabilityZone: \"us-west-2b\",\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"name\": \"tf-example\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudngfwaws.CommitRulestack;\nimport com.pulumi.cloudngfwaws.CommitRulestackArgs;\nimport com.pulumi.aws.vpc;\nimport com.pulumi.aws.vpcArgs;\nimport com.pulumi.aws.subnet;\nimport com.pulumi.aws.subnetArgs;\nimport com.pulumi.cloudngfwaws.Ngfw;\nimport com.pulumi.cloudngfwaws.NgfwArgs;\nimport com.pulumi.cloudngfwaws.inputs.NgfwEndpointArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var rs = new CommitRulestack(\"rs\", CommitRulestackArgs.builder()\n            .rulestack(\"my-rulestack\")\n            .build());\n\n        var exampleVpc = new Vpc(\"exampleVpc\", VpcArgs.builder()\n            .cidrBlock(\"172.16.0.0/16\")\n            .tags(Map.of(\"name\", \"tf-example\"))\n            .build());\n\n        var subnet1 = new Subnet(\"subnet1\", SubnetArgs.builder()\n            .vpcId(myVpc.id())\n            .cidrBlock(\"172.16.10.0/24\")\n            .availabilityZone(\"us-west-2a\")\n            .tags(Map.of(\"name\", \"tf-example\"))\n            .build());\n\n        var example = new Ngfw(\"example\", NgfwArgs.builder()\n            .name(\"example-instance\")\n            .description(\"Example description\")\n            .endpoints(NgfwEndpointArgs.builder()\n                .subnetId(subnet1.id())\n                .mode(\"ServiceManaged\")\n                .vpcId(exampleVpc.id())\n                .accountId(\"12345678\")\n                .build())\n            .rulestack(rs.rulestack())\n            .tags(Map.of(\"Foo\", \"bar\"))\n            .build());\n\n        var subnet2 = new Subnet(\"subnet2\", SubnetArgs.builder()\n            .vpcId(myVpc.id())\n            .cidrBlock(\"172.16.20.0/24\")\n            .availabilityZone(\"us-west-2b\")\n            .tags(Map.of(\"name\", \"tf-example\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudngfwaws:Ngfw\n    properties:\n      name: example-instance\n      description: Example description\n      endpoints:\n        - subnetId: ${subnet1.id}\n          mode: ServiceManaged\n          vpcId: ${exampleVpc.id}\n          accountId: '12345678'\n      rulestack: ${rs.rulestack}\n      tags:\n        Foo: bar\n  rs:\n    type: cloudngfwaws:CommitRulestack\n    properties:\n      rulestack: my-rulestack\n  exampleVpc:\n    type: aws:vpc\n    name: example\n    properties:\n      cidrBlock: 172.16.0.0/16\n      tags:\n        name: tf-example\n  subnet1:\n    type: aws:subnet\n    properties:\n      vpcId: ${myVpc.id}\n      cidrBlock: 172.16.10.0/24\n      availabilityZone: us-west-2a\n      tags:\n        name: tf-example\n  subnet2:\n    type: aws:subnet\n    properties:\n      vpcId: ${myVpc.id}\n      cidrBlock: 172.16.20.0/24\n      availabilityZone: us-west-2b\n      tags:\n        name: tf-example\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nimport name is \u003caccount_id\u003e:\u003cname\u003e\n\n```sh\n$ pulumi import cloudngfwaws:index/ngfw:Ngfw example 12345678:example-instance\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The account ID. This field is mandatory if using multiple accounts.\n"
+                    "description": "The description.\n"
+                },
+                "allowlistAccounts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of allowed accounts for this NGFW.\n"
                 },
                 "appIdVersion": {
                     "type": "string",
@@ -1961,9 +2450,33 @@
                     "type": "boolean",
                     "description": "Automatic App-ID upgrade version number. Defaults to `true`.\n"
                 },
+                "azLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of availability zones for this NGFW.\n"
+                },
+                "changeProtections": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enables or disables change protection for the NGFW.\n"
+                },
+                "deploymentUpdateToken": {
+                    "type": "string",
+                    "description": "The update token.\n"
+                },
                 "description": {
                     "type": "string",
-                    "description": "The description.\n"
+                    "description": "The NGFW description.\n"
+                },
+                "egressNats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/NgfwEgressNat:NgfwEgressNat"
+                    }
                 },
                 "endpointMode": {
                     "type": "string",
@@ -1973,9 +2486,15 @@
                     "type": "string",
                     "description": "The endpoint service name.\n"
                 },
+                "endpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/NgfwEndpoint:NgfwEndpoint"
+                    }
+                },
                 "firewallId": {
                     "type": "string",
-                    "description": "The Id of the NGFW.\n"
+                    "description": "The Firewall ID.\n"
                 },
                 "globalRulestack": {
                     "type": "string",
@@ -1983,7 +2502,7 @@
                 },
                 "linkId": {
                     "type": "string",
-                    "description": "A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.\n"
+                    "description": "The link ID.\n"
                 },
                 "linkStatus": {
                     "type": "string",
@@ -1996,6 +2515,12 @@
                 "name": {
                     "type": "string",
                     "description": "The NGFW name.\n"
+                },
+                "privateAccesses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/NgfwPrivateAccess:NgfwPrivateAccess"
+                    }
                 },
                 "rulestack": {
                     "type": "string",
@@ -2025,30 +2550,46 @@
                     "type": "string",
                     "description": "The update token.\n"
                 },
+                "userIds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/NgfwUserId:NgfwUserId"
+                    }
+                },
                 "vpcId": {
                     "type": "string",
-                    "description": "The vpc id.\n"
+                    "description": "The VPC ID for the NGFW.\n"
                 }
             },
             "required": [
                 "appIdVersion",
-                "endpointMode",
+                "azLists",
+                "changeProtections",
+                "deploymentUpdateToken",
+                "egressNats",
                 "endpointServiceName",
                 "firewallId",
                 "linkId",
                 "linkStatus",
                 "multiVpc",
                 "name",
+                "privateAccesses",
                 "statuses",
-                "subnetMappings",
+                "tags",
                 "updateToken",
-                "vpcId"
+                "userIds"
             ],
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The account ID. This field is mandatory if using multiple accounts.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The description.\n"
+                },
+                "allowlistAccounts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of allowed accounts for this NGFW.\n"
                 },
                 "appIdVersion": {
                     "type": "string",
@@ -2058,14 +2599,39 @@
                     "type": "boolean",
                     "description": "Automatic App-ID upgrade version number. Defaults to `true`.\n"
                 },
+                "azLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of availability zones for this NGFW.\n"
+                },
+                "changeProtections": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Enables or disables change protection for the NGFW.\n"
+                },
                 "description": {
                     "type": "string",
-                    "description": "The description.\n"
+                    "description": "The NGFW description.\n"
+                },
+                "egressNats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/NgfwEgressNat:NgfwEgressNat"
+                    }
                 },
                 "endpointMode": {
                     "type": "string",
-                    "description": "Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.\n"
+                },
+                "endpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/NgfwEndpoint:NgfwEndpoint"
+                    }
                 },
                 "globalRulestack": {
                     "type": "string",
@@ -2074,7 +2640,7 @@
                 },
                 "linkId": {
                     "type": "string",
-                    "description": "A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.\n"
+                    "description": "The link ID.\n"
                 },
                 "multiVpc": {
                     "type": "boolean",
@@ -2082,8 +2648,13 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The NGFW name.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The NGFW name.\n"
+                },
+                "privateAccesses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/NgfwPrivateAccess:NgfwPrivateAccess"
+                    }
                 },
                 "rulestack": {
                     "type": "string",
@@ -2103,24 +2674,33 @@
                     },
                     "description": "The tags.\n"
                 },
+                "userIds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudngfwaws:index/NgfwUserId:NgfwUserId"
+                    }
+                },
                 "vpcId": {
                     "type": "string",
-                    "description": "The vpc id.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The VPC ID for the NGFW.\n"
                 }
             },
             "requiredInputs": [
-                "endpointMode",
-                "subnetMappings",
-                "vpcId"
+                "azLists"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Ngfw resources.\n",
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "The account ID. This field is mandatory if using multiple accounts.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The description.\n"
+                    },
+                    "allowlistAccounts": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of allowed accounts for this NGFW.\n"
                     },
                     "appIdVersion": {
                         "type": "string",
@@ -2130,22 +2710,51 @@
                         "type": "boolean",
                         "description": "Automatic App-ID upgrade version number. Defaults to `true`.\n"
                     },
+                    "azLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of availability zones for this NGFW.\n"
+                    },
+                    "changeProtections": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Enables or disables change protection for the NGFW.\n"
+                    },
+                    "deploymentUpdateToken": {
+                        "type": "string",
+                        "description": "The update token.\n"
+                    },
                     "description": {
                         "type": "string",
-                        "description": "The description.\n"
+                        "description": "The NGFW description.\n"
+                    },
+                    "egressNats": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudngfwaws:index/NgfwEgressNat:NgfwEgressNat"
+                        }
                     },
                     "endpointMode": {
                         "type": "string",
-                        "description": "Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.\n",
-                        "willReplaceOnChanges": true
+                        "description": "Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.\n"
                     },
                     "endpointServiceName": {
                         "type": "string",
                         "description": "The endpoint service name.\n"
                     },
+                    "endpoints": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudngfwaws:index/NgfwEndpoint:NgfwEndpoint"
+                        }
+                    },
                     "firewallId": {
                         "type": "string",
-                        "description": "The Id of the NGFW.\n"
+                        "description": "The Firewall ID.\n"
                     },
                     "globalRulestack": {
                         "type": "string",
@@ -2154,7 +2763,7 @@
                     },
                     "linkId": {
                         "type": "string",
-                        "description": "A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.\n"
+                        "description": "The link ID.\n"
                     },
                     "linkStatus": {
                         "type": "string",
@@ -2166,8 +2775,13 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The NGFW name.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The NGFW name.\n"
+                    },
+                    "privateAccesses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudngfwaws:index/NgfwPrivateAccess:NgfwPrivateAccess"
+                        }
                     },
                     "rulestack": {
                         "type": "string",
@@ -2197,17 +2811,22 @@
                         "type": "string",
                         "description": "The update token.\n"
                     },
+                    "userIds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudngfwaws:index/NgfwUserId:NgfwUserId"
+                        }
+                    },
                     "vpcId": {
                         "type": "string",
-                        "description": "The vpc id.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The VPC ID for the NGFW.\n"
                     }
                 },
                 "type": "object"
             }
         },
         "cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile": {
-            "description": "Resource for NGFW log profile manipulation.\n\n\n## Admin Permission Type\n\n* `Firewall`\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as cloudngfwaws from \"@pulumi/cloudngfwaws\";\n\nconst exampleVpc = new aws.index.Vpc(\"example\", {\n    cidrBlock: \"172.16.0.0/16\",\n    tags: {\n        name: \"tf-example\",\n    },\n});\nconst subnet1 = new aws.index.Subnet(\"subnet1\", {\n    vpcId: myVpc.id,\n    cidrBlock: \"172.16.10.0/24\",\n    availabilityZone: \"us-west-2a\",\n    tags: {\n        name: \"tf-example\",\n    },\n});\nconst subnet2 = new aws.index.Subnet(\"subnet2\", {\n    vpcId: myVpc.id,\n    cidrBlock: \"172.16.20.0/24\",\n    availabilityZone: \"us-west-2b\",\n    tags: {\n        name: \"tf-example\",\n    },\n});\nconst x = new cloudngfwaws.Ngfw(\"x\", {\n    name: \"example-instance\",\n    vpcId: exampleVpc.id,\n    accountId: \"12345678\",\n    description: \"Example description\",\n    endpointMode: \"ServiceManaged\",\n    subnetMappings: [\n        {\n            subnetId: subnet1.id,\n        },\n        {\n            subnetId: subnet2.id,\n        },\n    ],\n    rulestack: \"example-rulestack\",\n    tags: {\n        Foo: \"bar\",\n    },\n});\nconst example = new cloudngfwaws.NgfwLogProfile(\"example\", {\n    ngfw: x.name,\n    accountId: x.accountId,\n    logDestinations: [\n        {\n            destinationType: \"S3\",\n            destination: \"my-s3-bucket\",\n            logType: \"TRAFFIC\",\n        },\n        {\n            destinationType: \"CloudWatchLogs\",\n            destination: \"panw-log-group\",\n            logType: \"THREAT\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_cloudngfwaws as cloudngfwaws\n\nexample_vpc = aws.index.Vpc(\"example\",\n    cidr_block=172.16.0.0/16,\n    tags={\n        name: tf-example,\n    })\nsubnet1 = aws.index.Subnet(\"subnet1\",\n    vpc_id=my_vpc.id,\n    cidr_block=172.16.10.0/24,\n    availability_zone=us-west-2a,\n    tags={\n        name: tf-example,\n    })\nsubnet2 = aws.index.Subnet(\"subnet2\",\n    vpc_id=my_vpc.id,\n    cidr_block=172.16.20.0/24,\n    availability_zone=us-west-2b,\n    tags={\n        name: tf-example,\n    })\nx = cloudngfwaws.Ngfw(\"x\",\n    name=\"example-instance\",\n    vpc_id=example_vpc[\"id\"],\n    account_id=\"12345678\",\n    description=\"Example description\",\n    endpoint_mode=\"ServiceManaged\",\n    subnet_mappings=[\n        {\n            \"subnet_id\": subnet1[\"id\"],\n        },\n        {\n            \"subnet_id\": subnet2[\"id\"],\n        },\n    ],\n    rulestack=\"example-rulestack\",\n    tags={\n        \"Foo\": \"bar\",\n    })\nexample = cloudngfwaws.NgfwLogProfile(\"example\",\n    ngfw=x.name,\n    account_id=x.account_id,\n    log_destinations=[\n        {\n            \"destination_type\": \"S3\",\n            \"destination\": \"my-s3-bucket\",\n            \"log_type\": \"TRAFFIC\",\n        },\n        {\n            \"destination_type\": \"CloudWatchLogs\",\n            \"destination\": \"panw-log-group\",\n            \"log_type\": \"THREAT\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing CloudNgfwAws = Pulumi.CloudNgfwAws;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleVpc = new Aws.Index.Vpc(\"example\", new()\n    {\n        CidrBlock = \"172.16.0.0/16\",\n        Tags = \n        {\n            { \"name\", \"tf-example\" },\n        },\n    });\n\n    var subnet1 = new Aws.Index.Subnet(\"subnet1\", new()\n    {\n        VpcId = myVpc.Id,\n        CidrBlock = \"172.16.10.0/24\",\n        AvailabilityZone = \"us-west-2a\",\n        Tags = \n        {\n            { \"name\", \"tf-example\" },\n        },\n    });\n\n    var subnet2 = new Aws.Index.Subnet(\"subnet2\", new()\n    {\n        VpcId = myVpc.Id,\n        CidrBlock = \"172.16.20.0/24\",\n        AvailabilityZone = \"us-west-2b\",\n        Tags = \n        {\n            { \"name\", \"tf-example\" },\n        },\n    });\n\n    var x = new CloudNgfwAws.Ngfw(\"x\", new()\n    {\n        Name = \"example-instance\",\n        VpcId = exampleVpc.Id,\n        AccountId = \"12345678\",\n        Description = \"Example description\",\n        EndpointMode = \"ServiceManaged\",\n        SubnetMappings = new[]\n        {\n            new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs\n            {\n                SubnetId = subnet1.Id,\n            },\n            new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs\n            {\n                SubnetId = subnet2.Id,\n            },\n        },\n        Rulestack = \"example-rulestack\",\n        Tags = \n        {\n            { \"Foo\", \"bar\" },\n        },\n    });\n\n    var example = new CloudNgfwAws.NgfwLogProfile(\"example\", new()\n    {\n        Ngfw = x.Name,\n        AccountId = x.AccountId,\n        LogDestinations = new[]\n        {\n            new CloudNgfwAws.Inputs.NgfwLogProfileLogDestinationArgs\n            {\n                DestinationType = \"S3\",\n                Destination = \"my-s3-bucket\",\n                LogType = \"TRAFFIC\",\n            },\n            new CloudNgfwAws.Inputs.NgfwLogProfileLogDestinationArgs\n            {\n                DestinationType = \"CloudWatchLogs\",\n                Destination = \"panw-log-group\",\n                LogType = \"THREAT\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aws/sdk/go/aws\"\n\t\"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleVpc, err := aws.NewVpc(ctx, \"example\", \u0026aws.VpcArgs{\n\t\t\tCidrBlock: \"172.16.0.0/16\",\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"name\": \"tf-example\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsubnet1, err := aws.NewSubnet(ctx, \"subnet1\", \u0026aws.SubnetArgs{\n\t\t\tVpcId:            myVpc.Id,\n\t\t\tCidrBlock:        \"172.16.10.0/24\",\n\t\t\tAvailabilityZone: \"us-west-2a\",\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"name\": \"tf-example\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsubnet2, err := aws.NewSubnet(ctx, \"subnet2\", \u0026aws.SubnetArgs{\n\t\t\tVpcId:            myVpc.Id,\n\t\t\tCidrBlock:        \"172.16.20.0/24\",\n\t\t\tAvailabilityZone: \"us-west-2b\",\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"name\": \"tf-example\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tx, err := cloudngfwaws.NewNgfw(ctx, \"x\", \u0026cloudngfwaws.NgfwArgs{\n\t\t\tName:         pulumi.String(\"example-instance\"),\n\t\t\tVpcId:        exampleVpc.Id,\n\t\t\tAccountId:    pulumi.String(\"12345678\"),\n\t\t\tDescription:  pulumi.String(\"Example description\"),\n\t\t\tEndpointMode: pulumi.String(\"ServiceManaged\"),\n\t\t\tSubnetMappings: cloudngfwaws.NgfwSubnetMappingArray{\n\t\t\t\t\u0026cloudngfwaws.NgfwSubnetMappingArgs{\n\t\t\t\t\tSubnetId: subnet1.Id,\n\t\t\t\t},\n\t\t\t\t\u0026cloudngfwaws.NgfwSubnetMappingArgs{\n\t\t\t\t\tSubnetId: subnet2.Id,\n\t\t\t\t},\n\t\t\t},\n\t\t\tRulestack: pulumi.String(\"example-rulestack\"),\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"Foo\": pulumi.String(\"bar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudngfwaws.NewNgfwLogProfile(ctx, \"example\", \u0026cloudngfwaws.NgfwLogProfileArgs{\n\t\t\tNgfw:      x.Name,\n\t\t\tAccountId: x.AccountId,\n\t\t\tLogDestinations: cloudngfwaws.NgfwLogProfileLogDestinationArray{\n\t\t\t\t\u0026cloudngfwaws.NgfwLogProfileLogDestinationArgs{\n\t\t\t\t\tDestinationType: pulumi.String(\"S3\"),\n\t\t\t\t\tDestination:     pulumi.String(\"my-s3-bucket\"),\n\t\t\t\t\tLogType:         pulumi.String(\"TRAFFIC\"),\n\t\t\t\t},\n\t\t\t\t\u0026cloudngfwaws.NgfwLogProfileLogDestinationArgs{\n\t\t\t\t\tDestinationType: pulumi.String(\"CloudWatchLogs\"),\n\t\t\t\t\tDestination:     pulumi.String(\"panw-log-group\"),\n\t\t\t\t\tLogType:         pulumi.String(\"THREAT\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aws.vpc;\nimport com.pulumi.aws.vpcArgs;\nimport com.pulumi.aws.subnet;\nimport com.pulumi.aws.subnetArgs;\nimport com.pulumi.cloudngfwaws.Ngfw;\nimport com.pulumi.cloudngfwaws.NgfwArgs;\nimport com.pulumi.cloudngfwaws.inputs.NgfwSubnetMappingArgs;\nimport com.pulumi.cloudngfwaws.NgfwLogProfile;\nimport com.pulumi.cloudngfwaws.NgfwLogProfileArgs;\nimport com.pulumi.cloudngfwaws.inputs.NgfwLogProfileLogDestinationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleVpc = new Vpc(\"exampleVpc\", VpcArgs.builder()\n            .cidrBlock(\"172.16.0.0/16\")\n            .tags(Map.of(\"name\", \"tf-example\"))\n            .build());\n\n        var subnet1 = new Subnet(\"subnet1\", SubnetArgs.builder()\n            .vpcId(myVpc.id())\n            .cidrBlock(\"172.16.10.0/24\")\n            .availabilityZone(\"us-west-2a\")\n            .tags(Map.of(\"name\", \"tf-example\"))\n            .build());\n\n        var subnet2 = new Subnet(\"subnet2\", SubnetArgs.builder()\n            .vpcId(myVpc.id())\n            .cidrBlock(\"172.16.20.0/24\")\n            .availabilityZone(\"us-west-2b\")\n            .tags(Map.of(\"name\", \"tf-example\"))\n            .build());\n\n        var x = new Ngfw(\"x\", NgfwArgs.builder()\n            .name(\"example-instance\")\n            .vpcId(exampleVpc.id())\n            .accountId(\"12345678\")\n            .description(\"Example description\")\n            .endpointMode(\"ServiceManaged\")\n            .subnetMappings(            \n                NgfwSubnetMappingArgs.builder()\n                    .subnetId(subnet1.id())\n                    .build(),\n                NgfwSubnetMappingArgs.builder()\n                    .subnetId(subnet2.id())\n                    .build())\n            .rulestack(\"example-rulestack\")\n            .tags(Map.of(\"Foo\", \"bar\"))\n            .build());\n\n        var example = new NgfwLogProfile(\"example\", NgfwLogProfileArgs.builder()\n            .ngfw(x.name())\n            .accountId(x.accountId())\n            .logDestinations(            \n                NgfwLogProfileLogDestinationArgs.builder()\n                    .destinationType(\"S3\")\n                    .destination(\"my-s3-bucket\")\n                    .logType(\"TRAFFIC\")\n                    .build(),\n                NgfwLogProfileLogDestinationArgs.builder()\n                    .destinationType(\"CloudWatchLogs\")\n                    .destination(\"panw-log-group\")\n                    .logType(\"THREAT\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudngfwaws:NgfwLogProfile\n    properties:\n      ngfw: ${x.name}\n      accountId: ${x.accountId}\n      logDestinations:\n        - destinationType: S3\n          destination: my-s3-bucket\n          logType: TRAFFIC\n        - destinationType: CloudWatchLogs\n          destination: panw-log-group\n          logType: THREAT\n  x:\n    type: cloudngfwaws:Ngfw\n    properties:\n      name: example-instance\n      vpcId: ${exampleVpc.id}\n      accountId: '12345678'\n      description: Example description\n      endpointMode: ServiceManaged\n      subnetMappings:\n        - subnetId: ${subnet1.id}\n        - subnetId: ${subnet2.id}\n      rulestack: example-rulestack\n      tags:\n        Foo: bar\n  exampleVpc:\n    type: aws:vpc\n    name: example\n    properties:\n      cidrBlock: 172.16.0.0/16\n      tags:\n        name: tf-example\n  subnet1:\n    type: aws:subnet\n    properties:\n      vpcId: ${myVpc.id}\n      cidrBlock: 172.16.10.0/24\n      availabilityZone: us-west-2a\n      tags:\n        name: tf-example\n  subnet2:\n    type: aws:subnet\n    properties:\n      vpcId: ${myVpc.id}\n      cidrBlock: 172.16.20.0/24\n      availabilityZone: us-west-2b\n      tags:\n        name: tf-example\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nimport name is \u003caccount_id\u003e:\u003cngfw\u003e\n\n```sh\n$ pulumi import cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile example 12345678:example-instance\n```\n\n",
+            "description": "Resource for NGFW log profile manipulation.\n\n\n## Admin Permission Type\n\n* `Firewall`\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as cloudngfwaws from \"@pulumi/cloudngfwaws\";\n\nconst exampleVpc = new aws.index.Vpc(\"example\", {\n    cidrBlock: \"172.16.0.0/16\",\n    tags: {\n        name: \"tf-example\",\n    },\n});\nconst subnet1 = new aws.index.Subnet(\"subnet1\", {\n    vpcId: myVpc.id,\n    cidrBlock: \"172.16.10.0/24\",\n    availabilityZone: \"us-west-2a\",\n    tags: {\n        name: \"tf-example\",\n    },\n});\nconst x = new cloudngfwaws.Ngfw(\"x\", {\n    name: \"example-instance\",\n    description: \"Example description\",\n    endpoints: [{\n        subnetId: subnet1.id,\n        mode: \"ServiceManaged\",\n        vpcId: exampleVpc.id,\n        accountId: \"12345678\",\n    }],\n    rulestack: \"example-rulestack\",\n    tags: {\n        Foo: \"bar\",\n    },\n});\nconst example = new cloudngfwaws.NgfwLogProfile(\"example\", {\n    firewallId: x.firewallId,\n    accountId: x.accountId,\n    advancedThreatLog: true,\n    cloudwatchMetricFields: [\n        \"Dataplane_CPU_Utilization\",\n        \"Session_Throughput_Kbps\",\n        \"BytesIn\",\n        \"BytesOut\",\n    ],\n    cloudWatchMetricNamespace: \"PaloAltoCloudNGFW\",\n    logConfig: {\n        logDestination: \"my-s3-bucket\",\n        logDestinationType: \"S3\",\n        logTypes: [\"TRAFFIC\"],\n        accountId: \"251583708250\",\n        roleType: \"IamBased\",\n    },\n});\nconst subnet2 = new aws.index.Subnet(\"subnet2\", {\n    vpcId: myVpc.id,\n    cidrBlock: \"172.16.20.0/24\",\n    availabilityZone: \"us-west-2b\",\n    tags: {\n        name: \"tf-example\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_cloudngfwaws as cloudngfwaws\n\nexample_vpc = aws.index.Vpc(\"example\",\n    cidr_block=172.16.0.0/16,\n    tags={\n        name: tf-example,\n    })\nsubnet1 = aws.index.Subnet(\"subnet1\",\n    vpc_id=my_vpc.id,\n    cidr_block=172.16.10.0/24,\n    availability_zone=us-west-2a,\n    tags={\n        name: tf-example,\n    })\nx = cloudngfwaws.Ngfw(\"x\",\n    name=\"example-instance\",\n    description=\"Example description\",\n    endpoints=[{\n        \"subnet_id\": subnet1[\"id\"],\n        \"mode\": \"ServiceManaged\",\n        \"vpc_id\": example_vpc[\"id\"],\n        \"account_id\": \"12345678\",\n    }],\n    rulestack=\"example-rulestack\",\n    tags={\n        \"Foo\": \"bar\",\n    })\nexample = cloudngfwaws.NgfwLogProfile(\"example\",\n    firewall_id=x.firewall_id,\n    account_id=x.account_id,\n    advanced_threat_log=True,\n    cloudwatch_metric_fields=[\n        \"Dataplane_CPU_Utilization\",\n        \"Session_Throughput_Kbps\",\n        \"BytesIn\",\n        \"BytesOut\",\n    ],\n    cloud_watch_metric_namespace=\"PaloAltoCloudNGFW\",\n    log_config={\n        \"log_destination\": \"my-s3-bucket\",\n        \"log_destination_type\": \"S3\",\n        \"log_types\": [\"TRAFFIC\"],\n        \"account_id\": \"251583708250\",\n        \"role_type\": \"IamBased\",\n    })\nsubnet2 = aws.index.Subnet(\"subnet2\",\n    vpc_id=my_vpc.id,\n    cidr_block=172.16.20.0/24,\n    availability_zone=us-west-2b,\n    tags={\n        name: tf-example,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing CloudNgfwAws = Pulumi.CloudNgfwAws;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleVpc = new Aws.Index.Vpc(\"example\", new()\n    {\n        CidrBlock = \"172.16.0.0/16\",\n        Tags = \n        {\n            { \"name\", \"tf-example\" },\n        },\n    });\n\n    var subnet1 = new Aws.Index.Subnet(\"subnet1\", new()\n    {\n        VpcId = myVpc.Id,\n        CidrBlock = \"172.16.10.0/24\",\n        AvailabilityZone = \"us-west-2a\",\n        Tags = \n        {\n            { \"name\", \"tf-example\" },\n        },\n    });\n\n    var x = new CloudNgfwAws.Ngfw(\"x\", new()\n    {\n        Name = \"example-instance\",\n        Description = \"Example description\",\n        Endpoints = new[]\n        {\n            new CloudNgfwAws.Inputs.NgfwEndpointArgs\n            {\n                SubnetId = subnet1.Id,\n                Mode = \"ServiceManaged\",\n                VpcId = exampleVpc.Id,\n                AccountId = \"12345678\",\n            },\n        },\n        Rulestack = \"example-rulestack\",\n        Tags = \n        {\n            { \"Foo\", \"bar\" },\n        },\n    });\n\n    var example = new CloudNgfwAws.NgfwLogProfile(\"example\", new()\n    {\n        FirewallId = x.FirewallId,\n        AccountId = x.AccountId,\n        AdvancedThreatLog = true,\n        CloudwatchMetricFields = new[]\n        {\n            \"Dataplane_CPU_Utilization\",\n            \"Session_Throughput_Kbps\",\n            \"BytesIn\",\n            \"BytesOut\",\n        },\n        CloudWatchMetricNamespace = \"PaloAltoCloudNGFW\",\n        LogConfig = new CloudNgfwAws.Inputs.NgfwLogProfileLogConfigArgs\n        {\n            LogDestination = \"my-s3-bucket\",\n            LogDestinationType = \"S3\",\n            LogTypes = new[]\n            {\n                \"TRAFFIC\",\n            },\n            AccountId = \"251583708250\",\n            RoleType = \"IamBased\",\n        },\n    });\n\n    var subnet2 = new Aws.Index.Subnet(\"subnet2\", new()\n    {\n        VpcId = myVpc.Id,\n        CidrBlock = \"172.16.20.0/24\",\n        AvailabilityZone = \"us-west-2b\",\n        Tags = \n        {\n            { \"name\", \"tf-example\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aws/sdk/go/aws\"\n\t\"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleVpc, err := aws.NewVpc(ctx, \"example\", \u0026aws.VpcArgs{\n\t\t\tCidrBlock: \"172.16.0.0/16\",\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"name\": \"tf-example\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsubnet1, err := aws.NewSubnet(ctx, \"subnet1\", \u0026aws.SubnetArgs{\n\t\t\tVpcId:            myVpc.Id,\n\t\t\tCidrBlock:        \"172.16.10.0/24\",\n\t\t\tAvailabilityZone: \"us-west-2a\",\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"name\": \"tf-example\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tx, err := cloudngfwaws.NewNgfw(ctx, \"x\", \u0026cloudngfwaws.NgfwArgs{\n\t\t\tName:        pulumi.String(\"example-instance\"),\n\t\t\tDescription: pulumi.String(\"Example description\"),\n\t\t\tEndpoints: cloudngfwaws.NgfwEndpointArray{\n\t\t\t\t\u0026cloudngfwaws.NgfwEndpointArgs{\n\t\t\t\t\tSubnetId:  subnet1.Id,\n\t\t\t\t\tMode:      pulumi.String(\"ServiceManaged\"),\n\t\t\t\t\tVpcId:     exampleVpc.Id,\n\t\t\t\t\tAccountId: pulumi.String(\"12345678\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tRulestack: pulumi.String(\"example-rulestack\"),\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"Foo\": pulumi.String(\"bar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudngfwaws.NewNgfwLogProfile(ctx, \"example\", \u0026cloudngfwaws.NgfwLogProfileArgs{\n\t\t\tFirewallId:        x.FirewallId,\n\t\t\tAccountId:         x.AccountId,\n\t\t\tAdvancedThreatLog: pulumi.Bool(true),\n\t\t\tCloudwatchMetricFields: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"Dataplane_CPU_Utilization\"),\n\t\t\t\tpulumi.String(\"Session_Throughput_Kbps\"),\n\t\t\t\tpulumi.String(\"BytesIn\"),\n\t\t\t\tpulumi.String(\"BytesOut\"),\n\t\t\t},\n\t\t\tCloudWatchMetricNamespace: pulumi.String(\"PaloAltoCloudNGFW\"),\n\t\t\tLogConfig: \u0026cloudngfwaws.NgfwLogProfileLogConfigArgs{\n\t\t\t\tLogDestination:     pulumi.String(\"my-s3-bucket\"),\n\t\t\t\tLogDestinationType: pulumi.String(\"S3\"),\n\t\t\t\tLogTypes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"TRAFFIC\"),\n\t\t\t\t},\n\t\t\t\tAccountId: pulumi.String(\"251583708250\"),\n\t\t\t\tRoleType:  pulumi.String(\"IamBased\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aws.NewSubnet(ctx, \"subnet2\", \u0026aws.SubnetArgs{\n\t\t\tVpcId:            myVpc.Id,\n\t\t\tCidrBlock:        \"172.16.20.0/24\",\n\t\t\tAvailabilityZone: \"us-west-2b\",\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"name\": \"tf-example\",\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aws.vpc;\nimport com.pulumi.aws.vpcArgs;\nimport com.pulumi.aws.subnet;\nimport com.pulumi.aws.subnetArgs;\nimport com.pulumi.cloudngfwaws.Ngfw;\nimport com.pulumi.cloudngfwaws.NgfwArgs;\nimport com.pulumi.cloudngfwaws.inputs.NgfwEndpointArgs;\nimport com.pulumi.cloudngfwaws.NgfwLogProfile;\nimport com.pulumi.cloudngfwaws.NgfwLogProfileArgs;\nimport com.pulumi.cloudngfwaws.inputs.NgfwLogProfileLogConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleVpc = new Vpc(\"exampleVpc\", VpcArgs.builder()\n            .cidrBlock(\"172.16.0.0/16\")\n            .tags(Map.of(\"name\", \"tf-example\"))\n            .build());\n\n        var subnet1 = new Subnet(\"subnet1\", SubnetArgs.builder()\n            .vpcId(myVpc.id())\n            .cidrBlock(\"172.16.10.0/24\")\n            .availabilityZone(\"us-west-2a\")\n            .tags(Map.of(\"name\", \"tf-example\"))\n            .build());\n\n        var x = new Ngfw(\"x\", NgfwArgs.builder()\n            .name(\"example-instance\")\n            .description(\"Example description\")\n            .endpoints(NgfwEndpointArgs.builder()\n                .subnetId(subnet1.id())\n                .mode(\"ServiceManaged\")\n                .vpcId(exampleVpc.id())\n                .accountId(\"12345678\")\n                .build())\n            .rulestack(\"example-rulestack\")\n            .tags(Map.of(\"Foo\", \"bar\"))\n            .build());\n\n        var example = new NgfwLogProfile(\"example\", NgfwLogProfileArgs.builder()\n            .firewallId(x.firewallId())\n            .accountId(x.accountId())\n            .advancedThreatLog(true)\n            .cloudwatchMetricFields(            \n                \"Dataplane_CPU_Utilization\",\n                \"Session_Throughput_Kbps\",\n                \"BytesIn\",\n                \"BytesOut\")\n            .cloudWatchMetricNamespace(\"PaloAltoCloudNGFW\")\n            .logConfig(NgfwLogProfileLogConfigArgs.builder()\n                .logDestination(\"my-s3-bucket\")\n                .logDestinationType(\"S3\")\n                .logTypes(\"TRAFFIC\")\n                .accountId(\"251583708250\")\n                .roleType(\"IamBased\")\n                .build())\n            .build());\n\n        var subnet2 = new Subnet(\"subnet2\", SubnetArgs.builder()\n            .vpcId(myVpc.id())\n            .cidrBlock(\"172.16.20.0/24\")\n            .availabilityZone(\"us-west-2b\")\n            .tags(Map.of(\"name\", \"tf-example\"))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudngfwaws:NgfwLogProfile\n    properties:\n      firewallId: ${x.firewallId}\n      accountId: ${x.accountId}\n      advancedThreatLog: true\n      cloudwatchMetricFields:\n        - Dataplane_CPU_Utilization\n        - Session_Throughput_Kbps\n        - BytesIn\n        - BytesOut\n      cloudWatchMetricNamespace: PaloAltoCloudNGFW\n      logConfig:\n        logDestination: my-s3-bucket\n        logDestinationType: S3\n        logTypes:\n          - TRAFFIC\n        accountId: '251583708250'\n        roleType: IamBased\n  x:\n    type: cloudngfwaws:Ngfw\n    properties:\n      name: example-instance\n      description: Example description\n      endpoints:\n        - subnetId: ${subnet1.id}\n          mode: ServiceManaged\n          vpcId: ${exampleVpc.id}\n          accountId: '12345678'\n      rulestack: example-rulestack\n      tags:\n        Foo: bar\n  exampleVpc:\n    type: aws:vpc\n    name: example\n    properties:\n      cidrBlock: 172.16.0.0/16\n      tags:\n        name: tf-example\n  subnet1:\n    type: aws:subnet\n    properties:\n      vpcId: ${myVpc.id}\n      cidrBlock: 172.16.10.0/24\n      availabilityZone: us-west-2a\n      tags:\n        name: tf-example\n  subnet2:\n    type: aws:subnet\n    properties:\n      vpcId: ${myVpc.id}\n      cidrBlock: 172.16.20.0/24\n      availabilityZone: us-west-2b\n      tags:\n        name: tf-example\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nimport name is \u003caccount_id\u003e:\u003cngfw\u003e\n\n```sh\n$ pulumi import cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile example 12345678:example-instance\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -2228,6 +2847,14 @@
                     },
                     "description": "Cloudwatch metric fields.\n"
                 },
+                "firewallId": {
+                    "type": "string",
+                    "description": "The Firewall Id for the NGFW.\n"
+                },
+                "logConfig": {
+                    "$ref": "#/types/cloudngfwaws:index/NgfwLogProfileLogConfig:NgfwLogProfileLogConfig",
+                    "description": "Log configuration details.\n"
+                },
                 "logDestinations": {
                     "type": "array",
                     "items": {
@@ -2238,12 +2865,20 @@
                 "ngfw": {
                     "type": "string",
                     "description": "The name of the NGFW.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the NGFW.\n"
+                },
+                "updateToken": {
+                    "type": "string",
+                    "description": "The update token.\n"
                 }
             },
             "required": [
-                "accountId",
-                "logDestinations",
-                "ngfw"
+                "firewallId",
+                "region",
+                "updateToken"
             ],
             "inputProperties": {
                 "accountId": {
@@ -2265,6 +2900,15 @@
                     },
                     "description": "Cloudwatch metric fields.\n"
                 },
+                "firewallId": {
+                    "type": "string",
+                    "description": "The Firewall Id for the NGFW.\n",
+                    "willReplaceOnChanges": true
+                },
+                "logConfig": {
+                    "$ref": "#/types/cloudngfwaws:index/NgfwLogProfileLogConfig:NgfwLogProfileLogConfig",
+                    "description": "Log configuration details.\n"
+                },
                 "logDestinations": {
                     "type": "array",
                     "items": {
@@ -2276,12 +2920,14 @@
                     "type": "string",
                     "description": "The name of the NGFW.\n",
                     "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the NGFW.\n"
                 }
             },
             "requiredInputs": [
-                "accountId",
-                "logDestinations",
-                "ngfw"
+                "firewallId"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering NgfwLogProfile resources.\n",
@@ -2305,6 +2951,15 @@
                         },
                         "description": "Cloudwatch metric fields.\n"
                     },
+                    "firewallId": {
+                        "type": "string",
+                        "description": "The Firewall Id for the NGFW.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "logConfig": {
+                        "$ref": "#/types/cloudngfwaws:index/NgfwLogProfileLogConfig:NgfwLogProfileLogConfig",
+                        "description": "Log configuration details.\n"
+                    },
                     "logDestinations": {
                         "type": "array",
                         "items": {
@@ -2316,6 +2971,14 @@
                         "type": "string",
                         "description": "The name of the NGFW.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region of the NGFW.\n"
+                    },
+                    "updateToken": {
+                        "type": "string",
+                        "description": "The update token.\n"
                     }
                 },
                 "type": "object"
@@ -3678,32 +4341,33 @@
             }
         },
         "cloudngfwaws:index/getNgfw:getNgfw": {
-            "description": "Data source for retrieving NGFW information.\n\n\n## Admin Permission Type\n\n* `Firewall`\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudngfwaws from \"@pulumi/cloudngfwaws\";\n\nconst example = cloudngfwaws.getNgfw({\n    name: \"example-instance\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudngfwaws as cloudngfwaws\n\nexample = cloudngfwaws.get_ngfw(name=\"example-instance\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing CloudNgfwAws = Pulumi.CloudNgfwAws;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = CloudNgfwAws.GetNgfw.Invoke(new()\n    {\n        Name = \"example-instance\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudngfwaws.LookupNgfw(ctx, \u0026cloudngfwaws.LookupNgfwArgs{\n\t\t\tName: \"example-instance\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudngfwaws.CloudngfwawsFunctions;\nimport com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudngfwawsFunctions.getNgfw(GetNgfwArgs.builder()\n            .name(\"example-instance\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: cloudngfwaws:getNgfw\n      arguments:\n        name: example-instance\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Data source for retrieving NGFW information.\n\n\n## Admin Permission Type\n\n* `Firewall`\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: cloudngfwaws:getNgfw\n      arguments:\n        name: example-instance\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getNgfw.\n",
                 "properties": {
-                    "accountId": {
+                    "firewallId": {
                         "type": "string",
-                        "description": "The account ID. This field is mandatory if using multiple accounts.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "The NGFW name.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The Firewall ID.\n"
                     }
                 },
                 "type": "object",
                 "required": [
-                    "name"
+                    "firewallId"
                 ]
             },
             "outputs": {
                 "description": "A collection of values returned by getNgfw.\n",
                 "properties": {
                     "accountId": {
-                        "description": "The account ID. This field is mandatory if using multiple accounts.\n",
+                        "description": "The description.\n",
                         "type": "string"
+                    },
+                    "allowlistAccounts": {
+                        "description": "The list of allowed accounts for this NGFW.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
                     },
                     "appIdVersion": {
                         "description": "App-ID version number.\n",
@@ -3713,9 +4377,33 @@
                         "description": "Automatic App-ID upgrade version number.\n",
                         "type": "boolean"
                     },
-                    "description": {
-                        "description": "The description.\n",
+                    "azLists": {
+                        "description": "The list of availability zones for this NGFW.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "changeProtections": {
+                        "description": "Enables or disables change protection for the NGFW.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "deploymentUpdateToken": {
+                        "description": "The update token.\n",
                         "type": "string"
+                    },
+                    "description": {
+                        "description": "The NGFW description.\n",
+                        "type": "string"
+                    },
+                    "egressNats": {
+                        "items": {
+                            "$ref": "#/types/cloudngfwaws:index/getNgfwEgressNat:getNgfwEgressNat"
+                        },
+                        "type": "array"
                     },
                     "endpointMode": {
                         "description": "Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.\n",
@@ -3725,8 +4413,14 @@
                         "description": "The endpoint service name.\n",
                         "type": "string"
                     },
+                    "endpoints": {
+                        "items": {
+                            "$ref": "#/types/cloudngfwaws:index/getNgfwEndpoint:getNgfwEndpoint"
+                        },
+                        "type": "array"
+                    },
                     "firewallId": {
-                        "description": "The Id of the NGFW.\n",
+                        "description": "The Firewall ID.\n",
                         "type": "string"
                     },
                     "globalRulestack": {
@@ -3752,6 +4446,12 @@
                     "name": {
                         "description": "The NGFW name.\n",
                         "type": "string"
+                    },
+                    "privateAccesses": {
+                        "items": {
+                            "$ref": "#/types/cloudngfwaws:index/getNgfwPrivateAccess:getNgfwPrivateAccess"
+                        },
+                        "type": "array"
                     },
                     "rulestack": {
                         "description": "The rulestack for this NGFW.\n",
@@ -3781,28 +4481,43 @@
                         "description": "The update token.\n",
                         "type": "string"
                     },
+                    "userIds": {
+                        "items": {
+                            "$ref": "#/types/cloudngfwaws:index/getNgfwUserId:getNgfwUserId"
+                        },
+                        "type": "array"
+                    },
                     "vpcId": {
-                        "description": "The vpc id.\n",
+                        "description": "The VPC ID for the NGFW.\n",
                         "type": "string"
                     }
                 },
                 "required": [
+                    "accountId",
+                    "allowlistAccounts",
                     "appIdVersion",
                     "automaticUpgradeAppIdVersion",
+                    "azLists",
+                    "changeProtections",
+                    "deploymentUpdateToken",
                     "description",
+                    "egressNats",
                     "endpointMode",
                     "endpointServiceName",
+                    "endpoints",
                     "firewallId",
                     "globalRulestack",
                     "linkId",
                     "linkStatus",
                     "multiVpc",
                     "name",
+                    "privateAccesses",
                     "rulestack",
                     "statuses",
                     "subnetMappings",
                     "tags",
                     "updateToken",
+                    "userIds",
                     "vpcId",
                     "id"
                 ],
@@ -3810,7 +4525,7 @@
             }
         },
         "cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile": {
-            "description": "Data source for retrieving log profile information.\n\n\n## Admin Permission Type\n\n* `Firewall`\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudngfwaws from \"@pulumi/cloudngfwaws\";\n\nconst example = cloudngfwaws.getNgfwLogProfile({\n    ngfw: \"example-instance\",\n    accountId: \"123456789\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudngfwaws as cloudngfwaws\n\nexample = cloudngfwaws.get_ngfw_log_profile(ngfw=\"example-instance\",\n    account_id=\"123456789\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing CloudNgfwAws = Pulumi.CloudNgfwAws;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = CloudNgfwAws.GetNgfwLogProfile.Invoke(new()\n    {\n        Ngfw = \"example-instance\",\n        AccountId = \"123456789\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudngfwaws.LookupNgfwLogProfile(ctx, \u0026cloudngfwaws.LookupNgfwLogProfileArgs{\n\t\t\tNgfw:      \"example-instance\",\n\t\t\tAccountId: \"123456789\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudngfwaws.CloudngfwawsFunctions;\nimport com.pulumi.cloudngfwaws.inputs.GetNgfwLogProfileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudngfwawsFunctions.getNgfwLogProfile(GetNgfwLogProfileArgs.builder()\n            .ngfw(\"example-instance\")\n            .accountId(\"123456789\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: cloudngfwaws:getNgfwLogProfile\n      arguments:\n        ngfw: example-instance\n        accountId: '123456789'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Data source for retrieving log profile information.\n\n\n## Admin Permission Type\n\n* `Firewall`\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudngfwaws from \"@pulumi/cloudngfwaws\";\n\nconst example = cloudngfwaws.getNgfwLogProfile({\n    ngfw: \"example-instance\",\n    accountId: \"123456789\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudngfwaws as cloudngfwaws\n\nexample = cloudngfwaws.get_ngfw_log_profile(ngfw=\"example-instance\",\n    account_id=\"123456789\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing CloudNgfwAws = Pulumi.CloudNgfwAws;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = CloudNgfwAws.GetNgfwLogProfile.Invoke(new()\n    {\n        Ngfw = \"example-instance\",\n        AccountId = \"123456789\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudngfwaws.LookupNgfwLogProfile(ctx, \u0026cloudngfwaws.LookupNgfwLogProfileArgs{\n\t\t\tNgfw:      pulumi.StringRef(\"example-instance\"),\n\t\t\tAccountId: pulumi.StringRef(\"123456789\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudngfwaws.CloudngfwawsFunctions;\nimport com.pulumi.cloudngfwaws.inputs.GetNgfwLogProfileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudngfwawsFunctions.getNgfwLogProfile(GetNgfwLogProfileArgs.builder()\n            .ngfw(\"example-instance\")\n            .accountId(\"123456789\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: cloudngfwaws:getNgfwLogProfile\n      arguments:\n        ngfw: example-instance\n        accountId: '123456789'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getNgfwLogProfile.\n",
                 "properties": {
@@ -3824,11 +4539,7 @@
                         "willReplaceOnChanges": true
                     }
                 },
-                "type": "object",
-                "required": [
-                    "accountId",
-                    "ngfw"
-                ]
+                "type": "object"
             },
             "outputs": {
                 "description": "A collection of values returned by getNgfwLogProfile.\n",
@@ -3852,9 +4563,20 @@
                         },
                         "type": "array"
                     },
+                    "firewallId": {
+                        "description": "The Firewall Id for the NGFW.\n",
+                        "type": "string"
+                    },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
+                    },
+                    "logConfigs": {
+                        "description": "Log configuration details.\n",
+                        "items": {
+                            "$ref": "#/types/cloudngfwaws:index/getNgfwLogProfileLogConfig:getNgfwLogProfileLogConfig"
+                        },
+                        "type": "array"
                     },
                     "logDestinations": {
                         "description": "List of log destinations.\n",
@@ -3866,15 +4588,25 @@
                     "ngfw": {
                         "description": "The name of the NGFW.\n",
                         "type": "string"
+                    },
+                    "region": {
+                        "description": "The region of the NGFW.\n",
+                        "type": "string"
+                    },
+                    "updateToken": {
+                        "description": "The update token.\n",
+                        "type": "string"
                     }
                 },
                 "required": [
-                    "accountId",
                     "advancedThreatLog",
                     "cloudWatchMetricNamespace",
                     "cloudwatchMetricFields",
+                    "firewallId",
+                    "logConfigs",
                     "logDestinations",
-                    "ngfw",
+                    "region",
+                    "updateToken",
                     "id"
                 ],
                 "type": "object"
@@ -3885,6 +4617,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getNgfws.\n",
                 "properties": {
+                    "region": {
+                        "type": "string",
+                        "description": "The region to filter on.\n"
+                    },
                     "rulestack": {
                         "type": "string",
                         "description": "The rulestack to filter on.\n"
@@ -3912,6 +4648,10 @@
                             "$ref": "#/types/cloudngfwaws:index/getNgfwsInstance:getNgfwsInstance"
                         },
                         "type": "array"
+                    },
+                    "region": {
+                        "description": "The region to filter on.\n",
+                        "type": "string"
                     },
                     "rulestack": {
                         "description": "The rulestack to filter on.\n",
