@@ -12,17 +12,11 @@ namespace Pulumi.CloudNgfwAws.Inputs
 
     public sealed class NgfwStatusArgs : global::Pulumi.ResourceArgs
     {
-        [Input("attachments")]
-        private InputList<Inputs.NgfwStatusAttachmentArgs>? _attachments;
-
         /// <summary>
-        /// The firewall attachments.
+        /// The device rulestack commit status.
         /// </summary>
-        public InputList<Inputs.NgfwStatusAttachmentArgs> Attachments
-        {
-            get => _attachments ?? (_attachments = new InputList<Inputs.NgfwStatusAttachmentArgs>());
-            set => _attachments = value;
-        }
+        [Input("deviceRulestackCommitStatus")]
+        public Input<string>? DeviceRulestackCommitStatus { get; set; }
 
         /// <summary>
         /// The firewall failure reason.

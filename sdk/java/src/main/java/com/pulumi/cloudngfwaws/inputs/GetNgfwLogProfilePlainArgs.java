@@ -4,9 +4,10 @@
 package com.pulumi.cloudngfwaws.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetNgfwLogProfilePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -17,30 +18,30 @@ public final class GetNgfwLogProfilePlainArgs extends com.pulumi.resources.Invok
      * The unique ID of the account.
      * 
      */
-    @Import(name="accountId", required=true)
-    private String accountId;
+    @Import(name="accountId")
+    private @Nullable String accountId;
 
     /**
      * @return The unique ID of the account.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
      * The name of the NGFW.
      * 
      */
-    @Import(name="ngfw", required=true)
-    private String ngfw;
+    @Import(name="ngfw")
+    private @Nullable String ngfw;
 
     /**
      * @return The name of the NGFW.
      * 
      */
-    public String ngfw() {
-        return this.ngfw;
+    public Optional<String> ngfw() {
+        return Optional.ofNullable(this.ngfw);
     }
 
     private GetNgfwLogProfilePlainArgs() {}
@@ -74,7 +75,7 @@ public final class GetNgfwLogProfilePlainArgs extends com.pulumi.resources.Invok
          * @return builder
          * 
          */
-        public Builder accountId(String accountId) {
+        public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -85,18 +86,12 @@ public final class GetNgfwLogProfilePlainArgs extends com.pulumi.resources.Invok
          * @return builder
          * 
          */
-        public Builder ngfw(String ngfw) {
+        public Builder ngfw(@Nullable String ngfw) {
             $.ngfw = ngfw;
             return this;
         }
 
         public GetNgfwLogProfilePlainArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetNgfwLogProfilePlainArgs", "accountId");
-            }
-            if ($.ngfw == null) {
-                throw new MissingRequiredPropertyException("GetNgfwLogProfilePlainArgs", "ngfw");
-            }
             return $;
         }
     }

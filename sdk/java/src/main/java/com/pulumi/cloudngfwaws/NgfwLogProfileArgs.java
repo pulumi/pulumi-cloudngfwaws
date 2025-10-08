@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudngfwaws;
 
+import com.pulumi.cloudngfwaws.inputs.NgfwLogProfileLogConfigArgs;
 import com.pulumi.cloudngfwaws.inputs.NgfwLogProfileLogDestinationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -23,15 +24,15 @@ public final class NgfwLogProfileArgs extends com.pulumi.resources.ResourceArgs 
      * The unique ID of the account.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return The unique ID of the account.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -80,33 +81,78 @@ public final class NgfwLogProfileArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The Firewall Id for the NGFW.
+     * 
+     */
+    @Import(name="firewallId", required=true)
+    private Output<String> firewallId;
+
+    /**
+     * @return The Firewall Id for the NGFW.
+     * 
+     */
+    public Output<String> firewallId() {
+        return this.firewallId;
+    }
+
+    /**
+     * Log configuration details.
+     * 
+     */
+    @Import(name="logConfig")
+    private @Nullable Output<NgfwLogProfileLogConfigArgs> logConfig;
+
+    /**
+     * @return Log configuration details.
+     * 
+     */
+    public Optional<Output<NgfwLogProfileLogConfigArgs>> logConfig() {
+        return Optional.ofNullable(this.logConfig);
+    }
+
+    /**
      * List of log destinations.
      * 
      */
-    @Import(name="logDestinations", required=true)
-    private Output<List<NgfwLogProfileLogDestinationArgs>> logDestinations;
+    @Import(name="logDestinations")
+    private @Nullable Output<List<NgfwLogProfileLogDestinationArgs>> logDestinations;
 
     /**
      * @return List of log destinations.
      * 
      */
-    public Output<List<NgfwLogProfileLogDestinationArgs>> logDestinations() {
-        return this.logDestinations;
+    public Optional<Output<List<NgfwLogProfileLogDestinationArgs>>> logDestinations() {
+        return Optional.ofNullable(this.logDestinations);
     }
 
     /**
      * The name of the NGFW.
      * 
      */
-    @Import(name="ngfw", required=true)
-    private Output<String> ngfw;
+    @Import(name="ngfw")
+    private @Nullable Output<String> ngfw;
 
     /**
      * @return The name of the NGFW.
      * 
      */
-    public Output<String> ngfw() {
-        return this.ngfw;
+    public Optional<Output<String>> ngfw() {
+        return Optional.ofNullable(this.ngfw);
+    }
+
+    /**
+     * The region of the NGFW.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The region of the NGFW.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
     }
 
     private NgfwLogProfileArgs() {}
@@ -116,8 +162,11 @@ public final class NgfwLogProfileArgs extends com.pulumi.resources.ResourceArgs 
         this.advancedThreatLog = $.advancedThreatLog;
         this.cloudWatchMetricNamespace = $.cloudWatchMetricNamespace;
         this.cloudwatchMetricFields = $.cloudwatchMetricFields;
+        this.firewallId = $.firewallId;
+        this.logConfig = $.logConfig;
         this.logDestinations = $.logDestinations;
         this.ngfw = $.ngfw;
+        this.region = $.region;
     }
 
     public static Builder builder() {
@@ -144,7 +193,7 @@ public final class NgfwLogProfileArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -233,12 +282,54 @@ public final class NgfwLogProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param firewallId The Firewall Id for the NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(Output<String> firewallId) {
+            $.firewallId = firewallId;
+            return this;
+        }
+
+        /**
+         * @param firewallId The Firewall Id for the NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(String firewallId) {
+            return firewallId(Output.of(firewallId));
+        }
+
+        /**
+         * @param logConfig Log configuration details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logConfig(@Nullable Output<NgfwLogProfileLogConfigArgs> logConfig) {
+            $.logConfig = logConfig;
+            return this;
+        }
+
+        /**
+         * @param logConfig Log configuration details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logConfig(NgfwLogProfileLogConfigArgs logConfig) {
+            return logConfig(Output.of(logConfig));
+        }
+
+        /**
          * @param logDestinations List of log destinations.
          * 
          * @return builder
          * 
          */
-        public Builder logDestinations(Output<List<NgfwLogProfileLogDestinationArgs>> logDestinations) {
+        public Builder logDestinations(@Nullable Output<List<NgfwLogProfileLogDestinationArgs>> logDestinations) {
             $.logDestinations = logDestinations;
             return this;
         }
@@ -269,7 +360,7 @@ public final class NgfwLogProfileArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder ngfw(Output<String> ngfw) {
+        public Builder ngfw(@Nullable Output<String> ngfw) {
             $.ngfw = ngfw;
             return this;
         }
@@ -284,15 +375,30 @@ public final class NgfwLogProfileArgs extends com.pulumi.resources.ResourceArgs 
             return ngfw(Output.of(ngfw));
         }
 
+        /**
+         * @param region The region of the NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The region of the NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
+        }
+
         public NgfwLogProfileArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("NgfwLogProfileArgs", "accountId");
-            }
-            if ($.logDestinations == null) {
-                throw new MissingRequiredPropertyException("NgfwLogProfileArgs", "logDestinations");
-            }
-            if ($.ngfw == null) {
-                throw new MissingRequiredPropertyException("NgfwLogProfileArgs", "ngfw");
+            if ($.firewallId == null) {
+                throw new MissingRequiredPropertyException("NgfwLogProfileArgs", "firewallId");
             }
             return $;
         }

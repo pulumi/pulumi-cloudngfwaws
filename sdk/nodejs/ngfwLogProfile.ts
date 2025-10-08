@@ -34,6 +34,39 @@ import * as utilities from "./utilities";
  *         name: "tf-example",
  *     },
  * });
+ * const x = new cloudngfwaws.Ngfw("x", {
+ *     name: "example-instance",
+ *     description: "Example description",
+ *     endpoints: [{
+ *         subnetId: subnet1.id,
+ *         mode: "ServiceManaged",
+ *         vpcId: exampleVpc.id,
+ *         accountId: "12345678",
+ *     }],
+ *     rulestack: "example-rulestack",
+ *     tags: {
+ *         Foo: "bar",
+ *     },
+ * });
+ * const example = new cloudngfwaws.NgfwLogProfile("example", {
+ *     firewallId: x.firewallId,
+ *     accountId: x.accountId,
+ *     advancedThreatLog: true,
+ *     cloudwatchMetricFields: [
+ *         "Dataplane_CPU_Utilization",
+ *         "Session_Throughput_Kbps",
+ *         "BytesIn",
+ *         "BytesOut",
+ *     ],
+ *     cloudWatchMetricNamespace: "PaloAltoCloudNGFW",
+ *     logConfig: {
+ *         logDestination: "my-s3-bucket",
+ *         logDestinationType: "S3",
+ *         logTypes: ["TRAFFIC"],
+ *         accountId: "251583708250",
+ *         roleType: "IamBased",
+ *     },
+ * });
  * const subnet2 = new aws.index.Subnet("subnet2", {
  *     vpcId: myVpc.id,
  *     cidrBlock: "172.16.20.0/24",
@@ -41,41 +74,6 @@ import * as utilities from "./utilities";
  *     tags: {
  *         name: "tf-example",
  *     },
- * });
- * const x = new cloudngfwaws.Ngfw("x", {
- *     name: "example-instance",
- *     vpcId: exampleVpc.id,
- *     accountId: "12345678",
- *     description: "Example description",
- *     endpointMode: "ServiceManaged",
- *     subnetMappings: [
- *         {
- *             subnetId: subnet1.id,
- *         },
- *         {
- *             subnetId: subnet2.id,
- *         },
- *     ],
- *     rulestack: "example-rulestack",
- *     tags: {
- *         Foo: "bar",
- *     },
- * });
- * const example = new cloudngfwaws.NgfwLogProfile("example", {
- *     ngfw: x.name,
- *     accountId: x.accountId,
- *     logDestinations: [
- *         {
- *             destinationType: "S3",
- *             destination: "my-s3-bucket",
- *             logType: "TRAFFIC",
- *         },
- *         {
- *             destinationType: "CloudWatchLogs",
- *             destination: "panw-log-group",
- *             logType: "THREAT",
- *         },
- *     ],
  * });
  * ```
  *
@@ -118,7 +116,7 @@ export class NgfwLogProfile extends pulumi.CustomResource {
     /**
      * The unique ID of the account.
      */
-    declare public readonly accountId: pulumi.Output<string>;
+    declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
      * Enable advanced threat logging.
      */
@@ -132,13 +130,29 @@ export class NgfwLogProfile extends pulumi.CustomResource {
      */
     declare public readonly cloudwatchMetricFields: pulumi.Output<string[] | undefined>;
     /**
+     * The Firewall Id for the NGFW.
+     */
+    declare public readonly firewallId: pulumi.Output<string>;
+    /**
+     * Log configuration details.
+     */
+    declare public readonly logConfig: pulumi.Output<outputs.NgfwLogProfileLogConfig | undefined>;
+    /**
      * List of log destinations.
      */
-    declare public readonly logDestinations: pulumi.Output<outputs.NgfwLogProfileLogDestination[]>;
+    declare public readonly logDestinations: pulumi.Output<outputs.NgfwLogProfileLogDestination[] | undefined>;
     /**
      * The name of the NGFW.
      */
-    declare public readonly ngfw: pulumi.Output<string>;
+    declare public readonly ngfw: pulumi.Output<string | undefined>;
+    /**
+     * The region of the NGFW.
+     */
+    declare public readonly region: pulumi.Output<string>;
+    /**
+     * The update token.
+     */
+    declare public /*out*/ readonly updateToken: pulumi.Output<string>;
 
     /**
      * Create a NgfwLogProfile resource with the given unique name, arguments, and options.
@@ -157,25 +171,27 @@ export class NgfwLogProfile extends pulumi.CustomResource {
             resourceInputs["advancedThreatLog"] = state?.advancedThreatLog;
             resourceInputs["cloudWatchMetricNamespace"] = state?.cloudWatchMetricNamespace;
             resourceInputs["cloudwatchMetricFields"] = state?.cloudwatchMetricFields;
+            resourceInputs["firewallId"] = state?.firewallId;
+            resourceInputs["logConfig"] = state?.logConfig;
             resourceInputs["logDestinations"] = state?.logDestinations;
             resourceInputs["ngfw"] = state?.ngfw;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["updateToken"] = state?.updateToken;
         } else {
             const args = argsOrState as NgfwLogProfileArgs | undefined;
-            if (args?.accountId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
-            if (args?.logDestinations === undefined && !opts.urn) {
-                throw new Error("Missing required property 'logDestinations'");
-            }
-            if (args?.ngfw === undefined && !opts.urn) {
-                throw new Error("Missing required property 'ngfw'");
+            if (args?.firewallId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'firewallId'");
             }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["advancedThreatLog"] = args?.advancedThreatLog;
             resourceInputs["cloudWatchMetricNamespace"] = args?.cloudWatchMetricNamespace;
             resourceInputs["cloudwatchMetricFields"] = args?.cloudwatchMetricFields;
+            resourceInputs["firewallId"] = args?.firewallId;
+            resourceInputs["logConfig"] = args?.logConfig;
             resourceInputs["logDestinations"] = args?.logDestinations;
             resourceInputs["ngfw"] = args?.ngfw;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["updateToken"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NgfwLogProfile.__pulumiType, name, resourceInputs, opts);
@@ -203,6 +219,14 @@ export interface NgfwLogProfileState {
      */
     cloudwatchMetricFields?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The Firewall Id for the NGFW.
+     */
+    firewallId?: pulumi.Input<string>;
+    /**
+     * Log configuration details.
+     */
+    logConfig?: pulumi.Input<inputs.NgfwLogProfileLogConfig>;
+    /**
      * List of log destinations.
      */
     logDestinations?: pulumi.Input<pulumi.Input<inputs.NgfwLogProfileLogDestination>[]>;
@@ -210,6 +234,14 @@ export interface NgfwLogProfileState {
      * The name of the NGFW.
      */
     ngfw?: pulumi.Input<string>;
+    /**
+     * The region of the NGFW.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The update token.
+     */
+    updateToken?: pulumi.Input<string>;
 }
 
 /**
@@ -219,7 +251,7 @@ export interface NgfwLogProfileArgs {
     /**
      * The unique ID of the account.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Enable advanced threat logging.
      */
@@ -233,11 +265,23 @@ export interface NgfwLogProfileArgs {
      */
     cloudwatchMetricFields?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The Firewall Id for the NGFW.
+     */
+    firewallId: pulumi.Input<string>;
+    /**
+     * Log configuration details.
+     */
+    logConfig?: pulumi.Input<inputs.NgfwLogProfileLogConfig>;
+    /**
      * List of log destinations.
      */
-    logDestinations: pulumi.Input<pulumi.Input<inputs.NgfwLogProfileLogDestination>[]>;
+    logDestinations?: pulumi.Input<pulumi.Input<inputs.NgfwLogProfileLogDestination>[]>;
     /**
      * The name of the NGFW.
      */
-    ngfw: pulumi.Input<string>;
+    ngfw?: pulumi.Input<string>;
+    /**
+     * The region of the NGFW.
+     */
+    region?: pulumi.Input<string>;
 }

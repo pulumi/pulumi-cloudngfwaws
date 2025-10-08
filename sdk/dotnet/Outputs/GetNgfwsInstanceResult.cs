@@ -14,22 +14,22 @@ namespace Pulumi.CloudNgfwAws.Outputs
     public sealed class GetNgfwsInstanceResult
     {
         /// <summary>
-        /// The account id.
+        /// The NGFW ID.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string FirewallId;
         /// <summary>
-        /// The NGFW name.
+        /// The region the NGFW is in.
         /// </summary>
-        public readonly string Name;
+        public readonly string Region;
 
         [OutputConstructor]
         private GetNgfwsInstanceResult(
-            string accountId,
+            string firewallId,
 
-            string name)
+            string region)
         {
-            AccountId = accountId;
-            Name = name;
+            FirewallId = firewallId;
+            Region = region;
         }
     }
 }

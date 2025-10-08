@@ -3,8 +3,12 @@
 
 package com.pulumi.cloudngfwaws.inputs;
 
+import com.pulumi.cloudngfwaws.inputs.NgfwEgressNatArgs;
+import com.pulumi.cloudngfwaws.inputs.NgfwEndpointArgs;
+import com.pulumi.cloudngfwaws.inputs.NgfwPrivateAccessArgs;
 import com.pulumi.cloudngfwaws.inputs.NgfwStatusArgs;
 import com.pulumi.cloudngfwaws.inputs.NgfwSubnetMappingArgs;
+import com.pulumi.cloudngfwaws.inputs.NgfwUserIdArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -21,18 +25,33 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
     public static final NgfwState Empty = new NgfwState();
 
     /**
-     * The account ID. This field is mandatory if using multiple accounts.
+     * The description.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account ID. This field is mandatory if using multiple accounts.
+     * @return The description.
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * The list of allowed accounts for this NGFW.
+     * 
+     */
+    @Import(name="allowlistAccounts")
+    private @Nullable Output<List<String>> allowlistAccounts;
+
+    /**
+     * @return The list of allowed accounts for this NGFW.
+     * 
+     */
+    public Optional<Output<List<String>>> allowlistAccounts() {
+        return Optional.ofNullable(this.allowlistAccounts);
     }
 
     /**
@@ -66,18 +85,70 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description.
+     * The list of availability zones for this NGFW.
+     * 
+     */
+    @Import(name="azLists")
+    private @Nullable Output<List<String>> azLists;
+
+    /**
+     * @return The list of availability zones for this NGFW.
+     * 
+     */
+    public Optional<Output<List<String>>> azLists() {
+        return Optional.ofNullable(this.azLists);
+    }
+
+    /**
+     * Enables or disables change protection for the NGFW.
+     * 
+     */
+    @Import(name="changeProtections")
+    private @Nullable Output<List<String>> changeProtections;
+
+    /**
+     * @return Enables or disables change protection for the NGFW.
+     * 
+     */
+    public Optional<Output<List<String>>> changeProtections() {
+        return Optional.ofNullable(this.changeProtections);
+    }
+
+    /**
+     * The update token.
+     * 
+     */
+    @Import(name="deploymentUpdateToken")
+    private @Nullable Output<String> deploymentUpdateToken;
+
+    /**
+     * @return The update token.
+     * 
+     */
+    public Optional<Output<String>> deploymentUpdateToken() {
+        return Optional.ofNullable(this.deploymentUpdateToken);
+    }
+
+    /**
+     * The NGFW description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description.
+     * @return The NGFW description.
      * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    @Import(name="egressNats")
+    private @Nullable Output<List<NgfwEgressNatArgs>> egressNats;
+
+    public Optional<Output<List<NgfwEgressNatArgs>>> egressNats() {
+        return Optional.ofNullable(this.egressNats);
     }
 
     /**
@@ -110,15 +181,22 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.endpointServiceName);
     }
 
+    @Import(name="endpoints")
+    private @Nullable Output<List<NgfwEndpointArgs>> endpoints;
+
+    public Optional<Output<List<NgfwEndpointArgs>>> endpoints() {
+        return Optional.ofNullable(this.endpoints);
+    }
+
     /**
-     * The Id of the NGFW.
+     * The Firewall ID.
      * 
      */
     @Import(name="firewallId")
     private @Nullable Output<String> firewallId;
 
     /**
-     * @return The Id of the NGFW.
+     * @return The Firewall ID.
      * 
      */
     public Optional<Output<String>> firewallId() {
@@ -141,14 +219,14 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+     * The link ID.
      * 
      */
     @Import(name="linkId")
     private @Nullable Output<String> linkId;
 
     /**
-     * @return A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+     * @return The link ID.
      * 
      */
     public Optional<Output<String>> linkId() {
@@ -198,6 +276,13 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    @Import(name="privateAccesses")
+    private @Nullable Output<List<NgfwPrivateAccessArgs>> privateAccesses;
+
+    public Optional<Output<List<NgfwPrivateAccessArgs>>> privateAccesses() {
+        return Optional.ofNullable(this.privateAccesses);
     }
 
     /**
@@ -267,15 +352,22 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.updateToken);
     }
 
+    @Import(name="userIds")
+    private @Nullable Output<List<NgfwUserIdArgs>> userIds;
+
+    public Optional<Output<List<NgfwUserIdArgs>>> userIds() {
+        return Optional.ofNullable(this.userIds);
+    }
+
     /**
-     * The vpc id.
+     * The VPC ID for the NGFW.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The vpc id.
+     * @return The VPC ID for the NGFW.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -286,22 +378,30 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
 
     private NgfwState(NgfwState $) {
         this.accountId = $.accountId;
+        this.allowlistAccounts = $.allowlistAccounts;
         this.appIdVersion = $.appIdVersion;
         this.automaticUpgradeAppIdVersion = $.automaticUpgradeAppIdVersion;
+        this.azLists = $.azLists;
+        this.changeProtections = $.changeProtections;
+        this.deploymentUpdateToken = $.deploymentUpdateToken;
         this.description = $.description;
+        this.egressNats = $.egressNats;
         this.endpointMode = $.endpointMode;
         this.endpointServiceName = $.endpointServiceName;
+        this.endpoints = $.endpoints;
         this.firewallId = $.firewallId;
         this.globalRulestack = $.globalRulestack;
         this.linkId = $.linkId;
         this.linkStatus = $.linkStatus;
         this.multiVpc = $.multiVpc;
         this.name = $.name;
+        this.privateAccesses = $.privateAccesses;
         this.rulestack = $.rulestack;
         this.statuses = $.statuses;
         this.subnetMappings = $.subnetMappings;
         this.tags = $.tags;
         this.updateToken = $.updateToken;
+        this.userIds = $.userIds;
         this.vpcId = $.vpcId;
     }
 
@@ -324,7 +424,7 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account ID. This field is mandatory if using multiple accounts.
+         * @param accountId The description.
          * 
          * @return builder
          * 
@@ -335,13 +435,44 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account ID. This field is mandatory if using multiple accounts.
+         * @param accountId The description.
          * 
          * @return builder
          * 
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param allowlistAccounts The list of allowed accounts for this NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowlistAccounts(@Nullable Output<List<String>> allowlistAccounts) {
+            $.allowlistAccounts = allowlistAccounts;
+            return this;
+        }
+
+        /**
+         * @param allowlistAccounts The list of allowed accounts for this NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowlistAccounts(List<String> allowlistAccounts) {
+            return allowlistAccounts(Output.of(allowlistAccounts));
+        }
+
+        /**
+         * @param allowlistAccounts The list of allowed accounts for this NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowlistAccounts(String... allowlistAccounts) {
+            return allowlistAccounts(List.of(allowlistAccounts));
         }
 
         /**
@@ -387,7 +518,90 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description.
+         * @param azLists The list of availability zones for this NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azLists(@Nullable Output<List<String>> azLists) {
+            $.azLists = azLists;
+            return this;
+        }
+
+        /**
+         * @param azLists The list of availability zones for this NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azLists(List<String> azLists) {
+            return azLists(Output.of(azLists));
+        }
+
+        /**
+         * @param azLists The list of availability zones for this NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azLists(String... azLists) {
+            return azLists(List.of(azLists));
+        }
+
+        /**
+         * @param changeProtections Enables or disables change protection for the NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder changeProtections(@Nullable Output<List<String>> changeProtections) {
+            $.changeProtections = changeProtections;
+            return this;
+        }
+
+        /**
+         * @param changeProtections Enables or disables change protection for the NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder changeProtections(List<String> changeProtections) {
+            return changeProtections(Output.of(changeProtections));
+        }
+
+        /**
+         * @param changeProtections Enables or disables change protection for the NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder changeProtections(String... changeProtections) {
+            return changeProtections(List.of(changeProtections));
+        }
+
+        /**
+         * @param deploymentUpdateToken The update token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentUpdateToken(@Nullable Output<String> deploymentUpdateToken) {
+            $.deploymentUpdateToken = deploymentUpdateToken;
+            return this;
+        }
+
+        /**
+         * @param deploymentUpdateToken The update token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentUpdateToken(String deploymentUpdateToken) {
+            return deploymentUpdateToken(Output.of(deploymentUpdateToken));
+        }
+
+        /**
+         * @param description The NGFW description.
          * 
          * @return builder
          * 
@@ -398,13 +612,26 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description.
+         * @param description The NGFW description.
          * 
          * @return builder
          * 
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        public Builder egressNats(@Nullable Output<List<NgfwEgressNatArgs>> egressNats) {
+            $.egressNats = egressNats;
+            return this;
+        }
+
+        public Builder egressNats(List<NgfwEgressNatArgs> egressNats) {
+            return egressNats(Output.of(egressNats));
+        }
+
+        public Builder egressNats(NgfwEgressNatArgs... egressNats) {
+            return egressNats(List.of(egressNats));
         }
 
         /**
@@ -449,8 +676,21 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
             return endpointServiceName(Output.of(endpointServiceName));
         }
 
+        public Builder endpoints(@Nullable Output<List<NgfwEndpointArgs>> endpoints) {
+            $.endpoints = endpoints;
+            return this;
+        }
+
+        public Builder endpoints(List<NgfwEndpointArgs> endpoints) {
+            return endpoints(Output.of(endpoints));
+        }
+
+        public Builder endpoints(NgfwEndpointArgs... endpoints) {
+            return endpoints(List.of(endpoints));
+        }
+
         /**
-         * @param firewallId The Id of the NGFW.
+         * @param firewallId The Firewall ID.
          * 
          * @return builder
          * 
@@ -461,7 +701,7 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firewallId The Id of the NGFW.
+         * @param firewallId The Firewall ID.
          * 
          * @return builder
          * 
@@ -492,7 +732,7 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linkId A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+         * @param linkId The link ID.
          * 
          * @return builder
          * 
@@ -503,7 +743,7 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linkId A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+         * @param linkId The link ID.
          * 
          * @return builder
          * 
@@ -573,6 +813,19 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder privateAccesses(@Nullable Output<List<NgfwPrivateAccessArgs>> privateAccesses) {
+            $.privateAccesses = privateAccesses;
+            return this;
+        }
+
+        public Builder privateAccesses(List<NgfwPrivateAccessArgs> privateAccesses) {
+            return privateAccesses(Output.of(privateAccesses));
+        }
+
+        public Builder privateAccesses(NgfwPrivateAccessArgs... privateAccesses) {
+            return privateAccesses(List.of(privateAccesses));
         }
 
         /**
@@ -682,8 +935,21 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
             return updateToken(Output.of(updateToken));
         }
 
+        public Builder userIds(@Nullable Output<List<NgfwUserIdArgs>> userIds) {
+            $.userIds = userIds;
+            return this;
+        }
+
+        public Builder userIds(List<NgfwUserIdArgs> userIds) {
+            return userIds(Output.of(userIds));
+        }
+
+        public Builder userIds(NgfwUserIdArgs... userIds) {
+            return userIds(List.of(userIds));
+        }
+
         /**
-         * @param vpcId The vpc id.
+         * @param vpcId The VPC ID for the NGFW.
          * 
          * @return builder
          * 
@@ -694,7 +960,7 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The vpc id.
+         * @param vpcId The VPC ID for the NGFW.
          * 
          * @return builder
          * 

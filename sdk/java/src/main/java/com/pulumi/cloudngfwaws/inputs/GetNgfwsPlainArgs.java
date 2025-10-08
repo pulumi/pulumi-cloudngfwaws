@@ -16,6 +16,21 @@ public final class GetNgfwsPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetNgfwsPlainArgs Empty = new GetNgfwsPlainArgs();
 
     /**
+     * The region to filter on.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable String region;
+
+    /**
+     * @return The region to filter on.
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * The rulestack to filter on.
      * 
      */
@@ -48,6 +63,7 @@ public final class GetNgfwsPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetNgfwsPlainArgs() {}
 
     private GetNgfwsPlainArgs(GetNgfwsPlainArgs $) {
+        this.region = $.region;
         this.rulestack = $.rulestack;
         this.vpcIds = $.vpcIds;
     }
@@ -68,6 +84,17 @@ public final class GetNgfwsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetNgfwsPlainArgs defaults) {
             $ = new GetNgfwsPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param region The region to filter on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable String region) {
+            $.region = region;
+            return this;
         }
 
         /**

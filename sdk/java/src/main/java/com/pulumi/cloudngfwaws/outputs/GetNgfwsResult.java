@@ -25,6 +25,11 @@ public final class GetNgfwsResult {
      */
     private List<GetNgfwsInstance> instances;
     /**
+     * @return The region to filter on.
+     * 
+     */
+    private @Nullable String region;
+    /**
      * @return The rulestack to filter on.
      * 
      */
@@ -49,6 +54,13 @@ public final class GetNgfwsResult {
      */
     public List<GetNgfwsInstance> instances() {
         return this.instances;
+    }
+    /**
+     * @return The region to filter on.
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
     }
     /**
      * @return The rulestack to filter on.
@@ -76,6 +88,7 @@ public final class GetNgfwsResult {
     public static final class Builder {
         private String id;
         private List<GetNgfwsInstance> instances;
+        private @Nullable String region;
         private @Nullable String rulestack;
         private @Nullable List<String> vpcIds;
         public Builder() {}
@@ -83,6 +96,7 @@ public final class GetNgfwsResult {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.instances = defaults.instances;
+    	      this.region = defaults.region;
     	      this.rulestack = defaults.rulestack;
     	      this.vpcIds = defaults.vpcIds;
         }
@@ -107,6 +121,12 @@ public final class GetNgfwsResult {
             return instances(List.of(instances));
         }
         @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rulestack(@Nullable String rulestack) {
 
             this.rulestack = rulestack;
@@ -125,6 +145,7 @@ public final class GetNgfwsResult {
             final var _resultValue = new GetNgfwsResult();
             _resultValue.id = id;
             _resultValue.instances = instances;
+            _resultValue.region = region;
             _resultValue.rulestack = rulestack;
             _resultValue.vpcIds = vpcIds;
             return _resultValue;

@@ -3,20 +3,18 @@
 
 package com.pulumi.cloudngfwaws.outputs;
 
-import com.pulumi.cloudngfwaws.outputs.GetNgfwStatusAttachment;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetNgfwStatus {
     /**
-     * @return The firewall attachments.
+     * @return The device rulestack commit status.
      * 
      */
-    private List<GetNgfwStatusAttachment> attachments;
+    private String deviceRulestackCommitStatus;
     /**
      * @return The firewall failure reason.
      * 
@@ -35,11 +33,11 @@ public final class GetNgfwStatus {
 
     private GetNgfwStatus() {}
     /**
-     * @return The firewall attachments.
+     * @return The device rulestack commit status.
      * 
      */
-    public List<GetNgfwStatusAttachment> attachments() {
-        return this.attachments;
+    public String deviceRulestackCommitStatus() {
+        return this.deviceRulestackCommitStatus;
     }
     /**
      * @return The firewall failure reason.
@@ -72,29 +70,26 @@ public final class GetNgfwStatus {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetNgfwStatusAttachment> attachments;
+        private String deviceRulestackCommitStatus;
         private String failureReason;
         private String firewallStatus;
         private String rulestackStatus;
         public Builder() {}
         public Builder(GetNgfwStatus defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.attachments = defaults.attachments;
+    	      this.deviceRulestackCommitStatus = defaults.deviceRulestackCommitStatus;
     	      this.failureReason = defaults.failureReason;
     	      this.firewallStatus = defaults.firewallStatus;
     	      this.rulestackStatus = defaults.rulestackStatus;
         }
 
         @CustomType.Setter
-        public Builder attachments(List<GetNgfwStatusAttachment> attachments) {
-            if (attachments == null) {
-              throw new MissingRequiredPropertyException("GetNgfwStatus", "attachments");
+        public Builder deviceRulestackCommitStatus(String deviceRulestackCommitStatus) {
+            if (deviceRulestackCommitStatus == null) {
+              throw new MissingRequiredPropertyException("GetNgfwStatus", "deviceRulestackCommitStatus");
             }
-            this.attachments = attachments;
+            this.deviceRulestackCommitStatus = deviceRulestackCommitStatus;
             return this;
-        }
-        public Builder attachments(GetNgfwStatusAttachment... attachments) {
-            return attachments(List.of(attachments));
         }
         @CustomType.Setter
         public Builder failureReason(String failureReason) {
@@ -122,7 +117,7 @@ public final class GetNgfwStatus {
         }
         public GetNgfwStatus build() {
             final var _resultValue = new GetNgfwStatus();
-            _resultValue.attachments = attachments;
+            _resultValue.deviceRulestackCommitStatus = deviceRulestackCommitStatus;
             _resultValue.failureReason = failureReason;
             _resultValue.firewallStatus = firewallStatus;
             _resultValue.rulestackStatus = rulestackStatus;

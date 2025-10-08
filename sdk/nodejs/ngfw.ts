@@ -29,32 +29,26 @@ import * as utilities from "./utilities";
  *         name: "tf-example",
  *     },
  * });
+ * const example = new cloudngfwaws.Ngfw("example", {
+ *     name: "example-instance",
+ *     description: "Example description",
+ *     endpoints: [{
+ *         subnetId: subnet1.id,
+ *         mode: "ServiceManaged",
+ *         vpcId: exampleVpc.id,
+ *         accountId: "12345678",
+ *     }],
+ *     rulestack: rs.rulestack,
+ *     tags: {
+ *         Foo: "bar",
+ *     },
+ * });
  * const subnet2 = new aws.index.Subnet("subnet2", {
  *     vpcId: myVpc.id,
  *     cidrBlock: "172.16.20.0/24",
  *     availabilityZone: "us-west-2b",
  *     tags: {
  *         name: "tf-example",
- *     },
- * });
- * const example = new cloudngfwaws.Ngfw("example", {
- *     name: "example-instance",
- *     vpcId: exampleVpc.id,
- *     accountId: "12345678",
- *     description: "Example description",
- *     linkId: "Link-81e80ccc-357a-4e4e-8325-1ed1d830cba5",
- *     endpointMode: "ServiceManaged",
- *     subnetMappings: [
- *         {
- *             subnetId: subnet1.id,
- *         },
- *         {
- *             subnetId: subnet2.id,
- *         },
- *     ],
- *     rulestack: rs.rulestack,
- *     tags: {
- *         Foo: "bar",
  *     },
  * });
  * ```
@@ -96,9 +90,13 @@ export class Ngfw extends pulumi.CustomResource {
     }
 
     /**
-     * The account ID. This field is mandatory if using multiple accounts.
+     * The description.
      */
     declare public readonly accountId: pulumi.Output<string | undefined>;
+    /**
+     * The list of allowed accounts for this NGFW.
+     */
+    declare public readonly allowlistAccounts: pulumi.Output<string[] | undefined>;
     /**
      * App-ID version number.
      */
@@ -108,19 +106,33 @@ export class Ngfw extends pulumi.CustomResource {
      */
     declare public readonly automaticUpgradeAppIdVersion: pulumi.Output<boolean | undefined>;
     /**
-     * The description.
+     * The list of availability zones for this NGFW.
+     */
+    declare public readonly azLists: pulumi.Output<string[]>;
+    /**
+     * Enables or disables change protection for the NGFW.
+     */
+    declare public readonly changeProtections: pulumi.Output<string[]>;
+    /**
+     * The update token.
+     */
+    declare public /*out*/ readonly deploymentUpdateToken: pulumi.Output<string>;
+    /**
+     * The NGFW description.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly egressNats: pulumi.Output<outputs.NgfwEgressNat[]>;
     /**
      * Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
      */
-    declare public readonly endpointMode: pulumi.Output<string>;
+    declare public readonly endpointMode: pulumi.Output<string | undefined>;
     /**
      * The endpoint service name.
      */
     declare public /*out*/ readonly endpointServiceName: pulumi.Output<string>;
+    declare public readonly endpoints: pulumi.Output<outputs.NgfwEndpoint[] | undefined>;
     /**
-     * The Id of the NGFW.
+     * The Firewall ID.
      */
     declare public /*out*/ readonly firewallId: pulumi.Output<string>;
     /**
@@ -128,7 +140,7 @@ export class Ngfw extends pulumi.CustomResource {
      */
     declare public readonly globalRulestack: pulumi.Output<string | undefined>;
     /**
-     * A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+     * The link ID.
      */
     declare public readonly linkId: pulumi.Output<string>;
     /**
@@ -143,6 +155,7 @@ export class Ngfw extends pulumi.CustomResource {
      * The NGFW name.
      */
     declare public readonly name: pulumi.Output<string>;
+    declare public readonly privateAccesses: pulumi.Output<outputs.NgfwPrivateAccess[]>;
     /**
      * The rulestack for this NGFW.
      */
@@ -151,19 +164,20 @@ export class Ngfw extends pulumi.CustomResource {
     /**
      * Subnet mappings.
      */
-    declare public readonly subnetMappings: pulumi.Output<outputs.NgfwSubnetMapping[]>;
+    declare public readonly subnetMappings: pulumi.Output<outputs.NgfwSubnetMapping[] | undefined>;
     /**
      * The tags.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * The update token.
      */
     declare public /*out*/ readonly updateToken: pulumi.Output<string>;
+    declare public readonly userIds: pulumi.Output<outputs.NgfwUserId[]>;
     /**
-     * The vpc id.
+     * The VPC ID for the NGFW.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Ngfw resource with the given unique name, arguments, and options.
@@ -179,47 +193,57 @@ export class Ngfw extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NgfwState | undefined;
             resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["allowlistAccounts"] = state?.allowlistAccounts;
             resourceInputs["appIdVersion"] = state?.appIdVersion;
             resourceInputs["automaticUpgradeAppIdVersion"] = state?.automaticUpgradeAppIdVersion;
+            resourceInputs["azLists"] = state?.azLists;
+            resourceInputs["changeProtections"] = state?.changeProtections;
+            resourceInputs["deploymentUpdateToken"] = state?.deploymentUpdateToken;
             resourceInputs["description"] = state?.description;
+            resourceInputs["egressNats"] = state?.egressNats;
             resourceInputs["endpointMode"] = state?.endpointMode;
             resourceInputs["endpointServiceName"] = state?.endpointServiceName;
+            resourceInputs["endpoints"] = state?.endpoints;
             resourceInputs["firewallId"] = state?.firewallId;
             resourceInputs["globalRulestack"] = state?.globalRulestack;
             resourceInputs["linkId"] = state?.linkId;
             resourceInputs["linkStatus"] = state?.linkStatus;
             resourceInputs["multiVpc"] = state?.multiVpc;
             resourceInputs["name"] = state?.name;
+            resourceInputs["privateAccesses"] = state?.privateAccesses;
             resourceInputs["rulestack"] = state?.rulestack;
             resourceInputs["statuses"] = state?.statuses;
             resourceInputs["subnetMappings"] = state?.subnetMappings;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["updateToken"] = state?.updateToken;
+            resourceInputs["userIds"] = state?.userIds;
             resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as NgfwArgs | undefined;
-            if (args?.endpointMode === undefined && !opts.urn) {
-                throw new Error("Missing required property 'endpointMode'");
-            }
-            if (args?.subnetMappings === undefined && !opts.urn) {
-                throw new Error("Missing required property 'subnetMappings'");
-            }
-            if (args?.vpcId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'vpcId'");
+            if (args?.azLists === undefined && !opts.urn) {
+                throw new Error("Missing required property 'azLists'");
             }
             resourceInputs["accountId"] = args?.accountId;
+            resourceInputs["allowlistAccounts"] = args?.allowlistAccounts;
             resourceInputs["appIdVersion"] = args?.appIdVersion;
             resourceInputs["automaticUpgradeAppIdVersion"] = args?.automaticUpgradeAppIdVersion;
+            resourceInputs["azLists"] = args?.azLists;
+            resourceInputs["changeProtections"] = args?.changeProtections;
             resourceInputs["description"] = args?.description;
+            resourceInputs["egressNats"] = args?.egressNats;
             resourceInputs["endpointMode"] = args?.endpointMode;
+            resourceInputs["endpoints"] = args?.endpoints;
             resourceInputs["globalRulestack"] = args?.globalRulestack;
             resourceInputs["linkId"] = args?.linkId;
             resourceInputs["multiVpc"] = args?.multiVpc;
             resourceInputs["name"] = args?.name;
+            resourceInputs["privateAccesses"] = args?.privateAccesses;
             resourceInputs["rulestack"] = args?.rulestack;
             resourceInputs["subnetMappings"] = args?.subnetMappings;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["userIds"] = args?.userIds;
             resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["deploymentUpdateToken"] = undefined /*out*/;
             resourceInputs["endpointServiceName"] = undefined /*out*/;
             resourceInputs["firewallId"] = undefined /*out*/;
             resourceInputs["linkStatus"] = undefined /*out*/;
@@ -236,9 +260,13 @@ export class Ngfw extends pulumi.CustomResource {
  */
 export interface NgfwState {
     /**
-     * The account ID. This field is mandatory if using multiple accounts.
+     * The description.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * The list of allowed accounts for this NGFW.
+     */
+    allowlistAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * App-ID version number.
      */
@@ -248,9 +276,22 @@ export interface NgfwState {
      */
     automaticUpgradeAppIdVersion?: pulumi.Input<boolean>;
     /**
-     * The description.
+     * The list of availability zones for this NGFW.
+     */
+    azLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Enables or disables change protection for the NGFW.
+     */
+    changeProtections?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The update token.
+     */
+    deploymentUpdateToken?: pulumi.Input<string>;
+    /**
+     * The NGFW description.
      */
     description?: pulumi.Input<string>;
+    egressNats?: pulumi.Input<pulumi.Input<inputs.NgfwEgressNat>[]>;
     /**
      * Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
      */
@@ -259,8 +300,9 @@ export interface NgfwState {
      * The endpoint service name.
      */
     endpointServiceName?: pulumi.Input<string>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.NgfwEndpoint>[]>;
     /**
-     * The Id of the NGFW.
+     * The Firewall ID.
      */
     firewallId?: pulumi.Input<string>;
     /**
@@ -268,7 +310,7 @@ export interface NgfwState {
      */
     globalRulestack?: pulumi.Input<string>;
     /**
-     * A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+     * The link ID.
      */
     linkId?: pulumi.Input<string>;
     /**
@@ -283,6 +325,7 @@ export interface NgfwState {
      * The NGFW name.
      */
     name?: pulumi.Input<string>;
+    privateAccesses?: pulumi.Input<pulumi.Input<inputs.NgfwPrivateAccess>[]>;
     /**
      * The rulestack for this NGFW.
      */
@@ -300,8 +343,9 @@ export interface NgfwState {
      * The update token.
      */
     updateToken?: pulumi.Input<string>;
+    userIds?: pulumi.Input<pulumi.Input<inputs.NgfwUserId>[]>;
     /**
-     * The vpc id.
+     * The VPC ID for the NGFW.
      */
     vpcId?: pulumi.Input<string>;
 }
@@ -311,9 +355,13 @@ export interface NgfwState {
  */
 export interface NgfwArgs {
     /**
-     * The account ID. This field is mandatory if using multiple accounts.
+     * The description.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * The list of allowed accounts for this NGFW.
+     */
+    allowlistAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * App-ID version number.
      */
@@ -323,19 +371,29 @@ export interface NgfwArgs {
      */
     automaticUpgradeAppIdVersion?: pulumi.Input<boolean>;
     /**
-     * The description.
+     * The list of availability zones for this NGFW.
+     */
+    azLists: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Enables or disables change protection for the NGFW.
+     */
+    changeProtections?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The NGFW description.
      */
     description?: pulumi.Input<string>;
+    egressNats?: pulumi.Input<pulumi.Input<inputs.NgfwEgressNat>[]>;
     /**
      * Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
      */
-    endpointMode: pulumi.Input<string>;
+    endpointMode?: pulumi.Input<string>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.NgfwEndpoint>[]>;
     /**
      * The global rulestack for this NGFW.
      */
     globalRulestack?: pulumi.Input<string>;
     /**
-     * A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+     * The link ID.
      */
     linkId?: pulumi.Input<string>;
     /**
@@ -346,6 +404,7 @@ export interface NgfwArgs {
      * The NGFW name.
      */
     name?: pulumi.Input<string>;
+    privateAccesses?: pulumi.Input<pulumi.Input<inputs.NgfwPrivateAccess>[]>;
     /**
      * The rulestack for this NGFW.
      */
@@ -353,13 +412,14 @@ export interface NgfwArgs {
     /**
      * Subnet mappings.
      */
-    subnetMappings: pulumi.Input<pulumi.Input<inputs.NgfwSubnetMapping>[]>;
+    subnetMappings?: pulumi.Input<pulumi.Input<inputs.NgfwSubnetMapping>[]>;
     /**
      * The tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    userIds?: pulumi.Input<pulumi.Input<inputs.NgfwUserId>[]>;
     /**
-     * The vpc id.
+     * The VPC ID for the NGFW.
      */
-    vpcId: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
 }

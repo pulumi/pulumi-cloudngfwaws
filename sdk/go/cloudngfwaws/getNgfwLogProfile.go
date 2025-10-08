@@ -32,8 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudngfwaws.LookupNgfwLogProfile(ctx, &cloudngfwaws.LookupNgfwLogProfileArgs{
-//				Ngfw:      "example-instance",
-//				AccountId: "123456789",
+//				Ngfw:      pulumi.StringRef("example-instance"),
+//				AccountId: pulumi.StringRef("123456789"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -56,27 +56,35 @@ func LookupNgfwLogProfile(ctx *pulumi.Context, args *LookupNgfwLogProfileArgs, o
 // A collection of arguments for invoking getNgfwLogProfile.
 type LookupNgfwLogProfileArgs struct {
 	// The unique ID of the account.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// The name of the NGFW.
-	Ngfw string `pulumi:"ngfw"`
+	Ngfw *string `pulumi:"ngfw"`
 }
 
 // A collection of values returned by getNgfwLogProfile.
 type LookupNgfwLogProfileResult struct {
 	// The unique ID of the account.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// Enable advanced threat logging.
 	AdvancedThreatLog bool `pulumi:"advancedThreatLog"`
 	// The CloudWatch metric namespace.
 	CloudWatchMetricNamespace string `pulumi:"cloudWatchMetricNamespace"`
 	// Cloudwatch metric fields.
 	CloudwatchMetricFields []string `pulumi:"cloudwatchMetricFields"`
+	// The Firewall Id for the NGFW.
+	FirewallId string `pulumi:"firewallId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Log configuration details.
+	LogConfigs []GetNgfwLogProfileLogConfig `pulumi:"logConfigs"`
 	// List of log destinations.
 	LogDestinations []GetNgfwLogProfileLogDestination `pulumi:"logDestinations"`
 	// The name of the NGFW.
-	Ngfw string `pulumi:"ngfw"`
+	Ngfw *string `pulumi:"ngfw"`
+	// The region of the NGFW.
+	Region string `pulumi:"region"`
+	// The update token.
+	UpdateToken string `pulumi:"updateToken"`
 }
 
 func LookupNgfwLogProfileOutput(ctx *pulumi.Context, args LookupNgfwLogProfileOutputArgs, opts ...pulumi.InvokeOption) LookupNgfwLogProfileResultOutput {
@@ -91,9 +99,9 @@ func LookupNgfwLogProfileOutput(ctx *pulumi.Context, args LookupNgfwLogProfileOu
 // A collection of arguments for invoking getNgfwLogProfile.
 type LookupNgfwLogProfileOutputArgs struct {
 	// The unique ID of the account.
-	AccountId pulumi.StringInput `pulumi:"accountId"`
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The name of the NGFW.
-	Ngfw pulumi.StringInput `pulumi:"ngfw"`
+	Ngfw pulumi.StringPtrInput `pulumi:"ngfw"`
 }
 
 func (LookupNgfwLogProfileOutputArgs) ElementType() reflect.Type {
@@ -116,8 +124,8 @@ func (o LookupNgfwLogProfileResultOutput) ToLookupNgfwLogProfileResultOutputWith
 }
 
 // The unique ID of the account.
-func (o LookupNgfwLogProfileResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNgfwLogProfileResult) string { return v.AccountId }).(pulumi.StringOutput)
+func (o LookupNgfwLogProfileResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNgfwLogProfileResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Enable advanced threat logging.
@@ -135,9 +143,19 @@ func (o LookupNgfwLogProfileResultOutput) CloudwatchMetricFields() pulumi.String
 	return o.ApplyT(func(v LookupNgfwLogProfileResult) []string { return v.CloudwatchMetricFields }).(pulumi.StringArrayOutput)
 }
 
+// The Firewall Id for the NGFW.
+func (o LookupNgfwLogProfileResultOutput) FirewallId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNgfwLogProfileResult) string { return v.FirewallId }).(pulumi.StringOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupNgfwLogProfileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNgfwLogProfileResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Log configuration details.
+func (o LookupNgfwLogProfileResultOutput) LogConfigs() GetNgfwLogProfileLogConfigArrayOutput {
+	return o.ApplyT(func(v LookupNgfwLogProfileResult) []GetNgfwLogProfileLogConfig { return v.LogConfigs }).(GetNgfwLogProfileLogConfigArrayOutput)
 }
 
 // List of log destinations.
@@ -146,8 +164,18 @@ func (o LookupNgfwLogProfileResultOutput) LogDestinations() GetNgfwLogProfileLog
 }
 
 // The name of the NGFW.
-func (o LookupNgfwLogProfileResultOutput) Ngfw() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNgfwLogProfileResult) string { return v.Ngfw }).(pulumi.StringOutput)
+func (o LookupNgfwLogProfileResultOutput) Ngfw() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNgfwLogProfileResult) *string { return v.Ngfw }).(pulumi.StringPtrOutput)
+}
+
+// The region of the NGFW.
+func (o LookupNgfwLogProfileResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNgfwLogProfileResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The update token.
+func (o LookupNgfwLogProfileResultOutput) UpdateToken() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNgfwLogProfileResult) string { return v.UpdateToken }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -244,13 +244,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.region);
     }
 
-    @Import(name="resourceTimeout", json=true)
-    private @Nullable Output<Integer> resourceTimeout;
-
-    public Optional<Output<Integer>> resourceTimeout() {
-        return Optional.ofNullable(this.resourceTimeout);
-    }
-
     /**
      * (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
      * 
@@ -311,6 +304,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.timeout);
     }
 
+    /**
+     * The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+     * 
+     */
+    @Import(name="v2Host")
+    private @Nullable Output<String> v2Host;
+
+    /**
+     * @return The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+     * 
+     */
+    public Optional<Output<String>> v2Host() {
+        return Optional.ofNullable(this.v2Host);
+    }
+
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
@@ -329,11 +337,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.profile = $.profile;
         this.protocol = $.protocol;
         this.region = $.region;
-        this.resourceTimeout = $.resourceTimeout;
         this.secretKey = $.secretKey;
         this.skipVerifyCertificate = $.skipVerifyCertificate;
         this.syncMode = $.syncMode;
         this.timeout = $.timeout;
+        this.v2Host = $.v2Host;
     }
 
     public static Builder builder() {
@@ -679,15 +687,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return region(Output.of(region));
         }
 
-        public Builder resourceTimeout(@Nullable Output<Integer> resourceTimeout) {
-            $.resourceTimeout = resourceTimeout;
-            return this;
-        }
-
-        public Builder resourceTimeout(Integer resourceTimeout) {
-            return resourceTimeout(Output.of(resourceTimeout));
-        }
-
         /**
          * @param secretKey (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
          * 
@@ -770,6 +769,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder timeout(Integer timeout) {
             return timeout(Output.of(timeout));
+        }
+
+        /**
+         * @param v2Host The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder v2Host(@Nullable Output<String> v2Host) {
+            $.v2Host = v2Host;
+            return this;
+        }
+
+        /**
+         * @param v2Host The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder v2Host(String v2Host) {
+            return v2Host(Output.of(v2Host));
         }
 
         public ProviderArgs build() {

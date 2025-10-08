@@ -52,6 +52,8 @@ func GetNgfws(ctx *pulumi.Context, args *GetNgfwsArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getNgfws.
 type GetNgfwsArgs struct {
+	// The region to filter on.
+	Region *string `pulumi:"region"`
 	// The rulestack to filter on.
 	Rulestack *string `pulumi:"rulestack"`
 	// List of vpc ids to filter on.
@@ -64,6 +66,8 @@ type GetNgfwsResult struct {
 	Id string `pulumi:"id"`
 	// List of NGFWs.
 	Instances []GetNgfwsInstance `pulumi:"instances"`
+	// The region to filter on.
+	Region *string `pulumi:"region"`
 	// The rulestack to filter on.
 	Rulestack *string `pulumi:"rulestack"`
 	// List of vpc ids to filter on.
@@ -81,6 +85,8 @@ func GetNgfwsOutput(ctx *pulumi.Context, args GetNgfwsOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getNgfws.
 type GetNgfwsOutputArgs struct {
+	// The region to filter on.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The rulestack to filter on.
 	Rulestack pulumi.StringPtrInput `pulumi:"rulestack"`
 	// List of vpc ids to filter on.
@@ -114,6 +120,11 @@ func (o GetNgfwsResultOutput) Id() pulumi.StringOutput {
 // List of NGFWs.
 func (o GetNgfwsResultOutput) Instances() GetNgfwsInstanceArrayOutput {
 	return o.ApplyT(func(v GetNgfwsResult) []GetNgfwsInstance { return v.Instances }).(GetNgfwsInstanceArrayOutput)
+}
+
+// The region to filter on.
+func (o GetNgfwsResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNgfwsResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // The rulestack to filter on.

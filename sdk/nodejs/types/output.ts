@@ -20,6 +20,96 @@ export interface GetAccountsAccountDetail {
     onboardingStatus: string;
 }
 
+export interface GetNgfwEgressNat {
+    /**
+     * Enable egress NAT
+     */
+    enabled: boolean;
+    settings: outputs.GetNgfwEgressNatSetting[];
+}
+
+export interface GetNgfwEgressNatSetting {
+    /**
+     * Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.
+     */
+    ipPoolType: string;
+    /**
+     * The IP pool ID
+     */
+    ipamPoolId: string;
+}
+
+export interface GetNgfwEndpoint {
+    /**
+     * The account id.
+     */
+    accountId: string;
+    /**
+     * Enable egress NAT
+     */
+    egressNatEnabled: boolean;
+    /**
+     * Endpoint ID of the security zone
+     */
+    endpointId: string;
+    /**
+     * The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+     */
+    mode: string;
+    prefixes: outputs.GetNgfwEndpointPrefix[];
+    /**
+     * The rejected reason.
+     */
+    rejectedReason: string;
+    /**
+     * The attachment status.
+     */
+    status: string;
+    /**
+     * The subnet id.
+     */
+    subnetId: string;
+    /**
+     * The vpc id.
+     */
+    vpcId: string;
+    /**
+     * The AZ id.
+     */
+    zoneId: string;
+}
+
+export interface GetNgfwEndpointPrefix {
+    privatePrefixes: outputs.GetNgfwEndpointPrefixPrivatePrefix[];
+}
+
+export interface GetNgfwEndpointPrefixPrivatePrefix {
+    cidrs: string[];
+}
+
+export interface GetNgfwLogProfileLogConfig {
+    /**
+     * Type of Role for log configuration
+     */
+    accountId: string;
+    /**
+     * The log destination details.
+     */
+    logDestination: string;
+    /**
+     * The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
+     */
+    logDestinationType: string;
+    /**
+     * The list of different log types that are wanted
+     */
+    logTypes: string[];
+    /**
+     * Type of Role for log configuration
+     */
+    roleType: string;
+}
+
 export interface GetNgfwLogProfileLogDestination {
     /**
      * The log destination details.
@@ -35,11 +125,22 @@ export interface GetNgfwLogProfileLogDestination {
     logType: string;
 }
 
+export interface GetNgfwPrivateAccess {
+    /**
+     * AWS ResourceID
+     */
+    resourceId: string;
+    /**
+     * Type of Private Access
+     */
+    type: string;
+}
+
 export interface GetNgfwStatus {
     /**
-     * The firewall attachments.
+     * The device rulestack commit status.
      */
-    attachments: outputs.GetNgfwStatusAttachment[];
+    deviceRulestackCommitStatus: string;
     /**
      * The firewall failure reason.
      */
@@ -52,25 +153,6 @@ export interface GetNgfwStatus {
      * The rulestack status.
      */
     rulestackStatus: string;
-}
-
-export interface GetNgfwStatusAttachment {
-    /**
-     * The endpoint id.
-     */
-    endpointId: string;
-    /**
-     * The reject reason.
-     */
-    rejectedReason: string;
-    /**
-     * The attachment status.
-     */
-    status: string;
-    /**
-     * The subnet id.
-     */
-    subnetId: string;
 }
 
 export interface GetNgfwSubnetMapping {
@@ -88,15 +170,65 @@ export interface GetNgfwSubnetMapping {
     subnetId: string;
 }
 
-export interface GetNgfwsInstance {
+export interface GetNgfwUserId {
     /**
-     * The account id.
+     * Agent Name for UserID
      */
-    accountId: string;
+    agentName: string;
     /**
-     * The NGFW name.
+     * The Collector Name
+     */
+    collectorName: string;
+    /**
+     * List of Custom Include Exclude Networks
+     */
+    customIncludeExcludeNetworks: outputs.GetNgfwUserIdCustomIncludeExcludeNetwork[];
+    /**
+     * Enable UserID Config
+     */
+    enabled: boolean;
+    /**
+     * The Port
+     */
+    port: number;
+    /**
+     * AWS Secret Key ARN
+     */
+    secretKeyArn: string;
+    /**
+     * Status and State of UserID Configuration
+     */
+    userIdStatus: string;
+}
+
+export interface GetNgfwUserIdCustomIncludeExcludeNetwork {
+    /**
+     * Include or exclude this subnet from user-id configuration
+     */
+    discoveryInclude: boolean;
+    /**
+     * Enable this specific custom include/exclude network
+     */
+    enabled: boolean;
+    /**
+     * Name of subnet filter
      */
     name: string;
+    /**
+     * Network IP address of the subnet filter
+     */
+    networkAddress: string;
+}
+
+export interface GetNgfwsInstance {
+    /**
+     * The NGFW ID.
+     */
+    firewallId: string;
+    /**
+     * The region the NGFW is in.
+     */
+    region: string;
 }
 
 export interface GetRulestackProfileConfig {
@@ -183,6 +315,96 @@ export interface GetSecurityRuleSource {
     prefixLists: string[];
 }
 
+export interface NgfwEgressNat {
+    /**
+     * Enable egress NAT
+     */
+    enabled: boolean;
+    settings?: outputs.NgfwEgressNatSetting[];
+}
+
+export interface NgfwEgressNatSetting {
+    /**
+     * Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.
+     */
+    ipPoolType?: string;
+    /**
+     * The IP pool ID
+     */
+    ipamPoolId?: string;
+}
+
+export interface NgfwEndpoint {
+    /**
+     * The account id.
+     */
+    accountId?: string;
+    /**
+     * Enable egress NAT
+     */
+    egressNatEnabled: boolean;
+    /**
+     * Endpoint ID of the security zone
+     */
+    endpointId: string;
+    /**
+     * The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+     */
+    mode: string;
+    prefixes: outputs.NgfwEndpointPrefix[];
+    /**
+     * The rejected reason.
+     */
+    rejectedReason: string;
+    /**
+     * The attachment status.
+     */
+    status: string;
+    /**
+     * The subnet id.
+     */
+    subnetId?: string;
+    /**
+     * The vpc id.
+     */
+    vpcId?: string;
+    /**
+     * The AZ id.
+     */
+    zoneId: string;
+}
+
+export interface NgfwEndpointPrefix {
+    privatePrefixes: outputs.NgfwEndpointPrefixPrivatePrefix[];
+}
+
+export interface NgfwEndpointPrefixPrivatePrefix {
+    cidrs: string[];
+}
+
+export interface NgfwLogProfileLogConfig {
+    /**
+     * Type of Role for log configuration
+     */
+    accountId?: string;
+    /**
+     * The log destination details.
+     */
+    logDestination: string;
+    /**
+     * The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
+     */
+    logDestinationType: string;
+    /**
+     * The list of different log types that are wanted
+     */
+    logTypes: string[];
+    /**
+     * Type of Role for log configuration
+     */
+    roleType?: string;
+}
+
 export interface NgfwLogProfileLogDestination {
     /**
      * The log destination details.
@@ -198,11 +420,22 @@ export interface NgfwLogProfileLogDestination {
     logType?: string;
 }
 
+export interface NgfwPrivateAccess {
+    /**
+     * AWS ResourceID
+     */
+    resourceId: string;
+    /**
+     * Type of Private Access
+     */
+    type: string;
+}
+
 export interface NgfwStatus {
     /**
-     * The firewall attachments.
+     * The device rulestack commit status.
      */
-    attachments: outputs.NgfwStatusAttachment[];
+    deviceRulestackCommitStatus: string;
     /**
      * The firewall failure reason.
      */
@@ -215,25 +448,6 @@ export interface NgfwStatus {
      * The rulestack status.
      */
     rulestackStatus: string;
-}
-
-export interface NgfwStatusAttachment {
-    /**
-     * The endpoint id.
-     */
-    endpointId: string;
-    /**
-     * The reject reason.
-     */
-    rejectedReason: string;
-    /**
-     * The attachment status.
-     */
-    status: string;
-    /**
-     * The subnet id.
-     */
-    subnetId: string;
 }
 
 export interface NgfwSubnetMapping {
@@ -249,6 +463,56 @@ export interface NgfwSubnetMapping {
      * The subnet id, for when the endpoint mode is service managed.
      */
     subnetId?: string;
+}
+
+export interface NgfwUserId {
+    /**
+     * Agent Name for UserID
+     */
+    agentName?: string;
+    /**
+     * The Collector Name
+     */
+    collectorName?: string;
+    /**
+     * List of Custom Include Exclude Networks
+     */
+    customIncludeExcludeNetworks?: outputs.NgfwUserIdCustomIncludeExcludeNetwork[];
+    /**
+     * Enable UserID Config
+     */
+    enabled: boolean;
+    /**
+     * The Port
+     */
+    port: number;
+    /**
+     * AWS Secret Key ARN
+     */
+    secretKeyArn?: string;
+    /**
+     * Status and State of UserID Configuration
+     */
+    userIdStatus: string;
+}
+
+export interface NgfwUserIdCustomIncludeExcludeNetwork {
+    /**
+     * Include or exclude this subnet from user-id configuration
+     */
+    discoveryInclude: boolean;
+    /**
+     * Enable this specific custom include/exclude network
+     */
+    enabled: boolean;
+    /**
+     * Name of subnet filter
+     */
+    name: string;
+    /**
+     * Network IP address of the subnet filter
+     */
+    networkAddress: string;
 }
 
 export interface RulestackProfileConfig {

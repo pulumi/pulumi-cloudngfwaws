@@ -89,8 +89,6 @@ region: Optional[str]
 AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`.
 """
 
-resourceTimeout: Optional[int]
-
 secretKey: Optional[str]
 """
 (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
@@ -109,5 +107,10 @@ Enable synchronous mode while creating resources Environment variable: `CLOUDNGF
 timeout: Optional[int]
 """
 The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
+"""
+
+v2Host: Optional[str]
+"""
+The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
 """
 

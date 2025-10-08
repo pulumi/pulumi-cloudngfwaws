@@ -3,8 +3,12 @@
 
 package com.pulumi.cloudngfwaws.outputs;
 
+import com.pulumi.cloudngfwaws.outputs.GetNgfwEgressNat;
+import com.pulumi.cloudngfwaws.outputs.GetNgfwEndpoint;
+import com.pulumi.cloudngfwaws.outputs.GetNgfwPrivateAccess;
 import com.pulumi.cloudngfwaws.outputs.GetNgfwStatus;
 import com.pulumi.cloudngfwaws.outputs.GetNgfwSubnetMapping;
+import com.pulumi.cloudngfwaws.outputs.GetNgfwUserId;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -12,16 +16,19 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNgfwResult {
     /**
-     * @return The account ID. This field is mandatory if using multiple accounts.
+     * @return The description.
      * 
      */
-    private @Nullable String accountId;
+    private String accountId;
+    /**
+     * @return The list of allowed accounts for this NGFW.
+     * 
+     */
+    private List<String> allowlistAccounts;
     /**
      * @return App-ID version number.
      * 
@@ -33,10 +40,26 @@ public final class GetNgfwResult {
      */
     private Boolean automaticUpgradeAppIdVersion;
     /**
-     * @return The description.
+     * @return The list of availability zones for this NGFW.
+     * 
+     */
+    private List<String> azLists;
+    /**
+     * @return Enables or disables change protection for the NGFW.
+     * 
+     */
+    private List<String> changeProtections;
+    /**
+     * @return The update token.
+     * 
+     */
+    private String deploymentUpdateToken;
+    /**
+     * @return The NGFW description.
      * 
      */
     private String description;
+    private List<GetNgfwEgressNat> egressNats;
     /**
      * @return Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
      * 
@@ -47,8 +70,9 @@ public final class GetNgfwResult {
      * 
      */
     private String endpointServiceName;
+    private List<GetNgfwEndpoint> endpoints;
     /**
-     * @return The Id of the NGFW.
+     * @return The Firewall ID.
      * 
      */
     private String firewallId;
@@ -82,6 +106,7 @@ public final class GetNgfwResult {
      * 
      */
     private String name;
+    private List<GetNgfwPrivateAccess> privateAccesses;
     /**
      * @return The rulestack for this NGFW.
      * 
@@ -103,19 +128,27 @@ public final class GetNgfwResult {
      * 
      */
     private String updateToken;
+    private List<GetNgfwUserId> userIds;
     /**
-     * @return The vpc id.
+     * @return The VPC ID for the NGFW.
      * 
      */
     private String vpcId;
 
     private GetNgfwResult() {}
     /**
-     * @return The account ID. This field is mandatory if using multiple accounts.
+     * @return The description.
      * 
      */
-    public Optional<String> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public String accountId() {
+        return this.accountId;
+    }
+    /**
+     * @return The list of allowed accounts for this NGFW.
+     * 
+     */
+    public List<String> allowlistAccounts() {
+        return this.allowlistAccounts;
     }
     /**
      * @return App-ID version number.
@@ -132,11 +165,35 @@ public final class GetNgfwResult {
         return this.automaticUpgradeAppIdVersion;
     }
     /**
-     * @return The description.
+     * @return The list of availability zones for this NGFW.
+     * 
+     */
+    public List<String> azLists() {
+        return this.azLists;
+    }
+    /**
+     * @return Enables or disables change protection for the NGFW.
+     * 
+     */
+    public List<String> changeProtections() {
+        return this.changeProtections;
+    }
+    /**
+     * @return The update token.
+     * 
+     */
+    public String deploymentUpdateToken() {
+        return this.deploymentUpdateToken;
+    }
+    /**
+     * @return The NGFW description.
      * 
      */
     public String description() {
         return this.description;
+    }
+    public List<GetNgfwEgressNat> egressNats() {
+        return this.egressNats;
     }
     /**
      * @return Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
@@ -152,8 +209,11 @@ public final class GetNgfwResult {
     public String endpointServiceName() {
         return this.endpointServiceName;
     }
+    public List<GetNgfwEndpoint> endpoints() {
+        return this.endpoints;
+    }
     /**
-     * @return The Id of the NGFW.
+     * @return The Firewall ID.
      * 
      */
     public String firewallId() {
@@ -201,6 +261,9 @@ public final class GetNgfwResult {
     public String name() {
         return this.name;
     }
+    public List<GetNgfwPrivateAccess> privateAccesses() {
+        return this.privateAccesses;
+    }
     /**
      * @return The rulestack for this NGFW.
      * 
@@ -232,8 +295,11 @@ public final class GetNgfwResult {
     public String updateToken() {
         return this.updateToken;
     }
+    public List<GetNgfwUserId> userIds() {
+        return this.userIds;
+    }
     /**
-     * @return The vpc id.
+     * @return The VPC ID for the NGFW.
      * 
      */
     public String vpcId() {
@@ -249,12 +315,18 @@ public final class GetNgfwResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String accountId;
+        private String accountId;
+        private List<String> allowlistAccounts;
         private String appIdVersion;
         private Boolean automaticUpgradeAppIdVersion;
+        private List<String> azLists;
+        private List<String> changeProtections;
+        private String deploymentUpdateToken;
         private String description;
+        private List<GetNgfwEgressNat> egressNats;
         private String endpointMode;
         private String endpointServiceName;
+        private List<GetNgfwEndpoint> endpoints;
         private String firewallId;
         private String globalRulestack;
         private String id;
@@ -262,21 +334,29 @@ public final class GetNgfwResult {
         private String linkStatus;
         private Boolean multiVpc;
         private String name;
+        private List<GetNgfwPrivateAccess> privateAccesses;
         private String rulestack;
         private List<GetNgfwStatus> statuses;
         private List<GetNgfwSubnetMapping> subnetMappings;
         private Map<String,String> tags;
         private String updateToken;
+        private List<GetNgfwUserId> userIds;
         private String vpcId;
         public Builder() {}
         public Builder(GetNgfwResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.allowlistAccounts = defaults.allowlistAccounts;
     	      this.appIdVersion = defaults.appIdVersion;
     	      this.automaticUpgradeAppIdVersion = defaults.automaticUpgradeAppIdVersion;
+    	      this.azLists = defaults.azLists;
+    	      this.changeProtections = defaults.changeProtections;
+    	      this.deploymentUpdateToken = defaults.deploymentUpdateToken;
     	      this.description = defaults.description;
+    	      this.egressNats = defaults.egressNats;
     	      this.endpointMode = defaults.endpointMode;
     	      this.endpointServiceName = defaults.endpointServiceName;
+    	      this.endpoints = defaults.endpoints;
     	      this.firewallId = defaults.firewallId;
     	      this.globalRulestack = defaults.globalRulestack;
     	      this.id = defaults.id;
@@ -284,19 +364,34 @@ public final class GetNgfwResult {
     	      this.linkStatus = defaults.linkStatus;
     	      this.multiVpc = defaults.multiVpc;
     	      this.name = defaults.name;
+    	      this.privateAccesses = defaults.privateAccesses;
     	      this.rulestack = defaults.rulestack;
     	      this.statuses = defaults.statuses;
     	      this.subnetMappings = defaults.subnetMappings;
     	      this.tags = defaults.tags;
     	      this.updateToken = defaults.updateToken;
+    	      this.userIds = defaults.userIds;
     	      this.vpcId = defaults.vpcId;
         }
 
         @CustomType.Setter
-        public Builder accountId(@Nullable String accountId) {
-
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetNgfwResult", "accountId");
+            }
             this.accountId = accountId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder allowlistAccounts(List<String> allowlistAccounts) {
+            if (allowlistAccounts == null) {
+              throw new MissingRequiredPropertyException("GetNgfwResult", "allowlistAccounts");
+            }
+            this.allowlistAccounts = allowlistAccounts;
+            return this;
+        }
+        public Builder allowlistAccounts(String... allowlistAccounts) {
+            return allowlistAccounts(List.of(allowlistAccounts));
         }
         @CustomType.Setter
         public Builder appIdVersion(String appIdVersion) {
@@ -315,12 +410,53 @@ public final class GetNgfwResult {
             return this;
         }
         @CustomType.Setter
+        public Builder azLists(List<String> azLists) {
+            if (azLists == null) {
+              throw new MissingRequiredPropertyException("GetNgfwResult", "azLists");
+            }
+            this.azLists = azLists;
+            return this;
+        }
+        public Builder azLists(String... azLists) {
+            return azLists(List.of(azLists));
+        }
+        @CustomType.Setter
+        public Builder changeProtections(List<String> changeProtections) {
+            if (changeProtections == null) {
+              throw new MissingRequiredPropertyException("GetNgfwResult", "changeProtections");
+            }
+            this.changeProtections = changeProtections;
+            return this;
+        }
+        public Builder changeProtections(String... changeProtections) {
+            return changeProtections(List.of(changeProtections));
+        }
+        @CustomType.Setter
+        public Builder deploymentUpdateToken(String deploymentUpdateToken) {
+            if (deploymentUpdateToken == null) {
+              throw new MissingRequiredPropertyException("GetNgfwResult", "deploymentUpdateToken");
+            }
+            this.deploymentUpdateToken = deploymentUpdateToken;
+            return this;
+        }
+        @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
               throw new MissingRequiredPropertyException("GetNgfwResult", "description");
             }
             this.description = description;
             return this;
+        }
+        @CustomType.Setter
+        public Builder egressNats(List<GetNgfwEgressNat> egressNats) {
+            if (egressNats == null) {
+              throw new MissingRequiredPropertyException("GetNgfwResult", "egressNats");
+            }
+            this.egressNats = egressNats;
+            return this;
+        }
+        public Builder egressNats(GetNgfwEgressNat... egressNats) {
+            return egressNats(List.of(egressNats));
         }
         @CustomType.Setter
         public Builder endpointMode(String endpointMode) {
@@ -337,6 +473,17 @@ public final class GetNgfwResult {
             }
             this.endpointServiceName = endpointServiceName;
             return this;
+        }
+        @CustomType.Setter
+        public Builder endpoints(List<GetNgfwEndpoint> endpoints) {
+            if (endpoints == null) {
+              throw new MissingRequiredPropertyException("GetNgfwResult", "endpoints");
+            }
+            this.endpoints = endpoints;
+            return this;
+        }
+        public Builder endpoints(GetNgfwEndpoint... endpoints) {
+            return endpoints(List.of(endpoints));
         }
         @CustomType.Setter
         public Builder firewallId(String firewallId) {
@@ -395,6 +542,17 @@ public final class GetNgfwResult {
             return this;
         }
         @CustomType.Setter
+        public Builder privateAccesses(List<GetNgfwPrivateAccess> privateAccesses) {
+            if (privateAccesses == null) {
+              throw new MissingRequiredPropertyException("GetNgfwResult", "privateAccesses");
+            }
+            this.privateAccesses = privateAccesses;
+            return this;
+        }
+        public Builder privateAccesses(GetNgfwPrivateAccess... privateAccesses) {
+            return privateAccesses(List.of(privateAccesses));
+        }
+        @CustomType.Setter
         public Builder rulestack(String rulestack) {
             if (rulestack == null) {
               throw new MissingRequiredPropertyException("GetNgfwResult", "rulestack");
@@ -441,6 +599,17 @@ public final class GetNgfwResult {
             return this;
         }
         @CustomType.Setter
+        public Builder userIds(List<GetNgfwUserId> userIds) {
+            if (userIds == null) {
+              throw new MissingRequiredPropertyException("GetNgfwResult", "userIds");
+            }
+            this.userIds = userIds;
+            return this;
+        }
+        public Builder userIds(GetNgfwUserId... userIds) {
+            return userIds(List.of(userIds));
+        }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             if (vpcId == null) {
               throw new MissingRequiredPropertyException("GetNgfwResult", "vpcId");
@@ -451,11 +620,17 @@ public final class GetNgfwResult {
         public GetNgfwResult build() {
             final var _resultValue = new GetNgfwResult();
             _resultValue.accountId = accountId;
+            _resultValue.allowlistAccounts = allowlistAccounts;
             _resultValue.appIdVersion = appIdVersion;
             _resultValue.automaticUpgradeAppIdVersion = automaticUpgradeAppIdVersion;
+            _resultValue.azLists = azLists;
+            _resultValue.changeProtections = changeProtections;
+            _resultValue.deploymentUpdateToken = deploymentUpdateToken;
             _resultValue.description = description;
+            _resultValue.egressNats = egressNats;
             _resultValue.endpointMode = endpointMode;
             _resultValue.endpointServiceName = endpointServiceName;
+            _resultValue.endpoints = endpoints;
             _resultValue.firewallId = firewallId;
             _resultValue.globalRulestack = globalRulestack;
             _resultValue.id = id;
@@ -463,11 +638,13 @@ public final class GetNgfwResult {
             _resultValue.linkStatus = linkStatus;
             _resultValue.multiVpc = multiVpc;
             _resultValue.name = name;
+            _resultValue.privateAccesses = privateAccesses;
             _resultValue.rulestack = rulestack;
             _resultValue.statuses = statuses;
             _resultValue.subnetMappings = subnetMappings;
             _resultValue.tags = tags;
             _resultValue.updateToken = updateToken;
+            _resultValue.userIds = userIds;
             _resultValue.vpcId = vpcId;
             return _resultValue;
         }

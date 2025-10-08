@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudngfwaws.outputs;
 
+import com.pulumi.cloudngfwaws.outputs.GetNgfwLogProfileLogConfig;
 import com.pulumi.cloudngfwaws.outputs.GetNgfwLogProfileLogDestination;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -10,6 +11,8 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNgfwLogProfileResult {
@@ -17,7 +20,7 @@ public final class GetNgfwLogProfileResult {
      * @return The unique ID of the account.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return Enable advanced threat logging.
      * 
@@ -34,10 +37,20 @@ public final class GetNgfwLogProfileResult {
      */
     private List<String> cloudwatchMetricFields;
     /**
+     * @return The Firewall Id for the NGFW.
+     * 
+     */
+    private String firewallId;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Log configuration details.
+     * 
+     */
+    private List<GetNgfwLogProfileLogConfig> logConfigs;
     /**
      * @return List of log destinations.
      * 
@@ -47,15 +60,25 @@ public final class GetNgfwLogProfileResult {
      * @return The name of the NGFW.
      * 
      */
-    private String ngfw;
+    private @Nullable String ngfw;
+    /**
+     * @return The region of the NGFW.
+     * 
+     */
+    private String region;
+    /**
+     * @return The update token.
+     * 
+     */
+    private String updateToken;
 
     private GetNgfwLogProfileResult() {}
     /**
      * @return The unique ID of the account.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return Enable advanced threat logging.
@@ -79,11 +102,25 @@ public final class GetNgfwLogProfileResult {
         return this.cloudwatchMetricFields;
     }
     /**
+     * @return The Firewall Id for the NGFW.
+     * 
+     */
+    public String firewallId() {
+        return this.firewallId;
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Log configuration details.
+     * 
+     */
+    public List<GetNgfwLogProfileLogConfig> logConfigs() {
+        return this.logConfigs;
     }
     /**
      * @return List of log destinations.
@@ -96,8 +133,22 @@ public final class GetNgfwLogProfileResult {
      * @return The name of the NGFW.
      * 
      */
-    public String ngfw() {
-        return this.ngfw;
+    public Optional<String> ngfw() {
+        return Optional.ofNullable(this.ngfw);
+    }
+    /**
+     * @return The region of the NGFW.
+     * 
+     */
+    public String region() {
+        return this.region;
+    }
+    /**
+     * @return The update token.
+     * 
+     */
+    public String updateToken() {
+        return this.updateToken;
     }
 
     public static Builder builder() {
@@ -109,13 +160,17 @@ public final class GetNgfwLogProfileResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private Boolean advancedThreatLog;
         private String cloudWatchMetricNamespace;
         private List<String> cloudwatchMetricFields;
+        private String firewallId;
         private String id;
+        private List<GetNgfwLogProfileLogConfig> logConfigs;
         private List<GetNgfwLogProfileLogDestination> logDestinations;
-        private String ngfw;
+        private @Nullable String ngfw;
+        private String region;
+        private String updateToken;
         public Builder() {}
         public Builder(GetNgfwLogProfileResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -123,16 +178,18 @@ public final class GetNgfwLogProfileResult {
     	      this.advancedThreatLog = defaults.advancedThreatLog;
     	      this.cloudWatchMetricNamespace = defaults.cloudWatchMetricNamespace;
     	      this.cloudwatchMetricFields = defaults.cloudwatchMetricFields;
+    	      this.firewallId = defaults.firewallId;
     	      this.id = defaults.id;
+    	      this.logConfigs = defaults.logConfigs;
     	      this.logDestinations = defaults.logDestinations;
     	      this.ngfw = defaults.ngfw;
+    	      this.region = defaults.region;
+    	      this.updateToken = defaults.updateToken;
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetNgfwLogProfileResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
@@ -164,12 +221,31 @@ public final class GetNgfwLogProfileResult {
             return cloudwatchMetricFields(List.of(cloudwatchMetricFields));
         }
         @CustomType.Setter
+        public Builder firewallId(String firewallId) {
+            if (firewallId == null) {
+              throw new MissingRequiredPropertyException("GetNgfwLogProfileResult", "firewallId");
+            }
+            this.firewallId = firewallId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetNgfwLogProfileResult", "id");
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder logConfigs(List<GetNgfwLogProfileLogConfig> logConfigs) {
+            if (logConfigs == null) {
+              throw new MissingRequiredPropertyException("GetNgfwLogProfileResult", "logConfigs");
+            }
+            this.logConfigs = logConfigs;
+            return this;
+        }
+        public Builder logConfigs(GetNgfwLogProfileLogConfig... logConfigs) {
+            return logConfigs(List.of(logConfigs));
         }
         @CustomType.Setter
         public Builder logDestinations(List<GetNgfwLogProfileLogDestination> logDestinations) {
@@ -183,11 +259,25 @@ public final class GetNgfwLogProfileResult {
             return logDestinations(List.of(logDestinations));
         }
         @CustomType.Setter
-        public Builder ngfw(String ngfw) {
-            if (ngfw == null) {
-              throw new MissingRequiredPropertyException("GetNgfwLogProfileResult", "ngfw");
-            }
+        public Builder ngfw(@Nullable String ngfw) {
+
             this.ngfw = ngfw;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder region(String region) {
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetNgfwLogProfileResult", "region");
+            }
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder updateToken(String updateToken) {
+            if (updateToken == null) {
+              throw new MissingRequiredPropertyException("GetNgfwLogProfileResult", "updateToken");
+            }
+            this.updateToken = updateToken;
             return this;
         }
         public GetNgfwLogProfileResult build() {
@@ -196,9 +286,13 @@ public final class GetNgfwLogProfileResult {
             _resultValue.advancedThreatLog = advancedThreatLog;
             _resultValue.cloudWatchMetricNamespace = cloudWatchMetricNamespace;
             _resultValue.cloudwatchMetricFields = cloudwatchMetricFields;
+            _resultValue.firewallId = firewallId;
             _resultValue.id = id;
+            _resultValue.logConfigs = logConfigs;
             _resultValue.logDestinations = logDestinations;
             _resultValue.ngfw = ngfw;
+            _resultValue.region = region;
+            _resultValue.updateToken = updateToken;
             return _resultValue;
         }
     }

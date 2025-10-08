@@ -16,32 +16,6 @@ import (
 // ## Admin Permission Type
 //
 // * `Firewall`
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudngfwaws.LookupNgfw(ctx, &cloudngfwaws.LookupNgfwArgs{
-//				Name: "example-instance",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupNgfw(ctx *pulumi.Context, args *LookupNgfwArgs, opts ...pulumi.InvokeOption) (*LookupNgfwResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNgfwResult
@@ -54,27 +28,35 @@ func LookupNgfw(ctx *pulumi.Context, args *LookupNgfwArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getNgfw.
 type LookupNgfwArgs struct {
-	// The account ID. This field is mandatory if using multiple accounts.
-	AccountId *string `pulumi:"accountId"`
-	// The NGFW name.
-	Name string `pulumi:"name"`
+	// The Firewall ID.
+	FirewallId string `pulumi:"firewallId"`
 }
 
 // A collection of values returned by getNgfw.
 type LookupNgfwResult struct {
-	// The account ID. This field is mandatory if using multiple accounts.
-	AccountId *string `pulumi:"accountId"`
+	// The description.
+	AccountId string `pulumi:"accountId"`
+	// The list of allowed accounts for this NGFW.
+	AllowlistAccounts []string `pulumi:"allowlistAccounts"`
 	// App-ID version number.
 	AppIdVersion string `pulumi:"appIdVersion"`
 	// Automatic App-ID upgrade version number.
 	AutomaticUpgradeAppIdVersion bool `pulumi:"automaticUpgradeAppIdVersion"`
-	// The description.
-	Description string `pulumi:"description"`
+	// The list of availability zones for this NGFW.
+	AzLists []string `pulumi:"azLists"`
+	// Enables or disables change protection for the NGFW.
+	ChangeProtections []string `pulumi:"changeProtections"`
+	// The update token.
+	DeploymentUpdateToken string `pulumi:"deploymentUpdateToken"`
+	// The NGFW description.
+	Description string             `pulumi:"description"`
+	EgressNats  []GetNgfwEgressNat `pulumi:"egressNats"`
 	// Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
 	EndpointMode string `pulumi:"endpointMode"`
 	// The endpoint service name.
-	EndpointServiceName string `pulumi:"endpointServiceName"`
-	// The Id of the NGFW.
+	EndpointServiceName string            `pulumi:"endpointServiceName"`
+	Endpoints           []GetNgfwEndpoint `pulumi:"endpoints"`
+	// The Firewall ID.
 	FirewallId string `pulumi:"firewallId"`
 	// The global rulestack for this NGFW.
 	GlobalRulestack string `pulumi:"globalRulestack"`
@@ -87,7 +69,8 @@ type LookupNgfwResult struct {
 	// Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
 	MultiVpc bool `pulumi:"multiVpc"`
 	// The NGFW name.
-	Name string `pulumi:"name"`
+	Name            string                 `pulumi:"name"`
+	PrivateAccesses []GetNgfwPrivateAccess `pulumi:"privateAccesses"`
 	// The rulestack for this NGFW.
 	Rulestack string          `pulumi:"rulestack"`
 	Statuses  []GetNgfwStatus `pulumi:"statuses"`
@@ -96,8 +79,9 @@ type LookupNgfwResult struct {
 	// The tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The update token.
-	UpdateToken string `pulumi:"updateToken"`
-	// The vpc id.
+	UpdateToken string          `pulumi:"updateToken"`
+	UserIds     []GetNgfwUserId `pulumi:"userIds"`
+	// The VPC ID for the NGFW.
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -112,10 +96,8 @@ func LookupNgfwOutput(ctx *pulumi.Context, args LookupNgfwOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getNgfw.
 type LookupNgfwOutputArgs struct {
-	// The account ID. This field is mandatory if using multiple accounts.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// The NGFW name.
-	Name pulumi.StringInput `pulumi:"name"`
+	// The Firewall ID.
+	FirewallId pulumi.StringInput `pulumi:"firewallId"`
 }
 
 func (LookupNgfwOutputArgs) ElementType() reflect.Type {
@@ -137,9 +119,14 @@ func (o LookupNgfwResultOutput) ToLookupNgfwResultOutputWithContext(ctx context.
 	return o
 }
 
-// The account ID. This field is mandatory if using multiple accounts.
-func (o LookupNgfwResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupNgfwResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+// The description.
+func (o LookupNgfwResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNgfwResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The list of allowed accounts for this NGFW.
+func (o LookupNgfwResultOutput) AllowlistAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNgfwResult) []string { return v.AllowlistAccounts }).(pulumi.StringArrayOutput)
 }
 
 // App-ID version number.
@@ -152,9 +139,28 @@ func (o LookupNgfwResultOutput) AutomaticUpgradeAppIdVersion() pulumi.BoolOutput
 	return o.ApplyT(func(v LookupNgfwResult) bool { return v.AutomaticUpgradeAppIdVersion }).(pulumi.BoolOutput)
 }
 
-// The description.
+// The list of availability zones for this NGFW.
+func (o LookupNgfwResultOutput) AzLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNgfwResult) []string { return v.AzLists }).(pulumi.StringArrayOutput)
+}
+
+// Enables or disables change protection for the NGFW.
+func (o LookupNgfwResultOutput) ChangeProtections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNgfwResult) []string { return v.ChangeProtections }).(pulumi.StringArrayOutput)
+}
+
+// The update token.
+func (o LookupNgfwResultOutput) DeploymentUpdateToken() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNgfwResult) string { return v.DeploymentUpdateToken }).(pulumi.StringOutput)
+}
+
+// The NGFW description.
 func (o LookupNgfwResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNgfwResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupNgfwResultOutput) EgressNats() GetNgfwEgressNatArrayOutput {
+	return o.ApplyT(func(v LookupNgfwResult) []GetNgfwEgressNat { return v.EgressNats }).(GetNgfwEgressNatArrayOutput)
 }
 
 // Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
@@ -167,7 +173,11 @@ func (o LookupNgfwResultOutput) EndpointServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNgfwResult) string { return v.EndpointServiceName }).(pulumi.StringOutput)
 }
 
-// The Id of the NGFW.
+func (o LookupNgfwResultOutput) Endpoints() GetNgfwEndpointArrayOutput {
+	return o.ApplyT(func(v LookupNgfwResult) []GetNgfwEndpoint { return v.Endpoints }).(GetNgfwEndpointArrayOutput)
+}
+
+// The Firewall ID.
 func (o LookupNgfwResultOutput) FirewallId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNgfwResult) string { return v.FirewallId }).(pulumi.StringOutput)
 }
@@ -202,6 +212,10 @@ func (o LookupNgfwResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNgfwResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o LookupNgfwResultOutput) PrivateAccesses() GetNgfwPrivateAccessArrayOutput {
+	return o.ApplyT(func(v LookupNgfwResult) []GetNgfwPrivateAccess { return v.PrivateAccesses }).(GetNgfwPrivateAccessArrayOutput)
+}
+
 // The rulestack for this NGFW.
 func (o LookupNgfwResultOutput) Rulestack() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNgfwResult) string { return v.Rulestack }).(pulumi.StringOutput)
@@ -226,7 +240,11 @@ func (o LookupNgfwResultOutput) UpdateToken() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNgfwResult) string { return v.UpdateToken }).(pulumi.StringOutput)
 }
 
-// The vpc id.
+func (o LookupNgfwResultOutput) UserIds() GetNgfwUserIdArrayOutput {
+	return o.ApplyT(func(v LookupNgfwResult) []GetNgfwUserId { return v.UserIds }).(GetNgfwUserIdArrayOutput)
+}
+
+// The VPC ID for the NGFW.
 func (o LookupNgfwResultOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNgfwResult) string { return v.VpcId }).(pulumi.StringOutput)
 }
