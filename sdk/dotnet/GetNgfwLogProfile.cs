@@ -39,7 +39,7 @@ namespace Pulumi.CloudNgfwAws
         /// });
         /// ```
         /// </summary>
-        public static Task<GetNgfwLogProfileResult> InvokeAsync(GetNgfwLogProfileArgs args, InvokeOptions? options = null)
+        public static Task<GetNgfwLogProfileResult> InvokeAsync(GetNgfwLogProfileArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNgfwLogProfileResult>("cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile", args ?? new GetNgfwLogProfileArgs(), options.WithDefaults());
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.CloudNgfwAws
         /// });
         /// ```
         /// </summary>
-        public static Output<GetNgfwLogProfileResult> Invoke(GetNgfwLogProfileInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetNgfwLogProfileResult> Invoke(GetNgfwLogProfileInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNgfwLogProfileResult>("cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile", args ?? new GetNgfwLogProfileInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -111,14 +111,14 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// The unique ID of the account.
         /// </summary>
-        [Input("accountId", required: true)]
-        public string AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// The name of the NGFW.
         /// </summary>
-        [Input("ngfw", required: true)]
-        public string Ngfw { get; set; } = null!;
+        [Input("ngfw")]
+        public string? Ngfw { get; set; }
 
         public GetNgfwLogProfileArgs()
         {
@@ -131,14 +131,14 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// The unique ID of the account.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// The name of the NGFW.
         /// </summary>
-        [Input("ngfw", required: true)]
-        public Input<string> Ngfw { get; set; } = null!;
+        [Input("ngfw")]
+        public Input<string>? Ngfw { get; set; }
 
         public GetNgfwLogProfileInvokeArgs()
         {
@@ -153,7 +153,7 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// The unique ID of the account.
         /// </summary>
-        public readonly string AccountId;
+        public readonly string? AccountId;
         /// <summary>
         /// Enable advanced threat logging.
         /// </summary>
@@ -167,9 +167,17 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public readonly ImmutableArray<string> CloudwatchMetricFields;
         /// <summary>
+        /// The Firewall Id for the NGFW.
+        /// </summary>
+        public readonly string FirewallId;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Log configuration details.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetNgfwLogProfileLogConfigResult> LogConfigs;
         /// <summary>
         /// List of log destinations.
         /// </summary>
@@ -177,11 +185,19 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// The name of the NGFW.
         /// </summary>
-        public readonly string Ngfw;
+        public readonly string? Ngfw;
+        /// <summary>
+        /// The region of the NGFW.
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
+        /// The update token.
+        /// </summary>
+        public readonly string UpdateToken;
 
         [OutputConstructor]
         private GetNgfwLogProfileResult(
-            string accountId,
+            string? accountId,
 
             bool advancedThreatLog,
 
@@ -189,19 +205,31 @@ namespace Pulumi.CloudNgfwAws
 
             ImmutableArray<string> cloudwatchMetricFields,
 
+            string firewallId,
+
             string id,
+
+            ImmutableArray<Outputs.GetNgfwLogProfileLogConfigResult> logConfigs,
 
             ImmutableArray<Outputs.GetNgfwLogProfileLogDestinationResult> logDestinations,
 
-            string ngfw)
+            string? ngfw,
+
+            string region,
+
+            string updateToken)
         {
             AccountId = accountId;
             AdvancedThreatLog = advancedThreatLog;
             CloudWatchMetricNamespace = cloudWatchMetricNamespace;
             CloudwatchMetricFields = cloudwatchMetricFields;
+            FirewallId = firewallId;
             Id = id;
+            LogConfigs = logConfigs;
             LogDestinations = logDestinations;
             Ngfw = ngfw;
+            Region = region;
+            UpdateToken = updateToken;
         }
     }
 }

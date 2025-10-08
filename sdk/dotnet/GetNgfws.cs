@@ -97,6 +97,12 @@ namespace Pulumi.CloudNgfwAws
     public sealed class GetNgfwsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The region to filter on.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
+        /// <summary>
         /// The rulestack to filter on.
         /// </summary>
         [Input("rulestack")]
@@ -122,6 +128,12 @@ namespace Pulumi.CloudNgfwAws
 
     public sealed class GetNgfwsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The region to filter on.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         /// <summary>
         /// The rulestack to filter on.
         /// </summary>
@@ -159,6 +171,10 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNgfwsInstanceResult> Instances;
         /// <summary>
+        /// The region to filter on.
+        /// </summary>
+        public readonly string? Region;
+        /// <summary>
         /// The rulestack to filter on.
         /// </summary>
         public readonly string? Rulestack;
@@ -173,12 +189,15 @@ namespace Pulumi.CloudNgfwAws
 
             ImmutableArray<Outputs.GetNgfwsInstanceResult> instances,
 
+            string? region,
+
             string? rulestack,
 
             ImmutableArray<string> vpcIds)
         {
             Id = id;
             Instances = instances;
+            Region = region;
             Rulestack = rulestack;
             VpcIds = vpcIds;
         }

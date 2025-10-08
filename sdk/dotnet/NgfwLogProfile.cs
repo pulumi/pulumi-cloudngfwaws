@@ -47,33 +47,18 @@ namespace Pulumi.CloudNgfwAws
     ///         },
     ///     });
     /// 
-    ///     var subnet2 = new Aws.Index.Subnet("subnet2", new()
-    ///     {
-    ///         VpcId = myVpc.Id,
-    ///         CidrBlock = "172.16.20.0/24",
-    ///         AvailabilityZone = "us-west-2b",
-    ///         Tags = 
-    ///         {
-    ///             { "name", "tf-example" },
-    ///         },
-    ///     });
-    /// 
     ///     var x = new CloudNgfwAws.Ngfw("x", new()
     ///     {
     ///         Name = "example-instance",
-    ///         VpcId = exampleVpc.Id,
-    ///         AccountId = "12345678",
     ///         Description = "Example description",
-    ///         EndpointMode = "ServiceManaged",
-    ///         SubnetMappings = new[]
+    ///         Endpoints = new[]
     ///         {
-    ///             new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs
+    ///             new CloudNgfwAws.Inputs.NgfwEndpointArgs
     ///             {
     ///                 SubnetId = subnet1.Id,
-    ///             },
-    ///             new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs
-    ///             {
-    ///                 SubnetId = subnet2.Id,
+    ///                 Mode = "ServiceManaged",
+    ///                 VpcId = exampleVpc.Id,
+    ///                 AccountId = "12345678",
     ///             },
     ///         },
     ///         Rulestack = "example-rulestack",
@@ -85,22 +70,38 @@ namespace Pulumi.CloudNgfwAws
     /// 
     ///     var example = new CloudNgfwAws.NgfwLogProfile("example", new()
     ///     {
-    ///         Ngfw = x.Name,
+    ///         FirewallId = x.FirewallId,
     ///         AccountId = x.AccountId,
-    ///         LogDestinations = new[]
+    ///         AdvancedThreatLog = true,
+    ///         CloudwatchMetricFields = new[]
     ///         {
-    ///             new CloudNgfwAws.Inputs.NgfwLogProfileLogDestinationArgs
+    ///             "Dataplane_CPU_Utilization",
+    ///             "Session_Throughput_Kbps",
+    ///             "BytesIn",
+    ///             "BytesOut",
+    ///         },
+    ///         CloudWatchMetricNamespace = "PaloAltoCloudNGFW",
+    ///         LogConfig = new CloudNgfwAws.Inputs.NgfwLogProfileLogConfigArgs
+    ///         {
+    ///             LogDestination = "my-s3-bucket",
+    ///             LogDestinationType = "S3",
+    ///             LogTypes = new[]
     ///             {
-    ///                 DestinationType = "S3",
-    ///                 Destination = "my-s3-bucket",
-    ///                 LogType = "TRAFFIC",
+    ///                 "TRAFFIC",
     ///             },
-    ///             new CloudNgfwAws.Inputs.NgfwLogProfileLogDestinationArgs
-    ///             {
-    ///                 DestinationType = "CloudWatchLogs",
-    ///                 Destination = "panw-log-group",
-    ///                 LogType = "THREAT",
-    ///             },
+    ///             AccountId = "251583708250",
+    ///             RoleType = "IamBased",
+    ///         },
+    ///     });
+    /// 
+    ///     var subnet2 = new Aws.Index.Subnet("subnet2", new()
+    ///     {
+    ///         VpcId = myVpc.Id,
+    ///         CidrBlock = "172.16.20.0/24",
+    ///         AvailabilityZone = "us-west-2b",
+    ///         Tags = 
+    ///         {
+    ///             { "name", "tf-example" },
     ///         },
     ///     });
     /// 
@@ -122,7 +123,7 @@ namespace Pulumi.CloudNgfwAws
         /// The unique ID of the account.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Enable advanced threat logging.
@@ -143,6 +144,18 @@ namespace Pulumi.CloudNgfwAws
         public Output<ImmutableArray<string>> CloudwatchMetricFields { get; private set; } = null!;
 
         /// <summary>
+        /// The Firewall Id for the NGFW.
+        /// </summary>
+        [Output("firewallId")]
+        public Output<string> FirewallId { get; private set; } = null!;
+
+        /// <summary>
+        /// Log configuration details.
+        /// </summary>
+        [Output("logConfig")]
+        public Output<Outputs.NgfwLogProfileLogConfig?> LogConfig { get; private set; } = null!;
+
+        /// <summary>
         /// List of log destinations.
         /// </summary>
         [Output("logDestinations")]
@@ -152,7 +165,19 @@ namespace Pulumi.CloudNgfwAws
         /// The name of the NGFW.
         /// </summary>
         [Output("ngfw")]
-        public Output<string> Ngfw { get; private set; } = null!;
+        public Output<string?> Ngfw { get; private set; } = null!;
+
+        /// <summary>
+        /// The region of the NGFW.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// The update token.
+        /// </summary>
+        [Output("updateToken")]
+        public Output<string> UpdateToken { get; private set; } = null!;
 
 
         /// <summary>
@@ -204,8 +229,8 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// The unique ID of the account.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Enable advanced threat logging.
@@ -231,7 +256,19 @@ namespace Pulumi.CloudNgfwAws
             set => _cloudwatchMetricFields = value;
         }
 
-        [Input("logDestinations", required: true)]
+        /// <summary>
+        /// The Firewall Id for the NGFW.
+        /// </summary>
+        [Input("firewallId", required: true)]
+        public Input<string> FirewallId { get; set; } = null!;
+
+        /// <summary>
+        /// Log configuration details.
+        /// </summary>
+        [Input("logConfig")]
+        public Input<Inputs.NgfwLogProfileLogConfigArgs>? LogConfig { get; set; }
+
+        [Input("logDestinations")]
         private InputList<Inputs.NgfwLogProfileLogDestinationArgs>? _logDestinations;
 
         /// <summary>
@@ -246,8 +283,14 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// The name of the NGFW.
         /// </summary>
-        [Input("ngfw", required: true)]
-        public Input<string> Ngfw { get; set; } = null!;
+        [Input("ngfw")]
+        public Input<string>? Ngfw { get; set; }
+
+        /// <summary>
+        /// The region of the NGFW.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public NgfwLogProfileArgs()
         {
@@ -287,6 +330,18 @@ namespace Pulumi.CloudNgfwAws
             set => _cloudwatchMetricFields = value;
         }
 
+        /// <summary>
+        /// The Firewall Id for the NGFW.
+        /// </summary>
+        [Input("firewallId")]
+        public Input<string>? FirewallId { get; set; }
+
+        /// <summary>
+        /// Log configuration details.
+        /// </summary>
+        [Input("logConfig")]
+        public Input<Inputs.NgfwLogProfileLogConfigGetArgs>? LogConfig { get; set; }
+
         [Input("logDestinations")]
         private InputList<Inputs.NgfwLogProfileLogDestinationGetArgs>? _logDestinations;
 
@@ -304,6 +359,18 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         [Input("ngfw")]
         public Input<string>? Ngfw { get; set; }
+
+        /// <summary>
+        /// The region of the NGFW.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The update token.
+        /// </summary>
+        [Input("updateToken")]
+        public Input<string>? UpdateToken { get; set; }
 
         public NgfwLogProfileState()
         {

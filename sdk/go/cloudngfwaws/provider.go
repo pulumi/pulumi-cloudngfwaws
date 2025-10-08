@@ -46,6 +46,8 @@ type Provider struct {
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
 	SecretKey pulumi.StringPtrOutput `pulumi:"secretKey"`
+	// The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2Host`.
+	V2Host pulumi.StringPtrOutput `pulumi:"v2Host"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -94,8 +96,7 @@ type providerArgs struct {
 	// The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`.
 	Protocol *string `pulumi:"protocol"`
 	// AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`.
-	Region          *string `pulumi:"region"`
-	ResourceTimeout *int    `pulumi:"resourceTimeout"`
+	Region *string `pulumi:"region"`
 	// (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
 	SecretKey *string `pulumi:"secretKey"`
 	// Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file variable: `skip-verify-certificate`.
@@ -104,6 +105,8 @@ type providerArgs struct {
 	SyncMode *bool `pulumi:"syncMode"`
 	// The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
 	Timeout *int `pulumi:"timeout"`
+	// The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2Host`.
+	V2Host *string `pulumi:"v2Host"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -137,8 +140,7 @@ type ProviderArgs struct {
 	// The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`.
 	Protocol pulumi.StringPtrInput
 	// AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`.
-	Region          pulumi.StringPtrInput
-	ResourceTimeout pulumi.IntPtrInput
+	Region pulumi.StringPtrInput
 	// (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
 	SecretKey pulumi.StringPtrInput
 	// Skip verifying the SSL certificate. Environment variable: `CLOUDNGFWAWS_SKIP_VERIFY_CERTIFICATE`. JSON conf file variable: `skip-verify-certificate`.
@@ -147,6 +149,8 @@ type ProviderArgs struct {
 	SyncMode pulumi.BoolPtrInput
 	// The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
 	Timeout pulumi.IntPtrInput
+	// The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2Host`.
+	V2Host pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -277,6 +281,11 @@ func (o ProviderOutput) Region() pulumi.StringPtrOutput {
 // (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
 func (o ProviderOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+// The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2Host`.
+func (o ProviderOutput) V2Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.V2Host }).(pulumi.StringPtrOutput)
 }
 
 func init() {

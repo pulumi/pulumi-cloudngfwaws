@@ -12,23 +12,11 @@ import * as utilities from "./utilities";
  * ## Admin Permission Type
  *
  * * `Firewall`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
- *
- * const example = cloudngfwaws.getNgfw({
- *     name: "example-instance",
- * });
- * ```
  */
 export function getNgfw(args: GetNgfwArgs, opts?: pulumi.InvokeOptions): Promise<GetNgfwResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudngfwaws:index/getNgfw:getNgfw", {
-        "accountId": args.accountId,
-        "name": args.name,
+        "firewallId": args.firewallId,
     }, opts);
 }
 
@@ -37,13 +25,9 @@ export function getNgfw(args: GetNgfwArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetNgfwArgs {
     /**
-     * The account ID. This field is mandatory if using multiple accounts.
+     * The Firewall ID.
      */
-    accountId?: string;
-    /**
-     * The NGFW name.
-     */
-    name: string;
+    firewallId: string;
 }
 
 /**
@@ -51,9 +35,13 @@ export interface GetNgfwArgs {
  */
 export interface GetNgfwResult {
     /**
-     * The account ID. This field is mandatory if using multiple accounts.
+     * The description.
      */
-    readonly accountId?: string;
+    readonly accountId: string;
+    /**
+     * The list of allowed accounts for this NGFW.
+     */
+    readonly allowlistAccounts: string[];
     /**
      * App-ID version number.
      */
@@ -63,9 +51,22 @@ export interface GetNgfwResult {
      */
     readonly automaticUpgradeAppIdVersion: boolean;
     /**
-     * The description.
+     * The list of availability zones for this NGFW.
+     */
+    readonly azLists: string[];
+    /**
+     * Enables or disables change protection for the NGFW.
+     */
+    readonly changeProtections: string[];
+    /**
+     * The update token.
+     */
+    readonly deploymentUpdateToken: string;
+    /**
+     * The NGFW description.
      */
     readonly description: string;
+    readonly egressNats: outputs.GetNgfwEgressNat[];
     /**
      * Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
      */
@@ -74,8 +75,9 @@ export interface GetNgfwResult {
      * The endpoint service name.
      */
     readonly endpointServiceName: string;
+    readonly endpoints: outputs.GetNgfwEndpoint[];
     /**
-     * The Id of the NGFW.
+     * The Firewall ID.
      */
     readonly firewallId: string;
     /**
@@ -102,6 +104,7 @@ export interface GetNgfwResult {
      * The NGFW name.
      */
     readonly name: string;
+    readonly privateAccesses: outputs.GetNgfwPrivateAccess[];
     /**
      * The rulestack for this NGFW.
      */
@@ -119,8 +122,9 @@ export interface GetNgfwResult {
      * The update token.
      */
     readonly updateToken: string;
+    readonly userIds: outputs.GetNgfwUserId[];
     /**
-     * The vpc id.
+     * The VPC ID for the NGFW.
      */
     readonly vpcId: string;
 }
@@ -130,23 +134,11 @@ export interface GetNgfwResult {
  * ## Admin Permission Type
  *
  * * `Firewall`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
- *
- * const example = cloudngfwaws.getNgfw({
- *     name: "example-instance",
- * });
- * ```
  */
 export function getNgfwOutput(args: GetNgfwOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNgfwResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getNgfw:getNgfw", {
-        "accountId": args.accountId,
-        "name": args.name,
+        "firewallId": args.firewallId,
     }, opts);
 }
 
@@ -155,11 +147,7 @@ export function getNgfwOutput(args: GetNgfwOutputArgs, opts?: pulumi.InvokeOutpu
  */
 export interface GetNgfwOutputArgs {
     /**
-     * The account ID. This field is mandatory if using multiple accounts.
+     * The Firewall ID.
      */
-    accountId?: pulumi.Input<string>;
-    /**
-     * The NGFW name.
-     */
-    name: pulumi.Input<string>;
+    firewallId: pulumi.Input<string>;
 }

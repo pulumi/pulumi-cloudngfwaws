@@ -218,6 +218,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> secretKey() {
         return Codegen.optional(this.secretKey);
     }
+    /**
+     * The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+     * 
+     */
+    @Export(name="v2Host", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> v2Host;
+
+    /**
+     * @return The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+     * 
+     */
+    public Output<Optional<String>> v2Host() {
+        return Codegen.optional(this.v2Host);
+    }
 
     /**
      *

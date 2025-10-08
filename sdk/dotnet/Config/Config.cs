@@ -182,13 +182,6 @@ namespace Pulumi.CloudNgfwAws
             set => _region.Set(value);
         }
 
-        private static readonly __Value<int?> _resourceTimeout = new __Value<int?>(() => __config.GetInt32("resourceTimeout"));
-        public static int? ResourceTimeout
-        {
-            get => _resourceTimeout.Get();
-            set => _resourceTimeout.Set(value);
-        }
-
         private static readonly __Value<string?> _secretKey = new __Value<string?>(() => __config.Get("secretKey"));
         /// <summary>
         /// (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
@@ -227,6 +220,16 @@ namespace Pulumi.CloudNgfwAws
         {
             get => _timeout.Get();
             set => _timeout.Set(value);
+        }
+
+        private static readonly __Value<string?> _v2Host = new __Value<string?>(() => __config.Get("v2Host"));
+        /// <summary>
+        /// The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+        /// </summary>
+        public static string? V2Host
+        {
+            get => _v2Host.Get();
+            set => _v2Host.Set(value);
         }
 
     }

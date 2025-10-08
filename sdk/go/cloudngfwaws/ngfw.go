@@ -53,35 +53,31 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			subnet2, err := aws.NewSubnet(ctx, "subnet2", &aws.SubnetArgs{
-//				VpcId:            myVpc.Id,
-//				CidrBlock:        "172.16.20.0/24",
-//				AvailabilityZone: "us-west-2b",
-//				Tags: map[string]interface{}{
-//					"name": "tf-example",
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			_, err = cloudngfwaws.NewNgfw(ctx, "example", &cloudngfwaws.NgfwArgs{
-//				Name:         pulumi.String("example-instance"),
-//				VpcId:        exampleVpc.Id,
-//				AccountId:    pulumi.String("12345678"),
-//				Description:  pulumi.String("Example description"),
-//				LinkId:       pulumi.String("Link-81e80ccc-357a-4e4e-8325-1ed1d830cba5"),
-//				EndpointMode: pulumi.String("ServiceManaged"),
-//				SubnetMappings: cloudngfwaws.NgfwSubnetMappingArray{
-//					&cloudngfwaws.NgfwSubnetMappingArgs{
-//						SubnetId: subnet1.Id,
-//					},
-//					&cloudngfwaws.NgfwSubnetMappingArgs{
-//						SubnetId: subnet2.Id,
+//				Name:        pulumi.String("example-instance"),
+//				Description: pulumi.String("Example description"),
+//				Endpoints: cloudngfwaws.NgfwEndpointArray{
+//					&cloudngfwaws.NgfwEndpointArgs{
+//						SubnetId:  subnet1.Id,
+//						Mode:      pulumi.String("ServiceManaged"),
+//						VpcId:     exampleVpc.Id,
+//						AccountId: pulumi.String("12345678"),
 //					},
 //				},
 //				Rulestack: rs.Rulestack,
 //				Tags: pulumi.StringMap{
 //					"Foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aws.NewSubnet(ctx, "subnet2", &aws.SubnetArgs{
+//				VpcId:            myVpc.Id,
+//				CidrBlock:        "172.16.20.0/24",
+//				AvailabilityZone: "us-west-2b",
+//				Tags: map[string]interface{}{
+//					"name": "tf-example",
 //				},
 //			})
 //			if err != nil {
@@ -103,30 +99,41 @@ import (
 type Ngfw struct {
 	pulumi.CustomResourceState
 
-	// The account ID. This field is mandatory if using multiple accounts.
+	// The description.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// The list of allowed accounts for this NGFW.
+	AllowlistAccounts pulumi.StringArrayOutput `pulumi:"allowlistAccounts"`
 	// App-ID version number.
 	AppIdVersion pulumi.StringOutput `pulumi:"appIdVersion"`
 	// Automatic App-ID upgrade version number. Defaults to `true`.
 	AutomaticUpgradeAppIdVersion pulumi.BoolPtrOutput `pulumi:"automaticUpgradeAppIdVersion"`
-	// The description.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The list of availability zones for this NGFW.
+	AzLists pulumi.StringArrayOutput `pulumi:"azLists"`
+	// Enables or disables change protection for the NGFW.
+	ChangeProtections pulumi.StringArrayOutput `pulumi:"changeProtections"`
+	// The update token.
+	DeploymentUpdateToken pulumi.StringOutput `pulumi:"deploymentUpdateToken"`
+	// The NGFW description.
+	Description pulumi.StringPtrOutput   `pulumi:"description"`
+	EgressNats  NgfwEgressNatArrayOutput `pulumi:"egressNats"`
 	// Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
-	EndpointMode pulumi.StringOutput `pulumi:"endpointMode"`
+	EndpointMode pulumi.StringPtrOutput `pulumi:"endpointMode"`
 	// The endpoint service name.
-	EndpointServiceName pulumi.StringOutput `pulumi:"endpointServiceName"`
-	// The Id of the NGFW.
+	EndpointServiceName pulumi.StringOutput     `pulumi:"endpointServiceName"`
+	Endpoints           NgfwEndpointArrayOutput `pulumi:"endpoints"`
+	// The Firewall ID.
 	FirewallId pulumi.StringOutput `pulumi:"firewallId"`
 	// The global rulestack for this NGFW.
 	GlobalRulestack pulumi.StringPtrOutput `pulumi:"globalRulestack"`
-	// A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+	// The link ID.
 	LinkId pulumi.StringOutput `pulumi:"linkId"`
 	// The link status.
 	LinkStatus pulumi.StringOutput `pulumi:"linkStatus"`
 	// Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
 	MultiVpc pulumi.BoolOutput `pulumi:"multiVpc"`
 	// The NGFW name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name            pulumi.StringOutput          `pulumi:"name"`
+	PrivateAccesses NgfwPrivateAccessArrayOutput `pulumi:"privateAccesses"`
 	// The rulestack for this NGFW.
 	Rulestack pulumi.StringPtrOutput `pulumi:"rulestack"`
 	Statuses  NgfwStatusArrayOutput  `pulumi:"statuses"`
@@ -135,9 +142,10 @@ type Ngfw struct {
 	// The tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The update token.
-	UpdateToken pulumi.StringOutput `pulumi:"updateToken"`
-	// The vpc id.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	UpdateToken pulumi.StringOutput   `pulumi:"updateToken"`
+	UserIds     NgfwUserIdArrayOutput `pulumi:"userIds"`
+	// The VPC ID for the NGFW.
+	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 }
 
 // NewNgfw registers a new resource with the given unique name, arguments, and options.
@@ -147,14 +155,8 @@ func NewNgfw(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EndpointMode == nil {
-		return nil, errors.New("invalid value for required argument 'EndpointMode'")
-	}
-	if args.SubnetMappings == nil {
-		return nil, errors.New("invalid value for required argument 'SubnetMappings'")
-	}
-	if args.VpcId == nil {
-		return nil, errors.New("invalid value for required argument 'VpcId'")
+	if args.AzLists == nil {
+		return nil, errors.New("invalid value for required argument 'AzLists'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Ngfw
@@ -179,30 +181,41 @@ func GetNgfw(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Ngfw resources.
 type ngfwState struct {
-	// The account ID. This field is mandatory if using multiple accounts.
+	// The description.
 	AccountId *string `pulumi:"accountId"`
+	// The list of allowed accounts for this NGFW.
+	AllowlistAccounts []string `pulumi:"allowlistAccounts"`
 	// App-ID version number.
 	AppIdVersion *string `pulumi:"appIdVersion"`
 	// Automatic App-ID upgrade version number. Defaults to `true`.
 	AutomaticUpgradeAppIdVersion *bool `pulumi:"automaticUpgradeAppIdVersion"`
-	// The description.
-	Description *string `pulumi:"description"`
+	// The list of availability zones for this NGFW.
+	AzLists []string `pulumi:"azLists"`
+	// Enables or disables change protection for the NGFW.
+	ChangeProtections []string `pulumi:"changeProtections"`
+	// The update token.
+	DeploymentUpdateToken *string `pulumi:"deploymentUpdateToken"`
+	// The NGFW description.
+	Description *string         `pulumi:"description"`
+	EgressNats  []NgfwEgressNat `pulumi:"egressNats"`
 	// Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
 	EndpointMode *string `pulumi:"endpointMode"`
 	// The endpoint service name.
-	EndpointServiceName *string `pulumi:"endpointServiceName"`
-	// The Id of the NGFW.
+	EndpointServiceName *string        `pulumi:"endpointServiceName"`
+	Endpoints           []NgfwEndpoint `pulumi:"endpoints"`
+	// The Firewall ID.
 	FirewallId *string `pulumi:"firewallId"`
 	// The global rulestack for this NGFW.
 	GlobalRulestack *string `pulumi:"globalRulestack"`
-	// A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+	// The link ID.
 	LinkId *string `pulumi:"linkId"`
 	// The link status.
 	LinkStatus *string `pulumi:"linkStatus"`
 	// Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
 	MultiVpc *bool `pulumi:"multiVpc"`
 	// The NGFW name.
-	Name *string `pulumi:"name"`
+	Name            *string             `pulumi:"name"`
+	PrivateAccesses []NgfwPrivateAccess `pulumi:"privateAccesses"`
 	// The rulestack for this NGFW.
 	Rulestack *string      `pulumi:"rulestack"`
 	Statuses  []NgfwStatus `pulumi:"statuses"`
@@ -211,36 +224,48 @@ type ngfwState struct {
 	// The tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The update token.
-	UpdateToken *string `pulumi:"updateToken"`
-	// The vpc id.
+	UpdateToken *string      `pulumi:"updateToken"`
+	UserIds     []NgfwUserId `pulumi:"userIds"`
+	// The VPC ID for the NGFW.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type NgfwState struct {
-	// The account ID. This field is mandatory if using multiple accounts.
+	// The description.
 	AccountId pulumi.StringPtrInput
+	// The list of allowed accounts for this NGFW.
+	AllowlistAccounts pulumi.StringArrayInput
 	// App-ID version number.
 	AppIdVersion pulumi.StringPtrInput
 	// Automatic App-ID upgrade version number. Defaults to `true`.
 	AutomaticUpgradeAppIdVersion pulumi.BoolPtrInput
-	// The description.
+	// The list of availability zones for this NGFW.
+	AzLists pulumi.StringArrayInput
+	// Enables or disables change protection for the NGFW.
+	ChangeProtections pulumi.StringArrayInput
+	// The update token.
+	DeploymentUpdateToken pulumi.StringPtrInput
+	// The NGFW description.
 	Description pulumi.StringPtrInput
+	EgressNats  NgfwEgressNatArrayInput
 	// Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
 	EndpointMode pulumi.StringPtrInput
 	// The endpoint service name.
 	EndpointServiceName pulumi.StringPtrInput
-	// The Id of the NGFW.
+	Endpoints           NgfwEndpointArrayInput
+	// The Firewall ID.
 	FirewallId pulumi.StringPtrInput
 	// The global rulestack for this NGFW.
 	GlobalRulestack pulumi.StringPtrInput
-	// A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+	// The link ID.
 	LinkId pulumi.StringPtrInput
 	// The link status.
 	LinkStatus pulumi.StringPtrInput
 	// Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
 	MultiVpc pulumi.BoolPtrInput
 	// The NGFW name.
-	Name pulumi.StringPtrInput
+	Name            pulumi.StringPtrInput
+	PrivateAccesses NgfwPrivateAccessArrayInput
 	// The rulestack for this NGFW.
 	Rulestack pulumi.StringPtrInput
 	Statuses  NgfwStatusArrayInput
@@ -250,7 +275,8 @@ type NgfwState struct {
 	Tags pulumi.StringMapInput
 	// The update token.
 	UpdateToken pulumi.StringPtrInput
-	// The vpc id.
+	UserIds     NgfwUserIdArrayInput
+	// The VPC ID for the NGFW.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -259,62 +285,82 @@ func (NgfwState) ElementType() reflect.Type {
 }
 
 type ngfwArgs struct {
-	// The account ID. This field is mandatory if using multiple accounts.
+	// The description.
 	AccountId *string `pulumi:"accountId"`
+	// The list of allowed accounts for this NGFW.
+	AllowlistAccounts []string `pulumi:"allowlistAccounts"`
 	// App-ID version number.
 	AppIdVersion *string `pulumi:"appIdVersion"`
 	// Automatic App-ID upgrade version number. Defaults to `true`.
 	AutomaticUpgradeAppIdVersion *bool `pulumi:"automaticUpgradeAppIdVersion"`
-	// The description.
-	Description *string `pulumi:"description"`
+	// The list of availability zones for this NGFW.
+	AzLists []string `pulumi:"azLists"`
+	// Enables or disables change protection for the NGFW.
+	ChangeProtections []string `pulumi:"changeProtections"`
+	// The NGFW description.
+	Description *string         `pulumi:"description"`
+	EgressNats  []NgfwEgressNat `pulumi:"egressNats"`
 	// Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
-	EndpointMode string `pulumi:"endpointMode"`
+	EndpointMode *string        `pulumi:"endpointMode"`
+	Endpoints    []NgfwEndpoint `pulumi:"endpoints"`
 	// The global rulestack for this NGFW.
 	GlobalRulestack *string `pulumi:"globalRulestack"`
-	// A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+	// The link ID.
 	LinkId *string `pulumi:"linkId"`
 	// Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
 	MultiVpc *bool `pulumi:"multiVpc"`
 	// The NGFW name.
-	Name *string `pulumi:"name"`
+	Name            *string             `pulumi:"name"`
+	PrivateAccesses []NgfwPrivateAccess `pulumi:"privateAccesses"`
 	// The rulestack for this NGFW.
 	Rulestack *string `pulumi:"rulestack"`
 	// Subnet mappings.
 	SubnetMappings []NgfwSubnetMapping `pulumi:"subnetMappings"`
 	// The tags.
-	Tags map[string]string `pulumi:"tags"`
-	// The vpc id.
-	VpcId string `pulumi:"vpcId"`
+	Tags    map[string]string `pulumi:"tags"`
+	UserIds []NgfwUserId      `pulumi:"userIds"`
+	// The VPC ID for the NGFW.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a Ngfw resource.
 type NgfwArgs struct {
-	// The account ID. This field is mandatory if using multiple accounts.
+	// The description.
 	AccountId pulumi.StringPtrInput
+	// The list of allowed accounts for this NGFW.
+	AllowlistAccounts pulumi.StringArrayInput
 	// App-ID version number.
 	AppIdVersion pulumi.StringPtrInput
 	// Automatic App-ID upgrade version number. Defaults to `true`.
 	AutomaticUpgradeAppIdVersion pulumi.BoolPtrInput
-	// The description.
+	// The list of availability zones for this NGFW.
+	AzLists pulumi.StringArrayInput
+	// Enables or disables change protection for the NGFW.
+	ChangeProtections pulumi.StringArrayInput
+	// The NGFW description.
 	Description pulumi.StringPtrInput
+	EgressNats  NgfwEgressNatArrayInput
 	// Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
-	EndpointMode pulumi.StringInput
+	EndpointMode pulumi.StringPtrInput
+	Endpoints    NgfwEndpointArrayInput
 	// The global rulestack for this NGFW.
 	GlobalRulestack pulumi.StringPtrInput
-	// A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+	// The link ID.
 	LinkId pulumi.StringPtrInput
 	// Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
 	MultiVpc pulumi.BoolPtrInput
 	// The NGFW name.
-	Name pulumi.StringPtrInput
+	Name            pulumi.StringPtrInput
+	PrivateAccesses NgfwPrivateAccessArrayInput
 	// The rulestack for this NGFW.
 	Rulestack pulumi.StringPtrInput
 	// Subnet mappings.
 	SubnetMappings NgfwSubnetMappingArrayInput
 	// The tags.
-	Tags pulumi.StringMapInput
-	// The vpc id.
-	VpcId pulumi.StringInput
+	Tags    pulumi.StringMapInput
+	UserIds NgfwUserIdArrayInput
+	// The VPC ID for the NGFW.
+	VpcId pulumi.StringPtrInput
 }
 
 func (NgfwArgs) ElementType() reflect.Type {
@@ -404,9 +450,14 @@ func (o NgfwOutput) ToNgfwOutputWithContext(ctx context.Context) NgfwOutput {
 	return o
 }
 
-// The account ID. This field is mandatory if using multiple accounts.
+// The description.
 func (o NgfwOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ngfw) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// The list of allowed accounts for this NGFW.
+func (o NgfwOutput) AllowlistAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Ngfw) pulumi.StringArrayOutput { return v.AllowlistAccounts }).(pulumi.StringArrayOutput)
 }
 
 // App-ID version number.
@@ -419,14 +470,33 @@ func (o NgfwOutput) AutomaticUpgradeAppIdVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Ngfw) pulumi.BoolPtrOutput { return v.AutomaticUpgradeAppIdVersion }).(pulumi.BoolPtrOutput)
 }
 
-// The description.
+// The list of availability zones for this NGFW.
+func (o NgfwOutput) AzLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Ngfw) pulumi.StringArrayOutput { return v.AzLists }).(pulumi.StringArrayOutput)
+}
+
+// Enables or disables change protection for the NGFW.
+func (o NgfwOutput) ChangeProtections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Ngfw) pulumi.StringArrayOutput { return v.ChangeProtections }).(pulumi.StringArrayOutput)
+}
+
+// The update token.
+func (o NgfwOutput) DeploymentUpdateToken() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ngfw) pulumi.StringOutput { return v.DeploymentUpdateToken }).(pulumi.StringOutput)
+}
+
+// The NGFW description.
 func (o NgfwOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ngfw) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+func (o NgfwOutput) EgressNats() NgfwEgressNatArrayOutput {
+	return o.ApplyT(func(v *Ngfw) NgfwEgressNatArrayOutput { return v.EgressNats }).(NgfwEgressNatArrayOutput)
+}
+
 // Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
-func (o NgfwOutput) EndpointMode() pulumi.StringOutput {
-	return o.ApplyT(func(v *Ngfw) pulumi.StringOutput { return v.EndpointMode }).(pulumi.StringOutput)
+func (o NgfwOutput) EndpointMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ngfw) pulumi.StringPtrOutput { return v.EndpointMode }).(pulumi.StringPtrOutput)
 }
 
 // The endpoint service name.
@@ -434,7 +504,11 @@ func (o NgfwOutput) EndpointServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ngfw) pulumi.StringOutput { return v.EndpointServiceName }).(pulumi.StringOutput)
 }
 
-// The Id of the NGFW.
+func (o NgfwOutput) Endpoints() NgfwEndpointArrayOutput {
+	return o.ApplyT(func(v *Ngfw) NgfwEndpointArrayOutput { return v.Endpoints }).(NgfwEndpointArrayOutput)
+}
+
+// The Firewall ID.
 func (o NgfwOutput) FirewallId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ngfw) pulumi.StringOutput { return v.FirewallId }).(pulumi.StringOutput)
 }
@@ -444,7 +518,7 @@ func (o NgfwOutput) GlobalRulestack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ngfw) pulumi.StringPtrOutput { return v.GlobalRulestack }).(pulumi.StringPtrOutput)
 }
 
-// A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+// The link ID.
 func (o NgfwOutput) LinkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ngfw) pulumi.StringOutput { return v.LinkId }).(pulumi.StringOutput)
 }
@@ -462,6 +536,10 @@ func (o NgfwOutput) MultiVpc() pulumi.BoolOutput {
 // The NGFW name.
 func (o NgfwOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ngfw) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o NgfwOutput) PrivateAccesses() NgfwPrivateAccessArrayOutput {
+	return o.ApplyT(func(v *Ngfw) NgfwPrivateAccessArrayOutput { return v.PrivateAccesses }).(NgfwPrivateAccessArrayOutput)
 }
 
 // The rulestack for this NGFW.
@@ -488,9 +566,13 @@ func (o NgfwOutput) UpdateToken() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ngfw) pulumi.StringOutput { return v.UpdateToken }).(pulumi.StringOutput)
 }
 
-// The vpc id.
-func (o NgfwOutput) VpcId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Ngfw) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
+func (o NgfwOutput) UserIds() NgfwUserIdArrayOutput {
+	return o.ApplyT(func(v *Ngfw) NgfwUserIdArrayOutput { return v.UserIds }).(NgfwUserIdArrayOutput)
+}
+
+// The VPC ID for the NGFW.
+func (o NgfwOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ngfw) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
 type NgfwArrayOutput struct{ *pulumi.OutputState }

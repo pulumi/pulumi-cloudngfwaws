@@ -46,6 +46,27 @@ namespace Pulumi.CloudNgfwAws
     ///         },
     ///     });
     /// 
+    ///     var example = new CloudNgfwAws.Ngfw("example", new()
+    ///     {
+    ///         Name = "example-instance",
+    ///         Description = "Example description",
+    ///         Endpoints = new[]
+    ///         {
+    ///             new CloudNgfwAws.Inputs.NgfwEndpointArgs
+    ///             {
+    ///                 SubnetId = subnet1.Id,
+    ///                 Mode = "ServiceManaged",
+    ///                 VpcId = exampleVpc.Id,
+    ///                 AccountId = "12345678",
+    ///             },
+    ///         },
+    ///         Rulestack = rs.Rulestack,
+    ///         Tags = 
+    ///         {
+    ///             { "Foo", "bar" },
+    ///         },
+    ///     });
+    /// 
     ///     var subnet2 = new Aws.Index.Subnet("subnet2", new()
     ///     {
     ///         VpcId = myVpc.Id,
@@ -54,32 +75,6 @@ namespace Pulumi.CloudNgfwAws
     ///         Tags = 
     ///         {
     ///             { "name", "tf-example" },
-    ///         },
-    ///     });
-    /// 
-    ///     var example = new CloudNgfwAws.Ngfw("example", new()
-    ///     {
-    ///         Name = "example-instance",
-    ///         VpcId = exampleVpc.Id,
-    ///         AccountId = "12345678",
-    ///         Description = "Example description",
-    ///         LinkId = "Link-81e80ccc-357a-4e4e-8325-1ed1d830cba5",
-    ///         EndpointMode = "ServiceManaged",
-    ///         SubnetMappings = new[]
-    ///         {
-    ///             new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs
-    ///             {
-    ///                 SubnetId = subnet1.Id,
-    ///             },
-    ///             new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs
-    ///             {
-    ///                 SubnetId = subnet2.Id,
-    ///             },
-    ///         },
-    ///         Rulestack = rs.Rulestack,
-    ///         Tags = 
-    ///         {
-    ///             { "Foo", "bar" },
     ///         },
     ///     });
     /// 
@@ -98,10 +93,16 @@ namespace Pulumi.CloudNgfwAws
     public partial class Ngfw : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account ID. This field is mandatory if using multiple accounts.
+        /// The description.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// The list of allowed accounts for this NGFW.
+        /// </summary>
+        [Output("allowlistAccounts")]
+        public Output<ImmutableArray<string>> AllowlistAccounts { get; private set; } = null!;
 
         /// <summary>
         /// App-ID version number.
@@ -116,16 +117,37 @@ namespace Pulumi.CloudNgfwAws
         public Output<bool?> AutomaticUpgradeAppIdVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The description.
+        /// The list of availability zones for this NGFW.
+        /// </summary>
+        [Output("azLists")]
+        public Output<ImmutableArray<string>> AzLists { get; private set; } = null!;
+
+        /// <summary>
+        /// Enables or disables change protection for the NGFW.
+        /// </summary>
+        [Output("changeProtections")]
+        public Output<ImmutableArray<string>> ChangeProtections { get; private set; } = null!;
+
+        /// <summary>
+        /// The update token.
+        /// </summary>
+        [Output("deploymentUpdateToken")]
+        public Output<string> DeploymentUpdateToken { get; private set; } = null!;
+
+        /// <summary>
+        /// The NGFW description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        [Output("egressNats")]
+        public Output<ImmutableArray<Outputs.NgfwEgressNat>> EgressNats { get; private set; } = null!;
 
         /// <summary>
         /// Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
         /// </summary>
         [Output("endpointMode")]
-        public Output<string> EndpointMode { get; private set; } = null!;
+        public Output<string?> EndpointMode { get; private set; } = null!;
 
         /// <summary>
         /// The endpoint service name.
@@ -133,8 +155,11 @@ namespace Pulumi.CloudNgfwAws
         [Output("endpointServiceName")]
         public Output<string> EndpointServiceName { get; private set; } = null!;
 
+        [Output("endpoints")]
+        public Output<ImmutableArray<Outputs.NgfwEndpoint>> Endpoints { get; private set; } = null!;
+
         /// <summary>
-        /// The Id of the NGFW.
+        /// The Firewall ID.
         /// </summary>
         [Output("firewallId")]
         public Output<string> FirewallId { get; private set; } = null!;
@@ -146,7 +171,7 @@ namespace Pulumi.CloudNgfwAws
         public Output<string?> GlobalRulestack { get; private set; } = null!;
 
         /// <summary>
-        /// A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+        /// The link ID.
         /// </summary>
         [Output("linkId")]
         public Output<string> LinkId { get; private set; } = null!;
@@ -169,6 +194,9 @@ namespace Pulumi.CloudNgfwAws
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("privateAccesses")]
+        public Output<ImmutableArray<Outputs.NgfwPrivateAccess>> PrivateAccesses { get; private set; } = null!;
+
         /// <summary>
         /// The rulestack for this NGFW.
         /// </summary>
@@ -188,7 +216,7 @@ namespace Pulumi.CloudNgfwAws
         /// The tags.
         /// </summary>
         [Output("tags")]
-        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The update token.
@@ -196,11 +224,14 @@ namespace Pulumi.CloudNgfwAws
         [Output("updateToken")]
         public Output<string> UpdateToken { get; private set; } = null!;
 
+        [Output("userIds")]
+        public Output<ImmutableArray<Outputs.NgfwUserId>> UserIds { get; private set; } = null!;
+
         /// <summary>
-        /// The vpc id.
+        /// The VPC ID for the NGFW.
         /// </summary>
         [Output("vpcId")]
-        public Output<string> VpcId { get; private set; } = null!;
+        public Output<string?> VpcId { get; private set; } = null!;
 
 
         /// <summary>
@@ -250,10 +281,22 @@ namespace Pulumi.CloudNgfwAws
     public sealed class NgfwArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account ID. This field is mandatory if using multiple accounts.
+        /// The description.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        [Input("allowlistAccounts")]
+        private InputList<string>? _allowlistAccounts;
+
+        /// <summary>
+        /// The list of allowed accounts for this NGFW.
+        /// </summary>
+        public InputList<string> AllowlistAccounts
+        {
+            get => _allowlistAccounts ?? (_allowlistAccounts = new InputList<string>());
+            set => _allowlistAccounts = value;
+        }
 
         /// <summary>
         /// App-ID version number.
@@ -267,17 +310,57 @@ namespace Pulumi.CloudNgfwAws
         [Input("automaticUpgradeAppIdVersion")]
         public Input<bool>? AutomaticUpgradeAppIdVersion { get; set; }
 
+        [Input("azLists", required: true)]
+        private InputList<string>? _azLists;
+
         /// <summary>
-        /// The description.
+        /// The list of availability zones for this NGFW.
+        /// </summary>
+        public InputList<string> AzLists
+        {
+            get => _azLists ?? (_azLists = new InputList<string>());
+            set => _azLists = value;
+        }
+
+        [Input("changeProtections")]
+        private InputList<string>? _changeProtections;
+
+        /// <summary>
+        /// Enables or disables change protection for the NGFW.
+        /// </summary>
+        public InputList<string> ChangeProtections
+        {
+            get => _changeProtections ?? (_changeProtections = new InputList<string>());
+            set => _changeProtections = value;
+        }
+
+        /// <summary>
+        /// The NGFW description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("egressNats")]
+        private InputList<Inputs.NgfwEgressNatArgs>? _egressNats;
+        public InputList<Inputs.NgfwEgressNatArgs> EgressNats
+        {
+            get => _egressNats ?? (_egressNats = new InputList<Inputs.NgfwEgressNatArgs>());
+            set => _egressNats = value;
+        }
+
         /// <summary>
         /// Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
         /// </summary>
-        [Input("endpointMode", required: true)]
-        public Input<string> EndpointMode { get; set; } = null!;
+        [Input("endpointMode")]
+        public Input<string>? EndpointMode { get; set; }
+
+        [Input("endpoints")]
+        private InputList<Inputs.NgfwEndpointArgs>? _endpoints;
+        public InputList<Inputs.NgfwEndpointArgs> Endpoints
+        {
+            get => _endpoints ?? (_endpoints = new InputList<Inputs.NgfwEndpointArgs>());
+            set => _endpoints = value;
+        }
 
         /// <summary>
         /// The global rulestack for this NGFW.
@@ -286,7 +369,7 @@ namespace Pulumi.CloudNgfwAws
         public Input<string>? GlobalRulestack { get; set; }
 
         /// <summary>
-        /// A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+        /// The link ID.
         /// </summary>
         [Input("linkId")]
         public Input<string>? LinkId { get; set; }
@@ -303,13 +386,21 @@ namespace Pulumi.CloudNgfwAws
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("privateAccesses")]
+        private InputList<Inputs.NgfwPrivateAccessArgs>? _privateAccesses;
+        public InputList<Inputs.NgfwPrivateAccessArgs> PrivateAccesses
+        {
+            get => _privateAccesses ?? (_privateAccesses = new InputList<Inputs.NgfwPrivateAccessArgs>());
+            set => _privateAccesses = value;
+        }
+
         /// <summary>
         /// The rulestack for this NGFW.
         /// </summary>
         [Input("rulestack")]
         public Input<string>? Rulestack { get; set; }
 
-        [Input("subnetMappings", required: true)]
+        [Input("subnetMappings")]
         private InputList<Inputs.NgfwSubnetMappingArgs>? _subnetMappings;
 
         /// <summary>
@@ -333,11 +424,19 @@ namespace Pulumi.CloudNgfwAws
             set => _tags = value;
         }
 
+        [Input("userIds")]
+        private InputList<Inputs.NgfwUserIdArgs>? _userIds;
+        public InputList<Inputs.NgfwUserIdArgs> UserIds
+        {
+            get => _userIds ?? (_userIds = new InputList<Inputs.NgfwUserIdArgs>());
+            set => _userIds = value;
+        }
+
         /// <summary>
-        /// The vpc id.
+        /// The VPC ID for the NGFW.
         /// </summary>
-        [Input("vpcId", required: true)]
-        public Input<string> VpcId { get; set; } = null!;
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         public NgfwArgs()
         {
@@ -348,10 +447,22 @@ namespace Pulumi.CloudNgfwAws
     public sealed class NgfwState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account ID. This field is mandatory if using multiple accounts.
+        /// The description.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        [Input("allowlistAccounts")]
+        private InputList<string>? _allowlistAccounts;
+
+        /// <summary>
+        /// The list of allowed accounts for this NGFW.
+        /// </summary>
+        public InputList<string> AllowlistAccounts
+        {
+            get => _allowlistAccounts ?? (_allowlistAccounts = new InputList<string>());
+            set => _allowlistAccounts = value;
+        }
 
         /// <summary>
         /// App-ID version number.
@@ -365,11 +476,49 @@ namespace Pulumi.CloudNgfwAws
         [Input("automaticUpgradeAppIdVersion")]
         public Input<bool>? AutomaticUpgradeAppIdVersion { get; set; }
 
+        [Input("azLists")]
+        private InputList<string>? _azLists;
+
         /// <summary>
-        /// The description.
+        /// The list of availability zones for this NGFW.
+        /// </summary>
+        public InputList<string> AzLists
+        {
+            get => _azLists ?? (_azLists = new InputList<string>());
+            set => _azLists = value;
+        }
+
+        [Input("changeProtections")]
+        private InputList<string>? _changeProtections;
+
+        /// <summary>
+        /// Enables or disables change protection for the NGFW.
+        /// </summary>
+        public InputList<string> ChangeProtections
+        {
+            get => _changeProtections ?? (_changeProtections = new InputList<string>());
+            set => _changeProtections = value;
+        }
+
+        /// <summary>
+        /// The update token.
+        /// </summary>
+        [Input("deploymentUpdateToken")]
+        public Input<string>? DeploymentUpdateToken { get; set; }
+
+        /// <summary>
+        /// The NGFW description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("egressNats")]
+        private InputList<Inputs.NgfwEgressNatGetArgs>? _egressNats;
+        public InputList<Inputs.NgfwEgressNatGetArgs> EgressNats
+        {
+            get => _egressNats ?? (_egressNats = new InputList<Inputs.NgfwEgressNatGetArgs>());
+            set => _egressNats = value;
+        }
 
         /// <summary>
         /// Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
@@ -383,8 +532,16 @@ namespace Pulumi.CloudNgfwAws
         [Input("endpointServiceName")]
         public Input<string>? EndpointServiceName { get; set; }
 
+        [Input("endpoints")]
+        private InputList<Inputs.NgfwEndpointGetArgs>? _endpoints;
+        public InputList<Inputs.NgfwEndpointGetArgs> Endpoints
+        {
+            get => _endpoints ?? (_endpoints = new InputList<Inputs.NgfwEndpointGetArgs>());
+            set => _endpoints = value;
+        }
+
         /// <summary>
-        /// The Id of the NGFW.
+        /// The Firewall ID.
         /// </summary>
         [Input("firewallId")]
         public Input<string>? FirewallId { get; set; }
@@ -396,7 +553,7 @@ namespace Pulumi.CloudNgfwAws
         public Input<string>? GlobalRulestack { get; set; }
 
         /// <summary>
-        /// A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+        /// The link ID.
         /// </summary>
         [Input("linkId")]
         public Input<string>? LinkId { get; set; }
@@ -418,6 +575,14 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("privateAccesses")]
+        private InputList<Inputs.NgfwPrivateAccessGetArgs>? _privateAccesses;
+        public InputList<Inputs.NgfwPrivateAccessGetArgs> PrivateAccesses
+        {
+            get => _privateAccesses ?? (_privateAccesses = new InputList<Inputs.NgfwPrivateAccessGetArgs>());
+            set => _privateAccesses = value;
+        }
 
         /// <summary>
         /// The rulestack for this NGFW.
@@ -463,8 +628,16 @@ namespace Pulumi.CloudNgfwAws
         [Input("updateToken")]
         public Input<string>? UpdateToken { get; set; }
 
+        [Input("userIds")]
+        private InputList<Inputs.NgfwUserIdGetArgs>? _userIds;
+        public InputList<Inputs.NgfwUserIdGetArgs> UserIds
+        {
+            get => _userIds ?? (_userIds = new InputList<Inputs.NgfwUserIdGetArgs>());
+            set => _userIds = value;
+        }
+
         /// <summary>
-        /// The vpc id.
+        /// The VPC ID for the NGFW.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

@@ -27,7 +27,7 @@ class GetNgfwLogProfileResult:
     """
     A collection of values returned by getNgfwLogProfile.
     """
-    def __init__(__self__, account_id=None, advanced_threat_log=None, cloud_watch_metric_namespace=None, cloudwatch_metric_fields=None, id=None, log_destinations=None, ngfw=None):
+    def __init__(__self__, account_id=None, advanced_threat_log=None, cloud_watch_metric_namespace=None, cloudwatch_metric_fields=None, firewall_id=None, id=None, log_configs=None, log_destinations=None, ngfw=None, region=None, update_token=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,19 +40,31 @@ class GetNgfwLogProfileResult:
         if cloudwatch_metric_fields and not isinstance(cloudwatch_metric_fields, list):
             raise TypeError("Expected argument 'cloudwatch_metric_fields' to be a list")
         pulumi.set(__self__, "cloudwatch_metric_fields", cloudwatch_metric_fields)
+        if firewall_id and not isinstance(firewall_id, str):
+            raise TypeError("Expected argument 'firewall_id' to be a str")
+        pulumi.set(__self__, "firewall_id", firewall_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if log_configs and not isinstance(log_configs, list):
+            raise TypeError("Expected argument 'log_configs' to be a list")
+        pulumi.set(__self__, "log_configs", log_configs)
         if log_destinations and not isinstance(log_destinations, list):
             raise TypeError("Expected argument 'log_destinations' to be a list")
         pulumi.set(__self__, "log_destinations", log_destinations)
         if ngfw and not isinstance(ngfw, str):
             raise TypeError("Expected argument 'ngfw' to be a str")
         pulumi.set(__self__, "ngfw", ngfw)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+        if update_token and not isinstance(update_token, str):
+            raise TypeError("Expected argument 'update_token' to be a str")
+        pulumi.set(__self__, "update_token", update_token)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
         The unique ID of the account.
         """
@@ -83,12 +95,28 @@ class GetNgfwLogProfileResult:
         return pulumi.get(self, "cloudwatch_metric_fields")
 
     @_builtins.property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> _builtins.str:
+        """
+        The Firewall Id for the NGFW.
+        """
+        return pulumi.get(self, "firewall_id")
+
+    @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="logConfigs")
+    def log_configs(self) -> Sequence['outputs.GetNgfwLogProfileLogConfigResult']:
+        """
+        Log configuration details.
+        """
+        return pulumi.get(self, "log_configs")
 
     @_builtins.property
     @pulumi.getter(name="logDestinations")
@@ -100,11 +128,27 @@ class GetNgfwLogProfileResult:
 
     @_builtins.property
     @pulumi.getter
-    def ngfw(self) -> _builtins.str:
+    def ngfw(self) -> Optional[_builtins.str]:
         """
         The name of the NGFW.
         """
         return pulumi.get(self, "ngfw")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The region of the NGFW.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="updateToken")
+    def update_token(self) -> _builtins.str:
+        """
+        The update token.
+        """
+        return pulumi.get(self, "update_token")
 
 
 class AwaitableGetNgfwLogProfileResult(GetNgfwLogProfileResult):
@@ -117,9 +161,13 @@ class AwaitableGetNgfwLogProfileResult(GetNgfwLogProfileResult):
             advanced_threat_log=self.advanced_threat_log,
             cloud_watch_metric_namespace=self.cloud_watch_metric_namespace,
             cloudwatch_metric_fields=self.cloudwatch_metric_fields,
+            firewall_id=self.firewall_id,
             id=self.id,
+            log_configs=self.log_configs,
             log_destinations=self.log_destinations,
-            ngfw=self.ngfw)
+            ngfw=self.ngfw,
+            region=self.region,
+            update_token=self.update_token)
 
 
 def get_ngfw_log_profile(account_id: Optional[_builtins.str] = None,
@@ -157,11 +205,15 @@ def get_ngfw_log_profile(account_id: Optional[_builtins.str] = None,
         advanced_threat_log=pulumi.get(__ret__, 'advanced_threat_log'),
         cloud_watch_metric_namespace=pulumi.get(__ret__, 'cloud_watch_metric_namespace'),
         cloudwatch_metric_fields=pulumi.get(__ret__, 'cloudwatch_metric_fields'),
+        firewall_id=pulumi.get(__ret__, 'firewall_id'),
         id=pulumi.get(__ret__, 'id'),
+        log_configs=pulumi.get(__ret__, 'log_configs'),
         log_destinations=pulumi.get(__ret__, 'log_destinations'),
-        ngfw=pulumi.get(__ret__, 'ngfw'))
-def get_ngfw_log_profile_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                ngfw: Optional[pulumi.Input[_builtins.str]] = None,
+        ngfw=pulumi.get(__ret__, 'ngfw'),
+        region=pulumi.get(__ret__, 'region'),
+        update_token=pulumi.get(__ret__, 'update_token'))
+def get_ngfw_log_profile_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                ngfw: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNgfwLogProfileResult]:
     """
     Data source for retrieving log profile information.
@@ -194,6 +246,10 @@ def get_ngfw_log_profile_output(account_id: Optional[pulumi.Input[_builtins.str]
         advanced_threat_log=pulumi.get(__response__, 'advanced_threat_log'),
         cloud_watch_metric_namespace=pulumi.get(__response__, 'cloud_watch_metric_namespace'),
         cloudwatch_metric_fields=pulumi.get(__response__, 'cloudwatch_metric_fields'),
+        firewall_id=pulumi.get(__response__, 'firewall_id'),
         id=pulumi.get(__response__, 'id'),
+        log_configs=pulumi.get(__response__, 'log_configs'),
         log_destinations=pulumi.get(__response__, 'log_destinations'),
-        ngfw=pulumi.get(__response__, 'ngfw')))
+        ngfw=pulumi.get(__response__, 'ngfw'),
+        region=pulumi.get(__response__, 'region'),
+        update_token=pulumi.get(__response__, 'update_token')))

@@ -6,8 +6,12 @@ package com.pulumi.cloudngfwaws;
 import com.pulumi.cloudngfwaws.NgfwArgs;
 import com.pulumi.cloudngfwaws.Utilities;
 import com.pulumi.cloudngfwaws.inputs.NgfwState;
+import com.pulumi.cloudngfwaws.outputs.NgfwEgressNat;
+import com.pulumi.cloudngfwaws.outputs.NgfwEndpoint;
+import com.pulumi.cloudngfwaws.outputs.NgfwPrivateAccess;
 import com.pulumi.cloudngfwaws.outputs.NgfwStatus;
 import com.pulumi.cloudngfwaws.outputs.NgfwSubnetMapping;
+import com.pulumi.cloudngfwaws.outputs.NgfwUserId;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -37,7 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.aws.subnetArgs;
  * import com.pulumi.cloudngfwaws.Ngfw;
  * import com.pulumi.cloudngfwaws.NgfwArgs;
- * import com.pulumi.cloudngfwaws.inputs.NgfwSubnetMappingArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwEndpointArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -67,29 +71,24 @@ import javax.annotation.Nullable;
  *             .tags(Map.of("name", "tf-example"))
  *             .build());
  * 
+ *         var example = new Ngfw("example", NgfwArgs.builder()
+ *             .name("example-instance")
+ *             .description("Example description")
+ *             .endpoints(NgfwEndpointArgs.builder()
+ *                 .subnetId(subnet1.id())
+ *                 .mode("ServiceManaged")
+ *                 .vpcId(exampleVpc.id())
+ *                 .accountId("12345678")
+ *                 .build())
+ *             .rulestack(rs.rulestack())
+ *             .tags(Map.of("Foo", "bar"))
+ *             .build());
+ * 
  *         var subnet2 = new Subnet("subnet2", SubnetArgs.builder()
  *             .vpcId(myVpc.id())
  *             .cidrBlock("172.16.20.0/24")
  *             .availabilityZone("us-west-2b")
  *             .tags(Map.of("name", "tf-example"))
- *             .build());
- * 
- *         var example = new Ngfw("example", NgfwArgs.builder()
- *             .name("example-instance")
- *             .vpcId(exampleVpc.id())
- *             .accountId("12345678")
- *             .description("Example description")
- *             .linkId("Link-81e80ccc-357a-4e4e-8325-1ed1d830cba5")
- *             .endpointMode("ServiceManaged")
- *             .subnetMappings(            
- *                 NgfwSubnetMappingArgs.builder()
- *                     .subnetId(subnet1.id())
- *                     .build(),
- *                 NgfwSubnetMappingArgs.builder()
- *                     .subnetId(subnet2.id())
- *                     .build())
- *             .rulestack(rs.rulestack())
- *             .tags(Map.of("Foo", "bar"))
  *             .build());
  * 
  *     }
@@ -109,18 +108,32 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudngfwaws:index/ngfw:Ngfw")
 public class Ngfw extends com.pulumi.resources.CustomResource {
     /**
-     * The account ID. This field is mandatory if using multiple accounts.
+     * The description.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account ID. This field is mandatory if using multiple accounts.
+     * @return The description.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
+    }
+    /**
+     * The list of allowed accounts for this NGFW.
+     * 
+     */
+    @Export(name="allowlistAccounts", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> allowlistAccounts;
+
+    /**
+     * @return The list of allowed accounts for this NGFW.
+     * 
+     */
+    public Output<Optional<List<String>>> allowlistAccounts() {
+        return Codegen.optional(this.allowlistAccounts);
     }
     /**
      * App-ID version number.
@@ -151,32 +164,80 @@ public class Ngfw extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.automaticUpgradeAppIdVersion);
     }
     /**
-     * The description.
+     * The list of availability zones for this NGFW.
+     * 
+     */
+    @Export(name="azLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> azLists;
+
+    /**
+     * @return The list of availability zones for this NGFW.
+     * 
+     */
+    public Output<List<String>> azLists() {
+        return this.azLists;
+    }
+    /**
+     * Enables or disables change protection for the NGFW.
+     * 
+     */
+    @Export(name="changeProtections", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> changeProtections;
+
+    /**
+     * @return Enables or disables change protection for the NGFW.
+     * 
+     */
+    public Output<List<String>> changeProtections() {
+        return this.changeProtections;
+    }
+    /**
+     * The update token.
+     * 
+     */
+    @Export(name="deploymentUpdateToken", refs={String.class}, tree="[0]")
+    private Output<String> deploymentUpdateToken;
+
+    /**
+     * @return The update token.
+     * 
+     */
+    public Output<String> deploymentUpdateToken() {
+        return this.deploymentUpdateToken;
+    }
+    /**
+     * The NGFW description.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description.
+     * @return The NGFW description.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    @Export(name="egressNats", refs={List.class,NgfwEgressNat.class}, tree="[0,1]")
+    private Output<List<NgfwEgressNat>> egressNats;
+
+    public Output<List<NgfwEgressNat>> egressNats() {
+        return this.egressNats;
     }
     /**
      * Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
      * 
      */
     @Export(name="endpointMode", refs={String.class}, tree="[0]")
-    private Output<String> endpointMode;
+    private Output</* @Nullable */ String> endpointMode;
 
     /**
      * @return Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
      * 
      */
-    public Output<String> endpointMode() {
-        return this.endpointMode;
+    public Output<Optional<String>> endpointMode() {
+        return Codegen.optional(this.endpointMode);
     }
     /**
      * The endpoint service name.
@@ -192,15 +253,21 @@ public class Ngfw extends com.pulumi.resources.CustomResource {
     public Output<String> endpointServiceName() {
         return this.endpointServiceName;
     }
+    @Export(name="endpoints", refs={List.class,NgfwEndpoint.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<NgfwEndpoint>> endpoints;
+
+    public Output<Optional<List<NgfwEndpoint>>> endpoints() {
+        return Codegen.optional(this.endpoints);
+    }
     /**
-     * The Id of the NGFW.
+     * The Firewall ID.
      * 
      */
     @Export(name="firewallId", refs={String.class}, tree="[0]")
     private Output<String> firewallId;
 
     /**
-     * @return The Id of the NGFW.
+     * @return The Firewall ID.
      * 
      */
     public Output<String> firewallId() {
@@ -221,14 +288,14 @@ public class Ngfw extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.globalRulestack);
     }
     /**
-     * A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+     * The link ID.
      * 
      */
     @Export(name="linkId", refs={String.class}, tree="[0]")
     private Output<String> linkId;
 
     /**
-     * @return A unique identifier for establishing and managing the link between the Cloud NGFW and other AWS resources.
+     * @return The link ID.
      * 
      */
     public Output<String> linkId() {
@@ -276,6 +343,12 @@ public class Ngfw extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
+    @Export(name="privateAccesses", refs={List.class,NgfwPrivateAccess.class}, tree="[0,1]")
+    private Output<List<NgfwPrivateAccess>> privateAccesses;
+
+    public Output<List<NgfwPrivateAccess>> privateAccesses() {
+        return this.privateAccesses;
+    }
     /**
      * The rulestack for this NGFW.
      * 
@@ -301,28 +374,28 @@ public class Ngfw extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="subnetMappings", refs={List.class,NgfwSubnetMapping.class}, tree="[0,1]")
-    private Output<List<NgfwSubnetMapping>> subnetMappings;
+    private Output</* @Nullable */ List<NgfwSubnetMapping>> subnetMappings;
 
     /**
      * @return Subnet mappings.
      * 
      */
-    public Output<List<NgfwSubnetMapping>> subnetMappings() {
-        return this.subnetMappings;
+    public Output<Optional<List<NgfwSubnetMapping>>> subnetMappings() {
+        return Codegen.optional(this.subnetMappings);
     }
     /**
      * The tags.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output</* @Nullable */ Map<String,String>> tags;
+    private Output<Map<String,String>> tags;
 
     /**
      * @return The tags.
      * 
      */
-    public Output<Optional<Map<String,String>>> tags() {
-        return Codegen.optional(this.tags);
+    public Output<Map<String,String>> tags() {
+        return this.tags;
     }
     /**
      * The update token.
@@ -338,19 +411,25 @@ public class Ngfw extends com.pulumi.resources.CustomResource {
     public Output<String> updateToken() {
         return this.updateToken;
     }
+    @Export(name="userIds", refs={List.class,NgfwUserId.class}, tree="[0,1]")
+    private Output<List<NgfwUserId>> userIds;
+
+    public Output<List<NgfwUserId>> userIds() {
+        return this.userIds;
+    }
     /**
-     * The vpc id.
+     * The VPC ID for the NGFW.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
-    private Output<String> vpcId;
+    private Output</* @Nullable */ String> vpcId;
 
     /**
-     * @return The vpc id.
+     * @return The VPC ID for the NGFW.
      * 
      */
-    public Output<String> vpcId() {
-        return this.vpcId;
+    public Output<Optional<String>> vpcId() {
+        return Codegen.optional(this.vpcId);
     }
 
     /**

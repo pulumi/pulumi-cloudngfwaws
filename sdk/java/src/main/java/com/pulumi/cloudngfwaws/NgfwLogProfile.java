@@ -6,6 +6,7 @@ package com.pulumi.cloudngfwaws;
 import com.pulumi.cloudngfwaws.NgfwLogProfileArgs;
 import com.pulumi.cloudngfwaws.Utilities;
 import com.pulumi.cloudngfwaws.inputs.NgfwLogProfileState;
+import com.pulumi.cloudngfwaws.outputs.NgfwLogProfileLogConfig;
 import com.pulumi.cloudngfwaws.outputs.NgfwLogProfileLogDestination;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -39,10 +40,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.aws.subnetArgs;
  * import com.pulumi.cloudngfwaws.Ngfw;
  * import com.pulumi.cloudngfwaws.NgfwArgs;
- * import com.pulumi.cloudngfwaws.inputs.NgfwSubnetMappingArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwEndpointArgs;
  * import com.pulumi.cloudngfwaws.NgfwLogProfile;
  * import com.pulumi.cloudngfwaws.NgfwLogProfileArgs;
- * import com.pulumi.cloudngfwaws.inputs.NgfwLogProfileLogDestinationArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwLogProfileLogConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -68,44 +69,43 @@ import javax.annotation.Nullable;
  *             .tags(Map.of("name", "tf-example"))
  *             .build());
  * 
- *         var subnet2 = new Subnet("subnet2", SubnetArgs.builder()
- *             .vpcId(myVpc.id())
- *             .cidrBlock("172.16.20.0/24")
- *             .availabilityZone("us-west-2b")
- *             .tags(Map.of("name", "tf-example"))
- *             .build());
- * 
  *         var x = new Ngfw("x", NgfwArgs.builder()
  *             .name("example-instance")
- *             .vpcId(exampleVpc.id())
- *             .accountId("12345678")
  *             .description("Example description")
- *             .endpointMode("ServiceManaged")
- *             .subnetMappings(            
- *                 NgfwSubnetMappingArgs.builder()
- *                     .subnetId(subnet1.id())
- *                     .build(),
- *                 NgfwSubnetMappingArgs.builder()
- *                     .subnetId(subnet2.id())
- *                     .build())
+ *             .endpoints(NgfwEndpointArgs.builder()
+ *                 .subnetId(subnet1.id())
+ *                 .mode("ServiceManaged")
+ *                 .vpcId(exampleVpc.id())
+ *                 .accountId("12345678")
+ *                 .build())
  *             .rulestack("example-rulestack")
  *             .tags(Map.of("Foo", "bar"))
  *             .build());
  * 
  *         var example = new NgfwLogProfile("example", NgfwLogProfileArgs.builder()
- *             .ngfw(x.name())
+ *             .firewallId(x.firewallId())
  *             .accountId(x.accountId())
- *             .logDestinations(            
- *                 NgfwLogProfileLogDestinationArgs.builder()
- *                     .destinationType("S3")
- *                     .destination("my-s3-bucket")
- *                     .logType("TRAFFIC")
- *                     .build(),
- *                 NgfwLogProfileLogDestinationArgs.builder()
- *                     .destinationType("CloudWatchLogs")
- *                     .destination("panw-log-group")
- *                     .logType("THREAT")
- *                     .build())
+ *             .advancedThreatLog(true)
+ *             .cloudwatchMetricFields(            
+ *                 "Dataplane_CPU_Utilization",
+ *                 "Session_Throughput_Kbps",
+ *                 "BytesIn",
+ *                 "BytesOut")
+ *             .cloudWatchMetricNamespace("PaloAltoCloudNGFW")
+ *             .logConfig(NgfwLogProfileLogConfigArgs.builder()
+ *                 .logDestination("my-s3-bucket")
+ *                 .logDestinationType("S3")
+ *                 .logTypes("TRAFFIC")
+ *                 .accountId("251583708250")
+ *                 .roleType("IamBased")
+ *                 .build())
+ *             .build());
+ * 
+ *         var subnet2 = new Subnet("subnet2", SubnetArgs.builder()
+ *             .vpcId(myVpc.id())
+ *             .cidrBlock("172.16.20.0/24")
+ *             .availabilityZone("us-west-2b")
+ *             .tags(Map.of("name", "tf-example"))
  *             .build());
  * 
  *     }
@@ -129,14 +129,14 @@ public class NgfwLogProfile extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
      * @return The unique ID of the account.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
      * Enable advanced threat logging.
@@ -181,32 +181,88 @@ public class NgfwLogProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cloudwatchMetricFields);
     }
     /**
+     * The Firewall Id for the NGFW.
+     * 
+     */
+    @Export(name="firewallId", refs={String.class}, tree="[0]")
+    private Output<String> firewallId;
+
+    /**
+     * @return The Firewall Id for the NGFW.
+     * 
+     */
+    public Output<String> firewallId() {
+        return this.firewallId;
+    }
+    /**
+     * Log configuration details.
+     * 
+     */
+    @Export(name="logConfig", refs={NgfwLogProfileLogConfig.class}, tree="[0]")
+    private Output</* @Nullable */ NgfwLogProfileLogConfig> logConfig;
+
+    /**
+     * @return Log configuration details.
+     * 
+     */
+    public Output<Optional<NgfwLogProfileLogConfig>> logConfig() {
+        return Codegen.optional(this.logConfig);
+    }
+    /**
      * List of log destinations.
      * 
      */
     @Export(name="logDestinations", refs={List.class,NgfwLogProfileLogDestination.class}, tree="[0,1]")
-    private Output<List<NgfwLogProfileLogDestination>> logDestinations;
+    private Output</* @Nullable */ List<NgfwLogProfileLogDestination>> logDestinations;
 
     /**
      * @return List of log destinations.
      * 
      */
-    public Output<List<NgfwLogProfileLogDestination>> logDestinations() {
-        return this.logDestinations;
+    public Output<Optional<List<NgfwLogProfileLogDestination>>> logDestinations() {
+        return Codegen.optional(this.logDestinations);
     }
     /**
      * The name of the NGFW.
      * 
      */
     @Export(name="ngfw", refs={String.class}, tree="[0]")
-    private Output<String> ngfw;
+    private Output</* @Nullable */ String> ngfw;
 
     /**
      * @return The name of the NGFW.
      * 
      */
-    public Output<String> ngfw() {
-        return this.ngfw;
+    public Output<Optional<String>> ngfw() {
+        return Codegen.optional(this.ngfw);
+    }
+    /**
+     * The region of the NGFW.
+     * 
+     */
+    @Export(name="region", refs={String.class}, tree="[0]")
+    private Output<String> region;
+
+    /**
+     * @return The region of the NGFW.
+     * 
+     */
+    public Output<String> region() {
+        return this.region;
+    }
+    /**
+     * The update token.
+     * 
+     */
+    @Export(name="updateToken", refs={String.class}, tree="[0]")
+    private Output<String> updateToken;
+
+    /**
+     * @return The update token.
+     * 
+     */
+    public Output<String> updateToken() {
+        return this.updateToken;
     }
 
     /**

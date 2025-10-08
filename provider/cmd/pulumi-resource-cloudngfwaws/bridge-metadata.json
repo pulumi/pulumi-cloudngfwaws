@@ -2,19 +2,24 @@
     "auto-aliasing": {
         "resources": {
             "cloudngfwaws_account": {
-                "current": "cloudngfwaws:index/account:Account"
+                "current": "cloudngfwaws:index/account:Account",
+                "majorVersion": 1
             },
             "cloudngfwaws_account_onboarding": {
-                "current": "cloudngfwaws:index/accountOnboarding:AccountOnboarding"
+                "current": "cloudngfwaws:index/accountOnboarding:AccountOnboarding",
+                "majorVersion": 1
             },
             "cloudngfwaws_account_onboarding_stack": {
-                "current": "cloudngfwaws:index/accountOnboardingStack:AccountOnboardingStack"
+                "current": "cloudngfwaws:index/accountOnboardingStack:AccountOnboardingStack",
+                "majorVersion": 1
             },
             "cloudngfwaws_certificate": {
-                "current": "cloudngfwaws:index/certificate:Certificate"
+                "current": "cloudngfwaws:index/certificate:Certificate",
+                "majorVersion": 1
             },
             "cloudngfwaws_commit_rulestack": {
                 "current": "cloudngfwaws:index/commitRulestack:CommitRulestack",
+                "majorVersion": 1,
                 "fields": {
                     "commit_errors": {
                         "maxItemsOne": false
@@ -26,6 +31,7 @@
             },
             "cloudngfwaws_custom_url_category": {
                 "current": "cloudngfwaws:index/customUrlCategory:CustomUrlCategory",
+                "majorVersion": 1,
                 "fields": {
                     "url_list": {
                         "maxItemsOne": false
@@ -34,6 +40,7 @@
             },
             "cloudngfwaws_fqdn_list": {
                 "current": "cloudngfwaws:index/fqdnList:FqdnList",
+                "majorVersion": 1,
                 "fields": {
                     "fqdn_list": {
                         "maxItemsOne": false
@@ -41,31 +48,93 @@
                 }
             },
             "cloudngfwaws_intelligent_feed": {
-                "current": "cloudngfwaws:index/intelligentFeed:IntelligentFeed"
+                "current": "cloudngfwaws:index/intelligentFeed:IntelligentFeed",
+                "majorVersion": 1
             },
             "cloudngfwaws_ngfw": {
                 "current": "cloudngfwaws:index/ngfw:Ngfw",
+                "majorVersion": 1,
                 "fields": {
-                    "status": {
+                    "allowlist_accounts": {
+                        "maxItemsOne": false
+                    },
+                    "az_list": {
+                        "maxItemsOne": false
+                    },
+                    "change_protection": {
+                        "maxItemsOne": false
+                    },
+                    "egress_nat": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
-                                "attachment": {
+                                "settings": {
                                     "maxItemsOne": false
                                 }
                             }
                         }
                     },
+                    "endpoints": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "prefixes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "private_prefix": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "cidrs": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "private_access": {
+                        "maxItemsOne": false
+                    },
+                    "status": {
+                        "maxItemsOne": false
+                    },
                     "subnet_mapping": {
                         "maxItemsOne": false
+                    },
+                    "user_id": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_include_exclude_network": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
             "cloudngfwaws_ngfw_log_profile": {
                 "current": "cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile",
+                "majorVersion": 1,
                 "fields": {
                     "cloudwatch_metric_fields": {
                         "maxItemsOne": false
+                    },
+                    "log_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "log_type": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "log_destination": {
                         "maxItemsOne": false
@@ -73,10 +142,12 @@
                 }
             },
             "cloudngfwaws_predefined_url_category_override": {
-                "current": "cloudngfwaws:index/predefinedUrlCategoryOverride:PredefinedUrlCategoryOverride"
+                "current": "cloudngfwaws:index/predefinedUrlCategoryOverride:PredefinedUrlCategoryOverride",
+                "majorVersion": 1
             },
             "cloudngfwaws_prefix_list": {
                 "current": "cloudngfwaws:index/prefixList:PrefixList",
+                "majorVersion": 1,
                 "fields": {
                     "prefix_list": {
                         "maxItemsOne": false
@@ -85,6 +156,7 @@
             },
             "cloudngfwaws_rulestack": {
                 "current": "cloudngfwaws:index/rulestack:Rulestack",
+                "majorVersion": 1,
                 "fields": {
                     "profile_config": {
                         "maxItemsOne": true
@@ -93,6 +165,7 @@
             },
             "cloudngfwaws_security_rule": {
                 "current": "cloudngfwaws:index/securityRule:SecurityRule",
+                "majorVersion": 1,
                 "fields": {
                     "applications": {
                         "maxItemsOne": false
@@ -159,10 +232,12 @@
         },
         "datasources": {
             "cloudngfwaws_account": {
-                "current": "cloudngfwaws:index/getAccount:getAccount"
+                "current": "cloudngfwaws:index/getAccount:getAccount",
+                "majorVersion": 1
             },
             "cloudngfwaws_accounts": {
                 "current": "cloudngfwaws:index/getAccounts:getAccounts",
+                "majorVersion": 1,
                 "fields": {
                     "account_details": {
                         "maxItemsOne": false
@@ -174,6 +249,7 @@
             },
             "cloudngfwaws_app_id_version": {
                 "current": "cloudngfwaws:index/getAppIdVersion:getAppIdVersion",
+                "majorVersion": 1,
                 "fields": {
                     "applications": {
                         "maxItemsOne": false
@@ -182,6 +258,7 @@
             },
             "cloudngfwaws_app_id_versions": {
                 "current": "cloudngfwaws:index/getAppIdVersions:getAppIdVersions",
+                "majorVersion": 1,
                 "fields": {
                     "versions": {
                         "maxItemsOne": false
@@ -189,13 +266,16 @@
                 }
             },
             "cloudngfwaws_certificate": {
-                "current": "cloudngfwaws:index/getCertificate:getCertificate"
+                "current": "cloudngfwaws:index/getCertificate:getCertificate",
+                "majorVersion": 1
             },
             "cloudngfwaws_country": {
-                "current": "cloudngfwaws:index/getCountry:getCountry"
+                "current": "cloudngfwaws:index/getCountry:getCountry",
+                "majorVersion": 1
             },
             "cloudngfwaws_custom_url_category": {
                 "current": "cloudngfwaws:index/getCustomUrlCategory:getCustomUrlCategory",
+                "majorVersion": 1,
                 "fields": {
                     "url_list": {
                         "maxItemsOne": false
@@ -204,6 +284,7 @@
             },
             "cloudngfwaws_fqdn_list": {
                 "current": "cloudngfwaws:index/getFqdnList:getFqdnList",
+                "majorVersion": 1,
                 "fields": {
                     "fqdn_list": {
                         "maxItemsOne": false
@@ -211,31 +292,93 @@
                 }
             },
             "cloudngfwaws_intelligent_feed": {
-                "current": "cloudngfwaws:index/getIntelligentFeed:getIntelligentFeed"
+                "current": "cloudngfwaws:index/getIntelligentFeed:getIntelligentFeed",
+                "majorVersion": 1
             },
             "cloudngfwaws_ngfw": {
                 "current": "cloudngfwaws:index/getNgfw:getNgfw",
+                "majorVersion": 1,
                 "fields": {
-                    "status": {
+                    "allowlist_accounts": {
+                        "maxItemsOne": false
+                    },
+                    "az_list": {
+                        "maxItemsOne": false
+                    },
+                    "change_protection": {
+                        "maxItemsOne": false
+                    },
+                    "egress_nat": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
-                                "attachment": {
+                                "settings": {
                                     "maxItemsOne": false
                                 }
                             }
                         }
                     },
+                    "endpoints": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "prefixes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "private_prefix": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "cidrs": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "private_access": {
+                        "maxItemsOne": false
+                    },
+                    "status": {
+                        "maxItemsOne": false
+                    },
                     "subnet_mapping": {
                         "maxItemsOne": false
+                    },
+                    "user_id": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "custom_include_exclude_network": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
             "cloudngfwaws_ngfw_log_profile": {
                 "current": "cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile",
+                "majorVersion": 1,
                 "fields": {
                     "cloudwatch_metric_fields": {
                         "maxItemsOne": false
+                    },
+                    "log_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "log_type": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "log_destination": {
                         "maxItemsOne": false
@@ -244,6 +387,7 @@
             },
             "cloudngfwaws_ngfws": {
                 "current": "cloudngfwaws:index/getNgfws:getNgfws",
+                "majorVersion": 1,
                 "fields": {
                     "instances": {
                         "maxItemsOne": false
@@ -255,6 +399,7 @@
             },
             "cloudngfwaws_predefined_url_categories": {
                 "current": "cloudngfwaws:index/getPredefinedUrlCategories:getPredefinedUrlCategories",
+                "majorVersion": 1,
                 "fields": {
                     "categories": {
                         "maxItemsOne": false
@@ -262,10 +407,12 @@
                 }
             },
             "cloudngfwaws_predefined_url_category_override": {
-                "current": "cloudngfwaws:index/getPredefinedUrlCategoryOverride:getPredefinedUrlCategoryOverride"
+                "current": "cloudngfwaws:index/getPredefinedUrlCategoryOverride:getPredefinedUrlCategoryOverride",
+                "majorVersion": 1
             },
             "cloudngfwaws_prefix_list": {
                 "current": "cloudngfwaws:index/getPrefixList:getPrefixList",
+                "majorVersion": 1,
                 "fields": {
                     "prefix_list": {
                         "maxItemsOne": false
@@ -274,6 +421,7 @@
             },
             "cloudngfwaws_rulestack": {
                 "current": "cloudngfwaws:index/getRulestack:getRulestack",
+                "majorVersion": 1,
                 "fields": {
                     "profile_config": {
                         "maxItemsOne": false
@@ -282,6 +430,7 @@
             },
             "cloudngfwaws_security_rule": {
                 "current": "cloudngfwaws:index/getSecurityRule:getSecurityRule",
+                "majorVersion": 1,
                 "fields": {
                     "applications": {
                         "maxItemsOne": false
@@ -347,6 +496,7 @@
             },
             "cloudngfwaws_validate_rulestack": {
                 "current": "cloudngfwaws:index/getValidateRulestack:getValidateRulestack",
+                "majorVersion": 1,
                 "fields": {
                     "commit_errors": {
                         "maxItemsOne": false

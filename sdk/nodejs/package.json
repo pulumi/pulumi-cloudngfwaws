@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/cloudngfwaws",
-    "version": "0.0.0-alpha.0+dev",
+    "version": "1.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing Cloud NGFW for AWS resources.",
     "keywords": [
         "pulumi",
@@ -26,7 +26,7 @@
     "pulumi": {
         "resource": true,
         "name": "cloudngfwaws",
-        "version": "0.0.0-alpha.0+dev",
+        "version": "1.0.0-alpha.0+dev",
         "server": "github://api.github.com/pulumi/pulumi-cloudngfwaws"
     }
 }

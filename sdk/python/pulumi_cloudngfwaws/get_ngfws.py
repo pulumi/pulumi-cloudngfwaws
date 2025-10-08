@@ -27,13 +27,16 @@ class GetNgfwsResult:
     """
     A collection of values returned by getNgfws.
     """
-    def __init__(__self__, id=None, instances=None, rulestack=None, vpc_ids=None):
+    def __init__(__self__, id=None, instances=None, region=None, rulestack=None, vpc_ids=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if instances and not isinstance(instances, list):
             raise TypeError("Expected argument 'instances' to be a list")
         pulumi.set(__self__, "instances", instances)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if rulestack and not isinstance(rulestack, str):
             raise TypeError("Expected argument 'rulestack' to be a str")
         pulumi.set(__self__, "rulestack", rulestack)
@@ -56,6 +59,14 @@ class GetNgfwsResult:
         List of NGFWs.
         """
         return pulumi.get(self, "instances")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The region to filter on.
+        """
+        return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
@@ -82,11 +93,13 @@ class AwaitableGetNgfwsResult(GetNgfwsResult):
         return GetNgfwsResult(
             id=self.id,
             instances=self.instances,
+            region=self.region,
             rulestack=self.rulestack,
             vpc_ids=self.vpc_ids)
 
 
-def get_ngfws(rulestack: Optional[_builtins.str] = None,
+def get_ngfws(region: Optional[_builtins.str] = None,
+              rulestack: Optional[_builtins.str] = None,
               vpc_ids: Optional[Sequence[_builtins.str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNgfwsResult:
     """
@@ -106,10 +119,12 @@ def get_ngfws(rulestack: Optional[_builtins.str] = None,
     ```
 
 
+    :param _builtins.str region: The region to filter on.
     :param _builtins.str rulestack: The rulestack to filter on.
     :param Sequence[_builtins.str] vpc_ids: List of vpc ids to filter on.
     """
     __args__ = dict()
+    __args__['region'] = region
     __args__['rulestack'] = rulestack
     __args__['vpcIds'] = vpc_ids
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -118,9 +133,11 @@ def get_ngfws(rulestack: Optional[_builtins.str] = None,
     return AwaitableGetNgfwsResult(
         id=pulumi.get(__ret__, 'id'),
         instances=pulumi.get(__ret__, 'instances'),
+        region=pulumi.get(__ret__, 'region'),
         rulestack=pulumi.get(__ret__, 'rulestack'),
         vpc_ids=pulumi.get(__ret__, 'vpc_ids'))
-def get_ngfws_output(rulestack: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ngfws_output(region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                     rulestack: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      vpc_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNgfwsResult]:
     """
@@ -140,10 +157,12 @@ def get_ngfws_output(rulestack: Optional[pulumi.Input[Optional[_builtins.str]]] 
     ```
 
 
+    :param _builtins.str region: The region to filter on.
     :param _builtins.str rulestack: The rulestack to filter on.
     :param Sequence[_builtins.str] vpc_ids: List of vpc ids to filter on.
     """
     __args__ = dict()
+    __args__['region'] = region
     __args__['rulestack'] = rulestack
     __args__['vpcIds'] = vpc_ids
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -151,5 +170,6 @@ def get_ngfws_output(rulestack: Optional[pulumi.Input[Optional[_builtins.str]]] 
     return __ret__.apply(lambda __response__: GetNgfwsResult(
         id=pulumi.get(__response__, 'id'),
         instances=pulumi.get(__response__, 'instances'),
+        region=pulumi.get(__response__, 'region'),
         rulestack=pulumi.get(__response__, 'rulestack'),
         vpc_ids=pulumi.get(__response__, 'vpc_ids')))

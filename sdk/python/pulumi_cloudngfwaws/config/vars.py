@@ -126,10 +126,6 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('region')
 
     @_builtins.property
-    def resource_timeout(self) -> Optional[int]:
-        return __config__.get_int('resourceTimeout')
-
-    @_builtins.property
     def secret_key(self) -> Optional[str]:
         """
         (Used for the initial `sts assume role`) AWS secret key. Environment variable: `CLOUDNGFWAWS_SECRET_KEY`. JSON conf file variable: `secret-key`.
@@ -156,4 +152,11 @@ class _ExportableConfig(types.ModuleType):
         The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
         """
         return __config__.get_int('timeout')
+
+    @_builtins.property
+    def v2_host(self) -> Optional[str]:
+        """
+        The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+        """
+        return __config__.get('v2Host')
 
