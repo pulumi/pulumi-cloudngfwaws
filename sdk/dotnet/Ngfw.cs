@@ -111,7 +111,7 @@ namespace Pulumi.CloudNgfwAws
         public Output<string> AppIdVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Automatic App-ID upgrade version number. Defaults to `true`.
+        /// Automatic App-ID upgrade version number. Defaults to `True`.
         /// </summary>
         [Output("automaticUpgradeAppIdVersion")]
         public Output<bool?> AutomaticUpgradeAppIdVersion { get; private set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.CloudNgfwAws
         public Output<string> LinkStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
+        /// Share NGFW with Multiple VPCs. This feature can be enabled only if the EndpointMode is CustomerManaged.
         /// </summary>
         [Output("multiVpc")]
         public Output<bool> MultiVpc { get; private set; } = null!;
@@ -305,7 +305,7 @@ namespace Pulumi.CloudNgfwAws
         public Input<string>? AppIdVersion { get; set; }
 
         /// <summary>
-        /// Automatic App-ID upgrade version number. Defaults to `true`.
+        /// Automatic App-ID upgrade version number. Defaults to `True`.
         /// </summary>
         [Input("automaticUpgradeAppIdVersion")]
         public Input<bool>? AutomaticUpgradeAppIdVersion { get; set; }
@@ -375,7 +375,7 @@ namespace Pulumi.CloudNgfwAws
         public Input<string>? LinkId { get; set; }
 
         /// <summary>
-        /// Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
+        /// Share NGFW with Multiple VPCs. This feature can be enabled only if the EndpointMode is CustomerManaged.
         /// </summary>
         [Input("multiVpc")]
         public Input<bool>? MultiVpc { get; set; }
@@ -471,7 +471,7 @@ namespace Pulumi.CloudNgfwAws
         public Input<string>? AppIdVersion { get; set; }
 
         /// <summary>
-        /// Automatic App-ID upgrade version number. Defaults to `true`.
+        /// Automatic App-ID upgrade version number. Defaults to `True`.
         /// </summary>
         [Input("automaticUpgradeAppIdVersion")]
         public Input<bool>? AutomaticUpgradeAppIdVersion { get; set; }
@@ -565,7 +565,7 @@ namespace Pulumi.CloudNgfwAws
         public Input<string>? LinkStatus { get; set; }
 
         /// <summary>
-        /// Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
+        /// Share NGFW with Multiple VPCs. This feature can be enabled only if the EndpointMode is CustomerManaged.
         /// </summary>
         [Input("multiVpc")]
         public Input<bool>? MultiVpc { get; set; }
