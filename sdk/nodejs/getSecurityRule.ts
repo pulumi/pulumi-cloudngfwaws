@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  *
  * * `Rulestack` (for `scope="Local"`)
  * * `Global Rulestack` (for `scope="Global"`)
+ *
+ * ## Example Usage
  */
 export function getSecurityRule(args: GetSecurityRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -155,6 +157,8 @@ export interface GetSecurityRuleResult {
  *
  * * `Rulestack` (for `scope="Local"`)
  * * `Global Rulestack` (for `scope="Global"`)
+ *
+ * ## Example Usage
  */
 export function getSecurityRuleOutput(args: GetSecurityRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecurityRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

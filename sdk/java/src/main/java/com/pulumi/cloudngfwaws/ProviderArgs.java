@@ -170,14 +170,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`.
+     * AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mpRegion`.
      * 
      */
     @Import(name="mpRegion")
     private @Nullable Output<String> mpRegion;
 
     /**
-     * @return AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`.
+     * @return AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mpRegion`.
      * 
      */
     public Optional<Output<String>> mpRegion() {
@@ -185,14 +185,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
+     * AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mpRegionHost`.
      * 
      */
     @Import(name="mpRegionHost")
     private @Nullable Output<String> mpRegionHost;
 
     /**
-     * @return AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
+     * @return AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mpRegionHost`.
      * 
      */
     public Optional<Output<String>> mpRegionHost() {
@@ -275,14 +275,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `sync_mode`.
+     * Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `syncMode`.
      * 
      */
     @Import(name="syncMode", json=true)
     private @Nullable Output<Boolean> syncMode;
 
     /**
-     * @return Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `sync_mode`.
+     * @return Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `syncMode`.
      * 
      */
     public Optional<Output<Boolean>> syncMode() {
@@ -305,14 +305,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+     * The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2Host`.
      * 
      */
     @Import(name="v2Host")
     private @Nullable Output<String> v2Host;
 
     /**
-     * @return The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+     * @return The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2Host`.
      * 
      */
     public Optional<Output<String>> v2Host() {
@@ -583,7 +583,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mpRegion AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`.
+         * @param mpRegion AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mpRegion`.
          * 
          * @return builder
          * 
@@ -594,7 +594,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mpRegion AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`.
+         * @param mpRegion AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mpRegion`.
          * 
          * @return builder
          * 
@@ -604,7 +604,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mpRegionHost AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
+         * @param mpRegionHost AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mpRegionHost`.
          * 
          * @return builder
          * 
@@ -615,7 +615,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mpRegionHost AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
+         * @param mpRegionHost AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mpRegionHost`.
          * 
          * @return builder
          * 
@@ -730,7 +730,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param syncMode Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `sync_mode`.
+         * @param syncMode Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `syncMode`.
          * 
          * @return builder
          * 
@@ -741,7 +741,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param syncMode Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `sync_mode`.
+         * @param syncMode Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `syncMode`.
          * 
          * @return builder
          * 
@@ -772,7 +772,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param v2Host The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+         * @param v2Host The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2Host`.
          * 
          * @return builder
          * 
@@ -783,7 +783,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param v2Host The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+         * @param v2Host The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2Host`.
          * 
          * @return builder
          * 

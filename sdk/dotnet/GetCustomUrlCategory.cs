@@ -148,7 +148,7 @@ namespace Pulumi.CloudNgfwAws
     public sealed class GetCustomUrlCategoryArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Retrieve either the candidate or running config. Valid values are `candidate` or `running`. Defaults to `candidate`.
+        /// Retrieve either the candidate or running config. Valid values are `Candidate` or `Running`. Defaults to `Candidate`.
         /// </summary>
         [Input("configType")]
         public string? ConfigType { get; set; }
@@ -180,7 +180,7 @@ namespace Pulumi.CloudNgfwAws
     public sealed class GetCustomUrlCategoryInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Retrieve either the candidate or running config. Valid values are `candidate` or `running`. Defaults to `candidate`.
+        /// Retrieve either the candidate or running config. Valid values are `Candidate` or `Running`. Defaults to `Candidate`.
         /// </summary>
         [Input("configType")]
         public Input<string>? ConfigType { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.CloudNgfwAws
     public sealed class GetCustomUrlCategoryResult
     {
         /// <summary>
-        /// The action to take. Valid values are `none`, `alert`, `allow`, `block`, `continue`, or `override`.
+        /// The action to take. Valid values are `None`, `Alert`, `Allow`, `Block`, `Continue`, or `Override`.
         /// </summary>
         public readonly string Action;
         /// <summary>
@@ -222,7 +222,7 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public readonly string AuditComment;
         /// <summary>
-        /// Retrieve either the candidate or running config. Valid values are `candidate` or `running`. Defaults to `candidate`.
+        /// Retrieve either the candidate or running config. Valid values are `Candidate` or `Running`. Defaults to `Candidate`.
         /// </summary>
         public readonly string? ConfigType;
         /// <summary>

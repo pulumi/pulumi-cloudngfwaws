@@ -54,7 +54,7 @@ namespace Pulumi.CloudNgfwAws
 
         private static readonly __Value<string?> _arn = new __Value<string?>(() => __config.Get("arn"));
         /// <summary>
-        /// The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `arn`.
+        /// The ARN allowing firewall, rulestack, and global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. Use 'lfa_arn' and 'lra_arn' if you want to enable only firewall and rulestack admin permissions. Environment variable: `CLOUDNGFWAWS_ARN`. JSON conf file variable: `Arn`.
         /// </summary>
         public static string? Arn
         {
@@ -64,7 +64,7 @@ namespace Pulumi.CloudNgfwAws
 
         private static readonly __Value<string?> _graArn = new __Value<string?>(() => __config.Get("graArn"));
         /// <summary>
-        /// The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
+        /// The ARN allowing global rulestack admin permissions. Global rulestack admin permissions can be enabled only if the AWS account is onboarded by AWS Firewall Manager. 'gra_arn' is preferentially used over the `Arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_GRA_ARN`. JSON conf file variable: `gra-arn`.
         /// </summary>
         public static string? GraArn
         {
@@ -74,7 +74,7 @@ namespace Pulumi.CloudNgfwAws
 
         private static readonly __Value<ImmutableDictionary<string, string>?> _headers = new __Value<ImmutableDictionary<string, string>?>(() => __config.GetObject<ImmutableDictionary<string, string>>("headers"));
         /// <summary>
-        /// Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable: `headers`.
+        /// Additional HTTP headers to send with API calls. Environment variable: `CLOUDNGFWAWS_HEADERS`. JSON conf file variable: `Headers`.
         /// </summary>
         public static ImmutableDictionary<string, string>? Headers
         {
@@ -84,7 +84,7 @@ namespace Pulumi.CloudNgfwAws
 
         private static readonly __Value<string?> _host = new __Value<string?>(() => __config.Get("host"));
         /// <summary>
-        /// The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_HOST`. JSON conf file variable: `host`.
+        /// The hostname of the API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_HOST`. JSON conf file variable: `Host`.
         /// </summary>
         public static string? Host
         {
@@ -104,7 +104,7 @@ namespace Pulumi.CloudNgfwAws
 
         private static readonly __Value<string?> _lfaArn = new __Value<string?>(() => __config.Get("lfaArn"));
         /// <summary>
-        /// The ARN allowing firewall admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
+        /// The ARN allowing firewall admin permissions. This is preferentially used over the `Arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LFA_ARN`. JSON conf file variable: `lfa-arn`.
         /// </summary>
         public static string? LfaArn
         {
@@ -114,7 +114,7 @@ namespace Pulumi.CloudNgfwAws
 
         private static readonly __Value<ImmutableArray<string>> _loggings = new __Value<ImmutableArray<string>>(() => __config.GetObject<ImmutableArray<string>>("loggings"));
         /// <summary>
-        /// The logging options for the provider. Environment variable: `CLOUDNGFWAWS_LOGGING`. JSON conf file variable: `logging`.
+        /// The logging options for the provider. Environment variable: `CLOUDNGFWAWS_LOGGING`. JSON conf file variable: `Logging`.
         /// </summary>
         public static ImmutableArray<string> Loggings
         {
@@ -124,7 +124,7 @@ namespace Pulumi.CloudNgfwAws
 
         private static readonly __Value<string?> _lraArn = new __Value<string?>(() => __config.Get("lraArn"));
         /// <summary>
-        /// The ARN allowing rulestack admin permissions. This is preferentially used over the `arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
+        /// The ARN allowing rulestack admin permissions. This is preferentially used over the `Arn` param if both are specified. Environment variable: `CLOUDNGFWAWS_LRA_ARN`. JSON conf file variable: `lra-arn`.
         /// </summary>
         public static string? LraArn
         {
@@ -134,7 +134,7 @@ namespace Pulumi.CloudNgfwAws
 
         private static readonly __Value<string?> _mpRegion = new __Value<string?>(() => __config.Get("mpRegion"));
         /// <summary>
-        /// AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`.
+        /// AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `MpRegion`.
         /// </summary>
         public static string? MpRegion
         {
@@ -144,7 +144,7 @@ namespace Pulumi.CloudNgfwAws
 
         private static readonly __Value<string?> _mpRegionHost = new __Value<string?>(() => __config.Get("mpRegionHost"));
         /// <summary>
-        /// AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
+        /// AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `MpRegionHost`.
         /// </summary>
         public static string? MpRegionHost
         {
@@ -154,7 +154,7 @@ namespace Pulumi.CloudNgfwAws
 
         private static readonly __Value<string?> _profile = new __Value<string?>(() => __config.Get("profile"));
         /// <summary>
-        /// (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file variable: `profile`.
+        /// (Used for the initial `sts assume role`) AWS PROFILE. Environment variable: `CLOUDNGFWAWS_PROFILE`. JSON conf file variable: `Profile`.
         /// </summary>
         public static string? Profile
         {
@@ -164,7 +164,7 @@ namespace Pulumi.CloudNgfwAws
 
         private static readonly __Value<string?> _protocol = new __Value<string?>(() => __config.Get("protocol"));
         /// <summary>
-        /// The protocol (defaults to `https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `protocol`. Valid values are `https` or `http`.
+        /// The protocol (defaults to `Https`). Environment variable: `CLOUDNGFWAWS_PROTOCOL`. JSON conf file variable: `Protocol`. Valid values are `Https` or `Http`.
         /// </summary>
         public static string? Protocol
         {
@@ -174,7 +174,7 @@ namespace Pulumi.CloudNgfwAws
 
         private static readonly __Value<string?> _region = new __Value<string?>(() => __config.Get("region"));
         /// <summary>
-        /// AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `region`.
+        /// AWS region. Environment variable: `CLOUDNGFWAWS_REGION`. JSON conf file variable: `Region`.
         /// </summary>
         public static string? Region
         {
@@ -204,7 +204,7 @@ namespace Pulumi.CloudNgfwAws
 
         private static readonly __Value<bool?> _syncMode = new __Value<bool?>(() => __config.GetBoolean("syncMode"));
         /// <summary>
-        /// Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `sync_mode`.
+        /// Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `SyncMode`.
         /// </summary>
         public static bool? SyncMode
         {
@@ -214,7 +214,7 @@ namespace Pulumi.CloudNgfwAws
 
         private static readonly __Value<int?> _timeout = new __Value<int?>(() => __config.GetInt32("timeout"));
         /// <summary>
-        /// The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `timeout`.
+        /// The timeout for any single API call (default: `30`). Environment variable: `CLOUDNGFWAWS_TIMEOUT`. JSON conf file variable: `Timeout`.
         /// </summary>
         public static int? Timeout
         {
@@ -224,7 +224,7 @@ namespace Pulumi.CloudNgfwAws
 
         private static readonly __Value<string?> _v2Host = new __Value<string?>(() => __config.Get("v2Host"));
         /// <summary>
-        /// The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+        /// The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `V2Host`.
         /// </summary>
         public static string? V2Host
         {

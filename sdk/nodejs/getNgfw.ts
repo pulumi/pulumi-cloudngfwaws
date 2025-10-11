@@ -12,6 +12,8 @@ import * as utilities from "./utilities";
  * ## Admin Permission Type
  *
  * * `Firewall`
+ *
+ * ## Example Usage
  */
 export function getNgfw(args: GetNgfwArgs, opts?: pulumi.InvokeOptions): Promise<GetNgfwResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -134,6 +136,8 @@ export interface GetNgfwResult {
  * ## Admin Permission Type
  *
  * * `Firewall`
+ *
+ * ## Example Usage
  */
 export function getNgfwOutput(args: GetNgfwOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNgfwResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

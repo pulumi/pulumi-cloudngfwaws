@@ -16,6 +16,8 @@ import (
 // ## Admin Permission Type
 //
 // * `Firewall`
+//
+// ## Example Usage
 func LookupNgfw(ctx *pulumi.Context, args *LookupNgfwArgs, opts ...pulumi.InvokeOption) (*LookupNgfwResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNgfwResult

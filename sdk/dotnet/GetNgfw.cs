@@ -18,6 +18,9 @@ namespace Pulumi.CloudNgfwAws
         /// ## Admin Permission Type
         /// 
         /// * `Firewall`
+        /// 
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetNgfwResult> InvokeAsync(GetNgfwArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNgfwResult>("cloudngfwaws:index/getNgfw:getNgfw", args ?? new GetNgfwArgs(), options.WithDefaults());
@@ -29,6 +32,9 @@ namespace Pulumi.CloudNgfwAws
         /// ## Admin Permission Type
         /// 
         /// * `Firewall`
+        /// 
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetNgfwResult> Invoke(GetNgfwInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNgfwResult>("cloudngfwaws:index/getNgfw:getNgfw", args ?? new GetNgfwInvokeArgs(), options.WithDefaults());
@@ -40,6 +46,9 @@ namespace Pulumi.CloudNgfwAws
         /// ## Admin Permission Type
         /// 
         /// * `Firewall`
+        /// 
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetNgfwResult> Invoke(GetNgfwInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNgfwResult>("cloudngfwaws:index/getNgfw:getNgfw", args ?? new GetNgfwInvokeArgs(), options.WithDefaults());
@@ -141,7 +150,7 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public readonly string LinkStatus;
         /// <summary>
-        /// Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
+        /// Share NGFW with Multiple VPCs. This feature can be enabled only if the EndpointMode is CustomerManaged.
         /// </summary>
         public readonly bool MultiVpc;
         /// <summary>

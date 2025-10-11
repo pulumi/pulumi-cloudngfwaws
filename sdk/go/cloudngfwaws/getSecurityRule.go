@@ -17,6 +17,8 @@ import (
 //
 // * `Rulestack` (for `scope="Local"`)
 // * `Global Rulestack` (for `scope="Global"`)
+//
+// ## Example Usage
 func LookupSecurityRule(ctx *pulumi.Context, args *LookupSecurityRuleArgs, opts ...pulumi.InvokeOption) (*LookupSecurityRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityRuleResult

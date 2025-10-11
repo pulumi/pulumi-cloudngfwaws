@@ -356,6 +356,8 @@ def get_ngfw(firewall_id: Optional[_builtins.str] = None,
 
     * `Firewall`
 
+    ## Example Usage
+
 
     :param _builtins.str firewall_id: The Firewall ID.
     """
@@ -400,6 +402,8 @@ def get_ngfw_output(firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
     ## Admin Permission Type
 
     * `Firewall`
+
+    ## Example Usage
 
 
     :param _builtins.str firewall_id: The Firewall ID.

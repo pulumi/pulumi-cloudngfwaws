@@ -110,7 +110,7 @@ namespace Pulumi.CloudNgfwAws
         public Output<Outputs.SecurityRuleCategory> Category { get; private set; } = null!;
 
         /// <summary>
-        /// Decryption rule type. Valid values are ``or`SSLOutboundInspection`.
+        /// Decryption rule type. Valid values are ``Or`SSLOutboundInspection`.
         /// </summary>
         [Output("decryptionRuleType")]
         public Output<string?> DecryptionRuleType { get; private set; } = null!;
@@ -128,13 +128,13 @@ namespace Pulumi.CloudNgfwAws
         public Output<Outputs.SecurityRuleDestination> Destination { get; private set; } = null!;
 
         /// <summary>
-        /// Set to false to disable this rule. Defaults to `true`.
+        /// Set to false to disable this rule. Defaults to `True`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Enable logging at end. Defaults to `true`.
+        /// Enable logging at end. Defaults to `True`.
         /// </summary>
         [Output("logging")]
         public Output<bool?> Logging { get; private set; } = null!;
@@ -289,7 +289,7 @@ namespace Pulumi.CloudNgfwAws
         public Input<Inputs.SecurityRuleCategoryArgs> Category { get; set; } = null!;
 
         /// <summary>
-        /// Decryption rule type. Valid values are ``or`SSLOutboundInspection`.
+        /// Decryption rule type. Valid values are ``Or`SSLOutboundInspection`.
         /// </summary>
         [Input("decryptionRuleType")]
         public Input<string>? DecryptionRuleType { get; set; }
@@ -307,13 +307,13 @@ namespace Pulumi.CloudNgfwAws
         public Input<Inputs.SecurityRuleDestinationArgs> Destination { get; set; } = null!;
 
         /// <summary>
-        /// Set to false to disable this rule. Defaults to `true`.
+        /// Set to false to disable this rule. Defaults to `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Enable logging at end. Defaults to `true`.
+        /// Enable logging at end. Defaults to `True`.
         /// </summary>
         [Input("logging")]
         public Input<bool>? Logging { get; set; }
@@ -435,7 +435,7 @@ namespace Pulumi.CloudNgfwAws
         public Input<Inputs.SecurityRuleCategoryGetArgs>? Category { get; set; }
 
         /// <summary>
-        /// Decryption rule type. Valid values are ``or`SSLOutboundInspection`.
+        /// Decryption rule type. Valid values are ``Or`SSLOutboundInspection`.
         /// </summary>
         [Input("decryptionRuleType")]
         public Input<string>? DecryptionRuleType { get; set; }
@@ -453,13 +453,13 @@ namespace Pulumi.CloudNgfwAws
         public Input<Inputs.SecurityRuleDestinationGetArgs>? Destination { get; set; }
 
         /// <summary>
-        /// Set to false to disable this rule. Defaults to `true`.
+        /// Set to false to disable this rule. Defaults to `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Enable logging at end. Defaults to `true`.
+        /// Enable logging at end. Defaults to `True`.
         /// </summary>
         [Input("logging")]
         public Input<bool>? Logging { get; set; }

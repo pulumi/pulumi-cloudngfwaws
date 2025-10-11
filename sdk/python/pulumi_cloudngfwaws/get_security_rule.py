@@ -328,6 +328,8 @@ def get_security_rule(config_type: Optional[_builtins.str] = None,
     * `Rulestack` (for `scope="Local"`)
     * `Global Rulestack` (for `scope="Global"`)
 
+    ## Example Usage
+
 
     :param _builtins.str config_type: Retrieve either the candidate or running config. Valid values are `candidate` or `running`. Defaults to `candidate`.
     :param _builtins.int priority: The rule priority.
@@ -381,6 +383,8 @@ def get_security_rule_output(config_type: Optional[pulumi.Input[Optional[_builti
 
     * `Rulestack` (for `scope="Local"`)
     * `Global Rulestack` (for `scope="Global"`)
+
+    ## Example Usage
 
 
     :param _builtins.str config_type: Retrieve either the candidate or running config. Valid values are `candidate` or `running`. Defaults to `candidate`.

@@ -86,14 +86,14 @@ public final class Config {
         return Codegen.stringProp("lraArn").config(config).get();
     }
 /**
- * AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mp_region`.
+ * AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: `mpRegion`.
  * 
  */
     public Optional<String> mpRegion() {
         return Codegen.stringProp("mpRegion").config(config).get();
     }
 /**
- * AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mp_region_host`.
+ * AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: `mpRegionHost`.
  * 
  */
     public Optional<String> mpRegionHost() {
@@ -135,7 +135,7 @@ public final class Config {
         return Codegen.booleanProp("skipVerifyCertificate").config(config).get();
     }
 /**
- * Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `sync_mode`.
+ * Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: `syncMode`.
  * 
  */
     public Optional<Boolean> syncMode() {
@@ -149,7 +149,7 @@ public final class Config {
         return Codegen.integerProp("timeout").config(config).get();
     }
 /**
- * The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2_host`.
+ * The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: `v2Host`.
  * 
  */
     public Optional<String> v2Host() {
