@@ -68,7 +68,7 @@ namespace Pulumi.CloudNgfwAws
     public partial class CustomUrlCategory : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The action to take. Valid values are `none`, `alert`, `allow`, `block`, `continue`, or `override`. Defaults to `none`.
+        /// The action to take. Valid values are `None`, `Alert`, `Allow`, `Block`, `Continue`, or `Override`. Defaults to `None`.
         /// </summary>
         [Output("action")]
         public Output<string?> Action { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.CloudNgfwAws
     public sealed class CustomUrlCategoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action to take. Valid values are `none`, `alert`, `allow`, `block`, `continue`, or `override`. Defaults to `none`.
+        /// The action to take. Valid values are `None`, `Alert`, `Allow`, `Block`, `Continue`, or `Override`. Defaults to `None`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -219,7 +219,7 @@ namespace Pulumi.CloudNgfwAws
     public sealed class CustomUrlCategoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action to take. Valid values are `none`, `alert`, `allow`, `block`, `continue`, or `override`. Defaults to `none`.
+        /// The action to take. Valid values are `None`, `Alert`, `Allow`, `Block`, `Continue`, or `Override`. Defaults to `None`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
