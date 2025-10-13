@@ -19,6 +19,9 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// * `Rulestack` (for `scope="Local"`)
         /// * `Global Rulestack` (for `scope="Global"`)
+        /// 
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetSecurityRuleResult> InvokeAsync(GetSecurityRuleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecurityRuleResult>("cloudngfwaws:index/getSecurityRule:getSecurityRule", args ?? new GetSecurityRuleArgs(), options.WithDefaults());
@@ -31,6 +34,9 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// * `Rulestack` (for `scope="Local"`)
         /// * `Global Rulestack` (for `scope="Global"`)
+        /// 
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetSecurityRuleResult> Invoke(GetSecurityRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecurityRuleResult>("cloudngfwaws:index/getSecurityRule:getSecurityRule", args ?? new GetSecurityRuleInvokeArgs(), options.WithDefaults());
@@ -43,6 +49,9 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// * `Rulestack` (for `scope="Local"`)
         /// * `Global Rulestack` (for `scope="Global"`)
+        /// 
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetSecurityRuleResult> Invoke(GetSecurityRuleInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecurityRuleResult>("cloudngfwaws:index/getSecurityRule:getSecurityRule", args ?? new GetSecurityRuleInvokeArgs(), options.WithDefaults());
@@ -52,7 +61,7 @@ namespace Pulumi.CloudNgfwAws
     public sealed class GetSecurityRuleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Retrieve either the candidate or running config. Valid values are `candidate` or `running`. Defaults to `candidate`.
+        /// Retrieve either the candidate or running config. Valid values are `Candidate` or `Running`. Defaults to `Candidate`.
         /// </summary>
         [Input("configType")]
         public string? ConfigType { get; set; }
@@ -90,7 +99,7 @@ namespace Pulumi.CloudNgfwAws
     public sealed class GetSecurityRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Retrieve either the candidate or running config. Valid values are `candidate` or `running`. Defaults to `candidate`.
+        /// Retrieve either the candidate or running config. Valid values are `Candidate` or `Running`. Defaults to `Candidate`.
         /// </summary>
         [Input("configType")]
         public Input<string>? ConfigType { get; set; }
@@ -146,11 +155,11 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSecurityRuleCategoryResult> Categories;
         /// <summary>
-        /// Retrieve either the candidate or running config. Valid values are `candidate` or `running`. Defaults to `candidate`.
+        /// Retrieve either the candidate or running config. Valid values are `Candidate` or `Running`. Defaults to `Candidate`.
         /// </summary>
         public readonly string? ConfigType;
         /// <summary>
-        /// Decryption rule type. Valid values are ``or`SSLOutboundInspection`.
+        /// Decryption rule type. Valid values are ``Or`SSLOutboundInspection`.
         /// </summary>
         public readonly string DecryptionRuleType;
         /// <summary>

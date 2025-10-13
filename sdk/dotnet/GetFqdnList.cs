@@ -148,7 +148,7 @@ namespace Pulumi.CloudNgfwAws
     public sealed class GetFqdnListArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Retrieve either the candidate or running config. Valid values are `candidate` or `running`. Defaults to `candidate`.
+        /// Retrieve either the candidate or running config. Valid values are `Candidate` or `Running`. Defaults to `Candidate`.
         /// </summary>
         [Input("configType")]
         public string? ConfigType { get; set; }
@@ -180,7 +180,7 @@ namespace Pulumi.CloudNgfwAws
     public sealed class GetFqdnListInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Retrieve either the candidate or running config. Valid values are `candidate` or `running`. Defaults to `candidate`.
+        /// Retrieve either the candidate or running config. Valid values are `Candidate` or `Running`. Defaults to `Candidate`.
         /// </summary>
         [Input("configType")]
         public Input<string>? ConfigType { get; set; }
@@ -218,7 +218,7 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public readonly string AuditComment;
         /// <summary>
-        /// Retrieve either the candidate or running config. Valid values are `candidate` or `running`. Defaults to `candidate`.
+        /// Retrieve either the candidate or running config. Valid values are `Candidate` or `Running`. Defaults to `Candidate`.
         /// </summary>
         public readonly string? ConfigType;
         /// <summary>
