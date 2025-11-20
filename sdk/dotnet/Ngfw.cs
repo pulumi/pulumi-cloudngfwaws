@@ -26,6 +26,21 @@ namespace Pulumi.CloudNgfwAws
     ///         Rulestack = "my-rulestack",
     ///     });
     /// 
+    ///     var example = new CloudNgfwAws.Ngfw("example", new()
+    ///     {
+    ///         Name = "example-instance",
+    ///         Description = "Example description",
+    ///         AzLists = new[]
+    ///         {
+    ///             "use1-az1",
+    ///         },
+    ///         Rulestack = rs.Rulestack,
+    ///         Tags = 
+    ///         {
+    ///             { "Foo", "bar" },
+    ///         },
+    ///     });
+    /// 
     ///     var exampleVpc = new Aws.Index.Vpc("example", new()
     ///     {
     ///         CidrBlock = "172.16.0.0/16",
@@ -43,27 +58,6 @@ namespace Pulumi.CloudNgfwAws
     ///         Tags = 
     ///         {
     ///             { "name", "tf-example" },
-    ///         },
-    ///     });
-    /// 
-    ///     var example = new CloudNgfwAws.Ngfw("example", new()
-    ///     {
-    ///         Name = "example-instance",
-    ///         Description = "Example description",
-    ///         Endpoints = new[]
-    ///         {
-    ///             new CloudNgfwAws.Inputs.NgfwEndpointArgs
-    ///             {
-    ///                 SubnetId = subnet1.Id,
-    ///                 Mode = "ServiceManaged",
-    ///                 VpcId = exampleVpc.Id,
-    ///                 AccountId = "12345678",
-    ///             },
-    ///         },
-    ///         Rulestack = rs.Rulestack,
-    ///         Tags = 
-    ///         {
-    ///             { "Foo", "bar" },
     ///         },
     ///     });
     /// 
@@ -117,7 +111,7 @@ namespace Pulumi.CloudNgfwAws
         public Output<bool?> AutomaticUpgradeAppIdVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The list of availability zones for this NGFW.
+        /// The list of availability zone IDs for this NGFW.
         /// </summary>
         [Output("azLists")]
         public Output<ImmutableArray<string>> AzLists { get; private set; } = null!;
@@ -314,7 +308,7 @@ namespace Pulumi.CloudNgfwAws
         private InputList<string>? _azLists;
 
         /// <summary>
-        /// The list of availability zones for this NGFW.
+        /// The list of availability zone IDs for this NGFW.
         /// </summary>
         public InputList<string> AzLists
         {
@@ -480,7 +474,7 @@ namespace Pulumi.CloudNgfwAws
         private InputList<string>? _azLists;
 
         /// <summary>
-        /// The list of availability zones for this NGFW.
+        /// The list of availability zone IDs for this NGFW.
         /// </summary>
         public InputList<string> AzLists
         {

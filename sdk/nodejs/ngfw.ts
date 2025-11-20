@@ -15,6 +15,15 @@ import * as utilities from "./utilities";
  * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
  *
  * const rs = new cloudngfwaws.CommitRulestack("rs", {rulestack: "my-rulestack"});
+ * const example = new cloudngfwaws.Ngfw("example", {
+ *     name: "example-instance",
+ *     description: "Example description",
+ *     azLists: ["use1-az1"],
+ *     rulestack: rs.rulestack,
+ *     tags: {
+ *         Foo: "bar",
+ *     },
+ * });
  * const exampleVpc = new aws.index.Vpc("example", {
  *     cidrBlock: "172.16.0.0/16",
  *     tags: {
@@ -27,20 +36,6 @@ import * as utilities from "./utilities";
  *     availabilityZone: "us-west-2a",
  *     tags: {
  *         name: "tf-example",
- *     },
- * });
- * const example = new cloudngfwaws.Ngfw("example", {
- *     name: "example-instance",
- *     description: "Example description",
- *     endpoints: [{
- *         subnetId: subnet1.id,
- *         mode: "ServiceManaged",
- *         vpcId: exampleVpc.id,
- *         accountId: "12345678",
- *     }],
- *     rulestack: rs.rulestack,
- *     tags: {
- *         Foo: "bar",
  *     },
  * });
  * const subnet2 = new aws.index.Subnet("subnet2", {
@@ -106,7 +101,7 @@ export class Ngfw extends pulumi.CustomResource {
      */
     declare public readonly automaticUpgradeAppIdVersion: pulumi.Output<boolean | undefined>;
     /**
-     * The list of availability zones for this NGFW.
+     * The list of availability zone IDs for this NGFW.
      */
     declare public readonly azLists: pulumi.Output<string[]>;
     /**
@@ -276,7 +271,7 @@ export interface NgfwState {
      */
     automaticUpgradeAppIdVersion?: pulumi.Input<boolean>;
     /**
-     * The list of availability zones for this NGFW.
+     * The list of availability zone IDs for this NGFW.
      */
     azLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -371,7 +366,7 @@ export interface NgfwArgs {
      */
     automaticUpgradeAppIdVersion?: pulumi.Input<boolean>;
     /**
-     * The list of availability zones for this NGFW.
+     * The list of availability zone IDs for this NGFW.
      */
     azLists: pulumi.Input<pulumi.Input<string>[]>;
     /**

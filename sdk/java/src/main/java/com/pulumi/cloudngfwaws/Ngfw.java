@@ -35,13 +35,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudngfwaws.CommitRulestack;
  * import com.pulumi.cloudngfwaws.CommitRulestackArgs;
+ * import com.pulumi.cloudngfwaws.Ngfw;
+ * import com.pulumi.cloudngfwaws.NgfwArgs;
  * import com.pulumi.aws.Vpc;
  * import com.pulumi.aws.VpcArgs;
  * import com.pulumi.aws.Subnet;
  * import com.pulumi.aws.SubnetArgs;
- * import com.pulumi.cloudngfwaws.Ngfw;
- * import com.pulumi.cloudngfwaws.NgfwArgs;
- * import com.pulumi.cloudngfwaws.inputs.NgfwEndpointArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -59,6 +58,14 @@ import javax.annotation.Nullable;
  *             .rulestack("my-rulestack")
  *             .build());
  * 
+ *         var example = new Ngfw("example", NgfwArgs.builder()
+ *             .name("example-instance")
+ *             .description("Example description")
+ *             .azLists("use1-az1")
+ *             .rulestack(rs.rulestack())
+ *             .tags(Map.of("Foo", "bar"))
+ *             .build());
+ * 
  *         var exampleVpc = new Vpc("exampleVpc", VpcArgs.builder()
  *             .cidrBlock("172.16.0.0/16")
  *             .tags(Map.of("name", "tf-example"))
@@ -69,19 +76,6 @@ import javax.annotation.Nullable;
  *             .cidrBlock("172.16.10.0/24")
  *             .availabilityZone("us-west-2a")
  *             .tags(Map.of("name", "tf-example"))
- *             .build());
- * 
- *         var example = new Ngfw("example", NgfwArgs.builder()
- *             .name("example-instance")
- *             .description("Example description")
- *             .endpoints(NgfwEndpointArgs.builder()
- *                 .subnetId(subnet1.id())
- *                 .mode("ServiceManaged")
- *                 .vpcId(exampleVpc.id())
- *                 .accountId("12345678")
- *                 .build())
- *             .rulestack(rs.rulestack())
- *             .tags(Map.of("Foo", "bar"))
  *             .build());
  * 
  *         var subnet2 = new Subnet("subnet2", SubnetArgs.builder()
@@ -164,14 +158,14 @@ public class Ngfw extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.automaticUpgradeAppIdVersion);
     }
     /**
-     * The list of availability zones for this NGFW.
+     * The list of availability zone IDs for this NGFW.
      * 
      */
     @Export(name="azLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> azLists;
 
     /**
-     * @return The list of availability zones for this NGFW.
+     * @return The list of availability zone IDs for this NGFW.
      * 
      */
     public Output<List<String>> azLists() {

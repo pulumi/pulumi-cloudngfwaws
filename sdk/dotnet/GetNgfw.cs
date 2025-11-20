@@ -104,7 +104,7 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public readonly bool AutomaticUpgradeAppIdVersion;
         /// <summary>
-        /// The list of availability zones for this NGFW.
+        /// The list of availability zone IDs for this NGFW.
         /// </summary>
         public readonly ImmutableArray<string> AzLists;
         /// <summary>

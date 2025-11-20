@@ -85,14 +85,14 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of availability zones for this NGFW.
+     * The list of availability zone IDs for this NGFW.
      * 
      */
     @Import(name="azLists")
     private @Nullable Output<List<String>> azLists;
 
     /**
-     * @return The list of availability zones for this NGFW.
+     * @return The list of availability zone IDs for this NGFW.
      * 
      */
     public Optional<Output<List<String>>> azLists() {
@@ -518,7 +518,7 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param azLists The list of availability zones for this NGFW.
+         * @param azLists The list of availability zone IDs for this NGFW.
          * 
          * @return builder
          * 
@@ -529,7 +529,7 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param azLists The list of availability zones for this NGFW.
+         * @param azLists The list of availability zone IDs for this NGFW.
          * 
          * @return builder
          * 
@@ -539,7 +539,7 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param azLists The list of availability zones for this NGFW.
+         * @param azLists The list of availability zone IDs for this NGFW.
          * 
          * @return builder
          * 

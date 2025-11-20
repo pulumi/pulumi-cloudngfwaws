@@ -362,63 +362,6 @@ class NgfwLogProfile(pulumi.CustomResource):
 
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_cloudngfwaws as cloudngfwaws
-
-        example_vpc = aws.index.Vpc("example",
-            cidr_block=172.16.0.0/16,
-            tags={
-                name: tf-example,
-            })
-        subnet1 = aws.index.Subnet("subnet1",
-            vpc_id=my_vpc.id,
-            cidr_block=172.16.10.0/24,
-            availability_zone=us-west-2a,
-            tags={
-                name: tf-example,
-            })
-        x = cloudngfwaws.Ngfw("x",
-            name="example-instance",
-            description="Example description",
-            endpoints=[{
-                "subnet_id": subnet1["id"],
-                "mode": "ServiceManaged",
-                "vpc_id": example_vpc["id"],
-                "account_id": "12345678",
-            }],
-            rulestack="example-rulestack",
-            tags={
-                "Foo": "bar",
-            })
-        example = cloudngfwaws.NgfwLogProfile("example",
-            firewall_id=x.firewall_id,
-            account_id=x.account_id,
-            advanced_threat_log=True,
-            cloudwatch_metric_fields=[
-                "Dataplane_CPU_Utilization",
-                "Session_Throughput_Kbps",
-                "BytesIn",
-                "BytesOut",
-            ],
-            cloud_watch_metric_namespace="PaloAltoCloudNGFW",
-            log_config={
-                "log_destination": "my-s3-bucket",
-                "log_destination_type": "S3",
-                "log_types": ["TRAFFIC"],
-                "account_id": "251583708250",
-                "role_type": "IamBased",
-            })
-        subnet2 = aws.index.Subnet("subnet2",
-            vpc_id=my_vpc.id,
-            cidr_block=172.16.20.0/24,
-            availability_zone=us-west-2b,
-            tags={
-                name: tf-example,
-            })
-        ```
-
         ## Import
 
         import name is <account_id>:<ngfw>
@@ -453,63 +396,6 @@ class NgfwLogProfile(pulumi.CustomResource):
         * `Firewall`
 
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_cloudngfwaws as cloudngfwaws
-
-        example_vpc = aws.index.Vpc("example",
-            cidr_block=172.16.0.0/16,
-            tags={
-                name: tf-example,
-            })
-        subnet1 = aws.index.Subnet("subnet1",
-            vpc_id=my_vpc.id,
-            cidr_block=172.16.10.0/24,
-            availability_zone=us-west-2a,
-            tags={
-                name: tf-example,
-            })
-        x = cloudngfwaws.Ngfw("x",
-            name="example-instance",
-            description="Example description",
-            endpoints=[{
-                "subnet_id": subnet1["id"],
-                "mode": "ServiceManaged",
-                "vpc_id": example_vpc["id"],
-                "account_id": "12345678",
-            }],
-            rulestack="example-rulestack",
-            tags={
-                "Foo": "bar",
-            })
-        example = cloudngfwaws.NgfwLogProfile("example",
-            firewall_id=x.firewall_id,
-            account_id=x.account_id,
-            advanced_threat_log=True,
-            cloudwatch_metric_fields=[
-                "Dataplane_CPU_Utilization",
-                "Session_Throughput_Kbps",
-                "BytesIn",
-                "BytesOut",
-            ],
-            cloud_watch_metric_namespace="PaloAltoCloudNGFW",
-            log_config={
-                "log_destination": "my-s3-bucket",
-                "log_destination_type": "S3",
-                "log_types": ["TRAFFIC"],
-                "account_id": "251583708250",
-                "role_type": "IamBased",
-            })
-        subnet2 = aws.index.Subnet("subnet2",
-            vpc_id=my_vpc.id,
-            cidr_block=172.16.20.0/24,
-            availability_zone=us-west-2b,
-            tags={
-                name: tf-example,
-            })
-        ```
 
         ## Import
 

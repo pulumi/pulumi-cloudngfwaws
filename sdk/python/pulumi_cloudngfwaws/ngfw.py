@@ -43,7 +43,7 @@ class NgfwArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Ngfw resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] az_lists: The list of availability zones for this NGFW.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] az_lists: The list of availability zone IDs for this NGFW.
         :param pulumi.Input[_builtins.str] account_id: The description.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowlist_accounts: The list of allowed accounts for this NGFW.
         :param pulumi.Input[_builtins.str] app_id_version: App-ID version number.
@@ -104,7 +104,7 @@ class NgfwArgs:
     @pulumi.getter(name="azLists")
     def az_lists(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The list of availability zones for this NGFW.
+        The list of availability zone IDs for this NGFW.
         """
         return pulumi.get(self, "az_lists")
 
@@ -364,7 +364,7 @@ class _NgfwState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowlist_accounts: The list of allowed accounts for this NGFW.
         :param pulumi.Input[_builtins.str] app_id_version: App-ID version number.
         :param pulumi.Input[_builtins.bool] automatic_upgrade_app_id_version: Automatic App-ID upgrade version number. Defaults to `true`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] az_lists: The list of availability zones for this NGFW.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] az_lists: The list of availability zone IDs for this NGFW.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] change_protections: Enables or disables change protection for the NGFW.
         :param pulumi.Input[_builtins.str] deployment_update_token: The update token.
         :param pulumi.Input[_builtins.str] description: The NGFW description.
@@ -487,7 +487,7 @@ class _NgfwState:
     @pulumi.getter(name="azLists")
     def az_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of availability zones for this NGFW.
+        The list of availability zone IDs for this NGFW.
         """
         return pulumi.get(self, "az_lists")
 
@@ -769,6 +769,14 @@ class Ngfw(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         rs = cloudngfwaws.CommitRulestack("rs", rulestack="my-rulestack")
+        example = cloudngfwaws.Ngfw("example",
+            name="example-instance",
+            description="Example description",
+            az_lists=["use1-az1"],
+            rulestack=rs.rulestack,
+            tags={
+                "Foo": "bar",
+            })
         example_vpc = aws.index.Vpc("example",
             cidr_block=172.16.0.0/16,
             tags={
@@ -780,19 +788,6 @@ class Ngfw(pulumi.CustomResource):
             availability_zone=us-west-2a,
             tags={
                 name: tf-example,
-            })
-        example = cloudngfwaws.Ngfw("example",
-            name="example-instance",
-            description="Example description",
-            endpoints=[{
-                "subnet_id": subnet1["id"],
-                "mode": "ServiceManaged",
-                "vpc_id": example_vpc["id"],
-                "account_id": "12345678",
-            }],
-            rulestack=rs.rulestack,
-            tags={
-                "Foo": "bar",
             })
         subnet2 = aws.index.Subnet("subnet2",
             vpc_id=my_vpc.id,
@@ -817,7 +812,7 @@ class Ngfw(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowlist_accounts: The list of allowed accounts for this NGFW.
         :param pulumi.Input[_builtins.str] app_id_version: App-ID version number.
         :param pulumi.Input[_builtins.bool] automatic_upgrade_app_id_version: Automatic App-ID upgrade version number. Defaults to `true`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] az_lists: The list of availability zones for this NGFW.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] az_lists: The list of availability zone IDs for this NGFW.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] change_protections: Enables or disables change protection for the NGFW.
         :param pulumi.Input[_builtins.str] description: The NGFW description.
         :param pulumi.Input[_builtins.str] endpoint_mode: Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
@@ -845,6 +840,14 @@ class Ngfw(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         rs = cloudngfwaws.CommitRulestack("rs", rulestack="my-rulestack")
+        example = cloudngfwaws.Ngfw("example",
+            name="example-instance",
+            description="Example description",
+            az_lists=["use1-az1"],
+            rulestack=rs.rulestack,
+            tags={
+                "Foo": "bar",
+            })
         example_vpc = aws.index.Vpc("example",
             cidr_block=172.16.0.0/16,
             tags={
@@ -856,19 +859,6 @@ class Ngfw(pulumi.CustomResource):
             availability_zone=us-west-2a,
             tags={
                 name: tf-example,
-            })
-        example = cloudngfwaws.Ngfw("example",
-            name="example-instance",
-            description="Example description",
-            endpoints=[{
-                "subnet_id": subnet1["id"],
-                "mode": "ServiceManaged",
-                "vpc_id": example_vpc["id"],
-                "account_id": "12345678",
-            }],
-            rulestack=rs.rulestack,
-            tags={
-                "Foo": "bar",
             })
         subnet2 = aws.index.Subnet("subnet2",
             vpc_id=my_vpc.id,
@@ -1006,7 +996,7 @@ class Ngfw(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowlist_accounts: The list of allowed accounts for this NGFW.
         :param pulumi.Input[_builtins.str] app_id_version: App-ID version number.
         :param pulumi.Input[_builtins.bool] automatic_upgrade_app_id_version: Automatic App-ID upgrade version number. Defaults to `true`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] az_lists: The list of availability zones for this NGFW.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] az_lists: The list of availability zone IDs for this NGFW.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] change_protections: Enables or disables change protection for the NGFW.
         :param pulumi.Input[_builtins.str] deployment_update_token: The update token.
         :param pulumi.Input[_builtins.str] description: The NGFW description.
@@ -1092,7 +1082,7 @@ class Ngfw(pulumi.CustomResource):
     @pulumi.getter(name="azLists")
     def az_lists(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The list of availability zones for this NGFW.
+        The list of availability zone IDs for this NGFW.
         """
         return pulumi.get(self, "az_lists")
 

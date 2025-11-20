@@ -53,7 +53,7 @@ export interface GetNgfwResult {
      */
     readonly automaticUpgradeAppIdVersion: boolean;
     /**
-     * The list of availability zones for this NGFW.
+     * The list of availability zone IDs for this NGFW.
      */
     readonly azLists: string[];
     /**
