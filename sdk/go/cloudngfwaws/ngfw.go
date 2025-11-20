@@ -33,7 +33,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleVpc, err := aws.NewVpc(ctx, "example", &aws.VpcArgs{
+//			_, err = cloudngfwaws.NewNgfw(ctx, "example", &cloudngfwaws.NgfwArgs{
+//				Name:        pulumi.String("example-instance"),
+//				Description: pulumi.String("Example description"),
+//				AzLists: pulumi.StringArray{
+//					pulumi.String("use1-az1"),
+//				},
+//				Rulestack: rs.Rulestack,
+//				Tags: pulumi.StringMap{
+//					"Foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aws.NewVpc(ctx, "example", &aws.VpcArgs{
 //				CidrBlock: "172.16.0.0/16",
 //				Tags: map[string]interface{}{
 //					"name": "tf-example",
@@ -42,31 +56,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			subnet1, err := aws.NewSubnet(ctx, "subnet1", &aws.SubnetArgs{
+//			_, err = aws.NewSubnet(ctx, "subnet1", &aws.SubnetArgs{
 //				VpcId:            myVpc.Id,
 //				CidrBlock:        "172.16.10.0/24",
 //				AvailabilityZone: "us-west-2a",
 //				Tags: map[string]interface{}{
 //					"name": "tf-example",
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudngfwaws.NewNgfw(ctx, "example", &cloudngfwaws.NgfwArgs{
-//				Name:        pulumi.String("example-instance"),
-//				Description: pulumi.String("Example description"),
-//				Endpoints: cloudngfwaws.NgfwEndpointArray{
-//					&cloudngfwaws.NgfwEndpointArgs{
-//						SubnetId:  subnet1.Id,
-//						Mode:      pulumi.String("ServiceManaged"),
-//						VpcId:     exampleVpc.Id,
-//						AccountId: pulumi.String("12345678"),
-//					},
-//				},
-//				Rulestack: rs.Rulestack,
-//				Tags: pulumi.StringMap{
-//					"Foo": pulumi.String("bar"),
 //				},
 //			})
 //			if err != nil {
@@ -107,7 +102,7 @@ type Ngfw struct {
 	AppIdVersion pulumi.StringOutput `pulumi:"appIdVersion"`
 	// Automatic App-ID upgrade version number. Defaults to `true`.
 	AutomaticUpgradeAppIdVersion pulumi.BoolPtrOutput `pulumi:"automaticUpgradeAppIdVersion"`
-	// The list of availability zones for this NGFW.
+	// The list of availability zone IDs for this NGFW.
 	AzLists pulumi.StringArrayOutput `pulumi:"azLists"`
 	// Enables or disables change protection for the NGFW.
 	ChangeProtections pulumi.StringArrayOutput `pulumi:"changeProtections"`
@@ -189,7 +184,7 @@ type ngfwState struct {
 	AppIdVersion *string `pulumi:"appIdVersion"`
 	// Automatic App-ID upgrade version number. Defaults to `true`.
 	AutomaticUpgradeAppIdVersion *bool `pulumi:"automaticUpgradeAppIdVersion"`
-	// The list of availability zones for this NGFW.
+	// The list of availability zone IDs for this NGFW.
 	AzLists []string `pulumi:"azLists"`
 	// Enables or disables change protection for the NGFW.
 	ChangeProtections []string `pulumi:"changeProtections"`
@@ -239,7 +234,7 @@ type NgfwState struct {
 	AppIdVersion pulumi.StringPtrInput
 	// Automatic App-ID upgrade version number. Defaults to `true`.
 	AutomaticUpgradeAppIdVersion pulumi.BoolPtrInput
-	// The list of availability zones for this NGFW.
+	// The list of availability zone IDs for this NGFW.
 	AzLists pulumi.StringArrayInput
 	// Enables or disables change protection for the NGFW.
 	ChangeProtections pulumi.StringArrayInput
@@ -293,7 +288,7 @@ type ngfwArgs struct {
 	AppIdVersion *string `pulumi:"appIdVersion"`
 	// Automatic App-ID upgrade version number. Defaults to `true`.
 	AutomaticUpgradeAppIdVersion *bool `pulumi:"automaticUpgradeAppIdVersion"`
-	// The list of availability zones for this NGFW.
+	// The list of availability zone IDs for this NGFW.
 	AzLists []string `pulumi:"azLists"`
 	// Enables or disables change protection for the NGFW.
 	ChangeProtections []string `pulumi:"changeProtections"`
@@ -333,7 +328,7 @@ type NgfwArgs struct {
 	AppIdVersion pulumi.StringPtrInput
 	// Automatic App-ID upgrade version number. Defaults to `true`.
 	AutomaticUpgradeAppIdVersion pulumi.BoolPtrInput
-	// The list of availability zones for this NGFW.
+	// The list of availability zone IDs for this NGFW.
 	AzLists pulumi.StringArrayInput
 	// Enables or disables change protection for the NGFW.
 	ChangeProtections pulumi.StringArrayInput
@@ -470,7 +465,7 @@ func (o NgfwOutput) AutomaticUpgradeAppIdVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Ngfw) pulumi.BoolPtrOutput { return v.AutomaticUpgradeAppIdVersion }).(pulumi.BoolPtrOutput)
 }
 
-// The list of availability zones for this NGFW.
+// The list of availability zone IDs for this NGFW.
 func (o NgfwOutput) AzLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Ngfw) pulumi.StringArrayOutput { return v.AzLists }).(pulumi.StringArrayOutput)
 }

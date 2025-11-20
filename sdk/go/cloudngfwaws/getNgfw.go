@@ -44,7 +44,7 @@ type LookupNgfwResult struct {
 	AppIdVersion string `pulumi:"appIdVersion"`
 	// Automatic App-ID upgrade version number.
 	AutomaticUpgradeAppIdVersion bool `pulumi:"automaticUpgradeAppIdVersion"`
-	// The list of availability zones for this NGFW.
+	// The list of availability zone IDs for this NGFW.
 	AzLists []string `pulumi:"azLists"`
 	// Enables or disables change protection for the NGFW.
 	ChangeProtections []string `pulumi:"changeProtections"`
@@ -141,7 +141,7 @@ func (o LookupNgfwResultOutput) AutomaticUpgradeAppIdVersion() pulumi.BoolOutput
 	return o.ApplyT(func(v LookupNgfwResult) bool { return v.AutomaticUpgradeAppIdVersion }).(pulumi.BoolOutput)
 }
 
-// The list of availability zones for this NGFW.
+// The list of availability zone IDs for this NGFW.
 func (o LookupNgfwResultOutput) AzLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNgfwResult) []string { return v.AzLists }).(pulumi.StringArrayOutput)
 }

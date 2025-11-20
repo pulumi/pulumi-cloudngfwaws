@@ -15,68 +15,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
- *
- * const exampleVpc = new aws.index.Vpc("example", {
- *     cidrBlock: "172.16.0.0/16",
- *     tags: {
- *         name: "tf-example",
- *     },
- * });
- * const subnet1 = new aws.index.Subnet("subnet1", {
- *     vpcId: myVpc.id,
- *     cidrBlock: "172.16.10.0/24",
- *     availabilityZone: "us-west-2a",
- *     tags: {
- *         name: "tf-example",
- *     },
- * });
- * const x = new cloudngfwaws.Ngfw("x", {
- *     name: "example-instance",
- *     description: "Example description",
- *     endpoints: [{
- *         subnetId: subnet1.id,
- *         mode: "ServiceManaged",
- *         vpcId: exampleVpc.id,
- *         accountId: "12345678",
- *     }],
- *     rulestack: "example-rulestack",
- *     tags: {
- *         Foo: "bar",
- *     },
- * });
- * const example = new cloudngfwaws.NgfwLogProfile("example", {
- *     firewallId: x.firewallId,
- *     accountId: x.accountId,
- *     advancedThreatLog: true,
- *     cloudwatchMetricFields: [
- *         "Dataplane_CPU_Utilization",
- *         "Session_Throughput_Kbps",
- *         "BytesIn",
- *         "BytesOut",
- *     ],
- *     cloudWatchMetricNamespace: "PaloAltoCloudNGFW",
- *     logConfig: {
- *         logDestination: "my-s3-bucket",
- *         logDestinationType: "S3",
- *         logTypes: ["TRAFFIC"],
- *         accountId: "251583708250",
- *         roleType: "IamBased",
- *     },
- * });
- * const subnet2 = new aws.index.Subnet("subnet2", {
- *     vpcId: myVpc.id,
- *     cidrBlock: "172.16.20.0/24",
- *     availabilityZone: "us-west-2b",
- *     tags: {
- *         name: "tf-example",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * import name is <account_id>:<ngfw>

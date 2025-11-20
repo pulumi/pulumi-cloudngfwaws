@@ -146,7 +146,7 @@ class GetNgfwResult:
     @pulumi.getter(name="azLists")
     def az_lists(self) -> Sequence[_builtins.str]:
         """
-        The list of availability zones for this NGFW.
+        The list of availability zone IDs for this NGFW.
         """
         return pulumi.get(self, "az_lists")
 

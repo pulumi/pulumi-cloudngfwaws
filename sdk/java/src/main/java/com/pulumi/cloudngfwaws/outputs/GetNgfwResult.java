@@ -40,7 +40,7 @@ public final class GetNgfwResult {
      */
     private Boolean automaticUpgradeAppIdVersion;
     /**
-     * @return The list of availability zones for this NGFW.
+     * @return The list of availability zone IDs for this NGFW.
      * 
      */
     private List<String> azLists;
@@ -165,7 +165,7 @@ public final class GetNgfwResult {
         return this.automaticUpgradeAppIdVersion;
     }
     /**
-     * @return The list of availability zones for this NGFW.
+     * @return The list of availability zone IDs for this NGFW.
      * 
      */
     public List<String> azLists() {
