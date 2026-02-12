@@ -761,6 +761,14 @@ class Ngfw(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Resource for NGFW manipulation.
+
+        > **NOTE:** Having the `rulestack` param reference the rulestack name from `CommitRulestack` ensures that Terraform will only try to spin up a NGFW instance if the commit is successful.
+
+        ## Admin Permission Type
+
+        * `Firewall`
+
         ## Example Usage
 
         ```python
@@ -832,6 +840,14 @@ class Ngfw(pulumi.CustomResource):
                  args: NgfwArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Resource for NGFW manipulation.
+
+        > **NOTE:** Having the `rulestack` param reference the rulestack name from `CommitRulestack` ensures that Terraform will only try to spin up a NGFW instance if the commit is successful.
+
+        ## Admin Permission Type
+
+        * `Firewall`
+
         ## Example Usage
 
         ```python

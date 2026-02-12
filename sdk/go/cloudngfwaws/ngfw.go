@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for NGFW manipulation.
+//
+// > **NOTE:** Having the `rulestack` param reference the rulestack name from `CommitRulestack` ensures that Terraform will only try to spin up a NGFW instance if the commit is successful.
+//
+// ## Admin Permission Type
+//
+// * `Firewall`
+//
 // ## Example Usage
 //
 // ```go

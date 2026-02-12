@@ -51,17 +51,12 @@ __all__ = [
     'GetAccountsAccountDetailArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class NgfwEgressNatArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Enable egress NAT
-        """
-        settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['NgfwEgressNatSettingArgsDict']]]]
-elif False:
-    NgfwEgressNatArgsDict: TypeAlias = Mapping[str, Any]
+class NgfwEgressNatArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Enable egress NAT
+    """
+    settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['NgfwEgressNatSettingArgsDict']]]]
 
 @pulumi.input_type
 class NgfwEgressNatArgs:
@@ -97,18 +92,15 @@ class NgfwEgressNatArgs:
         pulumi.set(self, "settings", value)
 
 
-if not MYPY:
-    class NgfwEgressNatSettingArgsDict(TypedDict):
-        ip_pool_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.
-        """
-        ipam_pool_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP pool ID
-        """
-elif False:
-    NgfwEgressNatSettingArgsDict: TypeAlias = Mapping[str, Any]
+class NgfwEgressNatSettingArgsDict(TypedDict):
+    ip_pool_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.
+    """
+    ipam_pool_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP pool ID
+    """
 
 @pulumi.input_type
 class NgfwEgressNatSettingArgs:
@@ -149,47 +141,44 @@ class NgfwEgressNatSettingArgs:
         pulumi.set(self, "ipam_pool_id", value)
 
 
-if not MYPY:
-    class NgfwEndpointArgsDict(TypedDict):
-        mode: pulumi.Input[_builtins.str]
-        """
-        The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
-        """
-        account_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The account id.
-        """
-        egress_nat_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable egress NAT
-        """
-        endpoint_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Endpoint ID of the security zone
-        """
-        prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointPrefixArgsDict']]]]
-        rejected_reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The rejected reason.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The attachment status.
-        """
-        subnet_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The subnet id.
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The vpc id.
-        """
-        zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The AZ id.
-        """
-elif False:
-    NgfwEndpointArgsDict: TypeAlias = Mapping[str, Any]
+class NgfwEndpointArgsDict(TypedDict):
+    mode: pulumi.Input[_builtins.str]
+    """
+    The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+    """
+    account_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The account id.
+    """
+    egress_nat_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable egress NAT
+    """
+    endpoint_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Endpoint ID of the security zone
+    """
+    prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointPrefixArgsDict']]]]
+    rejected_reason: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The rejected reason.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The attachment status.
+    """
+    subnet_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The subnet id.
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The vpc id.
+    """
+    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The AZ id.
+    """
 
 @pulumi.input_type
 class NgfwEndpointArgs:
@@ -353,11 +342,8 @@ class NgfwEndpointArgs:
         pulumi.set(self, "zone_id", value)
 
 
-if not MYPY:
-    class NgfwEndpointPrefixArgsDict(TypedDict):
-        private_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointPrefixPrivatePrefixArgsDict']]]]
-elif False:
-    NgfwEndpointPrefixArgsDict: TypeAlias = Mapping[str, Any]
+class NgfwEndpointPrefixArgsDict(TypedDict):
+    private_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointPrefixPrivatePrefixArgsDict']]]]
 
 @pulumi.input_type
 class NgfwEndpointPrefixArgs:
@@ -376,11 +362,8 @@ class NgfwEndpointPrefixArgs:
         pulumi.set(self, "private_prefixes", value)
 
 
-if not MYPY:
-    class NgfwEndpointPrefixPrivatePrefixArgsDict(TypedDict):
-        cidrs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-elif False:
-    NgfwEndpointPrefixPrivatePrefixArgsDict: TypeAlias = Mapping[str, Any]
+class NgfwEndpointPrefixPrivatePrefixArgsDict(TypedDict):
+    cidrs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
 
 @pulumi.input_type
 class NgfwEndpointPrefixPrivatePrefixArgs:
@@ -399,30 +382,27 @@ class NgfwEndpointPrefixPrivatePrefixArgs:
         pulumi.set(self, "cidrs", value)
 
 
-if not MYPY:
-    class NgfwLogProfileLogConfigArgsDict(TypedDict):
-        log_destination: pulumi.Input[_builtins.str]
-        """
-        The log destination details.
-        """
-        log_destination_type: pulumi.Input[_builtins.str]
-        """
-        The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
-        """
-        log_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        The list of different log types that are wanted
-        """
-        account_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of Role for log configuration
-        """
-        role_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of Role for log configuration
-        """
-elif False:
-    NgfwLogProfileLogConfigArgsDict: TypeAlias = Mapping[str, Any]
+class NgfwLogProfileLogConfigArgsDict(TypedDict):
+    log_destination: pulumi.Input[_builtins.str]
+    """
+    The log destination details.
+    """
+    log_destination_type: pulumi.Input[_builtins.str]
+    """
+    The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
+    """
+    log_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The list of different log types that are wanted
+    """
+    account_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of Role for log configuration
+    """
+    role_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of Role for log configuration
+    """
 
 @pulumi.input_type
 class NgfwLogProfileLogConfigArgs:
@@ -508,22 +488,19 @@ class NgfwLogProfileLogConfigArgs:
         pulumi.set(self, "role_type", value)
 
 
-if not MYPY:
-    class NgfwLogProfileLogDestinationArgsDict(TypedDict):
-        destination: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The log destination details.
-        """
-        destination_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
-        """
-        log_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of logs. Valid values are `TRAFFIC`, `THREAT`, or `DECRYPTION`.
-        """
-elif False:
-    NgfwLogProfileLogDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class NgfwLogProfileLogDestinationArgsDict(TypedDict):
+    destination: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The log destination details.
+    """
+    destination_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
+    """
+    log_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of logs. Valid values are `TRAFFIC`, `THREAT`, or `DECRYPTION`.
+    """
 
 @pulumi.input_type
 class NgfwLogProfileLogDestinationArgs:
@@ -580,18 +557,15 @@ class NgfwLogProfileLogDestinationArgs:
         pulumi.set(self, "log_type", value)
 
 
-if not MYPY:
-    class NgfwPrivateAccessArgsDict(TypedDict):
-        resource_id: pulumi.Input[_builtins.str]
-        """
-        AWS ResourceID
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        Type of Private Access
-        """
-elif False:
-    NgfwPrivateAccessArgsDict: TypeAlias = Mapping[str, Any]
+class NgfwPrivateAccessArgsDict(TypedDict):
+    resource_id: pulumi.Input[_builtins.str]
+    """
+    AWS ResourceID
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of Private Access
+    """
 
 @pulumi.input_type
 class NgfwPrivateAccessArgs:
@@ -630,26 +604,23 @@ class NgfwPrivateAccessArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class NgfwStatusArgsDict(TypedDict):
-        device_rulestack_commit_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The device rulestack commit status.
-        """
-        failure_reason: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The firewall failure reason.
-        """
-        firewall_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The firewall status.
-        """
-        rulestack_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The rulestack status.
-        """
-elif False:
-    NgfwStatusArgsDict: TypeAlias = Mapping[str, Any]
+class NgfwStatusArgsDict(TypedDict):
+    device_rulestack_commit_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The device rulestack commit status.
+    """
+    failure_reason: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The firewall failure reason.
+    """
+    firewall_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The firewall status.
+    """
+    rulestack_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The rulestack status.
+    """
 
 @pulumi.input_type
 class NgfwStatusArgs:
@@ -722,22 +693,19 @@ class NgfwStatusArgs:
         pulumi.set(self, "rulestack_status", value)
 
 
-if not MYPY:
-    class NgfwSubnetMappingArgsDict(TypedDict):
-        availability_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The availability zone, for when the endpoint mode is customer managed.
-        """
-        availability_zone_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The availability zone ID, for when the endpoint mode is customer managed.
-        """
-        subnet_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The subnet id, for when the endpoint mode is service managed.
-        """
-elif False:
-    NgfwSubnetMappingArgsDict: TypeAlias = Mapping[str, Any]
+class NgfwSubnetMappingArgsDict(TypedDict):
+    availability_zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The availability zone, for when the endpoint mode is customer managed.
+    """
+    availability_zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The availability zone ID, for when the endpoint mode is customer managed.
+    """
+    subnet_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The subnet id, for when the endpoint mode is service managed.
+    """
 
 @pulumi.input_type
 class NgfwSubnetMappingArgs:
@@ -794,38 +762,35 @@ class NgfwSubnetMappingArgs:
         pulumi.set(self, "subnet_id", value)
 
 
-if not MYPY:
-    class NgfwUserIdArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Enable UserID Config
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The Port
-        """
-        agent_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Agent Name for UserID
-        """
-        collector_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Collector Name
-        """
-        custom_include_exclude_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input['NgfwUserIdCustomIncludeExcludeNetworkArgsDict']]]]
-        """
-        List of Custom Include Exclude Networks
-        """
-        secret_key_arn: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        AWS Secret Key ARN
-        """
-        user_id_status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Status and State of UserID Configuration
-        """
-elif False:
-    NgfwUserIdArgsDict: TypeAlias = Mapping[str, Any]
+class NgfwUserIdArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Enable UserID Config
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The Port
+    """
+    agent_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Agent Name for UserID
+    """
+    collector_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Collector Name
+    """
+    custom_include_exclude_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input['NgfwUserIdCustomIncludeExcludeNetworkArgsDict']]]]
+    """
+    List of Custom Include Exclude Networks
+    """
+    secret_key_arn: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AWS Secret Key ARN
+    """
+    user_id_status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Status and State of UserID Configuration
+    """
 
 @pulumi.input_type
 class NgfwUserIdArgs:
@@ -944,26 +909,23 @@ class NgfwUserIdArgs:
         pulumi.set(self, "user_id_status", value)
 
 
-if not MYPY:
-    class NgfwUserIdCustomIncludeExcludeNetworkArgsDict(TypedDict):
-        discovery_include: pulumi.Input[_builtins.bool]
-        """
-        Include or exclude this subnet from user-id configuration
-        """
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Enable this specific custom include/exclude network
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of subnet filter
-        """
-        network_address: pulumi.Input[_builtins.str]
-        """
-        Network IP address of the subnet filter
-        """
-elif False:
-    NgfwUserIdCustomIncludeExcludeNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class NgfwUserIdCustomIncludeExcludeNetworkArgsDict(TypedDict):
+    discovery_include: pulumi.Input[_builtins.bool]
+    """
+    Include or exclude this subnet from user-id configuration
+    """
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Enable this specific custom include/exclude network
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of subnet filter
+    """
+    network_address: pulumi.Input[_builtins.str]
+    """
+    Network IP address of the subnet filter
+    """
 
 @pulumi.input_type
 class NgfwUserIdCustomIncludeExcludeNetworkArgs:
@@ -1032,38 +994,35 @@ class NgfwUserIdCustomIncludeExcludeNetworkArgs:
         pulumi.set(self, "network_address", value)
 
 
-if not MYPY:
-    class RulestackProfileConfigArgsDict(TypedDict):
-        anti_spyware: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Anti-spyware profile setting. Defaults to `BestPractice`.
-        """
-        anti_virus: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Anti-virus profile setting. Defaults to `BestPractice`.
-        """
-        file_blocking: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        File blocking profile setting. Defaults to `BestPractice`.
-        """
-        outbound_trust_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Outbound trust certificate.
-        """
-        outbound_untrust_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Outbound untrust certificate.
-        """
-        url_filtering: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL filtering profile setting. Defaults to `None`.
-        """
-        vulnerability: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Vulnerability profile setting. Defaults to `BestPractice`.
-        """
-elif False:
-    RulestackProfileConfigArgsDict: TypeAlias = Mapping[str, Any]
+class RulestackProfileConfigArgsDict(TypedDict):
+    anti_spyware: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Anti-spyware profile setting. Defaults to `BestPractice`.
+    """
+    anti_virus: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Anti-virus profile setting. Defaults to `BestPractice`.
+    """
+    file_blocking: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    File blocking profile setting. Defaults to `BestPractice`.
+    """
+    outbound_trust_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Outbound trust certificate.
+    """
+    outbound_untrust_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Outbound untrust certificate.
+    """
+    url_filtering: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL filtering profile setting. Defaults to `None`.
+    """
+    vulnerability: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Vulnerability profile setting. Defaults to `BestPractice`.
+    """
 
 @pulumi.input_type
 class RulestackProfileConfigArgs:
@@ -1184,18 +1143,15 @@ class RulestackProfileConfigArgs:
         pulumi.set(self, "vulnerability", value)
 
 
-if not MYPY:
-    class SecurityRuleCategoryArgsDict(TypedDict):
-        feeds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of feeds.
-        """
-        url_category_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of URL category names.
-        """
-elif False:
-    SecurityRuleCategoryArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityRuleCategoryArgsDict(TypedDict):
+    feeds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of feeds.
+    """
+    url_category_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of URL category names.
+    """
 
 @pulumi.input_type
 class SecurityRuleCategoryArgs:
@@ -1236,30 +1192,27 @@ class SecurityRuleCategoryArgs:
         pulumi.set(self, "url_category_names", value)
 
 
-if not MYPY:
-    class SecurityRuleDestinationArgsDict(TypedDict):
-        cidrs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of CIDRs.
-        """
-        countries: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of countries.
-        """
-        feeds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of feeds.
-        """
-        fqdn_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of FQDN lists.
-        """
-        prefix_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of prefix list.
-        """
-elif False:
-    SecurityRuleDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityRuleDestinationArgsDict(TypedDict):
+    cidrs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of CIDRs.
+    """
+    countries: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of countries.
+    """
+    feeds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of feeds.
+    """
+    fqdn_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of FQDN lists.
+    """
+    prefix_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of prefix list.
+    """
 
 @pulumi.input_type
 class SecurityRuleDestinationArgs:
@@ -1348,26 +1301,23 @@ class SecurityRuleDestinationArgs:
         pulumi.set(self, "prefix_lists", value)
 
 
-if not MYPY:
-    class SecurityRuleSourceArgsDict(TypedDict):
-        cidrs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of CIDRs.
-        """
-        countries: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of countries.
-        """
-        feeds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of feeds.
-        """
-        prefix_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of prefix list.
-        """
-elif False:
-    SecurityRuleSourceArgsDict: TypeAlias = Mapping[str, Any]
+class SecurityRuleSourceArgsDict(TypedDict):
+    cidrs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of CIDRs.
+    """
+    countries: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of countries.
+    """
+    feeds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of feeds.
+    """
+    prefix_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of prefix list.
+    """
 
 @pulumi.input_type
 class SecurityRuleSourceArgs:
@@ -1440,22 +1390,19 @@ class SecurityRuleSourceArgs:
         pulumi.set(self, "prefix_lists", value)
 
 
-if not MYPY:
-    class GetAccountsAccountDetailArgsDict(TypedDict):
-        account_id: _builtins.str
-        """
-        The account id.
-        """
-        external_id: _builtins.str
-        """
-        External Id of the onboarded account
-        """
-        onboarding_status: _builtins.str
-        """
-        Onboarding status of the account.
-        """
-elif False:
-    GetAccountsAccountDetailArgsDict: TypeAlias = Mapping[str, Any]
+class GetAccountsAccountDetailArgsDict(TypedDict):
+    account_id: _builtins.str
+    """
+    The account id.
+    """
+    external_id: _builtins.str
+    """
+    External Id of the onboarded account
+    """
+    onboarding_status: _builtins.str
+    """
+    Onboarding status of the account.
+    """
 
 @pulumi.input_type
 class GetAccountsAccountDetailArgs:

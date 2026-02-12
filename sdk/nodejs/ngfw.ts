@@ -7,6 +7,14 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Resource for NGFW manipulation.
+ *
+ * > **NOTE:** Having the `rulestack` param reference the rulestack name from `cloudngfwaws.CommitRulestack` ensures that Terraform will only try to spin up a NGFW instance if the commit is successful.
+ *
+ * ## Admin Permission Type
+ *
+ * * `Firewall`
+ *
  * ## Example Usage
  *
  * ```typescript
