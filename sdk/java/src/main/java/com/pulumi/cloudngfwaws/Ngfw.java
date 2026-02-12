@@ -24,6 +24,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Resource for NGFW manipulation.
+ * 
+ * &gt; **NOTE:** Having the `rulestack` param reference the rulestack name from `cloudngfwaws.CommitRulestack` ensures that Terraform will only try to spin up a NGFW instance if the commit is successful.
+ * 
+ * ## Admin Permission Type
+ * 
+ * * `Firewall`
+ * 
  * ## Example Usage
  * 
  * <pre>
