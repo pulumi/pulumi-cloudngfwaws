@@ -43,6 +43,7 @@ class NgfwArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Ngfw resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] az_lists: The list of availability zone IDs for this NGFW.
         :param pulumi.Input[_builtins.str] account_id: The description.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowlist_accounts: The list of allowed accounts for this NGFW.
@@ -360,6 +361,7 @@ class _NgfwState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ngfw resources.
+
         :param pulumi.Input[_builtins.str] account_id: The description.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowlist_accounts: The list of allowed accounts for this NGFW.
         :param pulumi.Input[_builtins.str] app_id_version: App-ID version number.
@@ -814,6 +816,7 @@ class Ngfw(pulumi.CustomResource):
         $ pulumi import cloudngfwaws:index/ngfw:Ngfw example 12345678:example-instance
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The description.
@@ -892,6 +895,7 @@ class Ngfw(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudngfwaws:index/ngfw:Ngfw example 12345678:example-instance
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NgfwArgs args: The arguments to use to populate this resource's properties.

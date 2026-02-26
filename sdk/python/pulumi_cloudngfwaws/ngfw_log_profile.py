@@ -32,6 +32,7 @@ class NgfwLogProfileArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NgfwLogProfile resource.
+
         :param pulumi.Input[_builtins.str] firewall_id: The Firewall Id for the NGFW.
         :param pulumi.Input[_builtins.str] account_id: The unique ID of the account.
         :param pulumi.Input[_builtins.bool] advanced_threat_log: Enable advanced threat logging.
@@ -184,6 +185,7 @@ class _NgfwLogProfileState:
                  update_token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NgfwLogProfile resources.
+
         :param pulumi.Input[_builtins.str] account_id: The unique ID of the account.
         :param pulumi.Input[_builtins.bool] advanced_threat_log: Enable advanced threat logging.
         :param pulumi.Input[_builtins.str] cloud_watch_metric_namespace: The CloudWatch metric namespace.
@@ -370,6 +372,7 @@ class NgfwLogProfile(pulumi.CustomResource):
         $ pulumi import cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile example 12345678:example-instance
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The unique ID of the account.
@@ -404,6 +407,7 @@ class NgfwLogProfile(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile example 12345678:example-instance
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NgfwLogProfileArgs args: The arguments to use to populate this resource's properties.

@@ -36,6 +36,7 @@ class AccountOnboardingStackArgs:
                  stack_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountOnboardingStack resource.
+
         :param pulumi.Input[_builtins.str] account_id: The account IDs
         :param pulumi.Input[_builtins.str] cft_role_name: Role name to run the account onboarding CFT in each account to be onboarded.
         :param pulumi.Input[_builtins.str] external_id: External Id of the onboarded account
@@ -284,6 +285,7 @@ class _AccountOnboardingStackState:
                  trusted_account: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountOnboardingStack resources.
+
         :param pulumi.Input[_builtins.str] account_id: The account IDs
         :param pulumi.Input[_builtins.str] auditlog_group: Audit Log Group Name
         :param pulumi.Input[_builtins.str] cft_role_name: Role name to run the account onboarding CFT in each account to be onboarded.
@@ -548,6 +550,7 @@ class AccountOnboardingStack(pulumi.CustomResource):
         * `Rulestack` (for `scope="Local"`)
         * `Global Rulestack` (for `scope="Global"`)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account IDs
@@ -582,6 +585,7 @@ class AccountOnboardingStack(pulumi.CustomResource):
 
         * `Rulestack` (for `scope="Local"`)
         * `Global Rulestack` (for `scope="Global"`)
+
 
         :param str resource_name: The name of the resource.
         :param AccountOnboardingStackArgs args: The arguments to use to populate this resource's properties.

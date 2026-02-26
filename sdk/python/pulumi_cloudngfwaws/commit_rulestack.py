@@ -24,6 +24,7 @@ class CommitRulestackArgs:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CommitRulestack resource.
+
         :param pulumi.Input[_builtins.str] rulestack: The rulestack.
         :param pulumi.Input[_builtins.str] scope: The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
         :param pulumi.Input[_builtins.str] state: The rulestack state. This can only be the default value. Defaults to `Running`.
@@ -83,6 +84,7 @@ class _CommitRulestackState:
                  validation_status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CommitRulestack resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commit_errors: Commit error messages.
         :param pulumi.Input[_builtins.str] commit_status: The commit status.
         :param pulumi.Input[_builtins.str] rulestack: The rulestack.
@@ -220,6 +222,7 @@ class CommitRulestack(pulumi.CustomResource):
         example = cloudngfwaws.CommitRulestack("example", rulestack="my-rulestack")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] rulestack: The rulestack.
@@ -250,6 +253,7 @@ class CommitRulestack(pulumi.CustomResource):
 
         example = cloudngfwaws.CommitRulestack("example", rulestack="my-rulestack")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CommitRulestackArgs args: The arguments to use to populate this resource's properties.

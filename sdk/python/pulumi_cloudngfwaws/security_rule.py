@@ -43,6 +43,7 @@ class SecurityRuleArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecurityRule resource.
+
         :param pulumi.Input[_builtins.str] action: The action to take. Valid values are `Allow`, `DenySilent`, `DenyResetServer`, or `DenyResetBoth`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] applications: The list of applications.
         :param pulumi.Input['SecurityRuleCategoryArgs'] category: The category spec.
@@ -365,6 +366,7 @@ class _SecurityRuleState:
                  update_token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityRule resources.
+
         :param pulumi.Input[_builtins.str] action: The action to take. Valid values are `Allow`, `DenySilent`, `DenyResetServer`, or `DenyResetBoth`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] applications: The list of applications.
         :param pulumi.Input[_builtins.str] audit_comment: The audit comment.
@@ -760,6 +762,7 @@ class SecurityRule(pulumi.CustomResource):
         $ pulumi import cloudngfwaws:index/securityRule:SecurityRule example Local:terraform-rulestack:LocalRule:3
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The action to take. Valid values are `Allow`, `DenySilent`, `DenyResetServer`, or `DenyResetBoth`.
@@ -838,6 +841,7 @@ class SecurityRule(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudngfwaws:index/securityRule:SecurityRule example Local:terraform-rulestack:LocalRule:3
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SecurityRuleArgs args: The arguments to use to populate this resource's properties.

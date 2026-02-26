@@ -32,6 +32,7 @@ class RulestackArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Rulestack resource.
+
         :param pulumi.Input[_builtins.str] account_group: Account group.
         :param pulumi.Input[_builtins.str] account_id: The account ID.
         :param pulumi.Input[_builtins.str] description: The description.
@@ -180,6 +181,7 @@ class _RulestackState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Rulestack resources.
+
         :param pulumi.Input[_builtins.str] account_group: Account group.
         :param pulumi.Input[_builtins.str] account_id: The account ID.
         :param pulumi.Input[_builtins.str] description: The description.
@@ -377,6 +379,7 @@ class Rulestack(pulumi.CustomResource):
         $ pulumi import cloudngfwaws:index/rulestack:Rulestack example Local:terraform-rulestack
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_group: Account group.
@@ -425,6 +428,7 @@ class Rulestack(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudngfwaws:index/rulestack:Rulestack example Local:terraform-rulestack
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RulestackArgs args: The arguments to use to populate this resource's properties.
