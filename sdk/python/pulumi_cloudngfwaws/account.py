@@ -29,6 +29,7 @@ class AccountArgs:
                  trusted_account: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
+
         :param pulumi.Input[_builtins.str] account_id: The account ID
         :param pulumi.Input[_builtins.str] cft_url: The CFT URL.
         :param pulumi.Input[_builtins.str] external_id: The external ID of the account
@@ -166,6 +167,7 @@ class _AccountState:
                  update_token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
+
         :param pulumi.Input[_builtins.str] account_id: The account ID
         :param pulumi.Input[_builtins.str] cft_url: The CFT URL.
         :param pulumi.Input[_builtins.str] external_id: The external ID of the account
@@ -327,6 +329,7 @@ class Account(pulumi.CustomResource):
         * `Rulestack` (for `scope="Local"`)
         * `Global Rulestack` (for `scope="Global"`)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The account ID
@@ -351,6 +354,7 @@ class Account(pulumi.CustomResource):
 
         * `Rulestack` (for `scope="Local"`)
         * `Global Rulestack` (for `scope="Global"`)
+
 
         :param str resource_name: The name of the resource.
         :param AccountArgs args: The arguments to use to populate this resource's properties.

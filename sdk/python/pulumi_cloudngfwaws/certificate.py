@@ -28,6 +28,7 @@ class CertificateArgs:
                  signer_arn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Certificate resource.
+
         :param pulumi.Input[_builtins.str] rulestack: The rulestack.
         :param pulumi.Input[_builtins.str] audit_comment: The audit comment.
         :param pulumi.Input[_builtins.str] description: The description.
@@ -148,6 +149,7 @@ class _CertificateState:
                  update_token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
+
         :param pulumi.Input[_builtins.str] audit_comment: The audit comment.
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[_builtins.str] name: The name.
@@ -323,6 +325,7 @@ class Certificate(pulumi.CustomResource):
         $ pulumi import cloudngfwaws:index/certificate:Certificate example Local:terraform-rulestack:tf-cert
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] audit_comment: The audit comment.
@@ -376,6 +379,7 @@ class Certificate(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudngfwaws:index/certificate:Certificate example Local:terraform-rulestack:tf-cert
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CertificateArgs args: The arguments to use to populate this resource's properties.

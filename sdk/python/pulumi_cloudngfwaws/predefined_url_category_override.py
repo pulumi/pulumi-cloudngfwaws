@@ -25,6 +25,7 @@ class PredefinedUrlCategoryOverrideArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PredefinedUrlCategoryOverride resource.
+
         :param pulumi.Input[_builtins.str] rulestack: The rulestack.
         :param pulumi.Input[_builtins.str] action: The action to take. Valid values are `none`, `allow`, `alert`, or `block`. Defaults to `none`.
         :param pulumi.Input[_builtins.str] audit_comment: The audit comment.
@@ -97,6 +98,7 @@ class _PredefinedUrlCategoryOverrideState:
                  update_token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PredefinedUrlCategoryOverride resources.
+
         :param pulumi.Input[_builtins.str] action: The action to take. Valid values are `none`, `allow`, `alert`, or `block`. Defaults to `none`.
         :param pulumi.Input[_builtins.str] audit_comment: The audit comment.
         :param pulumi.Input[_builtins.str] name: The name.
@@ -222,6 +224,7 @@ class PredefinedUrlCategoryOverride(pulumi.CustomResource):
         $ pulumi import cloudngfwaws:index/predefinedUrlCategoryOverride:PredefinedUrlCategoryOverride example terraform-rulestack:foobar
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The action to take. Valid values are `none`, `allow`, `alert`, or `block`. Defaults to `none`.
@@ -270,6 +273,7 @@ class PredefinedUrlCategoryOverride(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudngfwaws:index/predefinedUrlCategoryOverride:PredefinedUrlCategoryOverride example terraform-rulestack:foobar
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PredefinedUrlCategoryOverrideArgs args: The arguments to use to populate this resource's properties.

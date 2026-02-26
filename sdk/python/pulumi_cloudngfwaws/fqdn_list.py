@@ -27,6 +27,7 @@ class FqdnListArgs:
                  scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FqdnList resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fqdn_lists: The fqdn list.
         :param pulumi.Input[_builtins.str] rulestack: The rulestack.
         :param pulumi.Input[_builtins.str] audit_comment: The audit comment.
@@ -130,6 +131,7 @@ class _FqdnListState:
                  update_token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FqdnList resources.
+
         :param pulumi.Input[_builtins.str] audit_comment: The audit comment.
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fqdn_lists: The fqdn list.
@@ -292,6 +294,7 @@ class FqdnList(pulumi.CustomResource):
         $ pulumi import cloudngfwaws:index/fqdnList:FqdnList example Local:terraform-rulestack:tf-fqdn-list
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] audit_comment: The audit comment.
@@ -347,6 +350,7 @@ class FqdnList(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudngfwaws:index/fqdnList:FqdnList example Local:terraform-rulestack:tf-fqdn-list
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FqdnListArgs args: The arguments to use to populate this resource's properties.

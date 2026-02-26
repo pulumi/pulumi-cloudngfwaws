@@ -27,6 +27,7 @@ class PrefixListArgs:
                  scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PrefixList resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] prefix_lists: The prefix list.
         :param pulumi.Input[_builtins.str] rulestack: The rulestack.
         :param pulumi.Input[_builtins.str] audit_comment: The audit comment.
@@ -130,6 +131,7 @@ class _PrefixListState:
                  update_token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrefixList resources.
+
         :param pulumi.Input[_builtins.str] audit_comment: The audit comment.
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[_builtins.str] name: The name.
@@ -292,6 +294,7 @@ class PrefixList(pulumi.CustomResource):
         $ pulumi import cloudngfwaws:index/prefixList:PrefixList example Local:terraform-rulestack:tf-prefix-list
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] audit_comment: The audit comment.
@@ -347,6 +350,7 @@ class PrefixList(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudngfwaws:index/prefixList:PrefixList example Local:terraform-rulestack:tf-prefix-list
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PrefixListArgs args: The arguments to use to populate this resource's properties.

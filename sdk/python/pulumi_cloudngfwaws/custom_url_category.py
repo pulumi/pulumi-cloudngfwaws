@@ -28,6 +28,7 @@ class CustomUrlCategoryArgs:
                  scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomUrlCategory resource.
+
         :param pulumi.Input[_builtins.str] rulestack: The rulestack.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] url_lists: The URL list for this custom URL category.
         :param pulumi.Input[_builtins.str] action: The action to take. Valid values are `none`, `alert`, `allow`, `block`, `continue`, or `override`. Defaults to `none`.
@@ -147,6 +148,7 @@ class _CustomUrlCategoryState:
                  url_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CustomUrlCategory resources.
+
         :param pulumi.Input[_builtins.str] action: The action to take. Valid values are `none`, `alert`, `allow`, `block`, `continue`, or `override`. Defaults to `none`.
         :param pulumi.Input[_builtins.str] audit_comment: The audit comment.
         :param pulumi.Input[_builtins.str] description: The description.
@@ -326,6 +328,7 @@ class CustomUrlCategory(pulumi.CustomResource):
         $ pulumi import cloudngfwaws:index/customUrlCategory:CustomUrlCategory example Local:terraform-rulestack:tf-custom-category
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The action to take. Valid values are `none`, `alert`, `allow`, `block`, `continue`, or `override`. Defaults to `none`.
@@ -383,6 +386,7 @@ class CustomUrlCategory(pulumi.CustomResource):
         ```sh
         $ pulumi import cloudngfwaws:index/customUrlCategory:CustomUrlCategory example Local:terraform-rulestack:tf-custom-category
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomUrlCategoryArgs args: The arguments to use to populate this resource's properties.
