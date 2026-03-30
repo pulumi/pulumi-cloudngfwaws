@@ -108,11 +108,11 @@
             },
             "mpRegion": {
                 "type": "string",
-                "description": "AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`mpRegion`\" pulumi-lang-dotnet=\"`MpRegion`\" pulumi-lang-go=\"`mpRegion`\" pulumi-lang-python=\"`mp_region`\" pulumi-lang-yaml=\"`mpRegion`\" pulumi-lang-java=\"`mpRegion`\"\u003e`mp_region`\u003c/span\u003e."
+                "description": "AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`mpRegion`\" pulumi-lang-dotnet=\"`MpRegion`\" pulumi-lang-go=\"`mpRegion`\" pulumi-lang-python=\"`mp_region`\" pulumi-lang-yaml=\"`mpRegion`\" pulumi-lang-java=\"`mpRegion`\"\u003e`mpRegion`\u003c/span\u003e."
             },
             "mpRegionHost": {
                 "type": "string",
-                "description": "AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`mpRegionHost`\" pulumi-lang-dotnet=\"`MpRegionHost`\" pulumi-lang-go=\"`mpRegionHost`\" pulumi-lang-python=\"`mp_region_host`\" pulumi-lang-yaml=\"`mpRegionHost`\" pulumi-lang-java=\"`mpRegionHost`\"\u003e`mp_region_host`\u003c/span\u003e."
+                "description": "AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`mpRegionHost`\" pulumi-lang-dotnet=\"`MpRegionHost`\" pulumi-lang-go=\"`mpRegionHost`\" pulumi-lang-python=\"`mp_region_host`\" pulumi-lang-yaml=\"`mpRegionHost`\" pulumi-lang-java=\"`mpRegionHost`\"\u003e`mpRegionHost`\u003c/span\u003e."
             },
             "profile": {
                 "type": "string",
@@ -136,7 +136,7 @@
             },
             "syncMode": {
                 "type": "boolean",
-                "description": "Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`syncMode`\" pulumi-lang-dotnet=\"`SyncMode`\" pulumi-lang-go=\"`syncMode`\" pulumi-lang-python=\"`sync_mode`\" pulumi-lang-yaml=\"`syncMode`\" pulumi-lang-java=\"`syncMode`\"\u003e`sync_mode`\u003c/span\u003e."
+                "description": "Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`syncMode`\" pulumi-lang-dotnet=\"`SyncMode`\" pulumi-lang-go=\"`syncMode`\" pulumi-lang-python=\"`sync_mode`\" pulumi-lang-yaml=\"`syncMode`\" pulumi-lang-java=\"`syncMode`\"\u003e`syncMode`\u003c/span\u003e."
             },
             "timeout": {
                 "type": "integer",
@@ -144,7 +144,7 @@
             },
             "v2Host": {
                 "type": "string",
-                "description": "The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`v2Host`\" pulumi-lang-dotnet=\"`V2Host`\" pulumi-lang-go=\"`v2Host`\" pulumi-lang-python=\"`v2_host`\" pulumi-lang-yaml=\"`v2Host`\" pulumi-lang-java=\"`v2Host`\"\u003e`v2_host`\u003c/span\u003e."
+                "description": "The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`v2Host`\" pulumi-lang-dotnet=\"`V2Host`\" pulumi-lang-go=\"`v2Host`\" pulumi-lang-python=\"`v2_host`\" pulumi-lang-yaml=\"`v2Host`\" pulumi-lang-java=\"`v2Host`\"\u003e`v2Host`\u003c/span\u003e."
             }
         }
     },
@@ -1253,11 +1253,11 @@
             },
             "mpRegion": {
                 "type": "string",
-                "description": "AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`mpRegion`\" pulumi-lang-dotnet=\"`MpRegion`\" pulumi-lang-go=\"`mpRegion`\" pulumi-lang-python=\"`mp_region`\" pulumi-lang-yaml=\"`mpRegion`\" pulumi-lang-java=\"`mpRegion`\"\u003e`mp_region`\u003c/span\u003e."
+                "description": "AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`mpRegion`\" pulumi-lang-dotnet=\"`MpRegion`\" pulumi-lang-go=\"`mpRegion`\" pulumi-lang-python=\"`mp_region`\" pulumi-lang-yaml=\"`mpRegion`\" pulumi-lang-java=\"`mpRegion`\"\u003e`mpRegion`\u003c/span\u003e."
             },
             "mpRegionHost": {
                 "type": "string",
-                "description": "AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`mpRegionHost`\" pulumi-lang-dotnet=\"`MpRegionHost`\" pulumi-lang-go=\"`mpRegionHost`\" pulumi-lang-python=\"`mp_region_host`\" pulumi-lang-yaml=\"`mpRegionHost`\" pulumi-lang-java=\"`mpRegionHost`\"\u003e`mp_region_host`\u003c/span\u003e."
+                "description": "AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`mpRegionHost`\" pulumi-lang-dotnet=\"`MpRegionHost`\" pulumi-lang-go=\"`mpRegionHost`\" pulumi-lang-python=\"`mp_region_host`\" pulumi-lang-yaml=\"`mpRegionHost`\" pulumi-lang-java=\"`mpRegionHost`\"\u003e`mpRegionHost`\u003c/span\u003e."
             },
             "profile": {
                 "type": "string",
@@ -1281,7 +1281,7 @@
             },
             "syncMode": {
                 "type": "boolean",
-                "description": "Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`syncMode`\" pulumi-lang-dotnet=\"`SyncMode`\" pulumi-lang-go=\"`syncMode`\" pulumi-lang-python=\"`sync_mode`\" pulumi-lang-yaml=\"`syncMode`\" pulumi-lang-java=\"`syncMode`\"\u003e`sync_mode`\u003c/span\u003e."
+                "description": "Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`syncMode`\" pulumi-lang-dotnet=\"`SyncMode`\" pulumi-lang-go=\"`syncMode`\" pulumi-lang-python=\"`sync_mode`\" pulumi-lang-yaml=\"`syncMode`\" pulumi-lang-java=\"`syncMode`\"\u003e`syncMode`\u003c/span\u003e."
             },
             "timeout": {
                 "type": "integer",
@@ -1289,7 +1289,7 @@
             },
             "v2Host": {
                 "type": "string",
-                "description": "The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`v2Host`\" pulumi-lang-dotnet=\"`V2Host`\" pulumi-lang-go=\"`v2Host`\" pulumi-lang-python=\"`v2_host`\" pulumi-lang-yaml=\"`v2Host`\" pulumi-lang-java=\"`v2Host`\"\u003e`v2_host`\u003c/span\u003e."
+                "description": "The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`v2Host`\" pulumi-lang-dotnet=\"`V2Host`\" pulumi-lang-go=\"`v2Host`\" pulumi-lang-python=\"`v2_host`\" pulumi-lang-yaml=\"`v2Host`\" pulumi-lang-java=\"`v2Host`\"\u003e`v2Host`\u003c/span\u003e."
             }
         },
         "inputProperties": {
@@ -1341,11 +1341,11 @@
             },
             "mpRegion": {
                 "type": "string",
-                "description": "AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`mpRegion`\" pulumi-lang-dotnet=\"`MpRegion`\" pulumi-lang-go=\"`mpRegion`\" pulumi-lang-python=\"`mp_region`\" pulumi-lang-yaml=\"`mpRegion`\" pulumi-lang-java=\"`mpRegion`\"\u003e`mp_region`\u003c/span\u003e."
+                "description": "AWS management plane region. Environment variable: `CLOUDNGFWAWS_MP_REGION`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`mpRegion`\" pulumi-lang-dotnet=\"`MpRegion`\" pulumi-lang-go=\"`mpRegion`\" pulumi-lang-python=\"`mp_region`\" pulumi-lang-yaml=\"`mpRegion`\" pulumi-lang-java=\"`mpRegion`\"\u003e`mpRegion`\u003c/span\u003e."
             },
             "mpRegionHost": {
                 "type": "string",
-                "description": "AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`mpRegionHost`\" pulumi-lang-dotnet=\"`MpRegionHost`\" pulumi-lang-go=\"`mpRegionHost`\" pulumi-lang-python=\"`mp_region_host`\" pulumi-lang-yaml=\"`mpRegionHost`\" pulumi-lang-java=\"`mpRegionHost`\"\u003e`mp_region_host`\u003c/span\u003e."
+                "description": "AWS management plane MP region host Environment variable: `CLOUDNGFWAWS_MP_REGION_HOST`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`mpRegionHost`\" pulumi-lang-dotnet=\"`MpRegionHost`\" pulumi-lang-go=\"`mpRegionHost`\" pulumi-lang-python=\"`mp_region_host`\" pulumi-lang-yaml=\"`mpRegionHost`\" pulumi-lang-java=\"`mpRegionHost`\"\u003e`mpRegionHost`\u003c/span\u003e."
             },
             "profile": {
                 "type": "string",
@@ -1369,7 +1369,7 @@
             },
             "syncMode": {
                 "type": "boolean",
-                "description": "Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`syncMode`\" pulumi-lang-dotnet=\"`SyncMode`\" pulumi-lang-go=\"`syncMode`\" pulumi-lang-python=\"`sync_mode`\" pulumi-lang-yaml=\"`syncMode`\" pulumi-lang-java=\"`syncMode`\"\u003e`sync_mode`\u003c/span\u003e."
+                "description": "Enable synchronous mode while creating resources Environment variable: `CLOUDNGFWAWS_SYNC_MODE`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`syncMode`\" pulumi-lang-dotnet=\"`SyncMode`\" pulumi-lang-go=\"`syncMode`\" pulumi-lang-python=\"`sync_mode`\" pulumi-lang-yaml=\"`syncMode`\" pulumi-lang-java=\"`syncMode`\"\u003e`syncMode`\u003c/span\u003e."
             },
             "timeout": {
                 "type": "integer",
@@ -1377,7 +1377,7 @@
             },
             "v2Host": {
                 "type": "string",
-                "description": "The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`v2Host`\" pulumi-lang-dotnet=\"`V2Host`\" pulumi-lang-go=\"`v2Host`\" pulumi-lang-python=\"`v2_host`\" pulumi-lang-yaml=\"`v2Host`\" pulumi-lang-java=\"`v2Host`\"\u003e`v2_host`\u003c/span\u003e."
+                "description": "The hostname of the V2 API (default: `api.us-east-1.aws.cloudngfw.paloaltonetworks.com`). Environment variable: `CLOUDNGFWAWS_V2_HOST`. JSON conf file variable: \u003cspan pulumi-lang-nodejs=\"`v2Host`\" pulumi-lang-dotnet=\"`V2Host`\" pulumi-lang-go=\"`v2Host`\" pulumi-lang-python=\"`v2_host`\" pulumi-lang-yaml=\"`v2Host`\" pulumi-lang-java=\"`v2Host`\"\u003e`v2Host`\u003c/span\u003e."
             }
         },
         "methods": {
@@ -2510,7 +2510,7 @@
                 },
                 "multiVpc": {
                     "type": "boolean",
-                    "description": "Share NGFW with Multiple VPCs. This feature can be enabled only if the\u003cspan pulumi-lang-nodejs=\" endpointMode \" pulumi-lang-dotnet=\" EndpointMode \" pulumi-lang-go=\" endpointMode \" pulumi-lang-python=\" endpoint_mode \" pulumi-lang-yaml=\" endpointMode \" pulumi-lang-java=\" endpointMode \"\u003e endpoint_mode \u003c/span\u003eis CustomerManaged.\n"
+                    "description": "Share NGFW with Multiple VPCs. This feature can be enabled only if the\u003cspan pulumi-lang-nodejs=\" endpointMode \" pulumi-lang-dotnet=\" EndpointMode \" pulumi-lang-go=\" endpointMode \" pulumi-lang-python=\" endpoint_mode \" pulumi-lang-yaml=\" endpointMode \" pulumi-lang-java=\" endpointMode \"\u003e endpointMode \u003c/span\u003eis CustomerManaged.\n"
                 },
                 "name": {
                     "type": "string",
@@ -2644,7 +2644,7 @@
                 },
                 "multiVpc": {
                     "type": "boolean",
-                    "description": "Share NGFW with Multiple VPCs. This feature can be enabled only if the\u003cspan pulumi-lang-nodejs=\" endpointMode \" pulumi-lang-dotnet=\" EndpointMode \" pulumi-lang-go=\" endpointMode \" pulumi-lang-python=\" endpoint_mode \" pulumi-lang-yaml=\" endpointMode \" pulumi-lang-java=\" endpointMode \"\u003e endpoint_mode \u003c/span\u003eis CustomerManaged.\n"
+                    "description": "Share NGFW with Multiple VPCs. This feature can be enabled only if the\u003cspan pulumi-lang-nodejs=\" endpointMode \" pulumi-lang-dotnet=\" EndpointMode \" pulumi-lang-go=\" endpointMode \" pulumi-lang-python=\" endpoint_mode \" pulumi-lang-yaml=\" endpointMode \" pulumi-lang-java=\" endpointMode \"\u003e endpointMode \u003c/span\u003eis CustomerManaged.\n"
                 },
                 "name": {
                     "type": "string",
@@ -2771,7 +2771,7 @@
                     },
                     "multiVpc": {
                         "type": "boolean",
-                        "description": "Share NGFW with Multiple VPCs. This feature can be enabled only if the\u003cspan pulumi-lang-nodejs=\" endpointMode \" pulumi-lang-dotnet=\" EndpointMode \" pulumi-lang-go=\" endpointMode \" pulumi-lang-python=\" endpoint_mode \" pulumi-lang-yaml=\" endpointMode \" pulumi-lang-java=\" endpointMode \"\u003e endpoint_mode \u003c/span\u003eis CustomerManaged.\n"
+                        "description": "Share NGFW with Multiple VPCs. This feature can be enabled only if the\u003cspan pulumi-lang-nodejs=\" endpointMode \" pulumi-lang-dotnet=\" EndpointMode \" pulumi-lang-go=\" endpointMode \" pulumi-lang-python=\" endpoint_mode \" pulumi-lang-yaml=\" endpointMode \" pulumi-lang-java=\" endpointMode \"\u003e endpointMode \u003c/span\u003eis CustomerManaged.\n"
                     },
                     "name": {
                         "type": "string",
@@ -4440,7 +4440,7 @@
                         "type": "string"
                     },
                     "multiVpc": {
-                        "description": "Share NGFW with Multiple VPCs. This feature can be enabled only if the\u003cspan pulumi-lang-nodejs=\" endpointMode \" pulumi-lang-dotnet=\" EndpointMode \" pulumi-lang-go=\" endpointMode \" pulumi-lang-python=\" endpoint_mode \" pulumi-lang-yaml=\" endpointMode \" pulumi-lang-java=\" endpointMode \"\u003e endpoint_mode \u003c/span\u003eis CustomerManaged.\n",
+                        "description": "Share NGFW with Multiple VPCs. This feature can be enabled only if the\u003cspan pulumi-lang-nodejs=\" endpointMode \" pulumi-lang-dotnet=\" EndpointMode \" pulumi-lang-go=\" endpointMode \" pulumi-lang-python=\" endpoint_mode \" pulumi-lang-yaml=\" endpointMode \" pulumi-lang-java=\" endpointMode \"\u003e endpointMode \u003c/span\u003eis CustomerManaged.\n",
                         "type": "boolean"
                     },
                     "name": {
