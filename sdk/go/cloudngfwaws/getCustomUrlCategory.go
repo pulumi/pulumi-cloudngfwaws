@@ -44,7 +44,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = cloudngfwaws.LookupCustomUrlCategoryOutput(ctx, cloudngfwaws.GetCustomUrlCategoryOutputArgs{
+//			_ = cloudngfwaws.GetCustomUrlCategoryOutput(ctx, cloudngfwaws.GetCustomUrlCategoryOutputArgs{
 //				Rulestack: r.Name,
 //				Name:      pulumi.String("foobar"),
 //			}, nil)

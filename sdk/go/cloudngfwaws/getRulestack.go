@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudngfwaws.LookupRulestack(ctx, &cloudngfwaws.LookupRulestackArgs{
+//			_, err := cloudngfwaws.GetRulestack(ctx, &cloudngfwaws.LookupRulestackArgs{
 //				Name: "my-rulestack-name",
 //			}, nil)
 //			if err != nil {

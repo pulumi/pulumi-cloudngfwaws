@@ -31,7 +31,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.GetRulestack.Invoke(new()
+        ///     var example = CloudNgfwAws.Index.GetRulestack.Invoke(new()
         ///     {
         ///         Name = "my-rulestack-name",
         ///     });
@@ -62,7 +62,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.GetRulestack.Invoke(new()
+        ///     var example = CloudNgfwAws.Index.GetRulestack.Invoke(new()
         ///     {
         ///         Name = "my-rulestack-name",
         ///     });
@@ -93,7 +93,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.GetRulestack.Invoke(new()
+        ///     var example = CloudNgfwAws.Index.GetRulestack.Invoke(new()
         ///     {
         ///         Name = "my-rulestack-name",
         ///     });

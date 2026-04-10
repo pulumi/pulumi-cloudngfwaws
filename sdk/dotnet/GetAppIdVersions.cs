@@ -30,7 +30,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.GetAppIdVersions.Invoke();
+        ///     var example = CloudNgfwAws.Index.GetAppIdVersions.Invoke();
         /// 
         /// });
         /// ```
@@ -57,7 +57,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.GetAppIdVersions.Invoke();
+        ///     var example = CloudNgfwAws.Index.GetAppIdVersions.Invoke();
         /// 
         /// });
         /// ```
@@ -84,7 +84,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.GetAppIdVersions.Invoke();
+        ///     var example = CloudNgfwAws.Index.GetAppIdVersions.Invoke();
         /// 
         /// });
         /// ```

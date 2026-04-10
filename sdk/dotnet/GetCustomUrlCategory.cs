@@ -31,7 +31,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var r = new CloudNgfwAws.Rulestack("r", new()
+        ///     var r = new CloudNgfwAws.Index.Rulestack("r", new()
         ///     {
         ///         Name = "my-rulestack",
         ///         Scope = "Local",
@@ -43,7 +43,7 @@ namespace Pulumi.CloudNgfwAws
         ///         },
         ///     });
         /// 
-        ///     var example = CloudNgfwAws.GetCustomUrlCategory.Invoke(new()
+        ///     var example = CloudNgfwAws.Index.GetCustomUrlCategory.Invoke(new()
         ///     {
         ///         Rulestack = r.Name,
         ///         Name = "foobar",
@@ -75,7 +75,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var r = new CloudNgfwAws.Rulestack("r", new()
+        ///     var r = new CloudNgfwAws.Index.Rulestack("r", new()
         ///     {
         ///         Name = "my-rulestack",
         ///         Scope = "Local",
@@ -87,7 +87,7 @@ namespace Pulumi.CloudNgfwAws
         ///         },
         ///     });
         /// 
-        ///     var example = CloudNgfwAws.GetCustomUrlCategory.Invoke(new()
+        ///     var example = CloudNgfwAws.Index.GetCustomUrlCategory.Invoke(new()
         ///     {
         ///         Rulestack = r.Name,
         ///         Name = "foobar",
@@ -119,7 +119,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var r = new CloudNgfwAws.Rulestack("r", new()
+        ///     var r = new CloudNgfwAws.Index.Rulestack("r", new()
         ///     {
         ///         Name = "my-rulestack",
         ///         Scope = "Local",
@@ -131,7 +131,7 @@ namespace Pulumi.CloudNgfwAws
         ///         },
         ///     });
         /// 
-        ///     var example = CloudNgfwAws.GetCustomUrlCategory.Invoke(new()
+        ///     var example = CloudNgfwAws.Index.GetCustomUrlCategory.Invoke(new()
         ///     {
         ///         Rulestack = r.Name,
         ///         Name = "foobar",

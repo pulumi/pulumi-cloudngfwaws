@@ -787,19 +787,19 @@ class Ngfw(pulumi.CustomResource):
             tags={
                 "Foo": "bar",
             })
-        example_vpc = aws.index.Vpc("example",
+        example_vpc = aws.Vpc("example",
             cidr_block=172.16.0.0/16,
             tags={
                 name: tf-example,
             })
-        subnet1 = aws.index.Subnet("subnet1",
+        subnet1 = aws.Subnet("subnet1",
             vpc_id=my_vpc.id,
             cidr_block=172.16.10.0/24,
             availability_zone=us-west-2a,
             tags={
                 name: tf-example,
             })
-        subnet2 = aws.index.Subnet("subnet2",
+        subnet2 = aws.Subnet("subnet2",
             vpc_id=my_vpc.id,
             cidr_block=172.16.20.0/24,
             availability_zone=us-west-2b,
@@ -867,19 +867,19 @@ class Ngfw(pulumi.CustomResource):
             tags={
                 "Foo": "bar",
             })
-        example_vpc = aws.index.Vpc("example",
+        example_vpc = aws.Vpc("example",
             cidr_block=172.16.0.0/16,
             tags={
                 name: tf-example,
             })
-        subnet1 = aws.index.Subnet("subnet1",
+        subnet1 = aws.Subnet("subnet1",
             vpc_id=my_vpc.id,
             cidr_block=172.16.10.0/24,
             availability_zone=us-west-2a,
             tags={
                 name: tf-example,
             })
-        subnet2 = aws.index.Subnet("subnet2",
+        subnet2 = aws.Subnet("subnet2",
             vpc_id=my_vpc.id,
             cidr_block=172.16.20.0/24,
             availability_zone=us-west-2b,

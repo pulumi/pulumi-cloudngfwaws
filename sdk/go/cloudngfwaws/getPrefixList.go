@@ -44,7 +44,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = cloudngfwaws.LookupPrefixListOutput(ctx, cloudngfwaws.GetPrefixListOutputArgs{
+//			_ = cloudngfwaws.GetPrefixListOutput(ctx, cloudngfwaws.GetPrefixListOutputArgs{
 //				Rulestack: r.Name,
 //				Name:      pulumi.String("foobar"),
 //			}, nil)

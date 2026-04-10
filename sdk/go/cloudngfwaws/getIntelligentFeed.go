@@ -44,7 +44,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = cloudngfwaws.LookupIntelligentFeedOutput(ctx, cloudngfwaws.GetIntelligentFeedOutputArgs{
+//			_ = cloudngfwaws.GetIntelligentFeedOutput(ctx, cloudngfwaws.GetIntelligentFeedOutputArgs{
 //				Rulestack: r.Name,
 //				Name:      pulumi.String("foobar"),
 //			}, nil)
