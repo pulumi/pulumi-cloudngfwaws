@@ -27,7 +27,7 @@ namespace Pulumi.CloudNgfwAws
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var r = new CloudNgfwAws.Rulestack("r", new()
+    ///     var r = new CloudNgfwAws.Index.Rulestack("r", new()
     ///     {
     ///         Name = "terraform-rulestack",
     ///         Scope = "Local",
@@ -39,7 +39,7 @@ namespace Pulumi.CloudNgfwAws
     ///         },
     ///     });
     /// 
-    ///     var example = new CloudNgfwAws.CustomUrlCategory("example", new()
+    ///     var example = new CloudNgfwAws.Index.CustomUrlCategory("example", new()
     ///     {
     ///         Rulestack = r.Name,
     ///         Name = "tf-custom-category",

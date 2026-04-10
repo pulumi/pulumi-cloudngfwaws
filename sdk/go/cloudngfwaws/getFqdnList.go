@@ -44,7 +44,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = cloudngfwaws.LookupFqdnListOutput(ctx, cloudngfwaws.GetFqdnListOutputArgs{
+//			_ = cloudngfwaws.GetFqdnListOutput(ctx, cloudngfwaws.GetFqdnListOutputArgs{
 //				Rulestack: r.Name,
 //				Name:      pulumi.String("foobar"),
 //			}, nil)

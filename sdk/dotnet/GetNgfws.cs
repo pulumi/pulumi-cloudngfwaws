@@ -30,7 +30,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.GetNgfws.Invoke();
+        ///     var example = CloudNgfwAws.Index.GetNgfws.Invoke();
         /// 
         /// });
         /// ```
@@ -57,7 +57,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.GetNgfws.Invoke();
+        ///     var example = CloudNgfwAws.Index.GetNgfws.Invoke();
         /// 
         /// });
         /// ```
@@ -84,7 +84,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.GetNgfws.Invoke();
+        ///     var example = CloudNgfwAws.Index.GetNgfws.Invoke();
         /// 
         /// });
         /// ```

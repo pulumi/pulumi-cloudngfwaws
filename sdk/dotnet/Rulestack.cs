@@ -27,7 +27,7 @@ namespace Pulumi.CloudNgfwAws
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new CloudNgfwAws.Rulestack("example", new()
+    ///     var example = new CloudNgfwAws.Index.Rulestack("example", new()
     ///     {
     ///         Name = "terraform-rulestack",
     ///         Scope = "Local",

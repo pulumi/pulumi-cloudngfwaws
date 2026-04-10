@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudngfwaws.LookupNgfwLogProfile(ctx, &cloudngfwaws.LookupNgfwLogProfileArgs{
+//			_, err := cloudngfwaws.GetNgfwLogProfile(ctx, &cloudngfwaws.LookupNgfwLogProfileArgs{
 //				Ngfw:      pulumi.StringRef("example-instance"),
 //				AccountId: pulumi.StringRef("123456789"),
 //			}, nil)

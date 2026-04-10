@@ -29,12 +29,12 @@ namespace Pulumi.CloudNgfwAws
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var rs = new CloudNgfwAws.CommitRulestack("rs", new()
+    ///     var rs = new CloudNgfwAws.Index.CommitRulestack("rs", new()
     ///     {
     ///         Rulestack = "my-rulestack",
     ///     });
     /// 
-    ///     var example = new CloudNgfwAws.Ngfw("example", new()
+    ///     var example = new CloudNgfwAws.Index.Ngfw("example", new()
     ///     {
     ///         Name = "example-instance",
     ///         Description = "Example description",

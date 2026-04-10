@@ -31,7 +31,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.GetPredefinedUrlCategories.Invoke();
+        ///     var example = CloudNgfwAws.Index.GetPredefinedUrlCategories.Invoke();
         /// 
         /// });
         /// ```
@@ -59,7 +59,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.GetPredefinedUrlCategories.Invoke();
+        ///     var example = CloudNgfwAws.Index.GetPredefinedUrlCategories.Invoke();
         /// 
         /// });
         /// ```
@@ -87,7 +87,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.GetPredefinedUrlCategories.Invoke();
+        ///     var example = CloudNgfwAws.Index.GetPredefinedUrlCategories.Invoke();
         /// 
         /// });
         /// ```

@@ -44,7 +44,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = cloudngfwaws.LookupCertificateOutput(ctx, cloudngfwaws.GetCertificateOutputArgs{
+//			_ = cloudngfwaws.GetCertificateOutput(ctx, cloudngfwaws.GetCertificateOutputArgs{
 //				Rulestack: r.Name,
 //				Name:      pulumi.String("foobar"),
 //			}, nil)

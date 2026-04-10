@@ -44,7 +44,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = cloudngfwaws.LookupPredefinedUrlCategoryOverrideOutput(ctx, cloudngfwaws.GetPredefinedUrlCategoryOverrideOutputArgs{
+//			_ = cloudngfwaws.GetPredefinedUrlCategoryOverrideOutput(ctx, cloudngfwaws.GetPredefinedUrlCategoryOverrideOutputArgs{
 //				Rulestack: r.Name,
 //				Name:      pulumi.String("foobar"),
 //			}, nil)

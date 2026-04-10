@@ -27,7 +27,7 @@ namespace Pulumi.CloudNgfwAws
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var r = new CloudNgfwAws.Rulestack("r", new()
+    ///     var r = new CloudNgfwAws.Index.Rulestack("r", new()
     ///     {
     ///         Name = "terraform-rulestack",
     ///         Scope = "Local",
@@ -40,7 +40,7 @@ namespace Pulumi.CloudNgfwAws
     ///     });
     /// 
     ///     // Retrieve the feed information every day at midnight.
-    ///     var example = new CloudNgfwAws.IntelligentFeed("example", new()
+    ///     var example = new CloudNgfwAws.Index.IntelligentFeed("example", new()
     ///     {
     ///         Rulestack = r.Name,
     ///         Name = "tf-feed",

@@ -30,7 +30,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.GetNgfwLogProfile.Invoke(new()
+        ///     var example = CloudNgfwAws.Index.GetNgfwLogProfile.Invoke(new()
         ///     {
         ///         Ngfw = "example-instance",
         ///         AccountId = "123456789",
@@ -61,7 +61,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.GetNgfwLogProfile.Invoke(new()
+        ///     var example = CloudNgfwAws.Index.GetNgfwLogProfile.Invoke(new()
         ///     {
         ///         Ngfw = "example-instance",
         ///         AccountId = "123456789",
@@ -92,7 +92,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.GetNgfwLogProfile.Invoke(new()
+        ///     var example = CloudNgfwAws.Index.GetNgfwLogProfile.Invoke(new()
         ///     {
         ///         Ngfw = "example-instance",
         ///         AccountId = "123456789",
