@@ -8,7 +8,7 @@ This package is available for several languages/platforms:
 
 - JavaScript/TypeScript: [`@pulumi/cloudngfwaws`](https://www.npmjs.com/package/@pulumi/cloudngfwaws)
 - Python: [`pulumi-cloudngfwaws`](https://pypi.org/project/pulumi-cloudngfwaws/)
-- Go: [`github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws`](https://pkg.go.dev/github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws)
+- Go: [`github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws`](https://pkg.go.dev/github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws)
 - .NET: [`Pulumi.CloudNgfwAws`](https://www.nuget.org/packages/Pulumi.CloudNgfwAws)
 
 ### Node.js (JavaScript/TypeScript)
@@ -38,7 +38,7 @@ pip install pulumi-cloudngfwaws
 To use from Go, use `go get` to grab the latest version of the library:
 
 ```bash
-go get github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws
+go get github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws
 ```
 
 ### .NET
