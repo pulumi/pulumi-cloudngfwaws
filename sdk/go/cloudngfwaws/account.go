@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws/internal"
+	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,7 +42,8 @@ type Account struct {
 
 // NewAccount registers a new resource with the given unique name, arguments, and options.
 func NewAccount(ctx *pulumi.Context,
-	name string, args *AccountArgs, opts ...pulumi.ResourceOption) (*Account, error) {
+	name string, args *AccountArgs, opts ...pulumi.ResourceOption,
+) (*Account, error) {
 	if args == nil {
 		args = &AccountArgs{}
 	}
@@ -59,7 +60,8 @@ func NewAccount(ctx *pulumi.Context,
 // GetAccount gets an existing Account resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetAccount(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *AccountState, opts ...pulumi.ResourceOption) (*Account, error) {
+	name string, id pulumi.IDInput, state *AccountState, opts ...pulumi.ResourceOption,
+) (*Account, error) {
 	var resource Account
 	err := ctx.ReadResource("cloudngfwaws:index/account:Account", name, id, state, &resource, opts...)
 	if err != nil {

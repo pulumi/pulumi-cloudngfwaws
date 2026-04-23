@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws/internal"
+	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1019,7 +1019,372 @@ func (o NgfwPrivateAccessArrayOutput) Index(i pulumi.IntInput) NgfwPrivateAccess
 	}).(NgfwPrivateAccessOutput)
 }
 
+type NgfwSecurityZone struct {
+	// The account id.
+	AccountId *string `pulumi:"accountId"`
+	// Enable egress NAT
+	EgressNatEnabled *bool `pulumi:"egressNatEnabled"`
+	// Endpoint ID of the security zone
+	EndpointId string `pulumi:"endpointId"`
+	// The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+	Mode     *string                  `pulumi:"mode"`
+	Prefixes []NgfwSecurityZonePrefix `pulumi:"prefixes"`
+	// The rejected reason.
+	RejectedReason *string `pulumi:"rejectedReason"`
+	// The attachment status.
+	Status *string `pulumi:"status"`
+	// The subnet id.
+	SubnetId *string `pulumi:"subnetId"`
+	// The vpc id.
+	VpcId *string `pulumi:"vpcId"`
+	// The AZ id.
+	ZoneId *string `pulumi:"zoneId"`
+}
+
+// NgfwSecurityZoneInput is an input type that accepts NgfwSecurityZoneArgs and NgfwSecurityZoneOutput values.
+// You can construct a concrete instance of `NgfwSecurityZoneInput` via:
+//
+//	NgfwSecurityZoneArgs{...}
+type NgfwSecurityZoneInput interface {
+	pulumi.Input
+
+	ToNgfwSecurityZoneOutput() NgfwSecurityZoneOutput
+	ToNgfwSecurityZoneOutputWithContext(context.Context) NgfwSecurityZoneOutput
+}
+
+type NgfwSecurityZoneArgs struct {
+	// The account id.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// Enable egress NAT
+	EgressNatEnabled pulumi.BoolPtrInput `pulumi:"egressNatEnabled"`
+	// Endpoint ID of the security zone
+	EndpointId pulumi.StringInput `pulumi:"endpointId"`
+	// The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+	Mode     pulumi.StringPtrInput            `pulumi:"mode"`
+	Prefixes NgfwSecurityZonePrefixArrayInput `pulumi:"prefixes"`
+	// The rejected reason.
+	RejectedReason pulumi.StringPtrInput `pulumi:"rejectedReason"`
+	// The attachment status.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The subnet id.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+	// The vpc id.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	// The AZ id.
+	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
+}
+
+func (NgfwSecurityZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwSecurityZone)(nil)).Elem()
+}
+
+func (i NgfwSecurityZoneArgs) ToNgfwSecurityZoneOutput() NgfwSecurityZoneOutput {
+	return i.ToNgfwSecurityZoneOutputWithContext(context.Background())
+}
+
+func (i NgfwSecurityZoneArgs) ToNgfwSecurityZoneOutputWithContext(ctx context.Context) NgfwSecurityZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwSecurityZoneOutput)
+}
+
+// NgfwSecurityZoneArrayInput is an input type that accepts NgfwSecurityZoneArray and NgfwSecurityZoneArrayOutput values.
+// You can construct a concrete instance of `NgfwSecurityZoneArrayInput` via:
+//
+//	NgfwSecurityZoneArray{ NgfwSecurityZoneArgs{...} }
+type NgfwSecurityZoneArrayInput interface {
+	pulumi.Input
+
+	ToNgfwSecurityZoneArrayOutput() NgfwSecurityZoneArrayOutput
+	ToNgfwSecurityZoneArrayOutputWithContext(context.Context) NgfwSecurityZoneArrayOutput
+}
+
+type NgfwSecurityZoneArray []NgfwSecurityZoneInput
+
+func (NgfwSecurityZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwSecurityZone)(nil)).Elem()
+}
+
+func (i NgfwSecurityZoneArray) ToNgfwSecurityZoneArrayOutput() NgfwSecurityZoneArrayOutput {
+	return i.ToNgfwSecurityZoneArrayOutputWithContext(context.Background())
+}
+
+func (i NgfwSecurityZoneArray) ToNgfwSecurityZoneArrayOutputWithContext(ctx context.Context) NgfwSecurityZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwSecurityZoneArrayOutput)
+}
+
+type NgfwSecurityZoneOutput struct{ *pulumi.OutputState }
+
+func (NgfwSecurityZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwSecurityZone)(nil)).Elem()
+}
+
+func (o NgfwSecurityZoneOutput) ToNgfwSecurityZoneOutput() NgfwSecurityZoneOutput {
+	return o
+}
+
+func (o NgfwSecurityZoneOutput) ToNgfwSecurityZoneOutputWithContext(ctx context.Context) NgfwSecurityZoneOutput {
+	return o
+}
+
+// The account id.
+func (o NgfwSecurityZoneOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwSecurityZone) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Enable egress NAT
+func (o NgfwSecurityZoneOutput) EgressNatEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NgfwSecurityZone) *bool { return v.EgressNatEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Endpoint ID of the security zone
+func (o NgfwSecurityZoneOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v NgfwSecurityZone) string { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+func (o NgfwSecurityZoneOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwSecurityZone) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+func (o NgfwSecurityZoneOutput) Prefixes() NgfwSecurityZonePrefixArrayOutput {
+	return o.ApplyT(func(v NgfwSecurityZone) []NgfwSecurityZonePrefix { return v.Prefixes }).(NgfwSecurityZonePrefixArrayOutput)
+}
+
+// The rejected reason.
+func (o NgfwSecurityZoneOutput) RejectedReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwSecurityZone) *string { return v.RejectedReason }).(pulumi.StringPtrOutput)
+}
+
+// The attachment status.
+func (o NgfwSecurityZoneOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwSecurityZone) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The subnet id.
+func (o NgfwSecurityZoneOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwSecurityZone) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+// The vpc id.
+func (o NgfwSecurityZoneOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwSecurityZone) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+}
+
+// The AZ id.
+func (o NgfwSecurityZoneOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwSecurityZone) *string { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
+type NgfwSecurityZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (NgfwSecurityZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwSecurityZone)(nil)).Elem()
+}
+
+func (o NgfwSecurityZoneArrayOutput) ToNgfwSecurityZoneArrayOutput() NgfwSecurityZoneArrayOutput {
+	return o
+}
+
+func (o NgfwSecurityZoneArrayOutput) ToNgfwSecurityZoneArrayOutputWithContext(ctx context.Context) NgfwSecurityZoneArrayOutput {
+	return o
+}
+
+func (o NgfwSecurityZoneArrayOutput) Index(i pulumi.IntInput) NgfwSecurityZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwSecurityZone {
+		return vs[0].([]NgfwSecurityZone)[vs[1].(int)]
+	}).(NgfwSecurityZoneOutput)
+}
+
+type NgfwSecurityZonePrefix struct {
+	PrivatePrefixes []NgfwSecurityZonePrefixPrivatePrefix `pulumi:"privatePrefixes"`
+}
+
+// NgfwSecurityZonePrefixInput is an input type that accepts NgfwSecurityZonePrefixArgs and NgfwSecurityZonePrefixOutput values.
+// You can construct a concrete instance of `NgfwSecurityZonePrefixInput` via:
+//
+//	NgfwSecurityZonePrefixArgs{...}
+type NgfwSecurityZonePrefixInput interface {
+	pulumi.Input
+
+	ToNgfwSecurityZonePrefixOutput() NgfwSecurityZonePrefixOutput
+	ToNgfwSecurityZonePrefixOutputWithContext(context.Context) NgfwSecurityZonePrefixOutput
+}
+
+type NgfwSecurityZonePrefixArgs struct {
+	PrivatePrefixes NgfwSecurityZonePrefixPrivatePrefixArrayInput `pulumi:"privatePrefixes"`
+}
+
+func (NgfwSecurityZonePrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwSecurityZonePrefix)(nil)).Elem()
+}
+
+func (i NgfwSecurityZonePrefixArgs) ToNgfwSecurityZonePrefixOutput() NgfwSecurityZonePrefixOutput {
+	return i.ToNgfwSecurityZonePrefixOutputWithContext(context.Background())
+}
+
+func (i NgfwSecurityZonePrefixArgs) ToNgfwSecurityZonePrefixOutputWithContext(ctx context.Context) NgfwSecurityZonePrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwSecurityZonePrefixOutput)
+}
+
+// NgfwSecurityZonePrefixArrayInput is an input type that accepts NgfwSecurityZonePrefixArray and NgfwSecurityZonePrefixArrayOutput values.
+// You can construct a concrete instance of `NgfwSecurityZonePrefixArrayInput` via:
+//
+//	NgfwSecurityZonePrefixArray{ NgfwSecurityZonePrefixArgs{...} }
+type NgfwSecurityZonePrefixArrayInput interface {
+	pulumi.Input
+
+	ToNgfwSecurityZonePrefixArrayOutput() NgfwSecurityZonePrefixArrayOutput
+	ToNgfwSecurityZonePrefixArrayOutputWithContext(context.Context) NgfwSecurityZonePrefixArrayOutput
+}
+
+type NgfwSecurityZonePrefixArray []NgfwSecurityZonePrefixInput
+
+func (NgfwSecurityZonePrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwSecurityZonePrefix)(nil)).Elem()
+}
+
+func (i NgfwSecurityZonePrefixArray) ToNgfwSecurityZonePrefixArrayOutput() NgfwSecurityZonePrefixArrayOutput {
+	return i.ToNgfwSecurityZonePrefixArrayOutputWithContext(context.Background())
+}
+
+func (i NgfwSecurityZonePrefixArray) ToNgfwSecurityZonePrefixArrayOutputWithContext(ctx context.Context) NgfwSecurityZonePrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwSecurityZonePrefixArrayOutput)
+}
+
+type NgfwSecurityZonePrefixOutput struct{ *pulumi.OutputState }
+
+func (NgfwSecurityZonePrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwSecurityZonePrefix)(nil)).Elem()
+}
+
+func (o NgfwSecurityZonePrefixOutput) ToNgfwSecurityZonePrefixOutput() NgfwSecurityZonePrefixOutput {
+	return o
+}
+
+func (o NgfwSecurityZonePrefixOutput) ToNgfwSecurityZonePrefixOutputWithContext(ctx context.Context) NgfwSecurityZonePrefixOutput {
+	return o
+}
+
+func (o NgfwSecurityZonePrefixOutput) PrivatePrefixes() NgfwSecurityZonePrefixPrivatePrefixArrayOutput {
+	return o.ApplyT(func(v NgfwSecurityZonePrefix) []NgfwSecurityZonePrefixPrivatePrefix { return v.PrivatePrefixes }).(NgfwSecurityZonePrefixPrivatePrefixArrayOutput)
+}
+
+type NgfwSecurityZonePrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (NgfwSecurityZonePrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwSecurityZonePrefix)(nil)).Elem()
+}
+
+func (o NgfwSecurityZonePrefixArrayOutput) ToNgfwSecurityZonePrefixArrayOutput() NgfwSecurityZonePrefixArrayOutput {
+	return o
+}
+
+func (o NgfwSecurityZonePrefixArrayOutput) ToNgfwSecurityZonePrefixArrayOutputWithContext(ctx context.Context) NgfwSecurityZonePrefixArrayOutput {
+	return o
+}
+
+func (o NgfwSecurityZonePrefixArrayOutput) Index(i pulumi.IntInput) NgfwSecurityZonePrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwSecurityZonePrefix {
+		return vs[0].([]NgfwSecurityZonePrefix)[vs[1].(int)]
+	}).(NgfwSecurityZonePrefixOutput)
+}
+
+type NgfwSecurityZonePrefixPrivatePrefix struct {
+	Cidrs []string `pulumi:"cidrs"`
+}
+
+// NgfwSecurityZonePrefixPrivatePrefixInput is an input type that accepts NgfwSecurityZonePrefixPrivatePrefixArgs and NgfwSecurityZonePrefixPrivatePrefixOutput values.
+// You can construct a concrete instance of `NgfwSecurityZonePrefixPrivatePrefixInput` via:
+//
+//	NgfwSecurityZonePrefixPrivatePrefixArgs{...}
+type NgfwSecurityZonePrefixPrivatePrefixInput interface {
+	pulumi.Input
+
+	ToNgfwSecurityZonePrefixPrivatePrefixOutput() NgfwSecurityZonePrefixPrivatePrefixOutput
+	ToNgfwSecurityZonePrefixPrivatePrefixOutputWithContext(context.Context) NgfwSecurityZonePrefixPrivatePrefixOutput
+}
+
+type NgfwSecurityZonePrefixPrivatePrefixArgs struct {
+	Cidrs pulumi.StringArrayInput `pulumi:"cidrs"`
+}
+
+func (NgfwSecurityZonePrefixPrivatePrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwSecurityZonePrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (i NgfwSecurityZonePrefixPrivatePrefixArgs) ToNgfwSecurityZonePrefixPrivatePrefixOutput() NgfwSecurityZonePrefixPrivatePrefixOutput {
+	return i.ToNgfwSecurityZonePrefixPrivatePrefixOutputWithContext(context.Background())
+}
+
+func (i NgfwSecurityZonePrefixPrivatePrefixArgs) ToNgfwSecurityZonePrefixPrivatePrefixOutputWithContext(ctx context.Context) NgfwSecurityZonePrefixPrivatePrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwSecurityZonePrefixPrivatePrefixOutput)
+}
+
+// NgfwSecurityZonePrefixPrivatePrefixArrayInput is an input type that accepts NgfwSecurityZonePrefixPrivatePrefixArray and NgfwSecurityZonePrefixPrivatePrefixArrayOutput values.
+// You can construct a concrete instance of `NgfwSecurityZonePrefixPrivatePrefixArrayInput` via:
+//
+//	NgfwSecurityZonePrefixPrivatePrefixArray{ NgfwSecurityZonePrefixPrivatePrefixArgs{...} }
+type NgfwSecurityZonePrefixPrivatePrefixArrayInput interface {
+	pulumi.Input
+
+	ToNgfwSecurityZonePrefixPrivatePrefixArrayOutput() NgfwSecurityZonePrefixPrivatePrefixArrayOutput
+	ToNgfwSecurityZonePrefixPrivatePrefixArrayOutputWithContext(context.Context) NgfwSecurityZonePrefixPrivatePrefixArrayOutput
+}
+
+type NgfwSecurityZonePrefixPrivatePrefixArray []NgfwSecurityZonePrefixPrivatePrefixInput
+
+func (NgfwSecurityZonePrefixPrivatePrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwSecurityZonePrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (i NgfwSecurityZonePrefixPrivatePrefixArray) ToNgfwSecurityZonePrefixPrivatePrefixArrayOutput() NgfwSecurityZonePrefixPrivatePrefixArrayOutput {
+	return i.ToNgfwSecurityZonePrefixPrivatePrefixArrayOutputWithContext(context.Background())
+}
+
+func (i NgfwSecurityZonePrefixPrivatePrefixArray) ToNgfwSecurityZonePrefixPrivatePrefixArrayOutputWithContext(ctx context.Context) NgfwSecurityZonePrefixPrivatePrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwSecurityZonePrefixPrivatePrefixArrayOutput)
+}
+
+type NgfwSecurityZonePrefixPrivatePrefixOutput struct{ *pulumi.OutputState }
+
+func (NgfwSecurityZonePrefixPrivatePrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwSecurityZonePrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (o NgfwSecurityZonePrefixPrivatePrefixOutput) ToNgfwSecurityZonePrefixPrivatePrefixOutput() NgfwSecurityZonePrefixPrivatePrefixOutput {
+	return o
+}
+
+func (o NgfwSecurityZonePrefixPrivatePrefixOutput) ToNgfwSecurityZonePrefixPrivatePrefixOutputWithContext(ctx context.Context) NgfwSecurityZonePrefixPrivatePrefixOutput {
+	return o
+}
+
+func (o NgfwSecurityZonePrefixPrivatePrefixOutput) Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NgfwSecurityZonePrefixPrivatePrefix) []string { return v.Cidrs }).(pulumi.StringArrayOutput)
+}
+
+type NgfwSecurityZonePrefixPrivatePrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (NgfwSecurityZonePrefixPrivatePrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwSecurityZonePrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (o NgfwSecurityZonePrefixPrivatePrefixArrayOutput) ToNgfwSecurityZonePrefixPrivatePrefixArrayOutput() NgfwSecurityZonePrefixPrivatePrefixArrayOutput {
+	return o
+}
+
+func (o NgfwSecurityZonePrefixPrivatePrefixArrayOutput) ToNgfwSecurityZonePrefixPrivatePrefixArrayOutputWithContext(ctx context.Context) NgfwSecurityZonePrefixPrivatePrefixArrayOutput {
+	return o
+}
+
+func (o NgfwSecurityZonePrefixPrivatePrefixArrayOutput) Index(i pulumi.IntInput) NgfwSecurityZonePrefixPrivatePrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwSecurityZonePrefixPrivatePrefix {
+		return vs[0].([]NgfwSecurityZonePrefixPrivatePrefix)[vs[1].(int)]
+	}).(NgfwSecurityZonePrefixPrivatePrefixOutput)
+}
+
 type NgfwStatus struct {
+	// The firewall attachments.
+	Attachments []NgfwStatusAttachment `pulumi:"attachments"`
 	// The device rulestack commit status.
 	DeviceRulestackCommitStatus *string `pulumi:"deviceRulestackCommitStatus"`
 	// The firewall failure reason.
@@ -1042,6 +1407,8 @@ type NgfwStatusInput interface {
 }
 
 type NgfwStatusArgs struct {
+	// The firewall attachments.
+	Attachments NgfwStatusAttachmentArrayInput `pulumi:"attachments"`
 	// The device rulestack commit status.
 	DeviceRulestackCommitStatus pulumi.StringPtrInput `pulumi:"deviceRulestackCommitStatus"`
 	// The firewall failure reason.
@@ -1103,6 +1470,11 @@ func (o NgfwStatusOutput) ToNgfwStatusOutputWithContext(ctx context.Context) Ngf
 	return o
 }
 
+// The firewall attachments.
+func (o NgfwStatusOutput) Attachments() NgfwStatusAttachmentArrayOutput {
+	return o.ApplyT(func(v NgfwStatus) []NgfwStatusAttachment { return v.Attachments }).(NgfwStatusAttachmentArrayOutput)
+}
+
 // The device rulestack commit status.
 func (o NgfwStatusOutput) DeviceRulestackCommitStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NgfwStatus) *string { return v.DeviceRulestackCommitStatus }).(pulumi.StringPtrOutput)
@@ -1141,6 +1513,130 @@ func (o NgfwStatusArrayOutput) Index(i pulumi.IntInput) NgfwStatusOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwStatus {
 		return vs[0].([]NgfwStatus)[vs[1].(int)]
 	}).(NgfwStatusOutput)
+}
+
+type NgfwStatusAttachment struct {
+	// The endpoint id.
+	EndpointId *string `pulumi:"endpointId"`
+	// The reject reason.
+	RejectedReason *string `pulumi:"rejectedReason"`
+	// The attachment status.
+	Status *string `pulumi:"status"`
+	// The subnet id.
+	SubnetId *string `pulumi:"subnetId"`
+}
+
+// NgfwStatusAttachmentInput is an input type that accepts NgfwStatusAttachmentArgs and NgfwStatusAttachmentOutput values.
+// You can construct a concrete instance of `NgfwStatusAttachmentInput` via:
+//
+//	NgfwStatusAttachmentArgs{...}
+type NgfwStatusAttachmentInput interface {
+	pulumi.Input
+
+	ToNgfwStatusAttachmentOutput() NgfwStatusAttachmentOutput
+	ToNgfwStatusAttachmentOutputWithContext(context.Context) NgfwStatusAttachmentOutput
+}
+
+type NgfwStatusAttachmentArgs struct {
+	// The endpoint id.
+	EndpointId pulumi.StringPtrInput `pulumi:"endpointId"`
+	// The reject reason.
+	RejectedReason pulumi.StringPtrInput `pulumi:"rejectedReason"`
+	// The attachment status.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The subnet id.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+}
+
+func (NgfwStatusAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwStatusAttachment)(nil)).Elem()
+}
+
+func (i NgfwStatusAttachmentArgs) ToNgfwStatusAttachmentOutput() NgfwStatusAttachmentOutput {
+	return i.ToNgfwStatusAttachmentOutputWithContext(context.Background())
+}
+
+func (i NgfwStatusAttachmentArgs) ToNgfwStatusAttachmentOutputWithContext(ctx context.Context) NgfwStatusAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwStatusAttachmentOutput)
+}
+
+// NgfwStatusAttachmentArrayInput is an input type that accepts NgfwStatusAttachmentArray and NgfwStatusAttachmentArrayOutput values.
+// You can construct a concrete instance of `NgfwStatusAttachmentArrayInput` via:
+//
+//	NgfwStatusAttachmentArray{ NgfwStatusAttachmentArgs{...} }
+type NgfwStatusAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToNgfwStatusAttachmentArrayOutput() NgfwStatusAttachmentArrayOutput
+	ToNgfwStatusAttachmentArrayOutputWithContext(context.Context) NgfwStatusAttachmentArrayOutput
+}
+
+type NgfwStatusAttachmentArray []NgfwStatusAttachmentInput
+
+func (NgfwStatusAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwStatusAttachment)(nil)).Elem()
+}
+
+func (i NgfwStatusAttachmentArray) ToNgfwStatusAttachmentArrayOutput() NgfwStatusAttachmentArrayOutput {
+	return i.ToNgfwStatusAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i NgfwStatusAttachmentArray) ToNgfwStatusAttachmentArrayOutputWithContext(ctx context.Context) NgfwStatusAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NgfwStatusAttachmentArrayOutput)
+}
+
+type NgfwStatusAttachmentOutput struct{ *pulumi.OutputState }
+
+func (NgfwStatusAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NgfwStatusAttachment)(nil)).Elem()
+}
+
+func (o NgfwStatusAttachmentOutput) ToNgfwStatusAttachmentOutput() NgfwStatusAttachmentOutput {
+	return o
+}
+
+func (o NgfwStatusAttachmentOutput) ToNgfwStatusAttachmentOutputWithContext(ctx context.Context) NgfwStatusAttachmentOutput {
+	return o
+}
+
+// The endpoint id.
+func (o NgfwStatusAttachmentOutput) EndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwStatusAttachment) *string { return v.EndpointId }).(pulumi.StringPtrOutput)
+}
+
+// The reject reason.
+func (o NgfwStatusAttachmentOutput) RejectedReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwStatusAttachment) *string { return v.RejectedReason }).(pulumi.StringPtrOutput)
+}
+
+// The attachment status.
+func (o NgfwStatusAttachmentOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwStatusAttachment) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The subnet id.
+func (o NgfwStatusAttachmentOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NgfwStatusAttachment) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type NgfwStatusAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (NgfwStatusAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NgfwStatusAttachment)(nil)).Elem()
+}
+
+func (o NgfwStatusAttachmentArrayOutput) ToNgfwStatusAttachmentArrayOutput() NgfwStatusAttachmentArrayOutput {
+	return o
+}
+
+func (o NgfwStatusAttachmentArrayOutput) ToNgfwStatusAttachmentArrayOutputWithContext(ctx context.Context) NgfwStatusAttachmentArrayOutput {
+	return o
+}
+
+func (o NgfwStatusAttachmentArrayOutput) Index(i pulumi.IntInput) NgfwStatusAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NgfwStatusAttachment {
+		return vs[0].([]NgfwStatusAttachment)[vs[1].(int)]
+	}).(NgfwStatusAttachmentOutput)
 }
 
 type NgfwSubnetMapping struct {
@@ -3388,7 +3884,372 @@ func (o GetNgfwPrivateAccessArrayOutput) Index(i pulumi.IntInput) GetNgfwPrivate
 	}).(GetNgfwPrivateAccessOutput)
 }
 
+type GetNgfwSecurityZone struct {
+	// The account id.
+	AccountId string `pulumi:"accountId"`
+	// Enable egress NAT
+	EgressNatEnabled bool `pulumi:"egressNatEnabled"`
+	// Endpoint ID of the security zone
+	EndpointId string `pulumi:"endpointId"`
+	// The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+	Mode     string                      `pulumi:"mode"`
+	Prefixes []GetNgfwSecurityZonePrefix `pulumi:"prefixes"`
+	// The rejected reason.
+	RejectedReason string `pulumi:"rejectedReason"`
+	// The attachment status.
+	Status string `pulumi:"status"`
+	// The subnet id.
+	SubnetId string `pulumi:"subnetId"`
+	// The vpc id.
+	VpcId string `pulumi:"vpcId"`
+	// The AZ id.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetNgfwSecurityZoneInput is an input type that accepts GetNgfwSecurityZoneArgs and GetNgfwSecurityZoneOutput values.
+// You can construct a concrete instance of `GetNgfwSecurityZoneInput` via:
+//
+//	GetNgfwSecurityZoneArgs{...}
+type GetNgfwSecurityZoneInput interface {
+	pulumi.Input
+
+	ToGetNgfwSecurityZoneOutput() GetNgfwSecurityZoneOutput
+	ToGetNgfwSecurityZoneOutputWithContext(context.Context) GetNgfwSecurityZoneOutput
+}
+
+type GetNgfwSecurityZoneArgs struct {
+	// The account id.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Enable egress NAT
+	EgressNatEnabled pulumi.BoolInput `pulumi:"egressNatEnabled"`
+	// Endpoint ID of the security zone
+	EndpointId pulumi.StringInput `pulumi:"endpointId"`
+	// The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+	Mode     pulumi.StringInput                  `pulumi:"mode"`
+	Prefixes GetNgfwSecurityZonePrefixArrayInput `pulumi:"prefixes"`
+	// The rejected reason.
+	RejectedReason pulumi.StringInput `pulumi:"rejectedReason"`
+	// The attachment status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The subnet id.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+	// The vpc id.
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	// The AZ id.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetNgfwSecurityZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwSecurityZone)(nil)).Elem()
+}
+
+func (i GetNgfwSecurityZoneArgs) ToGetNgfwSecurityZoneOutput() GetNgfwSecurityZoneOutput {
+	return i.ToGetNgfwSecurityZoneOutputWithContext(context.Background())
+}
+
+func (i GetNgfwSecurityZoneArgs) ToGetNgfwSecurityZoneOutputWithContext(ctx context.Context) GetNgfwSecurityZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwSecurityZoneOutput)
+}
+
+// GetNgfwSecurityZoneArrayInput is an input type that accepts GetNgfwSecurityZoneArray and GetNgfwSecurityZoneArrayOutput values.
+// You can construct a concrete instance of `GetNgfwSecurityZoneArrayInput` via:
+//
+//	GetNgfwSecurityZoneArray{ GetNgfwSecurityZoneArgs{...} }
+type GetNgfwSecurityZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetNgfwSecurityZoneArrayOutput() GetNgfwSecurityZoneArrayOutput
+	ToGetNgfwSecurityZoneArrayOutputWithContext(context.Context) GetNgfwSecurityZoneArrayOutput
+}
+
+type GetNgfwSecurityZoneArray []GetNgfwSecurityZoneInput
+
+func (GetNgfwSecurityZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwSecurityZone)(nil)).Elem()
+}
+
+func (i GetNgfwSecurityZoneArray) ToGetNgfwSecurityZoneArrayOutput() GetNgfwSecurityZoneArrayOutput {
+	return i.ToGetNgfwSecurityZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetNgfwSecurityZoneArray) ToGetNgfwSecurityZoneArrayOutputWithContext(ctx context.Context) GetNgfwSecurityZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwSecurityZoneArrayOutput)
+}
+
+type GetNgfwSecurityZoneOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwSecurityZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwSecurityZone)(nil)).Elem()
+}
+
+func (o GetNgfwSecurityZoneOutput) ToGetNgfwSecurityZoneOutput() GetNgfwSecurityZoneOutput {
+	return o
+}
+
+func (o GetNgfwSecurityZoneOutput) ToGetNgfwSecurityZoneOutputWithContext(ctx context.Context) GetNgfwSecurityZoneOutput {
+	return o
+}
+
+// The account id.
+func (o GetNgfwSecurityZoneOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwSecurityZone) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Enable egress NAT
+func (o GetNgfwSecurityZoneOutput) EgressNatEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNgfwSecurityZone) bool { return v.EgressNatEnabled }).(pulumi.BoolOutput)
+}
+
+// Endpoint ID of the security zone
+func (o GetNgfwSecurityZoneOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwSecurityZone) string { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+func (o GetNgfwSecurityZoneOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwSecurityZone) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+func (o GetNgfwSecurityZoneOutput) Prefixes() GetNgfwSecurityZonePrefixArrayOutput {
+	return o.ApplyT(func(v GetNgfwSecurityZone) []GetNgfwSecurityZonePrefix { return v.Prefixes }).(GetNgfwSecurityZonePrefixArrayOutput)
+}
+
+// The rejected reason.
+func (o GetNgfwSecurityZoneOutput) RejectedReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwSecurityZone) string { return v.RejectedReason }).(pulumi.StringOutput)
+}
+
+// The attachment status.
+func (o GetNgfwSecurityZoneOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwSecurityZone) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The subnet id.
+func (o GetNgfwSecurityZoneOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwSecurityZone) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// The vpc id.
+func (o GetNgfwSecurityZoneOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwSecurityZone) string { return v.VpcId }).(pulumi.StringOutput)
+}
+
+// The AZ id.
+func (o GetNgfwSecurityZoneOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwSecurityZone) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetNgfwSecurityZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwSecurityZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwSecurityZone)(nil)).Elem()
+}
+
+func (o GetNgfwSecurityZoneArrayOutput) ToGetNgfwSecurityZoneArrayOutput() GetNgfwSecurityZoneArrayOutput {
+	return o
+}
+
+func (o GetNgfwSecurityZoneArrayOutput) ToGetNgfwSecurityZoneArrayOutputWithContext(ctx context.Context) GetNgfwSecurityZoneArrayOutput {
+	return o
+}
+
+func (o GetNgfwSecurityZoneArrayOutput) Index(i pulumi.IntInput) GetNgfwSecurityZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwSecurityZone {
+		return vs[0].([]GetNgfwSecurityZone)[vs[1].(int)]
+	}).(GetNgfwSecurityZoneOutput)
+}
+
+type GetNgfwSecurityZonePrefix struct {
+	PrivatePrefixes []GetNgfwSecurityZonePrefixPrivatePrefix `pulumi:"privatePrefixes"`
+}
+
+// GetNgfwSecurityZonePrefixInput is an input type that accepts GetNgfwSecurityZonePrefixArgs and GetNgfwSecurityZonePrefixOutput values.
+// You can construct a concrete instance of `GetNgfwSecurityZonePrefixInput` via:
+//
+//	GetNgfwSecurityZonePrefixArgs{...}
+type GetNgfwSecurityZonePrefixInput interface {
+	pulumi.Input
+
+	ToGetNgfwSecurityZonePrefixOutput() GetNgfwSecurityZonePrefixOutput
+	ToGetNgfwSecurityZonePrefixOutputWithContext(context.Context) GetNgfwSecurityZonePrefixOutput
+}
+
+type GetNgfwSecurityZonePrefixArgs struct {
+	PrivatePrefixes GetNgfwSecurityZonePrefixPrivatePrefixArrayInput `pulumi:"privatePrefixes"`
+}
+
+func (GetNgfwSecurityZonePrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwSecurityZonePrefix)(nil)).Elem()
+}
+
+func (i GetNgfwSecurityZonePrefixArgs) ToGetNgfwSecurityZonePrefixOutput() GetNgfwSecurityZonePrefixOutput {
+	return i.ToGetNgfwSecurityZonePrefixOutputWithContext(context.Background())
+}
+
+func (i GetNgfwSecurityZonePrefixArgs) ToGetNgfwSecurityZonePrefixOutputWithContext(ctx context.Context) GetNgfwSecurityZonePrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwSecurityZonePrefixOutput)
+}
+
+// GetNgfwSecurityZonePrefixArrayInput is an input type that accepts GetNgfwSecurityZonePrefixArray and GetNgfwSecurityZonePrefixArrayOutput values.
+// You can construct a concrete instance of `GetNgfwSecurityZonePrefixArrayInput` via:
+//
+//	GetNgfwSecurityZonePrefixArray{ GetNgfwSecurityZonePrefixArgs{...} }
+type GetNgfwSecurityZonePrefixArrayInput interface {
+	pulumi.Input
+
+	ToGetNgfwSecurityZonePrefixArrayOutput() GetNgfwSecurityZonePrefixArrayOutput
+	ToGetNgfwSecurityZonePrefixArrayOutputWithContext(context.Context) GetNgfwSecurityZonePrefixArrayOutput
+}
+
+type GetNgfwSecurityZonePrefixArray []GetNgfwSecurityZonePrefixInput
+
+func (GetNgfwSecurityZonePrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwSecurityZonePrefix)(nil)).Elem()
+}
+
+func (i GetNgfwSecurityZonePrefixArray) ToGetNgfwSecurityZonePrefixArrayOutput() GetNgfwSecurityZonePrefixArrayOutput {
+	return i.ToGetNgfwSecurityZonePrefixArrayOutputWithContext(context.Background())
+}
+
+func (i GetNgfwSecurityZonePrefixArray) ToGetNgfwSecurityZonePrefixArrayOutputWithContext(ctx context.Context) GetNgfwSecurityZonePrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwSecurityZonePrefixArrayOutput)
+}
+
+type GetNgfwSecurityZonePrefixOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwSecurityZonePrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwSecurityZonePrefix)(nil)).Elem()
+}
+
+func (o GetNgfwSecurityZonePrefixOutput) ToGetNgfwSecurityZonePrefixOutput() GetNgfwSecurityZonePrefixOutput {
+	return o
+}
+
+func (o GetNgfwSecurityZonePrefixOutput) ToGetNgfwSecurityZonePrefixOutputWithContext(ctx context.Context) GetNgfwSecurityZonePrefixOutput {
+	return o
+}
+
+func (o GetNgfwSecurityZonePrefixOutput) PrivatePrefixes() GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput {
+	return o.ApplyT(func(v GetNgfwSecurityZonePrefix) []GetNgfwSecurityZonePrefixPrivatePrefix { return v.PrivatePrefixes }).(GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput)
+}
+
+type GetNgfwSecurityZonePrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwSecurityZonePrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwSecurityZonePrefix)(nil)).Elem()
+}
+
+func (o GetNgfwSecurityZonePrefixArrayOutput) ToGetNgfwSecurityZonePrefixArrayOutput() GetNgfwSecurityZonePrefixArrayOutput {
+	return o
+}
+
+func (o GetNgfwSecurityZonePrefixArrayOutput) ToGetNgfwSecurityZonePrefixArrayOutputWithContext(ctx context.Context) GetNgfwSecurityZonePrefixArrayOutput {
+	return o
+}
+
+func (o GetNgfwSecurityZonePrefixArrayOutput) Index(i pulumi.IntInput) GetNgfwSecurityZonePrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwSecurityZonePrefix {
+		return vs[0].([]GetNgfwSecurityZonePrefix)[vs[1].(int)]
+	}).(GetNgfwSecurityZonePrefixOutput)
+}
+
+type GetNgfwSecurityZonePrefixPrivatePrefix struct {
+	Cidrs []string `pulumi:"cidrs"`
+}
+
+// GetNgfwSecurityZonePrefixPrivatePrefixInput is an input type that accepts GetNgfwSecurityZonePrefixPrivatePrefixArgs and GetNgfwSecurityZonePrefixPrivatePrefixOutput values.
+// You can construct a concrete instance of `GetNgfwSecurityZonePrefixPrivatePrefixInput` via:
+//
+//	GetNgfwSecurityZonePrefixPrivatePrefixArgs{...}
+type GetNgfwSecurityZonePrefixPrivatePrefixInput interface {
+	pulumi.Input
+
+	ToGetNgfwSecurityZonePrefixPrivatePrefixOutput() GetNgfwSecurityZonePrefixPrivatePrefixOutput
+	ToGetNgfwSecurityZonePrefixPrivatePrefixOutputWithContext(context.Context) GetNgfwSecurityZonePrefixPrivatePrefixOutput
+}
+
+type GetNgfwSecurityZonePrefixPrivatePrefixArgs struct {
+	Cidrs pulumi.StringArrayInput `pulumi:"cidrs"`
+}
+
+func (GetNgfwSecurityZonePrefixPrivatePrefixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwSecurityZonePrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (i GetNgfwSecurityZonePrefixPrivatePrefixArgs) ToGetNgfwSecurityZonePrefixPrivatePrefixOutput() GetNgfwSecurityZonePrefixPrivatePrefixOutput {
+	return i.ToGetNgfwSecurityZonePrefixPrivatePrefixOutputWithContext(context.Background())
+}
+
+func (i GetNgfwSecurityZonePrefixPrivatePrefixArgs) ToGetNgfwSecurityZonePrefixPrivatePrefixOutputWithContext(ctx context.Context) GetNgfwSecurityZonePrefixPrivatePrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwSecurityZonePrefixPrivatePrefixOutput)
+}
+
+// GetNgfwSecurityZonePrefixPrivatePrefixArrayInput is an input type that accepts GetNgfwSecurityZonePrefixPrivatePrefixArray and GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput values.
+// You can construct a concrete instance of `GetNgfwSecurityZonePrefixPrivatePrefixArrayInput` via:
+//
+//	GetNgfwSecurityZonePrefixPrivatePrefixArray{ GetNgfwSecurityZonePrefixPrivatePrefixArgs{...} }
+type GetNgfwSecurityZonePrefixPrivatePrefixArrayInput interface {
+	pulumi.Input
+
+	ToGetNgfwSecurityZonePrefixPrivatePrefixArrayOutput() GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput
+	ToGetNgfwSecurityZonePrefixPrivatePrefixArrayOutputWithContext(context.Context) GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput
+}
+
+type GetNgfwSecurityZonePrefixPrivatePrefixArray []GetNgfwSecurityZonePrefixPrivatePrefixInput
+
+func (GetNgfwSecurityZonePrefixPrivatePrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwSecurityZonePrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (i GetNgfwSecurityZonePrefixPrivatePrefixArray) ToGetNgfwSecurityZonePrefixPrivatePrefixArrayOutput() GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput {
+	return i.ToGetNgfwSecurityZonePrefixPrivatePrefixArrayOutputWithContext(context.Background())
+}
+
+func (i GetNgfwSecurityZonePrefixPrivatePrefixArray) ToGetNgfwSecurityZonePrefixPrivatePrefixArrayOutputWithContext(ctx context.Context) GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput)
+}
+
+type GetNgfwSecurityZonePrefixPrivatePrefixOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwSecurityZonePrefixPrivatePrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwSecurityZonePrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (o GetNgfwSecurityZonePrefixPrivatePrefixOutput) ToGetNgfwSecurityZonePrefixPrivatePrefixOutput() GetNgfwSecurityZonePrefixPrivatePrefixOutput {
+	return o
+}
+
+func (o GetNgfwSecurityZonePrefixPrivatePrefixOutput) ToGetNgfwSecurityZonePrefixPrivatePrefixOutputWithContext(ctx context.Context) GetNgfwSecurityZonePrefixPrivatePrefixOutput {
+	return o
+}
+
+func (o GetNgfwSecurityZonePrefixPrivatePrefixOutput) Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNgfwSecurityZonePrefixPrivatePrefix) []string { return v.Cidrs }).(pulumi.StringArrayOutput)
+}
+
+type GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwSecurityZonePrefixPrivatePrefix)(nil)).Elem()
+}
+
+func (o GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput) ToGetNgfwSecurityZonePrefixPrivatePrefixArrayOutput() GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput {
+	return o
+}
+
+func (o GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput) ToGetNgfwSecurityZonePrefixPrivatePrefixArrayOutputWithContext(ctx context.Context) GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput {
+	return o
+}
+
+func (o GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput) Index(i pulumi.IntInput) GetNgfwSecurityZonePrefixPrivatePrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwSecurityZonePrefixPrivatePrefix {
+		return vs[0].([]GetNgfwSecurityZonePrefixPrivatePrefix)[vs[1].(int)]
+	}).(GetNgfwSecurityZonePrefixPrivatePrefixOutput)
+}
+
 type GetNgfwStatus struct {
+	// The firewall attachments.
+	Attachments []GetNgfwStatusAttachment `pulumi:"attachments"`
 	// The device rulestack commit status.
 	DeviceRulestackCommitStatus string `pulumi:"deviceRulestackCommitStatus"`
 	// The firewall failure reason.
@@ -3411,6 +4272,8 @@ type GetNgfwStatusInput interface {
 }
 
 type GetNgfwStatusArgs struct {
+	// The firewall attachments.
+	Attachments GetNgfwStatusAttachmentArrayInput `pulumi:"attachments"`
 	// The device rulestack commit status.
 	DeviceRulestackCommitStatus pulumi.StringInput `pulumi:"deviceRulestackCommitStatus"`
 	// The firewall failure reason.
@@ -3472,6 +4335,11 @@ func (o GetNgfwStatusOutput) ToGetNgfwStatusOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The firewall attachments.
+func (o GetNgfwStatusOutput) Attachments() GetNgfwStatusAttachmentArrayOutput {
+	return o.ApplyT(func(v GetNgfwStatus) []GetNgfwStatusAttachment { return v.Attachments }).(GetNgfwStatusAttachmentArrayOutput)
+}
+
 // The device rulestack commit status.
 func (o GetNgfwStatusOutput) DeviceRulestackCommitStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNgfwStatus) string { return v.DeviceRulestackCommitStatus }).(pulumi.StringOutput)
@@ -3510,6 +4378,130 @@ func (o GetNgfwStatusArrayOutput) Index(i pulumi.IntInput) GetNgfwStatusOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwStatus {
 		return vs[0].([]GetNgfwStatus)[vs[1].(int)]
 	}).(GetNgfwStatusOutput)
+}
+
+type GetNgfwStatusAttachment struct {
+	// The endpoint id.
+	EndpointId string `pulumi:"endpointId"`
+	// The reject reason.
+	RejectedReason string `pulumi:"rejectedReason"`
+	// The attachment status.
+	Status string `pulumi:"status"`
+	// The subnet id.
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// GetNgfwStatusAttachmentInput is an input type that accepts GetNgfwStatusAttachmentArgs and GetNgfwStatusAttachmentOutput values.
+// You can construct a concrete instance of `GetNgfwStatusAttachmentInput` via:
+//
+//	GetNgfwStatusAttachmentArgs{...}
+type GetNgfwStatusAttachmentInput interface {
+	pulumi.Input
+
+	ToGetNgfwStatusAttachmentOutput() GetNgfwStatusAttachmentOutput
+	ToGetNgfwStatusAttachmentOutputWithContext(context.Context) GetNgfwStatusAttachmentOutput
+}
+
+type GetNgfwStatusAttachmentArgs struct {
+	// The endpoint id.
+	EndpointId pulumi.StringInput `pulumi:"endpointId"`
+	// The reject reason.
+	RejectedReason pulumi.StringInput `pulumi:"rejectedReason"`
+	// The attachment status.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The subnet id.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (GetNgfwStatusAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwStatusAttachment)(nil)).Elem()
+}
+
+func (i GetNgfwStatusAttachmentArgs) ToGetNgfwStatusAttachmentOutput() GetNgfwStatusAttachmentOutput {
+	return i.ToGetNgfwStatusAttachmentOutputWithContext(context.Background())
+}
+
+func (i GetNgfwStatusAttachmentArgs) ToGetNgfwStatusAttachmentOutputWithContext(ctx context.Context) GetNgfwStatusAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwStatusAttachmentOutput)
+}
+
+// GetNgfwStatusAttachmentArrayInput is an input type that accepts GetNgfwStatusAttachmentArray and GetNgfwStatusAttachmentArrayOutput values.
+// You can construct a concrete instance of `GetNgfwStatusAttachmentArrayInput` via:
+//
+//	GetNgfwStatusAttachmentArray{ GetNgfwStatusAttachmentArgs{...} }
+type GetNgfwStatusAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToGetNgfwStatusAttachmentArrayOutput() GetNgfwStatusAttachmentArrayOutput
+	ToGetNgfwStatusAttachmentArrayOutputWithContext(context.Context) GetNgfwStatusAttachmentArrayOutput
+}
+
+type GetNgfwStatusAttachmentArray []GetNgfwStatusAttachmentInput
+
+func (GetNgfwStatusAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwStatusAttachment)(nil)).Elem()
+}
+
+func (i GetNgfwStatusAttachmentArray) ToGetNgfwStatusAttachmentArrayOutput() GetNgfwStatusAttachmentArrayOutput {
+	return i.ToGetNgfwStatusAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetNgfwStatusAttachmentArray) ToGetNgfwStatusAttachmentArrayOutputWithContext(ctx context.Context) GetNgfwStatusAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNgfwStatusAttachmentArrayOutput)
+}
+
+type GetNgfwStatusAttachmentOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwStatusAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNgfwStatusAttachment)(nil)).Elem()
+}
+
+func (o GetNgfwStatusAttachmentOutput) ToGetNgfwStatusAttachmentOutput() GetNgfwStatusAttachmentOutput {
+	return o
+}
+
+func (o GetNgfwStatusAttachmentOutput) ToGetNgfwStatusAttachmentOutputWithContext(ctx context.Context) GetNgfwStatusAttachmentOutput {
+	return o
+}
+
+// The endpoint id.
+func (o GetNgfwStatusAttachmentOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwStatusAttachment) string { return v.EndpointId }).(pulumi.StringOutput)
+}
+
+// The reject reason.
+func (o GetNgfwStatusAttachmentOutput) RejectedReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwStatusAttachment) string { return v.RejectedReason }).(pulumi.StringOutput)
+}
+
+// The attachment status.
+func (o GetNgfwStatusAttachmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwStatusAttachment) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The subnet id.
+func (o GetNgfwStatusAttachmentOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwStatusAttachment) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type GetNgfwStatusAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNgfwStatusAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNgfwStatusAttachment)(nil)).Elem()
+}
+
+func (o GetNgfwStatusAttachmentArrayOutput) ToGetNgfwStatusAttachmentArrayOutput() GetNgfwStatusAttachmentArrayOutput {
+	return o
+}
+
+func (o GetNgfwStatusAttachmentArrayOutput) ToGetNgfwStatusAttachmentArrayOutputWithContext(ctx context.Context) GetNgfwStatusAttachmentArrayOutput {
+	return o
+}
+
+func (o GetNgfwStatusAttachmentArrayOutput) Index(i pulumi.IntInput) GetNgfwStatusAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNgfwStatusAttachment {
+		return vs[0].([]GetNgfwStatusAttachment)[vs[1].(int)]
+	}).(GetNgfwStatusAttachmentOutput)
 }
 
 type GetNgfwSubnetMapping struct {
@@ -3905,8 +4897,12 @@ func (o GetNgfwUserIdCustomIncludeExcludeNetworkArrayOutput) Index(i pulumi.IntI
 }
 
 type GetNgfwsInstance struct {
+	// The account id.
+	AccountId string `pulumi:"accountId"`
 	// The NGFW ID.
 	FirewallId string `pulumi:"firewallId"`
+	// The NGFW name.
+	Name string `pulumi:"name"`
 	// The region the NGFW is in.
 	Region string `pulumi:"region"`
 }
@@ -3923,8 +4919,12 @@ type GetNgfwsInstanceInput interface {
 }
 
 type GetNgfwsInstanceArgs struct {
+	// The account id.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The NGFW ID.
 	FirewallId pulumi.StringInput `pulumi:"firewallId"`
+	// The NGFW name.
+	Name pulumi.StringInput `pulumi:"name"`
 	// The region the NGFW is in.
 	Region pulumi.StringInput `pulumi:"region"`
 }
@@ -3980,9 +4980,19 @@ func (o GetNgfwsInstanceOutput) ToGetNgfwsInstanceOutputWithContext(ctx context.
 	return o
 }
 
+// The account id.
+func (o GetNgfwsInstanceOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwsInstance) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
 // The NGFW ID.
 func (o GetNgfwsInstanceOutput) FirewallId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNgfwsInstance) string { return v.FirewallId }).(pulumi.StringOutput)
+}
+
+// The NGFW name.
+func (o GetNgfwsInstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNgfwsInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The region the NGFW is in.
@@ -4541,8 +5551,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NgfwLogProfileLogDestinationArrayInput)(nil)).Elem(), NgfwLogProfileLogDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NgfwPrivateAccessInput)(nil)).Elem(), NgfwPrivateAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NgfwPrivateAccessArrayInput)(nil)).Elem(), NgfwPrivateAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwSecurityZoneInput)(nil)).Elem(), NgfwSecurityZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwSecurityZoneArrayInput)(nil)).Elem(), NgfwSecurityZoneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwSecurityZonePrefixInput)(nil)).Elem(), NgfwSecurityZonePrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwSecurityZonePrefixArrayInput)(nil)).Elem(), NgfwSecurityZonePrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwSecurityZonePrefixPrivatePrefixInput)(nil)).Elem(), NgfwSecurityZonePrefixPrivatePrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwSecurityZonePrefixPrivatePrefixArrayInput)(nil)).Elem(), NgfwSecurityZonePrefixPrivatePrefixArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NgfwStatusInput)(nil)).Elem(), NgfwStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NgfwStatusArrayInput)(nil)).Elem(), NgfwStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwStatusAttachmentInput)(nil)).Elem(), NgfwStatusAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NgfwStatusAttachmentArrayInput)(nil)).Elem(), NgfwStatusAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NgfwSubnetMappingInput)(nil)).Elem(), NgfwSubnetMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NgfwSubnetMappingArrayInput)(nil)).Elem(), NgfwSubnetMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NgfwUserIdInput)(nil)).Elem(), NgfwUserIdArgs{})
@@ -4575,8 +5593,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwLogProfileLogDestinationArrayInput)(nil)).Elem(), GetNgfwLogProfileLogDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwPrivateAccessInput)(nil)).Elem(), GetNgfwPrivateAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwPrivateAccessArrayInput)(nil)).Elem(), GetNgfwPrivateAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwSecurityZoneInput)(nil)).Elem(), GetNgfwSecurityZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwSecurityZoneArrayInput)(nil)).Elem(), GetNgfwSecurityZoneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwSecurityZonePrefixInput)(nil)).Elem(), GetNgfwSecurityZonePrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwSecurityZonePrefixArrayInput)(nil)).Elem(), GetNgfwSecurityZonePrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwSecurityZonePrefixPrivatePrefixInput)(nil)).Elem(), GetNgfwSecurityZonePrefixPrivatePrefixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwSecurityZonePrefixPrivatePrefixArrayInput)(nil)).Elem(), GetNgfwSecurityZonePrefixPrivatePrefixArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwStatusInput)(nil)).Elem(), GetNgfwStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwStatusArrayInput)(nil)).Elem(), GetNgfwStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwStatusAttachmentInput)(nil)).Elem(), GetNgfwStatusAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwStatusAttachmentArrayInput)(nil)).Elem(), GetNgfwStatusAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwSubnetMappingInput)(nil)).Elem(), GetNgfwSubnetMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwSubnetMappingArrayInput)(nil)).Elem(), GetNgfwSubnetMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNgfwUserIdInput)(nil)).Elem(), GetNgfwUserIdArgs{})
@@ -4609,8 +5635,16 @@ func init() {
 	pulumi.RegisterOutputType(NgfwLogProfileLogDestinationArrayOutput{})
 	pulumi.RegisterOutputType(NgfwPrivateAccessOutput{})
 	pulumi.RegisterOutputType(NgfwPrivateAccessArrayOutput{})
+	pulumi.RegisterOutputType(NgfwSecurityZoneOutput{})
+	pulumi.RegisterOutputType(NgfwSecurityZoneArrayOutput{})
+	pulumi.RegisterOutputType(NgfwSecurityZonePrefixOutput{})
+	pulumi.RegisterOutputType(NgfwSecurityZonePrefixArrayOutput{})
+	pulumi.RegisterOutputType(NgfwSecurityZonePrefixPrivatePrefixOutput{})
+	pulumi.RegisterOutputType(NgfwSecurityZonePrefixPrivatePrefixArrayOutput{})
 	pulumi.RegisterOutputType(NgfwStatusOutput{})
 	pulumi.RegisterOutputType(NgfwStatusArrayOutput{})
+	pulumi.RegisterOutputType(NgfwStatusAttachmentOutput{})
+	pulumi.RegisterOutputType(NgfwStatusAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(NgfwSubnetMappingOutput{})
 	pulumi.RegisterOutputType(NgfwSubnetMappingArrayOutput{})
 	pulumi.RegisterOutputType(NgfwUserIdOutput{})
@@ -4643,8 +5677,16 @@ func init() {
 	pulumi.RegisterOutputType(GetNgfwLogProfileLogDestinationArrayOutput{})
 	pulumi.RegisterOutputType(GetNgfwPrivateAccessOutput{})
 	pulumi.RegisterOutputType(GetNgfwPrivateAccessArrayOutput{})
+	pulumi.RegisterOutputType(GetNgfwSecurityZoneOutput{})
+	pulumi.RegisterOutputType(GetNgfwSecurityZoneArrayOutput{})
+	pulumi.RegisterOutputType(GetNgfwSecurityZonePrefixOutput{})
+	pulumi.RegisterOutputType(GetNgfwSecurityZonePrefixArrayOutput{})
+	pulumi.RegisterOutputType(GetNgfwSecurityZonePrefixPrivatePrefixOutput{})
+	pulumi.RegisterOutputType(GetNgfwSecurityZonePrefixPrivatePrefixArrayOutput{})
 	pulumi.RegisterOutputType(GetNgfwStatusOutput{})
 	pulumi.RegisterOutputType(GetNgfwStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetNgfwStatusAttachmentOutput{})
+	pulumi.RegisterOutputType(GetNgfwStatusAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(GetNgfwSubnetMappingOutput{})
 	pulumi.RegisterOutputType(GetNgfwSubnetMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetNgfwUserIdOutput{})

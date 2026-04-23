@@ -18,6 +18,95 @@ namespace Pulumi.CloudNgfwAws
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleVpc = new Aws.Index.Vpc("example", new()
+    ///     {
+    ///         CidrBlock = "172.16.0.0/16",
+    ///         Tags = 
+    ///         {
+    ///             { "name", "tf-example" },
+    ///         },
+    ///     });
+    /// 
+    ///     var subnet1 = new Aws.Index.Subnet("subnet1", new()
+    ///     {
+    ///         VpcId = myVpc.Id,
+    ///         CidrBlock = "172.16.10.0/24",
+    ///         AvailabilityZone = "us-west-2a",
+    ///         Tags = 
+    ///         {
+    ///             { "name", "tf-example" },
+    ///         },
+    ///     });
+    /// 
+    ///     var subnet2 = new Aws.Index.Subnet("subnet2", new()
+    ///     {
+    ///         VpcId = myVpc.Id,
+    ///         CidrBlock = "172.16.20.0/24",
+    ///         AvailabilityZone = "us-west-2b",
+    ///         Tags = 
+    ///         {
+    ///             { "name", "tf-example" },
+    ///         },
+    ///     });
+    /// 
+    ///     var x = new CloudNgfwAws.Index.Ngfw("x", new()
+    ///     {
+    ///         Name = "example-instance",
+    ///         VpcId = exampleVpc.Id,
+    ///         AccountId = "12345678",
+    ///         Description = "Example description",
+    ///         EndpointMode = "ServiceManaged",
+    ///         SubnetMappings = new[]
+    ///         {
+    ///             new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs
+    ///             {
+    ///                 SubnetId = subnet1.Id,
+    ///             },
+    ///             new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs
+    ///             {
+    ///                 SubnetId = subnet2.Id,
+    ///             },
+    ///         },
+    ///         Rulestack = "example-rulestack",
+    ///         Tags = 
+    ///         {
+    ///             { "Foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var example = new CloudNgfwAws.Index.NgfwLogProfile("example", new()
+    ///     {
+    ///         Ngfw = x.Name,
+    ///         AccountId = x.AccountId,
+    ///         LogDestinations = new[]
+    ///         {
+    ///             new CloudNgfwAws.Inputs.NgfwLogProfileLogDestinationArgs
+    ///             {
+    ///                 DestinationType = "S3",
+    ///                 Destination = "my-s3-bucket",
+    ///                 LogType = "TRAFFIC",
+    ///             },
+    ///             new CloudNgfwAws.Inputs.NgfwLogProfileLogDestinationArgs
+    ///             {
+    ///                 DestinationType = "CloudWatchLogs",
+    ///                 Destination = "panw-log-group",
+    ///                 LogType = "THREAT",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// import name is &lt;account_id&gt;:&lt;ngfw&gt;
@@ -57,7 +146,7 @@ namespace Pulumi.CloudNgfwAws
         /// The Firewall Id for the NGFW.
         /// </summary>
         [Output("firewallId")]
-        public Output<string> FirewallId { get; private set; } = null!;
+        public Output<string?> FirewallId { get; private set; } = null!;
 
         /// <summary>
         /// Log configuration details.
@@ -97,7 +186,7 @@ namespace Pulumi.CloudNgfwAws
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public NgfwLogProfile(string name, NgfwLogProfileArgs args, CustomResourceOptions? options = null)
+        public NgfwLogProfile(string name, NgfwLogProfileArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile", name, args ?? new NgfwLogProfileArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -169,8 +258,8 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// The Firewall Id for the NGFW.
         /// </summary>
-        [Input("firewallId", required: true)]
-        public Input<string> FirewallId { get; set; } = null!;
+        [Input("firewallId")]
+        public Input<string>? FirewallId { get; set; }
 
         /// <summary>
         /// Log configuration details.

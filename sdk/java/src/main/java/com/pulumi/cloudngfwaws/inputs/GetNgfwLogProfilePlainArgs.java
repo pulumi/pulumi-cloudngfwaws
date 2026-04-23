@@ -30,6 +30,21 @@ public final class GetNgfwLogProfilePlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
+     * The Firewall Id for the NGFW.
+     * 
+     */
+    @Import(name="firewallId")
+    private @Nullable String firewallId;
+
+    /**
+     * @return The Firewall Id for the NGFW.
+     * 
+     */
+    public Optional<String> firewallId() {
+        return Optional.ofNullable(this.firewallId);
+    }
+
+    /**
      * The name of the NGFW.
      * 
      */
@@ -48,6 +63,7 @@ public final class GetNgfwLogProfilePlainArgs extends com.pulumi.resources.Invok
 
     private GetNgfwLogProfilePlainArgs(GetNgfwLogProfilePlainArgs $) {
         this.accountId = $.accountId;
+        this.firewallId = $.firewallId;
         this.ngfw = $.ngfw;
     }
 
@@ -77,6 +93,17 @@ public final class GetNgfwLogProfilePlainArgs extends com.pulumi.resources.Invok
          */
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param firewallId The Firewall Id for the NGFW.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(@Nullable String firewallId) {
+            $.firewallId = firewallId;
             return this;
         }
 

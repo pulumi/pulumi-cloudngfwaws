@@ -4,9 +4,10 @@
 package com.pulumi.cloudngfwaws.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetNgfwPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,24 +15,56 @@ public final class GetNgfwPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetNgfwPlainArgs Empty = new GetNgfwPlainArgs();
 
     /**
+     * The Account Id.
+     * 
+     */
+    @Import(name="accountId")
+    private @Nullable String accountId;
+
+    /**
+     * @return The Account Id.
+     * 
+     */
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    /**
      * The Firewall ID.
      * 
      */
-    @Import(name="firewallId", required=true)
-    private String firewallId;
+    @Import(name="firewallId")
+    private @Nullable String firewallId;
 
     /**
      * @return The Firewall ID.
      * 
      */
-    public String firewallId() {
-        return this.firewallId;
+    public Optional<String> firewallId() {
+        return Optional.ofNullable(this.firewallId);
+    }
+
+    /**
+     * The NGFW name.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable String name;
+
+    /**
+     * @return The NGFW name.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private GetNgfwPlainArgs() {}
 
     private GetNgfwPlainArgs(GetNgfwPlainArgs $) {
+        this.accountId = $.accountId;
         this.firewallId = $.firewallId;
+        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -53,20 +86,39 @@ public final class GetNgfwPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param accountId The Account Id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(@Nullable String accountId) {
+            $.accountId = accountId;
+            return this;
+        }
+
+        /**
          * @param firewallId The Firewall ID.
          * 
          * @return builder
          * 
          */
-        public Builder firewallId(String firewallId) {
+        public Builder firewallId(@Nullable String firewallId) {
             $.firewallId = firewallId;
             return this;
         }
 
+        /**
+         * @param name The NGFW name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable String name) {
+            $.name = name;
+            return this;
+        }
+
         public GetNgfwPlainArgs build() {
-            if ($.firewallId == null) {
-                throw new MissingRequiredPropertyException("GetNgfwPlainArgs", "firewallId");
-            }
             return $;
         }
     }

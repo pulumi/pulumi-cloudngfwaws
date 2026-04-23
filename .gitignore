@@ -20,6 +20,8 @@ yarn.lock
 ci-scripts
 provider/**/schema.go
 provider/**/schema-embed.json
+provider/pulumi-resource-cloudngfwaws
+provider/pulumi-tfgen-cloudngfwaws
 **/version.txt
 **/nuget
 **/dist

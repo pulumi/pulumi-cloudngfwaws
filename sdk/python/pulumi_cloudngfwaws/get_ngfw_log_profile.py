@@ -96,7 +96,7 @@ class GetNgfwLogProfileResult:
 
     @_builtins.property
     @pulumi.getter(name="firewallId")
-    def firewall_id(self) -> _builtins.str:
+    def firewall_id(self) -> Optional[_builtins.str]:
         """
         The Firewall Id for the NGFW.
         """
@@ -171,6 +171,7 @@ class AwaitableGetNgfwLogProfileResult(GetNgfwLogProfileResult):
 
 
 def get_ngfw_log_profile(account_id: Optional[_builtins.str] = None,
+                         firewall_id: Optional[_builtins.str] = None,
                          ngfw: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNgfwLogProfileResult:
     """
@@ -192,10 +193,12 @@ def get_ngfw_log_profile(account_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str account_id: The unique ID of the account.
+    :param _builtins.str firewall_id: The Firewall Id for the NGFW.
     :param _builtins.str ngfw: The name of the NGFW.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['firewallId'] = firewall_id
     __args__['ngfw'] = ngfw
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile', __args__, opts=opts, typ=GetNgfwLogProfileResult).value
@@ -213,6 +216,7 @@ def get_ngfw_log_profile(account_id: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         update_token=pulumi.get(__ret__, 'update_token'))
 def get_ngfw_log_profile_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                firewall_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 ngfw: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNgfwLogProfileResult]:
     """
@@ -234,10 +238,12 @@ def get_ngfw_log_profile_output(account_id: Optional[pulumi.Input[Optional[_buil
 
 
     :param _builtins.str account_id: The unique ID of the account.
+    :param _builtins.str firewall_id: The Firewall Id for the NGFW.
     :param _builtins.str ngfw: The name of the NGFW.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['firewallId'] = firewall_id
     __args__['ngfw'] = ngfw
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile', __args__, opts=opts, typ=GetNgfwLogProfileResult)

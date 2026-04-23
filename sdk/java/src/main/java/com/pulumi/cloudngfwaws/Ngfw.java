@@ -9,6 +9,7 @@ import com.pulumi.cloudngfwaws.inputs.NgfwState;
 import com.pulumi.cloudngfwaws.outputs.NgfwEgressNat;
 import com.pulumi.cloudngfwaws.outputs.NgfwEndpoint;
 import com.pulumi.cloudngfwaws.outputs.NgfwPrivateAccess;
+import com.pulumi.cloudngfwaws.outputs.NgfwSecurityZone;
 import com.pulumi.cloudngfwaws.outputs.NgfwStatus;
 import com.pulumi.cloudngfwaws.outputs.NgfwSubnetMapping;
 import com.pulumi.cloudngfwaws.outputs.NgfwUserId;
@@ -32,7 +33,27 @@ import javax.annotation.Nullable;
  * 
  * * `Firewall`
  * 
- * ## Example Usage
+ * ## Configuration Guide
+ * 
+ * ***
+ * 
+ * ### V1 Schema — Existing Deployments Only
+ * 
+ * &gt; **Important:** V1 schema is for existing customers who already have firewalls deployed with Terraform.
+ * New firewalls must be created using the V2 schema.
+ * 
+ * ***
+ * 
+ * #### 1. Managing an Existing Firewall (no configuration changes)
+ * 
+ * Use the V1 schema as-is. No steps required beyond ensuring your existing state is in sync.
+ * 
+ * **Steps:**
+ * 
+ * 1. Verify there is no unintended drift:
+ *    2. If the plan is clean, no action needed. If drift is detected, review and apply:
+ * 
+ * **Full example — existing V1 firewall:**
  * 
  * <pre>
  * {@code
@@ -45,10 +66,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudngfwaws.CommitRulestackArgs;
  * import com.pulumi.cloudngfwaws.Ngfw;
  * import com.pulumi.cloudngfwaws.NgfwArgs;
- * import com.pulumi.aws.Vpc;
- * import com.pulumi.aws.VpcArgs;
- * import com.pulumi.aws.Subnet;
- * import com.pulumi.aws.SubnetArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwSubnetMappingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -68,35 +86,322 @@ import javax.annotation.Nullable;
  * 
  *         var example = new Ngfw("example", NgfwArgs.builder()
  *             .name("example-instance")
+ *             .vpcId(exampleAwsVpc.id())
+ *             .accountId("111111111111")
  *             .description("Example description")
- *             .azLists("use1-az1")
+ *             .endpointMode("ServiceManaged")
+ *             .subnetMappings(            
+ *                 NgfwSubnetMappingArgs.builder()
+ *                     .subnetId(subnet1.id())
+ *                     .build(),
+ *                 NgfwSubnetMappingArgs.builder()
+ *                     .subnetId(subnet2.id())
+ *                     .build())
  *             .rulestack(rs.rulestack())
  *             .tags(Map.of("Foo", "bar"))
- *             .build());
- * 
- *         var exampleVpc = new Vpc("exampleVpc", VpcArgs.builder()
- *             .cidrBlock("172.16.0.0/16")
- *             .tags(Map.of("name", "tf-example"))
- *             .build());
- * 
- *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
- *             .vpcId(myVpc.id())
- *             .cidrBlock("172.16.10.0/24")
- *             .availabilityZone("us-west-2a")
- *             .tags(Map.of("name", "tf-example"))
- *             .build());
- * 
- *         var subnet2 = new Subnet("subnet2", SubnetArgs.builder()
- *             .vpcId(myVpc.id())
- *             .cidrBlock("172.16.20.0/24")
- *             .availabilityZone("us-west-2b")
- *             .tags(Map.of("name", "tf-example"))
  *             .build());
  * 
  *     }
  * }
  * }
  * </pre>
+ * 
+ * ***
+ * 
+ * #### 2. Configuring Egress NAT on an Existing Firewall (V1)
+ * 
+ * Egress NAT can be added to an existing V1 firewall without recreating the resource.
+ * 
+ * &gt; `ipPoolType` accepts `AWSService` or `BYOIP`. Use `BYOIP` together with `ipamPoolId`
+ * if bringing your own IP pool.
+ * 
+ * **Steps:**
+ * 
+ * 1. Add the `egressNat` block to your existing resource.
+ * 
+ * **Full example — existing V1 firewall with Egress NAT enabled:**
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudngfwaws.Ngfw;
+ * import com.pulumi.cloudngfwaws.NgfwArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwSubnetMappingArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwEgressNatArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Ngfw("example", NgfwArgs.builder()
+ *             .name("example-instance")
+ *             .vpcId("vpc-0a1b2c3d4e5f00001")
+ *             .accountId("111111111111")
+ *             .description("Example description")
+ *             .endpointMode("CustomerManaged")
+ *             .subnetMappings(            
+ *                 NgfwSubnetMappingArgs.builder()
+ *                     .availabilityZone("us-east-1a")
+ *                     .build(),
+ *                 NgfwSubnetMappingArgs.builder()
+ *                     .availabilityZone("us-east-1c")
+ *                     .build())
+ *             .rulestack("my-rulestack")
+ *             .egressNats(NgfwEgressNatArgs.builder()
+ *                 .enabled(true)
+ *                 .settings(NgfwEgressNatSettingArgs.builder()
+ *                     .ipPoolType("AWSService")
+ *                     .build())
+ *                 .build())
+ *             .tags(Map.of("Foo", "bar"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * **To disable Egress NAT:** set `enabled = false` and re-apply.
+ * 
+ * ***
+ * 
+ * #### 3. Configuring Security Zones on an Existing Firewall (V1)
+ * 
+ * Security zones let you enable or disable Egress NAT per endpoint and add or remove private CIDR prefixes.
+ * 
+ * &gt; **Prerequisite:** Endpoints must be successfully created and in `ACCEPTED` state before
+ * security zones can be configured. Check `status.attachment[*].status` in Terraform state
+ * or the AWS console before proceeding.
+ * 
+ * **Steps:**
+ * 
+ * 1. Confirm endpoint status is `ACCEPTED`:
+ * 
+ * **To remove private prefixes:** remove the CIDR entries from `cidrs` and re-apply.
+ * **To disable Egress NAT for a specific zone:** set `egressNatEnabled = false` and re-apply.
+ * 
+ * ***
+ * 
+ * ### V2 Schema — New Firewalls
+ * 
+ * &gt; **Important:** New firewalls can only be created using the V2 schema. Use `azList`
+ * instead of `subnetMapping`, and `endpoints` instead of `endpointMode`/`subnetMapping`.
+ * 
+ * ***
+ * 
+ * #### 1. Creating a New Firewall (V2)
+ * 
+ * Firewall creation uses `azList` to specify availability zones.
+ * **Do not include `endpoints` during creation** — they must be added in a separate update after the firewall is running.
+ * 
+ * **Steps:**
+ * 
+ * 1. Define the resource with `azList` and no `endpoints` block.
+ * 2. Proceed to **Step 2** once the firewall reaches `RUNNING` state.
+ * 
+ * **Full example — new V2 firewall (creation only):**
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudngfwaws.Ngfw;
+ * import com.pulumi.cloudngfwaws.NgfwArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Ngfw("example", NgfwArgs.builder()
+ *             .name("my-firewall")
+ *             .description("My new firewall")
+ *             .azLists(            
+ *                 "use1-az1",
+ *                 "use1-az4")
+ *             .allowlistAccounts("111111111111")
+ *             .tags(Map.of("Owner", "my-team"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ***
+ * 
+ * #### 2. Adding Endpoints to a V2 Firewall
+ * 
+ * Endpoints connect the firewall to customer VPCs. They must be added in a separate
+ * a separate update after the firewall is running.
+ * 
+ * **Steps:**
+ * 
+ * 1. Confirm the firewall status is `RUNNING`:
+ * 
+ * **Full example — V2 firewall with endpoints added:**
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudngfwaws.Ngfw;
+ * import com.pulumi.cloudngfwaws.NgfwArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwEndpointArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Ngfw("example", NgfwArgs.builder()
+ *             .name("my-firewall")
+ *             .description("My new firewall")
+ *             .azLists(            
+ *                 "use1-az1",
+ *                 "use1-az4")
+ *             .allowlistAccounts("111111111111")
+ *             .endpoints(            
+ *                 NgfwEndpointArgs.builder()
+ *                     .accountId("111111111111")
+ *                     .vpcId("vpc-0a1b2c3d4e5f00002")
+ *                     .subnetId("subnet-0a1b2c3d4e5f00001")
+ *                     .mode("ServiceManaged")
+ *                     .build(),
+ *                 NgfwEndpointArgs.builder()
+ *                     .accountId("111111111111")
+ *                     .vpcId("vpc-0a1b2c3d4e5f00003")
+ *                     .subnetId("subnet-0a1b2c3d4e5f00002")
+ *                     .mode("ServiceManaged")
+ *                     .build())
+ *             .tags(Map.of("Owner", "my-team"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ***
+ * 
+ * #### 3. Configuring Egress NAT on a V2 Firewall
+ * 
+ * Egress NAT can be enabled at the firewall level once at least one endpoint is accepted.
+ * 
+ * &gt; **Prerequisite:** At least one endpoint must be in `ACCEPTED` state.
+ * 
+ * **Steps:**
+ * 
+ * 1. Add the `egressNat` block to the resource.
+ * 
+ * **Full example — V2 firewall with Egress NAT enabled:**
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudngfwaws.Ngfw;
+ * import com.pulumi.cloudngfwaws.NgfwArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwEndpointArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwEgressNatArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Ngfw("example", NgfwArgs.builder()
+ *             .name("my-firewall")
+ *             .description("My new firewall")
+ *             .azLists(            
+ *                 "use1-az1",
+ *                 "use1-az4")
+ *             .allowlistAccounts("111111111111")
+ *             .endpoints(            
+ *                 NgfwEndpointArgs.builder()
+ *                     .accountId("111111111111")
+ *                     .vpcId("vpc-0a1b2c3d4e5f00002")
+ *                     .subnetId("subnet-0a1b2c3d4e5f00001")
+ *                     .mode("ServiceManaged")
+ *                     .build(),
+ *                 NgfwEndpointArgs.builder()
+ *                     .accountId("111111111111")
+ *                     .vpcId("vpc-0a1b2c3d4e5f00003")
+ *                     .subnetId("subnet-0a1b2c3d4e5f00002")
+ *                     .mode("ServiceManaged")
+ *                     .build())
+ *             .egressNats(NgfwEgressNatArgs.builder()
+ *                 .enabled(true)
+ *                 .settings(NgfwEgressNatSettingArgs.builder()
+ *                     .ipPoolType("AWSService")
+ *                     .build())
+ *                 .build())
+ *             .tags(Map.of("Owner", "my-team"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * **To disable Egress NAT:** set `enabled = false` and re-apply.
+ * 
+ * ***
+ * 
+ * #### 4. Configuring Private Prefixes and Per-Endpoint Egress NAT (V2)
+ * 
+ * Once an endpoint is accepted, you can enable or disable Egress NAT and configure private
+ * CIDR prefixes on a per-endpoint basis within the `endpoints` block.
+ * 
+ * &gt; **Prerequisite:** The endpoint must be in `ACCEPTED` state. The `endpointId`
+ * is a read-only computed value — retrieve it from Terraform state after apply:
+ * 
+ * **To remove private prefixes:** remove the CIDR entries from `cidrs` and re-apply.
+ * **To disable per-endpoint Egress NAT:** set `egressNatEnabled = false` and re-apply.
+ * 
+ * ***
  * 
  * ## Import
  * 
@@ -110,14 +415,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudngfwaws:index/ngfw:Ngfw")
 public class Ngfw extends com.pulumi.resources.CustomResource {
     /**
-     * The description.
+     * The Account Id.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The description.
+     * @return The Account Id.
      * 
      */
     public Output<Optional<String>> accountId() {
@@ -170,14 +475,14 @@ public class Ngfw extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="azLists", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> azLists;
+    private Output</* @Nullable */ List<String>> azLists;
 
     /**
      * @return The list of availability zone IDs for this NGFW.
      * 
      */
-    public Output<List<String>> azLists() {
-        return this.azLists;
+    public Output<Optional<List<String>>> azLists() {
+        return Codegen.optional(this.azLists);
     }
     /**
      * Enables or disables change protection for the NGFW.
@@ -365,6 +670,12 @@ public class Ngfw extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> rulestack() {
         return Codegen.optional(this.rulestack);
     }
+    @Export(name="securityZones", refs={List.class,NgfwSecurityZone.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<NgfwSecurityZone>> securityZones;
+
+    public Output<Optional<List<NgfwSecurityZone>>> securityZones() {
+        return Codegen.optional(this.securityZones);
+    }
     @Export(name="statuses", refs={List.class,NgfwStatus.class}, tree="[0,1]")
     private Output<List<NgfwStatus>> statuses;
 
@@ -398,6 +709,20 @@ public class Ngfw extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> tags() {
         return this.tags;
+    }
+    /**
+     * Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
+     * 
+     */
+    @Export(name="tier", refs={String.class}, tree="[0]")
+    private Output<String> tier;
+
+    /**
+     * @return Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
+     * 
+     */
+    public Output<String> tier() {
+        return this.tier;
     }
     /**
      * The update token.
@@ -446,7 +771,7 @@ public class Ngfw extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Ngfw(java.lang.String name, NgfwArgs args) {
+    public Ngfw(java.lang.String name, @Nullable NgfwArgs args) {
         this(name, args, null);
     }
     /**
@@ -455,7 +780,7 @@ public class Ngfw extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Ngfw(java.lang.String name, NgfwArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Ngfw(java.lang.String name, @Nullable NgfwArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudngfwaws:index/ngfw:Ngfw", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -463,7 +788,7 @@ public class Ngfw extends com.pulumi.resources.CustomResource {
         super("cloudngfwaws:index/ngfw:Ngfw", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static NgfwArgs makeArgs(NgfwArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static NgfwArgs makeArgs(@Nullable NgfwArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

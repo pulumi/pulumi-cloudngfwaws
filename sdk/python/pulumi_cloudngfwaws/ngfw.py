@@ -21,37 +21,41 @@ __all__ = ['NgfwArgs', 'Ngfw']
 @pulumi.input_type
 class NgfwArgs:
     def __init__(__self__, *,
-                 az_lists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  allowlist_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_id_version: Optional[pulumi.Input[_builtins.str]] = None,
                  automatic_upgrade_app_id_version: Optional[pulumi.Input[_builtins.bool]] = None,
+                 az_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  change_protections: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  egress_nats: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEgressNatArgs']]]] = None,
                  endpoint_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointArgs']]]] = None,
+                 firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
                  global_rulestack: Optional[pulumi.Input[_builtins.str]] = None,
                  link_id: Optional[pulumi.Input[_builtins.str]] = None,
                  multi_vpc: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  private_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwPrivateAccessArgs']]]] = None,
                  rulestack: Optional[pulumi.Input[_builtins.str]] = None,
+                 security_zones: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]] = None,
                  subnet_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tier: Optional[pulumi.Input[_builtins.str]] = None,
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwUserIdArgs']]]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Ngfw resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] az_lists: The list of availability zone IDs for this NGFW.
-        :param pulumi.Input[_builtins.str] account_id: The description.
+        :param pulumi.Input[_builtins.str] account_id: The Account Id.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowlist_accounts: The list of allowed accounts for this NGFW.
         :param pulumi.Input[_builtins.str] app_id_version: App-ID version number.
         :param pulumi.Input[_builtins.bool] automatic_upgrade_app_id_version: Automatic App-ID upgrade version number. Defaults to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] az_lists: The list of availability zone IDs for this NGFW.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] change_protections: Enables or disables change protection for the NGFW.
         :param pulumi.Input[_builtins.str] description: The NGFW description.
         :param pulumi.Input[_builtins.str] endpoint_mode: Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
+        :param pulumi.Input[_builtins.str] firewall_id: The Firewall ID.
         :param pulumi.Input[_builtins.str] global_rulestack: The global rulestack for this NGFW.
         :param pulumi.Input[_builtins.str] link_id: The link ID.
         :param pulumi.Input[_builtins.bool] multi_vpc: Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
@@ -59,9 +63,9 @@ class NgfwArgs:
         :param pulumi.Input[_builtins.str] rulestack: The rulestack for this NGFW.
         :param pulumi.Input[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]] subnet_mappings: Subnet mappings.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
+        :param pulumi.Input[_builtins.str] tier: Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID for the NGFW.
         """
-        pulumi.set(__self__, "az_lists", az_lists)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if allowlist_accounts is not None:
@@ -70,6 +74,8 @@ class NgfwArgs:
             pulumi.set(__self__, "app_id_version", app_id_version)
         if automatic_upgrade_app_id_version is not None:
             pulumi.set(__self__, "automatic_upgrade_app_id_version", automatic_upgrade_app_id_version)
+        if az_lists is not None:
+            pulumi.set(__self__, "az_lists", az_lists)
         if change_protections is not None:
             pulumi.set(__self__, "change_protections", change_protections)
         if description is not None:
@@ -80,6 +86,8 @@ class NgfwArgs:
             pulumi.set(__self__, "endpoint_mode", endpoint_mode)
         if endpoints is not None:
             pulumi.set(__self__, "endpoints", endpoints)
+        if firewall_id is not None:
+            pulumi.set(__self__, "firewall_id", firewall_id)
         if global_rulestack is not None:
             pulumi.set(__self__, "global_rulestack", global_rulestack)
         if link_id is not None:
@@ -92,32 +100,24 @@ class NgfwArgs:
             pulumi.set(__self__, "private_accesses", private_accesses)
         if rulestack is not None:
             pulumi.set(__self__, "rulestack", rulestack)
+        if security_zones is not None:
+            pulumi.set(__self__, "security_zones", security_zones)
         if subnet_mappings is not None:
             pulumi.set(__self__, "subnet_mappings", subnet_mappings)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tier is not None:
+            pulumi.set(__self__, "tier", tier)
         if user_ids is not None:
             pulumi.set(__self__, "user_ids", user_ids)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
 
     @_builtins.property
-    @pulumi.getter(name="azLists")
-    def az_lists(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        The list of availability zone IDs for this NGFW.
-        """
-        return pulumi.get(self, "az_lists")
-
-    @az_lists.setter
-    def az_lists(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        pulumi.set(self, "az_lists", value)
-
-    @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description.
+        The Account Id.
         """
         return pulumi.get(self, "account_id")
 
@@ -160,6 +160,18 @@ class NgfwArgs:
     @automatic_upgrade_app_id_version.setter
     def automatic_upgrade_app_id_version(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "automatic_upgrade_app_id_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="azLists")
+    def az_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The list of availability zone IDs for this NGFW.
+        """
+        return pulumi.get(self, "az_lists")
+
+    @az_lists.setter
+    def az_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "az_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="changeProtections")
@@ -214,6 +226,18 @@ class NgfwArgs:
     @endpoints.setter
     def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointArgs']]]]):
         pulumi.set(self, "endpoints", value)
+
+    @_builtins.property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Firewall ID.
+        """
+        return pulumi.get(self, "firewall_id")
+
+    @firewall_id.setter
+    def firewall_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "firewall_id", value)
 
     @_builtins.property
     @pulumi.getter(name="globalRulestack")
@@ -285,6 +309,15 @@ class NgfwArgs:
         pulumi.set(self, "rulestack", value)
 
     @_builtins.property
+    @pulumi.getter(name="securityZones")
+    def security_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]]:
+        return pulumi.get(self, "security_zones")
+
+    @security_zones.setter
+    def security_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]]):
+        pulumi.set(self, "security_zones", value)
+
+    @_builtins.property
     @pulumi.getter(name="subnetMappings")
     def subnet_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]]:
         """
@@ -307,6 +340,18 @@ class NgfwArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tier", value)
 
     @_builtins.property
     @pulumi.getter(name="userIds")
@@ -353,16 +398,18 @@ class _NgfwState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  private_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwPrivateAccessArgs']]]] = None,
                  rulestack: Optional[pulumi.Input[_builtins.str]] = None,
+                 security_zones: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwStatusArgs']]]] = None,
                  subnet_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tier: Optional[pulumi.Input[_builtins.str]] = None,
                  update_token: Optional[pulumi.Input[_builtins.str]] = None,
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwUserIdArgs']]]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ngfw resources.
 
-        :param pulumi.Input[_builtins.str] account_id: The description.
+        :param pulumi.Input[_builtins.str] account_id: The Account Id.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowlist_accounts: The list of allowed accounts for this NGFW.
         :param pulumi.Input[_builtins.str] app_id_version: App-ID version number.
         :param pulumi.Input[_builtins.bool] automatic_upgrade_app_id_version: Automatic App-ID upgrade version number. Defaults to `true`.
@@ -381,6 +428,7 @@ class _NgfwState:
         :param pulumi.Input[_builtins.str] rulestack: The rulestack for this NGFW.
         :param pulumi.Input[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]] subnet_mappings: Subnet mappings.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
+        :param pulumi.Input[_builtins.str] tier: Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
         :param pulumi.Input[_builtins.str] update_token: The update token.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID for the NGFW.
         """
@@ -424,12 +472,16 @@ class _NgfwState:
             pulumi.set(__self__, "private_accesses", private_accesses)
         if rulestack is not None:
             pulumi.set(__self__, "rulestack", rulestack)
+        if security_zones is not None:
+            pulumi.set(__self__, "security_zones", security_zones)
         if statuses is not None:
             pulumi.set(__self__, "statuses", statuses)
         if subnet_mappings is not None:
             pulumi.set(__self__, "subnet_mappings", subnet_mappings)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tier is not None:
+            pulumi.set(__self__, "tier", tier)
         if update_token is not None:
             pulumi.set(__self__, "update_token", update_token)
         if user_ids is not None:
@@ -441,7 +493,7 @@ class _NgfwState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description.
+        The Account Id.
         """
         return pulumi.get(self, "account_id")
 
@@ -669,6 +721,15 @@ class _NgfwState:
         pulumi.set(self, "rulestack", value)
 
     @_builtins.property
+    @pulumi.getter(name="securityZones")
+    def security_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]]:
+        return pulumi.get(self, "security_zones")
+
+    @security_zones.setter
+    def security_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]]):
+        pulumi.set(self, "security_zones", value)
+
+    @_builtins.property
     @pulumi.getter
     def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwStatusArgs']]]]:
         return pulumi.get(self, "statuses")
@@ -700,6 +761,18 @@ class _NgfwState:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "tier", value)
 
     @_builtins.property
     @pulumi.getter(name="updateToken")
@@ -751,14 +824,17 @@ class Ngfw(pulumi.CustomResource):
                  egress_nats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwEgressNatArgs', 'NgfwEgressNatArgsDict']]]]] = None,
                  endpoint_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwEndpointArgs', 'NgfwEndpointArgsDict']]]]] = None,
+                 firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
                  global_rulestack: Optional[pulumi.Input[_builtins.str]] = None,
                  link_id: Optional[pulumi.Input[_builtins.str]] = None,
                  multi_vpc: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  private_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict']]]]] = None,
                  rulestack: Optional[pulumi.Input[_builtins.str]] = None,
+                 security_zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict']]]]] = None,
                  subnet_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tier: Optional[pulumi.Input[_builtins.str]] = None,
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict']]]]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -771,42 +847,266 @@ class Ngfw(pulumi.CustomResource):
 
         * `Firewall`
 
-        ## Example Usage
+        ## Configuration Guide
+
+        ***
+
+        ### V1 Schema — Existing Deployments Only
+
+        > **Important:** V1 schema is for existing customers who already have firewalls deployed with Terraform.
+        New firewalls must be created using the V2 schema.
+
+        ***
+
+        #### 1. Managing an Existing Firewall (no configuration changes)
+
+        Use the V1 schema as-is. No steps required beyond ensuring your existing state is in sync.
+
+        **Steps:**
+
+        1. Verify there is no unintended drift:
+           2. If the plan is clean, no action needed. If drift is detected, review and apply:
+
+        **Full example — existing V1 firewall:**
 
         ```python
         import pulumi
-        import pulumi_aws as aws
         import pulumi_cloudngfwaws as cloudngfwaws
 
         rs = cloudngfwaws.CommitRulestack("rs", rulestack="my-rulestack")
         example = cloudngfwaws.Ngfw("example",
             name="example-instance",
+            vpc_id=example_aws_vpc["id"],
+            account_id="111111111111",
             description="Example description",
-            az_lists=["use1-az1"],
+            endpoint_mode="ServiceManaged",
+            subnet_mappings=[
+                {
+                    "subnet_id": subnet1["id"],
+                },
+                {
+                    "subnet_id": subnet2["id"],
+                },
+            ],
             rulestack=rs.rulestack,
             tags={
                 "Foo": "bar",
             })
-        example_vpc = aws.Vpc("example",
-            cidr_block=172.16.0.0/16,
+        ```
+
+        ***
+
+        #### 2. Configuring Egress NAT on an Existing Firewall (V1)
+
+        Egress NAT can be added to an existing V1 firewall without recreating the resource.
+
+        > `ip_pool_type` accepts `AWSService` or `BYOIP`. Use `BYOIP` together with `ipam_pool_id`
+        if bringing your own IP pool.
+
+        **Steps:**
+
+        1. Add the `egress_nat` block to your existing resource.
+
+        **Full example — existing V1 firewall with Egress NAT enabled:**
+
+        ```python
+        import pulumi
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example = cloudngfwaws.Ngfw("example",
+            name="example-instance",
+            vpc_id="vpc-0a1b2c3d4e5f00001",
+            account_id="111111111111",
+            description="Example description",
+            endpoint_mode="CustomerManaged",
+            subnet_mappings=[
+                {
+                    "availability_zone": "us-east-1a",
+                },
+                {
+                    "availability_zone": "us-east-1c",
+                },
+            ],
+            rulestack="my-rulestack",
+            egress_nats=[{
+                "enabled": True,
+                "settings": [{
+                    "ip_pool_type": "AWSService",
+                }],
+            }],
             tags={
-                name: tf-example,
-            })
-        subnet1 = aws.Subnet("subnet1",
-            vpc_id=my_vpc.id,
-            cidr_block=172.16.10.0/24,
-            availability_zone=us-west-2a,
-            tags={
-                name: tf-example,
-            })
-        subnet2 = aws.Subnet("subnet2",
-            vpc_id=my_vpc.id,
-            cidr_block=172.16.20.0/24,
-            availability_zone=us-west-2b,
-            tags={
-                name: tf-example,
+                "Foo": "bar",
             })
         ```
+
+        **To disable Egress NAT:** set `enabled = false` and re-apply.
+
+        ***
+
+        #### 3. Configuring Security Zones on an Existing Firewall (V1)
+
+        Security zones let you enable or disable Egress NAT per endpoint and add or remove private CIDR prefixes.
+
+        > **Prerequisite:** Endpoints must be successfully created and in `ACCEPTED` state before
+        security zones can be configured. Check `status.attachment[*].status` in Terraform state
+        or the AWS console before proceeding.
+
+        **Steps:**
+
+        1. Confirm endpoint status is `ACCEPTED`:
+
+        **To remove private prefixes:** remove the CIDR entries from `cidrs` and re-apply.
+        **To disable Egress NAT for a specific zone:** set `egress_nat_enabled = false` and re-apply.
+
+        ***
+
+        ### V2 Schema — New Firewalls
+
+        > **Important:** New firewalls can only be created using the V2 schema. Use `az_list`
+        instead of `subnet_mapping`, and `endpoints` instead of `endpoint_mode`/`subnet_mapping`.
+
+        ***
+
+        #### 1. Creating a New Firewall (V2)
+
+        Firewall creation uses `az_list` to specify availability zones.
+        **Do not include `endpoints` during creation** — they must be added in a separate update after the firewall is running.
+
+        **Steps:**
+
+        1. Define the resource with `az_list` and no `endpoints` block.
+        2. Proceed to **Step 2** once the firewall reaches `RUNNING` state.
+
+        **Full example — new V2 firewall (creation only):**
+
+        ```python
+        import pulumi
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example = cloudngfwaws.Ngfw("example",
+            name="my-firewall",
+            description="My new firewall",
+            az_lists=[
+                "use1-az1",
+                "use1-az4",
+            ],
+            allowlist_accounts=["111111111111"],
+            tags={
+                "Owner": "my-team",
+            })
+        ```
+
+        ***
+
+        #### 2. Adding Endpoints to a V2 Firewall
+
+        Endpoints connect the firewall to customer VPCs. They must be added in a separate
+        a separate update after the firewall is running.
+
+        **Steps:**
+
+        1. Confirm the firewall status is `RUNNING`:
+
+        **Full example — V2 firewall with endpoints added:**
+
+        ```python
+        import pulumi
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example = cloudngfwaws.Ngfw("example",
+            name="my-firewall",
+            description="My new firewall",
+            az_lists=[
+                "use1-az1",
+                "use1-az4",
+            ],
+            allowlist_accounts=["111111111111"],
+            endpoints=[
+                {
+                    "account_id": "111111111111",
+                    "vpc_id": "vpc-0a1b2c3d4e5f00002",
+                    "subnet_id": "subnet-0a1b2c3d4e5f00001",
+                    "mode": "ServiceManaged",
+                },
+                {
+                    "account_id": "111111111111",
+                    "vpc_id": "vpc-0a1b2c3d4e5f00003",
+                    "subnet_id": "subnet-0a1b2c3d4e5f00002",
+                    "mode": "ServiceManaged",
+                },
+            ],
+            tags={
+                "Owner": "my-team",
+            })
+        ```
+
+        ***
+
+        #### 3. Configuring Egress NAT on a V2 Firewall
+
+        Egress NAT can be enabled at the firewall level once at least one endpoint is accepted.
+
+        > **Prerequisite:** At least one endpoint must be in `ACCEPTED` state.
+
+        **Steps:**
+
+        1. Add the `egress_nat` block to the resource.
+
+        **Full example — V2 firewall with Egress NAT enabled:**
+
+        ```python
+        import pulumi
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example = cloudngfwaws.Ngfw("example",
+            name="my-firewall",
+            description="My new firewall",
+            az_lists=[
+                "use1-az1",
+                "use1-az4",
+            ],
+            allowlist_accounts=["111111111111"],
+            endpoints=[
+                {
+                    "account_id": "111111111111",
+                    "vpc_id": "vpc-0a1b2c3d4e5f00002",
+                    "subnet_id": "subnet-0a1b2c3d4e5f00001",
+                    "mode": "ServiceManaged",
+                },
+                {
+                    "account_id": "111111111111",
+                    "vpc_id": "vpc-0a1b2c3d4e5f00003",
+                    "subnet_id": "subnet-0a1b2c3d4e5f00002",
+                    "mode": "ServiceManaged",
+                },
+            ],
+            egress_nats=[{
+                "enabled": True,
+                "settings": [{
+                    "ip_pool_type": "AWSService",
+                }],
+            }],
+            tags={
+                "Owner": "my-team",
+            })
+        ```
+
+        **To disable Egress NAT:** set `enabled = false` and re-apply.
+
+        ***
+
+        #### 4. Configuring Private Prefixes and Per-Endpoint Egress NAT (V2)
+
+        Once an endpoint is accepted, you can enable or disable Egress NAT and configure private
+        CIDR prefixes on a per-endpoint basis within the `endpoints` block.
+
+        > **Prerequisite:** The endpoint must be in `ACCEPTED` state. The `endpoint_id`
+        is a read-only computed value — retrieve it from Terraform state after apply:
+
+        **To remove private prefixes:** remove the CIDR entries from `cidrs` and re-apply.
+        **To disable per-endpoint Egress NAT:** set `egress_nat_enabled = false` and re-apply.
+
+        ***
 
         ## Import
 
@@ -819,7 +1119,7 @@ class Ngfw(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: The description.
+        :param pulumi.Input[_builtins.str] account_id: The Account Id.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowlist_accounts: The list of allowed accounts for this NGFW.
         :param pulumi.Input[_builtins.str] app_id_version: App-ID version number.
         :param pulumi.Input[_builtins.bool] automatic_upgrade_app_id_version: Automatic App-ID upgrade version number. Defaults to `true`.
@@ -827,6 +1127,7 @@ class Ngfw(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] change_protections: Enables or disables change protection for the NGFW.
         :param pulumi.Input[_builtins.str] description: The NGFW description.
         :param pulumi.Input[_builtins.str] endpoint_mode: Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
+        :param pulumi.Input[_builtins.str] firewall_id: The Firewall ID.
         :param pulumi.Input[_builtins.str] global_rulestack: The global rulestack for this NGFW.
         :param pulumi.Input[_builtins.str] link_id: The link ID.
         :param pulumi.Input[_builtins.bool] multi_vpc: Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
@@ -834,13 +1135,14 @@ class Ngfw(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rulestack: The rulestack for this NGFW.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]] subnet_mappings: Subnet mappings.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
+        :param pulumi.Input[_builtins.str] tier: Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID for the NGFW.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NgfwArgs,
+                 args: Optional[NgfwArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for NGFW manipulation.
@@ -851,42 +1153,266 @@ class Ngfw(pulumi.CustomResource):
 
         * `Firewall`
 
-        ## Example Usage
+        ## Configuration Guide
+
+        ***
+
+        ### V1 Schema — Existing Deployments Only
+
+        > **Important:** V1 schema is for existing customers who already have firewalls deployed with Terraform.
+        New firewalls must be created using the V2 schema.
+
+        ***
+
+        #### 1. Managing an Existing Firewall (no configuration changes)
+
+        Use the V1 schema as-is. No steps required beyond ensuring your existing state is in sync.
+
+        **Steps:**
+
+        1. Verify there is no unintended drift:
+           2. If the plan is clean, no action needed. If drift is detected, review and apply:
+
+        **Full example — existing V1 firewall:**
 
         ```python
         import pulumi
-        import pulumi_aws as aws
         import pulumi_cloudngfwaws as cloudngfwaws
 
         rs = cloudngfwaws.CommitRulestack("rs", rulestack="my-rulestack")
         example = cloudngfwaws.Ngfw("example",
             name="example-instance",
+            vpc_id=example_aws_vpc["id"],
+            account_id="111111111111",
             description="Example description",
-            az_lists=["use1-az1"],
+            endpoint_mode="ServiceManaged",
+            subnet_mappings=[
+                {
+                    "subnet_id": subnet1["id"],
+                },
+                {
+                    "subnet_id": subnet2["id"],
+                },
+            ],
             rulestack=rs.rulestack,
             tags={
                 "Foo": "bar",
             })
-        example_vpc = aws.Vpc("example",
-            cidr_block=172.16.0.0/16,
+        ```
+
+        ***
+
+        #### 2. Configuring Egress NAT on an Existing Firewall (V1)
+
+        Egress NAT can be added to an existing V1 firewall without recreating the resource.
+
+        > `ip_pool_type` accepts `AWSService` or `BYOIP`. Use `BYOIP` together with `ipam_pool_id`
+        if bringing your own IP pool.
+
+        **Steps:**
+
+        1. Add the `egress_nat` block to your existing resource.
+
+        **Full example — existing V1 firewall with Egress NAT enabled:**
+
+        ```python
+        import pulumi
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example = cloudngfwaws.Ngfw("example",
+            name="example-instance",
+            vpc_id="vpc-0a1b2c3d4e5f00001",
+            account_id="111111111111",
+            description="Example description",
+            endpoint_mode="CustomerManaged",
+            subnet_mappings=[
+                {
+                    "availability_zone": "us-east-1a",
+                },
+                {
+                    "availability_zone": "us-east-1c",
+                },
+            ],
+            rulestack="my-rulestack",
+            egress_nats=[{
+                "enabled": True,
+                "settings": [{
+                    "ip_pool_type": "AWSService",
+                }],
+            }],
             tags={
-                name: tf-example,
-            })
-        subnet1 = aws.Subnet("subnet1",
-            vpc_id=my_vpc.id,
-            cidr_block=172.16.10.0/24,
-            availability_zone=us-west-2a,
-            tags={
-                name: tf-example,
-            })
-        subnet2 = aws.Subnet("subnet2",
-            vpc_id=my_vpc.id,
-            cidr_block=172.16.20.0/24,
-            availability_zone=us-west-2b,
-            tags={
-                name: tf-example,
+                "Foo": "bar",
             })
         ```
+
+        **To disable Egress NAT:** set `enabled = false` and re-apply.
+
+        ***
+
+        #### 3. Configuring Security Zones on an Existing Firewall (V1)
+
+        Security zones let you enable or disable Egress NAT per endpoint and add or remove private CIDR prefixes.
+
+        > **Prerequisite:** Endpoints must be successfully created and in `ACCEPTED` state before
+        security zones can be configured. Check `status.attachment[*].status` in Terraform state
+        or the AWS console before proceeding.
+
+        **Steps:**
+
+        1. Confirm endpoint status is `ACCEPTED`:
+
+        **To remove private prefixes:** remove the CIDR entries from `cidrs` and re-apply.
+        **To disable Egress NAT for a specific zone:** set `egress_nat_enabled = false` and re-apply.
+
+        ***
+
+        ### V2 Schema — New Firewalls
+
+        > **Important:** New firewalls can only be created using the V2 schema. Use `az_list`
+        instead of `subnet_mapping`, and `endpoints` instead of `endpoint_mode`/`subnet_mapping`.
+
+        ***
+
+        #### 1. Creating a New Firewall (V2)
+
+        Firewall creation uses `az_list` to specify availability zones.
+        **Do not include `endpoints` during creation** — they must be added in a separate update after the firewall is running.
+
+        **Steps:**
+
+        1. Define the resource with `az_list` and no `endpoints` block.
+        2. Proceed to **Step 2** once the firewall reaches `RUNNING` state.
+
+        **Full example — new V2 firewall (creation only):**
+
+        ```python
+        import pulumi
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example = cloudngfwaws.Ngfw("example",
+            name="my-firewall",
+            description="My new firewall",
+            az_lists=[
+                "use1-az1",
+                "use1-az4",
+            ],
+            allowlist_accounts=["111111111111"],
+            tags={
+                "Owner": "my-team",
+            })
+        ```
+
+        ***
+
+        #### 2. Adding Endpoints to a V2 Firewall
+
+        Endpoints connect the firewall to customer VPCs. They must be added in a separate
+        a separate update after the firewall is running.
+
+        **Steps:**
+
+        1. Confirm the firewall status is `RUNNING`:
+
+        **Full example — V2 firewall with endpoints added:**
+
+        ```python
+        import pulumi
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example = cloudngfwaws.Ngfw("example",
+            name="my-firewall",
+            description="My new firewall",
+            az_lists=[
+                "use1-az1",
+                "use1-az4",
+            ],
+            allowlist_accounts=["111111111111"],
+            endpoints=[
+                {
+                    "account_id": "111111111111",
+                    "vpc_id": "vpc-0a1b2c3d4e5f00002",
+                    "subnet_id": "subnet-0a1b2c3d4e5f00001",
+                    "mode": "ServiceManaged",
+                },
+                {
+                    "account_id": "111111111111",
+                    "vpc_id": "vpc-0a1b2c3d4e5f00003",
+                    "subnet_id": "subnet-0a1b2c3d4e5f00002",
+                    "mode": "ServiceManaged",
+                },
+            ],
+            tags={
+                "Owner": "my-team",
+            })
+        ```
+
+        ***
+
+        #### 3. Configuring Egress NAT on a V2 Firewall
+
+        Egress NAT can be enabled at the firewall level once at least one endpoint is accepted.
+
+        > **Prerequisite:** At least one endpoint must be in `ACCEPTED` state.
+
+        **Steps:**
+
+        1. Add the `egress_nat` block to the resource.
+
+        **Full example — V2 firewall with Egress NAT enabled:**
+
+        ```python
+        import pulumi
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example = cloudngfwaws.Ngfw("example",
+            name="my-firewall",
+            description="My new firewall",
+            az_lists=[
+                "use1-az1",
+                "use1-az4",
+            ],
+            allowlist_accounts=["111111111111"],
+            endpoints=[
+                {
+                    "account_id": "111111111111",
+                    "vpc_id": "vpc-0a1b2c3d4e5f00002",
+                    "subnet_id": "subnet-0a1b2c3d4e5f00001",
+                    "mode": "ServiceManaged",
+                },
+                {
+                    "account_id": "111111111111",
+                    "vpc_id": "vpc-0a1b2c3d4e5f00003",
+                    "subnet_id": "subnet-0a1b2c3d4e5f00002",
+                    "mode": "ServiceManaged",
+                },
+            ],
+            egress_nats=[{
+                "enabled": True,
+                "settings": [{
+                    "ip_pool_type": "AWSService",
+                }],
+            }],
+            tags={
+                "Owner": "my-team",
+            })
+        ```
+
+        **To disable Egress NAT:** set `enabled = false` and re-apply.
+
+        ***
+
+        #### 4. Configuring Private Prefixes and Per-Endpoint Egress NAT (V2)
+
+        Once an endpoint is accepted, you can enable or disable Egress NAT and configure private
+        CIDR prefixes on a per-endpoint basis within the `endpoints` block.
+
+        > **Prerequisite:** The endpoint must be in `ACCEPTED` state. The `endpoint_id`
+        is a read-only computed value — retrieve it from Terraform state after apply:
+
+        **To remove private prefixes:** remove the CIDR entries from `cidrs` and re-apply.
+        **To disable per-endpoint Egress NAT:** set `egress_nat_enabled = false` and re-apply.
+
+        ***
 
         ## Import
 
@@ -922,14 +1448,17 @@ class Ngfw(pulumi.CustomResource):
                  egress_nats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwEgressNatArgs', 'NgfwEgressNatArgsDict']]]]] = None,
                  endpoint_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwEndpointArgs', 'NgfwEndpointArgsDict']]]]] = None,
+                 firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
                  global_rulestack: Optional[pulumi.Input[_builtins.str]] = None,
                  link_id: Optional[pulumi.Input[_builtins.str]] = None,
                  multi_vpc: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  private_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict']]]]] = None,
                  rulestack: Optional[pulumi.Input[_builtins.str]] = None,
+                 security_zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict']]]]] = None,
                  subnet_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tier: Optional[pulumi.Input[_builtins.str]] = None,
                  user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict']]]]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -945,27 +1474,27 @@ class Ngfw(pulumi.CustomResource):
             __props__.__dict__["allowlist_accounts"] = allowlist_accounts
             __props__.__dict__["app_id_version"] = app_id_version
             __props__.__dict__["automatic_upgrade_app_id_version"] = automatic_upgrade_app_id_version
-            if az_lists is None and not opts.urn:
-                raise TypeError("Missing required property 'az_lists'")
             __props__.__dict__["az_lists"] = az_lists
             __props__.__dict__["change_protections"] = change_protections
             __props__.__dict__["description"] = description
             __props__.__dict__["egress_nats"] = egress_nats
             __props__.__dict__["endpoint_mode"] = endpoint_mode
             __props__.__dict__["endpoints"] = endpoints
+            __props__.__dict__["firewall_id"] = firewall_id
             __props__.__dict__["global_rulestack"] = global_rulestack
             __props__.__dict__["link_id"] = link_id
             __props__.__dict__["multi_vpc"] = multi_vpc
             __props__.__dict__["name"] = name
             __props__.__dict__["private_accesses"] = private_accesses
             __props__.__dict__["rulestack"] = rulestack
+            __props__.__dict__["security_zones"] = security_zones
             __props__.__dict__["subnet_mappings"] = subnet_mappings
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["tier"] = tier
             __props__.__dict__["user_ids"] = user_ids
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["deployment_update_token"] = None
             __props__.__dict__["endpoint_service_name"] = None
-            __props__.__dict__["firewall_id"] = None
             __props__.__dict__["link_status"] = None
             __props__.__dict__["statuses"] = None
             __props__.__dict__["update_token"] = None
@@ -999,9 +1528,11 @@ class Ngfw(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             private_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict']]]]] = None,
             rulestack: Optional[pulumi.Input[_builtins.str]] = None,
+            security_zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict']]]]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwStatusArgs', 'NgfwStatusArgsDict']]]]] = None,
             subnet_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tier: Optional[pulumi.Input[_builtins.str]] = None,
             update_token: Optional[pulumi.Input[_builtins.str]] = None,
             user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict']]]]] = None,
             vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Ngfw':
@@ -1012,7 +1543,7 @@ class Ngfw(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: The description.
+        :param pulumi.Input[_builtins.str] account_id: The Account Id.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowlist_accounts: The list of allowed accounts for this NGFW.
         :param pulumi.Input[_builtins.str] app_id_version: App-ID version number.
         :param pulumi.Input[_builtins.bool] automatic_upgrade_app_id_version: Automatic App-ID upgrade version number. Defaults to `true`.
@@ -1031,6 +1562,7 @@ class Ngfw(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rulestack: The rulestack for this NGFW.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]] subnet_mappings: Subnet mappings.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
+        :param pulumi.Input[_builtins.str] tier: Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
         :param pulumi.Input[_builtins.str] update_token: The update token.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID for the NGFW.
         """
@@ -1058,9 +1590,11 @@ class Ngfw(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["private_accesses"] = private_accesses
         __props__.__dict__["rulestack"] = rulestack
+        __props__.__dict__["security_zones"] = security_zones
         __props__.__dict__["statuses"] = statuses
         __props__.__dict__["subnet_mappings"] = subnet_mappings
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tier"] = tier
         __props__.__dict__["update_token"] = update_token
         __props__.__dict__["user_ids"] = user_ids
         __props__.__dict__["vpc_id"] = vpc_id
@@ -1070,7 +1604,7 @@ class Ngfw(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description.
+        The Account Id.
         """
         return pulumi.get(self, "account_id")
 
@@ -1100,7 +1634,7 @@ class Ngfw(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="azLists")
-    def az_lists(self) -> pulumi.Output[Sequence[_builtins.str]]:
+    def az_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
         The list of availability zone IDs for this NGFW.
         """
@@ -1218,6 +1752,11 @@ class Ngfw(pulumi.CustomResource):
         return pulumi.get(self, "rulestack")
 
     @_builtins.property
+    @pulumi.getter(name="securityZones")
+    def security_zones(self) -> pulumi.Output[Optional[Sequence['outputs.NgfwSecurityZone']]]:
+        return pulumi.get(self, "security_zones")
+
+    @_builtins.property
     @pulumi.getter
     def statuses(self) -> pulumi.Output[Sequence['outputs.NgfwStatus']]:
         return pulumi.get(self, "statuses")
@@ -1237,6 +1776,14 @@ class Ngfw(pulumi.CustomResource):
         The tags.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def tier(self) -> pulumi.Output[_builtins.str]:
+        """
+        Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+        """
+        return pulumi.get(self, "tier")
 
     @_builtins.property
     @pulumi.getter(name="updateToken")

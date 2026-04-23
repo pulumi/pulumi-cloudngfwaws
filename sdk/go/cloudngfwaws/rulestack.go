@@ -5,10 +5,10 @@ package cloudngfwaws
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
-	"errors"
-	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws/internal"
+	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,7 +26,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws"
+//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -84,7 +84,8 @@ type Rulestack struct {
 
 // NewRulestack registers a new resource with the given unique name, arguments, and options.
 func NewRulestack(ctx *pulumi.Context,
-	name string, args *RulestackArgs, opts ...pulumi.ResourceOption) (*Rulestack, error) {
+	name string, args *RulestackArgs, opts ...pulumi.ResourceOption,
+) (*Rulestack, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -104,7 +105,8 @@ func NewRulestack(ctx *pulumi.Context,
 // GetRulestack gets an existing Rulestack resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetRulestack(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *RulestackState, opts ...pulumi.ResourceOption) (*Rulestack, error) {
+	name string, id pulumi.IDInput, state *RulestackState, opts ...pulumi.ResourceOption,
+) (*Rulestack, error) {
 	var resource Rulestack
 	err := ctx.ReadResource("cloudngfwaws:index/rulestack:Rulestack", name, id, state, &resource, opts...)
 	if err != nil {

@@ -3,14 +3,21 @@
 
 package com.pulumi.cloudngfwaws.outputs;
 
+import com.pulumi.cloudngfwaws.outputs.NgfwStatusAttachment;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class NgfwStatus {
+    /**
+     * @return The firewall attachments.
+     * 
+     */
+    private @Nullable List<NgfwStatusAttachment> attachments;
     /**
      * @return The device rulestack commit status.
      * 
@@ -33,6 +40,13 @@ public final class NgfwStatus {
     private @Nullable String rulestackStatus;
 
     private NgfwStatus() {}
+    /**
+     * @return The firewall attachments.
+     * 
+     */
+    public List<NgfwStatusAttachment> attachments() {
+        return this.attachments == null ? List.of() : this.attachments;
+    }
     /**
      * @return The device rulestack commit status.
      * 
@@ -71,6 +85,7 @@ public final class NgfwStatus {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<NgfwStatusAttachment> attachments;
         private @Nullable String deviceRulestackCommitStatus;
         private @Nullable String failureReason;
         private @Nullable String firewallStatus;
@@ -78,12 +93,22 @@ public final class NgfwStatus {
         public Builder() {}
         public Builder(NgfwStatus defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.attachments = defaults.attachments;
     	      this.deviceRulestackCommitStatus = defaults.deviceRulestackCommitStatus;
     	      this.failureReason = defaults.failureReason;
     	      this.firewallStatus = defaults.firewallStatus;
     	      this.rulestackStatus = defaults.rulestackStatus;
         }
 
+        @CustomType.Setter
+        public Builder attachments(@Nullable List<NgfwStatusAttachment> attachments) {
+
+            this.attachments = attachments;
+            return this;
+        }
+        public Builder attachments(NgfwStatusAttachment... attachments) {
+            return attachments(List.of(attachments));
+        }
         @CustomType.Setter
         public Builder deviceRulestackCommitStatus(@Nullable String deviceRulestackCommitStatus) {
 
@@ -110,6 +135,7 @@ public final class NgfwStatus {
         }
         public NgfwStatus build() {
             final var _resultValue = new NgfwStatus();
+            _resultValue.attachments = attachments;
             _resultValue.deviceRulestackCommitStatus = deviceRulestackCommitStatus;
             _resultValue.failureReason = failureReason;
             _resultValue.firewallStatus = firewallStatus;

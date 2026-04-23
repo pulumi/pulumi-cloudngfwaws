@@ -5,10 +5,10 @@ package cloudngfwaws
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
-	"errors"
-	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws/internal"
+	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,8 @@ type AccountOnboarding struct {
 
 // NewAccountOnboarding registers a new resource with the given unique name, arguments, and options.
 func NewAccountOnboarding(ctx *pulumi.Context,
-	name string, args *AccountOnboardingArgs, opts ...pulumi.ResourceOption) (*AccountOnboarding, error) {
+	name string, args *AccountOnboardingArgs, opts ...pulumi.ResourceOption,
+) (*AccountOnboarding, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -49,7 +50,8 @@ func NewAccountOnboarding(ctx *pulumi.Context,
 // GetAccountOnboarding gets an existing AccountOnboarding resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetAccountOnboarding(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *AccountOnboardingState, opts ...pulumi.ResourceOption) (*AccountOnboarding, error) {
+	name string, id pulumi.IDInput, state *AccountOnboardingState, opts ...pulumi.ResourceOption,
+) (*AccountOnboarding, error) {
 	var resource AccountOnboarding
 	err := ctx.ReadResource("cloudngfwaws:index/accountOnboarding:AccountOnboarding", name, id, state, &resource, opts...)
 	if err != nil {

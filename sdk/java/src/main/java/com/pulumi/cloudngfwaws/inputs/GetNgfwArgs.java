@@ -5,9 +5,10 @@ package com.pulumi.cloudngfwaws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetNgfwArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,24 +16,56 @@ public final class GetNgfwArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetNgfwArgs Empty = new GetNgfwArgs();
 
     /**
+     * The Account Id.
+     * 
+     */
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
+
+    /**
+     * @return The Account Id.
+     * 
+     */
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    /**
      * The Firewall ID.
      * 
      */
-    @Import(name="firewallId", required=true)
-    private Output<String> firewallId;
+    @Import(name="firewallId")
+    private @Nullable Output<String> firewallId;
 
     /**
      * @return The Firewall ID.
      * 
      */
-    public Output<String> firewallId() {
-        return this.firewallId;
+    public Optional<Output<String>> firewallId() {
+        return Optional.ofNullable(this.firewallId);
+    }
+
+    /**
+     * The NGFW name.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The NGFW name.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private GetNgfwArgs() {}
 
     private GetNgfwArgs(GetNgfwArgs $) {
+        this.accountId = $.accountId;
         this.firewallId = $.firewallId;
+        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -54,12 +87,33 @@ public final class GetNgfwArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param accountId The Account Id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(@Nullable Output<String> accountId) {
+            $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param accountId The Account Id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
+        }
+
+        /**
          * @param firewallId The Firewall ID.
          * 
          * @return builder
          * 
          */
-        public Builder firewallId(Output<String> firewallId) {
+        public Builder firewallId(@Nullable Output<String> firewallId) {
             $.firewallId = firewallId;
             return this;
         }
@@ -74,10 +128,28 @@ public final class GetNgfwArgs extends com.pulumi.resources.InvokeArgs {
             return firewallId(Output.of(firewallId));
         }
 
+        /**
+         * @param name The NGFW name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The NGFW name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
         public GetNgfwArgs build() {
-            if ($.firewallId == null) {
-                throw new MissingRequiredPropertyException("GetNgfwArgs", "firewallId");
-            }
             return $;
         }
     }

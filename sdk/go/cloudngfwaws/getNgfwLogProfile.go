@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws/internal"
+	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws"
+//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -57,6 +57,8 @@ func LookupNgfwLogProfile(ctx *pulumi.Context, args *LookupNgfwLogProfileArgs, o
 type LookupNgfwLogProfileArgs struct {
 	// The unique ID of the account.
 	AccountId *string `pulumi:"accountId"`
+	// The Firewall Id for the NGFW.
+	FirewallId *string `pulumi:"firewallId"`
 	// The name of the NGFW.
 	Ngfw *string `pulumi:"ngfw"`
 }
@@ -72,7 +74,7 @@ type LookupNgfwLogProfileResult struct {
 	// Cloudwatch metric fields.
 	CloudwatchMetricFields []string `pulumi:"cloudwatchMetricFields"`
 	// The Firewall Id for the NGFW.
-	FirewallId string `pulumi:"firewallId"`
+	FirewallId *string `pulumi:"firewallId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Log configuration details.
@@ -100,6 +102,8 @@ func LookupNgfwLogProfileOutput(ctx *pulumi.Context, args LookupNgfwLogProfileOu
 type LookupNgfwLogProfileOutputArgs struct {
 	// The unique ID of the account.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// The Firewall Id for the NGFW.
+	FirewallId pulumi.StringPtrInput `pulumi:"firewallId"`
 	// The name of the NGFW.
 	Ngfw pulumi.StringPtrInput `pulumi:"ngfw"`
 }
@@ -144,8 +148,8 @@ func (o LookupNgfwLogProfileResultOutput) CloudwatchMetricFields() pulumi.String
 }
 
 // The Firewall Id for the NGFW.
-func (o LookupNgfwLogProfileResultOutput) FirewallId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNgfwLogProfileResult) string { return v.FirewallId }).(pulumi.StringOutput)
+func (o LookupNgfwLogProfileResultOutput) FirewallId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNgfwLogProfileResult) *string { return v.FirewallId }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

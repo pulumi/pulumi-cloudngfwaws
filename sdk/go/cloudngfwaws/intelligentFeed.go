@@ -5,10 +5,10 @@ package cloudngfwaws
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
-	"errors"
-	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws/internal"
+	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,7 +26,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws"
+//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -100,7 +100,8 @@ type IntelligentFeed struct {
 
 // NewIntelligentFeed registers a new resource with the given unique name, arguments, and options.
 func NewIntelligentFeed(ctx *pulumi.Context,
-	name string, args *IntelligentFeedArgs, opts ...pulumi.ResourceOption) (*IntelligentFeed, error) {
+	name string, args *IntelligentFeedArgs, opts ...pulumi.ResourceOption,
+) (*IntelligentFeed, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -123,7 +124,8 @@ func NewIntelligentFeed(ctx *pulumi.Context,
 // GetIntelligentFeed gets an existing IntelligentFeed resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetIntelligentFeed(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *IntelligentFeedState, opts ...pulumi.ResourceOption) (*IntelligentFeed, error) {
+	name string, id pulumi.IDInput, state *IntelligentFeedState, opts ...pulumi.ResourceOption,
+) (*IntelligentFeed, error) {
 	var resource IntelligentFeed
 	err := ctx.ReadResource("cloudngfwaws:index/intelligentFeed:IntelligentFeed", name, id, state, &resource, opts...)
 	if err != nil {

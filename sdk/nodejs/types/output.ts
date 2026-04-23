@@ -136,7 +136,59 @@ export interface GetNgfwPrivateAccess {
     type: string;
 }
 
+export interface GetNgfwSecurityZone {
+    /**
+     * The account id.
+     */
+    accountId: string;
+    /**
+     * Enable egress NAT
+     */
+    egressNatEnabled: boolean;
+    /**
+     * Endpoint ID of the security zone
+     */
+    endpointId: string;
+    /**
+     * The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+     */
+    mode: string;
+    prefixes: outputs.GetNgfwSecurityZonePrefix[];
+    /**
+     * The rejected reason.
+     */
+    rejectedReason: string;
+    /**
+     * The attachment status.
+     */
+    status: string;
+    /**
+     * The subnet id.
+     */
+    subnetId: string;
+    /**
+     * The vpc id.
+     */
+    vpcId: string;
+    /**
+     * The AZ id.
+     */
+    zoneId: string;
+}
+
+export interface GetNgfwSecurityZonePrefix {
+    privatePrefixes: outputs.GetNgfwSecurityZonePrefixPrivatePrefix[];
+}
+
+export interface GetNgfwSecurityZonePrefixPrivatePrefix {
+    cidrs: string[];
+}
+
 export interface GetNgfwStatus {
+    /**
+     * The firewall attachments.
+     */
+    attachments: outputs.GetNgfwStatusAttachment[];
     /**
      * The device rulestack commit status.
      */
@@ -153,6 +205,25 @@ export interface GetNgfwStatus {
      * The rulestack status.
      */
     rulestackStatus: string;
+}
+
+export interface GetNgfwStatusAttachment {
+    /**
+     * The endpoint id.
+     */
+    endpointId: string;
+    /**
+     * The reject reason.
+     */
+    rejectedReason: string;
+    /**
+     * The attachment status.
+     */
+    status: string;
+    /**
+     * The subnet id.
+     */
+    subnetId: string;
 }
 
 export interface GetNgfwSubnetMapping {
@@ -222,9 +293,17 @@ export interface GetNgfwUserIdCustomIncludeExcludeNetwork {
 
 export interface GetNgfwsInstance {
     /**
+     * The account id.
+     */
+    accountId: string;
+    /**
      * The NGFW ID.
      */
     firewallId: string;
+    /**
+     * The NGFW name.
+     */
+    name: string;
     /**
      * The region the NGFW is in.
      */
@@ -431,7 +510,59 @@ export interface NgfwPrivateAccess {
     type: string;
 }
 
+export interface NgfwSecurityZone {
+    /**
+     * The account id.
+     */
+    accountId?: string;
+    /**
+     * Enable egress NAT
+     */
+    egressNatEnabled: boolean;
+    /**
+     * Endpoint ID of the security zone
+     */
+    endpointId: string;
+    /**
+     * The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+     */
+    mode?: string;
+    prefixes: outputs.NgfwSecurityZonePrefix[];
+    /**
+     * The rejected reason.
+     */
+    rejectedReason: string;
+    /**
+     * The attachment status.
+     */
+    status: string;
+    /**
+     * The subnet id.
+     */
+    subnetId?: string;
+    /**
+     * The vpc id.
+     */
+    vpcId?: string;
+    /**
+     * The AZ id.
+     */
+    zoneId: string;
+}
+
+export interface NgfwSecurityZonePrefix {
+    privatePrefixes: outputs.NgfwSecurityZonePrefixPrivatePrefix[];
+}
+
+export interface NgfwSecurityZonePrefixPrivatePrefix {
+    cidrs: string[];
+}
+
 export interface NgfwStatus {
+    /**
+     * The firewall attachments.
+     */
+    attachments: outputs.NgfwStatusAttachment[];
     /**
      * The device rulestack commit status.
      */
@@ -448,6 +579,25 @@ export interface NgfwStatus {
      * The rulestack status.
      */
     rulestackStatus: string;
+}
+
+export interface NgfwStatusAttachment {
+    /**
+     * The endpoint id.
+     */
+    endpointId: string;
+    /**
+     * The reject reason.
+     */
+    rejectedReason: string;
+    /**
+     * The attachment status.
+     */
+    status: string;
+    /**
+     * The subnet id.
+     */
+    subnetId: string;
 }
 
 export interface NgfwSubnetMapping {

@@ -18,13 +18,32 @@ namespace Pulumi.CloudNgfwAws
     /// 
     /// * `Firewall`
     /// 
-    /// ## Example Usage
+    /// ## Configuration Guide
+    /// 
+    /// ***
+    /// 
+    /// ### V1 Schema — Existing Deployments Only
+    /// 
+    /// &gt; **Important:** V1 schema is for existing customers who already have firewalls deployed with Terraform.
+    /// New firewalls must be created using the V2 schema.
+    /// 
+    /// ***
+    /// 
+    /// #### 1. Managing an Existing Firewall (no configuration changes)
+    /// 
+    /// Use the V1 schema as-is. No steps required beyond ensuring your existing state is in sync.
+    /// 
+    /// **Steps:**
+    /// 
+    /// 1. Verify there is no unintended drift:
+    ///    2. If the plan is clean, no action needed. If drift is detected, review and apply:
+    /// 
+    /// **Full example — existing V1 firewall:**
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
     /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -37,10 +56,20 @@ namespace Pulumi.CloudNgfwAws
     ///     var example = new CloudNgfwAws.Index.Ngfw("example", new()
     ///     {
     ///         Name = "example-instance",
+    ///         VpcId = exampleAwsVpc.Id,
+    ///         AccountId = "111111111111",
     ///         Description = "Example description",
-    ///         AzLists = new[]
+    ///         EndpointMode = "ServiceManaged",
+    ///         SubnetMappings = new[]
     ///         {
-    ///             "use1-az1",
+    ///             new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs
+    ///             {
+    ///                 SubnetId = subnet1.Id,
+    ///             },
+    ///             new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs
+    ///             {
+    ///                 SubnetId = subnet2.Id,
+    ///             },
     ///         },
     ///         Rulestack = rs.Rulestack,
     ///         Tags = 
@@ -49,39 +78,295 @@ namespace Pulumi.CloudNgfwAws
     ///         },
     ///     });
     /// 
-    ///     var exampleVpc = new Aws.Index.Vpc("example", new()
-    ///     {
-    ///         CidrBlock = "172.16.0.0/16",
-    ///         Tags = 
-    ///         {
-    ///             { "name", "tf-example" },
-    ///         },
-    ///     });
+    /// });
+    /// ```
     /// 
-    ///     var subnet1 = new Aws.Index.Subnet("subnet1", new()
-    ///     {
-    ///         VpcId = myVpc.Id,
-    ///         CidrBlock = "172.16.10.0/24",
-    ///         AvailabilityZone = "us-west-2a",
-    ///         Tags = 
-    ///         {
-    ///             { "name", "tf-example" },
-    ///         },
-    ///     });
+    /// ***
     /// 
-    ///     var subnet2 = new Aws.Index.Subnet("subnet2", new()
+    /// #### 2. Configuring Egress NAT on an Existing Firewall (V1)
+    /// 
+    /// Egress NAT can be added to an existing V1 firewall without recreating the resource.
+    /// 
+    /// &gt; `IpPoolType` accepts `AWSService` or `BYOIP`. Use `BYOIP` together with `IpamPoolId`
+    /// if bringing your own IP pool.
+    /// 
+    /// **Steps:**
+    /// 
+    /// 1. Add the `EgressNat` block to your existing resource.
+    /// 
+    /// **Full example — existing V1 firewall with Egress NAT enabled:**
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new CloudNgfwAws.Index.Ngfw("example", new()
     ///     {
-    ///         VpcId = myVpc.Id,
-    ///         CidrBlock = "172.16.20.0/24",
-    ///         AvailabilityZone = "us-west-2b",
+    ///         Name = "example-instance",
+    ///         VpcId = "vpc-0a1b2c3d4e5f00001",
+    ///         AccountId = "111111111111",
+    ///         Description = "Example description",
+    ///         EndpointMode = "CustomerManaged",
+    ///         SubnetMappings = new[]
+    ///         {
+    ///             new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs
+    ///             {
+    ///                 AvailabilityZone = "us-east-1a",
+    ///             },
+    ///             new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs
+    ///             {
+    ///                 AvailabilityZone = "us-east-1c",
+    ///             },
+    ///         },
+    ///         Rulestack = "my-rulestack",
+    ///         EgressNats = new[]
+    ///         {
+    ///             new CloudNgfwAws.Inputs.NgfwEgressNatArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Settings = new[]
+    ///                 {
+    ///                     new CloudNgfwAws.Inputs.NgfwEgressNatSettingArgs
+    ///                     {
+    ///                         IpPoolType = "AWSService",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
     ///         Tags = 
     ///         {
-    ///             { "name", "tf-example" },
+    ///             { "Foo", "bar" },
     ///         },
     ///     });
     /// 
     /// });
     /// ```
+    /// 
+    /// **To disable Egress NAT:** set `enabled = false` and re-apply.
+    /// 
+    /// ***
+    /// 
+    /// #### 3. Configuring Security Zones on an Existing Firewall (V1)
+    /// 
+    /// Security zones let you enable or disable Egress NAT per endpoint and add or remove private CIDR prefixes.
+    /// 
+    /// &gt; **Prerequisite:** Endpoints must be successfully created and in `ACCEPTED` state before
+    /// security zones can be configured. Check `status.attachment[*].status` in Terraform state
+    /// or the AWS console before proceeding.
+    /// 
+    /// **Steps:**
+    /// 
+    /// 1. Confirm endpoint status is `ACCEPTED`:
+    /// 
+    /// **To remove private prefixes:** remove the CIDR entries from `Cidrs` and re-apply.
+    /// **To disable Egress NAT for a specific zone:** set `EgressNatEnabled = false` and re-apply.
+    /// 
+    /// ***
+    /// 
+    /// ### V2 Schema — New Firewalls
+    /// 
+    /// &gt; **Important:** New firewalls can only be created using the V2 schema. Use `AzList`
+    /// instead of `SubnetMapping`, and `Endpoints` instead of `EndpointMode`/`SubnetMapping`.
+    /// 
+    /// ***
+    /// 
+    /// #### 1. Creating a New Firewall (V2)
+    /// 
+    /// Firewall creation uses `AzList` to specify availability zones.
+    /// **Do not include `Endpoints` during creation** — they must be added in a separate update after the firewall is running.
+    /// 
+    /// **Steps:**
+    /// 
+    /// 1. Define the resource with `AzList` and no `Endpoints` block.
+    /// 2. Proceed to **Step 2** once the firewall reaches `RUNNING` state.
+    /// 
+    /// **Full example — new V2 firewall (creation only):**
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new CloudNgfwAws.Index.Ngfw("example", new()
+    ///     {
+    ///         Name = "my-firewall",
+    ///         Description = "My new firewall",
+    ///         AzLists = new[]
+    ///         {
+    ///             "use1-az1",
+    ///             "use1-az4",
+    ///         },
+    ///         AllowlistAccounts = new[]
+    ///         {
+    ///             "111111111111",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Owner", "my-team" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ***
+    /// 
+    /// #### 2. Adding Endpoints to a V2 Firewall
+    /// 
+    /// Endpoints connect the firewall to customer VPCs. They must be added in a separate
+    /// a separate update after the firewall is running.
+    /// 
+    /// **Steps:**
+    /// 
+    /// 1. Confirm the firewall status is `RUNNING`:
+    /// 
+    /// **Full example — V2 firewall with endpoints added:**
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new CloudNgfwAws.Index.Ngfw("example", new()
+    ///     {
+    ///         Name = "my-firewall",
+    ///         Description = "My new firewall",
+    ///         AzLists = new[]
+    ///         {
+    ///             "use1-az1",
+    ///             "use1-az4",
+    ///         },
+    ///         AllowlistAccounts = new[]
+    ///         {
+    ///             "111111111111",
+    ///         },
+    ///         Endpoints = new[]
+    ///         {
+    ///             new CloudNgfwAws.Inputs.NgfwEndpointArgs
+    ///             {
+    ///                 AccountId = "111111111111",
+    ///                 VpcId = "vpc-0a1b2c3d4e5f00002",
+    ///                 SubnetId = "subnet-0a1b2c3d4e5f00001",
+    ///                 Mode = "ServiceManaged",
+    ///             },
+    ///             new CloudNgfwAws.Inputs.NgfwEndpointArgs
+    ///             {
+    ///                 AccountId = "111111111111",
+    ///                 VpcId = "vpc-0a1b2c3d4e5f00003",
+    ///                 SubnetId = "subnet-0a1b2c3d4e5f00002",
+    ///                 Mode = "ServiceManaged",
+    ///             },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Owner", "my-team" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ***
+    /// 
+    /// #### 3. Configuring Egress NAT on a V2 Firewall
+    /// 
+    /// Egress NAT can be enabled at the firewall level once at least one endpoint is accepted.
+    /// 
+    /// &gt; **Prerequisite:** At least one endpoint must be in `ACCEPTED` state.
+    /// 
+    /// **Steps:**
+    /// 
+    /// 1. Add the `EgressNat` block to the resource.
+    /// 
+    /// **Full example — V2 firewall with Egress NAT enabled:**
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new CloudNgfwAws.Index.Ngfw("example", new()
+    ///     {
+    ///         Name = "my-firewall",
+    ///         Description = "My new firewall",
+    ///         AzLists = new[]
+    ///         {
+    ///             "use1-az1",
+    ///             "use1-az4",
+    ///         },
+    ///         AllowlistAccounts = new[]
+    ///         {
+    ///             "111111111111",
+    ///         },
+    ///         Endpoints = new[]
+    ///         {
+    ///             new CloudNgfwAws.Inputs.NgfwEndpointArgs
+    ///             {
+    ///                 AccountId = "111111111111",
+    ///                 VpcId = "vpc-0a1b2c3d4e5f00002",
+    ///                 SubnetId = "subnet-0a1b2c3d4e5f00001",
+    ///                 Mode = "ServiceManaged",
+    ///             },
+    ///             new CloudNgfwAws.Inputs.NgfwEndpointArgs
+    ///             {
+    ///                 AccountId = "111111111111",
+    ///                 VpcId = "vpc-0a1b2c3d4e5f00003",
+    ///                 SubnetId = "subnet-0a1b2c3d4e5f00002",
+    ///                 Mode = "ServiceManaged",
+    ///             },
+    ///         },
+    ///         EgressNats = new[]
+    ///         {
+    ///             new CloudNgfwAws.Inputs.NgfwEgressNatArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Settings = new[]
+    ///                 {
+    ///                     new CloudNgfwAws.Inputs.NgfwEgressNatSettingArgs
+    ///                     {
+    ///                         IpPoolType = "AWSService",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Owner", "my-team" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// **To disable Egress NAT:** set `enabled = false` and re-apply.
+    /// 
+    /// ***
+    /// 
+    /// #### 4. Configuring Private Prefixes and Per-Endpoint Egress NAT (V2)
+    /// 
+    /// Once an endpoint is accepted, you can enable or disable Egress NAT and configure private
+    /// CIDR prefixes on a per-endpoint basis within the `Endpoints` block.
+    /// 
+    /// &gt; **Prerequisite:** The endpoint must be in `ACCEPTED` state. The `EndpointId`
+    /// is a read-only computed value — retrieve it from Terraform state after apply:
+    /// 
+    /// **To remove private prefixes:** remove the CIDR entries from `Cidrs` and re-apply.
+    /// **To disable per-endpoint Egress NAT:** set `EgressNatEnabled = false` and re-apply.
+    /// 
+    /// ***
     /// 
     /// ## Import
     /// 
@@ -95,7 +380,7 @@ namespace Pulumi.CloudNgfwAws
     public partial class Ngfw : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description.
+        /// The Account Id.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
@@ -205,6 +490,9 @@ namespace Pulumi.CloudNgfwAws
         [Output("rulestack")]
         public Output<string?> Rulestack { get; private set; } = null!;
 
+        [Output("securityZones")]
+        public Output<ImmutableArray<Outputs.NgfwSecurityZone>> SecurityZones { get; private set; } = null!;
+
         [Output("statuses")]
         public Output<ImmutableArray<Outputs.NgfwStatus>> Statuses { get; private set; } = null!;
 
@@ -219,6 +507,12 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+        /// </summary>
+        [Output("tier")]
+        public Output<string> Tier { get; private set; } = null!;
 
         /// <summary>
         /// The update token.
@@ -243,7 +537,7 @@ namespace Pulumi.CloudNgfwAws
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Ngfw(string name, NgfwArgs args, CustomResourceOptions? options = null)
+        public Ngfw(string name, NgfwArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudngfwaws:index/ngfw:Ngfw", name, args ?? new NgfwArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -283,7 +577,7 @@ namespace Pulumi.CloudNgfwAws
     public sealed class NgfwArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description.
+        /// The Account Id.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -312,7 +606,7 @@ namespace Pulumi.CloudNgfwAws
         [Input("automaticUpgradeAppIdVersion")]
         public Input<bool>? AutomaticUpgradeAppIdVersion { get; set; }
 
-        [Input("azLists", required: true)]
+        [Input("azLists")]
         private InputList<string>? _azLists;
 
         /// <summary>
@@ -365,6 +659,12 @@ namespace Pulumi.CloudNgfwAws
         }
 
         /// <summary>
+        /// The Firewall ID.
+        /// </summary>
+        [Input("firewallId")]
+        public Input<string>? FirewallId { get; set; }
+
+        /// <summary>
         /// The global rulestack for this NGFW.
         /// </summary>
         [Input("globalRulestack")]
@@ -402,6 +702,14 @@ namespace Pulumi.CloudNgfwAws
         [Input("rulestack")]
         public Input<string>? Rulestack { get; set; }
 
+        [Input("securityZones")]
+        private InputList<Inputs.NgfwSecurityZoneArgs>? _securityZones;
+        public InputList<Inputs.NgfwSecurityZoneArgs> SecurityZones
+        {
+            get => _securityZones ?? (_securityZones = new InputList<Inputs.NgfwSecurityZoneArgs>());
+            set => _securityZones = value;
+        }
+
         [Input("subnetMappings")]
         private InputList<Inputs.NgfwSubnetMappingArgs>? _subnetMappings;
 
@@ -426,6 +734,12 @@ namespace Pulumi.CloudNgfwAws
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+        /// </summary>
+        [Input("tier")]
+        public Input<string>? Tier { get; set; }
+
         [Input("userIds")]
         private InputList<Inputs.NgfwUserIdArgs>? _userIds;
         public InputList<Inputs.NgfwUserIdArgs> UserIds
@@ -449,7 +763,7 @@ namespace Pulumi.CloudNgfwAws
     public sealed class NgfwState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description.
+        /// The Account Id.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -592,6 +906,14 @@ namespace Pulumi.CloudNgfwAws
         [Input("rulestack")]
         public Input<string>? Rulestack { get; set; }
 
+        [Input("securityZones")]
+        private InputList<Inputs.NgfwSecurityZoneGetArgs>? _securityZones;
+        public InputList<Inputs.NgfwSecurityZoneGetArgs> SecurityZones
+        {
+            get => _securityZones ?? (_securityZones = new InputList<Inputs.NgfwSecurityZoneGetArgs>());
+            set => _securityZones = value;
+        }
+
         [Input("statuses")]
         private InputList<Inputs.NgfwStatusGetArgs>? _statuses;
         public InputList<Inputs.NgfwStatusGetArgs> Statuses
@@ -623,6 +945,12 @@ namespace Pulumi.CloudNgfwAws
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+        /// </summary>
+        [Input("tier")]
+        public Input<string>? Tier { get; set; }
 
         /// <summary>
         /// The update token.

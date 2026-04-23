@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-cloudngfwaws/sdk
+module github.com/pulumi/pulumi-cloudngfwaws/sdk/v2
 
 go 1.25.8
 

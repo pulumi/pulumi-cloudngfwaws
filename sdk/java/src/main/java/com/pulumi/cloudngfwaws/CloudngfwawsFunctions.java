@@ -2245,6 +2245,125 @@ public final class CloudngfwawsFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getNgfw(GetNgfwArgs.builder()
+     *             .name("example-instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNgfwResult> getNgfw() {
+        return getNgfw(GetNgfwArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving NGFW information.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Firewall`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getNgfw(GetNgfwArgs.builder()
+     *             .name("example-instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNgfwResult> getNgfwPlain() {
+        return getNgfwPlain(GetNgfwPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving NGFW information.
+     * 
+     * ## Admin Permission Type
+     * 
+     * * `Firewall`
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getNgfw(GetNgfwArgs.builder()
+     *             .name("example-instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetNgfwResult> getNgfw(GetNgfwArgs args) {
         return getNgfw(args, InvokeOptions.Empty);
@@ -2257,6 +2376,37 @@ public final class CloudngfwawsFunctions {
      * * `Firewall`
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getNgfw(GetNgfwArgs.builder()
+     *             .name("example-instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetNgfwResult> getNgfwPlain(GetNgfwPlainArgs args) {
@@ -2271,6 +2421,37 @@ public final class CloudngfwawsFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getNgfw(GetNgfwArgs.builder()
+     *             .name("example-instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetNgfwResult> getNgfw(GetNgfwArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getNgfw:getNgfw", TypeShape.of(GetNgfwResult.class), args, Utilities.withVersion(options));
@@ -2284,6 +2465,37 @@ public final class CloudngfwawsFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getNgfw(GetNgfwArgs.builder()
+     *             .name("example-instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetNgfwResult> getNgfw(GetNgfwArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getNgfw:getNgfw", TypeShape.of(GetNgfwResult.class), args, Utilities.withVersion(options));
@@ -2296,6 +2508,37 @@ public final class CloudngfwawsFunctions {
      * * `Firewall`
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudngfwawsFunctions.getNgfw(GetNgfwArgs.builder()
+     *             .name("example-instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetNgfwResult> getNgfwPlain(GetNgfwPlainArgs args, InvokeOptions options) {

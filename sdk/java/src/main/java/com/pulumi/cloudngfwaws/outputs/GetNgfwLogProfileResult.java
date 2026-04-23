@@ -40,7 +40,7 @@ public final class GetNgfwLogProfileResult {
      * @return The Firewall Id for the NGFW.
      * 
      */
-    private String firewallId;
+    private @Nullable String firewallId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -105,8 +105,8 @@ public final class GetNgfwLogProfileResult {
      * @return The Firewall Id for the NGFW.
      * 
      */
-    public String firewallId() {
-        return this.firewallId;
+    public Optional<String> firewallId() {
+        return Optional.ofNullable(this.firewallId);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -164,7 +164,7 @@ public final class GetNgfwLogProfileResult {
         private Boolean advancedThreatLog;
         private String cloudWatchMetricNamespace;
         private List<String> cloudwatchMetricFields;
-        private String firewallId;
+        private @Nullable String firewallId;
         private String id;
         private List<GetNgfwLogProfileLogConfig> logConfigs;
         private List<GetNgfwLogProfileLogDestination> logDestinations;
@@ -221,10 +221,8 @@ public final class GetNgfwLogProfileResult {
             return cloudwatchMetricFields(List.of(cloudwatchMetricFields));
         }
         @CustomType.Setter
-        public Builder firewallId(String firewallId) {
-            if (firewallId == null) {
-              throw new MissingRequiredPropertyException("GetNgfwLogProfileResult", "firewallId");
-            }
+        public Builder firewallId(@Nullable String firewallId) {
+
             this.firewallId = firewallId;
             return this;
         }

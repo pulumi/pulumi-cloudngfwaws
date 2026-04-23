@@ -5,10 +5,10 @@ package cloudngfwaws
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
-	"errors"
-	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws/internal"
+	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,7 +26,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws"
+//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -92,7 +92,8 @@ type PrefixList struct {
 
 // NewPrefixList registers a new resource with the given unique name, arguments, and options.
 func NewPrefixList(ctx *pulumi.Context,
-	name string, args *PrefixListArgs, opts ...pulumi.ResourceOption) (*PrefixList, error) {
+	name string, args *PrefixListArgs, opts ...pulumi.ResourceOption,
+) (*PrefixList, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -115,7 +116,8 @@ func NewPrefixList(ctx *pulumi.Context,
 // GetPrefixList gets an existing PrefixList resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetPrefixList(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *PrefixListState, opts ...pulumi.ResourceOption) (*PrefixList, error) {
+	name string, id pulumi.IDInput, state *PrefixListState, opts ...pulumi.ResourceOption,
+) (*PrefixList, error) {
 	var resource PrefixList
 	err := ctx.ReadResource("cloudngfwaws:index/prefixList:PrefixList", name, id, state, &resource, opts...)
 	if err != nil {

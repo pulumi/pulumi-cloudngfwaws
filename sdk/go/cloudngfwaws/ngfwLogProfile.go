@@ -7,8 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
-	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws/internal"
+	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,6 +18,97 @@ import (
 // * `Firewall`
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aws/sdk/go/aws"
+//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleVpc, err := aws.NewVpc(ctx, "example", &aws.VpcArgs{
+//				CidrBlock: "172.16.0.0/16",
+//				Tags: map[string]interface{}{
+//					"name": "tf-example",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet1, err := aws.NewSubnet(ctx, "subnet1", &aws.SubnetArgs{
+//				VpcId:            myVpc.Id,
+//				CidrBlock:        "172.16.10.0/24",
+//				AvailabilityZone: "us-west-2a",
+//				Tags: map[string]interface{}{
+//					"name": "tf-example",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet2, err := aws.NewSubnet(ctx, "subnet2", &aws.SubnetArgs{
+//				VpcId:            myVpc.Id,
+//				CidrBlock:        "172.16.20.0/24",
+//				AvailabilityZone: "us-west-2b",
+//				Tags: map[string]interface{}{
+//					"name": "tf-example",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			x, err := cloudngfwaws.NewNgfw(ctx, "x", &cloudngfwaws.NgfwArgs{
+//				Name:         pulumi.String("example-instance"),
+//				VpcId:        exampleVpc.Id,
+//				AccountId:    pulumi.String("12345678"),
+//				Description:  pulumi.String("Example description"),
+//				EndpointMode: pulumi.String("ServiceManaged"),
+//				SubnetMappings: cloudngfwaws.NgfwSubnetMappingArray{
+//					&cloudngfwaws.NgfwSubnetMappingArgs{
+//						SubnetId: subnet1.Id,
+//					},
+//					&cloudngfwaws.NgfwSubnetMappingArgs{
+//						SubnetId: subnet2.Id,
+//					},
+//				},
+//				Rulestack: pulumi.String("example-rulestack"),
+//				Tags: pulumi.StringMap{
+//					"Foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudngfwaws.NewNgfwLogProfile(ctx, "example", &cloudngfwaws.NgfwLogProfileArgs{
+//				Ngfw:      x.Name,
+//				AccountId: x.AccountId,
+//				LogDestinations: cloudngfwaws.NgfwLogProfileLogDestinationArray{
+//					&cloudngfwaws.NgfwLogProfileLogDestinationArgs{
+//						DestinationType: pulumi.String("S3"),
+//						Destination:     pulumi.String("my-s3-bucket"),
+//						LogType:         pulumi.String("TRAFFIC"),
+//					},
+//					&cloudngfwaws.NgfwLogProfileLogDestinationArgs{
+//						DestinationType: pulumi.String("CloudWatchLogs"),
+//						Destination:     pulumi.String("panw-log-group"),
+//						LogType:         pulumi.String("THREAT"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -39,7 +129,7 @@ type NgfwLogProfile struct {
 	// Cloudwatch metric fields.
 	CloudwatchMetricFields pulumi.StringArrayOutput `pulumi:"cloudwatchMetricFields"`
 	// The Firewall Id for the NGFW.
-	FirewallId pulumi.StringOutput `pulumi:"firewallId"`
+	FirewallId pulumi.StringPtrOutput `pulumi:"firewallId"`
 	// Log configuration details.
 	LogConfig NgfwLogProfileLogConfigPtrOutput `pulumi:"logConfig"`
 	// List of log destinations.
@@ -54,14 +144,12 @@ type NgfwLogProfile struct {
 
 // NewNgfwLogProfile registers a new resource with the given unique name, arguments, and options.
 func NewNgfwLogProfile(ctx *pulumi.Context,
-	name string, args *NgfwLogProfileArgs, opts ...pulumi.ResourceOption) (*NgfwLogProfile, error) {
+	name string, args *NgfwLogProfileArgs, opts ...pulumi.ResourceOption,
+) (*NgfwLogProfile, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &NgfwLogProfileArgs{}
 	}
 
-	if args.FirewallId == nil {
-		return nil, errors.New("invalid value for required argument 'FirewallId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NgfwLogProfile
 	err := ctx.RegisterResource("cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile", name, args, &resource, opts...)
@@ -74,7 +162,8 @@ func NewNgfwLogProfile(ctx *pulumi.Context,
 // GetNgfwLogProfile gets an existing NgfwLogProfile resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetNgfwLogProfile(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *NgfwLogProfileState, opts ...pulumi.ResourceOption) (*NgfwLogProfile, error) {
+	name string, id pulumi.IDInput, state *NgfwLogProfileState, opts ...pulumi.ResourceOption,
+) (*NgfwLogProfile, error) {
 	var resource NgfwLogProfile
 	err := ctx.ReadResource("cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile", name, id, state, &resource, opts...)
 	if err != nil {
@@ -144,7 +233,7 @@ type ngfwLogProfileArgs struct {
 	// Cloudwatch metric fields.
 	CloudwatchMetricFields []string `pulumi:"cloudwatchMetricFields"`
 	// The Firewall Id for the NGFW.
-	FirewallId string `pulumi:"firewallId"`
+	FirewallId *string `pulumi:"firewallId"`
 	// Log configuration details.
 	LogConfig *NgfwLogProfileLogConfig `pulumi:"logConfig"`
 	// List of log destinations.
@@ -166,7 +255,7 @@ type NgfwLogProfileArgs struct {
 	// Cloudwatch metric fields.
 	CloudwatchMetricFields pulumi.StringArrayInput
 	// The Firewall Id for the NGFW.
-	FirewallId pulumi.StringInput
+	FirewallId pulumi.StringPtrInput
 	// Log configuration details.
 	LogConfig NgfwLogProfileLogConfigPtrInput
 	// List of log destinations.
@@ -285,8 +374,8 @@ func (o NgfwLogProfileOutput) CloudwatchMetricFields() pulumi.StringArrayOutput 
 }
 
 // The Firewall Id for the NGFW.
-func (o NgfwLogProfileOutput) FirewallId() pulumi.StringOutput {
-	return o.ApplyT(func(v *NgfwLogProfile) pulumi.StringOutput { return v.FirewallId }).(pulumi.StringOutput)
+func (o NgfwLogProfileOutput) FirewallId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NgfwLogProfile) pulumi.StringPtrOutput { return v.FirewallId }).(pulumi.StringPtrOutput)
 }
 
 // Log configuration details.

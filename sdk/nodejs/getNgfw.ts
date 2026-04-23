@@ -14,11 +14,23 @@ import * as utilities from "./utilities";
  * * `Firewall`
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
+ *
+ * const example = cloudngfwaws.getNgfw({
+ *     name: "example-instance",
+ * });
+ * ```
  */
-export function getNgfw(args: GetNgfwArgs, opts?: pulumi.InvokeOptions): Promise<GetNgfwResult> {
+export function getNgfw(args?: GetNgfwArgs, opts?: pulumi.InvokeOptions): Promise<GetNgfwResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudngfwaws:index/getNgfw:getNgfw", {
+        "accountId": args.accountId,
         "firewallId": args.firewallId,
+        "name": args.name,
     }, opts);
 }
 
@@ -27,9 +39,17 @@ export function getNgfw(args: GetNgfwArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetNgfwArgs {
     /**
+     * The Account Id.
+     */
+    accountId?: string;
+    /**
      * The Firewall ID.
      */
-    firewallId: string;
+    firewallId?: string;
+    /**
+     * The NGFW name.
+     */
+    name?: string;
 }
 
 /**
@@ -37,9 +57,9 @@ export interface GetNgfwArgs {
  */
 export interface GetNgfwResult {
     /**
-     * The description.
+     * The Account Id.
      */
-    readonly accountId: string;
+    readonly accountId?: string;
     /**
      * The list of allowed accounts for this NGFW.
      */
@@ -81,7 +101,7 @@ export interface GetNgfwResult {
     /**
      * The Firewall ID.
      */
-    readonly firewallId: string;
+    readonly firewallId?: string;
     /**
      * The global rulestack for this NGFW.
      */
@@ -105,12 +125,13 @@ export interface GetNgfwResult {
     /**
      * The NGFW name.
      */
-    readonly name: string;
+    readonly name?: string;
     readonly privateAccesses: outputs.GetNgfwPrivateAccess[];
     /**
      * The rulestack for this NGFW.
      */
     readonly rulestack: string;
+    readonly securityZones: outputs.GetNgfwSecurityZone[];
     readonly statuses: outputs.GetNgfwStatus[];
     /**
      * Subnet mappings.
@@ -120,6 +141,10 @@ export interface GetNgfwResult {
      * The tags.
      */
     readonly tags: {[key: string]: string};
+    /**
+     * Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+     */
+    readonly tier: string;
     /**
      * The update token.
      */
@@ -138,11 +163,23 @@ export interface GetNgfwResult {
  * * `Firewall`
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
+ *
+ * const example = cloudngfwaws.getNgfw({
+ *     name: "example-instance",
+ * });
+ * ```
  */
-export function getNgfwOutput(args: GetNgfwOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNgfwResult> {
+export function getNgfwOutput(args?: GetNgfwOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNgfwResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getNgfw:getNgfw", {
+        "accountId": args.accountId,
         "firewallId": args.firewallId,
+        "name": args.name,
     }, opts);
 }
 
@@ -151,7 +188,15 @@ export function getNgfwOutput(args: GetNgfwOutputArgs, opts?: pulumi.InvokeOutpu
  */
 export interface GetNgfwOutputArgs {
     /**
+     * The Account Id.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
      * The Firewall ID.
      */
-    firewallId: pulumi.Input<string>;
+    firewallId?: pulumi.Input<string>;
+    /**
+     * The NGFW name.
+     */
+    name?: pulumi.Input<string>;
 }
