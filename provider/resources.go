@@ -30,7 +30,7 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
-	"github.com/pulumi/pulumi-cloudngfwaws/provider/pkg/version"
+	"github.com/pulumi/pulumi-cloudngfwaws/provider/v2/pkg/version"
 )
 
 //go:embed cmd/pulumi-resource-cloudngfwaws/bridge-metadata.json

@@ -23,8 +23,8 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 
-	cloudngfwaws "github.com/pulumi/pulumi-cloudngfwaws/provider"
-	"github.com/pulumi/pulumi-cloudngfwaws/provider/pkg/version"
+	cloudngfwaws "github.com/pulumi/pulumi-cloudngfwaws/provider/v2"
+	"github.com/pulumi/pulumi-cloudngfwaws/provider/v2/pkg/version"
 )
 
 //go:embed schema-embed.json
