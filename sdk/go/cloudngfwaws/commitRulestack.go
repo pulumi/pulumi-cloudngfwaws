@@ -5,9 +5,9 @@ package cloudngfwaws
 
 import (
 	"context"
-	"errors"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -67,8 +67,7 @@ type CommitRulestack struct {
 
 // NewCommitRulestack registers a new resource with the given unique name, arguments, and options.
 func NewCommitRulestack(ctx *pulumi.Context,
-	name string, args *CommitRulestackArgs, opts ...pulumi.ResourceOption,
-) (*CommitRulestack, error) {
+	name string, args *CommitRulestackArgs, opts ...pulumi.ResourceOption) (*CommitRulestack, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -88,8 +87,7 @@ func NewCommitRulestack(ctx *pulumi.Context,
 // GetCommitRulestack gets an existing CommitRulestack resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetCommitRulestack(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *CommitRulestackState, opts ...pulumi.ResourceOption,
-) (*CommitRulestack, error) {
+	name string, id pulumi.IDInput, state *CommitRulestackState, opts ...pulumi.ResourceOption) (*CommitRulestack, error) {
 	var resource CommitRulestack
 	err := ctx.ReadResource("cloudngfwaws:index/commitRulestack:CommitRulestack", name, id, state, &resource, opts...)
 	if err != nil {

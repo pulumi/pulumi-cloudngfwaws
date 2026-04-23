@@ -5,9 +5,9 @@ package cloudngfwaws
 
 import (
 	"context"
-	"errors"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -135,8 +135,7 @@ type SecurityRule struct {
 
 // NewSecurityRule registers a new resource with the given unique name, arguments, and options.
 func NewSecurityRule(ctx *pulumi.Context,
-	name string, args *SecurityRuleArgs, opts ...pulumi.ResourceOption,
-) (*SecurityRule, error) {
+	name string, args *SecurityRuleArgs, opts ...pulumi.ResourceOption) (*SecurityRule, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -174,8 +173,7 @@ func NewSecurityRule(ctx *pulumi.Context,
 // GetSecurityRule gets an existing SecurityRule resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetSecurityRule(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *SecurityRuleState, opts ...pulumi.ResourceOption,
-) (*SecurityRule, error) {
+	name string, id pulumi.IDInput, state *SecurityRuleState, opts ...pulumi.ResourceOption) (*SecurityRule, error) {
 	var resource SecurityRule
 	err := ctx.ReadResource("cloudngfwaws:index/securityRule:SecurityRule", name, id, state, &resource, opts...)
 	if err != nil {

@@ -5,9 +5,9 @@ package cloudngfwaws
 
 import (
 	"context"
-	"errors"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -92,8 +92,7 @@ type FqdnList struct {
 
 // NewFqdnList registers a new resource with the given unique name, arguments, and options.
 func NewFqdnList(ctx *pulumi.Context,
-	name string, args *FqdnListArgs, opts ...pulumi.ResourceOption,
-) (*FqdnList, error) {
+	name string, args *FqdnListArgs, opts ...pulumi.ResourceOption) (*FqdnList, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -116,8 +115,7 @@ func NewFqdnList(ctx *pulumi.Context,
 // GetFqdnList gets an existing FqdnList resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetFqdnList(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *FqdnListState, opts ...pulumi.ResourceOption,
-) (*FqdnList, error) {
+	name string, id pulumi.IDInput, state *FqdnListState, opts ...pulumi.ResourceOption) (*FqdnList, error) {
 	var resource FqdnList
 	err := ctx.ReadResource("cloudngfwaws:index/fqdnList:FqdnList", name, id, state, &resource, opts...)
 	if err != nil {

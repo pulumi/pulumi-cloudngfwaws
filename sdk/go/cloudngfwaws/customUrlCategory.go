@@ -5,9 +5,9 @@ package cloudngfwaws
 
 import (
 	"context"
-	"errors"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -95,8 +95,7 @@ type CustomUrlCategory struct {
 
 // NewCustomUrlCategory registers a new resource with the given unique name, arguments, and options.
 func NewCustomUrlCategory(ctx *pulumi.Context,
-	name string, args *CustomUrlCategoryArgs, opts ...pulumi.ResourceOption,
-) (*CustomUrlCategory, error) {
+	name string, args *CustomUrlCategoryArgs, opts ...pulumi.ResourceOption) (*CustomUrlCategory, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -119,8 +118,7 @@ func NewCustomUrlCategory(ctx *pulumi.Context,
 // GetCustomUrlCategory gets an existing CustomUrlCategory resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetCustomUrlCategory(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *CustomUrlCategoryState, opts ...pulumi.ResourceOption,
-) (*CustomUrlCategory, error) {
+	name string, id pulumi.IDInput, state *CustomUrlCategoryState, opts ...pulumi.ResourceOption) (*CustomUrlCategory, error) {
 	var resource CustomUrlCategory
 	err := ctx.ReadResource("cloudngfwaws:index/customUrlCategory:CustomUrlCategory", name, id, state, &resource, opts...)
 	if err != nil {

@@ -144,8 +144,7 @@ type NgfwLogProfile struct {
 
 // NewNgfwLogProfile registers a new resource with the given unique name, arguments, and options.
 func NewNgfwLogProfile(ctx *pulumi.Context,
-	name string, args *NgfwLogProfileArgs, opts ...pulumi.ResourceOption,
-) (*NgfwLogProfile, error) {
+	name string, args *NgfwLogProfileArgs, opts ...pulumi.ResourceOption) (*NgfwLogProfile, error) {
 	if args == nil {
 		args = &NgfwLogProfileArgs{}
 	}
@@ -162,8 +161,7 @@ func NewNgfwLogProfile(ctx *pulumi.Context,
 // GetNgfwLogProfile gets an existing NgfwLogProfile resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetNgfwLogProfile(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *NgfwLogProfileState, opts ...pulumi.ResourceOption,
-) (*NgfwLogProfile, error) {
+	name string, id pulumi.IDInput, state *NgfwLogProfileState, opts ...pulumi.ResourceOption) (*NgfwLogProfile, error) {
 	var resource NgfwLogProfile
 	err := ctx.ReadResource("cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile", name, id, state, &resource, opts...)
 	if err != nil {

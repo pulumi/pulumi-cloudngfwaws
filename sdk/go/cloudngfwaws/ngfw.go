@@ -443,8 +443,7 @@ type Ngfw struct {
 
 // NewNgfw registers a new resource with the given unique name, arguments, and options.
 func NewNgfw(ctx *pulumi.Context,
-	name string, args *NgfwArgs, opts ...pulumi.ResourceOption,
-) (*Ngfw, error) {
+	name string, args *NgfwArgs, opts ...pulumi.ResourceOption) (*Ngfw, error) {
 	if args == nil {
 		args = &NgfwArgs{}
 	}
@@ -461,8 +460,7 @@ func NewNgfw(ctx *pulumi.Context,
 // GetNgfw gets an existing Ngfw resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetNgfw(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *NgfwState, opts ...pulumi.ResourceOption,
-) (*Ngfw, error) {
+	name string, id pulumi.IDInput, state *NgfwState, opts ...pulumi.ResourceOption) (*Ngfw, error) {
 	var resource Ngfw
 	err := ctx.ReadResource("cloudngfwaws:index/ngfw:Ngfw", name, id, state, &resource, opts...)
 	if err != nil {
