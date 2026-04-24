@@ -11,7 +11,7 @@ The Palo Alto Networks Cloud NGFW for AWS provider is available as a package in 
 
 * JavaScript/TypeScript: [`@pulumi/cloudngfwaws`](https://www.npmjs.com/package/@pulumi/cloudngfwaws)
 * Python: [`pulumi-cloudngfwaws`](https://pypi.org/project/pulumi-cloudngfwaws/)
-* Go: [`github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws`](https://github.com/pulumi/pulumi-cloudngfwaws)
+* Go: [`github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws`](https://github.com/pulumi/pulumi-cloudngfwaws)
 * .NET: [`Pulumi.Cloudngfwaws`](https://www.nuget.org/packages/Pulumi.Cloudngfwaws)
 * Java: [`com.pulumi/cloudngfwaws`](https://central.sonatype.com/artifact/com.pulumi/cloudngfwaws)
 

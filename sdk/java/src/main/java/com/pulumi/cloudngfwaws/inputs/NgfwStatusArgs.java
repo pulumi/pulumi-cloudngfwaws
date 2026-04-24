@@ -3,9 +3,11 @@
 
 package com.pulumi.cloudngfwaws.inputs;
 
+import com.pulumi.cloudngfwaws.inputs.NgfwStatusAttachmentArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +16,21 @@ import javax.annotation.Nullable;
 public final class NgfwStatusArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NgfwStatusArgs Empty = new NgfwStatusArgs();
+
+    /**
+     * The firewall attachments.
+     * 
+     */
+    @Import(name="attachments")
+    private @Nullable Output<List<NgfwStatusAttachmentArgs>> attachments;
+
+    /**
+     * @return The firewall attachments.
+     * 
+     */
+    public Optional<Output<List<NgfwStatusAttachmentArgs>>> attachments() {
+        return Optional.ofNullable(this.attachments);
+    }
 
     /**
      * The device rulestack commit status.
@@ -78,6 +95,7 @@ public final class NgfwStatusArgs extends com.pulumi.resources.ResourceArgs {
     private NgfwStatusArgs() {}
 
     private NgfwStatusArgs(NgfwStatusArgs $) {
+        this.attachments = $.attachments;
         this.deviceRulestackCommitStatus = $.deviceRulestackCommitStatus;
         this.failureReason = $.failureReason;
         this.firewallStatus = $.firewallStatus;
@@ -100,6 +118,37 @@ public final class NgfwStatusArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(NgfwStatusArgs defaults) {
             $ = new NgfwStatusArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param attachments The firewall attachments.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachments(@Nullable Output<List<NgfwStatusAttachmentArgs>> attachments) {
+            $.attachments = attachments;
+            return this;
+        }
+
+        /**
+         * @param attachments The firewall attachments.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachments(List<NgfwStatusAttachmentArgs> attachments) {
+            return attachments(Output.of(attachments));
+        }
+
+        /**
+         * @param attachments The firewall attachments.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachments(NgfwStatusAttachmentArgs... attachments) {
+            return attachments(List.of(attachments));
         }
 
         /**

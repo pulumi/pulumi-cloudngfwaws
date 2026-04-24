@@ -11,10 +11,20 @@ import java.util.Objects;
 @CustomType
 public final class GetNgfwsInstance {
     /**
+     * @return The account id.
+     * 
+     */
+    private String accountId;
+    /**
      * @return The NGFW ID.
      * 
      */
     private String firewallId;
+    /**
+     * @return The NGFW name.
+     * 
+     */
+    private String name;
     /**
      * @return The region the NGFW is in.
      * 
@@ -23,11 +33,25 @@ public final class GetNgfwsInstance {
 
     private GetNgfwsInstance() {}
     /**
+     * @return The account id.
+     * 
+     */
+    public String accountId() {
+        return this.accountId;
+    }
+    /**
      * @return The NGFW ID.
      * 
      */
     public String firewallId() {
         return this.firewallId;
+    }
+    /**
+     * @return The NGFW name.
+     * 
+     */
+    public String name() {
+        return this.name;
     }
     /**
      * @return The region the NGFW is in.
@@ -46,21 +70,41 @@ public final class GetNgfwsInstance {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String accountId;
         private String firewallId;
+        private String name;
         private String region;
         public Builder() {}
         public Builder(GetNgfwsInstance defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accountId = defaults.accountId;
     	      this.firewallId = defaults.firewallId;
+    	      this.name = defaults.name;
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetNgfwsInstance", "accountId");
+            }
+            this.accountId = accountId;
+            return this;
+        }
         @CustomType.Setter
         public Builder firewallId(String firewallId) {
             if (firewallId == null) {
               throw new MissingRequiredPropertyException("GetNgfwsInstance", "firewallId");
             }
             this.firewallId = firewallId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNgfwsInstance", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
@@ -73,7 +117,9 @@ public final class GetNgfwsInstance {
         }
         public GetNgfwsInstance build() {
             final var _resultValue = new GetNgfwsInstance();
+            _resultValue.accountId = accountId;
             _resultValue.firewallId = firewallId;
+            _resultValue.name = name;
             _resultValue.region = region;
             return _resultValue;
         }

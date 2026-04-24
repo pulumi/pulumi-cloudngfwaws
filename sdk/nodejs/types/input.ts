@@ -151,7 +151,59 @@ export interface NgfwPrivateAccess {
     type: pulumi.Input<string>;
 }
 
+export interface NgfwSecurityZone {
+    /**
+     * The account id.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * Enable egress NAT
+     */
+    egressNatEnabled?: pulumi.Input<boolean>;
+    /**
+     * Endpoint ID of the security zone
+     */
+    endpointId: pulumi.Input<string>;
+    /**
+     * The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
+     */
+    mode?: pulumi.Input<string>;
+    prefixes?: pulumi.Input<pulumi.Input<inputs.NgfwSecurityZonePrefix>[]>;
+    /**
+     * The rejected reason.
+     */
+    rejectedReason?: pulumi.Input<string>;
+    /**
+     * The attachment status.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The subnet id.
+     */
+    subnetId?: pulumi.Input<string>;
+    /**
+     * The vpc id.
+     */
+    vpcId?: pulumi.Input<string>;
+    /**
+     * The AZ id.
+     */
+    zoneId?: pulumi.Input<string>;
+}
+
+export interface NgfwSecurityZonePrefix {
+    privatePrefixes?: pulumi.Input<pulumi.Input<inputs.NgfwSecurityZonePrefixPrivatePrefix>[]>;
+}
+
+export interface NgfwSecurityZonePrefixPrivatePrefix {
+    cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface NgfwStatus {
+    /**
+     * The firewall attachments.
+     */
+    attachments?: pulumi.Input<pulumi.Input<inputs.NgfwStatusAttachment>[]>;
     /**
      * The device rulestack commit status.
      */
@@ -168,6 +220,25 @@ export interface NgfwStatus {
      * The rulestack status.
      */
     rulestackStatus?: pulumi.Input<string>;
+}
+
+export interface NgfwStatusAttachment {
+    /**
+     * The endpoint id.
+     */
+    endpointId?: pulumi.Input<string>;
+    /**
+     * The reject reason.
+     */
+    rejectedReason?: pulumi.Input<string>;
+    /**
+     * The attachment status.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The subnet id.
+     */
+    subnetId?: pulumi.Input<string>;
 }
 
 export interface NgfwSubnetMapping {

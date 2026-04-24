@@ -6,6 +6,7 @@ package com.pulumi.cloudngfwaws.inputs;
 import com.pulumi.cloudngfwaws.inputs.NgfwEgressNatArgs;
 import com.pulumi.cloudngfwaws.inputs.NgfwEndpointArgs;
 import com.pulumi.cloudngfwaws.inputs.NgfwPrivateAccessArgs;
+import com.pulumi.cloudngfwaws.inputs.NgfwSecurityZoneArgs;
 import com.pulumi.cloudngfwaws.inputs.NgfwStatusArgs;
 import com.pulumi.cloudngfwaws.inputs.NgfwSubnetMappingArgs;
 import com.pulumi.cloudngfwaws.inputs.NgfwUserIdArgs;
@@ -25,14 +26,14 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
     public static final NgfwState Empty = new NgfwState();
 
     /**
-     * The description.
+     * The Account Id.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The description.
+     * @return The Account Id.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -300,6 +301,13 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rulestack);
     }
 
+    @Import(name="securityZones")
+    private @Nullable Output<List<NgfwSecurityZoneArgs>> securityZones;
+
+    public Optional<Output<List<NgfwSecurityZoneArgs>>> securityZones() {
+        return Optional.ofNullable(this.securityZones);
+    }
+
     @Import(name="statuses")
     private @Nullable Output<List<NgfwStatusArgs>> statuses;
 
@@ -335,6 +343,21 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
+     * 
+     */
+    @Import(name="tier")
+    private @Nullable Output<String> tier;
+
+    /**
+     * @return Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
+     * 
+     */
+    public Optional<Output<String>> tier() {
+        return Optional.ofNullable(this.tier);
     }
 
     /**
@@ -397,9 +420,11 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.privateAccesses = $.privateAccesses;
         this.rulestack = $.rulestack;
+        this.securityZones = $.securityZones;
         this.statuses = $.statuses;
         this.subnetMappings = $.subnetMappings;
         this.tags = $.tags;
+        this.tier = $.tier;
         this.updateToken = $.updateToken;
         this.userIds = $.userIds;
         this.vpcId = $.vpcId;
@@ -424,7 +449,7 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The description.
+         * @param accountId The Account Id.
          * 
          * @return builder
          * 
@@ -435,7 +460,7 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The description.
+         * @param accountId The Account Id.
          * 
          * @return builder
          * 
@@ -849,6 +874,19 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
             return rulestack(Output.of(rulestack));
         }
 
+        public Builder securityZones(@Nullable Output<List<NgfwSecurityZoneArgs>> securityZones) {
+            $.securityZones = securityZones;
+            return this;
+        }
+
+        public Builder securityZones(List<NgfwSecurityZoneArgs> securityZones) {
+            return securityZones(Output.of(securityZones));
+        }
+
+        public Builder securityZones(NgfwSecurityZoneArgs... securityZones) {
+            return securityZones(List.of(securityZones));
+        }
+
         public Builder statuses(@Nullable Output<List<NgfwStatusArgs>> statuses) {
             $.statuses = statuses;
             return this;
@@ -912,6 +950,27 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tier Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tier(@Nullable Output<String> tier) {
+            $.tier = tier;
+            return this;
+        }
+
+        /**
+         * @param tier Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tier(String tier) {
+            return tier(Output.of(tier));
         }
 
         /**

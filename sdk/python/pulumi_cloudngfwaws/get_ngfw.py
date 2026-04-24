@@ -27,7 +27,7 @@ class GetNgfwResult:
     """
     A collection of values returned by getNgfw.
     """
-    def __init__(__self__, account_id=None, allowlist_accounts=None, app_id_version=None, automatic_upgrade_app_id_version=None, az_lists=None, change_protections=None, deployment_update_token=None, description=None, egress_nats=None, endpoint_mode=None, endpoint_service_name=None, endpoints=None, firewall_id=None, global_rulestack=None, id=None, link_id=None, link_status=None, multi_vpc=None, name=None, private_accesses=None, rulestack=None, statuses=None, subnet_mappings=None, tags=None, update_token=None, user_ids=None, vpc_id=None):
+    def __init__(__self__, account_id=None, allowlist_accounts=None, app_id_version=None, automatic_upgrade_app_id_version=None, az_lists=None, change_protections=None, deployment_update_token=None, description=None, egress_nats=None, endpoint_mode=None, endpoint_service_name=None, endpoints=None, firewall_id=None, global_rulestack=None, id=None, link_id=None, link_status=None, multi_vpc=None, name=None, private_accesses=None, rulestack=None, security_zones=None, statuses=None, subnet_mappings=None, tags=None, tier=None, update_token=None, user_ids=None, vpc_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -91,6 +91,9 @@ class GetNgfwResult:
         if rulestack and not isinstance(rulestack, str):
             raise TypeError("Expected argument 'rulestack' to be a str")
         pulumi.set(__self__, "rulestack", rulestack)
+        if security_zones and not isinstance(security_zones, list):
+            raise TypeError("Expected argument 'security_zones' to be a list")
+        pulumi.set(__self__, "security_zones", security_zones)
         if statuses and not isinstance(statuses, list):
             raise TypeError("Expected argument 'statuses' to be a list")
         pulumi.set(__self__, "statuses", statuses)
@@ -100,6 +103,9 @@ class GetNgfwResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
+        if tier and not isinstance(tier, str):
+            raise TypeError("Expected argument 'tier' to be a str")
+        pulumi.set(__self__, "tier", tier)
         if update_token and not isinstance(update_token, str):
             raise TypeError("Expected argument 'update_token' to be a str")
         pulumi.set(__self__, "update_token", update_token)
@@ -112,9 +118,9 @@ class GetNgfwResult:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> _builtins.str:
+    def account_id(self) -> Optional[_builtins.str]:
         """
-        The description.
+        The Account Id.
         """
         return pulumi.get(self, "account_id")
 
@@ -202,7 +208,7 @@ class GetNgfwResult:
 
     @_builtins.property
     @pulumi.getter(name="firewallId")
-    def firewall_id(self) -> _builtins.str:
+    def firewall_id(self) -> Optional[_builtins.str]:
         """
         The Firewall ID.
         """
@@ -250,7 +256,7 @@ class GetNgfwResult:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> _builtins.str:
+    def name(self) -> Optional[_builtins.str]:
         """
         The NGFW name.
         """
@@ -268,6 +274,11 @@ class GetNgfwResult:
         The rulestack for this NGFW.
         """
         return pulumi.get(self, "rulestack")
+
+    @_builtins.property
+    @pulumi.getter(name="securityZones")
+    def security_zones(self) -> Sequence['outputs.GetNgfwSecurityZoneResult']:
+        return pulumi.get(self, "security_zones")
 
     @_builtins.property
     @pulumi.getter
@@ -289,6 +300,14 @@ class GetNgfwResult:
         The tags.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def tier(self) -> _builtins.str:
+        """
+        Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+        """
+        return pulumi.get(self, "tier")
 
     @_builtins.property
     @pulumi.getter(name="updateToken")
@@ -339,15 +358,19 @@ class AwaitableGetNgfwResult(GetNgfwResult):
             name=self.name,
             private_accesses=self.private_accesses,
             rulestack=self.rulestack,
+            security_zones=self.security_zones,
             statuses=self.statuses,
             subnet_mappings=self.subnet_mappings,
             tags=self.tags,
+            tier=self.tier,
             update_token=self.update_token,
             user_ids=self.user_ids,
             vpc_id=self.vpc_id)
 
 
-def get_ngfw(firewall_id: Optional[_builtins.str] = None,
+def get_ngfw(account_id: Optional[_builtins.str] = None,
+             firewall_id: Optional[_builtins.str] = None,
+             name: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNgfwResult:
     """
     Data source for retrieving NGFW information.
@@ -358,11 +381,22 @@ def get_ngfw(firewall_id: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudngfwaws as cloudngfwaws
 
+    example = cloudngfwaws.get_ngfw(name="example-instance")
+    ```
+
+
+    :param _builtins.str account_id: The Account Id.
     :param _builtins.str firewall_id: The Firewall ID.
+    :param _builtins.str name: The NGFW name.
     """
     __args__ = dict()
+    __args__['accountId'] = account_id
     __args__['firewallId'] = firewall_id
+    __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudngfwaws:index/getNgfw:getNgfw', __args__, opts=opts, typ=GetNgfwResult).value
 
@@ -388,13 +422,17 @@ def get_ngfw(firewall_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         private_accesses=pulumi.get(__ret__, 'private_accesses'),
         rulestack=pulumi.get(__ret__, 'rulestack'),
+        security_zones=pulumi.get(__ret__, 'security_zones'),
         statuses=pulumi.get(__ret__, 'statuses'),
         subnet_mappings=pulumi.get(__ret__, 'subnet_mappings'),
         tags=pulumi.get(__ret__, 'tags'),
+        tier=pulumi.get(__ret__, 'tier'),
         update_token=pulumi.get(__ret__, 'update_token'),
         user_ids=pulumi.get(__ret__, 'user_ids'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-def get_ngfw_output(firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ngfw_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                    firewall_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                    name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNgfwResult]:
     """
     Data source for retrieving NGFW information.
@@ -405,11 +443,22 @@ def get_ngfw_output(firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudngfwaws as cloudngfwaws
 
+    example = cloudngfwaws.get_ngfw(name="example-instance")
+    ```
+
+
+    :param _builtins.str account_id: The Account Id.
     :param _builtins.str firewall_id: The Firewall ID.
+    :param _builtins.str name: The NGFW name.
     """
     __args__ = dict()
+    __args__['accountId'] = account_id
     __args__['firewallId'] = firewall_id
+    __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudngfwaws:index/getNgfw:getNgfw', __args__, opts=opts, typ=GetNgfwResult)
     return __ret__.apply(lambda __response__: GetNgfwResult(
@@ -434,9 +483,11 @@ def get_ngfw_output(firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
         name=pulumi.get(__response__, 'name'),
         private_accesses=pulumi.get(__response__, 'private_accesses'),
         rulestack=pulumi.get(__response__, 'rulestack'),
+        security_zones=pulumi.get(__response__, 'security_zones'),
         statuses=pulumi.get(__response__, 'statuses'),
         subnet_mappings=pulumi.get(__response__, 'subnet_mappings'),
         tags=pulumi.get(__response__, 'tags'),
+        tier=pulumi.get(__response__, 'tier'),
         update_token=pulumi.get(__response__, 'update_token'),
         user_ids=pulumi.get(__response__, 'user_ids'),
         vpc_id=pulumi.get(__response__, 'vpc_id')))

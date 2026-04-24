@@ -21,11 +21,11 @@ __all__ = ['NgfwLogProfileArgs', 'NgfwLogProfile']
 @pulumi.input_type
 class NgfwLogProfileArgs:
     def __init__(__self__, *,
-                 firewall_id: pulumi.Input[_builtins.str],
                  account_id: Optional[pulumi.Input[_builtins.str]] = None,
                  advanced_threat_log: Optional[pulumi.Input[_builtins.bool]] = None,
                  cloud_watch_metric_namespace: Optional[pulumi.Input[_builtins.str]] = None,
                  cloudwatch_metric_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
                  log_config: Optional[pulumi.Input['NgfwLogProfileLogConfigArgs']] = None,
                  log_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwLogProfileLogDestinationArgs']]]] = None,
                  ngfw: Optional[pulumi.Input[_builtins.str]] = None,
@@ -33,17 +33,16 @@ class NgfwLogProfileArgs:
         """
         The set of arguments for constructing a NgfwLogProfile resource.
 
-        :param pulumi.Input[_builtins.str] firewall_id: The Firewall Id for the NGFW.
         :param pulumi.Input[_builtins.str] account_id: The unique ID of the account.
         :param pulumi.Input[_builtins.bool] advanced_threat_log: Enable advanced threat logging.
         :param pulumi.Input[_builtins.str] cloud_watch_metric_namespace: The CloudWatch metric namespace.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cloudwatch_metric_fields: Cloudwatch metric fields.
+        :param pulumi.Input[_builtins.str] firewall_id: The Firewall Id for the NGFW.
         :param pulumi.Input['NgfwLogProfileLogConfigArgs'] log_config: Log configuration details.
         :param pulumi.Input[Sequence[pulumi.Input['NgfwLogProfileLogDestinationArgs']]] log_destinations: List of log destinations.
         :param pulumi.Input[_builtins.str] ngfw: The name of the NGFW.
         :param pulumi.Input[_builtins.str] region: The region of the NGFW.
         """
-        pulumi.set(__self__, "firewall_id", firewall_id)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if advanced_threat_log is not None:
@@ -52,6 +51,8 @@ class NgfwLogProfileArgs:
             pulumi.set(__self__, "cloud_watch_metric_namespace", cloud_watch_metric_namespace)
         if cloudwatch_metric_fields is not None:
             pulumi.set(__self__, "cloudwatch_metric_fields", cloudwatch_metric_fields)
+        if firewall_id is not None:
+            pulumi.set(__self__, "firewall_id", firewall_id)
         if log_config is not None:
             pulumi.set(__self__, "log_config", log_config)
         if log_destinations is not None:
@@ -60,18 +61,6 @@ class NgfwLogProfileArgs:
             pulumi.set(__self__, "ngfw", ngfw)
         if region is not None:
             pulumi.set(__self__, "region", region)
-
-    @_builtins.property
-    @pulumi.getter(name="firewallId")
-    def firewall_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The Firewall Id for the NGFW.
-        """
-        return pulumi.get(self, "firewall_id")
-
-    @firewall_id.setter
-    def firewall_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "firewall_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
@@ -120,6 +109,18 @@ class NgfwLogProfileArgs:
     @cloudwatch_metric_fields.setter
     def cloudwatch_metric_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cloudwatch_metric_fields", value)
+
+    @_builtins.property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The Firewall Id for the NGFW.
+        """
+        return pulumi.get(self, "firewall_id")
+
+    @firewall_id.setter
+    def firewall_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "firewall_id", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
@@ -364,6 +365,65 @@ class NgfwLogProfile(pulumi.CustomResource):
 
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example_vpc = aws.Vpc("example",
+            cidr_block=172.16.0.0/16,
+            tags={
+                name: tf-example,
+            })
+        subnet1 = aws.Subnet("subnet1",
+            vpc_id=my_vpc.id,
+            cidr_block=172.16.10.0/24,
+            availability_zone=us-west-2a,
+            tags={
+                name: tf-example,
+            })
+        subnet2 = aws.Subnet("subnet2",
+            vpc_id=my_vpc.id,
+            cidr_block=172.16.20.0/24,
+            availability_zone=us-west-2b,
+            tags={
+                name: tf-example,
+            })
+        x = cloudngfwaws.Ngfw("x",
+            name="example-instance",
+            vpc_id=example_vpc["id"],
+            account_id="12345678",
+            description="Example description",
+            endpoint_mode="ServiceManaged",
+            subnet_mappings=[
+                {
+                    "subnet_id": subnet1["id"],
+                },
+                {
+                    "subnet_id": subnet2["id"],
+                },
+            ],
+            rulestack="example-rulestack",
+            tags={
+                "Foo": "bar",
+            })
+        example = cloudngfwaws.NgfwLogProfile("example",
+            ngfw=x.name,
+            account_id=x.account_id,
+            log_destinations=[
+                {
+                    "destination_type": "S3",
+                    "destination": "my-s3-bucket",
+                    "log_type": "TRAFFIC",
+                },
+                {
+                    "destination_type": "CloudWatchLogs",
+                    "destination": "panw-log-group",
+                    "log_type": "THREAT",
+                },
+            ])
+        ```
+
         ## Import
 
         import name is <account_id>:<ngfw>
@@ -389,7 +449,7 @@ class NgfwLogProfile(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NgfwLogProfileArgs,
+                 args: Optional[NgfwLogProfileArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for NGFW log profile manipulation.
@@ -399,6 +459,65 @@ class NgfwLogProfile(pulumi.CustomResource):
         * `Firewall`
 
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example_vpc = aws.Vpc("example",
+            cidr_block=172.16.0.0/16,
+            tags={
+                name: tf-example,
+            })
+        subnet1 = aws.Subnet("subnet1",
+            vpc_id=my_vpc.id,
+            cidr_block=172.16.10.0/24,
+            availability_zone=us-west-2a,
+            tags={
+                name: tf-example,
+            })
+        subnet2 = aws.Subnet("subnet2",
+            vpc_id=my_vpc.id,
+            cidr_block=172.16.20.0/24,
+            availability_zone=us-west-2b,
+            tags={
+                name: tf-example,
+            })
+        x = cloudngfwaws.Ngfw("x",
+            name="example-instance",
+            vpc_id=example_vpc["id"],
+            account_id="12345678",
+            description="Example description",
+            endpoint_mode="ServiceManaged",
+            subnet_mappings=[
+                {
+                    "subnet_id": subnet1["id"],
+                },
+                {
+                    "subnet_id": subnet2["id"],
+                },
+            ],
+            rulestack="example-rulestack",
+            tags={
+                "Foo": "bar",
+            })
+        example = cloudngfwaws.NgfwLogProfile("example",
+            ngfw=x.name,
+            account_id=x.account_id,
+            log_destinations=[
+                {
+                    "destination_type": "S3",
+                    "destination": "my-s3-bucket",
+                    "log_type": "TRAFFIC",
+                },
+                {
+                    "destination_type": "CloudWatchLogs",
+                    "destination": "panw-log-group",
+                    "log_type": "THREAT",
+                },
+            ])
+        ```
 
         ## Import
 
@@ -446,8 +565,6 @@ class NgfwLogProfile(pulumi.CustomResource):
             __props__.__dict__["advanced_threat_log"] = advanced_threat_log
             __props__.__dict__["cloud_watch_metric_namespace"] = cloud_watch_metric_namespace
             __props__.__dict__["cloudwatch_metric_fields"] = cloudwatch_metric_fields
-            if firewall_id is None and not opts.urn:
-                raise TypeError("Missing required property 'firewall_id'")
             __props__.__dict__["firewall_id"] = firewall_id
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["log_destinations"] = log_destinations
@@ -542,7 +659,7 @@ class NgfwLogProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="firewallId")
-    def firewall_id(self) -> pulumi.Output[_builtins.str]:
+    def firewall_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The Firewall Id for the NGFW.
         """

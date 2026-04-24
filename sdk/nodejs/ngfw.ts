@@ -15,46 +15,271 @@ import * as utilities from "./utilities";
  *
  * * `Firewall`
  *
- * ## Example Usage
+ * ## Configuration Guide
+ *
+ * ***
+ *
+ * ### V1 Schema — Existing Deployments Only
+ *
+ * > **Important:** V1 schema is for existing customers who already have firewalls deployed with Terraform.
+ * New firewalls must be created using the V2 schema.
+ *
+ * ***
+ *
+ * #### 1. Managing an Existing Firewall (no configuration changes)
+ *
+ * Use the V1 schema as-is. No steps required beyond ensuring your existing state is in sync.
+ *
+ * **Steps:**
+ *
+ * 1. Verify there is no unintended drift:
+ *    2. If the plan is clean, no action needed. If drift is detected, review and apply:
+ *
+ * **Full example — existing V1 firewall:**
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
  * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
  *
  * const rs = new cloudngfwaws.CommitRulestack("rs", {rulestack: "my-rulestack"});
  * const example = new cloudngfwaws.Ngfw("example", {
  *     name: "example-instance",
+ *     vpcId: exampleAwsVpc.id,
+ *     accountId: "111111111111",
  *     description: "Example description",
- *     azLists: ["use1-az1"],
+ *     endpointMode: "ServiceManaged",
+ *     subnetMappings: [
+ *         {
+ *             subnetId: subnet1.id,
+ *         },
+ *         {
+ *             subnetId: subnet2.id,
+ *         },
+ *     ],
  *     rulestack: rs.rulestack,
  *     tags: {
  *         Foo: "bar",
  *     },
  * });
- * const exampleVpc = new aws.index.Vpc("example", {
- *     cidrBlock: "172.16.0.0/16",
+ * ```
+ *
+ * ***
+ *
+ * #### 2. Configuring Egress NAT on an Existing Firewall (V1)
+ *
+ * Egress NAT can be added to an existing V1 firewall without recreating the resource.
+ *
+ * > `ipPoolType` accepts `AWSService` or `BYOIP`. Use `BYOIP` together with `ipamPoolId`
+ * if bringing your own IP pool.
+ *
+ * **Steps:**
+ *
+ * 1. Add the `egressNat` block to your existing resource.
+ *
+ * **Full example — existing V1 firewall with Egress NAT enabled:**
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
+ *
+ * const example = new cloudngfwaws.Ngfw("example", {
+ *     name: "example-instance",
+ *     vpcId: "vpc-0a1b2c3d4e5f00001",
+ *     accountId: "111111111111",
+ *     description: "Example description",
+ *     endpointMode: "CustomerManaged",
+ *     subnetMappings: [
+ *         {
+ *             availabilityZone: "us-east-1a",
+ *         },
+ *         {
+ *             availabilityZone: "us-east-1c",
+ *         },
+ *     ],
+ *     rulestack: "my-rulestack",
+ *     egressNats: [{
+ *         enabled: true,
+ *         settings: [{
+ *             ipPoolType: "AWSService",
+ *         }],
+ *     }],
  *     tags: {
- *         name: "tf-example",
- *     },
- * });
- * const subnet1 = new aws.index.Subnet("subnet1", {
- *     vpcId: myVpc.id,
- *     cidrBlock: "172.16.10.0/24",
- *     availabilityZone: "us-west-2a",
- *     tags: {
- *         name: "tf-example",
- *     },
- * });
- * const subnet2 = new aws.index.Subnet("subnet2", {
- *     vpcId: myVpc.id,
- *     cidrBlock: "172.16.20.0/24",
- *     availabilityZone: "us-west-2b",
- *     tags: {
- *         name: "tf-example",
+ *         Foo: "bar",
  *     },
  * });
  * ```
+ *
+ * **To disable Egress NAT:** set `enabled = false` and re-apply.
+ *
+ * ***
+ *
+ * #### 3. Configuring Security Zones on an Existing Firewall (V1)
+ *
+ * Security zones let you enable or disable Egress NAT per endpoint and add or remove private CIDR prefixes.
+ *
+ * > **Prerequisite:** Endpoints must be successfully created and in `ACCEPTED` state before
+ * security zones can be configured. Check `status.attachment[*].status` in Terraform state
+ * or the AWS console before proceeding.
+ *
+ * **Steps:**
+ *
+ * 1. Confirm endpoint status is `ACCEPTED`:
+ *
+ * **To remove private prefixes:** remove the CIDR entries from `cidrs` and re-apply.
+ * **To disable Egress NAT for a specific zone:** set `egressNatEnabled = false` and re-apply.
+ *
+ * ***
+ *
+ * ### V2 Schema — New Firewalls
+ *
+ * > **Important:** New firewalls can only be created using the V2 schema. Use `azList`
+ * instead of `subnetMapping`, and `endpoints` instead of `endpointMode`/`subnetMapping`.
+ *
+ * ***
+ *
+ * #### 1. Creating a New Firewall (V2)
+ *
+ * Firewall creation uses `azList` to specify availability zones.
+ * **Do not include `endpoints` during creation** — they must be added in a separate update after the firewall is running.
+ *
+ * **Steps:**
+ *
+ * 1. Define the resource with `azList` and no `endpoints` block.
+ * 2. Proceed to **Step 2** once the firewall reaches `RUNNING` state.
+ *
+ * **Full example — new V2 firewall (creation only):**
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
+ *
+ * const example = new cloudngfwaws.Ngfw("example", {
+ *     name: "my-firewall",
+ *     description: "My new firewall",
+ *     azLists: [
+ *         "use1-az1",
+ *         "use1-az4",
+ *     ],
+ *     allowlistAccounts: ["111111111111"],
+ *     tags: {
+ *         Owner: "my-team",
+ *     },
+ * });
+ * ```
+ *
+ * ***
+ *
+ * #### 2. Adding Endpoints to a V2 Firewall
+ *
+ * Endpoints connect the firewall to customer VPCs. They must be added in a separate
+ * a separate update after the firewall is running.
+ *
+ * **Steps:**
+ *
+ * 1. Confirm the firewall status is `RUNNING`:
+ *
+ * **Full example — V2 firewall with endpoints added:**
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
+ *
+ * const example = new cloudngfwaws.Ngfw("example", {
+ *     name: "my-firewall",
+ *     description: "My new firewall",
+ *     azLists: [
+ *         "use1-az1",
+ *         "use1-az4",
+ *     ],
+ *     allowlistAccounts: ["111111111111"],
+ *     endpoints: [
+ *         {
+ *             accountId: "111111111111",
+ *             vpcId: "vpc-0a1b2c3d4e5f00002",
+ *             subnetId: "subnet-0a1b2c3d4e5f00001",
+ *             mode: "ServiceManaged",
+ *         },
+ *         {
+ *             accountId: "111111111111",
+ *             vpcId: "vpc-0a1b2c3d4e5f00003",
+ *             subnetId: "subnet-0a1b2c3d4e5f00002",
+ *             mode: "ServiceManaged",
+ *         },
+ *     ],
+ *     tags: {
+ *         Owner: "my-team",
+ *     },
+ * });
+ * ```
+ *
+ * ***
+ *
+ * #### 3. Configuring Egress NAT on a V2 Firewall
+ *
+ * Egress NAT can be enabled at the firewall level once at least one endpoint is accepted.
+ *
+ * > **Prerequisite:** At least one endpoint must be in `ACCEPTED` state.
+ *
+ * **Steps:**
+ *
+ * 1. Add the `egressNat` block to the resource.
+ *
+ * **Full example — V2 firewall with Egress NAT enabled:**
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
+ *
+ * const example = new cloudngfwaws.Ngfw("example", {
+ *     name: "my-firewall",
+ *     description: "My new firewall",
+ *     azLists: [
+ *         "use1-az1",
+ *         "use1-az4",
+ *     ],
+ *     allowlistAccounts: ["111111111111"],
+ *     endpoints: [
+ *         {
+ *             accountId: "111111111111",
+ *             vpcId: "vpc-0a1b2c3d4e5f00002",
+ *             subnetId: "subnet-0a1b2c3d4e5f00001",
+ *             mode: "ServiceManaged",
+ *         },
+ *         {
+ *             accountId: "111111111111",
+ *             vpcId: "vpc-0a1b2c3d4e5f00003",
+ *             subnetId: "subnet-0a1b2c3d4e5f00002",
+ *             mode: "ServiceManaged",
+ *         },
+ *     ],
+ *     egressNats: [{
+ *         enabled: true,
+ *         settings: [{
+ *             ipPoolType: "AWSService",
+ *         }],
+ *     }],
+ *     tags: {
+ *         Owner: "my-team",
+ *     },
+ * });
+ * ```
+ *
+ * **To disable Egress NAT:** set `enabled = false` and re-apply.
+ *
+ * ***
+ *
+ * #### 4. Configuring Private Prefixes and Per-Endpoint Egress NAT (V2)
+ *
+ * Once an endpoint is accepted, you can enable or disable Egress NAT and configure private
+ * CIDR prefixes on a per-endpoint basis within the `endpoints` block.
+ *
+ * > **Prerequisite:** The endpoint must be in `ACCEPTED` state. The `endpointId`
+ * is a read-only computed value — retrieve it from Terraform state after apply:
+ *
+ * **To remove private prefixes:** remove the CIDR entries from `cidrs` and re-apply.
+ * **To disable per-endpoint Egress NAT:** set `egressNatEnabled = false` and re-apply.
+ *
+ * ***
  *
  * ## Import
  *
@@ -93,7 +318,7 @@ export class Ngfw extends pulumi.CustomResource {
     }
 
     /**
-     * The description.
+     * The Account Id.
      */
     declare public readonly accountId: pulumi.Output<string | undefined>;
     /**
@@ -111,7 +336,7 @@ export class Ngfw extends pulumi.CustomResource {
     /**
      * The list of availability zone IDs for this NGFW.
      */
-    declare public readonly azLists: pulumi.Output<string[]>;
+    declare public readonly azLists: pulumi.Output<string[] | undefined>;
     /**
      * Enables or disables change protection for the NGFW.
      */
@@ -137,7 +362,7 @@ export class Ngfw extends pulumi.CustomResource {
     /**
      * The Firewall ID.
      */
-    declare public /*out*/ readonly firewallId: pulumi.Output<string>;
+    declare public readonly firewallId: pulumi.Output<string>;
     /**
      * The global rulestack for this NGFW.
      */
@@ -163,6 +388,7 @@ export class Ngfw extends pulumi.CustomResource {
      * The rulestack for this NGFW.
      */
     declare public readonly rulestack: pulumi.Output<string | undefined>;
+    declare public readonly securityZones: pulumi.Output<outputs.NgfwSecurityZone[] | undefined>;
     declare public /*out*/ readonly statuses: pulumi.Output<outputs.NgfwStatus[]>;
     /**
      * Subnet mappings.
@@ -172,6 +398,10 @@ export class Ngfw extends pulumi.CustomResource {
      * The tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+     */
+    declare public readonly tier: pulumi.Output<string>;
     /**
      * The update token.
      */
@@ -189,7 +419,7 @@ export class Ngfw extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: NgfwArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: NgfwArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NgfwArgs | NgfwState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -215,17 +445,16 @@ export class Ngfw extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["privateAccesses"] = state?.privateAccesses;
             resourceInputs["rulestack"] = state?.rulestack;
+            resourceInputs["securityZones"] = state?.securityZones;
             resourceInputs["statuses"] = state?.statuses;
             resourceInputs["subnetMappings"] = state?.subnetMappings;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["tier"] = state?.tier;
             resourceInputs["updateToken"] = state?.updateToken;
             resourceInputs["userIds"] = state?.userIds;
             resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as NgfwArgs | undefined;
-            if (args?.azLists === undefined && !opts.urn) {
-                throw new Error("Missing required property 'azLists'");
-            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["allowlistAccounts"] = args?.allowlistAccounts;
             resourceInputs["appIdVersion"] = args?.appIdVersion;
@@ -236,19 +465,21 @@ export class Ngfw extends pulumi.CustomResource {
             resourceInputs["egressNats"] = args?.egressNats;
             resourceInputs["endpointMode"] = args?.endpointMode;
             resourceInputs["endpoints"] = args?.endpoints;
+            resourceInputs["firewallId"] = args?.firewallId;
             resourceInputs["globalRulestack"] = args?.globalRulestack;
             resourceInputs["linkId"] = args?.linkId;
             resourceInputs["multiVpc"] = args?.multiVpc;
             resourceInputs["name"] = args?.name;
             resourceInputs["privateAccesses"] = args?.privateAccesses;
             resourceInputs["rulestack"] = args?.rulestack;
+            resourceInputs["securityZones"] = args?.securityZones;
             resourceInputs["subnetMappings"] = args?.subnetMappings;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["tier"] = args?.tier;
             resourceInputs["userIds"] = args?.userIds;
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["deploymentUpdateToken"] = undefined /*out*/;
             resourceInputs["endpointServiceName"] = undefined /*out*/;
-            resourceInputs["firewallId"] = undefined /*out*/;
             resourceInputs["linkStatus"] = undefined /*out*/;
             resourceInputs["statuses"] = undefined /*out*/;
             resourceInputs["updateToken"] = undefined /*out*/;
@@ -263,7 +494,7 @@ export class Ngfw extends pulumi.CustomResource {
  */
 export interface NgfwState {
     /**
-     * The description.
+     * The Account Id.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -333,6 +564,7 @@ export interface NgfwState {
      * The rulestack for this NGFW.
      */
     rulestack?: pulumi.Input<string>;
+    securityZones?: pulumi.Input<pulumi.Input<inputs.NgfwSecurityZone>[]>;
     statuses?: pulumi.Input<pulumi.Input<inputs.NgfwStatus>[]>;
     /**
      * Subnet mappings.
@@ -342,6 +574,10 @@ export interface NgfwState {
      * The tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+     */
+    tier?: pulumi.Input<string>;
     /**
      * The update token.
      */
@@ -358,7 +594,7 @@ export interface NgfwState {
  */
 export interface NgfwArgs {
     /**
-     * The description.
+     * The Account Id.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -376,7 +612,7 @@ export interface NgfwArgs {
     /**
      * The list of availability zone IDs for this NGFW.
      */
-    azLists: pulumi.Input<pulumi.Input<string>[]>;
+    azLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Enables or disables change protection for the NGFW.
      */
@@ -391,6 +627,10 @@ export interface NgfwArgs {
      */
     endpointMode?: pulumi.Input<string>;
     endpoints?: pulumi.Input<pulumi.Input<inputs.NgfwEndpoint>[]>;
+    /**
+     * The Firewall ID.
+     */
+    firewallId?: pulumi.Input<string>;
     /**
      * The global rulestack for this NGFW.
      */
@@ -412,6 +652,7 @@ export interface NgfwArgs {
      * The rulestack for this NGFW.
      */
     rulestack?: pulumi.Input<string>;
+    securityZones?: pulumi.Input<pulumi.Input<inputs.NgfwSecurityZone>[]>;
     /**
      * Subnet mappings.
      */
@@ -420,6 +661,10 @@ export interface NgfwArgs {
      * The tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+     */
+    tier?: pulumi.Input<string>;
     userIds?: pulumi.Input<pulumi.Input<inputs.NgfwUserId>[]>;
     /**
      * The VPC ID for the NGFW.

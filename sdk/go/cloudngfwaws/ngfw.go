@@ -7,8 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
-	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws/internal"
+	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,15 +19,34 @@ import (
 //
 // * `Firewall`
 //
-// ## Example Usage
+// ## Configuration Guide
+//
+// ***
+//
+// ### V1 Schema — Existing Deployments Only
+//
+// > **Important:** V1 schema is for existing customers who already have firewalls deployed with Terraform.
+// New firewalls must be created using the V2 schema.
+//
+// ***
+//
+// #### 1. Managing an Existing Firewall (no configuration changes)
+//
+// Use the V1 schema as-is. No steps required beyond ensuring your existing state is in sync.
+//
+// **Steps:**
+//
+// 1. Verify there is no unintended drift:
+//  2. If the plan is clean, no action needed. If drift is detected, review and apply:
+//
+// **Full example — existing V1 firewall:**
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aws/sdk/go/aws"
-//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws"
+//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -42,45 +60,22 @@ import (
 //				return err
 //			}
 //			_, err = cloudngfwaws.NewNgfw(ctx, "example", &cloudngfwaws.NgfwArgs{
-//				Name:        pulumi.String("example-instance"),
-//				Description: pulumi.String("Example description"),
-//				AzLists: pulumi.StringArray{
-//					pulumi.String("use1-az1"),
+//				Name:         pulumi.String("example-instance"),
+//				VpcId:        pulumi.Any(exampleAwsVpc.Id),
+//				AccountId:    pulumi.String("111111111111"),
+//				Description:  pulumi.String("Example description"),
+//				EndpointMode: pulumi.String("ServiceManaged"),
+//				SubnetMappings: cloudngfwaws.NgfwSubnetMappingArray{
+//					&cloudngfwaws.NgfwSubnetMappingArgs{
+//						SubnetId: pulumi.Any(subnet1.Id),
+//					},
+//					&cloudngfwaws.NgfwSubnetMappingArgs{
+//						SubnetId: pulumi.Any(subnet2.Id),
+//					},
 //				},
 //				Rulestack: rs.Rulestack,
 //				Tags: pulumi.StringMap{
 //					"Foo": pulumi.String("bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aws.NewVpc(ctx, "example", &aws.VpcArgs{
-//				CidrBlock: "172.16.0.0/16",
-//				Tags: map[string]interface{}{
-//					"name": "tf-example",
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aws.NewSubnet(ctx, "subnet1", &aws.SubnetArgs{
-//				VpcId:            myVpc.Id,
-//				CidrBlock:        "172.16.10.0/24",
-//				AvailabilityZone: "us-west-2a",
-//				Tags: map[string]interface{}{
-//					"name": "tf-example",
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aws.NewSubnet(ctx, "subnet2", &aws.SubnetArgs{
-//				VpcId:            myVpc.Id,
-//				CidrBlock:        "172.16.20.0/24",
-//				AvailabilityZone: "us-west-2b",
-//				Tags: map[string]interface{}{
-//					"name": "tf-example",
 //				},
 //			})
 //			if err != nil {
@@ -92,6 +87,298 @@ import (
 //
 // ```
 //
+// ***
+//
+// #### 2. Configuring Egress NAT on an Existing Firewall (V1)
+//
+// Egress NAT can be added to an existing V1 firewall without recreating the resource.
+//
+// > `ipPoolType` accepts `AWSService` or `BYOIP`. Use `BYOIP` together with `ipamPoolId`
+// if bringing your own IP pool.
+//
+// **Steps:**
+//
+// 1. Add the `egressNat` block to your existing resource.
+//
+// **Full example — existing V1 firewall with Egress NAT enabled:**
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudngfwaws.NewNgfw(ctx, "example", &cloudngfwaws.NgfwArgs{
+//				Name:         pulumi.String("example-instance"),
+//				VpcId:        pulumi.String("vpc-0a1b2c3d4e5f00001"),
+//				AccountId:    pulumi.String("111111111111"),
+//				Description:  pulumi.String("Example description"),
+//				EndpointMode: pulumi.String("CustomerManaged"),
+//				SubnetMappings: cloudngfwaws.NgfwSubnetMappingArray{
+//					&cloudngfwaws.NgfwSubnetMappingArgs{
+//						AvailabilityZone: pulumi.String("us-east-1a"),
+//					},
+//					&cloudngfwaws.NgfwSubnetMappingArgs{
+//						AvailabilityZone: pulumi.String("us-east-1c"),
+//					},
+//				},
+//				Rulestack: pulumi.String("my-rulestack"),
+//				EgressNats: cloudngfwaws.NgfwEgressNatArray{
+//					&cloudngfwaws.NgfwEgressNatArgs{
+//						Enabled: pulumi.Bool(true),
+//						Settings: cloudngfwaws.NgfwEgressNatSettingArray{
+//							&cloudngfwaws.NgfwEgressNatSettingArgs{
+//								IpPoolType: pulumi.String("AWSService"),
+//							},
+//						},
+//					},
+//				},
+//				Tags: pulumi.StringMap{
+//					"Foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// **To disable Egress NAT:** set `enabled = false` and re-apply.
+//
+// ***
+//
+// #### 3. Configuring Security Zones on an Existing Firewall (V1)
+//
+// Security zones let you enable or disable Egress NAT per endpoint and add or remove private CIDR prefixes.
+//
+// > **Prerequisite:** Endpoints must be successfully created and in `ACCEPTED` state before
+// security zones can be configured. Check `status.attachment[*].status` in Terraform state
+// or the AWS console before proceeding.
+//
+// **Steps:**
+//
+// 1. Confirm endpoint status is `ACCEPTED`:
+//
+// **To remove private prefixes:** remove the CIDR entries from `cidrs` and re-apply.
+// **To disable Egress NAT for a specific zone:** set `egressNatEnabled = false` and re-apply.
+//
+// ***
+//
+// ### V2 Schema — New Firewalls
+//
+// > **Important:** New firewalls can only be created using the V2 schema. Use `azList`
+// instead of `subnetMapping`, and `endpoints` instead of `endpointMode`/`subnetMapping`.
+//
+// ***
+//
+// #### 1. Creating a New Firewall (V2)
+//
+// Firewall creation uses `azList` to specify availability zones.
+// **Do not include `endpoints` during creation** — they must be added in a separate update after the firewall is running.
+//
+// **Steps:**
+//
+// 1. Define the resource with `azList` and no `endpoints` block.
+// 2. Proceed to **Step 2** once the firewall reaches `RUNNING` state.
+//
+// **Full example — new V2 firewall (creation only):**
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudngfwaws.NewNgfw(ctx, "example", &cloudngfwaws.NgfwArgs{
+//				Name:        pulumi.String("my-firewall"),
+//				Description: pulumi.String("My new firewall"),
+//				AzLists: pulumi.StringArray{
+//					pulumi.String("use1-az1"),
+//					pulumi.String("use1-az4"),
+//				},
+//				AllowlistAccounts: pulumi.StringArray{
+//					pulumi.String("111111111111"),
+//				},
+//				Tags: pulumi.StringMap{
+//					"Owner": pulumi.String("my-team"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ***
+//
+// #### 2. Adding Endpoints to a V2 Firewall
+//
+// Endpoints connect the firewall to customer VPCs. They must be added in a separate
+// a separate update after the firewall is running.
+//
+// **Steps:**
+//
+// 1. Confirm the firewall status is `RUNNING`:
+//
+// **Full example — V2 firewall with endpoints added:**
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudngfwaws.NewNgfw(ctx, "example", &cloudngfwaws.NgfwArgs{
+//				Name:        pulumi.String("my-firewall"),
+//				Description: pulumi.String("My new firewall"),
+//				AzLists: pulumi.StringArray{
+//					pulumi.String("use1-az1"),
+//					pulumi.String("use1-az4"),
+//				},
+//				AllowlistAccounts: pulumi.StringArray{
+//					pulumi.String("111111111111"),
+//				},
+//				Endpoints: cloudngfwaws.NgfwEndpointArray{
+//					&cloudngfwaws.NgfwEndpointArgs{
+//						AccountId: pulumi.String("111111111111"),
+//						VpcId:     pulumi.String("vpc-0a1b2c3d4e5f00002"),
+//						SubnetId:  pulumi.String("subnet-0a1b2c3d4e5f00001"),
+//						Mode:      pulumi.String("ServiceManaged"),
+//					},
+//					&cloudngfwaws.NgfwEndpointArgs{
+//						AccountId: pulumi.String("111111111111"),
+//						VpcId:     pulumi.String("vpc-0a1b2c3d4e5f00003"),
+//						SubnetId:  pulumi.String("subnet-0a1b2c3d4e5f00002"),
+//						Mode:      pulumi.String("ServiceManaged"),
+//					},
+//				},
+//				Tags: pulumi.StringMap{
+//					"Owner": pulumi.String("my-team"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ***
+//
+// #### 3. Configuring Egress NAT on a V2 Firewall
+//
+// Egress NAT can be enabled at the firewall level once at least one endpoint is accepted.
+//
+// > **Prerequisite:** At least one endpoint must be in `ACCEPTED` state.
+//
+// **Steps:**
+//
+// 1. Add the `egressNat` block to the resource.
+//
+// **Full example — V2 firewall with Egress NAT enabled:**
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudngfwaws.NewNgfw(ctx, "example", &cloudngfwaws.NgfwArgs{
+//				Name:        pulumi.String("my-firewall"),
+//				Description: pulumi.String("My new firewall"),
+//				AzLists: pulumi.StringArray{
+//					pulumi.String("use1-az1"),
+//					pulumi.String("use1-az4"),
+//				},
+//				AllowlistAccounts: pulumi.StringArray{
+//					pulumi.String("111111111111"),
+//				},
+//				Endpoints: cloudngfwaws.NgfwEndpointArray{
+//					&cloudngfwaws.NgfwEndpointArgs{
+//						AccountId: pulumi.String("111111111111"),
+//						VpcId:     pulumi.String("vpc-0a1b2c3d4e5f00002"),
+//						SubnetId:  pulumi.String("subnet-0a1b2c3d4e5f00001"),
+//						Mode:      pulumi.String("ServiceManaged"),
+//					},
+//					&cloudngfwaws.NgfwEndpointArgs{
+//						AccountId: pulumi.String("111111111111"),
+//						VpcId:     pulumi.String("vpc-0a1b2c3d4e5f00003"),
+//						SubnetId:  pulumi.String("subnet-0a1b2c3d4e5f00002"),
+//						Mode:      pulumi.String("ServiceManaged"),
+//					},
+//				},
+//				EgressNats: cloudngfwaws.NgfwEgressNatArray{
+//					&cloudngfwaws.NgfwEgressNatArgs{
+//						Enabled: pulumi.Bool(true),
+//						Settings: cloudngfwaws.NgfwEgressNatSettingArray{
+//							&cloudngfwaws.NgfwEgressNatSettingArgs{
+//								IpPoolType: pulumi.String("AWSService"),
+//							},
+//						},
+//					},
+//				},
+//				Tags: pulumi.StringMap{
+//					"Owner": pulumi.String("my-team"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// **To disable Egress NAT:** set `enabled = false` and re-apply.
+//
+// ***
+//
+// #### 4. Configuring Private Prefixes and Per-Endpoint Egress NAT (V2)
+//
+// Once an endpoint is accepted, you can enable or disable Egress NAT and configure private
+// CIDR prefixes on a per-endpoint basis within the `endpoints` block.
+//
+// > **Prerequisite:** The endpoint must be in `ACCEPTED` state. The `endpointId`
+// is a read-only computed value — retrieve it from Terraform state after apply:
+//
+// **To remove private prefixes:** remove the CIDR entries from `cidrs` and re-apply.
+// **To disable per-endpoint Egress NAT:** set `egressNatEnabled = false` and re-apply.
+//
+// ***
+//
 // ## Import
 //
 // import name is <account_id>:<name>
@@ -102,7 +389,7 @@ import (
 type Ngfw struct {
 	pulumi.CustomResourceState
 
-	// The description.
+	// The Account Id.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The list of allowed accounts for this NGFW.
 	AllowlistAccounts pulumi.StringArrayOutput `pulumi:"allowlistAccounts"`
@@ -138,12 +425,15 @@ type Ngfw struct {
 	Name            pulumi.StringOutput          `pulumi:"name"`
 	PrivateAccesses NgfwPrivateAccessArrayOutput `pulumi:"privateAccesses"`
 	// The rulestack for this NGFW.
-	Rulestack pulumi.StringPtrOutput `pulumi:"rulestack"`
-	Statuses  NgfwStatusArrayOutput  `pulumi:"statuses"`
+	Rulestack     pulumi.StringPtrOutput      `pulumi:"rulestack"`
+	SecurityZones NgfwSecurityZoneArrayOutput `pulumi:"securityZones"`
+	Statuses      NgfwStatusArrayOutput       `pulumi:"statuses"`
 	// Subnet mappings.
 	SubnetMappings NgfwSubnetMappingArrayOutput `pulumi:"subnetMappings"`
 	// The tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+	Tier pulumi.StringOutput `pulumi:"tier"`
 	// The update token.
 	UpdateToken pulumi.StringOutput   `pulumi:"updateToken"`
 	UserIds     NgfwUserIdArrayOutput `pulumi:"userIds"`
@@ -155,12 +445,9 @@ type Ngfw struct {
 func NewNgfw(ctx *pulumi.Context,
 	name string, args *NgfwArgs, opts ...pulumi.ResourceOption) (*Ngfw, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &NgfwArgs{}
 	}
 
-	if args.AzLists == nil {
-		return nil, errors.New("invalid value for required argument 'AzLists'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Ngfw
 	err := ctx.RegisterResource("cloudngfwaws:index/ngfw:Ngfw", name, args, &resource, opts...)
@@ -184,7 +471,7 @@ func GetNgfw(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Ngfw resources.
 type ngfwState struct {
-	// The description.
+	// The Account Id.
 	AccountId *string `pulumi:"accountId"`
 	// The list of allowed accounts for this NGFW.
 	AllowlistAccounts []string `pulumi:"allowlistAccounts"`
@@ -220,12 +507,15 @@ type ngfwState struct {
 	Name            *string             `pulumi:"name"`
 	PrivateAccesses []NgfwPrivateAccess `pulumi:"privateAccesses"`
 	// The rulestack for this NGFW.
-	Rulestack *string      `pulumi:"rulestack"`
-	Statuses  []NgfwStatus `pulumi:"statuses"`
+	Rulestack     *string            `pulumi:"rulestack"`
+	SecurityZones []NgfwSecurityZone `pulumi:"securityZones"`
+	Statuses      []NgfwStatus       `pulumi:"statuses"`
 	// Subnet mappings.
 	SubnetMappings []NgfwSubnetMapping `pulumi:"subnetMappings"`
 	// The tags.
 	Tags map[string]string `pulumi:"tags"`
+	// Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+	Tier *string `pulumi:"tier"`
 	// The update token.
 	UpdateToken *string      `pulumi:"updateToken"`
 	UserIds     []NgfwUserId `pulumi:"userIds"`
@@ -234,7 +524,7 @@ type ngfwState struct {
 }
 
 type NgfwState struct {
-	// The description.
+	// The Account Id.
 	AccountId pulumi.StringPtrInput
 	// The list of allowed accounts for this NGFW.
 	AllowlistAccounts pulumi.StringArrayInput
@@ -270,12 +560,15 @@ type NgfwState struct {
 	Name            pulumi.StringPtrInput
 	PrivateAccesses NgfwPrivateAccessArrayInput
 	// The rulestack for this NGFW.
-	Rulestack pulumi.StringPtrInput
-	Statuses  NgfwStatusArrayInput
+	Rulestack     pulumi.StringPtrInput
+	SecurityZones NgfwSecurityZoneArrayInput
+	Statuses      NgfwStatusArrayInput
 	// Subnet mappings.
 	SubnetMappings NgfwSubnetMappingArrayInput
 	// The tags.
 	Tags pulumi.StringMapInput
+	// Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+	Tier pulumi.StringPtrInput
 	// The update token.
 	UpdateToken pulumi.StringPtrInput
 	UserIds     NgfwUserIdArrayInput
@@ -288,7 +581,7 @@ func (NgfwState) ElementType() reflect.Type {
 }
 
 type ngfwArgs struct {
-	// The description.
+	// The Account Id.
 	AccountId *string `pulumi:"accountId"`
 	// The list of allowed accounts for this NGFW.
 	AllowlistAccounts []string `pulumi:"allowlistAccounts"`
@@ -306,6 +599,8 @@ type ngfwArgs struct {
 	// Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
 	EndpointMode *string        `pulumi:"endpointMode"`
 	Endpoints    []NgfwEndpoint `pulumi:"endpoints"`
+	// The Firewall ID.
+	FirewallId *string `pulumi:"firewallId"`
 	// The global rulestack for this NGFW.
 	GlobalRulestack *string `pulumi:"globalRulestack"`
 	// The link ID.
@@ -316,19 +611,22 @@ type ngfwArgs struct {
 	Name            *string             `pulumi:"name"`
 	PrivateAccesses []NgfwPrivateAccess `pulumi:"privateAccesses"`
 	// The rulestack for this NGFW.
-	Rulestack *string `pulumi:"rulestack"`
+	Rulestack     *string            `pulumi:"rulestack"`
+	SecurityZones []NgfwSecurityZone `pulumi:"securityZones"`
 	// Subnet mappings.
 	SubnetMappings []NgfwSubnetMapping `pulumi:"subnetMappings"`
 	// The tags.
-	Tags    map[string]string `pulumi:"tags"`
-	UserIds []NgfwUserId      `pulumi:"userIds"`
+	Tags map[string]string `pulumi:"tags"`
+	// Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+	Tier    *string      `pulumi:"tier"`
+	UserIds []NgfwUserId `pulumi:"userIds"`
 	// The VPC ID for the NGFW.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a Ngfw resource.
 type NgfwArgs struct {
-	// The description.
+	// The Account Id.
 	AccountId pulumi.StringPtrInput
 	// The list of allowed accounts for this NGFW.
 	AllowlistAccounts pulumi.StringArrayInput
@@ -346,6 +644,8 @@ type NgfwArgs struct {
 	// Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
 	EndpointMode pulumi.StringPtrInput
 	Endpoints    NgfwEndpointArrayInput
+	// The Firewall ID.
+	FirewallId pulumi.StringPtrInput
 	// The global rulestack for this NGFW.
 	GlobalRulestack pulumi.StringPtrInput
 	// The link ID.
@@ -356,11 +656,14 @@ type NgfwArgs struct {
 	Name            pulumi.StringPtrInput
 	PrivateAccesses NgfwPrivateAccessArrayInput
 	// The rulestack for this NGFW.
-	Rulestack pulumi.StringPtrInput
+	Rulestack     pulumi.StringPtrInput
+	SecurityZones NgfwSecurityZoneArrayInput
 	// Subnet mappings.
 	SubnetMappings NgfwSubnetMappingArrayInput
 	// The tags.
-	Tags    pulumi.StringMapInput
+	Tags pulumi.StringMapInput
+	// Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+	Tier    pulumi.StringPtrInput
 	UserIds NgfwUserIdArrayInput
 	// The VPC ID for the NGFW.
 	VpcId pulumi.StringPtrInput
@@ -453,7 +756,7 @@ func (o NgfwOutput) ToNgfwOutputWithContext(ctx context.Context) NgfwOutput {
 	return o
 }
 
-// The description.
+// The Account Id.
 func (o NgfwOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ngfw) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -550,6 +853,10 @@ func (o NgfwOutput) Rulestack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ngfw) pulumi.StringPtrOutput { return v.Rulestack }).(pulumi.StringPtrOutput)
 }
 
+func (o NgfwOutput) SecurityZones() NgfwSecurityZoneArrayOutput {
+	return o.ApplyT(func(v *Ngfw) NgfwSecurityZoneArrayOutput { return v.SecurityZones }).(NgfwSecurityZoneArrayOutput)
+}
+
 func (o NgfwOutput) Statuses() NgfwStatusArrayOutput {
 	return o.ApplyT(func(v *Ngfw) NgfwStatusArrayOutput { return v.Statuses }).(NgfwStatusArrayOutput)
 }
@@ -562,6 +869,11 @@ func (o NgfwOutput) SubnetMappings() NgfwSubnetMappingArrayOutput {
 // The tags.
 func (o NgfwOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Ngfw) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+func (o NgfwOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ngfw) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
 }
 
 // The update token.

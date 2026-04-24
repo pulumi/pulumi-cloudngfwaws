@@ -30,6 +30,7 @@ export function getNgfwLogProfile(args?: GetNgfwLogProfileArgs, opts?: pulumi.In
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile", {
         "accountId": args.accountId,
+        "firewallId": args.firewallId,
         "ngfw": args.ngfw,
     }, opts);
 }
@@ -42,6 +43,10 @@ export interface GetNgfwLogProfileArgs {
      * The unique ID of the account.
      */
     accountId?: string;
+    /**
+     * The Firewall Id for the NGFW.
+     */
+    firewallId?: string;
     /**
      * The name of the NGFW.
      */
@@ -71,7 +76,7 @@ export interface GetNgfwLogProfileResult {
     /**
      * The Firewall Id for the NGFW.
      */
-    readonly firewallId: string;
+    readonly firewallId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -121,6 +126,7 @@ export function getNgfwLogProfileOutput(args?: GetNgfwLogProfileOutputArgs, opts
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile", {
         "accountId": args.accountId,
+        "firewallId": args.firewallId,
         "ngfw": args.ngfw,
     }, opts);
 }
@@ -133,6 +139,10 @@ export interface GetNgfwLogProfileOutputArgs {
      * The unique ID of the account.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * The Firewall Id for the NGFW.
+     */
+    firewallId?: pulumi.Input<string>;
     /**
      * The name of the NGFW.
      */

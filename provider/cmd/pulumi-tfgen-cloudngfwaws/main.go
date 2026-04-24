@@ -19,8 +19,8 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 
-	cloudngfwaws "github.com/pulumi/pulumi-cloudngfwaws/provider"
-	"github.com/pulumi/pulumi-cloudngfwaws/provider/pkg/version"
+	cloudngfwaws "github.com/pulumi/pulumi-cloudngfwaws/provider/v2"
+	"github.com/pulumi/pulumi-cloudngfwaws/provider/v2/pkg/version"
 )
 
 func main() {

@@ -6,11 +6,11 @@ package com.pulumi.cloudngfwaws;
 import com.pulumi.cloudngfwaws.inputs.NgfwEgressNatArgs;
 import com.pulumi.cloudngfwaws.inputs.NgfwEndpointArgs;
 import com.pulumi.cloudngfwaws.inputs.NgfwPrivateAccessArgs;
+import com.pulumi.cloudngfwaws.inputs.NgfwSecurityZoneArgs;
 import com.pulumi.cloudngfwaws.inputs.NgfwSubnetMappingArgs;
 import com.pulumi.cloudngfwaws.inputs.NgfwUserIdArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -25,14 +25,14 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
     public static final NgfwArgs Empty = new NgfwArgs();
 
     /**
-     * The description.
+     * The Account Id.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The description.
+     * @return The Account Id.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -88,15 +88,15 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
      * The list of availability zone IDs for this NGFW.
      * 
      */
-    @Import(name="azLists", required=true)
-    private Output<List<String>> azLists;
+    @Import(name="azLists")
+    private @Nullable Output<List<String>> azLists;
 
     /**
      * @return The list of availability zone IDs for this NGFW.
      * 
      */
-    public Output<List<String>> azLists() {
-        return this.azLists;
+    public Optional<Output<List<String>>> azLists() {
+        return Optional.ofNullable(this.azLists);
     }
 
     /**
@@ -156,6 +156,21 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<List<NgfwEndpointArgs>>> endpoints() {
         return Optional.ofNullable(this.endpoints);
+    }
+
+    /**
+     * The Firewall ID.
+     * 
+     */
+    @Import(name="firewallId")
+    private @Nullable Output<String> firewallId;
+
+    /**
+     * @return The Firewall ID.
+     * 
+     */
+    public Optional<Output<String>> firewallId() {
+        return Optional.ofNullable(this.firewallId);
     }
 
     /**
@@ -240,6 +255,13 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.rulestack);
     }
 
+    @Import(name="securityZones")
+    private @Nullable Output<List<NgfwSecurityZoneArgs>> securityZones;
+
+    public Optional<Output<List<NgfwSecurityZoneArgs>>> securityZones() {
+        return Optional.ofNullable(this.securityZones);
+    }
+
     /**
      * Subnet mappings.
      * 
@@ -268,6 +290,21 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
+     * 
+     */
+    @Import(name="tier")
+    private @Nullable Output<String> tier;
+
+    /**
+     * @return Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
+     * 
+     */
+    public Optional<Output<String>> tier() {
+        return Optional.ofNullable(this.tier);
     }
 
     @Import(name="userIds")
@@ -305,14 +342,17 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
         this.egressNats = $.egressNats;
         this.endpointMode = $.endpointMode;
         this.endpoints = $.endpoints;
+        this.firewallId = $.firewallId;
         this.globalRulestack = $.globalRulestack;
         this.linkId = $.linkId;
         this.multiVpc = $.multiVpc;
         this.name = $.name;
         this.privateAccesses = $.privateAccesses;
         this.rulestack = $.rulestack;
+        this.securityZones = $.securityZones;
         this.subnetMappings = $.subnetMappings;
         this.tags = $.tags;
+        this.tier = $.tier;
         this.userIds = $.userIds;
         this.vpcId = $.vpcId;
     }
@@ -336,7 +376,7 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The description.
+         * @param accountId The Account Id.
          * 
          * @return builder
          * 
@@ -347,7 +387,7 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The description.
+         * @param accountId The Account Id.
          * 
          * @return builder
          * 
@@ -435,7 +475,7 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder azLists(Output<List<String>> azLists) {
+        public Builder azLists(@Nullable Output<List<String>> azLists) {
             $.azLists = azLists;
             return this;
         }
@@ -560,6 +600,27 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param firewallId The Firewall ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(@Nullable Output<String> firewallId) {
+            $.firewallId = firewallId;
+            return this;
+        }
+
+        /**
+         * @param firewallId The Firewall ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(String firewallId) {
+            return firewallId(Output.of(firewallId));
+        }
+
+        /**
          * @param globalRulestack The global rulestack for this NGFW.
          * 
          * @return builder
@@ -677,6 +738,19 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
             return rulestack(Output.of(rulestack));
         }
 
+        public Builder securityZones(@Nullable Output<List<NgfwSecurityZoneArgs>> securityZones) {
+            $.securityZones = securityZones;
+            return this;
+        }
+
+        public Builder securityZones(List<NgfwSecurityZoneArgs> securityZones) {
+            return securityZones(Output.of(securityZones));
+        }
+
+        public Builder securityZones(NgfwSecurityZoneArgs... securityZones) {
+            return securityZones(List.of(securityZones));
+        }
+
         /**
          * @param subnetMappings Subnet mappings.
          * 
@@ -729,6 +803,27 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param tier Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tier(@Nullable Output<String> tier) {
+            $.tier = tier;
+            return this;
+        }
+
+        /**
+         * @param tier Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tier(String tier) {
+            return tier(Output.of(tier));
+        }
+
         public Builder userIds(@Nullable Output<List<NgfwUserIdArgs>> userIds) {
             $.userIds = userIds;
             return this;
@@ -764,9 +859,6 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NgfwArgs build() {
-            if ($.azLists == null) {
-                throw new MissingRequiredPropertyException("NgfwArgs", "azLists");
-            }
             return $;
         }
     }

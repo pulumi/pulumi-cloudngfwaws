@@ -15,6 +15,70 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
+ *
+ * const exampleVpc = new aws.index.Vpc("example", {
+ *     cidrBlock: "172.16.0.0/16",
+ *     tags: {
+ *         name: "tf-example",
+ *     },
+ * });
+ * const subnet1 = new aws.index.Subnet("subnet1", {
+ *     vpcId: myVpc.id,
+ *     cidrBlock: "172.16.10.0/24",
+ *     availabilityZone: "us-west-2a",
+ *     tags: {
+ *         name: "tf-example",
+ *     },
+ * });
+ * const subnet2 = new aws.index.Subnet("subnet2", {
+ *     vpcId: myVpc.id,
+ *     cidrBlock: "172.16.20.0/24",
+ *     availabilityZone: "us-west-2b",
+ *     tags: {
+ *         name: "tf-example",
+ *     },
+ * });
+ * const x = new cloudngfwaws.Ngfw("x", {
+ *     name: "example-instance",
+ *     vpcId: exampleVpc.id,
+ *     accountId: "12345678",
+ *     description: "Example description",
+ *     endpointMode: "ServiceManaged",
+ *     subnetMappings: [
+ *         {
+ *             subnetId: subnet1.id,
+ *         },
+ *         {
+ *             subnetId: subnet2.id,
+ *         },
+ *     ],
+ *     rulestack: "example-rulestack",
+ *     tags: {
+ *         Foo: "bar",
+ *     },
+ * });
+ * const example = new cloudngfwaws.NgfwLogProfile("example", {
+ *     ngfw: x.name,
+ *     accountId: x.accountId,
+ *     logDestinations: [
+ *         {
+ *             destinationType: "S3",
+ *             destination: "my-s3-bucket",
+ *             logType: "TRAFFIC",
+ *         },
+ *         {
+ *             destinationType: "CloudWatchLogs",
+ *             destination: "panw-log-group",
+ *             logType: "THREAT",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * import name is <account_id>:<ngfw>
@@ -70,7 +134,7 @@ export class NgfwLogProfile extends pulumi.CustomResource {
     /**
      * The Firewall Id for the NGFW.
      */
-    declare public readonly firewallId: pulumi.Output<string>;
+    declare public readonly firewallId: pulumi.Output<string | undefined>;
     /**
      * Log configuration details.
      */
@@ -99,7 +163,7 @@ export class NgfwLogProfile extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: NgfwLogProfileArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: NgfwLogProfileArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NgfwLogProfileArgs | NgfwLogProfileState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -117,9 +181,6 @@ export class NgfwLogProfile extends pulumi.CustomResource {
             resourceInputs["updateToken"] = state?.updateToken;
         } else {
             const args = argsOrState as NgfwLogProfileArgs | undefined;
-            if (args?.firewallId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'firewallId'");
-            }
             resourceInputs["accountId"] = args?.accountId;
             resourceInputs["advancedThreatLog"] = args?.advancedThreatLog;
             resourceInputs["cloudWatchMetricNamespace"] = args?.cloudWatchMetricNamespace;
@@ -205,7 +266,7 @@ export interface NgfwLogProfileArgs {
     /**
      * The Firewall Id for the NGFW.
      */
-    firewallId: pulumi.Input<string>;
+    firewallId?: pulumi.Input<string>;
     /**
      * Log configuration details.
      */

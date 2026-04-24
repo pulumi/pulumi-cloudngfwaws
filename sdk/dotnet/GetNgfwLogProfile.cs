@@ -115,6 +115,12 @@ namespace Pulumi.CloudNgfwAws
         public string? AccountId { get; set; }
 
         /// <summary>
+        /// The Firewall Id for the NGFW.
+        /// </summary>
+        [Input("firewallId")]
+        public string? FirewallId { get; set; }
+
+        /// <summary>
         /// The name of the NGFW.
         /// </summary>
         [Input("ngfw")]
@@ -133,6 +139,12 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// The Firewall Id for the NGFW.
+        /// </summary>
+        [Input("firewallId")]
+        public Input<string>? FirewallId { get; set; }
 
         /// <summary>
         /// The name of the NGFW.
@@ -169,7 +181,7 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// The Firewall Id for the NGFW.
         /// </summary>
-        public readonly string FirewallId;
+        public readonly string? FirewallId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -205,7 +217,7 @@ namespace Pulumi.CloudNgfwAws
 
             ImmutableArray<string> cloudwatchMetricFields,
 
-            string firewallId,
+            string? firewallId,
 
             string id,
 

@@ -6,6 +6,7 @@ package com.pulumi.cloudngfwaws.outputs;
 import com.pulumi.cloudngfwaws.outputs.GetNgfwEgressNat;
 import com.pulumi.cloudngfwaws.outputs.GetNgfwEndpoint;
 import com.pulumi.cloudngfwaws.outputs.GetNgfwPrivateAccess;
+import com.pulumi.cloudngfwaws.outputs.GetNgfwSecurityZone;
 import com.pulumi.cloudngfwaws.outputs.GetNgfwStatus;
 import com.pulumi.cloudngfwaws.outputs.GetNgfwSubnetMapping;
 import com.pulumi.cloudngfwaws.outputs.GetNgfwUserId;
@@ -16,14 +17,16 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNgfwResult {
     /**
-     * @return The description.
+     * @return The Account Id.
      * 
      */
-    private String accountId;
+    private @Nullable String accountId;
     /**
      * @return The list of allowed accounts for this NGFW.
      * 
@@ -75,7 +78,7 @@ public final class GetNgfwResult {
      * @return The Firewall ID.
      * 
      */
-    private String firewallId;
+    private @Nullable String firewallId;
     /**
      * @return The global rulestack for this NGFW.
      * 
@@ -105,13 +108,14 @@ public final class GetNgfwResult {
      * @return The NGFW name.
      * 
      */
-    private String name;
+    private @Nullable String name;
     private List<GetNgfwPrivateAccess> privateAccesses;
     /**
      * @return The rulestack for this NGFW.
      * 
      */
     private String rulestack;
+    private List<GetNgfwSecurityZone> securityZones;
     private List<GetNgfwStatus> statuses;
     /**
      * @return Subnet mappings.
@@ -123,6 +127,11 @@ public final class GetNgfwResult {
      * 
      */
     private Map<String,String> tags;
+    /**
+     * @return Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
+     * 
+     */
+    private String tier;
     /**
      * @return The update token.
      * 
@@ -137,11 +146,11 @@ public final class GetNgfwResult {
 
     private GetNgfwResult() {}
     /**
-     * @return The description.
+     * @return The Account Id.
      * 
      */
-    public String accountId() {
-        return this.accountId;
+    public Optional<String> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
     /**
      * @return The list of allowed accounts for this NGFW.
@@ -216,8 +225,8 @@ public final class GetNgfwResult {
      * @return The Firewall ID.
      * 
      */
-    public String firewallId() {
-        return this.firewallId;
+    public Optional<String> firewallId() {
+        return Optional.ofNullable(this.firewallId);
     }
     /**
      * @return The global rulestack for this NGFW.
@@ -258,8 +267,8 @@ public final class GetNgfwResult {
      * @return The NGFW name.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     public List<GetNgfwPrivateAccess> privateAccesses() {
         return this.privateAccesses;
@@ -270,6 +279,9 @@ public final class GetNgfwResult {
      */
     public String rulestack() {
         return this.rulestack;
+    }
+    public List<GetNgfwSecurityZone> securityZones() {
+        return this.securityZones;
     }
     public List<GetNgfwStatus> statuses() {
         return this.statuses;
@@ -287,6 +299,13 @@ public final class GetNgfwResult {
      */
     public Map<String,String> tags() {
         return this.tags;
+    }
+    /**
+     * @return Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
+     * 
+     */
+    public String tier() {
+        return this.tier;
     }
     /**
      * @return The update token.
@@ -315,7 +334,7 @@ public final class GetNgfwResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountId;
+        private @Nullable String accountId;
         private List<String> allowlistAccounts;
         private String appIdVersion;
         private Boolean automaticUpgradeAppIdVersion;
@@ -327,18 +346,20 @@ public final class GetNgfwResult {
         private String endpointMode;
         private String endpointServiceName;
         private List<GetNgfwEndpoint> endpoints;
-        private String firewallId;
+        private @Nullable String firewallId;
         private String globalRulestack;
         private String id;
         private String linkId;
         private String linkStatus;
         private Boolean multiVpc;
-        private String name;
+        private @Nullable String name;
         private List<GetNgfwPrivateAccess> privateAccesses;
         private String rulestack;
+        private List<GetNgfwSecurityZone> securityZones;
         private List<GetNgfwStatus> statuses;
         private List<GetNgfwSubnetMapping> subnetMappings;
         private Map<String,String> tags;
+        private String tier;
         private String updateToken;
         private List<GetNgfwUserId> userIds;
         private String vpcId;
@@ -366,19 +387,19 @@ public final class GetNgfwResult {
     	      this.name = defaults.name;
     	      this.privateAccesses = defaults.privateAccesses;
     	      this.rulestack = defaults.rulestack;
+    	      this.securityZones = defaults.securityZones;
     	      this.statuses = defaults.statuses;
     	      this.subnetMappings = defaults.subnetMappings;
     	      this.tags = defaults.tags;
+    	      this.tier = defaults.tier;
     	      this.updateToken = defaults.updateToken;
     	      this.userIds = defaults.userIds;
     	      this.vpcId = defaults.vpcId;
         }
 
         @CustomType.Setter
-        public Builder accountId(String accountId) {
-            if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetNgfwResult", "accountId");
-            }
+        public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
@@ -486,10 +507,8 @@ public final class GetNgfwResult {
             return endpoints(List.of(endpoints));
         }
         @CustomType.Setter
-        public Builder firewallId(String firewallId) {
-            if (firewallId == null) {
-              throw new MissingRequiredPropertyException("GetNgfwResult", "firewallId");
-            }
+        public Builder firewallId(@Nullable String firewallId) {
+
             this.firewallId = firewallId;
             return this;
         }
@@ -534,10 +553,8 @@ public final class GetNgfwResult {
             return this;
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetNgfwResult", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
@@ -559,6 +576,17 @@ public final class GetNgfwResult {
             }
             this.rulestack = rulestack;
             return this;
+        }
+        @CustomType.Setter
+        public Builder securityZones(List<GetNgfwSecurityZone> securityZones) {
+            if (securityZones == null) {
+              throw new MissingRequiredPropertyException("GetNgfwResult", "securityZones");
+            }
+            this.securityZones = securityZones;
+            return this;
+        }
+        public Builder securityZones(GetNgfwSecurityZone... securityZones) {
+            return securityZones(List.of(securityZones));
         }
         @CustomType.Setter
         public Builder statuses(List<GetNgfwStatus> statuses) {
@@ -588,6 +616,14 @@ public final class GetNgfwResult {
               throw new MissingRequiredPropertyException("GetNgfwResult", "tags");
             }
             this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tier(String tier) {
+            if (tier == null) {
+              throw new MissingRequiredPropertyException("GetNgfwResult", "tier");
+            }
+            this.tier = tier;
             return this;
         }
         @CustomType.Setter
@@ -640,9 +676,11 @@ public final class GetNgfwResult {
             _resultValue.name = name;
             _resultValue.privateAccesses = privateAccesses;
             _resultValue.rulestack = rulestack;
+            _resultValue.securityZones = securityZones;
             _resultValue.statuses = statuses;
             _resultValue.subnetMappings = subnetMappings;
             _resultValue.tags = tags;
+            _resultValue.tier = tier;
             _resultValue.updateToken = updateToken;
             _resultValue.userIds = userIds;
             _resultValue.vpcId = vpcId;

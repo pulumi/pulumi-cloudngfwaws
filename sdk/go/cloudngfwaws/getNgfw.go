@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudngfwaws/sdk/go/cloudngfwaws/internal"
+	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,6 +18,30 @@ import (
 // * `Firewall`
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudngfwaws.GetNgfw(ctx, &cloudngfwaws.LookupNgfwArgs{
+//				Name: pulumi.StringRef("example-instance"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupNgfw(ctx *pulumi.Context, args *LookupNgfwArgs, opts ...pulumi.InvokeOption) (*LookupNgfwResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNgfwResult
@@ -30,14 +54,18 @@ func LookupNgfw(ctx *pulumi.Context, args *LookupNgfwArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getNgfw.
 type LookupNgfwArgs struct {
+	// The Account Id.
+	AccountId *string `pulumi:"accountId"`
 	// The Firewall ID.
-	FirewallId string `pulumi:"firewallId"`
+	FirewallId *string `pulumi:"firewallId"`
+	// The NGFW name.
+	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getNgfw.
 type LookupNgfwResult struct {
-	// The description.
-	AccountId string `pulumi:"accountId"`
+	// The Account Id.
+	AccountId *string `pulumi:"accountId"`
 	// The list of allowed accounts for this NGFW.
 	AllowlistAccounts []string `pulumi:"allowlistAccounts"`
 	// App-ID version number.
@@ -59,7 +87,7 @@ type LookupNgfwResult struct {
 	EndpointServiceName string            `pulumi:"endpointServiceName"`
 	Endpoints           []GetNgfwEndpoint `pulumi:"endpoints"`
 	// The Firewall ID.
-	FirewallId string `pulumi:"firewallId"`
+	FirewallId *string `pulumi:"firewallId"`
 	// The global rulestack for this NGFW.
 	GlobalRulestack string `pulumi:"globalRulestack"`
 	// The provider-assigned unique ID for this managed resource.
@@ -71,15 +99,18 @@ type LookupNgfwResult struct {
 	// Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
 	MultiVpc bool `pulumi:"multiVpc"`
 	// The NGFW name.
-	Name            string                 `pulumi:"name"`
+	Name            *string                `pulumi:"name"`
 	PrivateAccesses []GetNgfwPrivateAccess `pulumi:"privateAccesses"`
 	// The rulestack for this NGFW.
-	Rulestack string          `pulumi:"rulestack"`
-	Statuses  []GetNgfwStatus `pulumi:"statuses"`
+	Rulestack     string                `pulumi:"rulestack"`
+	SecurityZones []GetNgfwSecurityZone `pulumi:"securityZones"`
+	Statuses      []GetNgfwStatus       `pulumi:"statuses"`
 	// Subnet mappings.
 	SubnetMappings []GetNgfwSubnetMapping `pulumi:"subnetMappings"`
 	// The tags.
 	Tags map[string]string `pulumi:"tags"`
+	// Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+	Tier string `pulumi:"tier"`
 	// The update token.
 	UpdateToken string          `pulumi:"updateToken"`
 	UserIds     []GetNgfwUserId `pulumi:"userIds"`
@@ -98,8 +129,12 @@ func LookupNgfwOutput(ctx *pulumi.Context, args LookupNgfwOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getNgfw.
 type LookupNgfwOutputArgs struct {
+	// The Account Id.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The Firewall ID.
-	FirewallId pulumi.StringInput `pulumi:"firewallId"`
+	FirewallId pulumi.StringPtrInput `pulumi:"firewallId"`
+	// The NGFW name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupNgfwOutputArgs) ElementType() reflect.Type {
@@ -121,9 +156,9 @@ func (o LookupNgfwResultOutput) ToLookupNgfwResultOutputWithContext(ctx context.
 	return o
 }
 
-// The description.
-func (o LookupNgfwResultOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNgfwResult) string { return v.AccountId }).(pulumi.StringOutput)
+// The Account Id.
+func (o LookupNgfwResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNgfwResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The list of allowed accounts for this NGFW.
@@ -180,8 +215,8 @@ func (o LookupNgfwResultOutput) Endpoints() GetNgfwEndpointArrayOutput {
 }
 
 // The Firewall ID.
-func (o LookupNgfwResultOutput) FirewallId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNgfwResult) string { return v.FirewallId }).(pulumi.StringOutput)
+func (o LookupNgfwResultOutput) FirewallId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNgfwResult) *string { return v.FirewallId }).(pulumi.StringPtrOutput)
 }
 
 // The global rulestack for this NGFW.
@@ -210,8 +245,8 @@ func (o LookupNgfwResultOutput) MultiVpc() pulumi.BoolOutput {
 }
 
 // The NGFW name.
-func (o LookupNgfwResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNgfwResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupNgfwResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNgfwResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupNgfwResultOutput) PrivateAccesses() GetNgfwPrivateAccessArrayOutput {
@@ -221,6 +256,10 @@ func (o LookupNgfwResultOutput) PrivateAccesses() GetNgfwPrivateAccessArrayOutpu
 // The rulestack for this NGFW.
 func (o LookupNgfwResultOutput) Rulestack() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNgfwResult) string { return v.Rulestack }).(pulumi.StringOutput)
+}
+
+func (o LookupNgfwResultOutput) SecurityZones() GetNgfwSecurityZoneArrayOutput {
+	return o.ApplyT(func(v LookupNgfwResult) []GetNgfwSecurityZone { return v.SecurityZones }).(GetNgfwSecurityZoneArrayOutput)
 }
 
 func (o LookupNgfwResultOutput) Statuses() GetNgfwStatusArrayOutput {
@@ -235,6 +274,11 @@ func (o LookupNgfwResultOutput) SubnetMappings() GetNgfwSubnetMappingArrayOutput
 // The tags.
 func (o LookupNgfwResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNgfwResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
+func (o LookupNgfwResultOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNgfwResult) string { return v.Tier }).(pulumi.StringOutput)
 }
 
 // The update token.

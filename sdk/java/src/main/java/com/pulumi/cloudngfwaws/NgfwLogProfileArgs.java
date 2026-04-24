@@ -7,7 +7,6 @@ import com.pulumi.cloudngfwaws.inputs.NgfwLogProfileLogConfigArgs;
 import com.pulumi.cloudngfwaws.inputs.NgfwLogProfileLogDestinationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -84,15 +83,15 @@ public final class NgfwLogProfileArgs extends com.pulumi.resources.ResourceArgs 
      * The Firewall Id for the NGFW.
      * 
      */
-    @Import(name="firewallId", required=true)
-    private Output<String> firewallId;
+    @Import(name="firewallId")
+    private @Nullable Output<String> firewallId;
 
     /**
      * @return The Firewall Id for the NGFW.
      * 
      */
-    public Output<String> firewallId() {
-        return this.firewallId;
+    public Optional<Output<String>> firewallId() {
+        return Optional.ofNullable(this.firewallId);
     }
 
     /**
@@ -287,7 +286,7 @@ public final class NgfwLogProfileArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          */
-        public Builder firewallId(Output<String> firewallId) {
+        public Builder firewallId(@Nullable Output<String> firewallId) {
             $.firewallId = firewallId;
             return this;
         }
@@ -397,9 +396,6 @@ public final class NgfwLogProfileArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public NgfwLogProfileArgs build() {
-            if ($.firewallId == null) {
-                throw new MissingRequiredPropertyException("NgfwLogProfileArgs", "firewallId");
-            }
             return $;
         }
     }

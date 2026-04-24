@@ -27,6 +27,93 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aws.Vpc;
+ * import com.pulumi.aws.VpcArgs;
+ * import com.pulumi.aws.Subnet;
+ * import com.pulumi.aws.SubnetArgs;
+ * import com.pulumi.cloudngfwaws.Ngfw;
+ * import com.pulumi.cloudngfwaws.NgfwArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwSubnetMappingArgs;
+ * import com.pulumi.cloudngfwaws.NgfwLogProfile;
+ * import com.pulumi.cloudngfwaws.NgfwLogProfileArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwLogProfileLogDestinationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleVpc = new Vpc("exampleVpc", VpcArgs.builder()
+ *             .cidrBlock("172.16.0.0/16")
+ *             .tags(Map.of("name", "tf-example"))
+ *             .build());
+ * 
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
+ *             .vpcId(myVpc.id())
+ *             .cidrBlock("172.16.10.0/24")
+ *             .availabilityZone("us-west-2a")
+ *             .tags(Map.of("name", "tf-example"))
+ *             .build());
+ * 
+ *         var subnet2 = new Subnet("subnet2", SubnetArgs.builder()
+ *             .vpcId(myVpc.id())
+ *             .cidrBlock("172.16.20.0/24")
+ *             .availabilityZone("us-west-2b")
+ *             .tags(Map.of("name", "tf-example"))
+ *             .build());
+ * 
+ *         var x = new Ngfw("x", NgfwArgs.builder()
+ *             .name("example-instance")
+ *             .vpcId(exampleVpc.id())
+ *             .accountId("12345678")
+ *             .description("Example description")
+ *             .endpointMode("ServiceManaged")
+ *             .subnetMappings(            
+ *                 NgfwSubnetMappingArgs.builder()
+ *                     .subnetId(subnet1.id())
+ *                     .build(),
+ *                 NgfwSubnetMappingArgs.builder()
+ *                     .subnetId(subnet2.id())
+ *                     .build())
+ *             .rulestack("example-rulestack")
+ *             .tags(Map.of("Foo", "bar"))
+ *             .build());
+ * 
+ *         var example = new NgfwLogProfile("example", NgfwLogProfileArgs.builder()
+ *             .ngfw(x.name())
+ *             .accountId(x.accountId())
+ *             .logDestinations(            
+ *                 NgfwLogProfileLogDestinationArgs.builder()
+ *                     .destinationType("S3")
+ *                     .destination("my-s3-bucket")
+ *                     .logType("TRAFFIC")
+ *                     .build(),
+ *                 NgfwLogProfileLogDestinationArgs.builder()
+ *                     .destinationType("CloudWatchLogs")
+ *                     .destination("panw-log-group")
+ *                     .logType("THREAT")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * import name is &lt;account_id&gt;:&lt;ngfw&gt;
@@ -99,14 +186,14 @@ public class NgfwLogProfile extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="firewallId", refs={String.class}, tree="[0]")
-    private Output<String> firewallId;
+    private Output</* @Nullable */ String> firewallId;
 
     /**
      * @return The Firewall Id for the NGFW.
      * 
      */
-    public Output<String> firewallId() {
-        return this.firewallId;
+    public Output<Optional<String>> firewallId() {
+        return Codegen.optional(this.firewallId);
     }
     /**
      * Log configuration details.
@@ -191,7 +278,7 @@ public class NgfwLogProfile extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NgfwLogProfile(java.lang.String name, NgfwLogProfileArgs args) {
+    public NgfwLogProfile(java.lang.String name, @Nullable NgfwLogProfileArgs args) {
         this(name, args, null);
     }
     /**
@@ -200,7 +287,7 @@ public class NgfwLogProfile extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NgfwLogProfile(java.lang.String name, NgfwLogProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public NgfwLogProfile(java.lang.String name, @Nullable NgfwLogProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -208,7 +295,7 @@ public class NgfwLogProfile extends com.pulumi.resources.CustomResource {
         super("cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static NgfwLogProfileArgs makeArgs(NgfwLogProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static NgfwLogProfileArgs makeArgs(@Nullable NgfwLogProfileArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
