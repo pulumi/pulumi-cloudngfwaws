@@ -1,6 +1,7 @@
 provider: cloudngfwaws
 major-version: 2
 makeTemplate: bridged
+allowMajorProviderUpgrades: true
 providerDefaultBranch: main
 # Use `pulumi convert` for translating examples from TF to Pulumi.
 pulumiConvert: 1
