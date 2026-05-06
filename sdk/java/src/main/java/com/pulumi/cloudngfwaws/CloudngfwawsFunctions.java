@@ -252,8 +252,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetAppIdVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -296,8 +296,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetAppIdVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -340,8 +340,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetAppIdVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -384,8 +384,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetAppIdVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -428,8 +428,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetAppIdVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -472,8 +472,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetAppIdVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -515,8 +515,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetAppIdVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -558,8 +558,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetAppIdVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -601,8 +601,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetAppIdVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -644,8 +644,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetAppIdVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -687,8 +687,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetAppIdVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -730,8 +730,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetAppIdVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -777,8 +777,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -836,8 +836,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -895,8 +895,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -954,8 +954,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1013,8 +1013,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1068,8 +1068,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCountryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1111,8 +1111,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCountryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1154,8 +1154,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCountryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1197,8 +1197,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCountryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1240,8 +1240,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCountryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1283,8 +1283,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCountryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1326,8 +1326,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCountryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1373,8 +1373,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCustomUrlCategoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1432,8 +1432,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCustomUrlCategoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1491,8 +1491,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCustomUrlCategoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1550,8 +1550,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCustomUrlCategoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1609,8 +1609,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetCustomUrlCategoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1668,8 +1668,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetFqdnListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1727,8 +1727,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetFqdnListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1786,8 +1786,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetFqdnListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1845,8 +1845,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetFqdnListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1904,8 +1904,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetFqdnListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1963,8 +1963,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetIntelligentFeedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2022,8 +2022,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetIntelligentFeedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2081,8 +2081,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetIntelligentFeedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2140,8 +2140,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetIntelligentFeedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2199,8 +2199,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetIntelligentFeedArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2254,8 +2254,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2298,8 +2298,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2342,8 +2342,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2386,8 +2386,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2430,8 +2430,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2474,8 +2474,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2518,8 +2518,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2562,8 +2562,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwLogProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2607,8 +2607,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwLogProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2652,8 +2652,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwLogProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2697,8 +2697,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwLogProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2742,8 +2742,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwLogProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2787,8 +2787,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwLogProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2832,8 +2832,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwLogProfileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2877,8 +2877,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2920,8 +2920,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2963,8 +2963,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3006,8 +3006,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3049,8 +3049,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3092,8 +3092,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3135,8 +3135,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetNgfwsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3179,8 +3179,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPredefinedUrlCategoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3223,8 +3223,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPredefinedUrlCategoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3267,8 +3267,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPredefinedUrlCategoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3311,8 +3311,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPredefinedUrlCategoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3355,8 +3355,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPredefinedUrlCategoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3399,8 +3399,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPredefinedUrlCategoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3443,8 +3443,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPredefinedUrlCategoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3490,8 +3490,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPredefinedUrlCategoryOverrideArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3549,8 +3549,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPredefinedUrlCategoryOverrideArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3608,8 +3608,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPredefinedUrlCategoryOverrideArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3667,8 +3667,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPredefinedUrlCategoryOverrideArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3726,8 +3726,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPredefinedUrlCategoryOverrideArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3785,8 +3785,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPrefixListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3844,8 +3844,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPrefixListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3903,8 +3903,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPrefixListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3962,8 +3962,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPrefixListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4021,8 +4021,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetPrefixListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4077,8 +4077,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetRulestackArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4122,8 +4122,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetRulestackArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4167,8 +4167,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetRulestackArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4212,8 +4212,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetRulestackArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4257,8 +4257,8 @@ public final class CloudngfwawsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
      * import com.pulumi.cloudngfwaws.inputs.GetRulestackArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
