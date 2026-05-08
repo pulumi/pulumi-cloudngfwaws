@@ -21,15 +21,15 @@ __all__ = ['NgfwLogProfileArgs', 'NgfwLogProfile']
 @pulumi.input_type
 class NgfwLogProfileArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 advanced_threat_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cloud_watch_metric_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudwatch_metric_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_config: Optional[pulumi.Input['NgfwLogProfileLogConfigArgs']] = None,
-                 log_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwLogProfileLogDestinationArgs']]]] = None,
-                 ngfw: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 advanced_threat_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cloud_watch_metric_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudwatch_metric_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_config: pulumi.Input[Optional['NgfwLogProfileLogConfigArgs']] = None,
+                 log_destinations: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwLogProfileLogDestinationArgs']]]] = None,
+                 ngfw: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NgfwLogProfile resource.
 
@@ -64,126 +64,126 @@ class NgfwLogProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique ID of the account.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="advancedThreatLog")
-    def advanced_threat_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advanced_threat_log(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable advanced threat logging.
         """
         return pulumi.get(self, "advanced_threat_log")
 
     @advanced_threat_log.setter
-    def advanced_threat_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advanced_threat_log(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advanced_threat_log", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudWatchMetricNamespace")
-    def cloud_watch_metric_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_watch_metric_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CloudWatch metric namespace.
         """
         return pulumi.get(self, "cloud_watch_metric_namespace")
 
     @cloud_watch_metric_namespace.setter
-    def cloud_watch_metric_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_watch_metric_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_watch_metric_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudwatchMetricFields")
-    def cloudwatch_metric_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cloudwatch_metric_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Cloudwatch metric fields.
         """
         return pulumi.get(self, "cloudwatch_metric_fields")
 
     @cloudwatch_metric_fields.setter
-    def cloudwatch_metric_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cloudwatch_metric_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cloudwatch_metric_fields", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallId")
-    def firewall_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Firewall Id for the NGFW.
         """
         return pulumi.get(self, "firewall_id")
 
     @firewall_id.setter
-    def firewall_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_id", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['NgfwLogProfileLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['NgfwLogProfileLogConfigArgs']]:
         """
         Log configuration details.
         """
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['NgfwLogProfileLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['NgfwLogProfileLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter(name="logDestinations")
-    def log_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwLogProfileLogDestinationArgs']]]]:
+    def log_destinations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwLogProfileLogDestinationArgs']]]]:
         """
         List of log destinations.
         """
         return pulumi.get(self, "log_destinations")
 
     @log_destinations.setter
-    def log_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwLogProfileLogDestinationArgs']]]]):
+    def log_destinations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwLogProfileLogDestinationArgs']]]]):
         pulumi.set(self, "log_destinations", value)
 
     @_builtins.property
     @pulumi.getter
-    def ngfw(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ngfw(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the NGFW.
         """
         return pulumi.get(self, "ngfw")
 
     @ngfw.setter
-    def ngfw(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ngfw(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ngfw", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the NGFW.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _NgfwLogProfileState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 advanced_threat_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cloud_watch_metric_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudwatch_metric_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_config: Optional[pulumi.Input['NgfwLogProfileLogConfigArgs']] = None,
-                 log_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwLogProfileLogDestinationArgs']]]] = None,
-                 ngfw: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_token: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 advanced_threat_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cloud_watch_metric_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudwatch_metric_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_config: pulumi.Input[Optional['NgfwLogProfileLogConfigArgs']] = None,
+                 log_destinations: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwLogProfileLogDestinationArgs']]]] = None,
+                 ngfw: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NgfwLogProfile resources.
 
@@ -221,122 +221,122 @@ class _NgfwLogProfileState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique ID of the account.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="advancedThreatLog")
-    def advanced_threat_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advanced_threat_log(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable advanced threat logging.
         """
         return pulumi.get(self, "advanced_threat_log")
 
     @advanced_threat_log.setter
-    def advanced_threat_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advanced_threat_log(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advanced_threat_log", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudWatchMetricNamespace")
-    def cloud_watch_metric_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_watch_metric_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CloudWatch metric namespace.
         """
         return pulumi.get(self, "cloud_watch_metric_namespace")
 
     @cloud_watch_metric_namespace.setter
-    def cloud_watch_metric_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_watch_metric_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_watch_metric_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudwatchMetricFields")
-    def cloudwatch_metric_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cloudwatch_metric_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Cloudwatch metric fields.
         """
         return pulumi.get(self, "cloudwatch_metric_fields")
 
     @cloudwatch_metric_fields.setter
-    def cloudwatch_metric_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cloudwatch_metric_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cloudwatch_metric_fields", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallId")
-    def firewall_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Firewall Id for the NGFW.
         """
         return pulumi.get(self, "firewall_id")
 
     @firewall_id.setter
-    def firewall_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_id", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['NgfwLogProfileLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['NgfwLogProfileLogConfigArgs']]:
         """
         Log configuration details.
         """
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['NgfwLogProfileLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['NgfwLogProfileLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter(name="logDestinations")
-    def log_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwLogProfileLogDestinationArgs']]]]:
+    def log_destinations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwLogProfileLogDestinationArgs']]]]:
         """
         List of log destinations.
         """
         return pulumi.get(self, "log_destinations")
 
     @log_destinations.setter
-    def log_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwLogProfileLogDestinationArgs']]]]):
+    def log_destinations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwLogProfileLogDestinationArgs']]]]):
         pulumi.set(self, "log_destinations", value)
 
     @_builtins.property
     @pulumi.getter
-    def ngfw(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ngfw(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the NGFW.
         """
         return pulumi.get(self, "ngfw")
 
     @ngfw.setter
-    def ngfw(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ngfw(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ngfw", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the NGFW.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="updateToken")
-    def update_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The update token.
         """
         return pulumi.get(self, "update_token")
 
     @update_token.setter
-    def update_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_token", value)
 
 
@@ -346,15 +346,15 @@ class NgfwLogProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 advanced_threat_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cloud_watch_metric_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudwatch_metric_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_config: Optional[pulumi.Input[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict']]] = None,
-                 log_destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict']]]]] = None,
-                 ngfw: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 advanced_threat_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cloud_watch_metric_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudwatch_metric_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_config: pulumi.Input[Optional[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict']]] = None,
+                 log_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict']]]]] = None,
+                 ngfw: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for NGFW log profile manipulation.
@@ -543,15 +543,15 @@ class NgfwLogProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 advanced_threat_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cloud_watch_metric_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudwatch_metric_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_config: Optional[pulumi.Input[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict']]] = None,
-                 log_destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict']]]]] = None,
-                 ngfw: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 advanced_threat_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cloud_watch_metric_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudwatch_metric_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_config: pulumi.Input[Optional[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict']]] = None,
+                 log_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict']]]]] = None,
+                 ngfw: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -581,16 +581,16 @@ class NgfwLogProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            advanced_threat_log: Optional[pulumi.Input[_builtins.bool]] = None,
-            cloud_watch_metric_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            cloudwatch_metric_fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
-            log_config: Optional[pulumi.Input[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict']]] = None,
-            log_destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict']]]]] = None,
-            ngfw: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            update_token: Optional[pulumi.Input[_builtins.str]] = None) -> 'NgfwLogProfile':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            advanced_threat_log: pulumi.Input[Optional[_builtins.bool]] = None,
+            cloud_watch_metric_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            cloudwatch_metric_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+            log_config: pulumi.Input[Optional[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict']]] = None,
+            log_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict']]]]] = None,
+            ngfw: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            update_token: pulumi.Input[Optional[_builtins.str]] = None) -> 'NgfwLogProfile':
         """
         Get an existing NgfwLogProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -22,14 +22,14 @@ __all__ = ['RulestackArgs', 'Rulestack']
 class RulestackArgs:
     def __init__(__self__, *,
                  profile_config: pulumi.Input['RulestackProfileConfigArgs'],
-                 account_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 lookup_x_forwarded_for: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum_app_id_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 account_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 lookup_x_forwarded_for: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_app_id_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Rulestack resource.
 
@@ -71,114 +71,114 @@ class RulestackArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountGroup")
-    def account_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account group.
         """
         return pulumi.get(self, "account_group")
 
     @account_group.setter
-    def account_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_group", value)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="lookupXForwardedFor")
-    def lookup_x_forwarded_for(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lookup_x_forwarded_for(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Lookup x forwarded for.
         """
         return pulumi.get(self, "lookup_x_forwarded_for")
 
     @lookup_x_forwarded_for.setter
-    def lookup_x_forwarded_for(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lookup_x_forwarded_for(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lookup_x_forwarded_for", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumAppIdVersion")
-    def minimum_app_id_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimum_app_id_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minimum App-ID version number.
         """
         return pulumi.get(self, "minimum_app_id_version")
 
     @minimum_app_id_version.setter
-    def minimum_app_id_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimum_app_id_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimum_app_id_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _RulestackState:
     def __init__(__self__, *,
-                 account_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 lookup_x_forwarded_for: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum_app_id_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile_config: Optional[pulumi.Input['RulestackProfileConfigArgs']] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 account_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 lookup_x_forwarded_for: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_app_id_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile_config: pulumi.Input[Optional['RulestackProfileConfigArgs']] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Rulestack resources.
 
@@ -215,119 +215,119 @@ class _RulestackState:
 
     @_builtins.property
     @pulumi.getter(name="accountGroup")
-    def account_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account group.
         """
         return pulumi.get(self, "account_group")
 
     @account_group.setter
-    def account_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_group", value)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="lookupXForwardedFor")
-    def lookup_x_forwarded_for(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lookup_x_forwarded_for(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Lookup x forwarded for.
         """
         return pulumi.get(self, "lookup_x_forwarded_for")
 
     @lookup_x_forwarded_for.setter
-    def lookup_x_forwarded_for(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lookup_x_forwarded_for(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lookup_x_forwarded_for", value)
 
     @_builtins.property
     @pulumi.getter(name="minimumAppIdVersion")
-    def minimum_app_id_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def minimum_app_id_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minimum App-ID version number.
         """
         return pulumi.get(self, "minimum_app_id_version")
 
     @minimum_app_id_version.setter
-    def minimum_app_id_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def minimum_app_id_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "minimum_app_id_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="profileConfig")
-    def profile_config(self) -> Optional[pulumi.Input['RulestackProfileConfigArgs']]:
+    def profile_config(self) -> pulumi.Input[Optional['RulestackProfileConfigArgs']]:
         return pulumi.get(self, "profile_config")
 
     @profile_config.setter
-    def profile_config(self, value: Optional[pulumi.Input['RulestackProfileConfigArgs']]):
+    def profile_config(self, value: pulumi.Input[Optional['RulestackProfileConfigArgs']]):
         pulumi.set(self, "profile_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rulestack state.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -337,15 +337,15 @@ class Rulestack(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 lookup_x_forwarded_for: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum_app_id_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile_config: Optional[pulumi.Input[Union['RulestackProfileConfigArgs', 'RulestackProfileConfigArgsDict']]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 account_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 lookup_x_forwarded_for: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_app_id_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile_config: pulumi.Input[Optional[Union['RulestackProfileConfigArgs', 'RulestackProfileConfigArgsDict']]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for rulestack manipulation.
@@ -445,15 +445,15 @@ class Rulestack(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 lookup_x_forwarded_for: Optional[pulumi.Input[_builtins.str]] = None,
-                 minimum_app_id_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile_config: Optional[pulumi.Input[Union['RulestackProfileConfigArgs', 'RulestackProfileConfigArgsDict']]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 account_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 lookup_x_forwarded_for: pulumi.Input[Optional[_builtins.str]] = None,
+                 minimum_app_id_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile_config: pulumi.Input[Optional[Union['RulestackProfileConfigArgs', 'RulestackProfileConfigArgsDict']]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -485,16 +485,16 @@ class Rulestack(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_group: Optional[pulumi.Input[_builtins.str]] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            lookup_x_forwarded_for: Optional[pulumi.Input[_builtins.str]] = None,
-            minimum_app_id_version: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            profile_config: Optional[pulumi.Input[Union['RulestackProfileConfigArgs', 'RulestackProfileConfigArgsDict']]] = None,
-            scope: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Rulestack':
+            account_group: pulumi.Input[Optional[_builtins.str]] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            lookup_x_forwarded_for: pulumi.Input[Optional[_builtins.str]] = None,
+            minimum_app_id_version: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            profile_config: pulumi.Input[Optional[Union['RulestackProfileConfigArgs', 'RulestackProfileConfigArgsDict']]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Rulestack':
         """
         Get an existing Rulestack resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

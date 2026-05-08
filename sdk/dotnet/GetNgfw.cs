@@ -30,7 +30,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.Index.GetNgfw.Invoke(new()
+        ///     var example = CloudNgfwAws.GetNgfw.Invoke(new()
         ///     {
         ///         Name = "example-instance",
         ///     });
@@ -60,7 +60,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.Index.GetNgfw.Invoke(new()
+        ///     var example = CloudNgfwAws.GetNgfw.Invoke(new()
         ///     {
         ///         Name = "example-instance",
         ///     });
@@ -90,7 +90,7 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = CloudNgfwAws.Index.GetNgfw.Invoke(new()
+        ///     var example = CloudNgfwAws.GetNgfw.Invoke(new()
         ///     {
         ///         Name = "example-instance",
         ///     });

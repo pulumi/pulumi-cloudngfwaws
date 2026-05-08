@@ -207,14 +207,14 @@ def get_account(account_id: Optional[_builtins.str] = None,
         sns_topic_arn=pulumi.get(__ret__, 'sns_topic_arn'),
         trusted_account=pulumi.get(__ret__, 'trusted_account'),
         update_token=pulumi.get(__ret__, 'update_token'))
-def get_account_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       cft_url: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       external_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       onboarding_status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       origin: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       service_account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       sns_topic_arn: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       trusted_account: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_account_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       cft_url: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       external_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       onboarding_status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       origin: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       service_account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       sns_topic_arn: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       trusted_account: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountResult]:
     """
     Data source for retrieving account information.

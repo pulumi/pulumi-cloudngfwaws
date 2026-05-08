@@ -64,13 +64,13 @@ class NgfwEgressNatArgsDict(TypedDict):
     """
     Enable egress NAT
     """
-    settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['NgfwEgressNatSettingArgsDict']]]]
+    settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEgressNatSettingArgs']]]]]
 
 @pulumi.input_type
 class NgfwEgressNatArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool],
-                 settings: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEgressNatSettingArgs']]]] = None):
+                 settings: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEgressNatSettingArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Enable egress NAT
         """
@@ -92,20 +92,20 @@ class NgfwEgressNatArgs:
 
     @_builtins.property
     @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEgressNatSettingArgs']]]]:
+    def settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEgressNatSettingArgs']]]]:
         return pulumi.get(self, "settings")
 
     @settings.setter
-    def settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEgressNatSettingArgs']]]]):
+    def settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEgressNatSettingArgs']]]]):
         pulumi.set(self, "settings", value)
 
 
 class NgfwEgressNatSettingArgsDict(TypedDict):
-    ip_pool_type: NotRequired[pulumi.Input[_builtins.str]]
+    ip_pool_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.
     """
-    ipam_pool_id: NotRequired[pulumi.Input[_builtins.str]]
+    ipam_pool_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP pool ID
     """
@@ -113,8 +113,8 @@ class NgfwEgressNatSettingArgsDict(TypedDict):
 @pulumi.input_type
 class NgfwEgressNatSettingArgs:
     def __init__(__self__, *,
-                 ip_pool_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 ip_pool_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ip_pool_type: Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.
         :param pulumi.Input[_builtins.str] ipam_pool_id: The IP pool ID
@@ -126,26 +126,26 @@ class NgfwEgressNatSettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipPoolType")
-    def ip_pool_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_pool_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.
         """
         return pulumi.get(self, "ip_pool_type")
 
     @ip_pool_type.setter
-    def ip_pool_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_pool_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_pool_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamPoolId")
-    def ipam_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP pool ID
         """
         return pulumi.get(self, "ipam_pool_id")
 
     @ipam_pool_id.setter
-    def ipam_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_pool_id", value)
 
 
@@ -154,36 +154,36 @@ class NgfwEndpointArgsDict(TypedDict):
     """
     The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
     """
-    account_id: NotRequired[pulumi.Input[_builtins.str]]
+    account_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The account id.
     """
-    egress_nat_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    egress_nat_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable egress NAT
     """
-    endpoint_id: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Endpoint ID of the security zone
     """
-    prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointPrefixArgsDict']]]]
-    rejected_reason: NotRequired[pulumi.Input[_builtins.str]]
+    prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointPrefixArgs']]]]]
+    rejected_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The rejected reason.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The attachment status.
     """
-    subnet_id: NotRequired[pulumi.Input[_builtins.str]]
+    subnet_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The subnet id.
     """
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The vpc id.
     """
-    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The AZ id.
     """
@@ -192,15 +192,15 @@ class NgfwEndpointArgsDict(TypedDict):
 class NgfwEndpointArgs:
     def __init__(__self__, *,
                  mode: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_nat_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefixes: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointPrefixArgs']]]] = None,
-                 rejected_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_nat_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefixes: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointPrefixArgs']]]] = None,
+                 rejected_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mode: The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
         :param pulumi.Input[_builtins.str] account_id: The account id.
@@ -246,147 +246,147 @@ class NgfwEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account id.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="egressNatEnabled")
-    def egress_nat_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def egress_nat_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable egress NAT
         """
         return pulumi.get(self, "egress_nat_enabled")
 
     @egress_nat_enabled.setter
-    def egress_nat_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def egress_nat_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "egress_nat_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointId")
-    def endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Endpoint ID of the security zone
         """
         return pulumi.get(self, "endpoint_id")
 
     @endpoint_id.setter
-    def endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointPrefixArgs']]]]:
+    def prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointPrefixArgs']]]]:
         return pulumi.get(self, "prefixes")
 
     @prefixes.setter
-    def prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointPrefixArgs']]]]):
+    def prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointPrefixArgs']]]]):
         pulumi.set(self, "prefixes", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectedReason")
-    def rejected_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rejected_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rejected reason.
         """
         return pulumi.get(self, "rejected_reason")
 
     @rejected_reason.setter
-    def rejected_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rejected_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rejected_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attachment status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subnet id.
         """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vpc id.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AZ id.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 class NgfwEndpointPrefixArgsDict(TypedDict):
-    private_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointPrefixPrivatePrefixArgsDict']]]]
+    private_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointPrefixPrivatePrefixArgs']]]]]
 
 @pulumi.input_type
 class NgfwEndpointPrefixArgs:
     def __init__(__self__, *,
-                 private_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointPrefixPrivatePrefixArgs']]]] = None):
+                 private_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointPrefixPrivatePrefixArgs']]]] = None):
         if private_prefixes is not None:
             pulumi.set(__self__, "private_prefixes", private_prefixes)
 
     @_builtins.property
     @pulumi.getter(name="privatePrefixes")
-    def private_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointPrefixPrivatePrefixArgs']]]]:
+    def private_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointPrefixPrivatePrefixArgs']]]]:
         return pulumi.get(self, "private_prefixes")
 
     @private_prefixes.setter
-    def private_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointPrefixPrivatePrefixArgs']]]]):
+    def private_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointPrefixPrivatePrefixArgs']]]]):
         pulumi.set(self, "private_prefixes", value)
 
 
 class NgfwEndpointPrefixPrivatePrefixArgsDict(TypedDict):
-    cidrs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    cidrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class NgfwEndpointPrefixPrivatePrefixArgs:
     def __init__(__self__, *,
-                 cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         if cidrs is not None:
             pulumi.set(__self__, "cidrs", cidrs)
 
     @_builtins.property
     @pulumi.getter
-    def cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "cidrs")
 
     @cidrs.setter
-    def cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cidrs", value)
 
 
@@ -403,11 +403,11 @@ class NgfwLogProfileLogConfigArgsDict(TypedDict):
     """
     The list of different log types that are wanted
     """
-    account_id: NotRequired[pulumi.Input[_builtins.str]]
+    account_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of Role for log configuration
     """
-    role_type: NotRequired[pulumi.Input[_builtins.str]]
+    role_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of Role for log configuration
     """
@@ -418,8 +418,8 @@ class NgfwLogProfileLogConfigArgs:
                  log_destination: pulumi.Input[_builtins.str],
                  log_destination_type: pulumi.Input[_builtins.str],
                  log_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] log_destination: The log destination details.
         :param pulumi.Input[_builtins.str] log_destination_type: The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
@@ -473,39 +473,39 @@ class NgfwLogProfileLogConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of Role for log configuration
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleType")
-    def role_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of Role for log configuration
         """
         return pulumi.get(self, "role_type")
 
     @role_type.setter
-    def role_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_type", value)
 
 
 class NgfwLogProfileLogDestinationArgsDict(TypedDict):
-    destination: NotRequired[pulumi.Input[_builtins.str]]
+    destination: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The log destination details.
     """
-    destination_type: NotRequired[pulumi.Input[_builtins.str]]
+    destination_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
     """
-    log_type: NotRequired[pulumi.Input[_builtins.str]]
+    log_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of logs. Valid values are `TRAFFIC`, `THREAT`, or `DECRYPTION`.
     """
@@ -513,9 +513,9 @@ class NgfwLogProfileLogDestinationArgsDict(TypedDict):
 @pulumi.input_type
 class NgfwLogProfileLogDestinationArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 destination: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] destination: The log destination details.
         :param pulumi.Input[_builtins.str] destination_type: The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
@@ -530,38 +530,38 @@ class NgfwLogProfileLogDestinationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The log destination details.
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationType")
-    def destination_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
         """
         return pulumi.get(self, "destination_type")
 
     @destination_type.setter
-    def destination_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_type", value)
 
     @_builtins.property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of logs. Valid values are `TRAFFIC`, `THREAT`, or `DECRYPTION`.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_type", value)
 
 
@@ -617,36 +617,36 @@ class NgfwSecurityZoneArgsDict(TypedDict):
     """
     Endpoint ID of the security zone
     """
-    account_id: NotRequired[pulumi.Input[_builtins.str]]
+    account_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The account id.
     """
-    egress_nat_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    egress_nat_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable egress NAT
     """
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
     """
-    prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZonePrefixArgsDict']]]]
-    rejected_reason: NotRequired[pulumi.Input[_builtins.str]]
+    prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZonePrefixArgs']]]]]
+    rejected_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The rejected reason.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The attachment status.
     """
-    subnet_id: NotRequired[pulumi.Input[_builtins.str]]
+    subnet_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The subnet id.
     """
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The vpc id.
     """
-    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The AZ id.
     """
@@ -655,15 +655,15 @@ class NgfwSecurityZoneArgsDict(TypedDict):
 class NgfwSecurityZoneArgs:
     def __init__(__self__, *,
                  endpoint_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_nat_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefixes: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZonePrefixArgs']]]] = None,
-                 rejected_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_nat_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefixes: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZonePrefixArgs']]]] = None,
+                 rejected_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] endpoint_id: Endpoint ID of the security zone
         :param pulumi.Input[_builtins.str] account_id: The account id.
@@ -709,168 +709,168 @@ class NgfwSecurityZoneArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account id.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="egressNatEnabled")
-    def egress_nat_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def egress_nat_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable egress NAT
         """
         return pulumi.get(self, "egress_nat_enabled")
 
     @egress_nat_enabled.setter
-    def egress_nat_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def egress_nat_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "egress_nat_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZonePrefixArgs']]]]:
+    def prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZonePrefixArgs']]]]:
         return pulumi.get(self, "prefixes")
 
     @prefixes.setter
-    def prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZonePrefixArgs']]]]):
+    def prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZonePrefixArgs']]]]):
         pulumi.set(self, "prefixes", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectedReason")
-    def rejected_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rejected_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rejected reason.
         """
         return pulumi.get(self, "rejected_reason")
 
     @rejected_reason.setter
-    def rejected_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rejected_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rejected_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attachment status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subnet id.
         """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vpc id.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AZ id.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 class NgfwSecurityZonePrefixArgsDict(TypedDict):
-    private_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZonePrefixPrivatePrefixArgsDict']]]]
+    private_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZonePrefixPrivatePrefixArgs']]]]]
 
 @pulumi.input_type
 class NgfwSecurityZonePrefixArgs:
     def __init__(__self__, *,
-                 private_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZonePrefixPrivatePrefixArgs']]]] = None):
+                 private_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZonePrefixPrivatePrefixArgs']]]] = None):
         if private_prefixes is not None:
             pulumi.set(__self__, "private_prefixes", private_prefixes)
 
     @_builtins.property
     @pulumi.getter(name="privatePrefixes")
-    def private_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZonePrefixPrivatePrefixArgs']]]]:
+    def private_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZonePrefixPrivatePrefixArgs']]]]:
         return pulumi.get(self, "private_prefixes")
 
     @private_prefixes.setter
-    def private_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZonePrefixPrivatePrefixArgs']]]]):
+    def private_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZonePrefixPrivatePrefixArgs']]]]):
         pulumi.set(self, "private_prefixes", value)
 
 
 class NgfwSecurityZonePrefixPrivatePrefixArgsDict(TypedDict):
-    cidrs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    cidrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class NgfwSecurityZonePrefixPrivatePrefixArgs:
     def __init__(__self__, *,
-                 cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         if cidrs is not None:
             pulumi.set(__self__, "cidrs", cidrs)
 
     @_builtins.property
     @pulumi.getter
-    def cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "cidrs")
 
     @cidrs.setter
-    def cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cidrs", value)
 
 
 class NgfwStatusArgsDict(TypedDict):
-    attachments: NotRequired[pulumi.Input[Sequence[pulumi.Input['NgfwStatusAttachmentArgsDict']]]]
+    attachments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwStatusAttachmentArgs']]]]]
     """
     The firewall attachments.
     """
-    device_rulestack_commit_status: NotRequired[pulumi.Input[_builtins.str]]
+    device_rulestack_commit_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The device rulestack commit status.
     """
-    failure_reason: NotRequired[pulumi.Input[_builtins.str]]
+    failure_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The firewall failure reason.
     """
-    firewall_status: NotRequired[pulumi.Input[_builtins.str]]
+    firewall_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The firewall status.
     """
-    rulestack_status: NotRequired[pulumi.Input[_builtins.str]]
+    rulestack_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The rulestack status.
     """
@@ -878,11 +878,11 @@ class NgfwStatusArgsDict(TypedDict):
 @pulumi.input_type
 class NgfwStatusArgs:
     def __init__(__self__, *,
-                 attachments: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwStatusAttachmentArgs']]]] = None,
-                 device_rulestack_commit_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 failure_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 rulestack_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 attachments: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwStatusAttachmentArgs']]]] = None,
+                 device_rulestack_commit_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 rulestack_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['NgfwStatusAttachmentArgs']]] attachments: The firewall attachments.
         :param pulumi.Input[_builtins.str] device_rulestack_commit_status: The device rulestack commit status.
@@ -903,79 +903,79 @@ class NgfwStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwStatusAttachmentArgs']]]]:
+    def attachments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwStatusAttachmentArgs']]]]:
         """
         The firewall attachments.
         """
         return pulumi.get(self, "attachments")
 
     @attachments.setter
-    def attachments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwStatusAttachmentArgs']]]]):
+    def attachments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwStatusAttachmentArgs']]]]):
         pulumi.set(self, "attachments", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceRulestackCommitStatus")
-    def device_rulestack_commit_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_rulestack_commit_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The device rulestack commit status.
         """
         return pulumi.get(self, "device_rulestack_commit_status")
 
     @device_rulestack_commit_status.setter
-    def device_rulestack_commit_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_rulestack_commit_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_rulestack_commit_status", value)
 
     @_builtins.property
     @pulumi.getter(name="failureReason")
-    def failure_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def failure_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The firewall failure reason.
         """
         return pulumi.get(self, "failure_reason")
 
     @failure_reason.setter
-    def failure_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def failure_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "failure_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallStatus")
-    def firewall_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The firewall status.
         """
         return pulumi.get(self, "firewall_status")
 
     @firewall_status.setter
-    def firewall_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_status", value)
 
     @_builtins.property
     @pulumi.getter(name="rulestackStatus")
-    def rulestack_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rulestack_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rulestack status.
         """
         return pulumi.get(self, "rulestack_status")
 
     @rulestack_status.setter
-    def rulestack_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rulestack_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rulestack_status", value)
 
 
 class NgfwStatusAttachmentArgsDict(TypedDict):
-    endpoint_id: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The endpoint id.
     """
-    rejected_reason: NotRequired[pulumi.Input[_builtins.str]]
+    rejected_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The reject reason.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The attachment status.
     """
-    subnet_id: NotRequired[pulumi.Input[_builtins.str]]
+    subnet_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The subnet id.
     """
@@ -983,10 +983,10 @@ class NgfwStatusAttachmentArgsDict(TypedDict):
 @pulumi.input_type
 class NgfwStatusAttachmentArgs:
     def __init__(__self__, *,
-                 endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rejected_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rejected_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] endpoint_id: The endpoint id.
         :param pulumi.Input[_builtins.str] rejected_reason: The reject reason.
@@ -1004,63 +1004,63 @@ class NgfwStatusAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="endpointId")
-    def endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint id.
         """
         return pulumi.get(self, "endpoint_id")
 
     @endpoint_id.setter
-    def endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectedReason")
-    def rejected_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rejected_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reject reason.
         """
         return pulumi.get(self, "rejected_reason")
 
     @rejected_reason.setter
-    def rejected_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rejected_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rejected_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attachment status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subnet id.
         """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
 
 class NgfwSubnetMappingArgsDict(TypedDict):
-    availability_zone: NotRequired[pulumi.Input[_builtins.str]]
+    availability_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The availability zone, for when the endpoint mode is customer managed.
     """
-    availability_zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    availability_zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The availability zone ID, for when the endpoint mode is customer managed.
     """
-    subnet_id: NotRequired[pulumi.Input[_builtins.str]]
+    subnet_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The subnet id, for when the endpoint mode is service managed.
     """
@@ -1068,9 +1068,9 @@ class NgfwSubnetMappingArgsDict(TypedDict):
 @pulumi.input_type
 class NgfwSubnetMappingArgs:
     def __init__(__self__, *,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 availability_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 availability_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone, for when the endpoint mode is customer managed.
         :param pulumi.Input[_builtins.str] availability_zone_id: The availability zone ID, for when the endpoint mode is customer managed.
@@ -1085,38 +1085,38 @@ class NgfwSubnetMappingArgs:
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def availability_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The availability zone, for when the endpoint mode is customer managed.
         """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
-    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def availability_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZoneId")
-    def availability_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def availability_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The availability zone ID, for when the endpoint mode is customer managed.
         """
         return pulumi.get(self, "availability_zone_id")
 
     @availability_zone_id.setter
-    def availability_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def availability_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subnet id, for when the endpoint mode is service managed.
         """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_id", value)
 
 
@@ -1129,23 +1129,23 @@ class NgfwUserIdArgsDict(TypedDict):
     """
     The Port
     """
-    agent_name: NotRequired[pulumi.Input[_builtins.str]]
+    agent_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Agent Name for UserID
     """
-    collector_name: NotRequired[pulumi.Input[_builtins.str]]
+    collector_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Collector Name
     """
-    custom_include_exclude_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input['NgfwUserIdCustomIncludeExcludeNetworkArgsDict']]]]
+    custom_include_exclude_networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwUserIdCustomIncludeExcludeNetworkArgs']]]]]
     """
     List of Custom Include Exclude Networks
     """
-    secret_key_arn: NotRequired[pulumi.Input[_builtins.str]]
+    secret_key_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     AWS Secret Key ARN
     """
-    user_id_status: NotRequired[pulumi.Input[_builtins.str]]
+    user_id_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Status and State of UserID Configuration
     """
@@ -1155,11 +1155,11 @@ class NgfwUserIdArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool],
                  port: pulumi.Input[_builtins.int],
-                 agent_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 collector_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_include_exclude_networks: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwUserIdCustomIncludeExcludeNetworkArgs']]]] = None,
-                 secret_key_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 agent_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 collector_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_include_exclude_networks: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwUserIdCustomIncludeExcludeNetworkArgs']]]] = None,
+                 secret_key_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Enable UserID Config
         :param pulumi.Input[_builtins.int] port: The Port
@@ -1208,62 +1208,62 @@ class NgfwUserIdArgs:
 
     @_builtins.property
     @pulumi.getter(name="agentName")
-    def agent_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Agent Name for UserID
         """
         return pulumi.get(self, "agent_name")
 
     @agent_name.setter
-    def agent_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_name", value)
 
     @_builtins.property
     @pulumi.getter(name="collectorName")
-    def collector_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collector_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Collector Name
         """
         return pulumi.get(self, "collector_name")
 
     @collector_name.setter
-    def collector_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collector_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collector_name", value)
 
     @_builtins.property
     @pulumi.getter(name="customIncludeExcludeNetworks")
-    def custom_include_exclude_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwUserIdCustomIncludeExcludeNetworkArgs']]]]:
+    def custom_include_exclude_networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwUserIdCustomIncludeExcludeNetworkArgs']]]]:
         """
         List of Custom Include Exclude Networks
         """
         return pulumi.get(self, "custom_include_exclude_networks")
 
     @custom_include_exclude_networks.setter
-    def custom_include_exclude_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwUserIdCustomIncludeExcludeNetworkArgs']]]]):
+    def custom_include_exclude_networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwUserIdCustomIncludeExcludeNetworkArgs']]]]):
         pulumi.set(self, "custom_include_exclude_networks", value)
 
     @_builtins.property
     @pulumi.getter(name="secretKeyArn")
-    def secret_key_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_key_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS Secret Key ARN
         """
         return pulumi.get(self, "secret_key_arn")
 
     @secret_key_arn.setter
-    def secret_key_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_key_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_key_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="userIdStatus")
-    def user_id_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status and State of UserID Configuration
         """
         return pulumi.get(self, "user_id_status")
 
     @user_id_status.setter
-    def user_id_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id_status", value)
 
 
@@ -1353,31 +1353,31 @@ class NgfwUserIdCustomIncludeExcludeNetworkArgs:
 
 
 class RulestackProfileConfigArgsDict(TypedDict):
-    anti_spyware: NotRequired[pulumi.Input[_builtins.str]]
+    anti_spyware: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Anti-spyware profile setting. Defaults to `BestPractice`.
     """
-    anti_virus: NotRequired[pulumi.Input[_builtins.str]]
+    anti_virus: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Anti-virus profile setting. Defaults to `BestPractice`.
     """
-    file_blocking: NotRequired[pulumi.Input[_builtins.str]]
+    file_blocking: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     File blocking profile setting. Defaults to `BestPractice`.
     """
-    outbound_trust_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    outbound_trust_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Outbound trust certificate.
     """
-    outbound_untrust_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    outbound_untrust_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Outbound untrust certificate.
     """
-    url_filtering: NotRequired[pulumi.Input[_builtins.str]]
+    url_filtering: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URL filtering profile setting. Defaults to `None`.
     """
-    vulnerability: NotRequired[pulumi.Input[_builtins.str]]
+    vulnerability: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Vulnerability profile setting. Defaults to `BestPractice`.
     """
@@ -1385,13 +1385,13 @@ class RulestackProfileConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RulestackProfileConfigArgs:
     def __init__(__self__, *,
-                 anti_spyware: Optional[pulumi.Input[_builtins.str]] = None,
-                 anti_virus: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_blocking: Optional[pulumi.Input[_builtins.str]] = None,
-                 outbound_trust_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 outbound_untrust_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_filtering: Optional[pulumi.Input[_builtins.str]] = None,
-                 vulnerability: Optional[pulumi.Input[_builtins.str]] = None):
+                 anti_spyware: pulumi.Input[Optional[_builtins.str]] = None,
+                 anti_virus: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_blocking: pulumi.Input[Optional[_builtins.str]] = None,
+                 outbound_trust_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 outbound_untrust_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_filtering: pulumi.Input[Optional[_builtins.str]] = None,
+                 vulnerability: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] anti_spyware: Anti-spyware profile setting. Defaults to `BestPractice`.
         :param pulumi.Input[_builtins.str] anti_virus: Anti-virus profile setting. Defaults to `BestPractice`.
@@ -1418,95 +1418,95 @@ class RulestackProfileConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="antiSpyware")
-    def anti_spyware(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def anti_spyware(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Anti-spyware profile setting. Defaults to `BestPractice`.
         """
         return pulumi.get(self, "anti_spyware")
 
     @anti_spyware.setter
-    def anti_spyware(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def anti_spyware(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "anti_spyware", value)
 
     @_builtins.property
     @pulumi.getter(name="antiVirus")
-    def anti_virus(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def anti_virus(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Anti-virus profile setting. Defaults to `BestPractice`.
         """
         return pulumi.get(self, "anti_virus")
 
     @anti_virus.setter
-    def anti_virus(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def anti_virus(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "anti_virus", value)
 
     @_builtins.property
     @pulumi.getter(name="fileBlocking")
-    def file_blocking(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_blocking(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File blocking profile setting. Defaults to `BestPractice`.
         """
         return pulumi.get(self, "file_blocking")
 
     @file_blocking.setter
-    def file_blocking(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_blocking(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_blocking", value)
 
     @_builtins.property
     @pulumi.getter(name="outboundTrustCertificate")
-    def outbound_trust_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def outbound_trust_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Outbound trust certificate.
         """
         return pulumi.get(self, "outbound_trust_certificate")
 
     @outbound_trust_certificate.setter
-    def outbound_trust_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def outbound_trust_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "outbound_trust_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="outboundUntrustCertificate")
-    def outbound_untrust_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def outbound_untrust_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Outbound untrust certificate.
         """
         return pulumi.get(self, "outbound_untrust_certificate")
 
     @outbound_untrust_certificate.setter
-    def outbound_untrust_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def outbound_untrust_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "outbound_untrust_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="urlFiltering")
-    def url_filtering(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_filtering(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL filtering profile setting. Defaults to `None`.
         """
         return pulumi.get(self, "url_filtering")
 
     @url_filtering.setter
-    def url_filtering(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_filtering(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_filtering", value)
 
     @_builtins.property
     @pulumi.getter
-    def vulnerability(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vulnerability(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Vulnerability profile setting. Defaults to `BestPractice`.
         """
         return pulumi.get(self, "vulnerability")
 
     @vulnerability.setter
-    def vulnerability(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vulnerability(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vulnerability", value)
 
 
 class SecurityRuleCategoryArgsDict(TypedDict):
-    feeds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    feeds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of feeds.
     """
-    url_category_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    url_category_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of URL category names.
     """
@@ -1514,8 +1514,8 @@ class SecurityRuleCategoryArgsDict(TypedDict):
 @pulumi.input_type
 class SecurityRuleCategoryArgs:
     def __init__(__self__, *,
-                 feeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url_category_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 feeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url_category_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] feeds: List of feeds.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] url_category_names: List of URL category names.
@@ -1527,47 +1527,47 @@ class SecurityRuleCategoryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def feeds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def feeds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of feeds.
         """
         return pulumi.get(self, "feeds")
 
     @feeds.setter
-    def feeds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def feeds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "feeds", value)
 
     @_builtins.property
     @pulumi.getter(name="urlCategoryNames")
-    def url_category_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def url_category_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of URL category names.
         """
         return pulumi.get(self, "url_category_names")
 
     @url_category_names.setter
-    def url_category_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def url_category_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "url_category_names", value)
 
 
 class SecurityRuleDestinationArgsDict(TypedDict):
-    cidrs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    cidrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of CIDRs.
     """
-    countries: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    countries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of countries.
     """
-    feeds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    feeds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of feeds.
     """
-    fqdn_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    fqdn_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of FQDN lists.
     """
-    prefix_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    prefix_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of prefix list.
     """
@@ -1575,11 +1575,11 @@ class SecurityRuleDestinationArgsDict(TypedDict):
 @pulumi.input_type
 class SecurityRuleDestinationArgs:
     def __init__(__self__, *,
-                 cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 countries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 feeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 fqdn_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 prefix_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 countries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 feeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 fqdn_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 prefix_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cidrs: List of CIDRs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] countries: List of countries.
@@ -1600,79 +1600,79 @@ class SecurityRuleDestinationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of CIDRs.
         """
         return pulumi.get(self, "cidrs")
 
     @cidrs.setter
-    def cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cidrs", value)
 
     @_builtins.property
     @pulumi.getter
-    def countries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def countries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of countries.
         """
         return pulumi.get(self, "countries")
 
     @countries.setter
-    def countries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def countries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "countries", value)
 
     @_builtins.property
     @pulumi.getter
-    def feeds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def feeds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of feeds.
         """
         return pulumi.get(self, "feeds")
 
     @feeds.setter
-    def feeds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def feeds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "feeds", value)
 
     @_builtins.property
     @pulumi.getter(name="fqdnLists")
-    def fqdn_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def fqdn_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of FQDN lists.
         """
         return pulumi.get(self, "fqdn_lists")
 
     @fqdn_lists.setter
-    def fqdn_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def fqdn_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "fqdn_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixLists")
-    def prefix_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def prefix_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of prefix list.
         """
         return pulumi.get(self, "prefix_lists")
 
     @prefix_lists.setter
-    def prefix_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def prefix_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "prefix_lists", value)
 
 
 class SecurityRuleSourceArgsDict(TypedDict):
-    cidrs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    cidrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of CIDRs.
     """
-    countries: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    countries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of countries.
     """
-    feeds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    feeds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of feeds.
     """
-    prefix_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    prefix_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of prefix list.
     """
@@ -1680,10 +1680,10 @@ class SecurityRuleSourceArgsDict(TypedDict):
 @pulumi.input_type
 class SecurityRuleSourceArgs:
     def __init__(__self__, *,
-                 cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 countries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 feeds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 prefix_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 countries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 feeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 prefix_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cidrs: List of CIDRs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] countries: List of countries.
@@ -1701,50 +1701,50 @@ class SecurityRuleSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of CIDRs.
         """
         return pulumi.get(self, "cidrs")
 
     @cidrs.setter
-    def cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cidrs", value)
 
     @_builtins.property
     @pulumi.getter
-    def countries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def countries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of countries.
         """
         return pulumi.get(self, "countries")
 
     @countries.setter
-    def countries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def countries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "countries", value)
 
     @_builtins.property
     @pulumi.getter
-    def feeds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def feeds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of feeds.
         """
         return pulumi.get(self, "feeds")
 
     @feeds.setter
-    def feeds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def feeds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "feeds", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixLists")
-    def prefix_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def prefix_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of prefix list.
         """
         return pulumi.get(self, "prefix_lists")
 
     @prefix_lists.setter
-    def prefix_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def prefix_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "prefix_lists", value)
 
 

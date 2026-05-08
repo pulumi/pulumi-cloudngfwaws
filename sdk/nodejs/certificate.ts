@@ -152,35 +152,35 @@ export interface CertificateState {
     /**
      * The audit comment.
      */
-    auditComment?: pulumi.Input<string>;
+    auditComment?: pulumi.Input<string | undefined>;
     /**
      * The description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The rulestack.
      */
-    rulestack?: pulumi.Input<string>;
+    rulestack?: pulumi.Input<string | undefined>;
     /**
      * The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Set to true if certificate is self-signed.
      */
-    selfSigned?: pulumi.Input<boolean>;
+    selfSigned?: pulumi.Input<boolean | undefined>;
     /**
      * The certificate signer ARN.
      */
-    signerArn?: pulumi.Input<string>;
+    signerArn?: pulumi.Input<string | undefined>;
     /**
      * The update token.
      */
-    updateToken?: pulumi.Input<string>;
+    updateToken?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -190,15 +190,15 @@ export interface CertificateArgs {
     /**
      * The audit comment.
      */
-    auditComment?: pulumi.Input<string>;
+    auditComment?: pulumi.Input<string | undefined>;
     /**
      * The description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The rulestack.
      */
@@ -206,13 +206,13 @@ export interface CertificateArgs {
     /**
      * The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Set to true if certificate is self-signed.
      */
-    selfSigned?: pulumi.Input<boolean>;
+    selfSigned?: pulumi.Input<boolean | undefined>;
     /**
      * The certificate signer ARN.
      */
-    signerArn?: pulumi.Input<string>;
+    signerArn?: pulumi.Input<string | undefined>;
 }

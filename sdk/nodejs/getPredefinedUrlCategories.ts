@@ -102,9 +102,9 @@ export interface GetPredefinedUrlCategoriesOutputArgs {
     /**
      * Max results. Defaults to `100`.
      */
-    maxResults?: pulumi.Input<number>;
+    maxResults?: pulumi.Input<number | undefined>;
     /**
      * Pagination token.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }

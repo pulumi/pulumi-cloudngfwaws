@@ -84,11 +84,11 @@ export interface AccountOnboardingState {
     /**
      * The account IDs
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Onboarding status of the account
      */
-    onboardingStatus?: pulumi.Input<string>;
+    onboardingStatus?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -102,5 +102,5 @@ export interface AccountOnboardingArgs {
     /**
      * Onboarding status of the account
      */
-    onboardingStatus?: pulumi.Input<string>;
+    onboardingStatus?: pulumi.Input<string | undefined>;
 }

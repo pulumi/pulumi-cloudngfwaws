@@ -138,13 +138,13 @@ export interface GetNgfwLogProfileOutputArgs {
     /**
      * The unique ID of the account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The Firewall Id for the NGFW.
      */
-    firewallId?: pulumi.Input<string>;
+    firewallId?: pulumi.Input<string | undefined>;
     /**
      * The name of the NGFW.
      */
-    ngfw?: pulumi.Input<string>;
+    ngfw?: pulumi.Input<string | undefined>;
 }

@@ -21,29 +21,29 @@ __all__ = ['NgfwArgs', 'Ngfw']
 @pulumi.input_type
 class NgfwArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowlist_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_id_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 automatic_upgrade_app_id_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 az_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 change_protections: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_nats: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEgressNatArgs']]]] = None,
-                 endpoint_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointArgs']]]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                 link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_vpc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwPrivateAccessArgs']]]] = None,
-                 rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_zones: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]] = None,
-                 subnet_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_ids: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwUserIdArgs']]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowlist_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_id_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 automatic_upgrade_app_id_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 az_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 change_protections: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_nats: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEgressNatArgs']]]] = None,
+                 endpoint_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointArgs']]]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                 link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_accesses: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwPrivateAccessArgs']]]] = None,
+                 rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_zones: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]] = None,
+                 subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_ids: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwUserIdArgs']]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Ngfw resource.
 
@@ -115,297 +115,297 @@ class NgfwArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account Id.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowlistAccounts")
-    def allowlist_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowlist_accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of allowed accounts for this NGFW.
         """
         return pulumi.get(self, "allowlist_accounts")
 
     @allowlist_accounts.setter
-    def allowlist_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowlist_accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowlist_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="appIdVersion")
-    def app_id_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         App-ID version number.
         """
         return pulumi.get(self, "app_id_version")
 
     @app_id_version.setter
-    def app_id_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id_version", value)
 
     @_builtins.property
     @pulumi.getter(name="automaticUpgradeAppIdVersion")
-    def automatic_upgrade_app_id_version(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def automatic_upgrade_app_id_version(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatic App-ID upgrade version number. Defaults to `true`.
         """
         return pulumi.get(self, "automatic_upgrade_app_id_version")
 
     @automatic_upgrade_app_id_version.setter
-    def automatic_upgrade_app_id_version(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def automatic_upgrade_app_id_version(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "automatic_upgrade_app_id_version", value)
 
     @_builtins.property
     @pulumi.getter(name="azLists")
-    def az_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def az_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of availability zone IDs for this NGFW.
         """
         return pulumi.get(self, "az_lists")
 
     @az_lists.setter
-    def az_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def az_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "az_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="changeProtections")
-    def change_protections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def change_protections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Enables or disables change protection for the NGFW.
         """
         return pulumi.get(self, "change_protections")
 
     @change_protections.setter
-    def change_protections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def change_protections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "change_protections", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NGFW description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="egressNats")
-    def egress_nats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEgressNatArgs']]]]:
+    def egress_nats(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEgressNatArgs']]]]:
         return pulumi.get(self, "egress_nats")
 
     @egress_nats.setter
-    def egress_nats(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEgressNatArgs']]]]):
+    def egress_nats(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEgressNatArgs']]]]):
         pulumi.set(self, "egress_nats", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointMode")
-    def endpoint_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
         """
         return pulumi.get(self, "endpoint_mode")
 
     @endpoint_mode.setter
-    def endpoint_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointArgs']]]]:
+    def endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointArgs']]]]:
         return pulumi.get(self, "endpoints")
 
     @endpoints.setter
-    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointArgs']]]]):
+    def endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointArgs']]]]):
         pulumi.set(self, "endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallId")
-    def firewall_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Firewall ID.
         """
         return pulumi.get(self, "firewall_id")
 
     @firewall_id.setter
-    def firewall_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_id", value)
 
     @_builtins.property
     @pulumi.getter(name="globalRulestack")
-    def global_rulestack(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def global_rulestack(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The global rulestack for this NGFW.
         """
         return pulumi.get(self, "global_rulestack")
 
     @global_rulestack.setter
-    def global_rulestack(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def global_rulestack(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "global_rulestack", value)
 
     @_builtins.property
     @pulumi.getter(name="linkId")
-    def link_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def link_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The link ID.
         """
         return pulumi.get(self, "link_id")
 
     @link_id.setter
-    def link_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def link_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "link_id", value)
 
     @_builtins.property
     @pulumi.getter(name="multiVpc")
-    def multi_vpc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multi_vpc(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
         """
         return pulumi.get(self, "multi_vpc")
 
     @multi_vpc.setter
-    def multi_vpc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multi_vpc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multi_vpc", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NGFW name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateAccesses")
-    def private_accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwPrivateAccessArgs']]]]:
+    def private_accesses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwPrivateAccessArgs']]]]:
         return pulumi.get(self, "private_accesses")
 
     @private_accesses.setter
-    def private_accesses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwPrivateAccessArgs']]]]):
+    def private_accesses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwPrivateAccessArgs']]]]):
         pulumi.set(self, "private_accesses", value)
 
     @_builtins.property
     @pulumi.getter
-    def rulestack(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rulestack(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rulestack for this NGFW.
         """
         return pulumi.get(self, "rulestack")
 
     @rulestack.setter
-    def rulestack(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rulestack(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rulestack", value)
 
     @_builtins.property
     @pulumi.getter(name="securityZones")
-    def security_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]]:
+    def security_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]]:
         return pulumi.get(self, "security_zones")
 
     @security_zones.setter
-    def security_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]]):
+    def security_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]]):
         pulumi.set(self, "security_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetMappings")
-    def subnet_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]]:
+    def subnet_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]]:
         """
         Subnet mappings.
         """
         return pulumi.get(self, "subnet_mappings")
 
     @subnet_mappings.setter
-    def subnet_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]]):
+    def subnet_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]]):
         pulumi.set(self, "subnet_mappings", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
         """
         return pulumi.get(self, "tier")
 
     @tier.setter
-    def tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tier", value)
 
     @_builtins.property
     @pulumi.getter(name="userIds")
-    def user_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwUserIdArgs']]]]:
+    def user_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwUserIdArgs']]]]:
         return pulumi.get(self, "user_ids")
 
     @user_ids.setter
-    def user_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwUserIdArgs']]]]):
+    def user_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwUserIdArgs']]]]):
         pulumi.set(self, "user_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ID for the NGFW.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
 @pulumi.input_type
 class _NgfwState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowlist_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_id_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 automatic_upgrade_app_id_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 az_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 change_protections: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deployment_update_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_nats: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEgressNatArgs']]]] = None,
-                 endpoint_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointArgs']]]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                 link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 link_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_vpc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwPrivateAccessArgs']]]] = None,
-                 rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_zones: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwStatusArgs']]]] = None,
-                 subnet_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_ids: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwUserIdArgs']]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowlist_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_id_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 automatic_upgrade_app_id_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 az_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 change_protections: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deployment_update_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_nats: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEgressNatArgs']]]] = None,
+                 endpoint_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointArgs']]]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                 link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 link_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_accesses: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwPrivateAccessArgs']]]] = None,
+                 rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_zones: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwStatusArgs']]]] = None,
+                 subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_ids: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwUserIdArgs']]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ngfw resources.
 
@@ -491,320 +491,320 @@ class _NgfwState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account Id.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowlistAccounts")
-    def allowlist_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowlist_accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of allowed accounts for this NGFW.
         """
         return pulumi.get(self, "allowlist_accounts")
 
     @allowlist_accounts.setter
-    def allowlist_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowlist_accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowlist_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="appIdVersion")
-    def app_id_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         App-ID version number.
         """
         return pulumi.get(self, "app_id_version")
 
     @app_id_version.setter
-    def app_id_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id_version", value)
 
     @_builtins.property
     @pulumi.getter(name="automaticUpgradeAppIdVersion")
-    def automatic_upgrade_app_id_version(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def automatic_upgrade_app_id_version(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatic App-ID upgrade version number. Defaults to `true`.
         """
         return pulumi.get(self, "automatic_upgrade_app_id_version")
 
     @automatic_upgrade_app_id_version.setter
-    def automatic_upgrade_app_id_version(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def automatic_upgrade_app_id_version(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "automatic_upgrade_app_id_version", value)
 
     @_builtins.property
     @pulumi.getter(name="azLists")
-    def az_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def az_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of availability zone IDs for this NGFW.
         """
         return pulumi.get(self, "az_lists")
 
     @az_lists.setter
-    def az_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def az_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "az_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="changeProtections")
-    def change_protections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def change_protections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Enables or disables change protection for the NGFW.
         """
         return pulumi.get(self, "change_protections")
 
     @change_protections.setter
-    def change_protections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def change_protections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "change_protections", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentUpdateToken")
-    def deployment_update_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_update_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The update token.
         """
         return pulumi.get(self, "deployment_update_token")
 
     @deployment_update_token.setter
-    def deployment_update_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_update_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_update_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NGFW description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="egressNats")
-    def egress_nats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEgressNatArgs']]]]:
+    def egress_nats(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEgressNatArgs']]]]:
         return pulumi.get(self, "egress_nats")
 
     @egress_nats.setter
-    def egress_nats(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEgressNatArgs']]]]):
+    def egress_nats(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEgressNatArgs']]]]):
         pulumi.set(self, "egress_nats", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointMode")
-    def endpoint_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
         """
         return pulumi.get(self, "endpoint_mode")
 
     @endpoint_mode.setter
-    def endpoint_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointServiceName")
-    def endpoint_service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint service name.
         """
         return pulumi.get(self, "endpoint_service_name")
 
     @endpoint_service_name.setter
-    def endpoint_service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointArgs']]]]:
+    def endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointArgs']]]]:
         return pulumi.get(self, "endpoints")
 
     @endpoints.setter
-    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwEndpointArgs']]]]):
+    def endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointArgs']]]]):
         pulumi.set(self, "endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallId")
-    def firewall_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Firewall ID.
         """
         return pulumi.get(self, "firewall_id")
 
     @firewall_id.setter
-    def firewall_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_id", value)
 
     @_builtins.property
     @pulumi.getter(name="globalRulestack")
-    def global_rulestack(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def global_rulestack(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The global rulestack for this NGFW.
         """
         return pulumi.get(self, "global_rulestack")
 
     @global_rulestack.setter
-    def global_rulestack(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def global_rulestack(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "global_rulestack", value)
 
     @_builtins.property
     @pulumi.getter(name="linkId")
-    def link_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def link_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The link ID.
         """
         return pulumi.get(self, "link_id")
 
     @link_id.setter
-    def link_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def link_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "link_id", value)
 
     @_builtins.property
     @pulumi.getter(name="linkStatus")
-    def link_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def link_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The link status.
         """
         return pulumi.get(self, "link_status")
 
     @link_status.setter
-    def link_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def link_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "link_status", value)
 
     @_builtins.property
     @pulumi.getter(name="multiVpc")
-    def multi_vpc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multi_vpc(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
         """
         return pulumi.get(self, "multi_vpc")
 
     @multi_vpc.setter
-    def multi_vpc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multi_vpc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multi_vpc", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NGFW name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateAccesses")
-    def private_accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwPrivateAccessArgs']]]]:
+    def private_accesses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwPrivateAccessArgs']]]]:
         return pulumi.get(self, "private_accesses")
 
     @private_accesses.setter
-    def private_accesses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwPrivateAccessArgs']]]]):
+    def private_accesses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwPrivateAccessArgs']]]]):
         pulumi.set(self, "private_accesses", value)
 
     @_builtins.property
     @pulumi.getter
-    def rulestack(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rulestack(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rulestack for this NGFW.
         """
         return pulumi.get(self, "rulestack")
 
     @rulestack.setter
-    def rulestack(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rulestack(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rulestack", value)
 
     @_builtins.property
     @pulumi.getter(name="securityZones")
-    def security_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]]:
+    def security_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]]:
         return pulumi.get(self, "security_zones")
 
     @security_zones.setter
-    def security_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]]):
+    def security_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]]):
         pulumi.set(self, "security_zones", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwStatusArgs']]]]:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetMappings")
-    def subnet_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]]:
+    def subnet_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]]:
         """
         Subnet mappings.
         """
         return pulumi.get(self, "subnet_mappings")
 
     @subnet_mappings.setter
-    def subnet_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]]):
+    def subnet_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]]):
         pulumi.set(self, "subnet_mappings", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
         """
         return pulumi.get(self, "tier")
 
     @tier.setter
-    def tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tier", value)
 
     @_builtins.property
     @pulumi.getter(name="updateToken")
-    def update_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The update token.
         """
         return pulumi.get(self, "update_token")
 
     @update_token.setter
-    def update_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_token", value)
 
     @_builtins.property
     @pulumi.getter(name="userIds")
-    def user_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NgfwUserIdArgs']]]]:
+    def user_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwUserIdArgs']]]]:
         return pulumi.get(self, "user_ids")
 
     @user_ids.setter
-    def user_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NgfwUserIdArgs']]]]):
+    def user_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwUserIdArgs']]]]):
         pulumi.set(self, "user_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ID for the NGFW.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -814,29 +814,29 @@ class Ngfw(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowlist_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_id_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 automatic_upgrade_app_id_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 az_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 change_protections: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_nats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwEgressNatArgs', 'NgfwEgressNatArgsDict']]]]] = None,
-                 endpoint_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwEndpointArgs', 'NgfwEndpointArgsDict']]]]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                 link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_vpc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict']]]]] = None,
-                 rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict']]]]] = None,
-                 subnet_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict']]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowlist_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_id_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 automatic_upgrade_app_id_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 az_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 change_protections: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_nats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEgressNatArgs', 'NgfwEgressNatArgsDict']]]]] = None,
+                 endpoint_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEndpointArgs', 'NgfwEndpointArgsDict']]]]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                 link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict']]]]] = None,
+                 rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict']]]]] = None,
+                 subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict']]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for NGFW manipulation.
@@ -1438,29 +1438,29 @@ class Ngfw(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowlist_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_id_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 automatic_upgrade_app_id_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 az_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 change_protections: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 egress_nats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwEgressNatArgs', 'NgfwEgressNatArgsDict']]]]] = None,
-                 endpoint_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwEndpointArgs', 'NgfwEndpointArgsDict']]]]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                 link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_vpc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict']]]]] = None,
-                 rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict']]]]] = None,
-                 subnet_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict']]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowlist_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_id_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 automatic_upgrade_app_id_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 az_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 change_protections: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 egress_nats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEgressNatArgs', 'NgfwEgressNatArgsDict']]]]] = None,
+                 endpoint_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEndpointArgs', 'NgfwEndpointArgsDict']]]]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                 link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict']]]]] = None,
+                 rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict']]]]] = None,
+                 subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict']]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1508,34 +1508,34 @@ class Ngfw(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            allowlist_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            app_id_version: Optional[pulumi.Input[_builtins.str]] = None,
-            automatic_upgrade_app_id_version: Optional[pulumi.Input[_builtins.bool]] = None,
-            az_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            change_protections: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            deployment_update_token: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            egress_nats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwEgressNatArgs', 'NgfwEgressNatArgsDict']]]]] = None,
-            endpoint_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwEndpointArgs', 'NgfwEndpointArgsDict']]]]] = None,
-            firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
-            global_rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-            link_id: Optional[pulumi.Input[_builtins.str]] = None,
-            link_status: Optional[pulumi.Input[_builtins.str]] = None,
-            multi_vpc: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            private_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict']]]]] = None,
-            rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-            security_zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict']]]]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwStatusArgs', 'NgfwStatusArgsDict']]]]] = None,
-            subnet_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            tier: Optional[pulumi.Input[_builtins.str]] = None,
-            update_token: Optional[pulumi.Input[_builtins.str]] = None,
-            user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict']]]]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Ngfw':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allowlist_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_id_version: pulumi.Input[Optional[_builtins.str]] = None,
+            automatic_upgrade_app_id_version: pulumi.Input[Optional[_builtins.bool]] = None,
+            az_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            change_protections: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deployment_update_token: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            egress_nats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEgressNatArgs', 'NgfwEgressNatArgsDict']]]]] = None,
+            endpoint_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEndpointArgs', 'NgfwEndpointArgsDict']]]]] = None,
+            firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+            global_rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+            link_id: pulumi.Input[Optional[_builtins.str]] = None,
+            link_status: pulumi.Input[Optional[_builtins.str]] = None,
+            multi_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict']]]]] = None,
+            rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+            security_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict']]]]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwStatusArgs', 'NgfwStatusArgsDict']]]]] = None,
+            subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tier: pulumi.Input[Optional[_builtins.str]] = None,
+            update_token: pulumi.Input[Optional[_builtins.str]] = None,
+            user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict']]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Ngfw':
         """
         Get an existing Ngfw resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

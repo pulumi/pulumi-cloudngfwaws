@@ -132,23 +132,23 @@ export interface PredefinedUrlCategoryOverrideState {
     /**
      * The action to take. Valid values are `none`, `allow`, `alert`, or `block`. Defaults to `none`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * The audit comment.
      */
-    auditComment?: pulumi.Input<string>;
+    auditComment?: pulumi.Input<string | undefined>;
     /**
      * The name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The rulestack.
      */
-    rulestack?: pulumi.Input<string>;
+    rulestack?: pulumi.Input<string | undefined>;
     /**
      * Update token.
      */
-    updateToken?: pulumi.Input<string>;
+    updateToken?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -158,15 +158,15 @@ export interface PredefinedUrlCategoryOverrideArgs {
     /**
      * The action to take. Valid values are `none`, `allow`, `alert`, or `block`. Defaults to `none`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * The audit comment.
      */
-    auditComment?: pulumi.Input<string>;
+    auditComment?: pulumi.Input<string | undefined>;
     /**
      * The name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The rulestack.
      */

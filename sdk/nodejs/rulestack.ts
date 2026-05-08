@@ -156,40 +156,40 @@ export interface RulestackState {
     /**
      * Account group.
      */
-    accountGroup?: pulumi.Input<string>;
+    accountGroup?: pulumi.Input<string | undefined>;
     /**
      * The account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Lookup x forwarded for.
      */
-    lookupXForwardedFor?: pulumi.Input<string>;
+    lookupXForwardedFor?: pulumi.Input<string | undefined>;
     /**
      * Minimum App-ID version number.
      */
-    minimumAppIdVersion?: pulumi.Input<string>;
+    minimumAppIdVersion?: pulumi.Input<string | undefined>;
     /**
      * The name.
      */
-    name?: pulumi.Input<string>;
-    profileConfig?: pulumi.Input<inputs.RulestackProfileConfig>;
+    name?: pulumi.Input<string | undefined>;
+    profileConfig?: pulumi.Input<inputs.RulestackProfileConfig | undefined>;
     /**
      * The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The rulestack state.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -199,34 +199,34 @@ export interface RulestackArgs {
     /**
      * Account group.
      */
-    accountGroup?: pulumi.Input<string>;
+    accountGroup?: pulumi.Input<string | undefined>;
     /**
      * The account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Lookup x forwarded for.
      */
-    lookupXForwardedFor?: pulumi.Input<string>;
+    lookupXForwardedFor?: pulumi.Input<string | undefined>;
     /**
      * Minimum App-ID version number.
      */
-    minimumAppIdVersion?: pulumi.Input<string>;
+    minimumAppIdVersion?: pulumi.Input<string | undefined>;
     /**
      * The name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     profileConfig: pulumi.Input<inputs.RulestackProfileConfig>;
     /**
      * The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -24,15 +24,15 @@ export interface GetAccountsAccountDetailArgs {
     /**
      * The account id.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * External Id of the onboarded account
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Onboarding status of the account.
      */
-    onboardingStatus?: pulumi.Input<string>;
+    onboardingStatus?: pulumi.Input<string | undefined>;
 }
 
 export interface NgfwEgressNat {
@@ -40,73 +40,73 @@ export interface NgfwEgressNat {
      * Enable egress NAT
      */
     enabled: pulumi.Input<boolean>;
-    settings?: pulumi.Input<pulumi.Input<inputs.NgfwEgressNatSetting>[]>;
+    settings?: pulumi.Input<pulumi.Input<inputs.NgfwEgressNatSetting>[] | undefined>;
 }
 
 export interface NgfwEgressNatSetting {
     /**
      * Set ip pool type from the following options. Valid values are `AWSService` or `BYOIP`.
      */
-    ipPoolType?: pulumi.Input<string>;
+    ipPoolType?: pulumi.Input<string | undefined>;
     /**
      * The IP pool ID
      */
-    ipamPoolId?: pulumi.Input<string>;
+    ipamPoolId?: pulumi.Input<string | undefined>;
 }
 
 export interface NgfwEndpoint {
     /**
      * The account id.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Enable egress NAT
      */
-    egressNatEnabled?: pulumi.Input<boolean>;
+    egressNatEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Endpoint ID of the security zone
      */
-    endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
      */
     mode: pulumi.Input<string>;
-    prefixes?: pulumi.Input<pulumi.Input<inputs.NgfwEndpointPrefix>[]>;
+    prefixes?: pulumi.Input<pulumi.Input<inputs.NgfwEndpointPrefix>[] | undefined>;
     /**
      * The rejected reason.
      */
-    rejectedReason?: pulumi.Input<string>;
+    rejectedReason?: pulumi.Input<string | undefined>;
     /**
      * The attachment status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The subnet id.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * The vpc id.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The AZ id.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface NgfwEndpointPrefix {
-    privatePrefixes?: pulumi.Input<pulumi.Input<inputs.NgfwEndpointPrefixPrivatePrefix>[]>;
+    privatePrefixes?: pulumi.Input<pulumi.Input<inputs.NgfwEndpointPrefixPrivatePrefix>[] | undefined>;
 }
 
 export interface NgfwEndpointPrefixPrivatePrefix {
-    cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface NgfwLogProfileLogConfig {
     /**
      * Type of Role for log configuration
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The log destination details.
      */
@@ -122,22 +122,22 @@ export interface NgfwLogProfileLogConfig {
     /**
      * Type of Role for log configuration
      */
-    roleType?: pulumi.Input<string>;
+    roleType?: pulumi.Input<string | undefined>;
 }
 
 export interface NgfwLogProfileLogDestination {
     /**
      * The log destination details.
      */
-    destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string | undefined>;
     /**
      * The log destination type. Valid values are `S3`, `CloudWatchLogs`, or `KinesisDataFirehose`.
      */
-    destinationType?: pulumi.Input<string>;
+    destinationType?: pulumi.Input<string | undefined>;
     /**
      * The type of logs. Valid values are `TRAFFIC`, `THREAT`, or `DECRYPTION`.
      */
-    logType?: pulumi.Input<string>;
+    logType?: pulumi.Input<string | undefined>;
 }
 
 export interface NgfwPrivateAccess {
@@ -155,11 +155,11 @@ export interface NgfwSecurityZone {
     /**
      * The account id.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Enable egress NAT
      */
-    egressNatEnabled?: pulumi.Input<boolean>;
+    egressNatEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Endpoint ID of the security zone
      */
@@ -167,108 +167,108 @@ export interface NgfwSecurityZone {
     /**
      * The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
      */
-    mode?: pulumi.Input<string>;
-    prefixes?: pulumi.Input<pulumi.Input<inputs.NgfwSecurityZonePrefix>[]>;
+    mode?: pulumi.Input<string | undefined>;
+    prefixes?: pulumi.Input<pulumi.Input<inputs.NgfwSecurityZonePrefix>[] | undefined>;
     /**
      * The rejected reason.
      */
-    rejectedReason?: pulumi.Input<string>;
+    rejectedReason?: pulumi.Input<string | undefined>;
     /**
      * The attachment status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The subnet id.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * The vpc id.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The AZ id.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface NgfwSecurityZonePrefix {
-    privatePrefixes?: pulumi.Input<pulumi.Input<inputs.NgfwSecurityZonePrefixPrivatePrefix>[]>;
+    privatePrefixes?: pulumi.Input<pulumi.Input<inputs.NgfwSecurityZonePrefixPrivatePrefix>[] | undefined>;
 }
 
 export interface NgfwSecurityZonePrefixPrivatePrefix {
-    cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface NgfwStatus {
     /**
      * The firewall attachments.
      */
-    attachments?: pulumi.Input<pulumi.Input<inputs.NgfwStatusAttachment>[]>;
+    attachments?: pulumi.Input<pulumi.Input<inputs.NgfwStatusAttachment>[] | undefined>;
     /**
      * The device rulestack commit status.
      */
-    deviceRulestackCommitStatus?: pulumi.Input<string>;
+    deviceRulestackCommitStatus?: pulumi.Input<string | undefined>;
     /**
      * The firewall failure reason.
      */
-    failureReason?: pulumi.Input<string>;
+    failureReason?: pulumi.Input<string | undefined>;
     /**
      * The firewall status.
      */
-    firewallStatus?: pulumi.Input<string>;
+    firewallStatus?: pulumi.Input<string | undefined>;
     /**
      * The rulestack status.
      */
-    rulestackStatus?: pulumi.Input<string>;
+    rulestackStatus?: pulumi.Input<string | undefined>;
 }
 
 export interface NgfwStatusAttachment {
     /**
      * The endpoint id.
      */
-    endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * The reject reason.
      */
-    rejectedReason?: pulumi.Input<string>;
+    rejectedReason?: pulumi.Input<string | undefined>;
     /**
      * The attachment status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The subnet id.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
 }
 
 export interface NgfwSubnetMapping {
     /**
      * The availability zone, for when the endpoint mode is customer managed.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * The availability zone ID, for when the endpoint mode is customer managed.
      */
-    availabilityZoneId?: pulumi.Input<string>;
+    availabilityZoneId?: pulumi.Input<string | undefined>;
     /**
      * The subnet id, for when the endpoint mode is service managed.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
 }
 
 export interface NgfwUserId {
     /**
      * Agent Name for UserID
      */
-    agentName?: pulumi.Input<string>;
+    agentName?: pulumi.Input<string | undefined>;
     /**
      * The Collector Name
      */
-    collectorName?: pulumi.Input<string>;
+    collectorName?: pulumi.Input<string | undefined>;
     /**
      * List of Custom Include Exclude Networks
      */
-    customIncludeExcludeNetworks?: pulumi.Input<pulumi.Input<inputs.NgfwUserIdCustomIncludeExcludeNetwork>[]>;
+    customIncludeExcludeNetworks?: pulumi.Input<pulumi.Input<inputs.NgfwUserIdCustomIncludeExcludeNetwork>[] | undefined>;
     /**
      * Enable UserID Config
      */
@@ -280,11 +280,11 @@ export interface NgfwUserId {
     /**
      * AWS Secret Key ARN
      */
-    secretKeyArn?: pulumi.Input<string>;
+    secretKeyArn?: pulumi.Input<string | undefined>;
     /**
      * Status and State of UserID Configuration
      */
-    userIdStatus?: pulumi.Input<string>;
+    userIdStatus?: pulumi.Input<string | undefined>;
 }
 
 export interface NgfwUserIdCustomIncludeExcludeNetwork {
@@ -310,82 +310,82 @@ export interface RulestackProfileConfig {
     /**
      * Anti-spyware profile setting. Defaults to `BestPractice`.
      */
-    antiSpyware?: pulumi.Input<string>;
+    antiSpyware?: pulumi.Input<string | undefined>;
     /**
      * Anti-virus profile setting. Defaults to `BestPractice`.
      */
-    antiVirus?: pulumi.Input<string>;
+    antiVirus?: pulumi.Input<string | undefined>;
     /**
      * File blocking profile setting. Defaults to `BestPractice`.
      */
-    fileBlocking?: pulumi.Input<string>;
+    fileBlocking?: pulumi.Input<string | undefined>;
     /**
      * Outbound trust certificate.
      */
-    outboundTrustCertificate?: pulumi.Input<string>;
+    outboundTrustCertificate?: pulumi.Input<string | undefined>;
     /**
      * Outbound untrust certificate.
      */
-    outboundUntrustCertificate?: pulumi.Input<string>;
+    outboundUntrustCertificate?: pulumi.Input<string | undefined>;
     /**
      * URL filtering profile setting. Defaults to `None`.
      */
-    urlFiltering?: pulumi.Input<string>;
+    urlFiltering?: pulumi.Input<string | undefined>;
     /**
      * Vulnerability profile setting. Defaults to `BestPractice`.
      */
-    vulnerability?: pulumi.Input<string>;
+    vulnerability?: pulumi.Input<string | undefined>;
 }
 
 export interface SecurityRuleCategory {
     /**
      * List of feeds.
      */
-    feeds?: pulumi.Input<pulumi.Input<string>[]>;
+    feeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of URL category names.
      */
-    urlCategoryNames?: pulumi.Input<pulumi.Input<string>[]>;
+    urlCategoryNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface SecurityRuleDestination {
     /**
      * List of CIDRs.
      */
-    cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of countries.
      */
-    countries?: pulumi.Input<pulumi.Input<string>[]>;
+    countries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of feeds.
      */
-    feeds?: pulumi.Input<pulumi.Input<string>[]>;
+    feeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of FQDN lists.
      */
-    fqdnLists?: pulumi.Input<pulumi.Input<string>[]>;
+    fqdnLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of prefix list.
      */
-    prefixLists?: pulumi.Input<pulumi.Input<string>[]>;
+    prefixLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface SecurityRuleSource {
     /**
      * List of CIDRs.
      */
-    cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of countries.
      */
-    countries?: pulumi.Input<pulumi.Input<string>[]>;
+    countries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of feeds.
      */
-    feeds?: pulumi.Input<pulumi.Input<string>[]>;
+    feeds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of prefix list.
      */
-    prefixLists?: pulumi.Input<pulumi.Input<string>[]>;
+    prefixLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

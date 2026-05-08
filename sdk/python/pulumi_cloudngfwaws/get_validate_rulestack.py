@@ -163,8 +163,8 @@ def get_validate_rulestack(rulestack: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         validation_errors=pulumi.get(__ret__, 'validation_errors'),
         validation_status=pulumi.get(__ret__, 'validation_status'))
-def get_validate_rulestack_output(rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                                  scope: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_validate_rulestack_output(rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                                  scope: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetValidateRulestackResult]:
     """
     Data source to validate the rulestack config.

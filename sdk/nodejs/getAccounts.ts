@@ -88,13 +88,13 @@ export interface GetAccountsOutputArgs {
     /**
      * List of account details.
      */
-    accountDetails?: pulumi.Input<pulumi.Input<inputs.GetAccountsAccountDetailArgs>[]>;
+    accountDetails?: pulumi.Input<pulumi.Input<inputs.GetAccountsAccountDetailArgs>[] | undefined>;
     /**
      * List of account ids.
      */
-    accountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    accountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Flag to include account details while listing accounts. Defaults to `false`.
      */
-    describe?: pulumi.Input<boolean>;
+    describe?: pulumi.Input<boolean | undefined>;
 }

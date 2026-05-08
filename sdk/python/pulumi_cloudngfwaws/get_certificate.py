@@ -213,10 +213,10 @@ def get_certificate(config_type: Optional[_builtins.str] = None,
         self_signed=pulumi.get(__ret__, 'self_signed'),
         signer_arn=pulumi.get(__ret__, 'signer_arn'),
         update_token=pulumi.get(__ret__, 'update_token'))
-def get_certificate_output(config_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           name: Optional[pulumi.Input[_builtins.str]] = None,
-                           rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                           scope: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_certificate_output(config_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           name: pulumi.Input[Optional[_builtins.str]] = None,
+                           rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                           scope: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificateResult]:
     """
     Data source for retrieving certificate information.

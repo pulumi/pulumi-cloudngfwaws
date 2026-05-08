@@ -138,7 +138,7 @@ export interface GetPredefinedUrlCategoryOverrideOutputArgs {
     /**
      * Retrieve either the candidate or running config. Valid values are `candidate` or `running`. Defaults to `candidate`.
      */
-    configType?: pulumi.Input<string>;
+    configType?: pulumi.Input<string | undefined>;
     /**
      * The name.
      */
