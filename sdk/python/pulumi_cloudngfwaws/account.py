@@ -19,14 +19,14 @@ __all__ = ['AccountArgs', 'Account']
 @pulumi.input_type
 class AccountArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cft_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 trusted_account: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cft_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 trusted_account: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
 
@@ -58,113 +58,113 @@ class AccountArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account ID
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cftUrl")
-    def cft_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cft_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CFT URL.
         """
         return pulumi.get(self, "cft_url")
 
     @cft_url.setter
-    def cft_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cft_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cft_url", value)
 
     @_builtins.property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The external ID of the account
         """
         return pulumi.get(self, "external_id")
 
     @external_id.setter
-    def external_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_id", value)
 
     @_builtins.property
     @pulumi.getter(name="onboardingStatus")
-    def onboarding_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onboarding_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account onboarding status
         """
         return pulumi.get(self, "onboarding_status")
 
     @onboarding_status.setter
-    def onboarding_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onboarding_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onboarding_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Origin of account onboarding
         """
         return pulumi.get(self, "origin")
 
     @origin.setter
-    def origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "origin", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountId")
-    def service_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account ID of cloud NGFW service
         """
         return pulumi.get(self, "service_account_id")
 
     @service_account_id.setter
-    def service_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snsTopicArn")
-    def sns_topic_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sns_topic_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SNS topic ARN
         """
         return pulumi.get(self, "sns_topic_arn")
 
     @sns_topic_arn.setter
-    def sns_topic_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sns_topic_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sns_topic_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="trustedAccount")
-    def trusted_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trusted_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The trusted account ID
         """
         return pulumi.get(self, "trusted_account")
 
     @trusted_account.setter
-    def trusted_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trusted_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trusted_account", value)
 
 
 @pulumi.input_type
 class _AccountState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cft_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 trusted_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_token: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cft_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 trusted_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
 
@@ -199,110 +199,110 @@ class _AccountState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account ID
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cftUrl")
-    def cft_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cft_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CFT URL.
         """
         return pulumi.get(self, "cft_url")
 
     @cft_url.setter
-    def cft_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cft_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cft_url", value)
 
     @_builtins.property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The external ID of the account
         """
         return pulumi.get(self, "external_id")
 
     @external_id.setter
-    def external_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_id", value)
 
     @_builtins.property
     @pulumi.getter(name="onboardingStatus")
-    def onboarding_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onboarding_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account onboarding status
         """
         return pulumi.get(self, "onboarding_status")
 
     @onboarding_status.setter
-    def onboarding_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onboarding_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onboarding_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Origin of account onboarding
         """
         return pulumi.get(self, "origin")
 
     @origin.setter
-    def origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "origin", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountId")
-    def service_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account ID of cloud NGFW service
         """
         return pulumi.get(self, "service_account_id")
 
     @service_account_id.setter
-    def service_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snsTopicArn")
-    def sns_topic_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sns_topic_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SNS topic ARN
         """
         return pulumi.get(self, "sns_topic_arn")
 
     @sns_topic_arn.setter
-    def sns_topic_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sns_topic_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sns_topic_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="trustedAccount")
-    def trusted_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trusted_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The trusted account ID
         """
         return pulumi.get(self, "trusted_account")
 
     @trusted_account.setter
-    def trusted_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trusted_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trusted_account", value)
 
     @_builtins.property
     @pulumi.getter(name="updateToken")
-    def update_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The update token.
         """
         return pulumi.get(self, "update_token")
 
     @update_token.setter
-    def update_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_token", value)
 
 
@@ -312,14 +312,14 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cft_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 trusted_account: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cft_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 trusted_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for Account manipulation.
@@ -371,14 +371,14 @@ class Account(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cft_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 trusted_account: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cft_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 trusted_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -407,15 +407,15 @@ class Account(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cft_url: Optional[pulumi.Input[_builtins.str]] = None,
-            external_id: Optional[pulumi.Input[_builtins.str]] = None,
-            onboarding_status: Optional[pulumi.Input[_builtins.str]] = None,
-            origin: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            trusted_account: Optional[pulumi.Input[_builtins.str]] = None,
-            update_token: Optional[pulumi.Input[_builtins.str]] = None) -> 'Account':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cft_url: pulumi.Input[Optional[_builtins.str]] = None,
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            onboarding_status: pulumi.Input[Optional[_builtins.str]] = None,
+            origin: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            trusted_account: pulumi.Input[Optional[_builtins.str]] = None,
+            update_token: pulumi.Input[Optional[_builtins.str]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

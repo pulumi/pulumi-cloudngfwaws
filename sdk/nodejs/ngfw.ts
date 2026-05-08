@@ -496,97 +496,97 @@ export interface NgfwState {
     /**
      * The Account Id.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The list of allowed accounts for this NGFW.
      */
-    allowlistAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    allowlistAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * App-ID version number.
      */
-    appIdVersion?: pulumi.Input<string>;
+    appIdVersion?: pulumi.Input<string | undefined>;
     /**
      * Automatic App-ID upgrade version number. Defaults to `true`.
      */
-    automaticUpgradeAppIdVersion?: pulumi.Input<boolean>;
+    automaticUpgradeAppIdVersion?: pulumi.Input<boolean | undefined>;
     /**
      * The list of availability zone IDs for this NGFW.
      */
-    azLists?: pulumi.Input<pulumi.Input<string>[]>;
+    azLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enables or disables change protection for the NGFW.
      */
-    changeProtections?: pulumi.Input<pulumi.Input<string>[]>;
+    changeProtections?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The update token.
      */
-    deploymentUpdateToken?: pulumi.Input<string>;
+    deploymentUpdateToken?: pulumi.Input<string | undefined>;
     /**
      * The NGFW description.
      */
-    description?: pulumi.Input<string>;
-    egressNats?: pulumi.Input<pulumi.Input<inputs.NgfwEgressNat>[]>;
+    description?: pulumi.Input<string | undefined>;
+    egressNats?: pulumi.Input<pulumi.Input<inputs.NgfwEgressNat>[] | undefined>;
     /**
      * Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
      */
-    endpointMode?: pulumi.Input<string>;
+    endpointMode?: pulumi.Input<string | undefined>;
     /**
      * The endpoint service name.
      */
-    endpointServiceName?: pulumi.Input<string>;
-    endpoints?: pulumi.Input<pulumi.Input<inputs.NgfwEndpoint>[]>;
+    endpointServiceName?: pulumi.Input<string | undefined>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.NgfwEndpoint>[] | undefined>;
     /**
      * The Firewall ID.
      */
-    firewallId?: pulumi.Input<string>;
+    firewallId?: pulumi.Input<string | undefined>;
     /**
      * The global rulestack for this NGFW.
      */
-    globalRulestack?: pulumi.Input<string>;
+    globalRulestack?: pulumi.Input<string | undefined>;
     /**
      * The link ID.
      */
-    linkId?: pulumi.Input<string>;
+    linkId?: pulumi.Input<string | undefined>;
     /**
      * The link status.
      */
-    linkStatus?: pulumi.Input<string>;
+    linkStatus?: pulumi.Input<string | undefined>;
     /**
      * Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
      */
-    multiVpc?: pulumi.Input<boolean>;
+    multiVpc?: pulumi.Input<boolean | undefined>;
     /**
      * The NGFW name.
      */
-    name?: pulumi.Input<string>;
-    privateAccesses?: pulumi.Input<pulumi.Input<inputs.NgfwPrivateAccess>[]>;
+    name?: pulumi.Input<string | undefined>;
+    privateAccesses?: pulumi.Input<pulumi.Input<inputs.NgfwPrivateAccess>[] | undefined>;
     /**
      * The rulestack for this NGFW.
      */
-    rulestack?: pulumi.Input<string>;
-    securityZones?: pulumi.Input<pulumi.Input<inputs.NgfwSecurityZone>[]>;
-    statuses?: pulumi.Input<pulumi.Input<inputs.NgfwStatus>[]>;
+    rulestack?: pulumi.Input<string | undefined>;
+    securityZones?: pulumi.Input<pulumi.Input<inputs.NgfwSecurityZone>[] | undefined>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.NgfwStatus>[] | undefined>;
     /**
      * Subnet mappings.
      */
-    subnetMappings?: pulumi.Input<pulumi.Input<inputs.NgfwSubnetMapping>[]>;
+    subnetMappings?: pulumi.Input<pulumi.Input<inputs.NgfwSubnetMapping>[] | undefined>;
     /**
      * The tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
     /**
      * The update token.
      */
-    updateToken?: pulumi.Input<string>;
-    userIds?: pulumi.Input<pulumi.Input<inputs.NgfwUserId>[]>;
+    updateToken?: pulumi.Input<string | undefined>;
+    userIds?: pulumi.Input<pulumi.Input<inputs.NgfwUserId>[] | undefined>;
     /**
      * The VPC ID for the NGFW.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -596,78 +596,78 @@ export interface NgfwArgs {
     /**
      * The Account Id.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The list of allowed accounts for this NGFW.
      */
-    allowlistAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    allowlistAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * App-ID version number.
      */
-    appIdVersion?: pulumi.Input<string>;
+    appIdVersion?: pulumi.Input<string | undefined>;
     /**
      * Automatic App-ID upgrade version number. Defaults to `true`.
      */
-    automaticUpgradeAppIdVersion?: pulumi.Input<boolean>;
+    automaticUpgradeAppIdVersion?: pulumi.Input<boolean | undefined>;
     /**
      * The list of availability zone IDs for this NGFW.
      */
-    azLists?: pulumi.Input<pulumi.Input<string>[]>;
+    azLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enables or disables change protection for the NGFW.
      */
-    changeProtections?: pulumi.Input<pulumi.Input<string>[]>;
+    changeProtections?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The NGFW description.
      */
-    description?: pulumi.Input<string>;
-    egressNats?: pulumi.Input<pulumi.Input<inputs.NgfwEgressNat>[]>;
+    description?: pulumi.Input<string | undefined>;
+    egressNats?: pulumi.Input<pulumi.Input<inputs.NgfwEgressNat>[] | undefined>;
     /**
      * Set endpoint mode from the following options. Valid values are `ServiceManaged` or `CustomerManaged`.
      */
-    endpointMode?: pulumi.Input<string>;
-    endpoints?: pulumi.Input<pulumi.Input<inputs.NgfwEndpoint>[]>;
+    endpointMode?: pulumi.Input<string | undefined>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.NgfwEndpoint>[] | undefined>;
     /**
      * The Firewall ID.
      */
-    firewallId?: pulumi.Input<string>;
+    firewallId?: pulumi.Input<string | undefined>;
     /**
      * The global rulestack for this NGFW.
      */
-    globalRulestack?: pulumi.Input<string>;
+    globalRulestack?: pulumi.Input<string | undefined>;
     /**
      * The link ID.
      */
-    linkId?: pulumi.Input<string>;
+    linkId?: pulumi.Input<string | undefined>;
     /**
      * Share NGFW with Multiple VPCs. This feature can be enabled only if the endpointMode is CustomerManaged.
      */
-    multiVpc?: pulumi.Input<boolean>;
+    multiVpc?: pulumi.Input<boolean | undefined>;
     /**
      * The NGFW name.
      */
-    name?: pulumi.Input<string>;
-    privateAccesses?: pulumi.Input<pulumi.Input<inputs.NgfwPrivateAccess>[]>;
+    name?: pulumi.Input<string | undefined>;
+    privateAccesses?: pulumi.Input<pulumi.Input<inputs.NgfwPrivateAccess>[] | undefined>;
     /**
      * The rulestack for this NGFW.
      */
-    rulestack?: pulumi.Input<string>;
-    securityZones?: pulumi.Input<pulumi.Input<inputs.NgfwSecurityZone>[]>;
+    rulestack?: pulumi.Input<string | undefined>;
+    securityZones?: pulumi.Input<pulumi.Input<inputs.NgfwSecurityZone>[] | undefined>;
     /**
      * Subnet mappings.
      */
-    subnetMappings?: pulumi.Input<pulumi.Input<inputs.NgfwSubnetMapping>[]>;
+    subnetMappings?: pulumi.Input<pulumi.Input<inputs.NgfwSubnetMapping>[] | undefined>;
     /**
      * The tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
      */
-    tier?: pulumi.Input<string>;
-    userIds?: pulumi.Input<pulumi.Input<inputs.NgfwUserId>[]>;
+    tier?: pulumi.Input<string | undefined>;
+    userIds?: pulumi.Input<pulumi.Input<inputs.NgfwUserId>[] | undefined>;
     /**
      * The VPC ID for the NGFW.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

@@ -180,66 +180,66 @@ export interface AccountOnboardingStackState {
     /**
      * The account IDs
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Audit Log Group Name
      */
-    auditlogGroup?: pulumi.Input<string>;
+    auditlogGroup?: pulumi.Input<string | undefined>;
     /**
      * Role name to run the account onboarding CFT in each account to be onboarded.
      */
-    cftRoleName?: pulumi.Input<string>;
+    cftRoleName?: pulumi.Input<string | undefined>;
     /**
      * Cloudwatch Log Group
      */
-    cloudwatchLogGroup?: pulumi.Input<string>;
+    cloudwatchLogGroup?: pulumi.Input<string | undefined>;
     /**
      * Cloudwatch Namespace
      */
-    cloudwatchNamespace?: pulumi.Input<string>;
+    cloudwatchNamespace?: pulumi.Input<string | undefined>;
     /**
      * The CloudNGFW can decrypt inbound and outbound traffic by providing a
      * 					  certificate stored in secret Manager.
      * 		 			  The role allows the service to access a certificate configured in the rulestack.
      * 		 			  Only certificated tagged with PaloAltoCloudNGFW can be accessed
      */
-    decryptionCert?: pulumi.Input<string>;
+    decryptionCert?: pulumi.Input<string | undefined>;
     /**
      * Controls whether cloud NGFW will create firewall endpoints automatitically in customer subnets
      */
-    endpointMode?: pulumi.Input<string>;
+    endpointMode?: pulumi.Input<string | undefined>;
     /**
      * External Id of the onboarded account
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Kinesis Firehose for logging
      */
-    kinesisFirehose?: pulumi.Input<string>;
+    kinesisFirehose?: pulumi.Input<string | undefined>;
     /**
      * Role name to run the account onboarding CFT in each account to be onboarded.
      */
-    onboardingCft?: pulumi.Input<string>;
+    onboardingCft?: pulumi.Input<string | undefined>;
     /**
      * S3 Bucket Name for Logging. Logging roles provide access to create log contents in this bucket.
      */
-    s3Bucket?: pulumi.Input<string>;
+    s3Bucket?: pulumi.Input<string | undefined>;
     /**
      * SNS topic ARN to publish the role ARNs
      */
-    snsTopicArn?: pulumi.Input<string>;
+    snsTopicArn?: pulumi.Input<string | undefined>;
     /**
      * ID of the account onboarding CFT stack
      */
-    stackId?: pulumi.Input<string>;
+    stackId?: pulumi.Input<string | undefined>;
     /**
      * Status of the account onboarding CFT stack.
      */
-    stackStatus?: pulumi.Input<string>;
+    stackStatus?: pulumi.Input<string | undefined>;
     /**
      * PANW Cloud NGFW trusted account Id
      */
-    trustedAccount?: pulumi.Input<string>;
+    trustedAccount?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -253,7 +253,7 @@ export interface AccountOnboardingStackArgs {
     /**
      * Audit Log Group Name
      */
-    auditlogGroup?: pulumi.Input<string>;
+    auditlogGroup?: pulumi.Input<string | undefined>;
     /**
      * Role name to run the account onboarding CFT in each account to be onboarded.
      */
@@ -261,22 +261,22 @@ export interface AccountOnboardingStackArgs {
     /**
      * Cloudwatch Log Group
      */
-    cloudwatchLogGroup?: pulumi.Input<string>;
+    cloudwatchLogGroup?: pulumi.Input<string | undefined>;
     /**
      * Cloudwatch Namespace
      */
-    cloudwatchNamespace?: pulumi.Input<string>;
+    cloudwatchNamespace?: pulumi.Input<string | undefined>;
     /**
      * The CloudNGFW can decrypt inbound and outbound traffic by providing a
      * 					  certificate stored in secret Manager.
      * 		 			  The role allows the service to access a certificate configured in the rulestack.
      * 		 			  Only certificated tagged with PaloAltoCloudNGFW can be accessed
      */
-    decryptionCert?: pulumi.Input<string>;
+    decryptionCert?: pulumi.Input<string | undefined>;
     /**
      * Controls whether cloud NGFW will create firewall endpoints automatitically in customer subnets
      */
-    endpointMode?: pulumi.Input<string>;
+    endpointMode?: pulumi.Input<string | undefined>;
     /**
      * External Id of the onboarded account
      */
@@ -284,7 +284,7 @@ export interface AccountOnboardingStackArgs {
     /**
      * Kinesis Firehose for logging
      */
-    kinesisFirehose?: pulumi.Input<string>;
+    kinesisFirehose?: pulumi.Input<string | undefined>;
     /**
      * Role name to run the account onboarding CFT in each account to be onboarded.
      */
@@ -292,7 +292,7 @@ export interface AccountOnboardingStackArgs {
     /**
      * S3 Bucket Name for Logging. Logging roles provide access to create log contents in this bucket.
      */
-    s3Bucket?: pulumi.Input<string>;
+    s3Bucket?: pulumi.Input<string | undefined>;
     /**
      * SNS topic ARN to publish the role ARNs
      */
@@ -300,11 +300,11 @@ export interface AccountOnboardingStackArgs {
     /**
      * ID of the account onboarding CFT stack
      */
-    stackId?: pulumi.Input<string>;
+    stackId?: pulumi.Input<string | undefined>;
     /**
      * Status of the account onboarding CFT stack.
      */
-    stackStatus?: pulumi.Input<string>;
+    stackStatus?: pulumi.Input<string | undefined>;
     /**
      * PANW Cloud NGFW trusted account Id
      */

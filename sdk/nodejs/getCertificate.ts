@@ -156,7 +156,7 @@ export interface GetCertificateOutputArgs {
     /**
      * Retrieve either the candidate or running config. Valid values are `candidate` or `running`. Defaults to `candidate`.
      */
-    configType?: pulumi.Input<string>;
+    configType?: pulumi.Input<string | undefined>;
     /**
      * The name.
      */
@@ -168,5 +168,5 @@ export interface GetCertificateOutputArgs {
     /**
      * The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
 }

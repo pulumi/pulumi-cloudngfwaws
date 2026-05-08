@@ -204,43 +204,43 @@ export interface NgfwLogProfileState {
     /**
      * The unique ID of the account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Enable advanced threat logging.
      */
-    advancedThreatLog?: pulumi.Input<boolean>;
+    advancedThreatLog?: pulumi.Input<boolean | undefined>;
     /**
      * The CloudWatch metric namespace.
      */
-    cloudWatchMetricNamespace?: pulumi.Input<string>;
+    cloudWatchMetricNamespace?: pulumi.Input<string | undefined>;
     /**
      * Cloudwatch metric fields.
      */
-    cloudwatchMetricFields?: pulumi.Input<pulumi.Input<string>[]>;
+    cloudwatchMetricFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Firewall Id for the NGFW.
      */
-    firewallId?: pulumi.Input<string>;
+    firewallId?: pulumi.Input<string | undefined>;
     /**
      * Log configuration details.
      */
-    logConfig?: pulumi.Input<inputs.NgfwLogProfileLogConfig>;
+    logConfig?: pulumi.Input<inputs.NgfwLogProfileLogConfig | undefined>;
     /**
      * List of log destinations.
      */
-    logDestinations?: pulumi.Input<pulumi.Input<inputs.NgfwLogProfileLogDestination>[]>;
+    logDestinations?: pulumi.Input<pulumi.Input<inputs.NgfwLogProfileLogDestination>[] | undefined>;
     /**
      * The name of the NGFW.
      */
-    ngfw?: pulumi.Input<string>;
+    ngfw?: pulumi.Input<string | undefined>;
     /**
      * The region of the NGFW.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The update token.
      */
-    updateToken?: pulumi.Input<string>;
+    updateToken?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -250,37 +250,37 @@ export interface NgfwLogProfileArgs {
     /**
      * The unique ID of the account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Enable advanced threat logging.
      */
-    advancedThreatLog?: pulumi.Input<boolean>;
+    advancedThreatLog?: pulumi.Input<boolean | undefined>;
     /**
      * The CloudWatch metric namespace.
      */
-    cloudWatchMetricNamespace?: pulumi.Input<string>;
+    cloudWatchMetricNamespace?: pulumi.Input<string | undefined>;
     /**
      * Cloudwatch metric fields.
      */
-    cloudwatchMetricFields?: pulumi.Input<pulumi.Input<string>[]>;
+    cloudwatchMetricFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Firewall Id for the NGFW.
      */
-    firewallId?: pulumi.Input<string>;
+    firewallId?: pulumi.Input<string | undefined>;
     /**
      * Log configuration details.
      */
-    logConfig?: pulumi.Input<inputs.NgfwLogProfileLogConfig>;
+    logConfig?: pulumi.Input<inputs.NgfwLogProfileLogConfig | undefined>;
     /**
      * List of log destinations.
      */
-    logDestinations?: pulumi.Input<pulumi.Input<inputs.NgfwLogProfileLogDestination>[]>;
+    logDestinations?: pulumi.Input<pulumi.Input<inputs.NgfwLogProfileLogDestination>[] | undefined>;
     /**
      * The name of the NGFW.
      */
-    ngfw?: pulumi.Input<string>;
+    ngfw?: pulumi.Input<string | undefined>;
     /**
      * The region of the NGFW.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

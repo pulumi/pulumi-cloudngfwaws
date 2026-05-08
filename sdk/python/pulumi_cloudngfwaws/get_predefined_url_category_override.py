@@ -171,9 +171,9 @@ def get_predefined_url_category_override(config_type: Optional[_builtins.str] = 
         name=pulumi.get(__ret__, 'name'),
         rulestack=pulumi.get(__ret__, 'rulestack'),
         update_token=pulumi.get(__ret__, 'update_token'))
-def get_predefined_url_category_override_output(config_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                name: Optional[pulumi.Input[_builtins.str]] = None,
-                                                rulestack: Optional[pulumi.Input[_builtins.str]] = None,
+def get_predefined_url_category_override_output(config_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                name: pulumi.Input[Optional[_builtins.str]] = None,
+                                                rulestack: pulumi.Input[Optional[_builtins.str]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPredefinedUrlCategoryOverrideResult]:
     """
     Data source for retrieving a predefined URL category override.

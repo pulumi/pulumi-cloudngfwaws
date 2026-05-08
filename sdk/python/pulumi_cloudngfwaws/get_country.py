@@ -132,8 +132,8 @@ def get_country(max_results: Optional[_builtins.int] = None,
         max_results=pulumi.get(__ret__, 'max_results'),
         next_token=pulumi.get(__ret__, 'next_token'),
         token=pulumi.get(__ret__, 'token'))
-def get_country_output(max_results: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                       token: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_country_output(max_results: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                       token: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCountryResult]:
     """
     Data source get a list of countries and their country codes.

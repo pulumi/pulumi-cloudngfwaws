@@ -108,13 +108,13 @@ export interface GetNgfwsOutputArgs {
     /**
      * The region to filter on.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The rulestack to filter on.
      */
-    rulestack?: pulumi.Input<string>;
+    rulestack?: pulumi.Input<string | undefined>;
     /**
      * List of vpc ids to filter on.
      */
-    vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vpcIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

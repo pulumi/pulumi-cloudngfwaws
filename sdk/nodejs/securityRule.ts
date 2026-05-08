@@ -262,87 +262,87 @@ export interface SecurityRuleState {
     /**
      * The action to take. Valid values are `Allow`, `DenySilent`, `DenyResetServer`, or `DenyResetBoth`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * The list of applications.
      */
-    applications?: pulumi.Input<pulumi.Input<string>[]>;
+    applications?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The audit comment.
      */
-    auditComment?: pulumi.Input<string>;
+    auditComment?: pulumi.Input<string | undefined>;
     /**
      * The category spec.
      */
-    category?: pulumi.Input<inputs.SecurityRuleCategory>;
+    category?: pulumi.Input<inputs.SecurityRuleCategory | undefined>;
     /**
      * Decryption rule type. Valid values are ``or`SSLOutboundInspection`.
      */
-    decryptionRuleType?: pulumi.Input<string>;
+    decryptionRuleType?: pulumi.Input<string | undefined>;
     /**
      * The description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination spec.
      */
-    destination?: pulumi.Input<inputs.SecurityRuleDestination>;
+    destination?: pulumi.Input<inputs.SecurityRuleDestination | undefined>;
     /**
      * Set to false to disable this rule. Defaults to `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable logging at end. Defaults to `true`.
      */
-    logging?: pulumi.Input<boolean>;
+    logging?: pulumi.Input<boolean | undefined>;
     /**
      * The name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Negate the destination definition.
      */
-    negateDestination?: pulumi.Input<boolean>;
+    negateDestination?: pulumi.Input<boolean | undefined>;
     /**
      * Negate the source definition.
      */
-    negateSource?: pulumi.Input<boolean>;
+    negateSource?: pulumi.Input<boolean | undefined>;
     /**
      * The rule priority.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Protocol port list.
      */
-    protPortLists?: pulumi.Input<pulumi.Input<string>[]>;
+    protPortLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The protocol.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The rulebase. Valid values are `PreRule`, `PostRule`, or `LocalRule`. Defaults to `PreRule`.
      */
-    ruleList?: pulumi.Input<string>;
+    ruleList?: pulumi.Input<string | undefined>;
     /**
      * The rulestack.
      */
-    rulestack?: pulumi.Input<string>;
+    rulestack?: pulumi.Input<string | undefined>;
     /**
      * The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The source spec.
      */
-    source?: pulumi.Input<inputs.SecurityRuleSource>;
+    source?: pulumi.Input<inputs.SecurityRuleSource | undefined>;
     /**
      * The tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The update token.
      */
-    updateToken?: pulumi.Input<string>;
+    updateToken?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -360,7 +360,7 @@ export interface SecurityRuleArgs {
     /**
      * The audit comment.
      */
-    auditComment?: pulumi.Input<string>;
+    auditComment?: pulumi.Input<string | undefined>;
     /**
      * The category spec.
      */
@@ -368,11 +368,11 @@ export interface SecurityRuleArgs {
     /**
      * Decryption rule type. Valid values are ``or`SSLOutboundInspection`.
      */
-    decryptionRuleType?: pulumi.Input<string>;
+    decryptionRuleType?: pulumi.Input<string | undefined>;
     /**
      * The description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination spec.
      */
@@ -380,23 +380,23 @@ export interface SecurityRuleArgs {
     /**
      * Set to false to disable this rule. Defaults to `true`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Enable logging at end. Defaults to `true`.
      */
-    logging?: pulumi.Input<boolean>;
+    logging?: pulumi.Input<boolean | undefined>;
     /**
      * The name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Negate the destination definition.
      */
-    negateDestination?: pulumi.Input<boolean>;
+    negateDestination?: pulumi.Input<boolean | undefined>;
     /**
      * Negate the source definition.
      */
-    negateSource?: pulumi.Input<boolean>;
+    negateSource?: pulumi.Input<boolean | undefined>;
     /**
      * The rule priority.
      */
@@ -404,15 +404,15 @@ export interface SecurityRuleArgs {
     /**
      * Protocol port list.
      */
-    protPortLists?: pulumi.Input<pulumi.Input<string>[]>;
+    protPortLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The protocol.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The rulebase. Valid values are `PreRule`, `PostRule`, or `LocalRule`. Defaults to `PreRule`.
      */
-    ruleList?: pulumi.Input<string>;
+    ruleList?: pulumi.Input<string | undefined>;
     /**
      * The rulestack.
      */
@@ -420,7 +420,7 @@ export interface SecurityRuleArgs {
     /**
      * The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The source spec.
      */
@@ -428,5 +428,5 @@ export interface SecurityRuleArgs {
     /**
      * The tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

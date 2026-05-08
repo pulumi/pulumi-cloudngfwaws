@@ -200,10 +200,10 @@ def get_fqdn_list(config_type: Optional[_builtins.str] = None,
         rulestack=pulumi.get(__ret__, 'rulestack'),
         scope=pulumi.get(__ret__, 'scope'),
         update_token=pulumi.get(__ret__, 'update_token'))
-def get_fqdn_list_output(config_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         name: Optional[pulumi.Input[_builtins.str]] = None,
-                         rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                         scope: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_fqdn_list_output(config_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         name: pulumi.Input[Optional[_builtins.str]] = None,
+                         rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                         scope: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFqdnListResult]:
     """
     Data source for retrieving fqdn list information.

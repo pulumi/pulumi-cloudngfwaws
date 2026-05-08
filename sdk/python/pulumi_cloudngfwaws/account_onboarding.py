@@ -20,7 +20,7 @@ __all__ = ['AccountOnboardingArgs', 'AccountOnboarding']
 class AccountOnboardingArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
-                 onboarding_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 onboarding_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountOnboarding resource.
 
@@ -45,22 +45,22 @@ class AccountOnboardingArgs:
 
     @_builtins.property
     @pulumi.getter(name="onboardingStatus")
-    def onboarding_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onboarding_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Onboarding status of the account
         """
         return pulumi.get(self, "onboarding_status")
 
     @onboarding_status.setter
-    def onboarding_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onboarding_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onboarding_status", value)
 
 
 @pulumi.input_type
 class _AccountOnboardingState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountOnboarding resources.
 
@@ -74,26 +74,26 @@ class _AccountOnboardingState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account IDs
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="onboardingStatus")
-    def onboarding_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onboarding_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Onboarding status of the account
         """
         return pulumi.get(self, "onboarding_status")
 
     @onboarding_status.setter
-    def onboarding_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onboarding_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onboarding_status", value)
 
 
@@ -103,8 +103,8 @@ class AccountOnboarding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for Account Onboarding.
@@ -150,8 +150,8 @@ class AccountOnboarding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -175,8 +175,8 @@ class AccountOnboarding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            onboarding_status: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccountOnboarding':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            onboarding_status: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountOnboarding':
         """
         Get an existing AccountOnboarding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

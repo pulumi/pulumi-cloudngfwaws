@@ -370,11 +370,11 @@ def get_security_rule(config_type: Optional[_builtins.str] = None,
         sources=pulumi.get(__ret__, 'sources'),
         tags=pulumi.get(__ret__, 'tags'),
         update_token=pulumi.get(__ret__, 'update_token'))
-def get_security_rule_output(config_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             priority: Optional[pulumi.Input[_builtins.int]] = None,
-                             rule_list: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                             scope: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_security_rule_output(config_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             priority: pulumi.Input[Optional[_builtins.int]] = None,
+                             rule_list: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                             scope: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityRuleResult]:
     """
     Data source for retrieving security rule information.

@@ -20,8 +20,8 @@ __all__ = ['CommitRulestackArgs', 'CommitRulestack']
 class CommitRulestackArgs:
     def __init__(__self__, *,
                  rulestack: pulumi.Input[_builtins.str],
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CommitRulestack resource.
 
@@ -49,39 +49,39 @@ class CommitRulestackArgs:
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rulestack state. This can only be the default value. Defaults to `Running`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 @pulumi.input_type
 class _CommitRulestackState:
     def __init__(__self__, *,
-                 commit_errors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 commit_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 validation_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 commit_errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commit_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 validation_errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 validation_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CommitRulestack resources.
 
@@ -110,86 +110,86 @@ class _CommitRulestackState:
 
     @_builtins.property
     @pulumi.getter(name="commitErrors")
-    def commit_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commit_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Commit error messages.
         """
         return pulumi.get(self, "commit_errors")
 
     @commit_errors.setter
-    def commit_errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commit_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commit_errors", value)
 
     @_builtins.property
     @pulumi.getter(name="commitStatus")
-    def commit_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The commit status.
         """
         return pulumi.get(self, "commit_status")
 
     @commit_status.setter
-    def commit_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def rulestack(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rulestack(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rulestack.
         """
         return pulumi.get(self, "rulestack")
 
     @rulestack.setter
-    def rulestack(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rulestack(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rulestack", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rulestack state. This can only be the default value. Defaults to `Running`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="validationErrors")
-    def validation_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def validation_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Validation error messages.
         """
         return pulumi.get(self, "validation_errors")
 
     @validation_errors.setter
-    def validation_errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def validation_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "validation_errors", value)
 
     @_builtins.property
     @pulumi.getter(name="validationStatus")
-    def validation_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def validation_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The validation status.
         """
         return pulumi.get(self, "validation_status")
 
     @validation_status.setter
-    def validation_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def validation_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "validation_status", value)
 
 
@@ -199,9 +199,9 @@ class CommitRulestack(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
+                 rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for committing the rulestack config.
@@ -270,9 +270,9 @@ class CommitRulestack(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
+                 rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -301,13 +301,13 @@ class CommitRulestack(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            commit_errors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            commit_status: Optional[pulumi.Input[_builtins.str]] = None,
-            rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-            scope: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            validation_status: Optional[pulumi.Input[_builtins.str]] = None) -> 'CommitRulestack':
+            commit_errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            commit_status: pulumi.Input[Optional[_builtins.str]] = None,
+            rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            validation_status: pulumi.Input[Optional[_builtins.str]] = None) -> 'CommitRulestack':
         """
         Get an existing CommitRulestack resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -148,9 +148,9 @@ def get_app_id_version(max_results: Optional[_builtins.int] = None,
         next_token=pulumi.get(__ret__, 'next_token'),
         token=pulumi.get(__ret__, 'token'),
         version=pulumi.get(__ret__, 'version'))
-def get_app_id_version_output(max_results: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                              token: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              version: Optional[pulumi.Input[_builtins.str]] = None,
+def get_app_id_version_output(max_results: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                              token: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              version: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppIdVersionResult]:
     """
     Data source to retrieve information on a given AppId version.

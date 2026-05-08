@@ -430,9 +430,9 @@ def get_ngfw(account_id: Optional[_builtins.str] = None,
         update_token=pulumi.get(__ret__, 'update_token'),
         user_ids=pulumi.get(__ret__, 'user_ids'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-def get_ngfw_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    firewall_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ngfw_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    firewall_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNgfwResult]:
     """
     Data source for retrieving NGFW information.

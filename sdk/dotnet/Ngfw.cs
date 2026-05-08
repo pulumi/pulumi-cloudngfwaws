@@ -48,12 +48,12 @@ namespace Pulumi.CloudNgfwAws
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var rs = new CloudNgfwAws.Index.CommitRulestack("rs", new()
+    ///     var rs = new CloudNgfwAws.CommitRulestack("rs", new()
     ///     {
     ///         Rulestack = "my-rulestack",
     ///     });
     /// 
-    ///     var example = new CloudNgfwAws.Index.Ngfw("example", new()
+    ///     var example = new CloudNgfwAws.Ngfw("example", new()
     ///     {
     ///         Name = "example-instance",
     ///         VpcId = exampleAwsVpc.Id,
@@ -104,7 +104,7 @@ namespace Pulumi.CloudNgfwAws
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new CloudNgfwAws.Index.Ngfw("example", new()
+    ///     var example = new CloudNgfwAws.Ngfw("example", new()
     ///     {
     ///         Name = "example-instance",
     ///         VpcId = "vpc-0a1b2c3d4e5f00001",
@@ -194,7 +194,7 @@ namespace Pulumi.CloudNgfwAws
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new CloudNgfwAws.Index.Ngfw("example", new()
+    ///     var example = new CloudNgfwAws.Ngfw("example", new()
     ///     {
     ///         Name = "my-firewall",
     ///         Description = "My new firewall",
@@ -237,7 +237,7 @@ namespace Pulumi.CloudNgfwAws
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new CloudNgfwAws.Index.Ngfw("example", new()
+    ///     var example = new CloudNgfwAws.Ngfw("example", new()
     ///     {
     ///         Name = "my-firewall",
     ///         Description = "My new firewall",
@@ -298,7 +298,7 @@ namespace Pulumi.CloudNgfwAws
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new CloudNgfwAws.Index.Ngfw("example", new()
+    ///     var example = new CloudNgfwAws.Ngfw("example", new()
     ///     {
     ///         Name = "my-firewall",
     ///         Description = "My new firewall",

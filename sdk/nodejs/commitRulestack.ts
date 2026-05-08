@@ -125,31 +125,31 @@ export interface CommitRulestackState {
     /**
      * Commit error messages.
      */
-    commitErrors?: pulumi.Input<pulumi.Input<string>[]>;
+    commitErrors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The commit status.
      */
-    commitStatus?: pulumi.Input<string>;
+    commitStatus?: pulumi.Input<string | undefined>;
     /**
      * The rulestack.
      */
-    rulestack?: pulumi.Input<string>;
+    rulestack?: pulumi.Input<string | undefined>;
     /**
      * The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The rulestack state. This can only be the default value. Defaults to `Running`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Validation error messages.
      */
-    validationErrors?: pulumi.Input<pulumi.Input<string>[]>;
+    validationErrors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The validation status.
      */
-    validationStatus?: pulumi.Input<string>;
+    validationStatus?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -163,9 +163,9 @@ export interface CommitRulestackArgs {
     /**
      * The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The rulestack state. This can only be the default value. Defaults to `Running`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }

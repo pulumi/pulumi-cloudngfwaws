@@ -190,13 +190,13 @@ export interface GetNgfwOutputArgs {
     /**
      * The Account Id.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The Firewall ID.
      */
-    firewallId?: pulumi.Input<string>;
+    firewallId?: pulumi.Input<string | undefined>;
     /**
      * The NGFW name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

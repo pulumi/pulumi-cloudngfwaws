@@ -215,9 +215,9 @@ def get_ngfw_log_profile(account_id: Optional[_builtins.str] = None,
         ngfw=pulumi.get(__ret__, 'ngfw'),
         region=pulumi.get(__ret__, 'region'),
         update_token=pulumi.get(__ret__, 'update_token'))
-def get_ngfw_log_profile_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                firewall_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                ngfw: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ngfw_log_profile_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                firewall_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                ngfw: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNgfwLogProfileResult]:
     """
     Data source for retrieving log profile information.

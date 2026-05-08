@@ -140,33 +140,33 @@ export interface GetAccountOutputArgs {
     /**
      * The account ID
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The CFT URL.
      */
-    cftUrl?: pulumi.Input<string>;
+    cftUrl?: pulumi.Input<string | undefined>;
     /**
      * The external ID of the account
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * The Account onboarding status
      */
-    onboardingStatus?: pulumi.Input<string>;
+    onboardingStatus?: pulumi.Input<string | undefined>;
     /**
      * Origin of account onboarding
      */
-    origin?: pulumi.Input<string>;
+    origin?: pulumi.Input<string | undefined>;
     /**
      * The account ID of cloud NGFW service
      */
-    serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string | undefined>;
     /**
      * The SNS topic ARN
      */
-    snsTopicArn?: pulumi.Input<string>;
+    snsTopicArn?: pulumi.Input<string | undefined>;
     /**
      * The trusted account ID
      */
-    trustedAccount?: pulumi.Input<string>;
+    trustedAccount?: pulumi.Input<string | undefined>;
 }

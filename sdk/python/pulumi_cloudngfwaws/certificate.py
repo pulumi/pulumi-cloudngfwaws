@@ -20,12 +20,12 @@ __all__ = ['CertificateArgs', 'Certificate']
 class CertificateArgs:
     def __init__(__self__, *,
                  rulestack: pulumi.Input[_builtins.str],
-                 audit_comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_signed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 signer_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 audit_comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_signed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 signer_arn: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Certificate resource.
 
@@ -65,88 +65,88 @@ class CertificateArgs:
 
     @_builtins.property
     @pulumi.getter(name="auditComment")
-    def audit_comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audit_comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The audit comment.
         """
         return pulumi.get(self, "audit_comment")
 
     @audit_comment.setter
-    def audit_comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audit_comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audit_comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter(name="selfSigned")
-    def self_signed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def self_signed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if certificate is self-signed.
         """
         return pulumi.get(self, "self_signed")
 
     @self_signed.setter
-    def self_signed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def self_signed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "self_signed", value)
 
     @_builtins.property
     @pulumi.getter(name="signerArn")
-    def signer_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def signer_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate signer ARN.
         """
         return pulumi.get(self, "signer_arn")
 
     @signer_arn.setter
-    def signer_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def signer_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "signer_arn", value)
 
 
 @pulumi.input_type
 class _CertificateState:
     def __init__(__self__, *,
-                 audit_comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_signed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 signer_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_token: Optional[pulumi.Input[_builtins.str]] = None):
+                 audit_comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_signed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 signer_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
 
@@ -178,98 +178,98 @@ class _CertificateState:
 
     @_builtins.property
     @pulumi.getter(name="auditComment")
-    def audit_comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audit_comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The audit comment.
         """
         return pulumi.get(self, "audit_comment")
 
     @audit_comment.setter
-    def audit_comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audit_comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audit_comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def rulestack(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rulestack(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rulestack.
         """
         return pulumi.get(self, "rulestack")
 
     @rulestack.setter
-    def rulestack(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rulestack(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rulestack", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter(name="selfSigned")
-    def self_signed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def self_signed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true if certificate is self-signed.
         """
         return pulumi.get(self, "self_signed")
 
     @self_signed.setter
-    def self_signed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def self_signed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "self_signed", value)
 
     @_builtins.property
     @pulumi.getter(name="signerArn")
-    def signer_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def signer_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate signer ARN.
         """
         return pulumi.get(self, "signer_arn")
 
     @signer_arn.setter
-    def signer_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def signer_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "signer_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="updateToken")
-    def update_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The update token.
         """
         return pulumi.get(self, "update_token")
 
     @update_token.setter
-    def update_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_token", value)
 
 
@@ -279,13 +279,13 @@ class Certificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_signed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 signer_arn: Optional[pulumi.Input[_builtins.str]] = None,
+                 audit_comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_signed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 signer_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for certificate manipulation.
@@ -396,13 +396,13 @@ class Certificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_signed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 signer_arn: Optional[pulumi.Input[_builtins.str]] = None,
+                 audit_comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_signed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 signer_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -432,14 +432,14 @@ class Certificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            audit_comment: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            rulestack: Optional[pulumi.Input[_builtins.str]] = None,
-            scope: Optional[pulumi.Input[_builtins.str]] = None,
-            self_signed: Optional[pulumi.Input[_builtins.bool]] = None,
-            signer_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            update_token: Optional[pulumi.Input[_builtins.str]] = None) -> 'Certificate':
+            audit_comment: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            self_signed: pulumi.Input[Optional[_builtins.bool]] = None,
+            signer_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            update_token: pulumi.Input[Optional[_builtins.str]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

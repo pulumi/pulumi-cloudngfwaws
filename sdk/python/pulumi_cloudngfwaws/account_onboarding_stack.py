@@ -25,15 +25,15 @@ class AccountOnboardingStackArgs:
                  onboarding_cft: pulumi.Input[_builtins.str],
                  sns_topic_arn: pulumi.Input[_builtins.str],
                  trusted_account: pulumi.Input[_builtins.str],
-                 auditlog_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudwatch_log_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudwatch_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 decryption_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 kinesis_firehose: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 auditlog_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudwatch_log_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudwatch_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 decryption_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 kinesis_firehose: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountOnboardingStack resource.
 
@@ -155,43 +155,43 @@ class AccountOnboardingStackArgs:
 
     @_builtins.property
     @pulumi.getter(name="auditlogGroup")
-    def auditlog_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auditlog_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audit Log Group Name
         """
         return pulumi.get(self, "auditlog_group")
 
     @auditlog_group.setter
-    def auditlog_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auditlog_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auditlog_group", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudwatchLogGroup")
-    def cloudwatch_log_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloudwatch_log_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloudwatch Log Group
         """
         return pulumi.get(self, "cloudwatch_log_group")
 
     @cloudwatch_log_group.setter
-    def cloudwatch_log_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloudwatch_log_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloudwatch_log_group", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudwatchNamespace")
-    def cloudwatch_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloudwatch_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloudwatch Namespace
         """
         return pulumi.get(self, "cloudwatch_namespace")
 
     @cloudwatch_namespace.setter
-    def cloudwatch_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloudwatch_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloudwatch_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="decryptionCert")
-    def decryption_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def decryption_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CloudNGFW can decrypt inbound and outbound traffic by providing a
         					  certificate stored in secret Manager.
@@ -201,88 +201,88 @@ class AccountOnboardingStackArgs:
         return pulumi.get(self, "decryption_cert")
 
     @decryption_cert.setter
-    def decryption_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def decryption_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "decryption_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointMode")
-    def endpoint_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls whether cloud NGFW will create firewall endpoints automatitically in customer subnets
         """
         return pulumi.get(self, "endpoint_mode")
 
     @endpoint_mode.setter
-    def endpoint_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="kinesisFirehose")
-    def kinesis_firehose(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kinesis_firehose(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kinesis Firehose for logging
         """
         return pulumi.get(self, "kinesis_firehose")
 
     @kinesis_firehose.setter
-    def kinesis_firehose(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kinesis_firehose(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kinesis_firehose", value)
 
     @_builtins.property
     @pulumi.getter(name="s3Bucket")
-    def s3_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def s3_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         S3 Bucket Name for Logging. Logging roles provide access to create log contents in this bucket.
         """
         return pulumi.get(self, "s3_bucket")
 
     @s3_bucket.setter
-    def s3_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def s3_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "s3_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="stackId")
-    def stack_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the account onboarding CFT stack
         """
         return pulumi.get(self, "stack_id")
 
     @stack_id.setter
-    def stack_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stackStatus")
-    def stack_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of the account onboarding CFT stack.
         """
         return pulumi.get(self, "stack_status")
 
     @stack_status.setter
-    def stack_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_status", value)
 
 
 @pulumi.input_type
 class _AccountOnboardingStackState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auditlog_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 cft_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudwatch_log_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudwatch_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 decryption_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kinesis_firehose: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_cft: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 sns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 trusted_account: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auditlog_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 cft_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudwatch_log_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudwatch_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 decryption_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kinesis_firehose: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_cft: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 sns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 trusted_account: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountOnboardingStack resources.
 
@@ -338,67 +338,67 @@ class _AccountOnboardingStackState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account IDs
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="auditlogGroup")
-    def auditlog_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auditlog_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audit Log Group Name
         """
         return pulumi.get(self, "auditlog_group")
 
     @auditlog_group.setter
-    def auditlog_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auditlog_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auditlog_group", value)
 
     @_builtins.property
     @pulumi.getter(name="cftRoleName")
-    def cft_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cft_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Role name to run the account onboarding CFT in each account to be onboarded.
         """
         return pulumi.get(self, "cft_role_name")
 
     @cft_role_name.setter
-    def cft_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cft_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cft_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudwatchLogGroup")
-    def cloudwatch_log_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloudwatch_log_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloudwatch Log Group
         """
         return pulumi.get(self, "cloudwatch_log_group")
 
     @cloudwatch_log_group.setter
-    def cloudwatch_log_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloudwatch_log_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloudwatch_log_group", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudwatchNamespace")
-    def cloudwatch_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloudwatch_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloudwatch Namespace
         """
         return pulumi.get(self, "cloudwatch_namespace")
 
     @cloudwatch_namespace.setter
-    def cloudwatch_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloudwatch_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloudwatch_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="decryptionCert")
-    def decryption_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def decryption_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CloudNGFW can decrypt inbound and outbound traffic by providing a
         					  certificate stored in secret Manager.
@@ -408,115 +408,115 @@ class _AccountOnboardingStackState:
         return pulumi.get(self, "decryption_cert")
 
     @decryption_cert.setter
-    def decryption_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def decryption_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "decryption_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointMode")
-    def endpoint_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls whether cloud NGFW will create firewall endpoints automatitically in customer subnets
         """
         return pulumi.get(self, "endpoint_mode")
 
     @endpoint_mode.setter
-    def endpoint_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         External Id of the onboarded account
         """
         return pulumi.get(self, "external_id")
 
     @external_id.setter
-    def external_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_id", value)
 
     @_builtins.property
     @pulumi.getter(name="kinesisFirehose")
-    def kinesis_firehose(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kinesis_firehose(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kinesis Firehose for logging
         """
         return pulumi.get(self, "kinesis_firehose")
 
     @kinesis_firehose.setter
-    def kinesis_firehose(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kinesis_firehose(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kinesis_firehose", value)
 
     @_builtins.property
     @pulumi.getter(name="onboardingCft")
-    def onboarding_cft(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def onboarding_cft(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Role name to run the account onboarding CFT in each account to be onboarded.
         """
         return pulumi.get(self, "onboarding_cft")
 
     @onboarding_cft.setter
-    def onboarding_cft(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def onboarding_cft(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "onboarding_cft", value)
 
     @_builtins.property
     @pulumi.getter(name="s3Bucket")
-    def s3_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def s3_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         S3 Bucket Name for Logging. Logging roles provide access to create log contents in this bucket.
         """
         return pulumi.get(self, "s3_bucket")
 
     @s3_bucket.setter
-    def s3_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def s3_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "s3_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="snsTopicArn")
-    def sns_topic_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sns_topic_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SNS topic ARN to publish the role ARNs
         """
         return pulumi.get(self, "sns_topic_arn")
 
     @sns_topic_arn.setter
-    def sns_topic_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sns_topic_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sns_topic_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="stackId")
-    def stack_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the account onboarding CFT stack
         """
         return pulumi.get(self, "stack_id")
 
     @stack_id.setter
-    def stack_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stackStatus")
-    def stack_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of the account onboarding CFT stack.
         """
         return pulumi.get(self, "stack_status")
 
     @stack_status.setter
-    def stack_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_status", value)
 
     @_builtins.property
     @pulumi.getter(name="trustedAccount")
-    def trusted_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trusted_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PANW Cloud NGFW trusted account Id
         """
         return pulumi.get(self, "trusted_account")
 
     @trusted_account.setter
-    def trusted_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trusted_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trusted_account", value)
 
 
@@ -526,21 +526,21 @@ class AccountOnboardingStack(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auditlog_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 cft_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudwatch_log_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudwatch_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 decryption_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kinesis_firehose: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_cft: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 sns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 trusted_account: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auditlog_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 cft_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudwatch_log_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudwatch_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 decryption_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kinesis_firehose: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_cft: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 sns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 trusted_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for Account Onboarding.
@@ -602,21 +602,21 @@ class AccountOnboardingStack(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auditlog_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 cft_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudwatch_log_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloudwatch_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 decryption_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kinesis_firehose: Optional[pulumi.Input[_builtins.str]] = None,
-                 onboarding_cft: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 sns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 trusted_account: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auditlog_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 cft_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudwatch_log_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloudwatch_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 decryption_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kinesis_firehose: pulumi.Input[Optional[_builtins.str]] = None,
+                 onboarding_cft: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 sns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 trusted_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -663,21 +663,21 @@ class AccountOnboardingStack(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            auditlog_group: Optional[pulumi.Input[_builtins.str]] = None,
-            cft_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cloudwatch_log_group: Optional[pulumi.Input[_builtins.str]] = None,
-            cloudwatch_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            decryption_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            external_id: Optional[pulumi.Input[_builtins.str]] = None,
-            kinesis_firehose: Optional[pulumi.Input[_builtins.str]] = None,
-            onboarding_cft: Optional[pulumi.Input[_builtins.str]] = None,
-            s3_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            sns_topic_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            stack_id: Optional[pulumi.Input[_builtins.str]] = None,
-            stack_status: Optional[pulumi.Input[_builtins.str]] = None,
-            trusted_account: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccountOnboardingStack':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auditlog_group: pulumi.Input[Optional[_builtins.str]] = None,
+            cft_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cloudwatch_log_group: pulumi.Input[Optional[_builtins.str]] = None,
+            cloudwatch_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            decryption_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kinesis_firehose: pulumi.Input[Optional[_builtins.str]] = None,
+            onboarding_cft: pulumi.Input[Optional[_builtins.str]] = None,
+            s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            sns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_status: pulumi.Input[Optional[_builtins.str]] = None,
+            trusted_account: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountOnboardingStack':
         """
         Get an existing AccountOnboardingStack resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -27,7 +27,7 @@ namespace Pulumi.CloudNgfwAws
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleVpc = new Aws.Index.Vpc("example", new()
+    ///     var exampleVpc = new Aws.Vpc("example", new()
     ///     {
     ///         CidrBlock = "172.16.0.0/16",
     ///         Tags = 
@@ -36,7 +36,7 @@ namespace Pulumi.CloudNgfwAws
     ///         },
     ///     });
     /// 
-    ///     var subnet1 = new Aws.Index.Subnet("subnet1", new()
+    ///     var subnet1 = new Aws.Subnet("subnet1", new()
     ///     {
     ///         VpcId = myVpc.Id,
     ///         CidrBlock = "172.16.10.0/24",
@@ -47,7 +47,7 @@ namespace Pulumi.CloudNgfwAws
     ///         },
     ///     });
     /// 
-    ///     var subnet2 = new Aws.Index.Subnet("subnet2", new()
+    ///     var subnet2 = new Aws.Subnet("subnet2", new()
     ///     {
     ///         VpcId = myVpc.Id,
     ///         CidrBlock = "172.16.20.0/24",
@@ -58,7 +58,7 @@ namespace Pulumi.CloudNgfwAws
     ///         },
     ///     });
     /// 
-    ///     var x = new CloudNgfwAws.Index.Ngfw("x", new()
+    ///     var x = new CloudNgfwAws.Ngfw("x", new()
     ///     {
     ///         Name = "example-instance",
     ///         VpcId = exampleVpc.Id,
@@ -83,7 +83,7 @@ namespace Pulumi.CloudNgfwAws
     ///         },
     ///     });
     /// 
-    ///     var example = new CloudNgfwAws.Index.NgfwLogProfile("example", new()
+    ///     var example = new CloudNgfwAws.NgfwLogProfile("example", new()
     ///     {
     ///         Ngfw = x.Name,
     ///         AccountId = x.AccountId,

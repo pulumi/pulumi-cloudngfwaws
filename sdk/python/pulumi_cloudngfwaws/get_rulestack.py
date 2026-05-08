@@ -225,9 +225,9 @@ def get_rulestack(config_type: Optional[_builtins.str] = None,
         scope=pulumi.get(__ret__, 'scope'),
         state=pulumi.get(__ret__, 'state'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_rulestack_output(config_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         name: Optional[pulumi.Input[_builtins.str]] = None,
-                         scope: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_rulestack_output(config_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         name: pulumi.Input[Optional[_builtins.str]] = None,
+                         scope: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRulestackResult]:
     """
     Data source for retrieving rulestack information.
