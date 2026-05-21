@@ -27,7 +27,7 @@ class GetNgfwResult:
     """
     A collection of values returned by getNgfw.
     """
-    def __init__(__self__, account_id=None, allowlist_accounts=None, app_id_version=None, automatic_upgrade_app_id_version=None, az_lists=None, change_protections=None, deployment_update_token=None, description=None, egress_nats=None, endpoint_mode=None, endpoint_service_name=None, endpoints=None, firewall_id=None, global_rulestack=None, id=None, link_id=None, link_status=None, multi_vpc=None, name=None, private_accesses=None, rulestack=None, security_zones=None, statuses=None, subnet_mappings=None, tags=None, tier=None, update_token=None, user_ids=None, vpc_id=None):
+    def __init__(__self__, account_id=None, allowlist_accounts=None, app_id_version=None, automatic_upgrade_app_id_version=None, az_lists=None, change_protections=None, deployment_update_token=None, description=None, egress_nats=None, endpoint_mode=None, endpoint_service_name=None, endpoints=None, firewall_id=None, global_rulestack=None, id=None, link_id=None, link_status=None, multi_vpc=None, name=None, private_accesses=None, rulestack=None, security_zones=None, statuses=None, subnet_mappings=None, tags=None, update_token=None, user_ids=None, vpc_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -103,9 +103,6 @@ class GetNgfwResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
-        if tier and not isinstance(tier, str):
-            raise TypeError("Expected argument 'tier' to be a str")
-        pulumi.set(__self__, "tier", tier)
         if update_token and not isinstance(update_token, str):
             raise TypeError("Expected argument 'update_token' to be a str")
         pulumi.set(__self__, "update_token", update_token)
@@ -302,14 +299,6 @@ class GetNgfwResult:
         return pulumi.get(self, "tags")
 
     @_builtins.property
-    @pulumi.getter
-    def tier(self) -> _builtins.str:
-        """
-        Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
-        """
-        return pulumi.get(self, "tier")
-
-    @_builtins.property
     @pulumi.getter(name="updateToken")
     def update_token(self) -> _builtins.str:
         """
@@ -362,7 +351,6 @@ class AwaitableGetNgfwResult(GetNgfwResult):
             statuses=self.statuses,
             subnet_mappings=self.subnet_mappings,
             tags=self.tags,
-            tier=self.tier,
             update_token=self.update_token,
             user_ids=self.user_ids,
             vpc_id=self.vpc_id)
@@ -426,7 +414,6 @@ def get_ngfw(account_id: Optional[_builtins.str] = None,
         statuses=pulumi.get(__ret__, 'statuses'),
         subnet_mappings=pulumi.get(__ret__, 'subnet_mappings'),
         tags=pulumi.get(__ret__, 'tags'),
-        tier=pulumi.get(__ret__, 'tier'),
         update_token=pulumi.get(__ret__, 'update_token'),
         user_ids=pulumi.get(__ret__, 'user_ids'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
@@ -487,7 +474,6 @@ def get_ngfw_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] 
         statuses=pulumi.get(__response__, 'statuses'),
         subnet_mappings=pulumi.get(__response__, 'subnet_mappings'),
         tags=pulumi.get(__response__, 'tags'),
-        tier=pulumi.get(__response__, 'tier'),
         update_token=pulumi.get(__response__, 'update_token'),
         user_ids=pulumi.get(__response__, 'user_ids'),
         vpc_id=pulumi.get(__response__, 'vpc_id')))

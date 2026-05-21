@@ -292,21 +292,6 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
-     * 
-     */
-    @Import(name="tier")
-    private @Nullable Output<String> tier;
-
-    /**
-     * @return Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
-     * 
-     */
-    public Optional<Output<String>> tier() {
-        return Optional.ofNullable(this.tier);
-    }
-
     @Import(name="userIds")
     private @Nullable Output<List<NgfwUserIdArgs>> userIds;
 
@@ -352,7 +337,6 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
         this.securityZones = $.securityZones;
         this.subnetMappings = $.subnetMappings;
         this.tags = $.tags;
-        this.tier = $.tier;
         this.userIds = $.userIds;
         this.vpcId = $.vpcId;
     }
@@ -801,27 +785,6 @@ public final class NgfwArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
-        }
-
-        /**
-         * @param tier Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tier(@Nullable Output<String> tier) {
-            $.tier = tier;
-            return this;
-        }
-
-        /**
-         * @param tier Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tier(String tier) {
-            return tier(Output.of(tier));
         }
 
         public Builder userIds(@Nullable Output<List<NgfwUserIdArgs>> userIds) {

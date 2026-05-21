@@ -17,14 +17,34 @@ import (
 //
 // * `Firewall`
 //
-// ## Example Usage
+// ## Schema Overview
+//
+// The log profile resource supports two schemas for configuring log delivery:
+//
+// | | V1 Schema | V2 Schema |
+// |---|---|---|
+// | **Block** | `logDestination` | `logConfig` |
+// | **Log types per block** | One | Multiple (Set) |
+// | **Cross-account logging** | Not supported | Supported via `roleType` + `accountId` |
+// | **Use case** | Existing deployments | New deployments |
+//
+// ***
+//
+// ## V1 Schema — `logDestination` (Existing Deployments)
+//
+// > Use V1 if you already have a log profile deployed using `logDestination` blocks.
+// Existing configurations do not need to be migrated.
+//
+// One `logDestination` block is required per log type. The following destination types
+// are supported: `S3`, `CloudWatchLogs`, `KinesisDataFirehose`.
+//
+// **Full example — V1 log profile with multiple destinations:**
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aws/sdk/go/aws"
 //	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -32,62 +52,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleVpc, err := aws.NewVpc(ctx, "example", &aws.VpcArgs{
-//				CidrBlock: "172.16.0.0/16",
-//				Tags: map[string]interface{}{
-//					"name": "tf-example",
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			subnet1, err := aws.NewSubnet(ctx, "subnet1", &aws.SubnetArgs{
-//				VpcId:            myVpc.Id,
-//				CidrBlock:        "172.16.10.0/24",
-//				AvailabilityZone: "us-west-2a",
-//				Tags: map[string]interface{}{
-//					"name": "tf-example",
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			subnet2, err := aws.NewSubnet(ctx, "subnet2", &aws.SubnetArgs{
-//				VpcId:            myVpc.Id,
-//				CidrBlock:        "172.16.20.0/24",
-//				AvailabilityZone: "us-west-2b",
-//				Tags: map[string]interface{}{
-//					"name": "tf-example",
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			x, err := cloudngfwaws.NewNgfw(ctx, "x", &cloudngfwaws.NgfwArgs{
-//				Name:         pulumi.String("example-instance"),
-//				VpcId:        exampleVpc.Id,
-//				AccountId:    pulumi.String("12345678"),
-//				Description:  pulumi.String("Example description"),
-//				EndpointMode: pulumi.String("ServiceManaged"),
-//				SubnetMappings: cloudngfwaws.NgfwSubnetMappingArray{
-//					&cloudngfwaws.NgfwSubnetMappingArgs{
-//						SubnetId: subnet1.Id,
-//					},
-//					&cloudngfwaws.NgfwSubnetMappingArgs{
-//						SubnetId: subnet2.Id,
-//					},
-//				},
-//				Rulestack: pulumi.String("example-rulestack"),
-//				Tags: pulumi.StringMap{
-//					"Foo": pulumi.String("bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudngfwaws.NewNgfwLogProfile(ctx, "example", &cloudngfwaws.NgfwLogProfileArgs{
-//				Ngfw:      x.Name,
-//				AccountId: x.AccountId,
+//			_, err := cloudngfwaws.NewNgfwLogProfile(ctx, "example", &cloudngfwaws.NgfwLogProfileArgs{
+//				Ngfw:      pulumi.Any(exampleCloudngfwawsNgfw.Name),
+//				AccountId: pulumi.Any(exampleCloudngfwawsNgfw.AccountId),
 //				LogDestinations: cloudngfwaws.NgfwLogProfileLogDestinationArray{
 //					&cloudngfwaws.NgfwLogProfileLogDestinationArgs{
 //						DestinationType: pulumi.String("S3"),
@@ -96,8 +63,13 @@ import (
 //					},
 //					&cloudngfwaws.NgfwLogProfileLogDestinationArgs{
 //						DestinationType: pulumi.String("CloudWatchLogs"),
-//						Destination:     pulumi.String("panw-log-group"),
+//						Destination:     pulumi.String("my-log-group"),
 //						LogType:         pulumi.String("THREAT"),
+//					},
+//					&cloudngfwaws.NgfwLogProfileLogDestinationArgs{
+//						DestinationType: pulumi.String("KinesisDataFirehose"),
+//						Destination:     pulumi.String("my-firehose-stream"),
+//						LogType:         pulumi.String("DECRYPTION"),
 //					},
 //				},
 //			})
@@ -109,6 +81,129 @@ import (
 //	}
 //
 // ```
+//
+// **To add a destination:** add another `logDestination` block and re-apply.
+// **To remove a destination:** remove the block and re-apply.
+//
+// ***
+//
+// ## V2 Schema — `logConfig` (New Deployments)
+//
+// > Use V2 for new deployments. It consolidates all destination configuration into a
+// single `logConfig` block and supports multiple log types per destination.
+//
+// **Full example — V2 log profile, same-account delivery:**
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudngfwaws.NewNgfwLogProfile(ctx, "example", &cloudngfwaws.NgfwLogProfileArgs{
+//				Ngfw:      pulumi.Any(exampleCloudngfwawsNgfw.Name),
+//				AccountId: pulumi.Any(exampleCloudngfwawsNgfw.AccountId),
+//				LogConfig: &cloudngfwaws.NgfwLogProfileLogConfigArgs{
+//					LogDestinationType: pulumi.String("S3"),
+//					LogDestination:     pulumi.String("my-s3-bucket"),
+//					LogTypes: pulumi.StringArray{
+//						pulumi.String("TRAFFIC"),
+//						pulumi.String("THREAT"),
+//						pulumi.String("DECRYPTION"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// **Full example — V2 log profile with cross-account delivery:**
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudngfwaws.NewNgfwLogProfile(ctx, "example", &cloudngfwaws.NgfwLogProfileArgs{
+//				Ngfw:      pulumi.Any(exampleCloudngfwawsNgfw.Name),
+//				AccountId: pulumi.Any(exampleCloudngfwawsNgfw.AccountId),
+//				LogConfig: &cloudngfwaws.NgfwLogProfileLogConfigArgs{
+//					LogDestinationType: pulumi.String("CloudWatchLogs"),
+//					LogDestination:     pulumi.String("arn:aws:logs:us-east-1:222222222222:log-group:my-log-group"),
+//					LogTypes: pulumi.StringArray{
+//						pulumi.String("TRAFFIC"),
+//						pulumi.String("THREAT"),
+//					},
+//					RoleType:  pulumi.String("CrossAccount"),
+//					AccountId: pulumi.String("222222222222"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// **Full example — V2 log profile with advanced threat logging and CloudWatch metrics:**
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudngfwaws.NewNgfwLogProfile(ctx, "example", &cloudngfwaws.NgfwLogProfileArgs{
+//				Ngfw:                      pulumi.Any(exampleCloudngfwawsNgfw.Name),
+//				AccountId:                 pulumi.Any(exampleCloudngfwawsNgfw.AccountId),
+//				AdvancedThreatLog:         pulumi.Bool(true),
+//				CloudWatchMetricNamespace: pulumi.String("CloudNGFW"),
+//				LogConfig: &cloudngfwaws.NgfwLogProfileLogConfigArgs{
+//					LogDestinationType: pulumi.String("KinesisDataFirehose"),
+//					LogDestination:     pulumi.String("my-firehose-stream"),
+//					LogTypes: pulumi.StringArray{
+//						pulumi.String("TRAFFIC"),
+//						pulumi.String("THREAT"),
+//						pulumi.String("DECRYPTION"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ***
 //
 // ## Import
 //

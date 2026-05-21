@@ -142,10 +142,6 @@ export interface GetNgfwResult {
      */
     readonly tags: {[key: string]: string};
     /**
-     * Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
-     */
-    readonly tier: string;
-    /**
      * The update token.
      */
     readonly updateToken: string;
