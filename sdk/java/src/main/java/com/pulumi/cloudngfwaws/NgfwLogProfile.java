@@ -25,7 +25,28 @@ import javax.annotation.Nullable;
  * 
  * * `Firewall`
  * 
- * ## Example Usage
+ * ## Schema Overview
+ * 
+ * The log profile resource supports two schemas for configuring log delivery:
+ * 
+ * | | V1 Schema | V2 Schema |
+ * |---|---|---|
+ * | **Block** | `logDestination` | `logConfig` |
+ * | **Log types per block** | One | Multiple (Set) |
+ * | **Cross-account logging** | Not supported | Supported via `roleType` + `accountId` |
+ * | **Use case** | Existing deployments | New deployments |
+ * 
+ * ***
+ * 
+ * ## V1 Schema — `logDestination` (Existing Deployments)
+ * 
+ * &gt; Use V1 if you already have a log profile deployed using `logDestination` blocks.
+ * Existing configurations do not need to be migrated.
+ * 
+ * One `logDestination` block is required per log type. The following destination types
+ * are supported: `S3`, `CloudWatchLogs`, `KinesisDataFirehose`.
+ * 
+ * **Full example — V1 log profile with multiple destinations:**
  * 
  * <pre>
  * {@code
@@ -34,13 +55,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.aws.Vpc;
- * import com.pulumi.aws.VpcArgs;
- * import com.pulumi.aws.Subnet;
- * import com.pulumi.aws.SubnetArgs;
- * import com.pulumi.cloudngfwaws.Ngfw;
- * import com.pulumi.cloudngfwaws.NgfwArgs;
- * import com.pulumi.cloudngfwaws.inputs.NgfwSubnetMappingArgs;
  * import com.pulumi.cloudngfwaws.NgfwLogProfile;
  * import com.pulumi.cloudngfwaws.NgfwLogProfileArgs;
  * import com.pulumi.cloudngfwaws.inputs.NgfwLogProfileLogDestinationArgs;
@@ -57,45 +71,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleVpc = new Vpc("exampleVpc", VpcArgs.builder()
- *             .cidrBlock("172.16.0.0/16")
- *             .tags(Map.of("name", "tf-example"))
- *             .build());
- * 
- *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()
- *             .vpcId(myVpc.id())
- *             .cidrBlock("172.16.10.0/24")
- *             .availabilityZone("us-west-2a")
- *             .tags(Map.of("name", "tf-example"))
- *             .build());
- * 
- *         var subnet2 = new Subnet("subnet2", SubnetArgs.builder()
- *             .vpcId(myVpc.id())
- *             .cidrBlock("172.16.20.0/24")
- *             .availabilityZone("us-west-2b")
- *             .tags(Map.of("name", "tf-example"))
- *             .build());
- * 
- *         var x = new Ngfw("x", NgfwArgs.builder()
- *             .name("example-instance")
- *             .vpcId(exampleVpc.id())
- *             .accountId("12345678")
- *             .description("Example description")
- *             .endpointMode("ServiceManaged")
- *             .subnetMappings(            
- *                 NgfwSubnetMappingArgs.builder()
- *                     .subnetId(subnet1.id())
- *                     .build(),
- *                 NgfwSubnetMappingArgs.builder()
- *                     .subnetId(subnet2.id())
- *                     .build())
- *             .rulestack("example-rulestack")
- *             .tags(Map.of("Foo", "bar"))
- *             .build());
- * 
  *         var example = new NgfwLogProfile("example", NgfwLogProfileArgs.builder()
- *             .ngfw(x.name())
- *             .accountId(x.accountId())
+ *             .ngfw(exampleCloudngfwawsNgfw.name())
+ *             .accountId(exampleCloudngfwawsNgfw.accountId())
  *             .logDestinations(            
  *                 NgfwLogProfileLogDestinationArgs.builder()
  *                     .destinationType("S3")
@@ -104,8 +82,13 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 NgfwLogProfileLogDestinationArgs.builder()
  *                     .destinationType("CloudWatchLogs")
- *                     .destination("panw-log-group")
+ *                     .destination("my-log-group")
  *                     .logType("THREAT")
+ *                     .build(),
+ *                 NgfwLogProfileLogDestinationArgs.builder()
+ *                     .destinationType("KinesisDataFirehose")
+ *                     .destination("my-firehose-stream")
+ *                     .logType("DECRYPTION")
  *                     .build())
  *             .build());
  * 
@@ -113,6 +96,150 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * **To add a destination:** add another `logDestination` block and re-apply.
+ * **To remove a destination:** remove the block and re-apply.
+ * 
+ * ***
+ * 
+ * ## V2 Schema — `logConfig` (New Deployments)
+ * 
+ * &gt; Use V2 for new deployments. It consolidates all destination configuration into a
+ * single `logConfig` block and supports multiple log types per destination.
+ * 
+ * **Full example — V2 log profile, same-account delivery:**
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudngfwaws.NgfwLogProfile;
+ * import com.pulumi.cloudngfwaws.NgfwLogProfileArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwLogProfileLogConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new NgfwLogProfile("example", NgfwLogProfileArgs.builder()
+ *             .ngfw(exampleCloudngfwawsNgfw.name())
+ *             .accountId(exampleCloudngfwawsNgfw.accountId())
+ *             .logConfig(NgfwLogProfileLogConfigArgs.builder()
+ *                 .logDestinationType("S3")
+ *                 .logDestination("my-s3-bucket")
+ *                 .logTypes(                
+ *                     "TRAFFIC",
+ *                     "THREAT",
+ *                     "DECRYPTION")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * **Full example — V2 log profile with cross-account delivery:**
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudngfwaws.NgfwLogProfile;
+ * import com.pulumi.cloudngfwaws.NgfwLogProfileArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwLogProfileLogConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new NgfwLogProfile("example", NgfwLogProfileArgs.builder()
+ *             .ngfw(exampleCloudngfwawsNgfw.name())
+ *             .accountId(exampleCloudngfwawsNgfw.accountId())
+ *             .logConfig(NgfwLogProfileLogConfigArgs.builder()
+ *                 .logDestinationType("CloudWatchLogs")
+ *                 .logDestination("arn:aws:logs:us-east-1:222222222222:log-group:my-log-group")
+ *                 .logTypes(                
+ *                     "TRAFFIC",
+ *                     "THREAT")
+ *                 .roleType("CrossAccount")
+ *                 .accountId("222222222222")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * **Full example — V2 log profile with advanced threat logging and CloudWatch metrics:**
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudngfwaws.NgfwLogProfile;
+ * import com.pulumi.cloudngfwaws.NgfwLogProfileArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwLogProfileLogConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new NgfwLogProfile("example", NgfwLogProfileArgs.builder()
+ *             .ngfw(exampleCloudngfwawsNgfw.name())
+ *             .accountId(exampleCloudngfwawsNgfw.accountId())
+ *             .advancedThreatLog(true)
+ *             .cloudWatchMetricNamespace("CloudNGFW")
+ *             .logConfig(NgfwLogProfileLogConfigArgs.builder()
+ *                 .logDestinationType("KinesisDataFirehose")
+ *                 .logDestination("my-firehose-stream")
+ *                 .logTypes(                
+ *                     "TRAFFIC",
+ *                     "THREAT",
+ *                     "DECRYPTION")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ***
  * 
  * ## Import
  * 

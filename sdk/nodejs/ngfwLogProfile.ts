@@ -13,57 +13,36 @@ import * as utilities from "./utilities";
  *
  * * `Firewall`
  *
- * ## Example Usage
+ * ## Schema Overview
+ *
+ * The log profile resource supports two schemas for configuring log delivery:
+ *
+ * | | V1 Schema | V2 Schema |
+ * |---|---|---|
+ * | **Block** | `logDestination` | `logConfig` |
+ * | **Log types per block** | One | Multiple (Set) |
+ * | **Cross-account logging** | Not supported | Supported via `roleType` + `accountId` |
+ * | **Use case** | Existing deployments | New deployments |
+ *
+ * ***
+ *
+ * ## V1 Schema — `logDestination` (Existing Deployments)
+ *
+ * > Use V1 if you already have a log profile deployed using `logDestination` blocks.
+ * Existing configurations do not need to be migrated.
+ *
+ * One `logDestination` block is required per log type. The following destination types
+ * are supported: `S3`, `CloudWatchLogs`, `KinesisDataFirehose`.
+ *
+ * **Full example — V1 log profile with multiple destinations:**
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
  * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
  *
- * const exampleVpc = new aws.index.Vpc("example", {
- *     cidrBlock: "172.16.0.0/16",
- *     tags: {
- *         name: "tf-example",
- *     },
- * });
- * const subnet1 = new aws.index.Subnet("subnet1", {
- *     vpcId: myVpc.id,
- *     cidrBlock: "172.16.10.0/24",
- *     availabilityZone: "us-west-2a",
- *     tags: {
- *         name: "tf-example",
- *     },
- * });
- * const subnet2 = new aws.index.Subnet("subnet2", {
- *     vpcId: myVpc.id,
- *     cidrBlock: "172.16.20.0/24",
- *     availabilityZone: "us-west-2b",
- *     tags: {
- *         name: "tf-example",
- *     },
- * });
- * const x = new cloudngfwaws.Ngfw("x", {
- *     name: "example-instance",
- *     vpcId: exampleVpc.id,
- *     accountId: "12345678",
- *     description: "Example description",
- *     endpointMode: "ServiceManaged",
- *     subnetMappings: [
- *         {
- *             subnetId: subnet1.id,
- *         },
- *         {
- *             subnetId: subnet2.id,
- *         },
- *     ],
- *     rulestack: "example-rulestack",
- *     tags: {
- *         Foo: "bar",
- *     },
- * });
  * const example = new cloudngfwaws.NgfwLogProfile("example", {
- *     ngfw: x.name,
- *     accountId: x.accountId,
+ *     ngfw: exampleCloudngfwawsNgfw.name,
+ *     accountId: exampleCloudngfwawsNgfw.accountId,
  *     logDestinations: [
  *         {
  *             destinationType: "S3",
@@ -72,12 +51,95 @@ import * as utilities from "./utilities";
  *         },
  *         {
  *             destinationType: "CloudWatchLogs",
- *             destination: "panw-log-group",
+ *             destination: "my-log-group",
  *             logType: "THREAT",
+ *         },
+ *         {
+ *             destinationType: "KinesisDataFirehose",
+ *             destination: "my-firehose-stream",
+ *             logType: "DECRYPTION",
  *         },
  *     ],
  * });
  * ```
+ *
+ * **To add a destination:** add another `logDestination` block and re-apply.
+ * **To remove a destination:** remove the block and re-apply.
+ *
+ * ***
+ *
+ * ## V2 Schema — `logConfig` (New Deployments)
+ *
+ * > Use V2 for new deployments. It consolidates all destination configuration into a
+ * single `logConfig` block and supports multiple log types per destination.
+ *
+ * **Full example — V2 log profile, same-account delivery:**
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
+ *
+ * const example = new cloudngfwaws.NgfwLogProfile("example", {
+ *     ngfw: exampleCloudngfwawsNgfw.name,
+ *     accountId: exampleCloudngfwawsNgfw.accountId,
+ *     logConfig: {
+ *         logDestinationType: "S3",
+ *         logDestination: "my-s3-bucket",
+ *         logTypes: [
+ *             "TRAFFIC",
+ *             "THREAT",
+ *             "DECRYPTION",
+ *         ],
+ *     },
+ * });
+ * ```
+ *
+ * **Full example — V2 log profile with cross-account delivery:**
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
+ *
+ * const example = new cloudngfwaws.NgfwLogProfile("example", {
+ *     ngfw: exampleCloudngfwawsNgfw.name,
+ *     accountId: exampleCloudngfwawsNgfw.accountId,
+ *     logConfig: {
+ *         logDestinationType: "CloudWatchLogs",
+ *         logDestination: "arn:aws:logs:us-east-1:222222222222:log-group:my-log-group",
+ *         logTypes: [
+ *             "TRAFFIC",
+ *             "THREAT",
+ *         ],
+ *         roleType: "CrossAccount",
+ *         accountId: "222222222222",
+ *     },
+ * });
+ * ```
+ *
+ * **Full example — V2 log profile with advanced threat logging and CloudWatch metrics:**
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
+ *
+ * const example = new cloudngfwaws.NgfwLogProfile("example", {
+ *     ngfw: exampleCloudngfwawsNgfw.name,
+ *     accountId: exampleCloudngfwawsNgfw.accountId,
+ *     advancedThreatLog: true,
+ *     cloudWatchMetricNamespace: "CloudNGFW",
+ *     logConfig: {
+ *         logDestinationType: "KinesisDataFirehose",
+ *         logDestination: "my-firehose-stream",
+ *         logTypes: [
+ *             "TRAFFIC",
+ *             "THREAT",
+ *             "DECRYPTION",
+ *         ],
+ *     },
+ * });
+ * ```
+ *
+ * ***
  *
  * ## Import
  *

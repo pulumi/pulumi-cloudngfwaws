@@ -109,8 +109,6 @@ type LookupNgfwResult struct {
 	SubnetMappings []GetNgfwSubnetMapping `pulumi:"subnetMappings"`
 	// The tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
-	Tier string `pulumi:"tier"`
 	// The update token.
 	UpdateToken string          `pulumi:"updateToken"`
 	UserIds     []GetNgfwUserId `pulumi:"userIds"`
@@ -274,11 +272,6 @@ func (o LookupNgfwResultOutput) SubnetMappings() GetNgfwSubnetMappingArrayOutput
 // The tags.
 func (o LookupNgfwResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNgfwResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
-func (o LookupNgfwResultOutput) Tier() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNgfwResult) string { return v.Tier }).(pulumi.StringOutput)
 }
 
 // The update token.

@@ -245,10 +245,6 @@ namespace Pulumi.CloudNgfwAws
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
-        /// Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
-        /// </summary>
-        public readonly string Tier;
-        /// <summary>
         /// The update token.
         /// </summary>
         public readonly string UpdateToken;
@@ -310,8 +306,6 @@ namespace Pulumi.CloudNgfwAws
 
             ImmutableDictionary<string, string> tags,
 
-            string tier,
-
             string updateToken,
 
             ImmutableArray<Outputs.GetNgfwUserIdResult> userIds,
@@ -343,7 +337,6 @@ namespace Pulumi.CloudNgfwAws
             Statuses = statuses;
             SubnetMappings = subnetMappings;
             Tags = tags;
-            Tier = tier;
             UpdateToken = updateToken;
             UserIds = userIds;
             VpcId = vpcId;

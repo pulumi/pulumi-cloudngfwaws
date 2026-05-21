@@ -346,21 +346,6 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
-     * 
-     */
-    @Import(name="tier")
-    private @Nullable Output<String> tier;
-
-    /**
-     * @return Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
-     * 
-     */
-    public Optional<Output<String>> tier() {
-        return Optional.ofNullable(this.tier);
-    }
-
-    /**
      * The update token.
      * 
      */
@@ -424,7 +409,6 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
         this.statuses = $.statuses;
         this.subnetMappings = $.subnetMappings;
         this.tags = $.tags;
-        this.tier = $.tier;
         this.updateToken = $.updateToken;
         this.userIds = $.userIds;
         this.vpcId = $.vpcId;
@@ -950,27 +934,6 @@ public final class NgfwState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
-        }
-
-        /**
-         * @param tier Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tier(@Nullable Output<String> tier) {
-            $.tier = tier;
-            return this;
-        }
-
-        /**
-         * @param tier Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tier(String tier) {
-            return tier(Output.of(tier));
         }
 
         /**

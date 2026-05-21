@@ -128,11 +128,6 @@ public final class GetNgfwResult {
      */
     private Map<String,String> tags;
     /**
-     * @return Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
-     * 
-     */
-    private String tier;
-    /**
      * @return The update token.
      * 
      */
@@ -301,13 +296,6 @@ public final class GetNgfwResult {
         return this.tags;
     }
     /**
-     * @return Firewall Instance Tier. Allowed values are &#39;base&#39;, &#39;standard&#39;, or &#39;premium&#39;.
-     * 
-     */
-    public String tier() {
-        return this.tier;
-    }
-    /**
      * @return The update token.
      * 
      */
@@ -359,7 +347,6 @@ public final class GetNgfwResult {
         private List<GetNgfwStatus> statuses;
         private List<GetNgfwSubnetMapping> subnetMappings;
         private Map<String,String> tags;
-        private String tier;
         private String updateToken;
         private List<GetNgfwUserId> userIds;
         private String vpcId;
@@ -391,7 +378,6 @@ public final class GetNgfwResult {
     	      this.statuses = defaults.statuses;
     	      this.subnetMappings = defaults.subnetMappings;
     	      this.tags = defaults.tags;
-    	      this.tier = defaults.tier;
     	      this.updateToken = defaults.updateToken;
     	      this.userIds = defaults.userIds;
     	      this.vpcId = defaults.vpcId;
@@ -619,14 +605,6 @@ public final class GetNgfwResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tier(String tier) {
-            if (tier == null) {
-              throw new MissingRequiredPropertyException("GetNgfwResult", "tier");
-            }
-            this.tier = tier;
-            return this;
-        }
-        @CustomType.Setter
         public Builder updateToken(String updateToken) {
             if (updateToken == null) {
               throw new MissingRequiredPropertyException("GetNgfwResult", "updateToken");
@@ -680,7 +658,6 @@ public final class GetNgfwResult {
             _resultValue.statuses = statuses;
             _resultValue.subnetMappings = subnetMappings;
             _resultValue.tags = tags;
-            _resultValue.tier = tier;
             _resultValue.updateToken = updateToken;
             _resultValue.userIds = userIds;
             _resultValue.vpcId = vpcId;

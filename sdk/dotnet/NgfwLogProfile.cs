@@ -16,77 +16,41 @@ namespace Pulumi.CloudNgfwAws
     /// 
     /// * `Firewall`
     /// 
-    /// ## Example Usage
+    /// ## Schema Overview
+    /// 
+    /// The log profile resource supports two schemas for configuring log delivery:
+    /// 
+    /// | | V1 Schema | V2 Schema |
+    /// |---|---|---|
+    /// | **Block** | `LogDestination` | `LogConfig` |
+    /// | **Log types per block** | One | Multiple (Set) |
+    /// | **Cross-account logging** | Not supported | Supported via `RoleType` + `AccountId` |
+    /// | **Use case** | Existing deployments | New deployments |
+    /// 
+    /// ***
+    /// 
+    /// ## V1 Schema — `LogDestination` (Existing Deployments)
+    /// 
+    /// &gt; Use V1 if you already have a log profile deployed using `LogDestination` blocks.
+    /// Existing configurations do not need to be migrated.
+    /// 
+    /// One `LogDestination` block is required per log type. The following destination types
+    /// are supported: `S3`, `CloudWatchLogs`, `KinesisDataFirehose`.
+    /// 
+    /// **Full example — V1 log profile with multiple destinations:**
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Aws = Pulumi.Aws;
     /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleVpc = new Aws.Vpc("example", new()
-    ///     {
-    ///         CidrBlock = "172.16.0.0/16",
-    ///         Tags = 
-    ///         {
-    ///             { "name", "tf-example" },
-    ///         },
-    ///     });
-    /// 
-    ///     var subnet1 = new Aws.Subnet("subnet1", new()
-    ///     {
-    ///         VpcId = myVpc.Id,
-    ///         CidrBlock = "172.16.10.0/24",
-    ///         AvailabilityZone = "us-west-2a",
-    ///         Tags = 
-    ///         {
-    ///             { "name", "tf-example" },
-    ///         },
-    ///     });
-    /// 
-    ///     var subnet2 = new Aws.Subnet("subnet2", new()
-    ///     {
-    ///         VpcId = myVpc.Id,
-    ///         CidrBlock = "172.16.20.0/24",
-    ///         AvailabilityZone = "us-west-2b",
-    ///         Tags = 
-    ///         {
-    ///             { "name", "tf-example" },
-    ///         },
-    ///     });
-    /// 
-    ///     var x = new CloudNgfwAws.Ngfw("x", new()
-    ///     {
-    ///         Name = "example-instance",
-    ///         VpcId = exampleVpc.Id,
-    ///         AccountId = "12345678",
-    ///         Description = "Example description",
-    ///         EndpointMode = "ServiceManaged",
-    ///         SubnetMappings = new[]
-    ///         {
-    ///             new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs
-    ///             {
-    ///                 SubnetId = subnet1.Id,
-    ///             },
-    ///             new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs
-    ///             {
-    ///                 SubnetId = subnet2.Id,
-    ///             },
-    ///         },
-    ///         Rulestack = "example-rulestack",
-    ///         Tags = 
-    ///         {
-    ///             { "Foo", "bar" },
-    ///         },
-    ///     });
-    /// 
     ///     var example = new CloudNgfwAws.NgfwLogProfile("example", new()
     ///     {
-    ///         Ngfw = x.Name,
-    ///         AccountId = x.AccountId,
+    ///         Ngfw = exampleCloudngfwawsNgfw.Name,
+    ///         AccountId = exampleCloudngfwawsNgfw.AccountId,
     ///         LogDestinations = new[]
     ///         {
     ///             new CloudNgfwAws.Inputs.NgfwLogProfileLogDestinationArgs
@@ -98,14 +62,125 @@ namespace Pulumi.CloudNgfwAws
     ///             new CloudNgfwAws.Inputs.NgfwLogProfileLogDestinationArgs
     ///             {
     ///                 DestinationType = "CloudWatchLogs",
-    ///                 Destination = "panw-log-group",
+    ///                 Destination = "my-log-group",
     ///                 LogType = "THREAT",
+    ///             },
+    ///             new CloudNgfwAws.Inputs.NgfwLogProfileLogDestinationArgs
+    ///             {
+    ///                 DestinationType = "KinesisDataFirehose",
+    ///                 Destination = "my-firehose-stream",
+    ///                 LogType = "DECRYPTION",
     ///             },
     ///         },
     ///     });
     /// 
     /// });
     /// ```
+    /// 
+    /// **To add a destination:** add another `LogDestination` block and re-apply.
+    /// **To remove a destination:** remove the block and re-apply.
+    /// 
+    /// ***
+    /// 
+    /// ## V2 Schema — `LogConfig` (New Deployments)
+    /// 
+    /// &gt; Use V2 for new deployments. It consolidates all destination configuration into a
+    /// single `LogConfig` block and supports multiple log types per destination.
+    /// 
+    /// **Full example — V2 log profile, same-account delivery:**
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new CloudNgfwAws.NgfwLogProfile("example", new()
+    ///     {
+    ///         Ngfw = exampleCloudngfwawsNgfw.Name,
+    ///         AccountId = exampleCloudngfwawsNgfw.AccountId,
+    ///         LogConfig = new CloudNgfwAws.Inputs.NgfwLogProfileLogConfigArgs
+    ///         {
+    ///             LogDestinationType = "S3",
+    ///             LogDestination = "my-s3-bucket",
+    ///             LogTypes = new[]
+    ///             {
+    ///                 "TRAFFIC",
+    ///                 "THREAT",
+    ///                 "DECRYPTION",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// **Full example — V2 log profile with cross-account delivery:**
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new CloudNgfwAws.NgfwLogProfile("example", new()
+    ///     {
+    ///         Ngfw = exampleCloudngfwawsNgfw.Name,
+    ///         AccountId = exampleCloudngfwawsNgfw.AccountId,
+    ///         LogConfig = new CloudNgfwAws.Inputs.NgfwLogProfileLogConfigArgs
+    ///         {
+    ///             LogDestinationType = "CloudWatchLogs",
+    ///             LogDestination = "arn:aws:logs:us-east-1:222222222222:log-group:my-log-group",
+    ///             LogTypes = new[]
+    ///             {
+    ///                 "TRAFFIC",
+    ///                 "THREAT",
+    ///             },
+    ///             RoleType = "CrossAccount",
+    ///             AccountId = "222222222222",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// **Full example — V2 log profile with advanced threat logging and CloudWatch metrics:**
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new CloudNgfwAws.NgfwLogProfile("example", new()
+    ///     {
+    ///         Ngfw = exampleCloudngfwawsNgfw.Name,
+    ///         AccountId = exampleCloudngfwawsNgfw.AccountId,
+    ///         AdvancedThreatLog = true,
+    ///         CloudWatchMetricNamespace = "CloudNGFW",
+    ///         LogConfig = new CloudNgfwAws.Inputs.NgfwLogProfileLogConfigArgs
+    ///         {
+    ///             LogDestinationType = "KinesisDataFirehose",
+    ///             LogDestination = "my-firehose-stream",
+    ///             LogTypes = new[]
+    ///             {
+    ///                 "TRAFFIC",
+    ///                 "THREAT",
+    ///                 "DECRYPTION",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ***
     /// 
     /// ## Import
     /// 

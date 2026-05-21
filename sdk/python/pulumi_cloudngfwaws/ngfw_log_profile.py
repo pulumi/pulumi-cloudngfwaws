@@ -363,53 +363,36 @@ class NgfwLogProfile(pulumi.CustomResource):
 
         * `Firewall`
 
-        ## Example Usage
+        ## Schema Overview
+
+        The log profile resource supports two schemas for configuring log delivery:
+
+        | | V1 Schema | V2 Schema |
+        |---|---|---|
+        | **Block** | `log_destination` | `log_config` |
+        | **Log types per block** | One | Multiple (Set) |
+        | **Cross-account logging** | Not supported | Supported via `role_type` + `account_id` |
+        | **Use case** | Existing deployments | New deployments |
+
+        ***
+
+        ## V1 Schema — `log_destination` (Existing Deployments)
+
+        > Use V1 if you already have a log profile deployed using `log_destination` blocks.
+        Existing configurations do not need to be migrated.
+
+        One `log_destination` block is required per log type. The following destination types
+        are supported: `S3`, `CloudWatchLogs`, `KinesisDataFirehose`.
+
+        **Full example — V1 log profile with multiple destinations:**
 
         ```python
         import pulumi
-        import pulumi_aws as aws
         import pulumi_cloudngfwaws as cloudngfwaws
 
-        example_vpc = aws.Vpc("example",
-            cidr_block=172.16.0.0/16,
-            tags={
-                name: tf-example,
-            })
-        subnet1 = aws.Subnet("subnet1",
-            vpc_id=my_vpc.id,
-            cidr_block=172.16.10.0/24,
-            availability_zone=us-west-2a,
-            tags={
-                name: tf-example,
-            })
-        subnet2 = aws.Subnet("subnet2",
-            vpc_id=my_vpc.id,
-            cidr_block=172.16.20.0/24,
-            availability_zone=us-west-2b,
-            tags={
-                name: tf-example,
-            })
-        x = cloudngfwaws.Ngfw("x",
-            name="example-instance",
-            vpc_id=example_vpc["id"],
-            account_id="12345678",
-            description="Example description",
-            endpoint_mode="ServiceManaged",
-            subnet_mappings=[
-                {
-                    "subnet_id": subnet1["id"],
-                },
-                {
-                    "subnet_id": subnet2["id"],
-                },
-            ],
-            rulestack="example-rulestack",
-            tags={
-                "Foo": "bar",
-            })
         example = cloudngfwaws.NgfwLogProfile("example",
-            ngfw=x.name,
-            account_id=x.account_id,
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"],
             log_destinations=[
                 {
                     "destination_type": "S3",
@@ -418,11 +401,91 @@ class NgfwLogProfile(pulumi.CustomResource):
                 },
                 {
                     "destination_type": "CloudWatchLogs",
-                    "destination": "panw-log-group",
+                    "destination": "my-log-group",
                     "log_type": "THREAT",
+                },
+                {
+                    "destination_type": "KinesisDataFirehose",
+                    "destination": "my-firehose-stream",
+                    "log_type": "DECRYPTION",
                 },
             ])
         ```
+
+        **To add a destination:** add another `log_destination` block and re-apply.
+        **To remove a destination:** remove the block and re-apply.
+
+        ***
+
+        ## V2 Schema — `log_config` (New Deployments)
+
+        > Use V2 for new deployments. It consolidates all destination configuration into a
+        single `log_config` block and supports multiple log types per destination.
+
+        **Full example — V2 log profile, same-account delivery:**
+
+        ```python
+        import pulumi
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example = cloudngfwaws.NgfwLogProfile("example",
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"],
+            log_config={
+                "log_destination_type": "S3",
+                "log_destination": "my-s3-bucket",
+                "log_types": [
+                    "TRAFFIC",
+                    "THREAT",
+                    "DECRYPTION",
+                ],
+            })
+        ```
+
+        **Full example — V2 log profile with cross-account delivery:**
+
+        ```python
+        import pulumi
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example = cloudngfwaws.NgfwLogProfile("example",
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"],
+            log_config={
+                "log_destination_type": "CloudWatchLogs",
+                "log_destination": "arn:aws:logs:us-east-1:222222222222:log-group:my-log-group",
+                "log_types": [
+                    "TRAFFIC",
+                    "THREAT",
+                ],
+                "role_type": "CrossAccount",
+                "account_id": "222222222222",
+            })
+        ```
+
+        **Full example — V2 log profile with advanced threat logging and CloudWatch metrics:**
+
+        ```python
+        import pulumi
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example = cloudngfwaws.NgfwLogProfile("example",
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"],
+            advanced_threat_log=True,
+            cloud_watch_metric_namespace="CloudNGFW",
+            log_config={
+                "log_destination_type": "KinesisDataFirehose",
+                "log_destination": "my-firehose-stream",
+                "log_types": [
+                    "TRAFFIC",
+                    "THREAT",
+                    "DECRYPTION",
+                ],
+            })
+        ```
+
+        ***
 
         ## Import
 
@@ -458,53 +521,36 @@ class NgfwLogProfile(pulumi.CustomResource):
 
         * `Firewall`
 
-        ## Example Usage
+        ## Schema Overview
+
+        The log profile resource supports two schemas for configuring log delivery:
+
+        | | V1 Schema | V2 Schema |
+        |---|---|---|
+        | **Block** | `log_destination` | `log_config` |
+        | **Log types per block** | One | Multiple (Set) |
+        | **Cross-account logging** | Not supported | Supported via `role_type` + `account_id` |
+        | **Use case** | Existing deployments | New deployments |
+
+        ***
+
+        ## V1 Schema — `log_destination` (Existing Deployments)
+
+        > Use V1 if you already have a log profile deployed using `log_destination` blocks.
+        Existing configurations do not need to be migrated.
+
+        One `log_destination` block is required per log type. The following destination types
+        are supported: `S3`, `CloudWatchLogs`, `KinesisDataFirehose`.
+
+        **Full example — V1 log profile with multiple destinations:**
 
         ```python
         import pulumi
-        import pulumi_aws as aws
         import pulumi_cloudngfwaws as cloudngfwaws
 
-        example_vpc = aws.Vpc("example",
-            cidr_block=172.16.0.0/16,
-            tags={
-                name: tf-example,
-            })
-        subnet1 = aws.Subnet("subnet1",
-            vpc_id=my_vpc.id,
-            cidr_block=172.16.10.0/24,
-            availability_zone=us-west-2a,
-            tags={
-                name: tf-example,
-            })
-        subnet2 = aws.Subnet("subnet2",
-            vpc_id=my_vpc.id,
-            cidr_block=172.16.20.0/24,
-            availability_zone=us-west-2b,
-            tags={
-                name: tf-example,
-            })
-        x = cloudngfwaws.Ngfw("x",
-            name="example-instance",
-            vpc_id=example_vpc["id"],
-            account_id="12345678",
-            description="Example description",
-            endpoint_mode="ServiceManaged",
-            subnet_mappings=[
-                {
-                    "subnet_id": subnet1["id"],
-                },
-                {
-                    "subnet_id": subnet2["id"],
-                },
-            ],
-            rulestack="example-rulestack",
-            tags={
-                "Foo": "bar",
-            })
         example = cloudngfwaws.NgfwLogProfile("example",
-            ngfw=x.name,
-            account_id=x.account_id,
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"],
             log_destinations=[
                 {
                     "destination_type": "S3",
@@ -513,11 +559,91 @@ class NgfwLogProfile(pulumi.CustomResource):
                 },
                 {
                     "destination_type": "CloudWatchLogs",
-                    "destination": "panw-log-group",
+                    "destination": "my-log-group",
                     "log_type": "THREAT",
+                },
+                {
+                    "destination_type": "KinesisDataFirehose",
+                    "destination": "my-firehose-stream",
+                    "log_type": "DECRYPTION",
                 },
             ])
         ```
+
+        **To add a destination:** add another `log_destination` block and re-apply.
+        **To remove a destination:** remove the block and re-apply.
+
+        ***
+
+        ## V2 Schema — `log_config` (New Deployments)
+
+        > Use V2 for new deployments. It consolidates all destination configuration into a
+        single `log_config` block and supports multiple log types per destination.
+
+        **Full example — V2 log profile, same-account delivery:**
+
+        ```python
+        import pulumi
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example = cloudngfwaws.NgfwLogProfile("example",
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"],
+            log_config={
+                "log_destination_type": "S3",
+                "log_destination": "my-s3-bucket",
+                "log_types": [
+                    "TRAFFIC",
+                    "THREAT",
+                    "DECRYPTION",
+                ],
+            })
+        ```
+
+        **Full example — V2 log profile with cross-account delivery:**
+
+        ```python
+        import pulumi
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example = cloudngfwaws.NgfwLogProfile("example",
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"],
+            log_config={
+                "log_destination_type": "CloudWatchLogs",
+                "log_destination": "arn:aws:logs:us-east-1:222222222222:log-group:my-log-group",
+                "log_types": [
+                    "TRAFFIC",
+                    "THREAT",
+                ],
+                "role_type": "CrossAccount",
+                "account_id": "222222222222",
+            })
+        ```
+
+        **Full example — V2 log profile with advanced threat logging and CloudWatch metrics:**
+
+        ```python
+        import pulumi
+        import pulumi_cloudngfwaws as cloudngfwaws
+
+        example = cloudngfwaws.NgfwLogProfile("example",
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"],
+            advanced_threat_log=True,
+            cloud_watch_metric_namespace="CloudNGFW",
+            log_config={
+                "log_destination_type": "KinesisDataFirehose",
+                "log_destination": "my-firehose-stream",
+                "log_types": [
+                    "TRAFFIC",
+                    "THREAT",
+                    "DECRYPTION",
+                ],
+            })
+        ```
+
+        ***
 
         ## Import
 

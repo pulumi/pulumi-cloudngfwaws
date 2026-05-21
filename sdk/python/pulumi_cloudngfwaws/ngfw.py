@@ -41,7 +41,6 @@ class NgfwArgs:
                  security_zones: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZoneArgs']]]] = None,
                  subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tier: pulumi.Input[Optional[_builtins.str]] = None,
                  user_ids: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwUserIdArgs']]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -63,7 +62,6 @@ class NgfwArgs:
         :param pulumi.Input[_builtins.str] rulestack: The rulestack for this NGFW.
         :param pulumi.Input[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]] subnet_mappings: Subnet mappings.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
-        :param pulumi.Input[_builtins.str] tier: Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID for the NGFW.
         """
         if account_id is not None:
@@ -106,8 +104,6 @@ class NgfwArgs:
             pulumi.set(__self__, "subnet_mappings", subnet_mappings)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if tier is not None:
-            pulumi.set(__self__, "tier", tier)
         if user_ids is not None:
             pulumi.set(__self__, "user_ids", user_ids)
         if vpc_id is not None:
@@ -342,18 +338,6 @@ class NgfwArgs:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
-    @pulumi.getter
-    def tier(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
-        """
-        return pulumi.get(self, "tier")
-
-    @tier.setter
-    def tier(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "tier", value)
-
-    @_builtins.property
     @pulumi.getter(name="userIds")
     def user_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NgfwUserIdArgs']]]]:
         return pulumi.get(self, "user_ids")
@@ -402,7 +386,6 @@ class _NgfwState:
                  statuses: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwStatusArgs']]]] = None,
                  subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tier: pulumi.Input[Optional[_builtins.str]] = None,
                  update_token: pulumi.Input[Optional[_builtins.str]] = None,
                  user_ids: pulumi.Input[Optional[Sequence[pulumi.Input['NgfwUserIdArgs']]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
@@ -428,7 +411,6 @@ class _NgfwState:
         :param pulumi.Input[_builtins.str] rulestack: The rulestack for this NGFW.
         :param pulumi.Input[Sequence[pulumi.Input['NgfwSubnetMappingArgs']]] subnet_mappings: Subnet mappings.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
-        :param pulumi.Input[_builtins.str] tier: Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
         :param pulumi.Input[_builtins.str] update_token: The update token.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID for the NGFW.
         """
@@ -480,8 +462,6 @@ class _NgfwState:
             pulumi.set(__self__, "subnet_mappings", subnet_mappings)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if tier is not None:
-            pulumi.set(__self__, "tier", tier)
         if update_token is not None:
             pulumi.set(__self__, "update_token", update_token)
         if user_ids is not None:
@@ -763,18 +743,6 @@ class _NgfwState:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
-    @pulumi.getter
-    def tier(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
-        """
-        return pulumi.get(self, "tier")
-
-    @tier.setter
-    def tier(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "tier", value)
-
-    @_builtins.property
     @pulumi.getter(name="updateToken")
     def update_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -834,11 +802,22 @@ class Ngfw(pulumi.CustomResource):
                  security_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict']]]]] = None,
                  subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tier: pulumi.Input[Optional[_builtins.str]] = None,
                  user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict']]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        ## <!-- This file is generated by `make docs`. Do not edit directly — edit templates/resources/ngfw.md.tmpl instead. -->
+
+        ***
+        ## page_title: "terraform-provider-cloudngfwaws: Ngfw Resource"
+
+        subcategory: ""
+        description: |-
+          Resource for NGFW manipulation.
+        ---
+
+        # Ngfw
+
         Resource for NGFW manipulation.
 
         > **NOTE:** Having the `rulestack` param reference the rulestack name from `CommitRulestack` ensures that Terraform will only try to spin up a NGFW instance if the commit is successful.
@@ -1135,7 +1114,6 @@ class Ngfw(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rulestack: The rulestack for this NGFW.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]] subnet_mappings: Subnet mappings.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
-        :param pulumi.Input[_builtins.str] tier: Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID for the NGFW.
         """
         ...
@@ -1145,6 +1123,18 @@ class Ngfw(pulumi.CustomResource):
                  args: Optional[NgfwArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## <!-- This file is generated by `make docs`. Do not edit directly — edit templates/resources/ngfw.md.tmpl instead. -->
+
+        ***
+        ## page_title: "terraform-provider-cloudngfwaws: Ngfw Resource"
+
+        subcategory: ""
+        description: |-
+          Resource for NGFW manipulation.
+        ---
+
+        # Ngfw
+
         Resource for NGFW manipulation.
 
         > **NOTE:** Having the `rulestack` param reference the rulestack name from `CommitRulestack` ensures that Terraform will only try to spin up a NGFW instance if the commit is successful.
@@ -1458,7 +1448,6 @@ class Ngfw(pulumi.CustomResource):
                  security_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict']]]]] = None,
                  subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tier: pulumi.Input[Optional[_builtins.str]] = None,
                  user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict']]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -1490,7 +1479,6 @@ class Ngfw(pulumi.CustomResource):
             __props__.__dict__["security_zones"] = security_zones
             __props__.__dict__["subnet_mappings"] = subnet_mappings
             __props__.__dict__["tags"] = tags
-            __props__.__dict__["tier"] = tier
             __props__.__dict__["user_ids"] = user_ids
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["deployment_update_token"] = None
@@ -1532,7 +1520,6 @@ class Ngfw(pulumi.CustomResource):
             statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwStatusArgs', 'NgfwStatusArgsDict']]]]] = None,
             subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            tier: pulumi.Input[Optional[_builtins.str]] = None,
             update_token: pulumi.Input[Optional[_builtins.str]] = None,
             user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict']]]]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Ngfw':
@@ -1562,7 +1549,6 @@ class Ngfw(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rulestack: The rulestack for this NGFW.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]] subnet_mappings: Subnet mappings.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
-        :param pulumi.Input[_builtins.str] tier: Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
         :param pulumi.Input[_builtins.str] update_token: The update token.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID for the NGFW.
         """
@@ -1594,7 +1580,6 @@ class Ngfw(pulumi.CustomResource):
         __props__.__dict__["statuses"] = statuses
         __props__.__dict__["subnet_mappings"] = subnet_mappings
         __props__.__dict__["tags"] = tags
-        __props__.__dict__["tier"] = tier
         __props__.__dict__["update_token"] = update_token
         __props__.__dict__["user_ids"] = user_ids
         __props__.__dict__["vpc_id"] = vpc_id
@@ -1776,14 +1761,6 @@ class Ngfw(pulumi.CustomResource):
         The tags.
         """
         return pulumi.get(self, "tags")
-
-    @_builtins.property
-    @pulumi.getter
-    def tier(self) -> pulumi.Output[_builtins.str]:
-        """
-        Firewall Instance Tier. Allowed values are 'base', 'standard', or 'premium'.
-        """
-        return pulumi.get(self, "tier")
 
     @_builtins.property
     @pulumi.getter(name="updateToken")
