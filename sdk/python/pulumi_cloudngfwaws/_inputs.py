@@ -64,7 +64,7 @@ class NgfwEgressNatArgsDict(TypedDict):
     """
     Enable egress NAT
     """
-    settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEgressNatSettingArgs']]]]]
+    settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEgressNatSettingArgsDict']]]]]
 
 @pulumi.input_type
 class NgfwEgressNatArgs:
@@ -166,7 +166,7 @@ class NgfwEndpointArgsDict(TypedDict):
     """
     Endpoint ID of the security zone
     """
-    prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointPrefixArgs']]]]]
+    prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointPrefixArgsDict']]]]]
     rejected_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The rejected reason.
@@ -351,7 +351,7 @@ class NgfwEndpointArgs:
 
 
 class NgfwEndpointPrefixArgsDict(TypedDict):
-    private_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointPrefixPrivatePrefixArgs']]]]]
+    private_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwEndpointPrefixPrivatePrefixArgsDict']]]]]
 
 @pulumi.input_type
 class NgfwEndpointPrefixArgs:
@@ -629,7 +629,7 @@ class NgfwSecurityZoneArgsDict(TypedDict):
     """
     The endpoint mode. Valid values are `ServiceManaged` or `CustomerManaged`.
     """
-    prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZonePrefixArgs']]]]]
+    prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZonePrefixArgsDict']]]]]
     rejected_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The rejected reason.
@@ -814,7 +814,7 @@ class NgfwSecurityZoneArgs:
 
 
 class NgfwSecurityZonePrefixArgsDict(TypedDict):
-    private_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZonePrefixPrivatePrefixArgs']]]]]
+    private_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwSecurityZonePrefixPrivatePrefixArgsDict']]]]]
 
 @pulumi.input_type
 class NgfwSecurityZonePrefixArgs:
@@ -854,7 +854,7 @@ class NgfwSecurityZonePrefixPrivatePrefixArgs:
 
 
 class NgfwStatusArgsDict(TypedDict):
-    attachments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwStatusAttachmentArgs']]]]]
+    attachments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwStatusAttachmentArgsDict']]]]]
     """
     The firewall attachments.
     """
@@ -1137,7 +1137,7 @@ class NgfwUserIdArgsDict(TypedDict):
     """
     The Collector Name
     """
-    custom_include_exclude_networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwUserIdCustomIncludeExcludeNetworkArgs']]]]]
+    custom_include_exclude_networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NgfwUserIdCustomIncludeExcludeNetworkArgsDict']]]]]
     """
     List of Custom Include Exclude Networks
     """
