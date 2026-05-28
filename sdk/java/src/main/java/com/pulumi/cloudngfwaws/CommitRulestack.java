@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Resource for committing the rulestack config.
  * 
- * !&gt; **NOTE:** This resource should be placed in a separate plan as the plan that configures the rulestack and its contents.  If you do not, you will have perpetual configuration drift and will need to run your plan twice so the commit is performed.  Placing instances of this resource with instances of NGFW resources (such as `cloudngfwaws.Ngfw`) is fine.
+ * &gt; **NOTE:** This resource should be placed in a separate plan as the plan that configures the rulestack and its contents.  If you do not, you will have perpetual configuration drift and will need to run your plan twice so the commit is performed.  Placing instances of this resource with instances of NGFW resources (such as `cloudngfwaws.Ngfw`) is fine.
  * 
  * ## Admin Permission Type
  * 
