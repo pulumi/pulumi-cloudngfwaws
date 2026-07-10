@@ -96,7 +96,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-cloudngfwaws"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing Cloud NGFW for AWS resources."
+                description = $/A Pulumi package for creating and managing Cloud NGFW for AWS resources./$
 
                 url = "https://github.com/pulumi/pulumi-cloudngfwaws"
 
