@@ -73,12 +73,8 @@ type GetCountryResult struct {
 }
 
 func GetCountryOutput(ctx *pulumi.Context, args GetCountryOutputArgs, opts ...pulumi.InvokeOption) GetCountryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCountryResultOutput, error) {
-			args := v.(GetCountryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudngfwaws:index/getCountry:getCountry", args, GetCountryResultOutput{}, options).(GetCountryResultOutput), nil
-		}).(GetCountryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudngfwaws:index/getCountry:getCountry", args, GetCountryResultOutput{}, options).(GetCountryResultOutput)
 }
 
 // A collection of arguments for invoking getCountry.

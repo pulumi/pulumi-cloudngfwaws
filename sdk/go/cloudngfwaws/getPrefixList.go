@@ -98,12 +98,8 @@ type LookupPrefixListResult struct {
 }
 
 func LookupPrefixListOutput(ctx *pulumi.Context, args LookupPrefixListOutputArgs, opts ...pulumi.InvokeOption) LookupPrefixListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPrefixListResultOutput, error) {
-			args := v.(LookupPrefixListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudngfwaws:index/getPrefixList:getPrefixList", args, LookupPrefixListResultOutput{}, options).(LookupPrefixListResultOutput), nil
-		}).(LookupPrefixListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudngfwaws:index/getPrefixList:getPrefixList", args, LookupPrefixListResultOutput{}, options).(LookupPrefixListResultOutput)
 }
 
 // A collection of arguments for invoking getPrefixList.

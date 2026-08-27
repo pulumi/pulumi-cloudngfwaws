@@ -74,12 +74,8 @@ type GetPredefinedUrlCategoriesResult struct {
 }
 
 func GetPredefinedUrlCategoriesOutput(ctx *pulumi.Context, args GetPredefinedUrlCategoriesOutputArgs, opts ...pulumi.InvokeOption) GetPredefinedUrlCategoriesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPredefinedUrlCategoriesResultOutput, error) {
-			args := v.(GetPredefinedUrlCategoriesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudngfwaws:index/getPredefinedUrlCategories:getPredefinedUrlCategories", args, GetPredefinedUrlCategoriesResultOutput{}, options).(GetPredefinedUrlCategoriesResultOutput), nil
-		}).(GetPredefinedUrlCategoriesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudngfwaws:index/getPredefinedUrlCategories:getPredefinedUrlCategories", args, GetPredefinedUrlCategoriesResultOutput{}, options).(GetPredefinedUrlCategoriesResultOutput)
 }
 
 // A collection of arguments for invoking getPredefinedUrlCategories.

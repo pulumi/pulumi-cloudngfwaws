@@ -98,12 +98,8 @@ type LookupFqdnListResult struct {
 }
 
 func LookupFqdnListOutput(ctx *pulumi.Context, args LookupFqdnListOutputArgs, opts ...pulumi.InvokeOption) LookupFqdnListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFqdnListResultOutput, error) {
-			args := v.(LookupFqdnListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudngfwaws:index/getFqdnList:getFqdnList", args, LookupFqdnListResultOutput{}, options).(LookupFqdnListResultOutput), nil
-		}).(LookupFqdnListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudngfwaws:index/getFqdnList:getFqdnList", args, LookupFqdnListResultOutput{}, options).(LookupFqdnListResultOutput)
 }
 
 // A collection of arguments for invoking getFqdnList.

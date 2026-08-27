@@ -56,12 +56,8 @@ type GetValidateRulestackResult struct {
 }
 
 func GetValidateRulestackOutput(ctx *pulumi.Context, args GetValidateRulestackOutputArgs, opts ...pulumi.InvokeOption) GetValidateRulestackResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetValidateRulestackResultOutput, error) {
-			args := v.(GetValidateRulestackArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudngfwaws:index/getValidateRulestack:getValidateRulestack", args, GetValidateRulestackResultOutput{}, options).(GetValidateRulestackResultOutput), nil
-		}).(GetValidateRulestackResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudngfwaws:index/getValidateRulestack:getValidateRulestack", args, GetValidateRulestackResultOutput{}, options).(GetValidateRulestackResultOutput)
 }
 
 // A collection of arguments for invoking getValidateRulestack.

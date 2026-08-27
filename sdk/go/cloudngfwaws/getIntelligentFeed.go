@@ -106,12 +106,8 @@ type LookupIntelligentFeedResult struct {
 }
 
 func LookupIntelligentFeedOutput(ctx *pulumi.Context, args LookupIntelligentFeedOutputArgs, opts ...pulumi.InvokeOption) LookupIntelligentFeedResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIntelligentFeedResultOutput, error) {
-			args := v.(LookupIntelligentFeedArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudngfwaws:index/getIntelligentFeed:getIntelligentFeed", args, LookupIntelligentFeedResultOutput{}, options).(LookupIntelligentFeedResultOutput), nil
-		}).(LookupIntelligentFeedResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudngfwaws:index/getIntelligentFeed:getIntelligentFeed", args, LookupIntelligentFeedResultOutput{}, options).(LookupIntelligentFeedResultOutput)
 }
 
 // A collection of arguments for invoking getIntelligentFeed.

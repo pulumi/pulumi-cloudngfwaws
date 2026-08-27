@@ -117,12 +117,8 @@ type LookupNgfwResult struct {
 }
 
 func LookupNgfwOutput(ctx *pulumi.Context, args LookupNgfwOutputArgs, opts ...pulumi.InvokeOption) LookupNgfwResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNgfwResultOutput, error) {
-			args := v.(LookupNgfwArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudngfwaws:index/getNgfw:getNgfw", args, LookupNgfwResultOutput{}, options).(LookupNgfwResultOutput), nil
-		}).(LookupNgfwResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudngfwaws:index/getNgfw:getNgfw", args, LookupNgfwResultOutput{}, options).(LookupNgfwResultOutput)
 }
 
 // A collection of arguments for invoking getNgfw.
