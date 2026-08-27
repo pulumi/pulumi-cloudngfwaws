@@ -90,12 +90,8 @@ type LookupNgfwLogProfileResult struct {
 }
 
 func LookupNgfwLogProfileOutput(ctx *pulumi.Context, args LookupNgfwLogProfileOutputArgs, opts ...pulumi.InvokeOption) LookupNgfwLogProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNgfwLogProfileResultOutput, error) {
-			args := v.(LookupNgfwLogProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile", args, LookupNgfwLogProfileResultOutput{}, options).(LookupNgfwLogProfileResultOutput), nil
-		}).(LookupNgfwLogProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudngfwaws:index/getNgfwLogProfile:getNgfwLogProfile", args, LookupNgfwLogProfileResultOutput{}, options).(LookupNgfwLogProfileResultOutput)
 }
 
 // A collection of arguments for invoking getNgfwLogProfile.

@@ -75,12 +75,8 @@ type GetNgfwsResult struct {
 }
 
 func GetNgfwsOutput(ctx *pulumi.Context, args GetNgfwsOutputArgs, opts ...pulumi.InvokeOption) GetNgfwsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNgfwsResultOutput, error) {
-			args := v.(GetNgfwsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudngfwaws:index/getNgfws:getNgfws", args, GetNgfwsResultOutput{}, options).(GetNgfwsResultOutput), nil
-		}).(GetNgfwsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudngfwaws:index/getNgfws:getNgfws", args, GetNgfwsResultOutput{}, options).(GetNgfwsResultOutput)
 }
 
 // A collection of arguments for invoking getNgfws.

@@ -91,12 +91,8 @@ type LookupRulestackResult struct {
 }
 
 func LookupRulestackOutput(ctx *pulumi.Context, args LookupRulestackOutputArgs, opts ...pulumi.InvokeOption) LookupRulestackResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRulestackResultOutput, error) {
-			args := v.(LookupRulestackArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudngfwaws:index/getRulestack:getRulestack", args, LookupRulestackResultOutput{}, options).(LookupRulestackResultOutput), nil
-		}).(LookupRulestackResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudngfwaws:index/getRulestack:getRulestack", args, LookupRulestackResultOutput{}, options).(LookupRulestackResultOutput)
 }
 
 // A collection of arguments for invoking getRulestack.

@@ -79,12 +79,8 @@ type GetAppIdVersionResult struct {
 }
 
 func GetAppIdVersionOutput(ctx *pulumi.Context, args GetAppIdVersionOutputArgs, opts ...pulumi.InvokeOption) GetAppIdVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAppIdVersionResultOutput, error) {
-			args := v.(GetAppIdVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudngfwaws:index/getAppIdVersion:getAppIdVersion", args, GetAppIdVersionResultOutput{}, options).(GetAppIdVersionResultOutput), nil
-		}).(GetAppIdVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudngfwaws:index/getAppIdVersion:getAppIdVersion", args, GetAppIdVersionResultOutput{}, options).(GetAppIdVersionResultOutput)
 }
 
 // A collection of arguments for invoking getAppIdVersion.

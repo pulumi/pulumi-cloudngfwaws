@@ -92,12 +92,8 @@ type LookupPredefinedUrlCategoryOverrideResult struct {
 }
 
 func LookupPredefinedUrlCategoryOverrideOutput(ctx *pulumi.Context, args LookupPredefinedUrlCategoryOverrideOutputArgs, opts ...pulumi.InvokeOption) LookupPredefinedUrlCategoryOverrideResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPredefinedUrlCategoryOverrideResultOutput, error) {
-			args := v.(LookupPredefinedUrlCategoryOverrideArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudngfwaws:index/getPredefinedUrlCategoryOverride:getPredefinedUrlCategoryOverride", args, LookupPredefinedUrlCategoryOverrideResultOutput{}, options).(LookupPredefinedUrlCategoryOverrideResultOutput), nil
-		}).(LookupPredefinedUrlCategoryOverrideResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudngfwaws:index/getPredefinedUrlCategoryOverride:getPredefinedUrlCategoryOverride", args, LookupPredefinedUrlCategoryOverrideResultOutput{}, options).(LookupPredefinedUrlCategoryOverrideResultOutput)
 }
 
 // A collection of arguments for invoking getPredefinedUrlCategoryOverride.

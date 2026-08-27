@@ -100,12 +100,8 @@ type LookupCustomUrlCategoryResult struct {
 }
 
 func LookupCustomUrlCategoryOutput(ctx *pulumi.Context, args LookupCustomUrlCategoryOutputArgs, opts ...pulumi.InvokeOption) LookupCustomUrlCategoryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomUrlCategoryResultOutput, error) {
-			args := v.(LookupCustomUrlCategoryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("cloudngfwaws:index/getCustomUrlCategory:getCustomUrlCategory", args, LookupCustomUrlCategoryResultOutput{}, options).(LookupCustomUrlCategoryResultOutput), nil
-		}).(LookupCustomUrlCategoryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("cloudngfwaws:index/getCustomUrlCategory:getCustomUrlCategory", args, LookupCustomUrlCategoryResultOutput{}, options).(LookupCustomUrlCategoryResultOutput)
 }
 
 // A collection of arguments for invoking getCustomUrlCategory.
