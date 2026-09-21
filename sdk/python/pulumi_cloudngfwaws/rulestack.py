@@ -343,7 +343,7 @@ class Rulestack(pulumi.CustomResource):
                  lookup_x_forwarded_for: pulumi.Input[Optional[_builtins.str]] = None,
                  minimum_app_id_version: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 profile_config: pulumi.Input[Optional[Union['RulestackProfileConfigArgs', 'RulestackProfileConfigArgsDict']]] = None,
+                 profile_config: pulumi.Input[Optional[Union['RulestackProfileConfigArgs', 'RulestackProfileConfigArgsDict', 'outputs.RulestackProfileConfig']]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -362,13 +362,13 @@ class Rulestack(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.Rulestack("example",
+            profile_config={
+                "anti_spyware": "BestPractice",
+            },
             name="terraform-rulestack",
             scope="Local",
             account_id="123456789",
-            description="Made by Pulumi",
-            profile_config={
-                "anti_spyware": "BestPractice",
-            })
+            description="Made by Pulumi")
         ```
 
         ## Import
@@ -412,13 +412,13 @@ class Rulestack(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.Rulestack("example",
+            profile_config={
+                "anti_spyware": "BestPractice",
+            },
             name="terraform-rulestack",
             scope="Local",
             account_id="123456789",
-            description="Made by Pulumi",
-            profile_config={
-                "anti_spyware": "BestPractice",
-            })
+            description="Made by Pulumi")
         ```
 
         ## Import
@@ -451,7 +451,7 @@ class Rulestack(pulumi.CustomResource):
                  lookup_x_forwarded_for: pulumi.Input[Optional[_builtins.str]] = None,
                  minimum_app_id_version: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 profile_config: pulumi.Input[Optional[Union['RulestackProfileConfigArgs', 'RulestackProfileConfigArgsDict']]] = None,
+                 profile_config: pulumi.Input[Optional[Union['RulestackProfileConfigArgs', 'RulestackProfileConfigArgsDict', 'outputs.RulestackProfileConfig']]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -491,7 +491,7 @@ class Rulestack(pulumi.CustomResource):
             lookup_x_forwarded_for: pulumi.Input[Optional[_builtins.str]] = None,
             minimum_app_id_version: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            profile_config: pulumi.Input[Optional[Union['RulestackProfileConfigArgs', 'RulestackProfileConfigArgsDict']]] = None,
+            profile_config: pulumi.Input[Optional[Union['RulestackProfileConfigArgs', 'RulestackProfileConfigArgsDict', 'outputs.RulestackProfileConfig']]] = None,
             scope: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Rulestack':

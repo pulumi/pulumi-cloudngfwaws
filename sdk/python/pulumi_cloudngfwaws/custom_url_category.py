@@ -301,13 +301,13 @@ class CustomUrlCategory(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         r = cloudngfwaws.Rulestack("r",
+            profile_config={
+                "anti_spyware": "BestPractice",
+            },
             name="terraform-rulestack",
             scope="Local",
             account_id="123456789",
-            description="Made by Pulumi",
-            profile_config={
-                "anti_spyware": "BestPractice",
-            })
+            description="Made by Pulumi")
         example = cloudngfwaws.CustomUrlCategory("example",
             rulestack=r.name,
             name="tf-custom-category",
@@ -360,13 +360,13 @@ class CustomUrlCategory(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         r = cloudngfwaws.Rulestack("r",
+            profile_config={
+                "anti_spyware": "BestPractice",
+            },
             name="terraform-rulestack",
             scope="Local",
             account_id="123456789",
-            description="Made by Pulumi",
-            profile_config={
-                "anti_spyware": "BestPractice",
-            })
+            description="Made by Pulumi")
         example = cloudngfwaws.CustomUrlCategory("example",
             rulestack=r.name,
             name="tf-custom-category",

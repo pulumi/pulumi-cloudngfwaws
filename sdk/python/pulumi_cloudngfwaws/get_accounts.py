@@ -87,7 +87,7 @@ class AwaitableGetAccountsResult(GetAccountsResult):
             id=self.id)
 
 
-def get_accounts(account_details: Optional[Sequence[Union['GetAccountsAccountDetailArgs', 'GetAccountsAccountDetailArgsDict']]] = None,
+def get_accounts(account_details: Optional[Sequence[Union['GetAccountsAccountDetailArgs', 'GetAccountsAccountDetailArgsDict', 'outputs.GetAccountsAccountDetailResult']]] = None,
                  account_ids: Optional[Sequence[_builtins.str]] = None,
                  describe: Optional[_builtins.bool] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountsResult:
@@ -100,7 +100,7 @@ def get_accounts(account_details: Optional[Sequence[Union['GetAccountsAccountDet
     * `Global Rulestack` (for `scope="Global"`)
 
 
-    :param Sequence[Union['GetAccountsAccountDetailArgs', 'GetAccountsAccountDetailArgsDict']] account_details: List of account details.
+    :param Sequence[Union['GetAccountsAccountDetailArgs', 'GetAccountsAccountDetailArgsDict', 'outputs.GetAccountsAccountDetailResult']] account_details: List of account details.
     :param Sequence[_builtins.str] account_ids: List of account ids.
     :param _builtins.bool describe: Flag to include account details while listing accounts. Defaults to `false`.
     """
@@ -116,7 +116,7 @@ def get_accounts(account_details: Optional[Sequence[Union['GetAccountsAccountDet
         account_ids=pulumi.get(__ret__, 'account_ids'),
         describe=pulumi.get(__ret__, 'describe'),
         id=pulumi.get(__ret__, 'id'))
-def get_accounts_output(account_details: pulumi.Input[Optional[Optional[Sequence[Union['GetAccountsAccountDetailArgs', 'GetAccountsAccountDetailArgsDict']]]]] = None,
+def get_accounts_output(account_details: pulumi.Input[Optional[Optional[Sequence[Union['GetAccountsAccountDetailArgs', 'GetAccountsAccountDetailArgsDict', 'outputs.GetAccountsAccountDetailResult']]]]] = None,
                         account_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                         describe: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountsResult]:
@@ -129,7 +129,7 @@ def get_accounts_output(account_details: pulumi.Input[Optional[Optional[Sequence
     * `Global Rulestack` (for `scope="Global"`)
 
 
-    :param Sequence[Union['GetAccountsAccountDetailArgs', 'GetAccountsAccountDetailArgsDict']] account_details: List of account details.
+    :param Sequence[Union['GetAccountsAccountDetailArgs', 'GetAccountsAccountDetailArgsDict', 'outputs.GetAccountsAccountDetailResult']] account_details: List of account details.
     :param Sequence[_builtins.str] account_ids: List of account ids.
     :param _builtins.bool describe: Flag to include account details while listing accounts. Defaults to `false`.
     """

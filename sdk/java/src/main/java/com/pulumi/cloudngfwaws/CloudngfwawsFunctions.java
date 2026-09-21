@@ -791,13 +791,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getCertificate(GetCertificateArgs.builder()
@@ -850,13 +850,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getCertificate(GetCertificateArgs.builder()
@@ -909,13 +909,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getCertificate(GetCertificateArgs.builder()
@@ -968,13 +968,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getCertificate(GetCertificateArgs.builder()
@@ -1027,13 +1027,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getCertificate(GetCertificateArgs.builder()
@@ -1387,13 +1387,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getCustomUrlCategory(GetCustomUrlCategoryArgs.builder()
@@ -1446,13 +1446,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getCustomUrlCategory(GetCustomUrlCategoryArgs.builder()
@@ -1505,13 +1505,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getCustomUrlCategory(GetCustomUrlCategoryArgs.builder()
@@ -1564,13 +1564,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getCustomUrlCategory(GetCustomUrlCategoryArgs.builder()
@@ -1623,13 +1623,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getCustomUrlCategory(GetCustomUrlCategoryArgs.builder()
@@ -1682,13 +1682,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getFqdnList(GetFqdnListArgs.builder()
@@ -1741,13 +1741,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getFqdnList(GetFqdnListArgs.builder()
@@ -1800,13 +1800,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getFqdnList(GetFqdnListArgs.builder()
@@ -1859,13 +1859,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getFqdnList(GetFqdnListArgs.builder()
@@ -1918,13 +1918,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getFqdnList(GetFqdnListArgs.builder()
@@ -1977,13 +1977,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getIntelligentFeed(GetIntelligentFeedArgs.builder()
@@ -2036,13 +2036,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getIntelligentFeed(GetIntelligentFeedArgs.builder()
@@ -2095,13 +2095,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getIntelligentFeed(GetIntelligentFeedArgs.builder()
@@ -2154,13 +2154,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getIntelligentFeed(GetIntelligentFeedArgs.builder()
@@ -2213,13 +2213,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getIntelligentFeed(GetIntelligentFeedArgs.builder()
@@ -3504,13 +3504,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategoryOverride(GetPredefinedUrlCategoryOverrideArgs.builder()
@@ -3563,13 +3563,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategoryOverride(GetPredefinedUrlCategoryOverrideArgs.builder()
@@ -3622,13 +3622,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategoryOverride(GetPredefinedUrlCategoryOverrideArgs.builder()
@@ -3681,13 +3681,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategoryOverride(GetPredefinedUrlCategoryOverrideArgs.builder()
@@ -3740,13 +3740,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getPredefinedUrlCategoryOverride(GetPredefinedUrlCategoryOverrideArgs.builder()
@@ -3799,13 +3799,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getPrefixList(GetPrefixListArgs.builder()
@@ -3858,13 +3858,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getPrefixList(GetPrefixListArgs.builder()
@@ -3917,13 +3917,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getPrefixList(GetPrefixListArgs.builder()
@@ -3976,13 +3976,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getPrefixList(GetPrefixListArgs.builder()
@@ -4035,13 +4035,13 @@ public final class CloudngfwawsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
      *             .name("my-rulestack")
      *             .scope("Local")
      *             .accountId("12345")
      *             .description("Made by Pulumi")
-     *             .profileConfig(RulestackProfileConfigArgs.builder()
-     *                 .antiSpyware("BestPractice")
-     *                 .build())
      *             .build());
      * 
      *         final var example = CloudngfwawsFunctions.getPrefixList(GetPrefixListArgs.builder()

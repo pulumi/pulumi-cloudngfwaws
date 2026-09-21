@@ -29,23 +29,18 @@ namespace Pulumi.CloudNgfwAws
     /// {
     ///     var r = new CloudNgfwAws.Rulestack("r", new()
     ///     {
-    ///         Name = "terraform-rulestack",
-    ///         Scope = "Local",
-    ///         AccountId = "123456789",
-    ///         Description = "Made by Pulumi",
     ///         ProfileConfig = new CloudNgfwAws.Inputs.RulestackProfileConfigArgs
     ///         {
     ///             AntiSpyware = "BestPractice",
     ///         },
+    ///         Name = "terraform-rulestack",
+    ///         Scope = "Local",
+    ///         AccountId = "123456789",
+    ///         Description = "Made by Pulumi",
     ///     });
     /// 
     ///     var example = new CloudNgfwAws.SecurityRule("example", new()
     ///     {
-    ///         Rulestack = r.Name,
-    ///         RuleList = "LocalRule",
-    ///         Priority = 3,
-    ///         Name = "tf-security-rule",
-    ///         Description = "Also configured by Terraform",
     ///         Source = new CloudNgfwAws.Inputs.SecurityRuleSourceArgs
     ///         {
     ///             Cidrs = new[]
@@ -60,12 +55,17 @@ namespace Pulumi.CloudNgfwAws
     ///                 "192.168.0.0/16",
     ///             },
     ///         },
+    ///         Category = null,
+    ///         Rulestack = r.Name,
+    ///         RuleList = "LocalRule",
+    ///         Priority = 3,
+    ///         Name = "tf-security-rule",
+    ///         Description = "Also configured by Terraform",
     ///         NegateDestination = true,
     ///         Applications = new[]
     ///         {
     ///             "any",
     ///         },
-    ///         Category = null,
     ///         Action = "Allow",
     ///         Logging = true,
     ///         AuditComment = "initial config",

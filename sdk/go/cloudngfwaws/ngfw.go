@@ -74,11 +74,6 @@ import (
 //				return err
 //			}
 //			_, err = cloudngfwaws.NewNgfw(ctx, "example", &cloudngfwaws.NgfwArgs{
-//				Name:         pulumi.String("example-instance"),
-//				VpcId:        pulumi.Any(exampleAwsVpc.Id),
-//				AccountId:    pulumi.String("111111111111"),
-//				Description:  pulumi.String("Example description"),
-//				EndpointMode: pulumi.String("ServiceManaged"),
 //				SubnetMappings: cloudngfwaws.NgfwSubnetMappingArray{
 //					&cloudngfwaws.NgfwSubnetMappingArgs{
 //						SubnetId: pulumi.Any(subnet1.Id),
@@ -87,7 +82,12 @@ import (
 //						SubnetId: pulumi.Any(subnet2.Id),
 //					},
 //				},
-//				Rulestack: rs.Rulestack,
+//				Name:         pulumi.String("example-instance"),
+//				VpcId:        pulumi.Any(exampleAwsVpc.Id),
+//				AccountId:    pulumi.String("111111111111"),
+//				Description:  pulumi.String("Example description"),
+//				EndpointMode: pulumi.String("ServiceManaged"),
+//				Rulestack:    rs.Rulestack,
 //				Tags: pulumi.StringMap{
 //					"Foo": pulumi.String("bar"),
 //				},
@@ -129,11 +129,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudngfwaws.NewNgfw(ctx, "example", &cloudngfwaws.NgfwArgs{
-//				Name:         pulumi.String("example-instance"),
-//				VpcId:        pulumi.String("vpc-0a1b2c3d4e5f00001"),
-//				AccountId:    pulumi.String("111111111111"),
-//				Description:  pulumi.String("Example description"),
-//				EndpointMode: pulumi.String("CustomerManaged"),
+//				EgressNats: cloudngfwaws.NgfwEgressNatArray{
+//					&cloudngfwaws.NgfwEgressNatArgs{
+//						Settings: cloudngfwaws.NgfwEgressNatSettingArray{
+//							&cloudngfwaws.NgfwEgressNatSettingArgs{
+//								IpPoolType: pulumi.String("AWSService"),
+//							},
+//						},
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
 //				SubnetMappings: cloudngfwaws.NgfwSubnetMappingArray{
 //					&cloudngfwaws.NgfwSubnetMappingArgs{
 //						AvailabilityZone: pulumi.String("us-east-1a"),
@@ -142,17 +147,12 @@ import (
 //						AvailabilityZone: pulumi.String("us-east-1c"),
 //					},
 //				},
-//				Rulestack: pulumi.String("my-rulestack"),
-//				EgressNats: cloudngfwaws.NgfwEgressNatArray{
-//					&cloudngfwaws.NgfwEgressNatArgs{
-//						Enabled: pulumi.Bool(true),
-//						Settings: cloudngfwaws.NgfwEgressNatSettingArray{
-//							&cloudngfwaws.NgfwEgressNatSettingArgs{
-//								IpPoolType: pulumi.String("AWSService"),
-//							},
-//						},
-//					},
-//				},
+//				Name:         pulumi.String("example-instance"),
+//				VpcId:        pulumi.String("vpc-0a1b2c3d4e5f00001"),
+//				AccountId:    pulumi.String("111111111111"),
+//				Description:  pulumi.String("Example description"),
+//				EndpointMode: pulumi.String("CustomerManaged"),
+//				Rulestack:    pulumi.String("my-rulestack"),
 //				Tags: pulumi.StringMap{
 //					"Foo": pulumi.String("bar"),
 //				},
@@ -267,15 +267,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudngfwaws.NewNgfw(ctx, "example", &cloudngfwaws.NgfwArgs{
-//				Name:        pulumi.String("my-firewall"),
-//				Description: pulumi.String("My new firewall"),
-//				AzLists: pulumi.StringArray{
-//					pulumi.String("use1-az1"),
-//					pulumi.String("use1-az4"),
-//				},
-//				AllowlistAccounts: pulumi.StringArray{
-//					pulumi.String("111111111111"),
-//				},
 //				Endpoints: cloudngfwaws.NgfwEndpointArray{
 //					&cloudngfwaws.NgfwEndpointArgs{
 //						AccountId: pulumi.String("111111111111"),
@@ -289,6 +280,15 @@ import (
 //						SubnetId:  pulumi.String("subnet-0a1b2c3d4e5f00002"),
 //						Mode:      pulumi.String("ServiceManaged"),
 //					},
+//				},
+//				Name:        pulumi.String("my-firewall"),
+//				Description: pulumi.String("My new firewall"),
+//				AzLists: pulumi.StringArray{
+//					pulumi.String("use1-az1"),
+//					pulumi.String("use1-az4"),
+//				},
+//				AllowlistAccounts: pulumi.StringArray{
+//					pulumi.String("111111111111"),
 //				},
 //				Tags: pulumi.StringMap{
 //					"Owner": pulumi.String("my-team"),
@@ -330,14 +330,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudngfwaws.NewNgfw(ctx, "example", &cloudngfwaws.NgfwArgs{
-//				Name:        pulumi.String("my-firewall"),
-//				Description: pulumi.String("My new firewall"),
-//				AzLists: pulumi.StringArray{
-//					pulumi.String("use1-az1"),
-//					pulumi.String("use1-az4"),
-//				},
-//				AllowlistAccounts: pulumi.StringArray{
-//					pulumi.String("111111111111"),
+//				EgressNats: cloudngfwaws.NgfwEgressNatArray{
+//					&cloudngfwaws.NgfwEgressNatArgs{
+//						Settings: cloudngfwaws.NgfwEgressNatSettingArray{
+//							&cloudngfwaws.NgfwEgressNatSettingArgs{
+//								IpPoolType: pulumi.String("AWSService"),
+//							},
+//						},
+//						Enabled: pulumi.Bool(true),
+//					},
 //				},
 //				Endpoints: cloudngfwaws.NgfwEndpointArray{
 //					&cloudngfwaws.NgfwEndpointArgs{
@@ -353,15 +354,14 @@ import (
 //						Mode:      pulumi.String("ServiceManaged"),
 //					},
 //				},
-//				EgressNats: cloudngfwaws.NgfwEgressNatArray{
-//					&cloudngfwaws.NgfwEgressNatArgs{
-//						Enabled: pulumi.Bool(true),
-//						Settings: cloudngfwaws.NgfwEgressNatSettingArray{
-//							&cloudngfwaws.NgfwEgressNatSettingArgs{
-//								IpPoolType: pulumi.String("AWSService"),
-//							},
-//						},
-//					},
+//				Name:        pulumi.String("my-firewall"),
+//				Description: pulumi.String("My new firewall"),
+//				AzLists: pulumi.StringArray{
+//					pulumi.String("use1-az1"),
+//					pulumi.String("use1-az4"),
+//				},
+//				AllowlistAccounts: pulumi.StringArray{
+//					pulumi.String("111111111111"),
 //				},
 //				Tags: pulumi.StringMap{
 //					"Owner": pulumi.String("my-team"),

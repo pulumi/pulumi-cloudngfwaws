@@ -694,10 +694,10 @@ class SecurityRule(pulumi.CustomResource):
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  applications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  audit_comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 category: pulumi.Input[Optional[Union['SecurityRuleCategoryArgs', 'SecurityRuleCategoryArgsDict']]] = None,
+                 category: pulumi.Input[Optional[Union['SecurityRuleCategoryArgs', 'SecurityRuleCategoryArgsDict', 'outputs.SecurityRuleCategory']]] = None,
                  decryption_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination: pulumi.Input[Optional[Union['SecurityRuleDestinationArgs', 'SecurityRuleDestinationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['SecurityRuleDestinationArgs', 'SecurityRuleDestinationArgsDict', 'outputs.SecurityRuleDestination']]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  logging: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -709,7 +709,7 @@ class SecurityRule(pulumi.CustomResource):
                  rule_list: pulumi.Input[Optional[_builtins.str]] = None,
                  rulestack: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
-                 source: pulumi.Input[Optional[Union['SecurityRuleSourceArgs', 'SecurityRuleSourceArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['SecurityRuleSourceArgs', 'SecurityRuleSourceArgsDict', 'outputs.SecurityRuleSource']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -727,28 +727,28 @@ class SecurityRule(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         r = cloudngfwaws.Rulestack("r",
+            profile_config={
+                "anti_spyware": "BestPractice",
+            },
             name="terraform-rulestack",
             scope="Local",
             account_id="123456789",
-            description="Made by Pulumi",
-            profile_config={
-                "anti_spyware": "BestPractice",
-            })
+            description="Made by Pulumi")
         example = cloudngfwaws.SecurityRule("example",
-            rulestack=r.name,
-            rule_list="LocalRule",
-            priority=3,
-            name="tf-security-rule",
-            description="Also configured by Terraform",
             source={
                 "cidrs": ["any"],
             },
             destination={
                 "cidrs": ["192.168.0.0/16"],
             },
+            category={},
+            rulestack=r.name,
+            rule_list="LocalRule",
+            priority=3,
+            name="tf-security-rule",
+            description="Also configured by Terraform",
             negate_destination=True,
             applications=["any"],
-            category={},
             action="Allow",
             logging=True,
             audit_comment="initial config")
@@ -768,10 +768,10 @@ class SecurityRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] action: The action to take. Valid values are `Allow`, `DenySilent`, `DenyResetServer`, or `DenyResetBoth`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] applications: The list of applications.
         :param pulumi.Input[_builtins.str] audit_comment: The audit comment.
-        :param pulumi.Input[Union['SecurityRuleCategoryArgs', 'SecurityRuleCategoryArgsDict']] category: The category spec.
+        :param pulumi.Input[Union['SecurityRuleCategoryArgs', 'SecurityRuleCategoryArgsDict', 'outputs.SecurityRuleCategory']] category: The category spec.
         :param pulumi.Input[_builtins.str] decryption_rule_type: Decryption rule type. Valid values are ``or`SSLOutboundInspection`.
         :param pulumi.Input[_builtins.str] description: The description.
-        :param pulumi.Input[Union['SecurityRuleDestinationArgs', 'SecurityRuleDestinationArgsDict']] destination: The destination spec.
+        :param pulumi.Input[Union['SecurityRuleDestinationArgs', 'SecurityRuleDestinationArgsDict', 'outputs.SecurityRuleDestination']] destination: The destination spec.
         :param pulumi.Input[_builtins.bool] enabled: Set to false to disable this rule. Defaults to `true`.
         :param pulumi.Input[_builtins.bool] logging: Enable logging at end. Defaults to `true`.
         :param pulumi.Input[_builtins.str] name: The name.
@@ -783,7 +783,7 @@ class SecurityRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rule_list: The rulebase. Valid values are `PreRule`, `PostRule`, or `LocalRule`. Defaults to `PreRule`.
         :param pulumi.Input[_builtins.str] rulestack: The rulestack.
         :param pulumi.Input[_builtins.str] scope: The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
-        :param pulumi.Input[Union['SecurityRuleSourceArgs', 'SecurityRuleSourceArgsDict']] source: The source spec.
+        :param pulumi.Input[Union['SecurityRuleSourceArgs', 'SecurityRuleSourceArgsDict', 'outputs.SecurityRuleSource']] source: The source spec.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
         """
         ...
@@ -807,28 +807,28 @@ class SecurityRule(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         r = cloudngfwaws.Rulestack("r",
+            profile_config={
+                "anti_spyware": "BestPractice",
+            },
             name="terraform-rulestack",
             scope="Local",
             account_id="123456789",
-            description="Made by Pulumi",
-            profile_config={
-                "anti_spyware": "BestPractice",
-            })
+            description="Made by Pulumi")
         example = cloudngfwaws.SecurityRule("example",
-            rulestack=r.name,
-            rule_list="LocalRule",
-            priority=3,
-            name="tf-security-rule",
-            description="Also configured by Terraform",
             source={
                 "cidrs": ["any"],
             },
             destination={
                 "cidrs": ["192.168.0.0/16"],
             },
+            category={},
+            rulestack=r.name,
+            rule_list="LocalRule",
+            priority=3,
+            name="tf-security-rule",
+            description="Also configured by Terraform",
             negate_destination=True,
             applications=["any"],
-            category={},
             action="Allow",
             logging=True,
             audit_comment="initial config")
@@ -861,10 +861,10 @@ class SecurityRule(pulumi.CustomResource):
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  applications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  audit_comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 category: pulumi.Input[Optional[Union['SecurityRuleCategoryArgs', 'SecurityRuleCategoryArgsDict']]] = None,
+                 category: pulumi.Input[Optional[Union['SecurityRuleCategoryArgs', 'SecurityRuleCategoryArgsDict', 'outputs.SecurityRuleCategory']]] = None,
                  decryption_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 destination: pulumi.Input[Optional[Union['SecurityRuleDestinationArgs', 'SecurityRuleDestinationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['SecurityRuleDestinationArgs', 'SecurityRuleDestinationArgsDict', 'outputs.SecurityRuleDestination']]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  logging: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -876,7 +876,7 @@ class SecurityRule(pulumi.CustomResource):
                  rule_list: pulumi.Input[Optional[_builtins.str]] = None,
                  rulestack: pulumi.Input[Optional[_builtins.str]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
-                 source: pulumi.Input[Optional[Union['SecurityRuleSourceArgs', 'SecurityRuleSourceArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['SecurityRuleSourceArgs', 'SecurityRuleSourceArgsDict', 'outputs.SecurityRuleSource']]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -935,10 +935,10 @@ class SecurityRule(pulumi.CustomResource):
             action: pulumi.Input[Optional[_builtins.str]] = None,
             applications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             audit_comment: pulumi.Input[Optional[_builtins.str]] = None,
-            category: pulumi.Input[Optional[Union['SecurityRuleCategoryArgs', 'SecurityRuleCategoryArgsDict']]] = None,
+            category: pulumi.Input[Optional[Union['SecurityRuleCategoryArgs', 'SecurityRuleCategoryArgsDict', 'outputs.SecurityRuleCategory']]] = None,
             decryption_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            destination: pulumi.Input[Optional[Union['SecurityRuleDestinationArgs', 'SecurityRuleDestinationArgsDict']]] = None,
+            destination: pulumi.Input[Optional[Union['SecurityRuleDestinationArgs', 'SecurityRuleDestinationArgsDict', 'outputs.SecurityRuleDestination']]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             logging: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -950,7 +950,7 @@ class SecurityRule(pulumi.CustomResource):
             rule_list: pulumi.Input[Optional[_builtins.str]] = None,
             rulestack: pulumi.Input[Optional[_builtins.str]] = None,
             scope: pulumi.Input[Optional[_builtins.str]] = None,
-            source: pulumi.Input[Optional[Union['SecurityRuleSourceArgs', 'SecurityRuleSourceArgsDict']]] = None,
+            source: pulumi.Input[Optional[Union['SecurityRuleSourceArgs', 'SecurityRuleSourceArgsDict', 'outputs.SecurityRuleSource']]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             update_token: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityRule':
         """
@@ -963,10 +963,10 @@ class SecurityRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] action: The action to take. Valid values are `Allow`, `DenySilent`, `DenyResetServer`, or `DenyResetBoth`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] applications: The list of applications.
         :param pulumi.Input[_builtins.str] audit_comment: The audit comment.
-        :param pulumi.Input[Union['SecurityRuleCategoryArgs', 'SecurityRuleCategoryArgsDict']] category: The category spec.
+        :param pulumi.Input[Union['SecurityRuleCategoryArgs', 'SecurityRuleCategoryArgsDict', 'outputs.SecurityRuleCategory']] category: The category spec.
         :param pulumi.Input[_builtins.str] decryption_rule_type: Decryption rule type. Valid values are ``or`SSLOutboundInspection`.
         :param pulumi.Input[_builtins.str] description: The description.
-        :param pulumi.Input[Union['SecurityRuleDestinationArgs', 'SecurityRuleDestinationArgsDict']] destination: The destination spec.
+        :param pulumi.Input[Union['SecurityRuleDestinationArgs', 'SecurityRuleDestinationArgsDict', 'outputs.SecurityRuleDestination']] destination: The destination spec.
         :param pulumi.Input[_builtins.bool] enabled: Set to false to disable this rule. Defaults to `true`.
         :param pulumi.Input[_builtins.bool] logging: Enable logging at end. Defaults to `true`.
         :param pulumi.Input[_builtins.str] name: The name.
@@ -978,7 +978,7 @@ class SecurityRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rule_list: The rulebase. Valid values are `PreRule`, `PostRule`, or `LocalRule`. Defaults to `PreRule`.
         :param pulumi.Input[_builtins.str] rulestack: The rulestack.
         :param pulumi.Input[_builtins.str] scope: The rulestack's scope. A local rulestack will require that you've retrieved a LRA JWT. A global rulestack will require that you've retrieved a GRA JWT. Valid values are `Local` or `Global`. Defaults to `Local`.
-        :param pulumi.Input[Union['SecurityRuleSourceArgs', 'SecurityRuleSourceArgsDict']] source: The source spec.
+        :param pulumi.Input[Union['SecurityRuleSourceArgs', 'SecurityRuleSourceArgsDict', 'outputs.SecurityRuleSource']] source: The source spec.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
         :param pulumi.Input[_builtins.str] update_token: The update token.
         """

@@ -67,11 +67,6 @@ namespace Pulumi.CloudNgfwAws
     /// 
     ///     var example = new CloudNgfwAws.Ngfw("example", new()
     ///     {
-    ///         Name = "example-instance",
-    ///         VpcId = exampleAwsVpc.Id,
-    ///         AccountId = "111111111111",
-    ///         Description = "Example description",
-    ///         EndpointMode = "ServiceManaged",
     ///         SubnetMappings = new[]
     ///         {
     ///             new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs
@@ -83,6 +78,11 @@ namespace Pulumi.CloudNgfwAws
     ///                 SubnetId = subnet2.Id,
     ///             },
     ///         },
+    ///         Name = "example-instance",
+    ///         VpcId = exampleAwsVpc.Id,
+    ///         AccountId = "111111111111",
+    ///         Description = "Example description",
+    ///         EndpointMode = "ServiceManaged",
     ///         Rulestack = rs.Rulestack,
     ///         Tags = 
     ///         {
@@ -118,11 +118,20 @@ namespace Pulumi.CloudNgfwAws
     /// {
     ///     var example = new CloudNgfwAws.Ngfw("example", new()
     ///     {
-    ///         Name = "example-instance",
-    ///         VpcId = "vpc-0a1b2c3d4e5f00001",
-    ///         AccountId = "111111111111",
-    ///         Description = "Example description",
-    ///         EndpointMode = "CustomerManaged",
+    ///         EgressNats = new[]
+    ///         {
+    ///             new CloudNgfwAws.Inputs.NgfwEgressNatArgs
+    ///             {
+    ///                 Settings = new[]
+    ///                 {
+    ///                     new CloudNgfwAws.Inputs.NgfwEgressNatSettingArgs
+    ///                     {
+    ///                         IpPoolType = "AWSService",
+    ///                     },
+    ///                 },
+    ///                 Enabled = true,
+    ///             },
+    ///         },
     ///         SubnetMappings = new[]
     ///         {
     ///             new CloudNgfwAws.Inputs.NgfwSubnetMappingArgs
@@ -134,21 +143,12 @@ namespace Pulumi.CloudNgfwAws
     ///                 AvailabilityZone = "us-east-1c",
     ///             },
     ///         },
+    ///         Name = "example-instance",
+    ///         VpcId = "vpc-0a1b2c3d4e5f00001",
+    ///         AccountId = "111111111111",
+    ///         Description = "Example description",
+    ///         EndpointMode = "CustomerManaged",
     ///         Rulestack = "my-rulestack",
-    ///         EgressNats = new[]
-    ///         {
-    ///             new CloudNgfwAws.Inputs.NgfwEgressNatArgs
-    ///             {
-    ///                 Enabled = true,
-    ///                 Settings = new[]
-    ///                 {
-    ///                     new CloudNgfwAws.Inputs.NgfwEgressNatSettingArgs
-    ///                     {
-    ///                         IpPoolType = "AWSService",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
     ///         Tags = 
     ///         {
     ///             { "Foo", "bar" },
@@ -251,17 +251,6 @@ namespace Pulumi.CloudNgfwAws
     /// {
     ///     var example = new CloudNgfwAws.Ngfw("example", new()
     ///     {
-    ///         Name = "my-firewall",
-    ///         Description = "My new firewall",
-    ///         AzLists = new[]
-    ///         {
-    ///             "use1-az1",
-    ///             "use1-az4",
-    ///         },
-    ///         AllowlistAccounts = new[]
-    ///         {
-    ///             "111111111111",
-    ///         },
     ///         Endpoints = new[]
     ///         {
     ///             new CloudNgfwAws.Inputs.NgfwEndpointArgs
@@ -278,6 +267,17 @@ namespace Pulumi.CloudNgfwAws
     ///                 SubnetId = "subnet-0a1b2c3d4e5f00002",
     ///                 Mode = "ServiceManaged",
     ///             },
+    ///         },
+    ///         Name = "my-firewall",
+    ///         Description = "My new firewall",
+    ///         AzLists = new[]
+    ///         {
+    ///             "use1-az1",
+    ///             "use1-az4",
+    ///         },
+    ///         AllowlistAccounts = new[]
+    ///         {
+    ///             "111111111111",
     ///         },
     ///         Tags = 
     ///         {
@@ -312,16 +312,19 @@ namespace Pulumi.CloudNgfwAws
     /// {
     ///     var example = new CloudNgfwAws.Ngfw("example", new()
     ///     {
-    ///         Name = "my-firewall",
-    ///         Description = "My new firewall",
-    ///         AzLists = new[]
+    ///         EgressNats = new[]
     ///         {
-    ///             "use1-az1",
-    ///             "use1-az4",
-    ///         },
-    ///         AllowlistAccounts = new[]
-    ///         {
-    ///             "111111111111",
+    ///             new CloudNgfwAws.Inputs.NgfwEgressNatArgs
+    ///             {
+    ///                 Settings = new[]
+    ///                 {
+    ///                     new CloudNgfwAws.Inputs.NgfwEgressNatSettingArgs
+    ///                     {
+    ///                         IpPoolType = "AWSService",
+    ///                     },
+    ///                 },
+    ///                 Enabled = true,
+    ///             },
     ///         },
     ///         Endpoints = new[]
     ///         {
@@ -340,19 +343,16 @@ namespace Pulumi.CloudNgfwAws
     ///                 Mode = "ServiceManaged",
     ///             },
     ///         },
-    ///         EgressNats = new[]
+    ///         Name = "my-firewall",
+    ///         Description = "My new firewall",
+    ///         AzLists = new[]
     ///         {
-    ///             new CloudNgfwAws.Inputs.NgfwEgressNatArgs
-    ///             {
-    ///                 Enabled = true,
-    ///                 Settings = new[]
-    ///                 {
-    ///                     new CloudNgfwAws.Inputs.NgfwEgressNatSettingArgs
-    ///                     {
-    ///                         IpPoolType = "AWSService",
-    ///                     },
-    ///                 },
-    ///             },
+    ///             "use1-az1",
+    ///             "use1-az4",
+    ///         },
+    ///         AllowlistAccounts = new[]
+    ///         {
+    ///             "111111111111",
     ///         },
     ///         Tags = 
     ///         {

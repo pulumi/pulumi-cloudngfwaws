@@ -97,11 +97,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new Ngfw("example", NgfwArgs.builder()
- *             .name("example-instance")
- *             .vpcId(exampleAwsVpc.id())
- *             .accountId("111111111111")
- *             .description("Example description")
- *             .endpointMode("ServiceManaged")
  *             .subnetMappings(            
  *                 NgfwSubnetMappingArgs.builder()
  *                     .subnetId(subnet1.id())
@@ -109,6 +104,11 @@ import javax.annotation.Nullable;
  *                 NgfwSubnetMappingArgs.builder()
  *                     .subnetId(subnet2.id())
  *                     .build())
+ *             .name("example-instance")
+ *             .vpcId(exampleAwsVpc.id())
+ *             .accountId("111111111111")
+ *             .description("Example description")
+ *             .endpointMode("ServiceManaged")
  *             .rulestack(rs.rulestack())
  *             .tags(Map.of("Foo", "bar"))
  *             .build());
@@ -142,9 +142,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudngfwaws.Ngfw;
  * import com.pulumi.cloudngfwaws.NgfwArgs;
- * import com.pulumi.cloudngfwaws.inputs.NgfwSubnetMappingArgs;
  * import com.pulumi.cloudngfwaws.inputs.NgfwEgressNatArgs;
  * import com.pulumi.cloudngfwaws.inputs.NgfwEgressNatSettingArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwSubnetMappingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -159,11 +159,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Ngfw("example", NgfwArgs.builder()
- *             .name("example-instance")
- *             .vpcId("vpc-0a1b2c3d4e5f00001")
- *             .accountId("111111111111")
- *             .description("Example description")
- *             .endpointMode("CustomerManaged")
+ *             .egressNats(NgfwEgressNatArgs.builder()
+ *                 .settings(NgfwEgressNatSettingArgs.builder()
+ *                     .ipPoolType("AWSService")
+ *                     .build())
+ *                 .enabled(true)
+ *                 .build())
  *             .subnetMappings(            
  *                 NgfwSubnetMappingArgs.builder()
  *                     .availabilityZone("us-east-1a")
@@ -171,13 +172,12 @@ import javax.annotation.Nullable;
  *                 NgfwSubnetMappingArgs.builder()
  *                     .availabilityZone("us-east-1c")
  *                     .build())
+ *             .name("example-instance")
+ *             .vpcId("vpc-0a1b2c3d4e5f00001")
+ *             .accountId("111111111111")
+ *             .description("Example description")
+ *             .endpointMode("CustomerManaged")
  *             .rulestack("my-rulestack")
- *             .egressNats(NgfwEgressNatArgs.builder()
- *                 .enabled(true)
- *                 .settings(NgfwEgressNatSettingArgs.builder()
- *                     .ipPoolType("AWSService")
- *                     .build())
- *                 .build())
  *             .tags(Map.of("Foo", "bar"))
  *             .build());
  * 
@@ -300,12 +300,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Ngfw("example", NgfwArgs.builder()
- *             .name("my-firewall")
- *             .description("My new firewall")
- *             .azLists(            
- *                 "use1-az1",
- *                 "use1-az4")
- *             .allowlistAccounts("111111111111")
  *             .endpoints(            
  *                 NgfwEndpointArgs.builder()
  *                     .accountId("111111111111")
@@ -319,6 +313,12 @@ import javax.annotation.Nullable;
  *                     .subnetId("subnet-0a1b2c3d4e5f00002")
  *                     .mode("ServiceManaged")
  *                     .build())
+ *             .name("my-firewall")
+ *             .description("My new firewall")
+ *             .azLists(            
+ *                 "use1-az1",
+ *                 "use1-az4")
+ *             .allowlistAccounts("111111111111")
  *             .tags(Map.of("Owner", "my-team"))
  *             .build());
  * 
@@ -350,9 +350,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudngfwaws.Ngfw;
  * import com.pulumi.cloudngfwaws.NgfwArgs;
- * import com.pulumi.cloudngfwaws.inputs.NgfwEndpointArgs;
  * import com.pulumi.cloudngfwaws.inputs.NgfwEgressNatArgs;
  * import com.pulumi.cloudngfwaws.inputs.NgfwEgressNatSettingArgs;
+ * import com.pulumi.cloudngfwaws.inputs.NgfwEndpointArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -367,12 +367,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Ngfw("example", NgfwArgs.builder()
- *             .name("my-firewall")
- *             .description("My new firewall")
- *             .azLists(            
- *                 "use1-az1",
- *                 "use1-az4")
- *             .allowlistAccounts("111111111111")
+ *             .egressNats(NgfwEgressNatArgs.builder()
+ *                 .settings(NgfwEgressNatSettingArgs.builder()
+ *                     .ipPoolType("AWSService")
+ *                     .build())
+ *                 .enabled(true)
+ *                 .build())
  *             .endpoints(            
  *                 NgfwEndpointArgs.builder()
  *                     .accountId("111111111111")
@@ -386,12 +386,12 @@ import javax.annotation.Nullable;
  *                     .subnetId("subnet-0a1b2c3d4e5f00002")
  *                     .mode("ServiceManaged")
  *                     .build())
- *             .egressNats(NgfwEgressNatArgs.builder()
- *                 .enabled(true)
- *                 .settings(NgfwEgressNatSettingArgs.builder()
- *                     .ipPoolType("AWSService")
- *                     .build())
- *                 .build())
+ *             .name("my-firewall")
+ *             .description("My new firewall")
+ *             .azLists(            
+ *                 "use1-az1",
+ *                 "use1-az4")
+ *             .allowlistAccounts("111111111111")
  *             .tags(Map.of("Owner", "my-team"))
  *             .build());
  * 

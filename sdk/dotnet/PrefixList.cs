@@ -29,14 +29,14 @@ namespace Pulumi.CloudNgfwAws
     /// {
     ///     var r = new CloudNgfwAws.Rulestack("r", new()
     ///     {
-    ///         Name = "terraform-rulestack",
-    ///         Scope = "Local",
-    ///         AccountId = "123456789",
-    ///         Description = "Made by Pulumi",
     ///         ProfileConfig = new CloudNgfwAws.Inputs.RulestackProfileConfigArgs
     ///         {
     ///             AntiSpyware = "BestPractice",
     ///         },
+    ///         Name = "terraform-rulestack",
+    ///         Scope = "Local",
+    ///         AccountId = "123456789",
+    ///         Description = "Made by Pulumi",
     ///     });
     /// 
     ///     var example = new CloudNgfwAws.PrefixList("example", new()

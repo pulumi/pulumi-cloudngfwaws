@@ -789,20 +789,20 @@ class Ngfw(pulumi.CustomResource):
                  az_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  change_protections: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 egress_nats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEgressNatArgs', 'NgfwEgressNatArgsDict']]]]] = None,
+                 egress_nats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEgressNatArgs', 'NgfwEgressNatArgsDict', 'outputs.NgfwEgressNat']]]]] = None,
                  endpoint_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEndpointArgs', 'NgfwEndpointArgsDict']]]]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEndpointArgs', 'NgfwEndpointArgsDict', 'outputs.NgfwEndpoint']]]]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
                  global_rulestack: pulumi.Input[Optional[_builtins.str]] = None,
                  link_id: pulumi.Input[Optional[_builtins.str]] = None,
                  multi_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 private_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict']]]]] = None,
+                 private_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict', 'outputs.NgfwPrivateAccess']]]]] = None,
                  rulestack: pulumi.Input[Optional[_builtins.str]] = None,
-                 security_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict']]]]] = None,
-                 subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]]] = None,
+                 security_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict', 'outputs.NgfwSecurityZone']]]]] = None,
+                 subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict', 'outputs.NgfwSubnetMapping']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict']]]]] = None,
+                 user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict', 'outputs.NgfwUserId']]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -854,11 +854,6 @@ class Ngfw(pulumi.CustomResource):
 
         rs = cloudngfwaws.CommitRulestack("rs", rulestack="my-rulestack")
         example = cloudngfwaws.Ngfw("example",
-            name="example-instance",
-            vpc_id=example_aws_vpc["id"],
-            account_id="111111111111",
-            description="Example description",
-            endpoint_mode="ServiceManaged",
             subnet_mappings=[
                 {
                     "subnet_id": subnet1["id"],
@@ -867,6 +862,11 @@ class Ngfw(pulumi.CustomResource):
                     "subnet_id": subnet2["id"],
                 },
             ],
+            name="example-instance",
+            vpc_id=example_aws_vpc["id"],
+            account_id="111111111111",
+            description="Example description",
+            endpoint_mode="ServiceManaged",
             rulestack=rs.rulestack,
             tags={
                 "Foo": "bar",
@@ -893,11 +893,12 @@ class Ngfw(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.Ngfw("example",
-            name="example-instance",
-            vpc_id="vpc-0a1b2c3d4e5f00001",
-            account_id="111111111111",
-            description="Example description",
-            endpoint_mode="CustomerManaged",
+            egress_nats=[{
+                "settings": [{
+                    "ip_pool_type": "AWSService",
+                }],
+                "enabled": True,
+            }],
             subnet_mappings=[
                 {
                     "availability_zone": "us-east-1a",
@@ -906,13 +907,12 @@ class Ngfw(pulumi.CustomResource):
                     "availability_zone": "us-east-1c",
                 },
             ],
+            name="example-instance",
+            vpc_id="vpc-0a1b2c3d4e5f00001",
+            account_id="111111111111",
+            description="Example description",
+            endpoint_mode="CustomerManaged",
             rulestack="my-rulestack",
-            egress_nats=[{
-                "enabled": True,
-                "settings": [{
-                    "ip_pool_type": "AWSService",
-                }],
-            }],
             tags={
                 "Foo": "bar",
             })
@@ -993,13 +993,6 @@ class Ngfw(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.Ngfw("example",
-            name="my-firewall",
-            description="My new firewall",
-            az_lists=[
-                "use1-az1",
-                "use1-az4",
-            ],
-            allowlist_accounts=["111111111111"],
             endpoints=[
                 {
                     "account_id": "111111111111",
@@ -1014,6 +1007,13 @@ class Ngfw(pulumi.CustomResource):
                     "mode": "ServiceManaged",
                 },
             ],
+            name="my-firewall",
+            description="My new firewall",
+            az_lists=[
+                "use1-az1",
+                "use1-az4",
+            ],
+            allowlist_accounts=["111111111111"],
             tags={
                 "Owner": "my-team",
             })
@@ -1038,13 +1038,12 @@ class Ngfw(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.Ngfw("example",
-            name="my-firewall",
-            description="My new firewall",
-            az_lists=[
-                "use1-az1",
-                "use1-az4",
-            ],
-            allowlist_accounts=["111111111111"],
+            egress_nats=[{
+                "settings": [{
+                    "ip_pool_type": "AWSService",
+                }],
+                "enabled": True,
+            }],
             endpoints=[
                 {
                     "account_id": "111111111111",
@@ -1059,12 +1058,13 @@ class Ngfw(pulumi.CustomResource):
                     "mode": "ServiceManaged",
                 },
             ],
-            egress_nats=[{
-                "enabled": True,
-                "settings": [{
-                    "ip_pool_type": "AWSService",
-                }],
-            }],
+            name="my-firewall",
+            description="My new firewall",
+            az_lists=[
+                "use1-az1",
+                "use1-az4",
+            ],
+            allowlist_accounts=["111111111111"],
             tags={
                 "Owner": "my-team",
             })
@@ -1112,7 +1112,7 @@ class Ngfw(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] multi_vpc: Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
         :param pulumi.Input[_builtins.str] name: The NGFW name.
         :param pulumi.Input[_builtins.str] rulestack: The rulestack for this NGFW.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]] subnet_mappings: Subnet mappings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict', 'outputs.NgfwSubnetMapping']]]] subnet_mappings: Subnet mappings.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID for the NGFW.
         """
@@ -1171,11 +1171,6 @@ class Ngfw(pulumi.CustomResource):
 
         rs = cloudngfwaws.CommitRulestack("rs", rulestack="my-rulestack")
         example = cloudngfwaws.Ngfw("example",
-            name="example-instance",
-            vpc_id=example_aws_vpc["id"],
-            account_id="111111111111",
-            description="Example description",
-            endpoint_mode="ServiceManaged",
             subnet_mappings=[
                 {
                     "subnet_id": subnet1["id"],
@@ -1184,6 +1179,11 @@ class Ngfw(pulumi.CustomResource):
                     "subnet_id": subnet2["id"],
                 },
             ],
+            name="example-instance",
+            vpc_id=example_aws_vpc["id"],
+            account_id="111111111111",
+            description="Example description",
+            endpoint_mode="ServiceManaged",
             rulestack=rs.rulestack,
             tags={
                 "Foo": "bar",
@@ -1210,11 +1210,12 @@ class Ngfw(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.Ngfw("example",
-            name="example-instance",
-            vpc_id="vpc-0a1b2c3d4e5f00001",
-            account_id="111111111111",
-            description="Example description",
-            endpoint_mode="CustomerManaged",
+            egress_nats=[{
+                "settings": [{
+                    "ip_pool_type": "AWSService",
+                }],
+                "enabled": True,
+            }],
             subnet_mappings=[
                 {
                     "availability_zone": "us-east-1a",
@@ -1223,13 +1224,12 @@ class Ngfw(pulumi.CustomResource):
                     "availability_zone": "us-east-1c",
                 },
             ],
+            name="example-instance",
+            vpc_id="vpc-0a1b2c3d4e5f00001",
+            account_id="111111111111",
+            description="Example description",
+            endpoint_mode="CustomerManaged",
             rulestack="my-rulestack",
-            egress_nats=[{
-                "enabled": True,
-                "settings": [{
-                    "ip_pool_type": "AWSService",
-                }],
-            }],
             tags={
                 "Foo": "bar",
             })
@@ -1310,13 +1310,6 @@ class Ngfw(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.Ngfw("example",
-            name="my-firewall",
-            description="My new firewall",
-            az_lists=[
-                "use1-az1",
-                "use1-az4",
-            ],
-            allowlist_accounts=["111111111111"],
             endpoints=[
                 {
                     "account_id": "111111111111",
@@ -1331,6 +1324,13 @@ class Ngfw(pulumi.CustomResource):
                     "mode": "ServiceManaged",
                 },
             ],
+            name="my-firewall",
+            description="My new firewall",
+            az_lists=[
+                "use1-az1",
+                "use1-az4",
+            ],
+            allowlist_accounts=["111111111111"],
             tags={
                 "Owner": "my-team",
             })
@@ -1355,13 +1355,12 @@ class Ngfw(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.Ngfw("example",
-            name="my-firewall",
-            description="My new firewall",
-            az_lists=[
-                "use1-az1",
-                "use1-az4",
-            ],
-            allowlist_accounts=["111111111111"],
+            egress_nats=[{
+                "settings": [{
+                    "ip_pool_type": "AWSService",
+                }],
+                "enabled": True,
+            }],
             endpoints=[
                 {
                     "account_id": "111111111111",
@@ -1376,12 +1375,13 @@ class Ngfw(pulumi.CustomResource):
                     "mode": "ServiceManaged",
                 },
             ],
-            egress_nats=[{
-                "enabled": True,
-                "settings": [{
-                    "ip_pool_type": "AWSService",
-                }],
-            }],
+            name="my-firewall",
+            description="My new firewall",
+            az_lists=[
+                "use1-az1",
+                "use1-az4",
+            ],
+            allowlist_accounts=["111111111111"],
             tags={
                 "Owner": "my-team",
             })
@@ -1435,20 +1435,20 @@ class Ngfw(pulumi.CustomResource):
                  az_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  change_protections: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 egress_nats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEgressNatArgs', 'NgfwEgressNatArgsDict']]]]] = None,
+                 egress_nats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEgressNatArgs', 'NgfwEgressNatArgsDict', 'outputs.NgfwEgressNat']]]]] = None,
                  endpoint_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEndpointArgs', 'NgfwEndpointArgsDict']]]]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEndpointArgs', 'NgfwEndpointArgsDict', 'outputs.NgfwEndpoint']]]]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
                  global_rulestack: pulumi.Input[Optional[_builtins.str]] = None,
                  link_id: pulumi.Input[Optional[_builtins.str]] = None,
                  multi_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 private_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict']]]]] = None,
+                 private_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict', 'outputs.NgfwPrivateAccess']]]]] = None,
                  rulestack: pulumi.Input[Optional[_builtins.str]] = None,
-                 security_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict']]]]] = None,
-                 subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]]] = None,
+                 security_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict', 'outputs.NgfwSecurityZone']]]]] = None,
+                 subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict', 'outputs.NgfwSubnetMapping']]]]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict']]]]] = None,
+                 user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict', 'outputs.NgfwUserId']]]]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1504,24 +1504,24 @@ class Ngfw(pulumi.CustomResource):
             change_protections: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             deployment_update_token: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            egress_nats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEgressNatArgs', 'NgfwEgressNatArgsDict']]]]] = None,
+            egress_nats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEgressNatArgs', 'NgfwEgressNatArgsDict', 'outputs.NgfwEgressNat']]]]] = None,
             endpoint_mode: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint_service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEndpointArgs', 'NgfwEndpointArgsDict']]]]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEndpointArgs', 'NgfwEndpointArgsDict', 'outputs.NgfwEndpoint']]]]] = None,
             firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
             global_rulestack: pulumi.Input[Optional[_builtins.str]] = None,
             link_id: pulumi.Input[Optional[_builtins.str]] = None,
             link_status: pulumi.Input[Optional[_builtins.str]] = None,
             multi_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            private_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict']]]]] = None,
+            private_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict', 'outputs.NgfwPrivateAccess']]]]] = None,
             rulestack: pulumi.Input[Optional[_builtins.str]] = None,
-            security_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict']]]]] = None,
-            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwStatusArgs', 'NgfwStatusArgsDict']]]]] = None,
-            subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]]] = None,
+            security_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict', 'outputs.NgfwSecurityZone']]]]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwStatusArgs', 'NgfwStatusArgsDict', 'outputs.NgfwStatus']]]]] = None,
+            subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict', 'outputs.NgfwSubnetMapping']]]]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             update_token: pulumi.Input[Optional[_builtins.str]] = None,
-            user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict']]]]] = None,
+            user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict', 'outputs.NgfwUserId']]]]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Ngfw':
         """
         Get an existing Ngfw resource's state with the given name, id, and optional extra
@@ -1547,7 +1547,7 @@ class Ngfw(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] multi_vpc: Share NGFW with Multiple VPCs. This feature can be enabled only if the endpoint_mode is CustomerManaged.
         :param pulumi.Input[_builtins.str] name: The NGFW name.
         :param pulumi.Input[_builtins.str] rulestack: The rulestack for this NGFW.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict']]]] subnet_mappings: Subnet mappings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict', 'outputs.NgfwSubnetMapping']]]] subnet_mappings: Subnet mappings.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The tags.
         :param pulumi.Input[_builtins.str] update_token: The update token.
         :param pulumi.Input[_builtins.str] vpc_id: The VPC ID for the NGFW.

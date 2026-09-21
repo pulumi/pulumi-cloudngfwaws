@@ -72,8 +72,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new NgfwLogProfile("example", NgfwLogProfileArgs.builder()
- *             .ngfw(exampleCloudngfwawsNgfw.name())
- *             .accountId(exampleCloudngfwawsNgfw.accountId())
  *             .logDestinations(            
  *                 NgfwLogProfileLogDestinationArgs.builder()
  *                     .destinationType("S3")
@@ -90,6 +88,8 @@ import javax.annotation.Nullable;
  *                     .destination("my-firehose-stream")
  *                     .logType("DECRYPTION")
  *                     .build())
+ *             .ngfw(exampleCloudngfwawsNgfw.name())
+ *             .accountId(exampleCloudngfwawsNgfw.accountId())
  *             .build());
  * 
  *     }
@@ -133,8 +133,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new NgfwLogProfile("example", NgfwLogProfileArgs.builder()
- *             .ngfw(exampleCloudngfwawsNgfw.name())
- *             .accountId(exampleCloudngfwawsNgfw.accountId())
  *             .logConfig(NgfwLogProfileLogConfigArgs.builder()
  *                 .logDestinationType("S3")
  *                 .logDestination("my-s3-bucket")
@@ -143,6 +141,8 @@ import javax.annotation.Nullable;
  *                     "THREAT",
  *                     "DECRYPTION")
  *                 .build())
+ *             .ngfw(exampleCloudngfwawsNgfw.name())
+ *             .accountId(exampleCloudngfwawsNgfw.accountId())
  *             .build());
  * 
  *     }
@@ -176,8 +176,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new NgfwLogProfile("example", NgfwLogProfileArgs.builder()
- *             .ngfw(exampleCloudngfwawsNgfw.name())
- *             .accountId(exampleCloudngfwawsNgfw.accountId())
  *             .logConfig(NgfwLogProfileLogConfigArgs.builder()
  *                 .logDestinationType("CloudWatchLogs")
  *                 .logDestination("arn:aws:logs:us-east-1:222222222222:log-group:my-log-group")
@@ -187,6 +185,8 @@ import javax.annotation.Nullable;
  *                 .roleType("CrossAccount")
  *                 .accountId("222222222222")
  *                 .build())
+ *             .ngfw(exampleCloudngfwawsNgfw.name())
+ *             .accountId(exampleCloudngfwawsNgfw.accountId())
  *             .build());
  * 
  *     }
@@ -220,10 +220,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new NgfwLogProfile("example", NgfwLogProfileArgs.builder()
- *             .ngfw(exampleCloudngfwawsNgfw.name())
- *             .accountId(exampleCloudngfwawsNgfw.accountId())
- *             .advancedThreatLog(true)
- *             .cloudWatchMetricNamespace("CloudNGFW")
  *             .logConfig(NgfwLogProfileLogConfigArgs.builder()
  *                 .logDestinationType("KinesisDataFirehose")
  *                 .logDestination("my-firehose-stream")
@@ -232,6 +228,10 @@ import javax.annotation.Nullable;
  *                     "THREAT",
  *                     "DECRYPTION")
  *                 .build())
+ *             .ngfw(exampleCloudngfwawsNgfw.name())
+ *             .accountId(exampleCloudngfwawsNgfw.accountId())
+ *             .advancedThreatLog(true)
+ *             .cloudWatchMetricNamespace("CloudNGFW")
  *             .build());
  * 
  *     }

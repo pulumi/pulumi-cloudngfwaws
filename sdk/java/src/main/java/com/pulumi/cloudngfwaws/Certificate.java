@@ -51,13 +51,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var r = new Rulestack("r", RulestackArgs.builder()
+ *             .profileConfig(RulestackProfileConfigArgs.builder()
+ *                 .antiSpyware("BestPractice")
+ *                 .build())
  *             .name("terraform-rulestack")
  *             .scope("Local")
  *             .accountId("123456789")
  *             .description("Made by Pulumi")
- *             .profileConfig(RulestackProfileConfigArgs.builder()
- *                 .antiSpyware("BestPractice")
- *                 .build())
  *             .build());
  * 
  *         var example = new Certificate("example", CertificateArgs.builder()

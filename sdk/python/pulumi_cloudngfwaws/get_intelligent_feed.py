@@ -213,13 +213,13 @@ def get_intelligent_feed(config_type: Optional[_builtins.str] = None,
     import pulumi_cloudngfwaws as cloudngfwaws
 
     r = cloudngfwaws.Rulestack("r",
+        profile_config={
+            "anti_spyware": "BestPractice",
+        },
         name="my-rulestack",
         scope="Local",
         account_id="12345",
-        description="Made by Pulumi",
-        profile_config={
-            "anti_spyware": "BestPractice",
-        })
+        description="Made by Pulumi")
     example = cloudngfwaws.get_intelligent_feed_output(rulestack=r.name,
         name="foobar")
     ```
@@ -272,13 +272,13 @@ def get_intelligent_feed_output(config_type: pulumi.Input[Optional[Optional[_bui
     import pulumi_cloudngfwaws as cloudngfwaws
 
     r = cloudngfwaws.Rulestack("r",
+        profile_config={
+            "anti_spyware": "BestPractice",
+        },
         name="my-rulestack",
         scope="Local",
         account_id="12345",
-        description="Made by Pulumi",
-        profile_config={
-            "anti_spyware": "BestPractice",
-        })
+        description="Made by Pulumi")
     example = cloudngfwaws.get_intelligent_feed_output(rulestack=r.name,
         name="foobar")
     ```

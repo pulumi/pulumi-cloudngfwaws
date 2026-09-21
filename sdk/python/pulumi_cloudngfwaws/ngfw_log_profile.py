@@ -351,8 +351,8 @@ class NgfwLogProfile(pulumi.CustomResource):
                  cloud_watch_metric_namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  cloudwatch_metric_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 log_config: pulumi.Input[Optional[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict']]] = None,
-                 log_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict']]]]] = None,
+                 log_config: pulumi.Input[Optional[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict', 'outputs.NgfwLogProfileLogConfig']]] = None,
+                 log_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict', 'outputs.NgfwLogProfileLogDestination']]]]] = None,
                  ngfw: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -391,8 +391,6 @@ class NgfwLogProfile(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.NgfwLogProfile("example",
-            ngfw=example_cloudngfwaws_ngfw["name"],
-            account_id=example_cloudngfwaws_ngfw["accountId"],
             log_destinations=[
                 {
                     "destination_type": "S3",
@@ -409,7 +407,9 @@ class NgfwLogProfile(pulumi.CustomResource):
                     "destination": "my-firehose-stream",
                     "log_type": "DECRYPTION",
                 },
-            ])
+            ],
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"])
         ```
 
         **To add a destination:** add another `log_destination` block and re-apply.
@@ -429,8 +429,6 @@ class NgfwLogProfile(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.NgfwLogProfile("example",
-            ngfw=example_cloudngfwaws_ngfw["name"],
-            account_id=example_cloudngfwaws_ngfw["accountId"],
             log_config={
                 "log_destination_type": "S3",
                 "log_destination": "my-s3-bucket",
@@ -439,7 +437,9 @@ class NgfwLogProfile(pulumi.CustomResource):
                     "THREAT",
                     "DECRYPTION",
                 ],
-            })
+            },
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"])
         ```
 
         **Full example — V2 log profile with cross-account delivery:**
@@ -449,8 +449,6 @@ class NgfwLogProfile(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.NgfwLogProfile("example",
-            ngfw=example_cloudngfwaws_ngfw["name"],
-            account_id=example_cloudngfwaws_ngfw["accountId"],
             log_config={
                 "log_destination_type": "CloudWatchLogs",
                 "log_destination": "arn:aws:logs:us-east-1:222222222222:log-group:my-log-group",
@@ -460,7 +458,9 @@ class NgfwLogProfile(pulumi.CustomResource):
                 ],
                 "role_type": "CrossAccount",
                 "account_id": "222222222222",
-            })
+            },
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"])
         ```
 
         **Full example — V2 log profile with advanced threat logging and CloudWatch metrics:**
@@ -470,10 +470,6 @@ class NgfwLogProfile(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.NgfwLogProfile("example",
-            ngfw=example_cloudngfwaws_ngfw["name"],
-            account_id=example_cloudngfwaws_ngfw["accountId"],
-            advanced_threat_log=True,
-            cloud_watch_metric_namespace="CloudNGFW",
             log_config={
                 "log_destination_type": "KinesisDataFirehose",
                 "log_destination": "my-firehose-stream",
@@ -482,7 +478,11 @@ class NgfwLogProfile(pulumi.CustomResource):
                     "THREAT",
                     "DECRYPTION",
                 ],
-            })
+            },
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"],
+            advanced_threat_log=True,
+            cloud_watch_metric_namespace="CloudNGFW")
         ```
 
         ***
@@ -503,8 +503,8 @@ class NgfwLogProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cloud_watch_metric_namespace: The CloudWatch metric namespace.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cloudwatch_metric_fields: Cloudwatch metric fields.
         :param pulumi.Input[_builtins.str] firewall_id: The Firewall Id for the NGFW.
-        :param pulumi.Input[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict']] log_config: Log configuration details.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict']]]] log_destinations: List of log destinations.
+        :param pulumi.Input[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict', 'outputs.NgfwLogProfileLogConfig']] log_config: Log configuration details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict', 'outputs.NgfwLogProfileLogDestination']]]] log_destinations: List of log destinations.
         :param pulumi.Input[_builtins.str] ngfw: The name of the NGFW.
         :param pulumi.Input[_builtins.str] region: The region of the NGFW.
         """
@@ -549,8 +549,6 @@ class NgfwLogProfile(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.NgfwLogProfile("example",
-            ngfw=example_cloudngfwaws_ngfw["name"],
-            account_id=example_cloudngfwaws_ngfw["accountId"],
             log_destinations=[
                 {
                     "destination_type": "S3",
@@ -567,7 +565,9 @@ class NgfwLogProfile(pulumi.CustomResource):
                     "destination": "my-firehose-stream",
                     "log_type": "DECRYPTION",
                 },
-            ])
+            ],
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"])
         ```
 
         **To add a destination:** add another `log_destination` block and re-apply.
@@ -587,8 +587,6 @@ class NgfwLogProfile(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.NgfwLogProfile("example",
-            ngfw=example_cloudngfwaws_ngfw["name"],
-            account_id=example_cloudngfwaws_ngfw["accountId"],
             log_config={
                 "log_destination_type": "S3",
                 "log_destination": "my-s3-bucket",
@@ -597,7 +595,9 @@ class NgfwLogProfile(pulumi.CustomResource):
                     "THREAT",
                     "DECRYPTION",
                 ],
-            })
+            },
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"])
         ```
 
         **Full example — V2 log profile with cross-account delivery:**
@@ -607,8 +607,6 @@ class NgfwLogProfile(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.NgfwLogProfile("example",
-            ngfw=example_cloudngfwaws_ngfw["name"],
-            account_id=example_cloudngfwaws_ngfw["accountId"],
             log_config={
                 "log_destination_type": "CloudWatchLogs",
                 "log_destination": "arn:aws:logs:us-east-1:222222222222:log-group:my-log-group",
@@ -618,7 +616,9 @@ class NgfwLogProfile(pulumi.CustomResource):
                 ],
                 "role_type": "CrossAccount",
                 "account_id": "222222222222",
-            })
+            },
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"])
         ```
 
         **Full example — V2 log profile with advanced threat logging and CloudWatch metrics:**
@@ -628,10 +628,6 @@ class NgfwLogProfile(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         example = cloudngfwaws.NgfwLogProfile("example",
-            ngfw=example_cloudngfwaws_ngfw["name"],
-            account_id=example_cloudngfwaws_ngfw["accountId"],
-            advanced_threat_log=True,
-            cloud_watch_metric_namespace="CloudNGFW",
             log_config={
                 "log_destination_type": "KinesisDataFirehose",
                 "log_destination": "my-firehose-stream",
@@ -640,7 +636,11 @@ class NgfwLogProfile(pulumi.CustomResource):
                     "THREAT",
                     "DECRYPTION",
                 ],
-            })
+            },
+            ngfw=example_cloudngfwaws_ngfw["name"],
+            account_id=example_cloudngfwaws_ngfw["accountId"],
+            advanced_threat_log=True,
+            cloud_watch_metric_namespace="CloudNGFW")
         ```
 
         ***
@@ -674,8 +674,8 @@ class NgfwLogProfile(pulumi.CustomResource):
                  cloud_watch_metric_namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  cloudwatch_metric_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 log_config: pulumi.Input[Optional[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict']]] = None,
-                 log_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict']]]]] = None,
+                 log_config: pulumi.Input[Optional[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict', 'outputs.NgfwLogProfileLogConfig']]] = None,
+                 log_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict', 'outputs.NgfwLogProfileLogDestination']]]]] = None,
                  ngfw: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -712,8 +712,8 @@ class NgfwLogProfile(pulumi.CustomResource):
             cloud_watch_metric_namespace: pulumi.Input[Optional[_builtins.str]] = None,
             cloudwatch_metric_fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
-            log_config: pulumi.Input[Optional[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict']]] = None,
-            log_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict']]]]] = None,
+            log_config: pulumi.Input[Optional[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict', 'outputs.NgfwLogProfileLogConfig']]] = None,
+            log_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict', 'outputs.NgfwLogProfileLogDestination']]]]] = None,
             ngfw: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             update_token: pulumi.Input[Optional[_builtins.str]] = None) -> 'NgfwLogProfile':
@@ -729,8 +729,8 @@ class NgfwLogProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cloud_watch_metric_namespace: The CloudWatch metric namespace.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cloudwatch_metric_fields: Cloudwatch metric fields.
         :param pulumi.Input[_builtins.str] firewall_id: The Firewall Id for the NGFW.
-        :param pulumi.Input[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict']] log_config: Log configuration details.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict']]]] log_destinations: List of log destinations.
+        :param pulumi.Input[Union['NgfwLogProfileLogConfigArgs', 'NgfwLogProfileLogConfigArgsDict', 'outputs.NgfwLogProfileLogConfig']] log_config: Log configuration details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NgfwLogProfileLogDestinationArgs', 'NgfwLogProfileLogDestinationArgsDict', 'outputs.NgfwLogProfileLogDestination']]]] log_destinations: List of log destinations.
         :param pulumi.Input[_builtins.str] ngfw: The name of the NGFW.
         :param pulumi.Input[_builtins.str] region: The region of the NGFW.
         :param pulumi.Input[_builtins.str] update_token: The update token.
