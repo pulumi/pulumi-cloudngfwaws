@@ -33,14 +33,14 @@ namespace Pulumi.CloudNgfwAws
         /// {
         ///     var r = new CloudNgfwAws.Rulestack("r", new()
         ///     {
-        ///         Name = "my-rulestack",
-        ///         Scope = "Local",
-        ///         AccountId = "12345",
-        ///         Description = "Made by Pulumi",
         ///         ProfileConfig = new CloudNgfwAws.Inputs.RulestackProfileConfigArgs
         ///         {
         ///             AntiSpyware = "BestPractice",
         ///         },
+        ///         Name = "my-rulestack",
+        ///         Scope = "Local",
+        ///         AccountId = "12345",
+        ///         Description = "Made by Pulumi",
         ///     });
         /// 
         ///     var example = CloudNgfwAws.GetPrefixList.Invoke(new()
@@ -77,14 +77,14 @@ namespace Pulumi.CloudNgfwAws
         /// {
         ///     var r = new CloudNgfwAws.Rulestack("r", new()
         ///     {
-        ///         Name = "my-rulestack",
-        ///         Scope = "Local",
-        ///         AccountId = "12345",
-        ///         Description = "Made by Pulumi",
         ///         ProfileConfig = new CloudNgfwAws.Inputs.RulestackProfileConfigArgs
         ///         {
         ///             AntiSpyware = "BestPractice",
         ///         },
+        ///         Name = "my-rulestack",
+        ///         Scope = "Local",
+        ///         AccountId = "12345",
+        ///         Description = "Made by Pulumi",
         ///     });
         /// 
         ///     var example = CloudNgfwAws.GetPrefixList.Invoke(new()
@@ -121,14 +121,14 @@ namespace Pulumi.CloudNgfwAws
         /// {
         ///     var r = new CloudNgfwAws.Rulestack("r", new()
         ///     {
-        ///         Name = "my-rulestack",
-        ///         Scope = "Local",
-        ///         AccountId = "12345",
-        ///         Description = "Made by Pulumi",
         ///         ProfileConfig = new CloudNgfwAws.Inputs.RulestackProfileConfigArgs
         ///         {
         ///             AntiSpyware = "BestPractice",
         ///         },
+        ///         Name = "my-rulestack",
+        ///         Scope = "Local",
+        ///         AccountId = "12345",
+        ///         Description = "Made by Pulumi",
         ///     });
         /// 
         ///     var example = CloudNgfwAws.GetPrefixList.Invoke(new()

@@ -53,8 +53,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudngfwaws.NewNgfwLogProfile(ctx, "example", &cloudngfwaws.NgfwLogProfileArgs{
-//				Ngfw:      pulumi.Any(exampleCloudngfwawsNgfw.Name),
-//				AccountId: pulumi.Any(exampleCloudngfwawsNgfw.AccountId),
 //				LogDestinations: cloudngfwaws.NgfwLogProfileLogDestinationArray{
 //					&cloudngfwaws.NgfwLogProfileLogDestinationArgs{
 //						DestinationType: pulumi.String("S3"),
@@ -72,6 +70,8 @@ import (
 //						LogType:         pulumi.String("DECRYPTION"),
 //					},
 //				},
+//				Ngfw:      pulumi.Any(exampleCloudngfwawsNgfw.Name),
+//				AccountId: pulumi.Any(exampleCloudngfwawsNgfw.AccountId),
 //			})
 //			if err != nil {
 //				return err
@@ -107,8 +107,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudngfwaws.NewNgfwLogProfile(ctx, "example", &cloudngfwaws.NgfwLogProfileArgs{
-//				Ngfw:      pulumi.Any(exampleCloudngfwawsNgfw.Name),
-//				AccountId: pulumi.Any(exampleCloudngfwawsNgfw.AccountId),
 //				LogConfig: &cloudngfwaws.NgfwLogProfileLogConfigArgs{
 //					LogDestinationType: pulumi.String("S3"),
 //					LogDestination:     pulumi.String("my-s3-bucket"),
@@ -118,6 +116,8 @@ import (
 //						pulumi.String("DECRYPTION"),
 //					},
 //				},
+//				Ngfw:      pulumi.Any(exampleCloudngfwawsNgfw.Name),
+//				AccountId: pulumi.Any(exampleCloudngfwawsNgfw.AccountId),
 //			})
 //			if err != nil {
 //				return err
@@ -143,8 +143,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudngfwaws.NewNgfwLogProfile(ctx, "example", &cloudngfwaws.NgfwLogProfileArgs{
-//				Ngfw:      pulumi.Any(exampleCloudngfwawsNgfw.Name),
-//				AccountId: pulumi.Any(exampleCloudngfwawsNgfw.AccountId),
 //				LogConfig: &cloudngfwaws.NgfwLogProfileLogConfigArgs{
 //					LogDestinationType: pulumi.String("CloudWatchLogs"),
 //					LogDestination:     pulumi.String("arn:aws:logs:us-east-1:222222222222:log-group:my-log-group"),
@@ -155,6 +153,8 @@ import (
 //					RoleType:  pulumi.String("CrossAccount"),
 //					AccountId: pulumi.String("222222222222"),
 //				},
+//				Ngfw:      pulumi.Any(exampleCloudngfwawsNgfw.Name),
+//				AccountId: pulumi.Any(exampleCloudngfwawsNgfw.AccountId),
 //			})
 //			if err != nil {
 //				return err
@@ -180,10 +180,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudngfwaws.NewNgfwLogProfile(ctx, "example", &cloudngfwaws.NgfwLogProfileArgs{
-//				Ngfw:                      pulumi.Any(exampleCloudngfwawsNgfw.Name),
-//				AccountId:                 pulumi.Any(exampleCloudngfwawsNgfw.AccountId),
-//				AdvancedThreatLog:         pulumi.Bool(true),
-//				CloudWatchMetricNamespace: pulumi.String("CloudNGFW"),
 //				LogConfig: &cloudngfwaws.NgfwLogProfileLogConfigArgs{
 //					LogDestinationType: pulumi.String("KinesisDataFirehose"),
 //					LogDestination:     pulumi.String("my-firehose-stream"),
@@ -193,6 +189,10 @@ import (
 //						pulumi.String("DECRYPTION"),
 //					},
 //				},
+//				Ngfw:                      pulumi.Any(exampleCloudngfwawsNgfw.Name),
+//				AccountId:                 pulumi.Any(exampleCloudngfwawsNgfw.AccountId),
+//				AdvancedThreatLog:         pulumi.Bool(true),
+//				CloudWatchMetricNamespace: pulumi.String("CloudNGFW"),
 //			})
 //			if err != nil {
 //				return err

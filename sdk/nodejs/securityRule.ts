@@ -21,29 +21,29 @@ import * as utilities from "./utilities";
  * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
  *
  * const r = new cloudngfwaws.Rulestack("r", {
+ *     profileConfig: {
+ *         antiSpyware: "BestPractice",
+ *     },
  *     name: "terraform-rulestack",
  *     scope: "Local",
  *     accountId: "123456789",
  *     description: "Made by Pulumi",
- *     profileConfig: {
- *         antiSpyware: "BestPractice",
- *     },
  * });
  * const example = new cloudngfwaws.SecurityRule("example", {
- *     rulestack: r.name,
- *     ruleList: "LocalRule",
- *     priority: 3,
- *     name: "tf-security-rule",
- *     description: "Also configured by Terraform",
  *     source: {
  *         cidrs: ["any"],
  *     },
  *     destination: {
  *         cidrs: ["192.168.0.0/16"],
  *     },
+ *     category: {},
+ *     rulestack: r.name,
+ *     ruleList: "LocalRule",
+ *     priority: 3,
+ *     name: "tf-security-rule",
+ *     description: "Also configured by Terraform",
  *     negateDestination: true,
  *     applications: ["any"],
- *     category: {},
  *     action: "Allow",
  *     logging: true,
  *     auditComment: "initial config",

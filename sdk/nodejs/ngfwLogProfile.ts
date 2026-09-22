@@ -41,8 +41,6 @@ import * as utilities from "./utilities";
  * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
  *
  * const example = new cloudngfwaws.NgfwLogProfile("example", {
- *     ngfw: exampleCloudngfwawsNgfw.name,
- *     accountId: exampleCloudngfwawsNgfw.accountId,
  *     logDestinations: [
  *         {
  *             destinationType: "S3",
@@ -60,6 +58,8 @@ import * as utilities from "./utilities";
  *             logType: "DECRYPTION",
  *         },
  *     ],
+ *     ngfw: exampleCloudngfwawsNgfw.name,
+ *     accountId: exampleCloudngfwawsNgfw.accountId,
  * });
  * ```
  *
@@ -80,8 +80,6 @@ import * as utilities from "./utilities";
  * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
  *
  * const example = new cloudngfwaws.NgfwLogProfile("example", {
- *     ngfw: exampleCloudngfwawsNgfw.name,
- *     accountId: exampleCloudngfwawsNgfw.accountId,
  *     logConfig: {
  *         logDestinationType: "S3",
  *         logDestination: "my-s3-bucket",
@@ -91,6 +89,8 @@ import * as utilities from "./utilities";
  *             "DECRYPTION",
  *         ],
  *     },
+ *     ngfw: exampleCloudngfwawsNgfw.name,
+ *     accountId: exampleCloudngfwawsNgfw.accountId,
  * });
  * ```
  *
@@ -101,8 +101,6 @@ import * as utilities from "./utilities";
  * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
  *
  * const example = new cloudngfwaws.NgfwLogProfile("example", {
- *     ngfw: exampleCloudngfwawsNgfw.name,
- *     accountId: exampleCloudngfwawsNgfw.accountId,
  *     logConfig: {
  *         logDestinationType: "CloudWatchLogs",
  *         logDestination: "arn:aws:logs:us-east-1:222222222222:log-group:my-log-group",
@@ -113,6 +111,8 @@ import * as utilities from "./utilities";
  *         roleType: "CrossAccount",
  *         accountId: "222222222222",
  *     },
+ *     ngfw: exampleCloudngfwawsNgfw.name,
+ *     accountId: exampleCloudngfwawsNgfw.accountId,
  * });
  * ```
  *
@@ -123,10 +123,6 @@ import * as utilities from "./utilities";
  * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
  *
  * const example = new cloudngfwaws.NgfwLogProfile("example", {
- *     ngfw: exampleCloudngfwawsNgfw.name,
- *     accountId: exampleCloudngfwawsNgfw.accountId,
- *     advancedThreatLog: true,
- *     cloudWatchMetricNamespace: "CloudNGFW",
  *     logConfig: {
  *         logDestinationType: "KinesisDataFirehose",
  *         logDestination: "my-firehose-stream",
@@ -136,6 +132,10 @@ import * as utilities from "./utilities";
  *             "DECRYPTION",
  *         ],
  *     },
+ *     ngfw: exampleCloudngfwawsNgfw.name,
+ *     accountId: exampleCloudngfwawsNgfw.accountId,
+ *     advancedThreatLog: true,
+ *     cloudWatchMetricNamespace: "CloudNGFW",
  * });
  * ```
  *

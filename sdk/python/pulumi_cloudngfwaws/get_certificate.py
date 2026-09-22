@@ -177,13 +177,13 @@ def get_certificate(config_type: Optional[_builtins.str] = None,
     import pulumi_cloudngfwaws as cloudngfwaws
 
     r = cloudngfwaws.Rulestack("r",
+        profile_config={
+            "anti_spyware": "BestPractice",
+        },
         name="my-rulestack",
         scope="Local",
         account_id="12345",
-        description="Made by Pulumi",
-        profile_config={
-            "anti_spyware": "BestPractice",
-        })
+        description="Made by Pulumi")
     example = cloudngfwaws.get_certificate_output(rulestack=r.name,
         name="foobar")
     ```
@@ -233,13 +233,13 @@ def get_certificate_output(config_type: pulumi.Input[Optional[Optional[_builtins
     import pulumi_cloudngfwaws as cloudngfwaws
 
     r = cloudngfwaws.Rulestack("r",
+        profile_config={
+            "anti_spyware": "BestPractice",
+        },
         name="my-rulestack",
         scope="Local",
         account_id="12345",
-        description="Made by Pulumi",
-        profile_config={
-            "anti_spyware": "BestPractice",
-        })
+        description="Made by Pulumi")
     example = cloudngfwaws.get_certificate_output(rulestack=r.name,
         name="foobar")
     ```

@@ -33,13 +33,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			r, err := cloudngfwaws.NewRulestack(ctx, "r", &cloudngfwaws.RulestackArgs{
+//				ProfileConfig: &cloudngfwaws.RulestackProfileConfigArgs{
+//					AntiSpyware: pulumi.String("BestPractice"),
+//				},
 //				Name:        pulumi.String("my-rulestack"),
 //				Scope:       pulumi.String("Local"),
 //				AccountId:   pulumi.String("12345"),
 //				Description: pulumi.String("Made by Pulumi"),
-//				ProfileConfig: &cloudngfwaws.RulestackProfileConfigArgs{
-//					AntiSpyware: pulumi.String("BestPractice"),
-//				},
 //			})
 //			if err != nil {
 //				return err

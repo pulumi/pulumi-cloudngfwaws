@@ -55,11 +55,6 @@ import * as utilities from "./utilities";
  *
  * const rs = new cloudngfwaws.CommitRulestack("rs", {rulestack: "my-rulestack"});
  * const example = new cloudngfwaws.Ngfw("example", {
- *     name: "example-instance",
- *     vpcId: exampleAwsVpc.id,
- *     accountId: "111111111111",
- *     description: "Example description",
- *     endpointMode: "ServiceManaged",
  *     subnetMappings: [
  *         {
  *             subnetId: subnet1.id,
@@ -68,6 +63,11 @@ import * as utilities from "./utilities";
  *             subnetId: subnet2.id,
  *         },
  *     ],
+ *     name: "example-instance",
+ *     vpcId: exampleAwsVpc.id,
+ *     accountId: "111111111111",
+ *     description: "Example description",
+ *     endpointMode: "ServiceManaged",
  *     rulestack: rs.rulestack,
  *     tags: {
  *         Foo: "bar",
@@ -95,11 +95,12 @@ import * as utilities from "./utilities";
  * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
  *
  * const example = new cloudngfwaws.Ngfw("example", {
- *     name: "example-instance",
- *     vpcId: "vpc-0a1b2c3d4e5f00001",
- *     accountId: "111111111111",
- *     description: "Example description",
- *     endpointMode: "CustomerManaged",
+ *     egressNats: [{
+ *         settings: [{
+ *             ipPoolType: "AWSService",
+ *         }],
+ *         enabled: true,
+ *     }],
  *     subnetMappings: [
  *         {
  *             availabilityZone: "us-east-1a",
@@ -108,13 +109,12 @@ import * as utilities from "./utilities";
  *             availabilityZone: "us-east-1c",
  *         },
  *     ],
+ *     name: "example-instance",
+ *     vpcId: "vpc-0a1b2c3d4e5f00001",
+ *     accountId: "111111111111",
+ *     description: "Example description",
+ *     endpointMode: "CustomerManaged",
  *     rulestack: "my-rulestack",
- *     egressNats: [{
- *         enabled: true,
- *         settings: [{
- *             ipPoolType: "AWSService",
- *         }],
- *     }],
  *     tags: {
  *         Foo: "bar",
  *     },
@@ -197,13 +197,6 @@ import * as utilities from "./utilities";
  * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
  *
  * const example = new cloudngfwaws.Ngfw("example", {
- *     name: "my-firewall",
- *     description: "My new firewall",
- *     azLists: [
- *         "use1-az1",
- *         "use1-az4",
- *     ],
- *     allowlistAccounts: ["111111111111"],
  *     endpoints: [
  *         {
  *             accountId: "111111111111",
@@ -218,6 +211,13 @@ import * as utilities from "./utilities";
  *             mode: "ServiceManaged",
  *         },
  *     ],
+ *     name: "my-firewall",
+ *     description: "My new firewall",
+ *     azLists: [
+ *         "use1-az1",
+ *         "use1-az4",
+ *     ],
+ *     allowlistAccounts: ["111111111111"],
  *     tags: {
  *         Owner: "my-team",
  *     },
@@ -243,13 +243,12 @@ import * as utilities from "./utilities";
  * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
  *
  * const example = new cloudngfwaws.Ngfw("example", {
- *     name: "my-firewall",
- *     description: "My new firewall",
- *     azLists: [
- *         "use1-az1",
- *         "use1-az4",
- *     ],
- *     allowlistAccounts: ["111111111111"],
+ *     egressNats: [{
+ *         settings: [{
+ *             ipPoolType: "AWSService",
+ *         }],
+ *         enabled: true,
+ *     }],
  *     endpoints: [
  *         {
  *             accountId: "111111111111",
@@ -264,12 +263,13 @@ import * as utilities from "./utilities";
  *             mode: "ServiceManaged",
  *         },
  *     ],
- *     egressNats: [{
- *         enabled: true,
- *         settings: [{
- *             ipPoolType: "AWSService",
- *         }],
- *     }],
+ *     name: "my-firewall",
+ *     description: "My new firewall",
+ *     azLists: [
+ *         "use1-az1",
+ *         "use1-az4",
+ *     ],
+ *     allowlistAccounts: ["111111111111"],
  *     tags: {
  *         Owner: "my-team",
  *     },

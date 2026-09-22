@@ -19,13 +19,13 @@ import * as utilities from "./utilities";
  * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
  *
  * const r = new cloudngfwaws.Rulestack("r", {
+ *     profileConfig: {
+ *         antiSpyware: "BestPractice",
+ *     },
  *     name: "my-rulestack",
  *     scope: "Local",
  *     accountId: "12345",
  *     description: "Made by Pulumi",
- *     profileConfig: {
- *         antiSpyware: "BestPractice",
- *     },
  * });
  * const example = cloudngfwaws.getPrefixListOutput({
  *     rulestack: r.name,
@@ -121,13 +121,13 @@ export interface GetPrefixListResult {
  * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
  *
  * const r = new cloudngfwaws.Rulestack("r", {
+ *     profileConfig: {
+ *         antiSpyware: "BestPractice",
+ *     },
  *     name: "my-rulestack",
  *     scope: "Local",
  *     accountId: "12345",
  *     description: "Made by Pulumi",
- *     profileConfig: {
- *         antiSpyware: "BestPractice",
- *     },
  * });
  * const example = cloudngfwaws.getPrefixListOutput({
  *     rulestack: r.name,

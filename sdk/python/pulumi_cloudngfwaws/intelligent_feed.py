@@ -400,13 +400,13 @@ class IntelligentFeed(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         r = cloudngfwaws.Rulestack("r",
+            profile_config={
+                "anti_spyware": "BestPractice",
+            },
             name="terraform-rulestack",
             scope="Local",
             account_id="123456789",
-            description="Made by Pulumi",
-            profile_config={
-                "anti_spyware": "BestPractice",
-            })
+            description="Made by Pulumi")
         # Retrieve the feed information every day at midnight.
         example = cloudngfwaws.IntelligentFeed("example",
             rulestack=r.name,
@@ -461,13 +461,13 @@ class IntelligentFeed(pulumi.CustomResource):
         import pulumi_cloudngfwaws as cloudngfwaws
 
         r = cloudngfwaws.Rulestack("r",
+            profile_config={
+                "anti_spyware": "BestPractice",
+            },
             name="terraform-rulestack",
             scope="Local",
             account_id="123456789",
-            description="Made by Pulumi",
-            profile_config={
-                "anti_spyware": "BestPractice",
-            })
+            description="Made by Pulumi")
         # Retrieve the feed information every day at midnight.
         example = cloudngfwaws.IntelligentFeed("example",
             rulestack=r.name,

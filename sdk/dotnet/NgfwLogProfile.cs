@@ -49,8 +49,6 @@ namespace Pulumi.CloudNgfwAws
     /// {
     ///     var example = new CloudNgfwAws.NgfwLogProfile("example", new()
     ///     {
-    ///         Ngfw = exampleCloudngfwawsNgfw.Name,
-    ///         AccountId = exampleCloudngfwawsNgfw.AccountId,
     ///         LogDestinations = new[]
     ///         {
     ///             new CloudNgfwAws.Inputs.NgfwLogProfileLogDestinationArgs
@@ -72,6 +70,8 @@ namespace Pulumi.CloudNgfwAws
     ///                 LogType = "DECRYPTION",
     ///             },
     ///         },
+    ///         Ngfw = exampleCloudngfwawsNgfw.Name,
+    ///         AccountId = exampleCloudngfwawsNgfw.AccountId,
     ///     });
     /// 
     /// });
@@ -99,8 +99,6 @@ namespace Pulumi.CloudNgfwAws
     /// {
     ///     var example = new CloudNgfwAws.NgfwLogProfile("example", new()
     ///     {
-    ///         Ngfw = exampleCloudngfwawsNgfw.Name,
-    ///         AccountId = exampleCloudngfwawsNgfw.AccountId,
     ///         LogConfig = new CloudNgfwAws.Inputs.NgfwLogProfileLogConfigArgs
     ///         {
     ///             LogDestinationType = "S3",
@@ -112,6 +110,8 @@ namespace Pulumi.CloudNgfwAws
     ///                 "DECRYPTION",
     ///             },
     ///         },
+    ///         Ngfw = exampleCloudngfwawsNgfw.Name,
+    ///         AccountId = exampleCloudngfwawsNgfw.AccountId,
     ///     });
     /// 
     /// });
@@ -129,8 +129,6 @@ namespace Pulumi.CloudNgfwAws
     /// {
     ///     var example = new CloudNgfwAws.NgfwLogProfile("example", new()
     ///     {
-    ///         Ngfw = exampleCloudngfwawsNgfw.Name,
-    ///         AccountId = exampleCloudngfwawsNgfw.AccountId,
     ///         LogConfig = new CloudNgfwAws.Inputs.NgfwLogProfileLogConfigArgs
     ///         {
     ///             LogDestinationType = "CloudWatchLogs",
@@ -143,6 +141,8 @@ namespace Pulumi.CloudNgfwAws
     ///             RoleType = "CrossAccount",
     ///             AccountId = "222222222222",
     ///         },
+    ///         Ngfw = exampleCloudngfwawsNgfw.Name,
+    ///         AccountId = exampleCloudngfwawsNgfw.AccountId,
     ///     });
     /// 
     /// });
@@ -160,10 +160,6 @@ namespace Pulumi.CloudNgfwAws
     /// {
     ///     var example = new CloudNgfwAws.NgfwLogProfile("example", new()
     ///     {
-    ///         Ngfw = exampleCloudngfwawsNgfw.Name,
-    ///         AccountId = exampleCloudngfwawsNgfw.AccountId,
-    ///         AdvancedThreatLog = true,
-    ///         CloudWatchMetricNamespace = "CloudNGFW",
     ///         LogConfig = new CloudNgfwAws.Inputs.NgfwLogProfileLogConfigArgs
     ///         {
     ///             LogDestinationType = "KinesisDataFirehose",
@@ -175,6 +171,10 @@ namespace Pulumi.CloudNgfwAws
     ///                 "DECRYPTION",
     ///             },
     ///         },
+    ///         Ngfw = exampleCloudngfwawsNgfw.Name,
+    ///         AccountId = exampleCloudngfwawsNgfw.AccountId,
+    ///         AdvancedThreatLog = true,
+    ///         CloudWatchMetricNamespace = "CloudNGFW",
     ///     });
     /// 
     /// });

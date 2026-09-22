@@ -34,23 +34,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			r, err := cloudngfwaws.NewRulestack(ctx, "r", &cloudngfwaws.RulestackArgs{
+//				ProfileConfig: &cloudngfwaws.RulestackProfileConfigArgs{
+//					AntiSpyware: pulumi.String("BestPractice"),
+//				},
 //				Name:        pulumi.String("terraform-rulestack"),
 //				Scope:       pulumi.String("Local"),
 //				AccountId:   pulumi.String("123456789"),
 //				Description: pulumi.String("Made by Pulumi"),
-//				ProfileConfig: &cloudngfwaws.RulestackProfileConfigArgs{
-//					AntiSpyware: pulumi.String("BestPractice"),
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudngfwaws.NewSecurityRule(ctx, "example", &cloudngfwaws.SecurityRuleArgs{
-//				Rulestack:   r.Name,
-//				RuleList:    pulumi.String("LocalRule"),
-//				Priority:    pulumi.Int(3),
-//				Name:        pulumi.String("tf-security-rule"),
-//				Description: pulumi.String("Also configured by Terraform"),
 //				Source: &cloudngfwaws.SecurityRuleSourceArgs{
 //					Cidrs: pulumi.StringArray{
 //						pulumi.String("any"),
@@ -61,11 +56,16 @@ import (
 //						pulumi.String("192.168.0.0/16"),
 //					},
 //				},
+//				Category:          &cloudngfwaws.SecurityRuleCategoryArgs{},
+//				Rulestack:         r.Name,
+//				RuleList:          pulumi.String("LocalRule"),
+//				Priority:          pulumi.Int(3),
+//				Name:              pulumi.String("tf-security-rule"),
+//				Description:       pulumi.String("Also configured by Terraform"),
 //				NegateDestination: pulumi.Bool(true),
 //				Applications: pulumi.StringArray{
 //					pulumi.String("any"),
 //				},
-//				Category:     &cloudngfwaws.SecurityRuleCategoryArgs{},
 //				Action:       pulumi.String("Allow"),
 //				Logging:      pulumi.Bool(true),
 //				AuditComment: pulumi.String("initial config"),

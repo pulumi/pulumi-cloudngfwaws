@@ -19,13 +19,13 @@ import * as utilities from "./utilities";
  * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
  *
  * const r = new cloudngfwaws.Rulestack("r", {
+ *     profileConfig: {
+ *         antiSpyware: "BestPractice",
+ *     },
  *     name: "terraform-rulestack",
  *     scope: "Local",
  *     accountId: "123456789",
  *     description: "Made by Pulumi",
- *     profileConfig: {
- *         antiSpyware: "BestPractice",
- *     },
  * });
  * // Retrieve the feed information every day at midnight.
  * const example = new cloudngfwaws.IntelligentFeed("example", {

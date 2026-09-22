@@ -140,13 +140,13 @@ def get_predefined_url_category_override(config_type: Optional[_builtins.str] = 
     import pulumi_cloudngfwaws as cloudngfwaws
 
     r = cloudngfwaws.Rulestack("r",
+        profile_config={
+            "anti_spyware": "BestPractice",
+        },
         name="my-rulestack",
         scope="Local",
         account_id="12345",
-        description="Made by Pulumi",
-        profile_config={
-            "anti_spyware": "BestPractice",
-        })
+        description="Made by Pulumi")
     example = cloudngfwaws.get_predefined_url_category_override_output(rulestack=r.name,
         name="foobar")
     ```
@@ -190,13 +190,13 @@ def get_predefined_url_category_override_output(config_type: pulumi.Input[Option
     import pulumi_cloudngfwaws as cloudngfwaws
 
     r = cloudngfwaws.Rulestack("r",
+        profile_config={
+            "anti_spyware": "BestPractice",
+        },
         name="my-rulestack",
         scope="Local",
         account_id="12345",
-        description="Made by Pulumi",
-        profile_config={
-            "anti_spyware": "BestPractice",
-        })
+        description="Made by Pulumi")
     example = cloudngfwaws.get_predefined_url_category_override_output(rulestack=r.name,
         name="foobar")
     ```
