@@ -47,11 +47,11 @@ func Provider(_ context.Context) tfbridge.ProviderInfo {
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:                 shimv2.NewProvider(cloudngfwaws.Provider()),
-		Name:              "cloudngfwaws",
+		Name:              mainPkg,
 		DisplayName:       "Palo Alto Networks Cloud NGFW for AWS",
 		PluginDownloadURL: "github://api.github.com/pulumi/pulumi-cloudngfwaws",
 		Description:       "A Pulumi package for creating and managing Cloud NGFW for AWS resources.",
-		Keywords:          []string{"pulumi", "cloudngfwaws", "Palo Alto Networks", "ngfw", "category/network"},
+		Keywords:          []string{"pulumi", mainPkg, "Palo Alto Networks", "ngfw", "category/network"},
 		License:           "Apache-2.0",
 		Homepage:          "https://pulumi.com",
 		Repository:        "https://github.com/pulumi/pulumi-cloudngfwaws",
@@ -108,13 +108,12 @@ func Provider(_ context.Context) tfbridge.ProviderInfo {
 			RespectSchemaVersion: true,
 			RootNamespace:        "Pulumi",
 			Namespaces: map[string]string{
-				"cloudngfwaws": "CloudNgfwAws",
+				mainPkg: "CloudNgfwAws",
 			},
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
 		},
-		EnableAccurateBridgePreview: true,
 	}
 
 	prov.MustComputeTokens(
