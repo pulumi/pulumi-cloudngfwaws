@@ -88,8 +88,8 @@ import javax.annotation.Nullable;
  *                     .destination("my-firehose-stream")
  *                     .logType("DECRYPTION")
  *                     .build())
- *             .ngfw(exampleCloudngfwawsNgfw.name())
- *             .accountId(exampleCloudngfwawsNgfw.accountId())
+ *             .ngfw(exampleCloudngfwawsNgfw.get("name"))
+ *             .accountId(exampleCloudngfwawsNgfw.get("accountId"))
  *             .build());
  * 
  *     }
@@ -141,8 +141,8 @@ import javax.annotation.Nullable;
  *                     "THREAT",
  *                     "DECRYPTION")
  *                 .build())
- *             .ngfw(exampleCloudngfwawsNgfw.name())
- *             .accountId(exampleCloudngfwawsNgfw.accountId())
+ *             .ngfw(exampleCloudngfwawsNgfw.get("name"))
+ *             .accountId(exampleCloudngfwawsNgfw.get("accountId"))
  *             .build());
  * 
  *     }
@@ -185,8 +185,8 @@ import javax.annotation.Nullable;
  *                 .roleType("CrossAccount")
  *                 .accountId("222222222222")
  *                 .build())
- *             .ngfw(exampleCloudngfwawsNgfw.name())
- *             .accountId(exampleCloudngfwawsNgfw.accountId())
+ *             .ngfw(exampleCloudngfwawsNgfw.get("name"))
+ *             .accountId(exampleCloudngfwawsNgfw.get("accountId"))
  *             .build());
  * 
  *     }
@@ -228,8 +228,8 @@ import javax.annotation.Nullable;
  *                     "THREAT",
  *                     "DECRYPTION")
  *                 .build())
- *             .ngfw(exampleCloudngfwawsNgfw.name())
- *             .accountId(exampleCloudngfwawsNgfw.accountId())
+ *             .ngfw(exampleCloudngfwawsNgfw.get("name"))
+ *             .accountId(exampleCloudngfwawsNgfw.get("accountId"))
  *             .advancedThreatLog(true)
  *             .cloudWatchMetricNamespace("CloudNGFW")
  *             .build());

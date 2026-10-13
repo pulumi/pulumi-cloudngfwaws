@@ -99,13 +99,13 @@ import javax.annotation.Nullable;
  *         var example = new Ngfw("example", NgfwArgs.builder()
  *             .subnetMappings(            
  *                 NgfwSubnetMappingArgs.builder()
- *                     .subnetId(subnet1.id())
+ *                     .subnetId(subnet1.get("id"))
  *                     .build(),
  *                 NgfwSubnetMappingArgs.builder()
- *                     .subnetId(subnet2.id())
+ *                     .subnetId(subnet2.get("id"))
  *                     .build())
  *             .name("example-instance")
- *             .vpcId(exampleAwsVpc.id())
+ *             .vpcId(exampleAwsVpc.get("id"))
  *             .accountId("111111111111")
  *             .description("Example description")
  *             .endpointMode("ServiceManaged")

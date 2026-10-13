@@ -55,7 +55,7 @@ namespace Pulumi.CloudNgfwAws
     ///                 "192.168.0.0/16",
     ///             },
     ///         },
-    ///         Category = null,
+    ///         Category = new() { },
     ///         Rulestack = r.Name,
     ///         RuleList = "LocalRule",
     ///         Priority = 3,
