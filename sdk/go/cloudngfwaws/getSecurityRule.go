@@ -19,6 +19,40 @@ import (
 // * `Global Rulestack` (for `scope="Global"`)
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudngfwaws/sdk/v2/go/cloudngfwaws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			r, err := cloudngfwaws.NewRulestack(ctx, "r", &cloudngfwaws.RulestackArgs{
+//				ProfileConfig: &cloudngfwaws.RulestackProfileConfigArgs{
+//					AntiSpyware: pulumi.String("BestPractice"),
+//				},
+//				Name:        pulumi.String("my-rulestack"),
+//				Scope:       pulumi.String("Local"),
+//				AccountId:   pulumi.String("12345"),
+//				Description: pulumi.String("Made by Pulumi"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = cloudngfwaws.GetSecurityRuleOutput(ctx, cloudngfwaws.GetSecurityRuleOutputArgs{
+//				Rulestack: r.Name,
+//				Name:      "foobar",
+//			}, nil)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupSecurityRule(ctx *pulumi.Context, args *LookupSecurityRuleArgs, opts ...pulumi.InvokeOption) (*LookupSecurityRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityRuleResult

@@ -15,6 +15,25 @@ import * as utilities from "./utilities";
  * * `Global Rulestack` (for `scope="Global"`)
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
+ *
+ * const r = new cloudngfwaws.Rulestack("r", {
+ *     profileConfig: {
+ *         antiSpyware: "BestPractice",
+ *     },
+ *     name: "my-rulestack",
+ *     scope: "Local",
+ *     accountId: "12345",
+ *     description: "Made by Pulumi",
+ * });
+ * const example = cloudngfwaws.getSecurityRuleOutput({
+ *     rulestack: r.name,
+ *     name: "foobar",
+ * });
+ * ```
  */
 export function getSecurityRule(args: GetSecurityRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -159,6 +178,25 @@ export interface GetSecurityRuleResult {
  * * `Global Rulestack` (for `scope="Global"`)
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudngfwaws from "@pulumi/cloudngfwaws";
+ *
+ * const r = new cloudngfwaws.Rulestack("r", {
+ *     profileConfig: {
+ *         antiSpyware: "BestPractice",
+ *     },
+ *     name: "my-rulestack",
+ *     scope: "Local",
+ *     accountId: "12345",
+ *     description: "Made by Pulumi",
+ * });
+ * const example = cloudngfwaws.getSecurityRuleOutput({
+ *     rulestack: r.name,
+ *     name: "foobar",
+ * });
+ * ```
  */
 export function getSecurityRuleOutput(args: GetSecurityRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecurityRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

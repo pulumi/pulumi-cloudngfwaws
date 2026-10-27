@@ -4293,6 +4293,51 @@ public final class CloudngfwawsFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.Rulestack;
+     * import com.pulumi.cloudngfwaws.RulestackArgs;
+     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetSecurityRuleArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
+     *             .name("my-rulestack")
+     *             .scope("Local")
+     *             .accountId("12345")
+     *             .description("Made by Pulumi")
+     *             .build());
+     * 
+     *         final var example = CloudngfwawsFunctions.getSecurityRule(GetSecurityRuleArgs.builder()
+     *             .rulestack(r.name())
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetSecurityRuleResult> getSecurityRule(GetSecurityRuleArgs args) {
         return getSecurityRule(args, InvokeOptions.Empty);
@@ -4306,6 +4351,51 @@ public final class CloudngfwawsFunctions {
      * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.Rulestack;
+     * import com.pulumi.cloudngfwaws.RulestackArgs;
+     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetSecurityRuleArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
+     *             .name("my-rulestack")
+     *             .scope("Local")
+     *             .accountId("12345")
+     *             .description("Made by Pulumi")
+     *             .build());
+     * 
+     *         final var example = CloudngfwawsFunctions.getSecurityRule(GetSecurityRuleArgs.builder()
+     *             .rulestack(r.name())
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetSecurityRuleResult> getSecurityRulePlain(GetSecurityRulePlainArgs args) {
@@ -4321,6 +4411,51 @@ public final class CloudngfwawsFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.Rulestack;
+     * import com.pulumi.cloudngfwaws.RulestackArgs;
+     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetSecurityRuleArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
+     *             .name("my-rulestack")
+     *             .scope("Local")
+     *             .accountId("12345")
+     *             .description("Made by Pulumi")
+     *             .build());
+     * 
+     *         final var example = CloudngfwawsFunctions.getSecurityRule(GetSecurityRuleArgs.builder()
+     *             .rulestack(r.name())
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetSecurityRuleResult> getSecurityRule(GetSecurityRuleArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getSecurityRule:getSecurityRule", TypeShape.of(GetSecurityRuleResult.class), args, Utilities.withVersion(options));
@@ -4335,6 +4470,51 @@ public final class CloudngfwawsFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.Rulestack;
+     * import com.pulumi.cloudngfwaws.RulestackArgs;
+     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetSecurityRuleArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
+     *             .name("my-rulestack")
+     *             .scope("Local")
+     *             .accountId("12345")
+     *             .description("Made by Pulumi")
+     *             .build());
+     * 
+     *         final var example = CloudngfwawsFunctions.getSecurityRule(GetSecurityRuleArgs.builder()
+     *             .rulestack(r.name())
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetSecurityRuleResult> getSecurityRule(GetSecurityRuleArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("cloudngfwaws:index/getSecurityRule:getSecurityRule", TypeShape.of(GetSecurityRuleResult.class), args, Utilities.withVersion(options));
@@ -4348,6 +4528,51 @@ public final class CloudngfwawsFunctions {
      * * `Global Rulestack` (for `scope=&#34;Global&#34;`)
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudngfwaws.Rulestack;
+     * import com.pulumi.cloudngfwaws.RulestackArgs;
+     * import com.pulumi.cloudngfwaws.inputs.RulestackProfileConfigArgs;
+     * import com.pulumi.cloudngfwaws.CloudngfwawsFunctions;
+     * import com.pulumi.cloudngfwaws.inputs.GetSecurityRuleArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var r = new Rulestack("r", RulestackArgs.builder()
+     *             .profileConfig(RulestackProfileConfigArgs.builder()
+     *                 .antiSpyware("BestPractice")
+     *                 .build())
+     *             .name("my-rulestack")
+     *             .scope("Local")
+     *             .accountId("12345")
+     *             .description("Made by Pulumi")
+     *             .build());
+     * 
+     *         final var example = CloudngfwawsFunctions.getSecurityRule(GetSecurityRuleArgs.builder()
+     *             .rulestack(r.name())
+     *             .name("foobar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetSecurityRuleResult> getSecurityRulePlain(GetSecurityRulePlainArgs args, InvokeOptions options) {

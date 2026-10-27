@@ -22,6 +22,35 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var r = new CloudNgfwAws.Rulestack("r", new()
+        ///     {
+        ///         ProfileConfig = new CloudNgfwAws.Inputs.RulestackProfileConfigArgs
+        ///         {
+        ///             AntiSpyware = "BestPractice",
+        ///         },
+        ///         Name = "my-rulestack",
+        ///         Scope = "Local",
+        ///         AccountId = "12345",
+        ///         Description = "Made by Pulumi",
+        ///     });
+        /// 
+        ///     var example = CloudNgfwAws.GetSecurityRule.Invoke(new()
+        ///     {
+        ///         Rulestack = r.Name,
+        ///         Name = "foobar",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetSecurityRuleResult> InvokeAsync(GetSecurityRuleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecurityRuleResult>("cloudngfwaws:index/getSecurityRule:getSecurityRule", args ?? new GetSecurityRuleArgs(), options.WithDefaults());
@@ -37,6 +66,35 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var r = new CloudNgfwAws.Rulestack("r", new()
+        ///     {
+        ///         ProfileConfig = new CloudNgfwAws.Inputs.RulestackProfileConfigArgs
+        ///         {
+        ///             AntiSpyware = "BestPractice",
+        ///         },
+        ///         Name = "my-rulestack",
+        ///         Scope = "Local",
+        ///         AccountId = "12345",
+        ///         Description = "Made by Pulumi",
+        ///     });
+        /// 
+        ///     var example = CloudNgfwAws.GetSecurityRule.Invoke(new()
+        ///     {
+        ///         Rulestack = r.Name,
+        ///         Name = "foobar",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSecurityRuleResult> Invoke(GetSecurityRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecurityRuleResult>("cloudngfwaws:index/getSecurityRule:getSecurityRule", args ?? new GetSecurityRuleInvokeArgs(), options.WithDefaults());
@@ -52,6 +110,35 @@ namespace Pulumi.CloudNgfwAws
         /// 
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using CloudNgfwAws = Pulumi.CloudNgfwAws;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var r = new CloudNgfwAws.Rulestack("r", new()
+        ///     {
+        ///         ProfileConfig = new CloudNgfwAws.Inputs.RulestackProfileConfigArgs
+        ///         {
+        ///             AntiSpyware = "BestPractice",
+        ///         },
+        ///         Name = "my-rulestack",
+        ///         Scope = "Local",
+        ///         AccountId = "12345",
+        ///         Description = "Made by Pulumi",
+        ///     });
+        /// 
+        ///     var example = CloudNgfwAws.GetSecurityRule.Invoke(new()
+        ///     {
+        ///         Rulestack = r.Name,
+        ///         Name = "foobar",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSecurityRuleResult> Invoke(GetSecurityRuleInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecurityRuleResult>("cloudngfwaws:index/getSecurityRule:getSecurityRule", args ?? new GetSecurityRuleInvokeArgs(), options.WithDefaults());
