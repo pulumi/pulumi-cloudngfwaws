@@ -330,6 +330,22 @@ def get_security_rule(config_type: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudngfwaws as cloudngfwaws
+
+    r = cloudngfwaws.Rulestack("r",
+        profile_config={
+            "anti_spyware": "BestPractice",
+        },
+        name="my-rulestack",
+        scope="Local",
+        account_id="12345",
+        description="Made by Pulumi")
+    example = cloudngfwaws.get_security_rule_output(rulestack=r.name,
+        name="foobar")
+    ```
+
 
     :param _builtins.str config_type: Retrieve either the candidate or running config. Valid values are `candidate` or `running`. Defaults to `candidate`.
     :param _builtins.int priority: The rule priority.
@@ -385,6 +401,22 @@ def get_security_rule_output(config_type: pulumi.Input[Optional[Optional[_builti
     * `Global Rulestack` (for `scope="Global"`)
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudngfwaws as cloudngfwaws
+
+    r = cloudngfwaws.Rulestack("r",
+        profile_config={
+            "anti_spyware": "BestPractice",
+        },
+        name="my-rulestack",
+        scope="Local",
+        account_id="12345",
+        description="Made by Pulumi")
+    example = cloudngfwaws.get_security_rule_output(rulestack=r.name,
+        name="foobar")
+    ```
 
 
     :param _builtins.str config_type: Retrieve either the candidate or running config. Valid values are `candidate` or `running`. Defaults to `candidate`.
