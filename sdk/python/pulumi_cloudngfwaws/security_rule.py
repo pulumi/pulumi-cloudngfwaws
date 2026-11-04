@@ -1009,6 +1009,54 @@ class SecurityRule(pulumi.CustomResource):
         __props__.__dict__["update_token"] = update_token
         return SecurityRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            applications: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            audit_comment: pulumi.Input[Optional[_builtins.str]] = None,
+            category: pulumi.Input[Optional[Union['SecurityRuleCategoryArgs', 'SecurityRuleCategoryArgsDict', 'outputs.SecurityRuleCategory']]] = None,
+            decryption_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[Union['SecurityRuleDestinationArgs', 'SecurityRuleDestinationArgsDict', 'outputs.SecurityRuleDestination']]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            negate_destination: pulumi.Input[Optional[_builtins.bool]] = None,
+            negate_source: pulumi.Input[Optional[_builtins.bool]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            prot_port_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_list: pulumi.Input[Optional[_builtins.str]] = None,
+            rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[Union['SecurityRuleSourceArgs', 'SecurityRuleSourceArgsDict', 'outputs.SecurityRuleSource']]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            update_token: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["applications"] = applications
+        __props__["auditComment"] = audit_comment
+        __props__["category"] = category
+        __props__["decryptionRuleType"] = decryption_rule_type
+        __props__["description"] = description
+        __props__["destination"] = destination
+        __props__["enabled"] = enabled
+        __props__["logging"] = logging
+        __props__["name"] = name
+        __props__["negateDestination"] = negate_destination
+        __props__["negateSource"] = negate_source
+        __props__["priority"] = priority
+        __props__["protPortLists"] = prot_port_lists
+        __props__["protocol"] = protocol
+        __props__["ruleList"] = rule_list
+        __props__["rulestack"] = rulestack
+        __props__["scope"] = scope
+        __props__["source"] = source
+        __props__["tags"] = tags
+        __props__["updateToken"] = update_token
+        return pulumi.runtime.exists_resource(None, 'cloudngfwaws:index/securityRule:SecurityRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

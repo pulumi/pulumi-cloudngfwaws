@@ -162,6 +162,12 @@ func (RulestackState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rulestackState)(nil)).Elem()
 }
 
+// RulestackExists checks whether an existing Rulestack resource with the given ID exists.
+func RulestackExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RulestackState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudngfwaws:index/rulestack:Rulestack", id, state, "", opts...)
+}
+
 type rulestackArgs struct {
 	// Account group.
 	AccountGroup *string `pulumi:"accountGroup"`

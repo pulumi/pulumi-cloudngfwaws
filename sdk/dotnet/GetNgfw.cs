@@ -14,11 +14,9 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source for retrieving NGFW information.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Firewall`
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -44,11 +42,9 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source for retrieving NGFW information.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Firewall`
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -74,11 +70,9 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source for retrieving NGFW information.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Firewall`
-        /// 
         /// 
         /// ## Example Usage
         /// 

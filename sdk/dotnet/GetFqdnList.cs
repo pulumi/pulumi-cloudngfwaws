@@ -14,12 +14,10 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source for retrieving fqdn list information.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Rulestack` (for `scope="Local"`)
         /// * `Global Rulestack` (for `scope="Global"`)
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -58,12 +56,10 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source for retrieving fqdn list information.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Rulestack` (for `scope="Local"`)
         /// * `Global Rulestack` (for `scope="Global"`)
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -102,12 +98,10 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source for retrieving fqdn list information.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Rulestack` (for `scope="Local"`)
         /// * `Global Rulestack` (for `scope="Global"`)
-        /// 
         /// 
         /// ## Example Usage
         /// 

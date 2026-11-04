@@ -163,6 +163,12 @@ func (PrefixListState) ElementType() reflect.Type {
 	return reflect.TypeOf((*prefixListState)(nil)).Elem()
 }
 
+// PrefixListExists checks whether an existing PrefixList resource with the given ID exists.
+func PrefixListExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrefixListState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudngfwaws:index/prefixList:PrefixList", id, state, "", opts...)
+}
+
 type prefixListArgs struct {
 	// The audit comment.
 	AuditComment *string `pulumi:"auditComment"`

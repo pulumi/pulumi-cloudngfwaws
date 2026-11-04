@@ -77,6 +77,12 @@ func (AccountOnboardingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountOnboardingState)(nil)).Elem()
 }
 
+// AccountOnboardingExists checks whether an existing AccountOnboarding resource with the given ID exists.
+func AccountOnboardingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountOnboardingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudngfwaws:index/accountOnboarding:AccountOnboarding", id, state, "", opts...)
+}
+
 type accountOnboardingArgs struct {
 	// The account IDs
 	AccountId string `pulumi:"accountId"`

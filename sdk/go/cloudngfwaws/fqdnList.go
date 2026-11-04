@@ -163,6 +163,12 @@ func (FqdnListState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fqdnListState)(nil)).Elem()
 }
 
+// FqdnListExists checks whether an existing FqdnList resource with the given ID exists.
+func FqdnListExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FqdnListState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudngfwaws:index/fqdnList:FqdnList", id, state, "", opts...)
+}
+
 type fqdnListArgs struct {
 	// The audit comment.
 	AuditComment *string `pulumi:"auditComment"`

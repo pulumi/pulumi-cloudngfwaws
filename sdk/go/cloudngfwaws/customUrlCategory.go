@@ -170,6 +170,12 @@ func (CustomUrlCategoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customUrlCategoryState)(nil)).Elem()
 }
 
+// CustomUrlCategoryExists checks whether an existing CustomUrlCategory resource with the given ID exists.
+func CustomUrlCategoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomUrlCategoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudngfwaws:index/customUrlCategory:CustomUrlCategory", id, state, "", opts...)
+}
+
 type customUrlCategoryArgs struct {
 	// The action to take. Valid values are `none`, `alert`, `allow`, `block`, `continue`, or `override`. Defaults to `none`.
 	Action *string `pulumi:"action"`

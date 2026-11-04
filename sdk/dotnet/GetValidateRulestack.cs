@@ -14,7 +14,6 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source to validate the rulestack config.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Rulestack` (for `scope="Local"`)
@@ -26,7 +25,6 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source to validate the rulestack config.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Rulestack` (for `scope="Local"`)
@@ -37,7 +35,6 @@ namespace Pulumi.CloudNgfwAws
 
         /// <summary>
         /// Data source to validate the rulestack config.
-        /// 
         /// 
         /// ## Admin Permission Type
         /// 

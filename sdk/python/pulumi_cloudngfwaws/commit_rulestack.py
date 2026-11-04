@@ -336,6 +336,26 @@ class CommitRulestack(pulumi.CustomResource):
         __props__.__dict__["validation_status"] = validation_status
         return CommitRulestack(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            commit_errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            commit_status: pulumi.Input[Optional[_builtins.str]] = None,
+            rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            validation_status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["commitErrors"] = commit_errors
+        __props__["commitStatus"] = commit_status
+        __props__["rulestack"] = rulestack
+        __props__["scope"] = scope
+        __props__["state"] = state
+        __props__["validationErrors"] = validation_errors
+        __props__["validationStatus"] = validation_status
+        return pulumi.runtime.exists_resource(None, 'cloudngfwaws:index/commitRulestack:CommitRulestack', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="commitErrors")
     def commit_errors(self) -> pulumi.Output[Sequence[_builtins.str]]:
