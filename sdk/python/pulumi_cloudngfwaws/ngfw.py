@@ -1585,6 +1585,66 @@ class Ngfw(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return Ngfw(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allowlist_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_id_version: pulumi.Input[Optional[_builtins.str]] = None,
+            automatic_upgrade_app_id_version: pulumi.Input[Optional[_builtins.bool]] = None,
+            az_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            change_protections: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deployment_update_token: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            egress_nats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEgressNatArgs', 'NgfwEgressNatArgsDict', 'outputs.NgfwEgressNat']]]]] = None,
+            endpoint_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwEndpointArgs', 'NgfwEndpointArgsDict', 'outputs.NgfwEndpoint']]]]] = None,
+            firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+            global_rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+            link_id: pulumi.Input[Optional[_builtins.str]] = None,
+            link_status: pulumi.Input[Optional[_builtins.str]] = None,
+            multi_vpc: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwPrivateAccessArgs', 'NgfwPrivateAccessArgsDict', 'outputs.NgfwPrivateAccess']]]]] = None,
+            rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+            security_zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSecurityZoneArgs', 'NgfwSecurityZoneArgsDict', 'outputs.NgfwSecurityZone']]]]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwStatusArgs', 'NgfwStatusArgsDict', 'outputs.NgfwStatus']]]]] = None,
+            subnet_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwSubnetMappingArgs', 'NgfwSubnetMappingArgsDict', 'outputs.NgfwSubnetMapping']]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            update_token: pulumi.Input[Optional[_builtins.str]] = None,
+            user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NgfwUserIdArgs', 'NgfwUserIdArgsDict', 'outputs.NgfwUserId']]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["allowlistAccounts"] = allowlist_accounts
+        __props__["appIdVersion"] = app_id_version
+        __props__["automaticUpgradeAppIdVersion"] = automatic_upgrade_app_id_version
+        __props__["azLists"] = az_lists
+        __props__["changeProtections"] = change_protections
+        __props__["deploymentUpdateToken"] = deployment_update_token
+        __props__["description"] = description
+        __props__["egressNats"] = egress_nats
+        __props__["endpointMode"] = endpoint_mode
+        __props__["endpointServiceName"] = endpoint_service_name
+        __props__["endpoints"] = endpoints
+        __props__["firewallId"] = firewall_id
+        __props__["globalRulestack"] = global_rulestack
+        __props__["linkId"] = link_id
+        __props__["linkStatus"] = link_status
+        __props__["multiVpc"] = multi_vpc
+        __props__["name"] = name
+        __props__["privateAccesses"] = private_accesses
+        __props__["rulestack"] = rulestack
+        __props__["securityZones"] = security_zones
+        __props__["statuses"] = statuses
+        __props__["subnetMappings"] = subnet_mappings
+        __props__["tags"] = tags
+        __props__["updateToken"] = update_token
+        __props__["userIds"] = user_ids
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'cloudngfwaws:index/ngfw:Ngfw', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:

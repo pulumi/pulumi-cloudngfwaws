@@ -528,6 +528,32 @@ class Rulestack(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Rulestack(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_group: pulumi.Input[Optional[_builtins.str]] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            lookup_x_forwarded_for: pulumi.Input[Optional[_builtins.str]] = None,
+            minimum_app_id_version: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            profile_config: pulumi.Input[Optional[Union['RulestackProfileConfigArgs', 'RulestackProfileConfigArgsDict', 'outputs.RulestackProfileConfig']]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountGroup"] = account_group
+        __props__["accountId"] = account_id
+        __props__["description"] = description
+        __props__["lookupXForwardedFor"] = lookup_x_forwarded_for
+        __props__["minimumAppIdVersion"] = minimum_app_id_version
+        __props__["name"] = name
+        __props__["profileConfig"] = profile_config
+        __props__["scope"] = scope
+        __props__["state"] = state
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'cloudngfwaws:index/rulestack:Rulestack', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountGroup")
     def account_group(self) -> pulumi.Output[Optional[_builtins.str]]:

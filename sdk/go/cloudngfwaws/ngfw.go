@@ -588,6 +588,12 @@ func (NgfwState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ngfwState)(nil)).Elem()
 }
 
+// NgfwExists checks whether an existing Ngfw resource with the given ID exists.
+func NgfwExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NgfwState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudngfwaws:index/ngfw:Ngfw", id, state, "", opts...)
+}
+
 type ngfwArgs struct {
 	// The Account Id.
 	AccountId *string `pulumi:"accountId"`

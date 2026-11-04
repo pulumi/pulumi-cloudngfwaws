@@ -135,6 +135,12 @@ func (CommitRulestackState) ElementType() reflect.Type {
 	return reflect.TypeOf((*commitRulestackState)(nil)).Elem()
 }
 
+// CommitRulestackExists checks whether an existing CommitRulestack resource with the given ID exists.
+func CommitRulestackExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CommitRulestackState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudngfwaws:index/commitRulestack:CommitRulestack", id, state, "", opts...)
+}
+
 type commitRulestackArgs struct {
 	// The rulestack.
 	Rulestack string `pulumi:"rulestack"`

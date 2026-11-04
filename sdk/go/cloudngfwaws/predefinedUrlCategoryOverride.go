@@ -143,6 +143,12 @@ func (PredefinedUrlCategoryOverrideState) ElementType() reflect.Type {
 	return reflect.TypeOf((*predefinedUrlCategoryOverrideState)(nil)).Elem()
 }
 
+// PredefinedUrlCategoryOverrideExists checks whether an existing PredefinedUrlCategoryOverride resource with the given ID exists.
+func PredefinedUrlCategoryOverrideExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PredefinedUrlCategoryOverrideState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudngfwaws:index/predefinedUrlCategoryOverride:PredefinedUrlCategoryOverride", id, state, "", opts...)
+}
+
 type predefinedUrlCategoryOverrideArgs struct {
 	// The action to take. Valid values are `none`, `allow`, `alert`, or `block`. Defaults to `none`.
 	Action *string `pulumi:"action"`

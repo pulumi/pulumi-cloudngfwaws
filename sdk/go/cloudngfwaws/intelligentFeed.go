@@ -187,6 +187,12 @@ func (IntelligentFeedState) ElementType() reflect.Type {
 	return reflect.TypeOf((*intelligentFeedState)(nil)).Elem()
 }
 
+// IntelligentFeedExists checks whether an existing IntelligentFeed resource with the given ID exists.
+func IntelligentFeedExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IntelligentFeedState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudngfwaws:index/intelligentFeed:IntelligentFeed", id, state, "", opts...)
+}
+
 type intelligentFeedArgs struct {
 	// The audit comment.
 	AuditComment *string `pulumi:"auditComment"`

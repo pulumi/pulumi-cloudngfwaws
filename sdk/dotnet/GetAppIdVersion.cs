@@ -14,11 +14,9 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source to retrieve information on a given AppId version.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Rulestack`
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -44,11 +42,9 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source to retrieve information on a given AppId version.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Rulestack`
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -74,11 +70,9 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source to retrieve information on a given AppId version.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Rulestack`
-        /// 
         /// 
         /// ## Example Usage
         /// 

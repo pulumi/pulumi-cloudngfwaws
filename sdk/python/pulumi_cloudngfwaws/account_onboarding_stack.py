@@ -725,6 +725,42 @@ class AccountOnboardingStack(pulumi.CustomResource):
         __props__.__dict__["trusted_account"] = trusted_account
         return AccountOnboardingStack(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auditlog_group: pulumi.Input[Optional[_builtins.str]] = None,
+            cft_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cloudwatch_log_group: pulumi.Input[Optional[_builtins.str]] = None,
+            cloudwatch_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            decryption_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kinesis_firehose: pulumi.Input[Optional[_builtins.str]] = None,
+            onboarding_cft: pulumi.Input[Optional[_builtins.str]] = None,
+            s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            sns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_status: pulumi.Input[Optional[_builtins.str]] = None,
+            trusted_account: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["auditlogGroup"] = auditlog_group
+        __props__["cftRoleName"] = cft_role_name
+        __props__["cloudwatchLogGroup"] = cloudwatch_log_group
+        __props__["cloudwatchNamespace"] = cloudwatch_namespace
+        __props__["decryptionCert"] = decryption_cert
+        __props__["endpointMode"] = endpoint_mode
+        __props__["externalId"] = external_id
+        __props__["kinesisFirehose"] = kinesis_firehose
+        __props__["onboardingCft"] = onboarding_cft
+        __props__["s3Bucket"] = s3_bucket
+        __props__["snsTopicArn"] = sns_topic_arn
+        __props__["stackId"] = stack_id
+        __props__["stackStatus"] = stack_status
+        __props__["trustedAccount"] = trusted_account
+        return pulumi.runtime.exists_resource(None, 'cloudngfwaws:index/accountOnboardingStack:AccountOnboardingStack', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

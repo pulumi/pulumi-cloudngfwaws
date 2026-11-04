@@ -316,6 +316,12 @@ func (NgfwLogProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ngfwLogProfileState)(nil)).Elem()
 }
 
+// NgfwLogProfileExists checks whether an existing NgfwLogProfile resource with the given ID exists.
+func NgfwLogProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NgfwLogProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudngfwaws:index/ngfwLogProfile:NgfwLogProfile", id, state, "", opts...)
+}
+
 type ngfwLogProfileArgs struct {
 	// The unique ID of the account.
 	AccountId *string `pulumi:"accountId"`

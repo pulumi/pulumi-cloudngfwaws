@@ -277,6 +277,12 @@ func (SecurityRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityRuleState)(nil)).Elem()
 }
 
+// SecurityRuleExists checks whether an existing SecurityRule resource with the given ID exists.
+func SecurityRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("cloudngfwaws:index/securityRule:SecurityRule", id, state, "", opts...)
+}
+
 type securityRuleArgs struct {
 	// The action to take. Valid values are `Allow`, `DenySilent`, `DenyResetServer`, or `DenyResetBoth`.
 	Action string `pulumi:"action"`

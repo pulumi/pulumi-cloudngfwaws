@@ -14,11 +14,9 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source for retrieving log profile information.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Firewall`
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -45,11 +43,9 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source for retrieving log profile information.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Firewall`
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -76,11 +72,9 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source for retrieving log profile information.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Firewall`
-        /// 
         /// 
         /// ## Example Usage
         /// 

@@ -14,12 +14,10 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source for retrieving the predefined URL categories.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Rulestack` (for `scope="Local"`)
         /// * `Global Rulestack` (for `scope="Global"`)
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -42,12 +40,10 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source for retrieving the predefined URL categories.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Rulestack` (for `scope="Local"`)
         /// * `Global Rulestack` (for `scope="Global"`)
-        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -70,12 +66,10 @@ namespace Pulumi.CloudNgfwAws
         /// <summary>
         /// Data source for retrieving the predefined URL categories.
         /// 
-        /// 
         /// ## Admin Permission Type
         /// 
         /// * `Rulestack` (for `scope="Local"`)
         /// * `Global Rulestack` (for `scope="Global"`)
-        /// 
         /// 
         /// ## Example Usage
         /// 

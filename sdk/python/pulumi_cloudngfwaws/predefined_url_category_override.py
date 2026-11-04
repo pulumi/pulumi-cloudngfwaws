@@ -349,6 +349,22 @@ class PredefinedUrlCategoryOverride(pulumi.CustomResource):
         __props__.__dict__["update_token"] = update_token
         return PredefinedUrlCategoryOverride(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            audit_comment: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            rulestack: pulumi.Input[Optional[_builtins.str]] = None,
+            update_token: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["auditComment"] = audit_comment
+        __props__["name"] = name
+        __props__["rulestack"] = rulestack
+        __props__["updateToken"] = update_token
+        return pulumi.runtime.exists_resource(None, 'cloudngfwaws:index/predefinedUrlCategoryOverride:PredefinedUrlCategoryOverride', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[Optional[_builtins.str]]:

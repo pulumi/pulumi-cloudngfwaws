@@ -448,6 +448,30 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["update_token"] = update_token
         return Account(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cft_url: pulumi.Input[Optional[_builtins.str]] = None,
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            onboarding_status: pulumi.Input[Optional[_builtins.str]] = None,
+            origin: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sns_topic_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            trusted_account: pulumi.Input[Optional[_builtins.str]] = None,
+            update_token: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["cftUrl"] = cft_url
+        __props__["externalId"] = external_id
+        __props__["onboardingStatus"] = onboarding_status
+        __props__["origin"] = origin
+        __props__["serviceAccountId"] = service_account_id
+        __props__["snsTopicArn"] = sns_topic_arn
+        __props__["trustedAccount"] = trusted_account
+        __props__["updateToken"] = update_token
+        return pulumi.runtime.exists_resource(None, 'cloudngfwaws:index/account:Account', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
